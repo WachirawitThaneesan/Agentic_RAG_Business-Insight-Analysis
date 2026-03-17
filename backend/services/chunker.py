@@ -13,6 +13,7 @@ from backend.config import get_settings
 from backend.services.embedding import get_embedding, get_embeddings_batch
 
 settings = get_settings()
+HTTP_LIMITS = httpx.Limits(max_connections=4, max_keepalive_connections=2)
 
 
 @dataclass
@@ -124,7 +125,7 @@ async def generate_chunk_summary(chunk_text: str) -> str:
     )
 
     try:
-        async with httpx.AsyncClient(timeout=60.0) as client:
+        async with httpx.AsyncClient(timeout=60.0, limits=HTTP_LIMITS) as client:
             response = await client.post(
                 f"{settings.OLLAMA_HOST}/api/generate",
                 json={

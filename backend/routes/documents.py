@@ -6,16 +6,211 @@ from fastapi import APIRouter, UploadFile, File, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
 
-from backend.database import get_db
+from backend.database import get_db, AsyncSessionLocal
 from backend.models import Document, Chunk, StructuredData
+from backend.services.embedding import get_embedding
+from backend.services.ocr_artifacts import build_raw_ocr_chunk_payloads
 from backend.services.ocr import ocr_service
+from backend.services.table_utils import build_table_chunk_payloads, normalize_ocr_tables, rebuild_structured_tables
 from backend.services.thai_cleaner import clean_thai_text
 from backend.services.chunker import chunk_document
+from backend.config import get_settings
+
+settings = get_settings()
 
 router = APIRouter()
 
 UPLOAD_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "uploads")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+
+async def _store_table_chunks(
+    db: AsyncSession,
+    document_id: int,
+    chunk_payloads,
+    start_index: int,
+) -> int:
+    created = 0
+    for offset, payload in enumerate(chunk_payloads):
+        chunk_text = (payload.get("text") or "").strip()
+        if not chunk_text:
+            continue
+
+        embedding = await get_embedding(chunk_text)
+        db.add(
+            Chunk(
+                document_id=document_id,
+                chunk_index=start_index + offset,
+                chunk_text=chunk_text,
+                summary="",
+                token_count=len(chunk_text.split()),
+                embedding=embedding,
+                metadata_={
+                    "source_kind": "table_csv",
+                    "table_name": payload.get("table_name"),
+                    "table_title": payload.get("title"),
+                    "headers": payload.get("headers", []),
+                    "row_start": payload.get("row_start"),
+                    "row_end": payload.get("row_end"),
+                },
+            )
+        )
+        created += 1
+
+    return created
+
+
+async def _store_artifact_chunks(
+    db: AsyncSession,
+    document_id: int,
+    chunk_payloads,
+    start_index: int,
+) -> int:
+    created = 0
+    for offset, payload in enumerate(chunk_payloads):
+        chunk_text = (payload.get("text") or "").strip()
+        if not chunk_text:
+            continue
+
+        try:
+            embedding = await get_embedding(chunk_text)
+        except Exception as exc:
+            print(f"⚠️ Raw OCR artifact embedding failed: {exc}")
+            embedding = None
+        db.add(
+            Chunk(
+                document_id=document_id,
+                chunk_index=start_index + offset,
+                chunk_text=chunk_text,
+                summary=payload.get("summary", ""),
+                token_count=len(chunk_text.split()),
+                embedding=embedding,
+                metadata_=payload.get("metadata", {}),
+            )
+        )
+        created += 1
+
+    return created
+
+
+async def _store_semantic_chunks(
+    db: AsyncSession,
+    document_id: int,
+    cleaned_text: str,
+    start_index: int,
+    generate_summaries: bool = True,
+) -> int:
+    if not cleaned_text.strip():
+        return 0
+
+    chunk_results = await chunk_document(cleaned_text, generate_summaries=generate_summaries)
+    for offset, cr in enumerate(chunk_results):
+        db.add(
+            Chunk(
+                document_id=document_id,
+                chunk_index=start_index + offset,
+                chunk_text=cr.text,
+                summary=cr.summary,
+                token_count=cr.token_count,
+                embedding=cr.embedding,
+                metadata_={
+                    "start_char": cr.start_char,
+                    "end_char": cr.end_char,
+                },
+            )
+        )
+    return len(chunk_results)
+
+
+def _append_document_raw_text(document: Document, text: str) -> None:
+    addition = (text or "").strip()
+    if not addition:
+        return
+
+    existing = str(document.__dict__.get("raw_text") or "").strip()
+    combined = f"{existing}\n\n{addition}".strip() if existing else addition
+    document.raw_text = combined[:settings.DOCUMENT_RAW_TEXT_LIMIT_CHARS]
+
+
+async def _ingest_ocr_batch(
+    db: AsyncSession,
+    document_id: int,
+    doc: Document,
+    filename: str,
+    ocr_result,
+    next_chunk_index: int,
+    generate_summaries: bool,
+    raw_page_limit: Optional[int],
+):
+    text_blocks = ocr_result.get("text_blocks", [])
+    tables = normalize_ocr_tables(filename, ocr_result.get("tables", []))
+    raw_ocr_chunk_payloads = build_raw_ocr_chunk_payloads(
+        filename,
+        ocr_result,
+        max_pages=raw_page_limit,
+    )
+
+    raw_text = "\n\n".join(text_blocks)
+    cleaned_text = clean_thai_text(raw_text)
+    table_chunk_payloads = build_table_chunk_payloads(filename, tables)
+    table_csv_text = "\n\n".join(
+        f"[TABLE] {table.get('table_name')}\n{table.get('csv_text')}"
+        for table in tables
+        if table.get("csv_text")
+    ).strip()
+    _append_document_raw_text(doc, "\n\n".join(part for part in [cleaned_text, table_csv_text] if part).strip())
+
+    for i, table in enumerate(tables):
+        headers = table.get("headers", [])
+        rows = table.get("rows", [])
+        for j, row in enumerate(rows):
+            row_dict = dict(zip(headers, row)) if headers else {"data": row}
+            db.add(
+                StructuredData(
+                    document_id=document_id,
+                    table_name=table.get("table_name") or f"{filename}_table_{i}",
+                    headers=headers,
+                    row_data=row_dict,
+                    row_index=j,
+                )
+            )
+
+    semantic_chunks_created = await _store_semantic_chunks(
+        db,
+        document_id,
+        cleaned_text,
+        start_index=next_chunk_index,
+        generate_summaries=generate_summaries,
+    )
+    next_chunk_index += semantic_chunks_created
+
+    table_chunks_created = await _store_table_chunks(
+        db,
+        document_id,
+        table_chunk_payloads,
+        start_index=next_chunk_index,
+    )
+    next_chunk_index += table_chunks_created
+
+    raw_ocr_chunks_created = await _store_artifact_chunks(
+        db,
+        document_id,
+        raw_ocr_chunk_payloads,
+        start_index=next_chunk_index,
+    )
+    next_chunk_index += raw_ocr_chunks_created
+
+    return {
+        "next_chunk_index": next_chunk_index,
+        "text_blocks": len(text_blocks),
+        "tables_extracted": len(tables),
+        "semantic_chunks_created": semantic_chunks_created,
+        "table_chunks_created": table_chunks_created,
+        "raw_ocr_chunks_created": raw_ocr_chunks_created,
+        "raw_pages_stored": sum(
+            1 for payload in raw_ocr_chunk_payloads if (payload.get("metadata") or {}).get("source_kind") == "raw_ocr_page"
+        ),
+    }
 
 
 @router.post("/upload")
@@ -29,7 +224,7 @@ async def upload_document(
 
     # Determine file type
     ext = file.filename.rsplit(".", 1)[-1].lower() if "." in file.filename else ""
-    if ext not in ("pdf", "png", "jpg", "jpeg", "webp", "tiff"):
+    if ext not in ("pdf", "png", "jpg", "jpeg"):
         raise HTTPException(status_code=400, detail=f"Unsupported file type: {ext}")
 
     file_bytes = await file.read()
@@ -44,73 +239,120 @@ async def upload_document(
     db.add(doc)
     await db.commit()
     await db.refresh(doc)
+    doc_id = doc.id
 
     try:
+        total_text_blocks = 0
+        total_tables_extracted = 0
+        next_chunk_index = 0
+        stored_raw_pages = 0
+        batch_errors = []
+
         # Step 1: OCR
         if ext == "pdf":
-            ocr_result = await ocr_service.extract_from_pdf(file_bytes)
+            page_count = ocr_service.get_pdf_page_count(filepath)
+            use_large_file_mode = page_count >= settings.PDF_LARGE_FILE_PAGE_THRESHOLD
+
+            if use_large_file_mode:
+                for batch_start in range(1, page_count + 1, settings.PDF_OCR_BATCH_SIZE):
+                    batch_end = min(batch_start + settings.PDF_OCR_BATCH_SIZE - 1, page_count)
+                    batch_pages = list(range(batch_start, batch_end + 1))
+                    raw_page_budget = None
+                    if settings.PDF_RAW_OCR_PAGE_ARTIFACT_LIMIT >= 0:
+                        raw_page_budget = max(settings.PDF_RAW_OCR_PAGE_ARTIFACT_LIMIT - stored_raw_pages, 0)
+
+                    try:
+                        ocr_result = await ocr_service.extract_from_pdf_path(
+                            filepath,
+                            filename=file.filename,
+                            pages=batch_pages,
+                        )
+                        batch_result = await _ingest_ocr_batch(
+                            db,
+                            doc_id,
+                            doc,
+                            file.filename,
+                            ocr_result,
+                            next_chunk_index=next_chunk_index,
+                            generate_summaries=settings.PDF_LARGE_FILE_GENERATE_SUMMARIES,
+                            raw_page_limit=raw_page_budget,
+                        )
+                        next_chunk_index = batch_result["next_chunk_index"]
+                        total_text_blocks += batch_result["text_blocks"]
+                        total_tables_extracted += batch_result["tables_extracted"]
+                        stored_raw_pages += batch_result["raw_pages_stored"]
+                        await db.commit()
+                    except Exception as batch_error:
+                        batch_errors.append(f"pages {batch_start}-{batch_end}: {batch_error}")
+                        await db.rollback()
+                        result = await db.execute(select(Document).where(Document.id == doc_id))
+                        doc = result.scalar_one()
+
+                if next_chunk_index == 0:
+                    raise RuntimeError("; ".join(batch_errors) or "No PDF pages could be processed")
+            else:
+                ocr_result = await ocr_service.extract_from_pdf(file_bytes, filename=file.filename)
+                batch_result = await _ingest_ocr_batch(
+                    db,
+                    doc_id,
+                    doc,
+                    file.filename,
+                    ocr_result,
+                    next_chunk_index=0,
+                    generate_summaries=True,
+                    raw_page_limit=None,
+                )
+                next_chunk_index = batch_result["next_chunk_index"]
+                total_text_blocks = batch_result["text_blocks"]
+                total_tables_extracted = batch_result["tables_extracted"]
         else:
-            mime_map = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg",
-                        "webp": "image/webp", "tiff": "image/tiff"}
-            ocr_result = await ocr_service.extract_from_image(file_bytes, mime_map.get(ext, "image/png"))
-
-        text_blocks = ocr_result.get("text_blocks", [])
-        tables = ocr_result.get("tables", [])
-
-        # Step 2: Clean Thai text
-        raw_text = "\n\n".join(text_blocks)
-        cleaned_text = clean_thai_text(raw_text)
-        doc.raw_text = cleaned_text
-
-        # Step 3: Store structured table data
-        for i, table in enumerate(tables):
-            headers = table.get("headers", [])
-            rows = table.get("rows", [])
-            for j, row in enumerate(rows):
-                row_dict = dict(zip(headers, row)) if headers else {"data": row}
-                sd = StructuredData(
-                    document_id=doc.id,
-                    table_name=f"{file.filename}_table_{i}",
-                    headers=headers,
-                    row_data=row_dict,
-                    row_index=j,
-                )
-                db.add(sd)
-
-        # Step 4: Semantic chunking + LLM summaries
-        if cleaned_text.strip():
-            chunk_results = await chunk_document(cleaned_text)
-            for cr in chunk_results:
-                chunk = Chunk(
-                    document_id=doc.id,
-                    chunk_index=cr.chunk_index,
-                    chunk_text=cr.text,
-                    summary=cr.summary,
-                    token_count=cr.token_count,
-                    embedding=cr.embedding,
-                    metadata_={
-                        "start_char": cr.start_char,
-                        "end_char": cr.end_char,
-                    },
-                )
-                db.add(chunk)
+            mime_map = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg"}
+            ocr_result = await ocr_service.extract_from_image(
+                file_bytes,
+                mime_map.get(ext, "image/png"),
+                filename=file.filename,
+            )
+            batch_result = await _ingest_ocr_batch(
+                db,
+                doc_id,
+                doc,
+                file.filename,
+                ocr_result,
+                next_chunk_index=0,
+                generate_summaries=True,
+                raw_page_limit=None,
+            )
+            next_chunk_index = batch_result["next_chunk_index"]
+            total_text_blocks = batch_result["text_blocks"]
+            total_tables_extracted = batch_result["tables_extracted"]
 
         doc.status = "completed"
+        if batch_errors:
+            doc.error_message = "Partial OCR warnings: " + "; ".join(batch_errors[:10])
         await db.commit()
 
         return {
-            "id": doc.id,
+            "id": doc_id,
             "filename": doc.filename,
             "status": "completed",
-            "text_blocks": len(text_blocks),
-            "tables_extracted": len(tables),
-            "chunks_created": len(chunk_results) if cleaned_text.strip() else 0,
+            "text_blocks": total_text_blocks,
+            "tables_extracted": total_tables_extracted,
+            "chunks_created": next_chunk_index,
+            "large_file_mode": ext == "pdf" and locals().get("use_large_file_mode", False),
         }
 
     except Exception as e:
-        doc.status = "failed"
-        doc.error_message = str(e)
-        await db.commit()
+        try:
+            await db.rollback()
+        except Exception:
+            pass
+        async with AsyncSessionLocal() as cleanup_db:
+            result = await cleanup_db.execute(select(Document).where(Document.id == doc_id))
+            failed_doc = result.scalar_one_or_none()
+            if failed_doc:
+                failed_doc.status = "failed"
+                failed_doc.error_message = str(e)
+                await cleanup_db.commit()
         raise HTTPException(status_code=500, detail=f"Processing failed: {str(e)}")
 
 
@@ -171,6 +413,50 @@ async def get_document(doc_id: int, db: AsyncSession = Depends(get_db)):
     )
     structured = sd_result.scalars().all()
 
+    grouped_tables = {}
+    for row in structured:
+        table_name = row.table_name or "untitled_table"
+        bucket = grouped_tables.setdefault(
+            table_name,
+            {"headers": row.headers or [], "rows": []},
+        )
+        bucket["rows"].append(row.row_data or {})
+
+    rebuilt_tables = []
+    for table_name, payload in grouped_tables.items():
+        rebuilt_tables.extend(
+            rebuild_structured_tables(
+                table_name,
+                payload["headers"],
+                payload["rows"],
+            )
+        )
+
+    raw_ocr_pages = []
+    raw_ocr_tables = []
+    for chunk in chunks:
+        metadata = chunk.metadata_ or {}
+        source_kind = metadata.get("source_kind")
+        if source_kind == "raw_ocr_page":
+            raw_ocr_pages.append(
+                {
+                    "page": metadata.get("page"),
+                    "markdown": metadata.get("markdown", ""),
+                    "chunk_index": chunk.chunk_index,
+                }
+            )
+        elif source_kind == "raw_ocr_table":
+            raw_ocr_tables.append(
+                {
+                    "table_index": metadata.get("table_index"),
+                    "title": metadata.get("title"),
+                    "headers": metadata.get("headers", []),
+                    "rows": metadata.get("rows", []),
+                    "csv_text": metadata.get("csv_text", ""),
+                    "chunk_index": chunk.chunk_index,
+                }
+            )
+
     return {
         "id": doc.id,
         "filename": doc.filename,
@@ -201,6 +487,9 @@ async def get_document(doc_id: int, db: AsyncSession = Depends(get_db)):
             }
             for s in structured
         ],
+        "structured_tables": rebuilt_tables,
+        "raw_ocr_pages": raw_ocr_pages,
+        "raw_ocr_tables": raw_ocr_tables,
     }
 
 

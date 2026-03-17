@@ -5,11 +5,12 @@ from typing import List
 from backend.config import get_settings
 
 settings = get_settings()
+HTTP_LIMITS = httpx.Limits(max_connections=4, max_keepalive_connections=2)
 
 
 async def get_embedding(text: str) -> List[float]:
     """Get embedding vector for a single text."""
-    async with httpx.AsyncClient(timeout=60.0) as client:
+    async with httpx.AsyncClient(timeout=60.0, limits=HTTP_LIMITS) as client:
         response = await client.post(
             f"{settings.OLLAMA_HOST}/api/embeddings",
             json={
@@ -24,7 +25,7 @@ async def get_embedding(text: str) -> List[float]:
 async def get_embeddings_batch(texts: List[str]) -> List[List[float]]:
     """Get embeddings for a batch of texts."""
     embeddings = []
-    async with httpx.AsyncClient(timeout=120.0) as client:
+    async with httpx.AsyncClient(timeout=120.0, limits=HTTP_LIMITS) as client:
         for text in texts:
             response = await client.post(
                 f"{settings.OLLAMA_HOST}/api/embeddings",

@@ -5,6 +5,7 @@ Uvicorn event-loop conflicts on Windows.
 Usage:
     python -m backend.services.pw_worker google_search '{"keyword":"...", "max_results":3}'
     python -m backend.services.pw_worker scrape_url    '{"url":"...", "max_files":20}'
+    python -m backend.services.pw_worker scrape_by_keyword '{"keyword":"...", "max_sites":3, "max_files_per_site":10}'
 """
 
 import sys
@@ -18,8 +19,9 @@ import unicodedata
 from typing import List, Dict, Any, Optional
 from urllib.parse import urljoin, urlparse, unquote, parse_qs
 
-from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeoutError
+from bs4 import BeautifulSoup
+
 
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -29,6 +31,8 @@ USER_AGENT = (
 # Base output directory
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "scrape_output")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+USER_DATA_DIR = os.path.join(OUTPUT_DIR, "chrome_user_data")
+os.makedirs(USER_DATA_DIR, exist_ok=True)
 
 
 # ── helpers ──────────────────────────────────────────────────
@@ -221,7 +225,8 @@ def _filter_lines(text: str) -> str:
     return "\n".join(out)
 
 def content_main_text_from_html(html: str) -> str:
-    if not html: return ""
+    if not html:
+        return ""
     
     best_text = ""
     
@@ -249,80 +254,103 @@ def content_main_text_from_html(html: str) -> str:
     return _filter_lines(_normalize_text(best_text))
 
 
+def _launch_persistent_context(playwright):
+    launch_args = {
+        "user_data_dir": USER_DATA_DIR,
+        "headless": False,
+        "accept_downloads": True,
+        "viewport": None,
+        "locale": "th-TH",
+        "user_agent": USER_AGENT,
+        "ignore_https_errors": True,
+        "args": ["--start-maximized", "--disable-blink-features=AutomationControlled", "--no-sandbox"],
+    }
+    try:
+        return playwright.chromium.launch_persistent_context(channel="chrome", **launch_args)
+    except Exception:
+        return playwright.chromium.launch_persistent_context(**launch_args)
+
+
+def _get_or_create_page(context):
+    return context.pages[0] if context.pages else context.new_page()
+
+
+def _goto_safely(page, url: str, timeout_ms: int = 90_000) -> None:
+    page.goto(url, wait_until="domcontentloaded", timeout=timeout_ms)
+    try:
+        page.wait_for_load_state("networkidle", timeout=8_000)
+    except PWTimeoutError:
+        pass
+    page.wait_for_timeout(1_200)
+
+
 # ── Google Search ────────────────────────────────────────────
-def google_search(keyword: str, max_results: int = 3) -> List[Dict[str, str]]:
+def _google_search_with_page(page, keyword: str, max_results: int = 3) -> List[Dict[str, str]]:
     items, seen = [], set()
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=False,
-            args=["--disable-blink-features=AutomationControlled", "--no-sandbox"],
-        )
-        ctx = browser.new_context(
-            user_agent=USER_AGENT,
-            viewport={"width": 1280, "height": 720},
-            locale="th-TH",
-        )
-        page = ctx.new_page()
+    _goto_safely(page, "https://www.google.com/", timeout_ms=60_000)
+    _try_accept_consent(page)
 
-        page.goto("https://www.google.com/", wait_until="domcontentloaded", timeout=60000)
-        _try_accept_consent(page)
+    box = page.locator("textarea[name='q'], input[name='q']").first
+    box.click()
+    box.fill(keyword)
+    page.keyboard.press("Enter")
 
-        box = page.locator("textarea[name='q'], input[name='q']").first
-        box.click()
-        box.type(keyword, delay=80)
-        page.wait_for_timeout(500)
-        page.keyboard.press("Enter")
+    try:
+        page.wait_for_load_state("domcontentloaded", timeout=60_000)
+    except Exception:
+        pass
+    try:
+        page.wait_for_load_state("networkidle", timeout=8_000)
+    except Exception:
+        pass
 
+    ok = _wait_any(page, ["#search a:has(h3)", "a:has(h3)", "a[data-ved]:has(h3)"], timeout_ms=45_000)
+    if not ok:
+        return items
+
+    page.wait_for_timeout(1_500)
+
+    anchors = page.locator("#search a:has(h3)")
+    if anchors.count() == 0:
+        anchors = page.locator("a:has(h3)")
+
+    for i in range(min(anchors.count(), max_results * 8)):
         try:
-            page.wait_for_load_state("domcontentloaded", timeout=60000)
-        except Exception:
-            pass
-        try:
-            page.wait_for_load_state("networkidle", timeout=8000)
-        except Exception:
-            pass
-
-        ok = _wait_any(page, ["#search a:has(h3)", "a:has(h3)", "a[data-ved]:has(h3)"], timeout_ms=45000)
-        if not ok:
-            browser.close()
-            return items
-
-        page.wait_for_timeout(1500)
-
-        anchors = page.locator("#search a:has(h3)")
-        if anchors.count() == 0:
-            anchors = page.locator("a:has(h3)")
-
-        for i in range(min(anchors.count(), max_results * 8)):
+            a = anchors.nth(i)
+            href = _norm_href(a.get_attribute("href") or "")
+            title = ""
             try:
-                a = anchors.nth(i)
-                href = _norm_href(a.get_attribute("href") or "")
-                title = ""
-                try:
-                    title = (a.locator("h3").first.inner_text() or "").strip()
-                except Exception:
-                    pass
-                if href.startswith("http") and "google.com" not in urlparse(href).netloc:
-                    key = href.split("#")[0].strip()
-                    if key and key not in seen:
-                        seen.add(key)
-                        items.append({"url": key, "title": title or key})
-                if len(items) >= max_results:
-                    break
+                title = (a.locator("h3").first.inner_text() or "").strip()
             except Exception:
-                continue
-
-        browser.close()
+                pass
+            if href.startswith("http") and "google.com" not in urlparse(href).netloc:
+                key = href.split("#")[0].strip()
+                if key and key not in seen:
+                    seen.add(key)
+                    items.append({"url": key, "title": title or key})
+            if len(items) >= max_results:
+                break
+        except Exception:
+            continue
 
     return items
 
 
-# ── Scrape URL ───────────────────────────────────────────────
-def scrape_url(url: str, max_files: int = 20, save_folder: str = "") -> Dict[str, Any]:
-    """Go to a URL, extract text content, download PDFs and images."""
+def google_search(keyword: str, max_results: int = 3) -> List[Dict[str, str]]:
+    with sync_playwright() as p:
+        context = _launch_persistent_context(p)
+        try:
+            page = _get_or_create_page(context)
+            return _google_search_with_page(page, keyword, max_results=max_results)
+        finally:
+            context.close()
 
-    # Create save folder
+
+# ── Scrape URL ───────────────────────────────────────────────
+def _scrape_url_with_page(page, url: str, max_files: int = 20, save_folder: str = "") -> Dict[str, Any]:
+    """Go to a URL, extract text content, download PDFs and images using an existing page."""
+
     if not save_folder:
         domain = safe_filename(urlparse(url).netloc, 40)
         ts = time.strftime("%Y%m%d_%H%M%S")
@@ -340,141 +368,111 @@ def scrape_url(url: str, max_files: int = 20, save_folder: str = "") -> Dict[str
     page_title = ""
     links_found = []
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=False,
-            args=["--disable-blink-features=AutomationControlled", "--no-sandbox"],
+    _goto_safely(page, url, timeout_ms=60_000)
+
+    try:
+        page_title = page.title() or ""
+    except Exception:
+        page_title = ""
+
+    try:
+        html = page.content() or ""
+    except Exception:
+        html = ""
+
+    page_text = content_main_text_from_html(html)
+
+    if len(page_text) < 200:
+        raw_text = ""
+        for sel in ["article", "main", "[role='main']", ".entry-content",
+                    ".post-content", ".article-content", ".content"]:
+            try:
+                loc = page.locator(sel)
+                if loc.count() > 0:
+                    raw_text = loc.first.inner_text(timeout=4000) or ""
+                    if len(raw_text.strip()) > 200:
+                        break
+            except Exception:
+                continue
+
+        if not raw_text.strip() or len(raw_text.strip()) < 200:
+            try:
+                raw_text = page.inner_text("body") or ""
+            except Exception:
+                raw_text = ""
+
+        fallback_text = _normalize_text(raw_text)
+        if len(fallback_text) > len(page_text):
+            page_text = fallback_text
+
+    try:
+        all_links = page.eval_on_selector_all(
+            "a[href]",
+            "els => els.map(el => ({href: el.href, text: (el.textContent||'').trim().substring(0,120)}))"
         )
-        ctx = browser.new_context(
-            accept_downloads=True,
-            user_agent=USER_AGENT,
-            viewport={"width": 1280, "height": 720},
-            locale="th-TH",
-        )
-        page = ctx.new_page()
+    except Exception:
+        all_links = []
 
-        page.goto(url, wait_until="domcontentloaded", timeout=60000)
-        try:
-            page.wait_for_load_state("networkidle", timeout=8000)
-        except PWTimeoutError:
-            pass
-        page.wait_for_timeout(2000)
+    for lnk in all_links:
+        href = lnk.get("href", "")
+        if not href:
+            continue
+        full = urljoin(url, href)
+        links_found.append({"url": full, "text": lnk.get("text", "")})
 
-        # ── Extract title ────────────────────────────────
-        try:
-            page_title = page.title() or ""
-        except Exception:
-            page_title = ""
-
-        # ── Extract HTML first for BS4 parsing ───────────
-        try:
-            html = page.content() or ""
-        except Exception:
-            html = ""
-
-        # ── Extract text ─────────────────────────────────
-        # Try BS4 main content extraction first
-        page_text = content_main_text_from_html(html)
-
-        # Fallback to visible inner text if BS4 fails
-        if len(page_text) < 200:
-            raw_text = ""
-            for sel in ["article", "main", "[role='main']", ".entry-content",
-                         ".post-content", ".article-content", ".content"]:
-                try:
-                    loc = page.locator(sel)
-                    if loc.count() > 0:
-                        raw_text = loc.first.inner_text(timeout=4000) or ""
-                        if len(raw_text.strip()) > 200:
-                            break
-                except Exception:
-                    continue
-
-            if not raw_text.strip() or len(raw_text.strip()) < 200:
-                try:
-                    raw_text = page.inner_text("body") or ""
-                except Exception:
-                    raw_text = ""
-            
-            fallback_text = _normalize_text(raw_text)
-            if len(fallback_text) > len(page_text):
-                page_text = fallback_text
-
-        # ── Find all links ───────────────────────────────
-        try:
-            all_links = page.eval_on_selector_all(
-                "a[href]",
-                "els => els.map(el => ({href: el.href, text: (el.textContent||'').trim().substring(0,120)}))"
-            )
-        except Exception:
-            all_links = []
-
-        for lnk in all_links:
-            href = lnk.get("href", "")
-            if not href:
-                continue
-            full = urljoin(url, href)
-            links_found.append({"url": full, "text": lnk.get("text", "")})
-
-        # ── Download PDFs ────────────────────────────────
-        pdf_count = 0
-        for lnk in links_found:
-            if pdf_count >= max_files:
-                break
-            lurl = lnk["url"]
-            if any(x in lurl.lower() for x in [".pdf", "getmedia", "download"]):
-                fp = _download_file(lurl, files_dir, url)
-                if fp:
-                    files_downloaded.append(fp)
-                    pdf_count += 1
-
-        # ── Download images ──────────────────────────────
-        try:
-            img_srcs = page.eval_on_selector_all(
-                "img[src]",
-                """els => els.map(el => ({
-                    src: el.src || el.dataset.src || '',
-                    alt: (el.alt || '').trim(),
-                    width: el.naturalWidth || el.width || 0,
-                    height: el.naturalHeight || el.height || 0
-                }))"""
-            )
-        except Exception:
-            img_srcs = []
-
-        img_count = 0
-        seen_urls = set()
-        for img in img_srcs:
-            if img_count >= 20:
-                break
-            src = img.get("src", "").strip()
-            if not src or src.startswith("data:"):
-                continue
-            full_src = urljoin(url, src)
-            if full_src in seen_urls:
-                continue
-            # Skip icons/logos/tiny images
-            w = img.get("width", 0) or 0
-            h = img.get("height", 0) or 0
-            if w > 0 and h > 0 and (w < 50 or h < 50):
-                continue
-            ignore_kw = ["logo", "icon", "sprite", "button", "spacer", "blank", "pixel", "avatar", "badge"]
-            if any(k in full_src.lower() for k in ignore_kw):
-                continue
-
-            seen_urls.add(full_src)
-            fp = _download_image(full_src, images_dir, url, img_count + 1)
+    pdf_count = 0
+    for lnk in links_found:
+        if pdf_count >= max_files:
+            break
+        lurl = lnk["url"]
+        if any(x in lurl.lower() for x in [".pdf", "getmedia", "download"]):
+            fp = _download_file(lurl, files_dir, url)
             if fp:
-                images_downloaded.append({
-                    "path": fp,
-                    "source_url": full_src,
-                    "alt": img.get("alt", ""),
-                })
-                img_count += 1
+                files_downloaded.append(fp)
+                pdf_count += 1
 
-        browser.close()
+    try:
+        img_srcs = page.eval_on_selector_all(
+            "img[src]",
+            """els => els.map(el => ({
+                src: el.src || el.dataset.src || '',
+                alt: (el.alt || '').trim(),
+                width: el.naturalWidth || el.width || 0,
+                height: el.naturalHeight || el.height || 0
+            }))"""
+        )
+    except Exception:
+        img_srcs = []
 
-    # ── Save text content to file ────────────────────────
+    img_count = 0
+    seen_urls = set()
+    for img in img_srcs:
+        if img_count >= 20:
+            break
+        src = img.get("src", "").strip()
+        if not src or src.startswith("data:"):
+            continue
+        full_src = urljoin(url, src)
+        if full_src in seen_urls:
+            continue
+        w = img.get("width", 0) or 0
+        h = img.get("height", 0) or 0
+        if w > 0 and h > 0 and (w < 50 or h < 50):
+            continue
+        ignore_kw = ["logo", "icon", "sprite", "button", "spacer", "blank", "pixel", "avatar", "badge"]
+        if any(k in full_src.lower() for k in ignore_kw):
+            continue
+
+        seen_urls.add(full_src)
+        fp = _download_image(full_src, images_dir, url, img_count + 1)
+        if fp:
+            images_downloaded.append({
+                "path": fp,
+                "source_url": full_src,
+                "alt": img.get("alt", ""),
+            })
+            img_count += 1
+
     content_path = os.path.join(save_folder, "content.txt")
     with open(content_path, "w", encoding="utf-8") as f:
         f.write(f"Title: {page_title}\n")
@@ -483,7 +481,6 @@ def scrape_url(url: str, max_files: int = 20, save_folder: str = "") -> Dict[str
         f.write("=" * 60 + "\n\n")
         f.write(page_text)
 
-    # ── Save metadata ────────────────────────────────────
     meta = {
         "url": url,
         "title": page_title,
@@ -510,13 +507,68 @@ def scrape_url(url: str, max_files: int = 20, save_folder: str = "") -> Dict[str
     }
 
 
+def scrape_url(url: str, max_files: int = 20, save_folder: str = "") -> Dict[str, Any]:
+    with sync_playwright() as p:
+        context = _launch_persistent_context(p)
+        try:
+            page = _get_or_create_page(context)
+            return _scrape_url_with_page(page, url, max_files=max_files, save_folder=save_folder)
+        finally:
+            context.close()
+
+
+def scrape_by_keyword(keyword: str, max_sites: int = 3, max_files_per_site: int = 10) -> Dict[str, Any]:
+    safe_kw = safe_filename(keyword, 40)
+    ts = time.strftime("%Y%m%d_%H%M%S")
+    keyword_folder = os.path.join(OUTPUT_DIR, f"{safe_kw}_{ts}")
+    os.makedirs(keyword_folder, exist_ok=True)
+
+    with sync_playwright() as p:
+        context = _launch_persistent_context(p)
+        try:
+            page = _get_or_create_page(context)
+            targets = _google_search_with_page(page, keyword, max_results=max_sites)
+
+            all_results = []
+            urls = [t["url"] for t in targets]
+            for idx, target in enumerate(targets, 1):
+                url = target["url"]
+                domain = safe_filename(urlparse(url).netloc, 40)
+                site_folder = os.path.join(keyword_folder, f"{idx:02d}_{domain}")
+
+                result = _scrape_url_with_page(page, url, max_files=max_files_per_site, save_folder=site_folder)
+                result["source_url"] = url
+                result["search_title"] = target.get("title", "")
+                result["rank"] = idx
+                all_results.append(result)
+
+                if idx < len(targets):
+                    time.sleep(0.8 + random.uniform(0.2, 0.6))
+        finally:
+            context.close()
+
+    total_files = []
+    total_images = []
+    for result in all_results:
+        total_files.extend(result.get("files", []))
+        total_images.extend(result.get("images", []))
+
+    return {
+        "keyword": keyword,
+        "output_folder": keyword_folder,
+        "urls_scraped": len(urls),
+        "urls": urls,
+        "total_files": len(total_files),
+        "total_images": len(total_images),
+        "files": total_files,
+        "results": all_results,
+    }
+
+
 def _download_file(url: str, save_dir: str, referer: str) -> Optional[str]:
     """Download a PDF or document file."""
     import httpx
     try:
-        fn = os.path.basename(urlparse(url).path) or f"file_{random.randint(100,999)}.pdf"
-        fn = re.sub(r'[^\w\-_\.]', '_', fn)
-        fp = os.path.join(save_dir, fn)
         with httpx.Client(timeout=30, follow_redirects=True) as c:
             r = c.get(url, headers={"User-Agent": USER_AGENT, "Referer": referer})
             if r.status_code != 200:
@@ -526,6 +578,21 @@ def _download_file(url: str, save_dir: str, referer: str) -> Optional[str]:
                 return None
             if len(r.content) < 5000:
                 return None
+
+            cd = r.headers.get("content-disposition") or ""
+            cd_match = re.search(r'filename\*?=(?:UTF-8\'\')?"?([^";]+)"?', cd, re.IGNORECASE)
+            fn = cd_match.group(1).strip() if cd_match else os.path.basename(urlparse(str(r.url)).path)
+            fn = unquote(fn or "").strip()
+            fn = re.sub(r'[^\w\-_\.]', '_', fn) or f"file_{random.randint(100,999)}"
+
+            if fn.lower().endswith(".pdf.aspx"):
+                fn = re.sub(r'(?i)\.pdf\.aspx$', '.pdf', fn)
+            elif fn.lower().endswith(".aspx") and "pdf" in ct:
+                fn = re.sub(r'(?i)\.aspx$', '.pdf', fn)
+            elif "." not in fn:
+                fn = f"{fn}.pdf" if "pdf" in ct else f"{fn}.bin"
+
+            fp = os.path.join(save_dir, fn)
             with open(fp, "wb") as f:
                 f.write(r.content)
         return fp
@@ -586,6 +653,12 @@ if __name__ == "__main__":
                 args["url"],
                 max_files=args.get("max_files", 20),
                 save_folder=args.get("save_folder", ""),
+            )
+        elif cmd == "scrape_by_keyword":
+            result = scrape_by_keyword(
+                args["keyword"],
+                max_sites=args.get("max_sites", 3),
+                max_files_per_site=args.get("max_files_per_site", 10),
             )
         else:
             result = {"error": f"Unknown command: {cmd}"}

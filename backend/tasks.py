@@ -39,7 +39,9 @@ def process_document_task(self, document_id: int, filepath: str):
     async def _process():
         from backend.database import AsyncSessionLocal
         from backend.models import Document, Chunk, StructuredData
+        from backend.services.embedding import get_embedding
         from backend.services.ocr import ocr_service
+        from backend.services.table_utils import build_table_chunk_payloads, normalize_ocr_tables
         from backend.services.thai_cleaner import clean_thai_text
         from backend.services.chunker import chunk_document
 
@@ -66,11 +68,17 @@ def process_document_task(self, document_id: int, filepath: str):
                     ocr_result = await ocr_service.extract_from_image(file_bytes)
 
                 text_blocks = ocr_result.get("text_blocks", [])
-                tables = ocr_result.get("tables", [])
+                tables = normalize_ocr_tables(doc.filename, ocr_result.get("tables", []))
 
                 raw_text = "\n\n".join(text_blocks)
                 cleaned_text = clean_thai_text(raw_text)
-                doc.raw_text = cleaned_text
+                table_chunk_payloads = build_table_chunk_payloads(doc.filename, tables)
+                table_csv_text = "\n\n".join(
+                    f"[TABLE] {table.get('table_name')}\n{table.get('csv_text')}"
+                    for table in tables
+                    if table.get("csv_text")
+                ).strip()
+                doc.raw_text = "\n\n".join(part for part in [cleaned_text, table_csv_text] if part).strip()
 
                 for i, table in enumerate(tables):
                     headers = table.get("headers", [])
@@ -79,7 +87,7 @@ def process_document_task(self, document_id: int, filepath: str):
                         row_dict = dict(zip(headers, row)) if headers else {"data": row}
                         sd = StructuredData(
                             document_id=doc.id,
-                            table_name=f"{doc.filename}_table_{i}",
+                            table_name=table.get("table_name") or f"{doc.filename}_table_{i}",
                             headers=headers,
                             row_data=row_dict,
                             row_index=j,
@@ -99,10 +107,37 @@ def process_document_task(self, document_id: int, filepath: str):
                             metadata_={"start_char": cr.start_char, "end_char": cr.end_char},
                         )
                         db.add(chunk)
+                else:
+                    chunk_results = []
+
+                for offset, payload in enumerate(table_chunk_payloads):
+                    chunk_text = (payload.get("text") or "").strip()
+                    if not chunk_text:
+                        continue
+
+                    embedding = await get_embedding(chunk_text)
+                    db.add(
+                        Chunk(
+                            document_id=doc.id,
+                            chunk_index=len(chunk_results) + offset,
+                            chunk_text=chunk_text,
+                            summary="",
+                            token_count=len(chunk_text.split()),
+                            embedding=embedding,
+                            metadata_={
+                                "source_kind": "table_csv",
+                                "table_name": payload.get("table_name"),
+                                "table_title": payload.get("title"),
+                                "headers": payload.get("headers", []),
+                                "row_start": payload.get("row_start"),
+                                "row_end": payload.get("row_end"),
+                            },
+                        )
+                    )
 
                 doc.status = "completed"
                 await db.commit()
-                return {"status": "completed", "chunks": len(chunk_results) if cleaned_text.strip() else 0}
+                return {"status": "completed", "chunks": len(chunk_results) + len(table_chunk_payloads)}
 
             except Exception as e:
                 doc.status = "failed"

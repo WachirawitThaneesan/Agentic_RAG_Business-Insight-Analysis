@@ -30,7 +30,11 @@ async def get_chunks_for_visualization(
     chunks_result = await db.execute(
         select(Chunk).where(Chunk.document_id == doc_id).order_by(Chunk.chunk_index)
     )
-    chunks = chunks_result.scalars().all()
+    chunks = [
+        chunk
+        for chunk in chunks_result.scalars().all()
+        if (chunk.metadata_ or {}).get("source_kind") not in {"raw_ocr_page", "raw_ocr_table"}
+    ]
 
     # Calculate inter-chunk similarities (for boundary visualization)
     import numpy as np

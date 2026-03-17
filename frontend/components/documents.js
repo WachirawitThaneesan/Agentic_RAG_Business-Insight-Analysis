@@ -22,8 +22,8 @@ function renderDocuments(container) {
                     <line x1="12" y1="3" x2="12" y2="15"/>
                 </svg>
                 <p>Drag & drop files here or <strong style="color:var(--accent-primary-light)">browse</strong></p>
-                <p class="upload-hint">Supports PDF, PNG, JPG, WEBP, TIFF</p>
-                <input type="file" id="file-input" accept=".pdf,.png,.jpg,.jpeg,.webp,.tiff" multiple>
+                <p class="upload-hint">Supports PDF, PNG, JPG, JPEG</p>
+                <input type="file" id="file-input" accept=".pdf,.png,.jpg,.jpeg" multiple>
             </div>
 
             <!-- Upload progress -->
@@ -50,6 +50,17 @@ function renderDocuments(container) {
             <div id="doc-list">
                 <div class="skeleton" style="height:200px;width:100%"></div>
             </div>
+        </div>
+
+        <div class="card" id="doc-table-viewer-card" style="margin-top:24px;display:none">
+            <div class="card-header">
+                <div>
+                    <div class="card-title">Structured Tables</div>
+                    <div class="card-subtitle" id="doc-table-viewer-subtitle">เลือกเอกสารเพื่อดูตารางที่ extract ได้</div>
+                </div>
+                <button class="btn btn-secondary btn-sm" onclick="closeDocTablesViewer()">Close</button>
+            </div>
+            <div id="doc-table-viewer-content"></div>
         </div>
     `;
 
@@ -90,8 +101,9 @@ async function uploadFiles(files) {
 
         try {
             const result = await api.upload('/documents/upload', files[i]);
+            const modeLabel = result.large_file_mode ? ' • batch mode' : '';
             showToast(
-                `${files[i].name}: ${result.chunks_created} chunks, ${result.tables_extracted} tables`,
+                `${files[i].name}: ${result.chunks_created} chunks, ${result.tables_extracted} tables${modeLabel}`,
                 'success'
             );
         } catch (e) {
@@ -134,7 +146,7 @@ async function loadDocumentList() {
                         <th>Type</th>
                         <th>Status</th>
                         <th>Chunks</th>
-                        <th>Tables</th>
+                        <th>Table Rows</th>
                         <th>Date</th>
                         <th>Actions</th>
                     </tr>
@@ -156,6 +168,7 @@ async function loadDocumentList() {
                             </td>
                             <td style="display:flex;gap:6px">
                                 <button class="btn btn-secondary btn-sm" onclick="viewDocChunks(${doc.id})">Chunks</button>
+                                <button class="btn btn-secondary btn-sm" onclick="viewDocTables(${doc.id})">Tables</button>
                                 <button class="btn btn-danger btn-sm" onclick="deleteDoc(${doc.id})">Delete</button>
                             </td>
                         </tr>
@@ -176,6 +189,171 @@ function viewDocChunks(docId) {
     window.location.hash = `visualizer`;
     // Store selected doc ID for visualizer
     sessionStorage.setItem('selectedDocId', docId);
+}
+
+async function viewDocTables(docId) {
+    const card = document.getElementById('doc-table-viewer-card');
+    const subtitle = document.getElementById('doc-table-viewer-subtitle');
+    const content = document.getElementById('doc-table-viewer-content');
+
+    card.style.display = 'block';
+    subtitle.textContent = 'กำลังโหลดตาราง...';
+    content.innerHTML = `
+        <div class="loader" style="padding:24px;justify-content:center">
+            <span class="loader-spinner"></span>
+            <span>Loading structured tables...</span>
+        </div>
+    `;
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    try {
+        const doc = await api.get(`/documents/${docId}`);
+        const tables = (doc.structured_tables || []).map((table) => ({
+            tableName: table.table_name || table.title || 'untitled_table',
+            title: table.title || table.table_name || 'untitled_table',
+            headers: table.headers || [],
+            rows: (table.rows || []).map((row, index) => ({
+                rowIndex: index,
+                rowData: Object.fromEntries((table.headers || []).map((header, colIndex) => [header, row[colIndex] ?? ''])),
+            })),
+        }));
+        const rawPages = (doc.raw_ocr_pages || []).slice().sort((a, b) => (a.page || 0) - (b.page || 0));
+        const rawTables = (doc.raw_ocr_tables || []).slice().sort((a, b) => (a.table_index || 0) - (b.table_index || 0));
+        const renderedRowCount = tables.reduce((sum, table) => sum + (table.rows?.length || 0), 0);
+
+        subtitle.textContent = `${doc.filename} • ${tables.length} structured tables • ${rawPages.length} raw pages • ${rawTables.length} raw tables`;
+
+        if (!tables.length && !rawPages.length && !rawTables.length) {
+            content.innerHTML = `
+                <div class="empty-state" style="padding:24px">
+                    <h3>No OCR artifacts</h3>
+                    <p>เอกสารนี้ยังไม่มีข้อมูล OCR ที่เปิดดูได้ หรือเป็นเอกสารที่ ingest ก่อนเปิด artifact pipeline</p>
+                </div>
+            `;
+            return;
+        }
+
+        const structuredHtml = tables.length ? `
+            <div style="margin-bottom:20px">
+                <div style="font-size:0.88rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Structured Tables</div>
+                ${tables.map((table) => {
+            const headers = table.headers || [];
+            const visibleRows = table.rows;
+            const tableHtml = `
+                <div style="overflow:auto;border:1px solid var(--border-primary);border-radius:var(--radius-md)">
+                    <table class="data-table" style="min-width:720px;margin-bottom:0">
+                        <thead>
+                            <tr>${headers.map((header) => `<th>${escapeDocHtml(header)}</th>`).join('')}</tr>
+                        </thead>
+                        <tbody>
+                            ${visibleRows.map((row) => `
+                                <tr>
+                                    ${headers.map((header) => `<td>${escapeDocHtml(row.rowData?.[header] ?? '')}</td>`).join('')}
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            const csvPreview = [
+                headers.join(','),
+                ...visibleRows.map((row) => headers.map((header) => csvCell(row.rowData?.[header] ?? '')).join(',')),
+            ].join('\n');
+
+            return `
+                <div style="padding:16px;background:var(--bg-tertiary);border-radius:var(--radius-md);margin-bottom:16px">
+                    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+                        <div>
+                            <div style="font-weight:600">${escapeDocHtml(table.title || table.tableName)}</div>
+                            <div style="font-size:0.78rem;color:var(--text-muted)">${table.rows.length} rows • ${headers.length} columns</div>
+                        </div>
+                        <span class="badge badge-info">Structured Table</span>
+                    </div>
+                    ${tableHtml}
+                    <details style="margin-top:12px">
+                        <summary style="cursor:pointer;font-size:0.82rem;color:var(--accent-primary-light)">ดู CSV preview</summary>
+                        <pre style="margin-top:8px;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-sm);white-space:pre-wrap;overflow:auto;font-size:0.76rem;color:var(--text-secondary)">${escapeDocHtml(csvPreview)}</pre>
+                    </details>
+                </div>
+            `;
+                }).join('')}
+            </div>
+        ` : '';
+
+        const rawPagesHtml = rawPages.length ? `
+            <div style="margin-bottom:20px">
+                <div style="font-size:0.88rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Raw OCR Pages</div>
+                ${rawPages.map((page) => `
+                    <details style="padding:16px;background:var(--bg-tertiary);border-radius:var(--radius-md);margin-bottom:16px" ${rawPages.length === 1 ? 'open' : ''}>
+                        <summary style="cursor:pointer;font-weight:600">Page ${escapeDocHtml(page.page ?? '—')}</summary>
+                        <pre style="margin-top:12px;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-sm);white-space:pre-wrap;overflow:auto;font-size:0.76rem;color:var(--text-secondary)">${escapeDocHtml(page.markdown || '')}</pre>
+                    </details>
+                `).join('')}
+            </div>
+        ` : '';
+
+        const rawTablesHtml = rawTables.length ? `
+            <div>
+                <div style="font-size:0.88rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Raw OCR Tables</div>
+                ${rawTables.map((table) => `
+                    <div style="padding:16px;background:var(--bg-tertiary);border-radius:var(--radius-md);margin-bottom:16px">
+                        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+                            <div>
+                                <div style="font-weight:600">${escapeDocHtml(table.title || `raw_table_${table.table_index}`)}</div>
+                                <div style="font-size:0.78rem;color:var(--text-muted)">${(table.rows || []).length} rows • ${(table.headers || []).length} columns</div>
+                            </div>
+                            <span class="badge badge-primary">Raw OCR Table</span>
+                        </div>
+                        <details>
+                            <summary style="cursor:pointer;font-size:0.82rem;color:var(--accent-primary-light)">ดู raw CSV</summary>
+                            <pre style="margin-top:8px;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-sm);white-space:pre-wrap;overflow:auto;font-size:0.76rem;color:var(--text-secondary)">${escapeDocHtml(table.csv_text || '')}</pre>
+                        </details>
+                    </div>
+                `).join('')}
+            </div>
+        ` : '';
+
+        content.innerHTML = `
+            <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:16px">
+                Structured rows: ${renderedRowCount}
+            </div>
+            ${structuredHtml}
+            ${rawPagesHtml}
+            ${rawTablesHtml}
+        `;
+    } catch (e) {
+        subtitle.textContent = 'โหลดตารางไม่สำเร็จ';
+        content.innerHTML = `
+            <div class="empty-state" style="padding:24px">
+                <p style="color:var(--accent-danger)">Failed to load tables: ${escapeDocHtml(e.message)}</p>
+            </div>
+        `;
+    }
+}
+
+function closeDocTablesViewer() {
+    const card = document.getElementById('doc-table-viewer-card');
+    const content = document.getElementById('doc-table-viewer-content');
+    card.style.display = 'none';
+    content.innerHTML = '';
+}
+
+function escapeDocHtml(text) {
+    return String(text ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function csvCell(value) {
+    const text = String(value ?? '');
+    if (/[",\n]/.test(text)) {
+        return `"${text.replace(/"/g, '""')}"`;
+    }
+    return text;
 }
 
 async function deleteDoc(docId) {

@@ -16,6 +16,11 @@ celery>=5.4.0
 # Web Scraping
 playwright>=1.49.0
 httpx>=0.28.0
+beautifulsoup4>=4.12.3
+readability-lxml>=0.8.1
+typhoon-ocr
+pypdf>=5.3.1
+Pillow>=10.4.0
 
 # Thai NLP
 pythainlp>=5.0.0

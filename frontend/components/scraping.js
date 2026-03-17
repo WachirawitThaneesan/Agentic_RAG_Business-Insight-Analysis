@@ -60,6 +60,11 @@ function renderScraping(container) {
                     <span class="loader-spinner"></span>
                     <span id="scrape-progress-text">กำลังเริ่มต้นค้นหาใน Google...</span>
                 </div>
+                <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                    <span id="scrape-progress-stage" class="badge badge-info">เริ่มต้น</span>
+                    <span id="scrape-progress-subtext" style="font-size:0.78rem;color:var(--text-muted)">ระบบจะอัปเดตสถานะแต่ละขั้นตอนแบบเรียลไทม์</span>
+                </div>
+                <div id="scrape-progress-log" style="margin-top:14px;display:flex;flex-direction:column;gap:8px;max-height:220px;overflow-y:auto"></div>
             </div>
         </div>
 
@@ -90,8 +95,16 @@ async function startScraping() {
     // Show progress
     const progressCard = document.getElementById('scrape-progress-card');
     const progressText = document.getElementById('scrape-progress-text');
+    const progressStage = document.getElementById('scrape-progress-stage');
+    const progressSubtext = document.getElementById('scrape-progress-subtext');
+    const progressLog = document.getElementById('scrape-progress-log');
     progressCard.style.display = 'block';
     progressText.textContent = `กำลังค้นหา keyword "${keyword}" ใน Google และ scrape Top ${maxSites} เว็บ...`;
+    progressStage.textContent = 'กำลังเริ่ม';
+    progressSubtext.textContent = 'เตรียมค้นหาใน Google และเริ่ม scraping';
+    progressLog.innerHTML = '';
+    appendScrapeProgressLog(progressLog, `เริ่มงาน scrape keyword "${keyword}"`);
+    progressCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     try {
         const response = await fetch('/api/scrape/keyword', {
@@ -108,10 +121,15 @@ async function startScraping() {
             throw new Error(`API Error: ${response.status}`);
         }
 
+        if (!response.body) {
+            throw new Error('ไม่พบข้อมูล stream จาก backend');
+        }
+
         const reader = response.body.getReader();
         const decoder = new TextDecoder("utf-8");
         let buffer = "";
         let finalResult = null;
+        let lastLogMessage = "";
 
         while (true) {
             const { done, value } = await reader.read();
@@ -127,17 +145,27 @@ async function startScraping() {
                     const msg = JSON.parse(line);
                     if (msg.status === "done") {
                         finalResult = msg.result;
+                        progressText.textContent = `Scraping เสร็จแล้ว พบ ${finalResult?.total_files || 0} ไฟล์จาก ${finalResult?.urls_scraped || 0} เว็บ`;
+                        progressStage.className = 'badge badge-success';
+                        progressStage.textContent = 'เสร็จสิ้น';
+                        progressSubtext.textContent = 'นำเข้าข้อมูลเรียบร้อยแล้ว สามารถดูผลลัพธ์และถามต่อใน RAG ได้';
+                        appendScrapeProgressLog(progressLog, 'งาน scrape และนำเข้าข้อมูลเสร็จสมบูรณ์');
                     } else if (msg.message) {
-                        // Update progress UI in real-time!
-                        progressText.innerHTML = msg.message;
+                        updateScrapeProgressUI({
+                            progressText,
+                            progressStage,
+                            progressSubtext,
+                            progressLog,
+                            msg,
+                            lastLogMessageRef: () => lastLogMessage,
+                            setLastLogMessage: (value) => { lastLogMessage = value; }
+                        });
                     }
                 } catch (err) {
                     console.error("Parse error on stream chunk:", line, err);
                 }
             }
         }
-
-        progressCard.style.display = 'none';
         
         if (finalResult) {
             displayScrapeResults(finalResult);
@@ -147,7 +175,11 @@ async function startScraping() {
         }
 
     } catch (e) {
-        progressCard.style.display = 'none';
+        progressText.textContent = `Scraping ล้มเหลว: ${e.message}`;
+        progressStage.className = 'badge badge-danger';
+        progressStage.textContent = 'ล้มเหลว';
+        progressSubtext.textContent = 'งานหยุดกลางทาง กรุณาตรวจสอบ error และลองใหม่อีกครั้ง';
+        appendScrapeProgressLog(progressLog, `เกิดข้อผิดพลาด: ${e.message}`, true);
         showToast(`Scraping ล้มเหลว: ${e.message}`, 'error');
     } finally {
         btn.disabled = false;
@@ -156,6 +188,64 @@ async function startScraping() {
             ค้นหาใน Google และเริ่ม Scraping
         `;
     }
+}
+
+function updateScrapeProgressUI({ progressText, progressStage, progressSubtext, progressLog, msg, lastLogMessageRef, setLastLogMessage }) {
+    const statusMap = {
+        searching: { label: 'ค้นหา', tone: 'badge-info', detail: 'กำลังค้นหาผลลัพธ์จาก Google' },
+        scraping: { label: 'Scraping', tone: 'badge-primary', detail: 'กำลังดึงข้อมูลจากเว็บไซต์ปลายทาง' },
+        found: { label: 'พบเว็บ', tone: 'badge-success', detail: 'ได้รายการเว็บไซต์แล้ว กำลังประมวลผลต่อ' },
+        ingesting: { label: 'นำเข้า RAG', tone: 'badge-warning', detail: 'กำลังบันทึกข้อมูลเข้าสู่ระบบ RAG' },
+        processing: { label: 'ประมวลผล', tone: 'badge-primary', detail: 'กำลังทำ OCR / chunk / เก็บข้อมูล' },
+        ocr: { label: 'OCR', tone: 'badge-info', detail: 'กำลังอ่านข้อความจากเอกสารที่ดาวน์โหลดมา' },
+        warning: { label: 'คำเตือน', tone: 'badge-danger', detail: 'มีบางขั้นตอนที่ไม่สำเร็จ แต่ระบบยังทำงานต่อ' },
+    };
+
+    const meta = statusMap[msg.status] || { label: msg.status || 'กำลังทำงาน', tone: 'badge-info', detail: 'กำลังประมวลผลข้อมูล' };
+
+    progressText.textContent = msg.message;
+    progressStage.className = `badge ${meta.tone}`;
+    progressStage.textContent = meta.label;
+    progressSubtext.textContent = meta.detail;
+
+    if (msg.message === lastLogMessageRef()) return;
+    setLastLogMessage(msg.message);
+    appendScrapeProgressLog(progressLog, msg.message, msg.status === 'warning');
+}
+
+function appendScrapeProgressLog(progressLog, message, isWarning = false) {
+    const item = document.createElement('div');
+    const time = new Date().toLocaleTimeString('th-TH', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    item.style.padding = '10px 12px';
+    item.style.background = 'var(--bg-secondary)';
+    item.style.borderRadius = 'var(--radius-sm)';
+    item.style.fontSize = '0.78rem';
+    item.style.color = isWarning ? 'var(--accent-danger)' : 'var(--text-secondary)';
+    item.style.border = `1px solid ${isWarning ? 'rgba(255, 107, 107, 0.24)' : 'rgba(255,255,255,0.06)'}`;
+    item.innerHTML = `
+        <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">
+            <span style="line-height:1.5">${escapeHtml(message)}</span>
+            <span style="white-space:nowrap;color:var(--text-muted);font-size:0.72rem">${time}</span>
+        </div>
+    `;
+    progressLog.prepend(item);
+
+    while (progressLog.children.length > 8) {
+        progressLog.removeChild(progressLog.lastChild);
+    }
+}
+
+function escapeHtml(text) {
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }
 
 function displayScrapeResults(result) {
