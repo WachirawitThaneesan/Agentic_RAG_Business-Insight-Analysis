@@ -3,6 +3,9 @@
  * Upload drag-and-drop zone + document list with processing status
  */
 
+let documentListRefreshTimer = null;
+let uploadListPollingTimer = null;
+
 function renderDocuments(container) {
     container.innerHTML = `
         <div class="page-header">
@@ -99,6 +102,14 @@ async function uploadFiles(files) {
     for (let i = 0; i < files.length; i++) {
         statusText.textContent = `Processing ${files[i].name} (${i + 1}/${files.length})...`;
 
+        if (uploadListPollingTimer) {
+            clearInterval(uploadListPollingTimer);
+        }
+        loadDocumentList();
+        uploadListPollingTimer = setInterval(() => {
+            loadDocumentList();
+        }, 3000);
+
         try {
             const result = await api.upload('/documents/upload', files[i]);
             const modeLabel = result.large_file_mode ? ' • batch mode' : '';
@@ -108,6 +119,11 @@ async function uploadFiles(files) {
             );
         } catch (e) {
             showToast(`Failed to process ${files[i].name}: ${e.message}`, 'error');
+        } finally {
+            if (uploadListPollingTimer) {
+                clearInterval(uploadListPollingTimer);
+                uploadListPollingTimer = null;
+            }
         }
     }
 
@@ -123,6 +139,18 @@ async function loadDocumentList() {
         const data = await api.get('/documents');
         const docs = data.documents || [];
         countLabel.textContent = `${docs.length} documents`;
+        const hasProcessingDocs = docs.some((doc) => doc.status === 'processing');
+
+        if (documentListRefreshTimer) {
+            clearTimeout(documentListRefreshTimer);
+            documentListRefreshTimer = null;
+        }
+
+        if (hasProcessingDocs) {
+            documentListRefreshTimer = setTimeout(() => {
+                loadDocumentList();
+            }, 4000);
+        }
 
         if (docs.length === 0) {
             listEl.innerHTML = `
@@ -160,6 +188,10 @@ async function loadDocumentList() {
                                 <span class="badge ${doc.status === 'completed' ? 'badge-success' : doc.status === 'failed' ? 'badge-danger' : 'badge-warning'}">
                                     ${doc.status}
                                 </span>
+                                ${doc.progress_text ? `<div style="margin-top:6px;font-size:0.78rem;color:var(--accent-primary-light)">กำลัง OCR ${escapeDocHtml(doc.progress_text)}</div>` : ''}
+                                ${doc.failed_pages?.length ? `<div style="margin-top:6px;font-size:0.76rem;color:var(--accent-warning)">failed pages: ${escapeDocHtml(doc.failed_pages.join(', '))}</div>` : ''}
+                                ${doc.failed_page_reasons && Object.keys(doc.failed_page_reasons).length ? `<div style="margin-top:6px;font-size:0.74rem;color:var(--text-muted);max-width:360px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeDocHtml(Object.entries(doc.failed_page_reasons).slice(0, 2).map(([page, reason]) => `p.${page}: ${reason}`).join(' • '))}</div>` : ''}
+                                ${!doc.progress_text && !doc.failed_pages?.length && doc.status_detail ? `<div style="margin-top:6px;font-size:0.74rem;color:var(--text-muted);max-width:320px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeDocHtml(doc.status_detail)}</div>` : ''}
                             </td>
                             <td>${doc.chunk_count}</td>
                             <td>${doc.table_row_count}</td>
@@ -218,8 +250,13 @@ async function viewDocTables(docId) {
             })),
         }));
         const rawPages = (doc.raw_ocr_pages || []).slice().sort((a, b) => (a.page || 0) - (b.page || 0));
-        const rawTables = (doc.raw_ocr_tables || []).slice().sort((a, b) => (a.table_index || 0) - (b.table_index || 0));
+        const rawTables = (doc.raw_ocr_tables || []).slice().sort((a, b) => {
+            const pageDiff = (a.page || 0) - (b.page || 0);
+            if (pageDiff !== 0) return pageDiff;
+            return (a.table_index || 0) - (b.table_index || 0);
+        });
         const renderedRowCount = tables.reduce((sum, table) => sum + (table.rows?.length || 0), 0);
+        const singlePageGroup = rawPages.length <= 1;
 
         subtitle.textContent = `${doc.filename} • ${tables.length} structured tables • ${rawPages.length} raw pages • ${rawTables.length} raw tables`;
 
@@ -233,12 +270,9 @@ async function viewDocTables(docId) {
             return;
         }
 
-        const structuredHtml = tables.length ? `
-            <div style="margin-bottom:20px">
-                <div style="font-size:0.88rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Structured Tables</div>
-                ${tables.map((table) => {
+        const renderStructuredTableCard = (table) => {
             const headers = table.headers || [];
-            const visibleRows = table.rows;
+            const visibleRows = table.rows || [];
             const tableHtml = `
                 <div style="overflow:auto;border:1px solid var(--border-primary);border-radius:var(--radius-md)">
                     <table class="data-table" style="min-width:720px;margin-bottom:0">
@@ -277,50 +311,99 @@ async function viewDocTables(docId) {
                     </details>
                 </div>
             `;
-                }).join('')}
+        };
+
+        const renderRawPageCard = (page) => `
+            <details style="padding:16px;background:var(--bg-tertiary);border-radius:var(--radius-md);margin-bottom:16px" open>
+                <summary style="cursor:pointer;font-weight:600">Raw OCR Page ${escapeDocHtml(page.page ?? '—')}</summary>
+                <pre style="margin-top:12px;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-sm);white-space:pre-wrap;overflow:auto;font-size:0.76rem;color:var(--text-secondary)">${escapeDocHtml(page.markdown || '')}</pre>
+            </details>
+        `;
+
+        const renderRawTableCard = (table) => `
+            <div style="padding:16px;background:var(--bg-tertiary);border-radius:var(--radius-md);margin-bottom:16px">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+                    <div>
+                        <div style="font-weight:600">${escapeDocHtml(table.title || `raw_table_${table.table_index}`)}</div>
+                        <div style="font-size:0.78rem;color:var(--text-muted)">${(table.rows || []).length} rows • ${(table.headers || []).length} columns</div>
+                    </div>
+                    <span class="badge badge-primary">Raw OCR Table</span>
+                </div>
+                <details>
+                    <summary style="cursor:pointer;font-size:0.82rem;color:var(--accent-primary-light)">ดู raw CSV</summary>
+                    <pre style="margin-top:8px;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-sm);white-space:pre-wrap;overflow:auto;font-size:0.76rem;color:var(--text-secondary)">${escapeDocHtml(table.csv_text || '')}</pre>
+                </details>
+            </div>
+        `;
+
+        const structuredHtml = tables.length ? `
+            <div style="margin-bottom:20px">
+                <div style="font-size:0.88rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Structured Tables</div>
+                ${tables.map(renderStructuredTableCard).join('')}
             </div>
         ` : '';
 
         const rawPagesHtml = rawPages.length ? `
             <div style="margin-bottom:20px">
                 <div style="font-size:0.88rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Raw OCR Pages</div>
-                ${rawPages.map((page) => `
-                    <details style="padding:16px;background:var(--bg-tertiary);border-radius:var(--radius-md);margin-bottom:16px" ${rawPages.length === 1 ? 'open' : ''}>
-                        <summary style="cursor:pointer;font-weight:600">Page ${escapeDocHtml(page.page ?? '—')}</summary>
-                        <pre style="margin-top:12px;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-sm);white-space:pre-wrap;overflow:auto;font-size:0.76rem;color:var(--text-secondary)">${escapeDocHtml(page.markdown || '')}</pre>
-                    </details>
-                `).join('')}
+                ${rawPages.map(renderRawPageCard).join('')}
             </div>
         ` : '';
 
         const rawTablesHtml = rawTables.length ? `
             <div>
                 <div style="font-size:0.88rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Raw OCR Tables</div>
-                ${rawTables.map((table) => `
-                    <div style="padding:16px;background:var(--bg-tertiary);border-radius:var(--radius-md);margin-bottom:16px">
-                        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
-                            <div>
-                                <div style="font-weight:600">${escapeDocHtml(table.title || `raw_table_${table.table_index}`)}</div>
-                                <div style="font-size:0.78rem;color:var(--text-muted)">${(table.rows || []).length} rows • ${(table.headers || []).length} columns</div>
-                            </div>
-                            <span class="badge badge-primary">Raw OCR Table</span>
-                        </div>
-                        <details>
-                            <summary style="cursor:pointer;font-size:0.82rem;color:var(--accent-primary-light)">ดู raw CSV</summary>
-                            <pre style="margin-top:8px;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-sm);white-space:pre-wrap;overflow:auto;font-size:0.76rem;color:var(--text-secondary)">${escapeDocHtml(table.csv_text || '')}</pre>
-                        </details>
-                    </div>
-                `).join('')}
+                ${rawTables.map(renderRawTableCard).join('')}
             </div>
         ` : '';
+
+        const combinedSinglePageHtml = singlePageGroup ? `
+            <div style="padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--border-primary);border-radius:var(--radius-lg);margin-bottom:20px">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+                    <div>
+                        <div style="font-weight:700;font-size:1rem">Source Page Group</div>
+                        <div style="font-size:0.8rem;color:var(--text-muted)">
+                            ${escapeDocHtml(doc.filename)} • รวมข้อมูลของหน้าเดียวกันไว้ในมุมมองเดียว
+                        </div>
+                    </div>
+                    <span class="badge badge-success">Combined View</span>
+                </div>
+                <div style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:14px">
+                    มุมมองนี้เหมาะสำหรับตรวจเทียบกับต้นฉบับ เพราะ raw OCR, ตารางที่ normalize แล้ว และ raw table ของหน้าเดียวกันจะอยู่ติดกัน
+                </div>
+                ${rawPages.length ? `
+                    <div style="margin-bottom:18px">
+                        <div style="font-size:0.84rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Raw OCR From This Page</div>
+                        ${rawPages.map(renderRawPageCard).join('')}
+                    </div>
+                ` : ''}
+                ${tables.length ? `
+                    <div style="margin-bottom:18px">
+                        <div style="font-size:0.84rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Structured Sections From This Page</div>
+                        ${tables.map(renderStructuredTableCard).join('')}
+                    </div>
+                ` : ''}
+                ${rawTables.length ? `
+                    <div>
+                        <div style="font-size:0.84rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Raw Table Blocks From This Page</div>
+                        ${rawTables.map(renderRawTableCard).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        ` : `
+            <div style="padding:14px 16px;background:var(--bg-tertiary);border:1px solid var(--border-primary);border-radius:var(--radius-md);margin-bottom:20px;font-size:0.8rem;color:var(--text-secondary)">
+                เอกสารนี้มีหลายหน้า OCR จึงยังแสดงทั้งแบบแยกประเภทเหมือนเดิมก่อน เพราะระบบยังไม่มี page-to-section mapping ที่แม่นพอสำหรับทุกหน้า
+            </div>
+        `;
 
         content.innerHTML = `
             <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:16px">
                 Structured rows: ${renderedRowCount}
             </div>
-            ${structuredHtml}
-            ${rawPagesHtml}
-            ${rawTablesHtml}
+            ${combinedSinglePageHtml}
+            ${singlePageGroup ? '' : structuredHtml}
+            ${singlePageGroup ? '' : rawPagesHtml}
+            ${singlePageGroup ? '' : rawTablesHtml}
         `;
     } catch (e) {
         subtitle.textContent = 'โหลดตารางไม่สำเร็จ';

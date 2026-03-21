@@ -369,17 +369,29 @@ class TyphoonOCRService:
     def _parse_markdown_pages(self, page_outputs: List[Dict[str, Any]]) -> Dict[str, Any]:
         text_blocks: List[str] = []
         tables: List[Dict[str, Any]] = []
+        raw_tables: List[Dict[str, Any]] = []
         pages: List[Dict[str, Any]] = []
 
         for output in page_outputs:
             page_num = output["page"]
             markdown = output.get("markdown", "") or ""
             page_tables, text_only = self._extract_structured_tables(markdown)
+            for table in page_tables:
+                table["page"] = page_num
             cleaned = self._clean_layout_markup(text_only)
             page_blocks = self._split_text_blocks(cleaned)
 
             text_blocks.extend(page_blocks)
             tables.extend(page_tables)
+            raw_tables.extend(
+                {
+                    "page": page_num,
+                    "title": table.get("title", ""),
+                    "headers": list(table.get("headers", []) or []),
+                    "rows": [list(row) for row in (table.get("rows", []) or [])],
+                }
+                for table in page_tables
+            )
             pages.append(
                 {
                     "page": page_num,
@@ -392,6 +404,7 @@ class TyphoonOCRService:
         return {
             "text_blocks": text_blocks,
             "tables": tables,
+            "raw_tables": raw_tables,
             "pages": pages,
             "raw_pages": [{"page": page["page"], "markdown": page.get("markdown", "")} for page in pages],
             "errors": [],
@@ -430,9 +443,12 @@ class TyphoonOCRService:
 
     def _extract_html_tables(self, content: str) -> tuple[List[Dict[str, Any]], str]:
         tables: List[Dict[str, Any]] = []
+        content_before = content
 
         def repl(match: re.Match) -> str:
             table_html = match.group(0)
+            prefix = content_before[:match.start()]
+            title = self._infer_table_title_from_prefix(prefix)
             rows_html = re.findall(r"<tr[^>]*>(.*?)</tr>", table_html, flags=re.IGNORECASE | re.DOTALL)
             parsed_rows: List[List[str]] = []
 
@@ -448,7 +464,7 @@ class TyphoonOCRService:
             headers = parsed_rows[0]
             data_rows = parsed_rows[1:] if len(parsed_rows) > 1 else []
             if data_rows:
-                tables.append({"headers": headers, "rows": data_rows})
+                tables.append({"title": title, "headers": headers, "rows": data_rows})
             return ""
 
         without_tables = re.sub(
@@ -458,6 +474,28 @@ class TyphoonOCRService:
             flags=re.IGNORECASE | re.DOTALL,
         )
         return tables, without_tables
+
+    def _infer_table_title_from_prefix(self, prefix: str) -> str:
+        lines = [self._clean_layout_markup(line) for line in prefix.splitlines()]
+        lines = [line.strip() for line in lines if line and line.strip()]
+
+        ignored_patterns = (
+            r"^\(หน่วย.*\)$",
+            r"^ณ วันที่",
+            r"^ธนาคารกรุงศรีอยุธยา",
+            r"^แบบ 56-1",
+            r"^รายงานประจำปี",
+            r"^<page_number>",
+        )
+
+        for line in reversed(lines):
+            if any(re.search(pattern, line, flags=re.IGNORECASE) for pattern in ignored_patterns):
+                continue
+            if len(line) < 4:
+                continue
+            return line
+
+        return ""
 
     def _extract_markdown_tables(self, content: str) -> tuple[List[Dict[str, Any]], str]:
         lines = [line.strip() for line in content.splitlines()]

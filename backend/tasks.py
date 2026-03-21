@@ -83,16 +83,31 @@ def process_document_task(self, document_id: int, filepath: str):
                 for i, table in enumerate(tables):
                     headers = table.get("headers", [])
                     rows = table.get("rows", [])
+                    tbl_name = table.get("table_name") or f"{doc.filename}_table_{i}"
                     for j, row in enumerate(rows):
                         row_dict = dict(zip(headers, row)) if headers else {"data": row}
                         sd = StructuredData(
                             document_id=doc.id,
-                            table_name=table.get("table_name") or f"{doc.filename}_table_{i}",
+                            table_name=tbl_name,
                             headers=headers,
                             row_data=row_dict,
                             row_index=j,
                         )
                         db.add(sd)
+
+                    # Sync to DuckDB warehouse
+                    try:
+                        from backend.services.duckdb_warehouse import (
+                            load_document_dim,
+                            load_table_into_warehouse,
+                        )
+                        load_document_dim(doc.id, doc.filename, doc.doc_type or "pdf")
+                        load_table_into_warehouse(
+                            doc.id, tbl_name, headers, rows,
+                            title=table.get("title", ""),
+                        )
+                    except Exception as ddb_exc:
+                        print(f"WARNING: DuckDB sync failed for table {tbl_name}: {ddb_exc}")
 
                 if cleaned_text.strip():
                     chunk_results = await chunk_document(cleaned_text)

@@ -8,23 +8,31 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
 from backend.database import init_db
-
 from backend.routes.documents import router as documents_router
 from backend.routes.scraping import router as scraping_router
 from backend.routes.query import router as query_router
 from backend.routes.chunks import router as chunks_router
+from backend.routes.warehouse import router as warehouse_router
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Initialize database on startup."""
+    """Initialize database and DuckDB warehouse on startup."""
     await init_db()
+    # Initialise DuckDB warehouse (creates schema if needed)
+    try:
+        from backend.services.duckdb_warehouse import _get_conn
+        _get_conn()
+        print("✅ DuckDB warehouse initialised")
+    except Exception as exc:
+        print(f"⚠️ DuckDB init warning: {exc}")
     yield
 
 
 app = FastAPI(
     title="Intelligent Financial Data Agent",
-    description="Thai financial document extraction & hybrid RAG system",
-    version="1.0.0",
+    description="Thai financial document extraction & hybrid RAG system with Agentic RAG",
+    version="2.0.0",
     lifespan=lifespan,
 )
 
@@ -42,11 +50,12 @@ app.include_router(documents_router, prefix="/api/documents", tags=["Documents"]
 app.include_router(scraping_router, prefix="/api/scrape", tags=["Scraping"])
 app.include_router(query_router, prefix="/api/query", tags=["Query"])
 app.include_router(chunks_router, prefix="/api/chunks", tags=["Chunks"])
+app.include_router(warehouse_router, prefix="/api/warehouse", tags=["Warehouse"])
 
 
 @app.get("/api/health")
 async def health_check():
-    return {"status": "ok", "service": "Financial Data Agent"}
+    return {"status": "ok", "service": "Financial Data Agent", "version": "2.0.0"}
 
 
 # Serve frontend static files
@@ -67,7 +76,7 @@ if os.path.isdir(FRONTEND_DIR):
 if __name__ == "__main__":
     import uvicorn
     from backend.config import get_settings
-    
+
     settings = get_settings()
     uvicorn.run(
         "backend.main:app",
@@ -75,5 +84,3 @@ if __name__ == "__main__":
         port=settings.APP_PORT,
         reload=settings.APP_RELOAD,
     )
-
-

@@ -8,6 +8,7 @@ sqlalchemy[asyncio]>=2.0.36
 asyncpg>=0.30.0
 pgvector>=0.3.6
 psycopg2-binary>=2.9.10
+duckdb>=1.1.0
 
 # Background Tasks
 redis>=5.2.0
@@ -21,6 +22,10 @@ readability-lxml>=0.8.1
 typhoon-ocr
 pypdf>=5.3.1
 Pillow>=10.4.0
+
+# Image Processing (Table Extraction Pipeline)
+opencv-python-headless>=4.8.0
+scipy>=1.11.0
 
 # Thai NLP
 pythainlp>=5.0.0

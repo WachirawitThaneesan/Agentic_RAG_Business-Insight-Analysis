@@ -45,17 +45,23 @@ def build_raw_ocr_chunk_payloads(
             }
         )
 
-    for index, table in enumerate(ocr_result.get("tables", []) or []):
+    raw_tables = ocr_result.get("raw_tables")
+    if raw_tables is None:
+        raw_tables = ocr_result.get("tables", []) or []
+
+    for index, table in enumerate(raw_tables):
         headers = [str(header or "").strip() for header in (table.get("headers") or [])]
         rows = [[str(cell or "").strip() for cell in row] for row in (table.get("rows") or [])]
         csv_text = _table_to_csv(headers, rows)
         if not csv_text:
             continue
         title = str(table.get("title") or f"{filename}_raw_table_{index}").strip()
+        page_num = table.get("page")
         payloads.append(
             {
                 "text": (
                     f"RAW_OCR_TABLE: {title}\n"
+                    f"RAW_PAGE: {page_num}\n"
                     f"RAW_HEADERS: {', '.join(headers)}\n"
                     f"RAW_CSV:\n{csv_text}"
                 ),
@@ -63,6 +69,7 @@ def build_raw_ocr_chunk_payloads(
                 "metadata": {
                     "source_kind": "raw_ocr_table",
                     "table_index": index,
+                    "page": page_num,
                     "title": title,
                     "headers": headers,
                     "rows": rows,
