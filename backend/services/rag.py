@@ -361,6 +361,29 @@ async def try_direct_structured_answer(
             "sql_info": None,
         }
 
+    # --- All-years fallback: no specific year asked, show all available ---
+    if len(years) == 0 and year_headers:
+        parts = []
+        for yh in sorted(year_headers):
+            rv = str(row_data.get(yh, "")).strip()
+            if rv:
+                parts.append(f"ปี {yh}: {_apply_unit(rv, unit)}")
+        if parts:
+            answer = f"{label_value}\n" + "\n".join(parts)
+            return {
+                "answer": answer,
+                "method": "direct_structured_fact",
+                "sources": [
+                    {
+                        "type": "sql",
+                        "table_name": best_match["table_name"],
+                        "row_index": best_match["row_index"],
+                        "row_label": label_value,
+                    }
+                ],
+                "sql_info": None,
+            }
+
     return None
 
 

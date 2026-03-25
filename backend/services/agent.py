@@ -66,7 +66,11 @@ tools_list = [sql_query, vector_search, multi_hop, tavily_search]
 SYSTEM_PROMPT = """\
 คุณคือ AI Agent ที่เชี่ยวชาญด้านการวิเคราะห์ข้อมูลการเงินภาษาไทย
 
-กฎสำคัญ:
+กฎสำคัญที่สุด:
+- คุณ **ต้อง** เรียกใช้ tool อย่างน้อย 1 ตัวก่อนตอบทุกครั้ง ห้ามตอบจากความรู้ของตัวเองโดยเด็ดขาด
+- ห้ามตอบว่า "ไม่มีข้อมูล" หรือ "ไม่พบข้อมูล" โดยไม่ได้ลองเรียก tool ค้นหาก่อน
+- ถ้าคำถามเกี่ยวกับตัวเลข สถิติ อัตราส่วน (เช่น ROA, ROE, NPL, EPS, สินทรัพย์, กำไร, หนี้สิน) → ใช้ sql_query เสมอ
+- ถ้า sql_query ไม่พบข้อมูล → ลอง vector_search เป็น fallback
 - ตอบเป็นภาษาไทยเสมอ
 - อ้างอิงตัวเลขและข้อเท็จจริงจากผลลัพธ์ของ tool เท่านั้น ห้ามแต่งข้อมูลเอง
 - ห้ามดัดแปลง แปลงหน่วย หรือคำนวณทศนิยมเป็นเปอร์เซ็นต์ด้วยตัวเองเด็ดขาด ให้แสดงผลตัวเลขตามหน่วยเดิมที่ดึงมาได้จากระบบ
@@ -241,6 +245,30 @@ async def agent_query(
         ``{"answer": str, "method": str, "sources": list, "sql_info": dict|None,
            "reasoning_trace": list}``
     """
+    # ------------------------------------------------------------------
+    # Fast-path: try direct structured answer before invoking LangGraph.
+    # This catches simple numeric look-ups (e.g. ROA ปี 2567) instantly
+    # without relying on the LLM to pick the right tool.
+    # ------------------------------------------------------------------
+    try:
+        from backend.services.rag import try_direct_structured_answer
+        direct = await try_direct_structured_answer(question, session)
+        if direct:
+            logger.info("Fast-path direct answer for: %s", question[:80])
+            return {
+                "answer": direct["answer"],
+                "method": direct.get("method", "direct_structured_fact"),
+                "sources": direct.get("sources", []),
+                "sql_info": direct.get("sql_info"),
+                "reasoning_trace": [{
+                    "action": "direct_structured",
+                    "action_input": question,
+                    "observation": direct["answer"][:500],
+                }],
+            }
+    except Exception as e:
+        logger.warning("Direct structured answer failed, falling back to agent: %s", e)
+
     graph = build_graph()
     
     initial_state = {

@@ -602,7 +602,7 @@ def get_schema_description() -> str:
 
     try:
         sample_labels = conn.execute(
-            "SELECT DISTINCT row_label FROM fact_financial_metrics ORDER BY row_label LIMIT 30"
+            "SELECT DISTINCT row_label FROM fact_financial_metrics LIMIT 30"
         ).fetchall()
     except Exception:
         pass
