@@ -103,12 +103,17 @@ class TyphoonOCRService:
         for page_num in page_numbers:
             page_output = await self._extract_best_pdf_page(pdf_path, page_num)
             outputs.append(page_output)
+            await asyncio.sleep(2)  # Cooldown API and GPU between pages
         return self._parse_markdown_pages(outputs)
 
     def get_pdf_page_count(self, pdf_path: str) -> int:
         return len(PdfReader(pdf_path).pages)
 
     def _ocr_single_page(self, path: str, page_num: int) -> str:
+        import time
+        import logging
+        logger = logging.getLogger(__name__)
+        
         kwargs = {
             "pdf_or_image_path": path,
             "page_num": page_num,
@@ -117,7 +122,17 @@ class TyphoonOCRService:
             "figure_language": self.figure_language,
             "base_url": self.base_url,
         }
-        return ocr_document(**kwargs)
+        
+        for attempt in range(3):
+            try:
+                return ocr_document(**kwargs)
+            except Exception as e:
+                logger.warning(f"OCR failed for page {page_num} on attempt {attempt+1}: {e}")
+                if attempt == 2:
+                    raise
+                time.sleep(10 + attempt * 10)  # Wait 10s, then 20s before retrying
+                
+        return ""
 
     def _all_pdf_pages(self, path: str) -> List[int]:
         reader = PdfReader(path)

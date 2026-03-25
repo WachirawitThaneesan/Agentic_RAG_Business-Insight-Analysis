@@ -31,10 +31,10 @@ class Settings(BaseSettings):
     TYPHOON_OCR_REPETITION_PENALTY: float = 1.2
 
     # Table Extraction Pipeline
-    TABLE_DETECTOR_BACKEND: str = "opencv"  # "opencv" or "tatr"
+    TABLE_DETECTOR_BACKEND: str = "tatr"  # "opencv" or "tatr"
     TABLE_PREPROCESS_TARGET_DPI: int = 300
     TABLE_SELF_CORRECTION_MAX_RETRIES: int = 2
-    TABLE_CONFIDENCE_THRESHOLD: float = 0.7
+    TABLE_CONFIDENCE_THRESHOLD: float = 0.4
 
     # DuckDB Data Warehouse
     DUCKDB_PATH: str = "warehouse.duckdb"
@@ -53,6 +53,10 @@ class Settings(BaseSettings):
     PDF_LARGE_FILE_GENERATE_SUMMARIES: bool = False
     DOCUMENT_RAW_TEXT_LIMIT_CHARS: int = 250000
     RAW_OCR_ARTIFACT_EMBED_MAX_CHARS: int = 8000
+
+    # External APIs
+    TAVILY_API_KEY: str = ""
+    OPENAI_API_KEY: str = ""
 
     class Config:
         env_file = ".env"

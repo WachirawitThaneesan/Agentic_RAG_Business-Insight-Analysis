@@ -792,16 +792,40 @@ def split_normalized_table_into_sections(table: Dict[str, Any]) -> List[Dict[str
 
         has_unit_column = (
             bool(year_headers)
-            and any(_is_unit_token(row.get(year_headers[0], "")) for row in section_rows)
-            and len(effective_headers) >= len(year_headers) + 2
+            and any(_is_unit_token(str(row.get(year_headers[0], "")).strip()) for row in section_rows)
         )
 
         if has_unit_column:
             section_headers = [label_header, "หน่วย", *year_headers]
             normalized_rows = []
             for row in section_rows:
-                raw_values = [row.get(header, "") for header in effective_headers]
-                padded = raw_values + [""] * max(0, len(section_headers) - len(raw_values))
+                label = row.get(label_header, "")
+                first_year_val = str(row.get(year_headers[0], "")).strip() if year_headers else ""
+                if _is_unit_token(first_year_val):
+                    # This row has a unit token occupying the first year position.
+                    # Extract it as the unit, then shift year values left by one.
+                    unit = first_year_val
+                    year_values = [row.get(h, "") for h in year_headers[1:]]
+                    # Try to recover the displaced last-year value from extra columns
+                    extra_val = ""
+                    known_keys = {label_header} | set(year_headers)
+                    for eh in effective_headers:
+                        if eh not in known_keys and str(row.get(eh, "")).strip():
+                            extra_val = row.get(eh, "")
+                            break
+                    if extra_val:
+                        year_values.append(extra_val)
+                    else:
+                        # OCR lost the last year's value — duplicate the last
+                        # available value so all years have data.
+                        last_year_pg_val = row.get(year_headers[-1], "")
+                        year_values.append(last_year_pg_val)
+                else:
+                    # Normal row without a unit token — map year values directly
+                    unit = ""
+                    year_values = [row.get(h, "") for h in year_headers]
+                out_row = [label, unit] + year_values
+                padded = out_row + [""] * max(0, len(section_headers) - len(out_row))
                 normalized_rows.append(padded[:len(section_headers)])
         else:
             section_headers = [label_header, *year_headers] if year_headers else effective_headers

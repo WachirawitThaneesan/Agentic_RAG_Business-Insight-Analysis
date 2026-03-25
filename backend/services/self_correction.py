@@ -176,8 +176,18 @@ def validate_table(
 
     # --- Confidence score ---
     total_cells = max(len(rows) * expected_cols, 1)
+    
+    # Empty rows are effectively data loss, we must penalize them to prevent 
+    # the retry system from replacing bad data with empty rows.
+    empty_row_count = len(report.empty_row_indices)
     issue_cells = len([i for i in report.issues if i.issue_type != "empty_row"])
-    report.confidence_score = max(0.0, 1.0 - (issue_cells / total_cells) * 2)
+    
+    # Penalty: regular issue cells drop score by 2x their ratio. 
+    # Empty rows drop score drastically (e.g. 0.5 per empty row)
+    base_score = 1.0 - (issue_cells / total_cells) * 2.0
+    empty_penalty = min(0.9, empty_row_count * 0.4) 
+    
+    report.confidence_score = max(0.0, base_score - empty_penalty)
 
     return report
 
@@ -267,6 +277,10 @@ async def validate_and_correct(
         report = validate_table(headers, rows)
         if report.is_valid:
             break
+
+    # Final cleanup before returning
+    rows = _remove_empty_rows(rows)
+    report = validate_table(headers, rows)
 
     return ValidatedTable(
         headers=headers,

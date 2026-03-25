@@ -11,6 +11,7 @@ from backend.services.duckdb_warehouse import (
     get_schema_description,
     load_document_dim,
     load_table_into_warehouse,
+    reset_warehouse,
     sync_structured_data_from_postgres,
 )
 from backend.services.table_utils import rebuild_structured_tables
@@ -109,3 +110,11 @@ async def warehouse_query(body: dict):
     if not sql:
         return {"error": "No SQL provided"}
     return execute_sql(sql)
+
+
+@router.delete("/reset")
+async def reset_warehouse_data():
+    """Delete all data from the DuckDB warehouse."""
+    deleted = reset_warehouse()
+    total = sum(deleted.values())
+    return {"status": "reset", "deleted": deleted, "total_deleted": total}

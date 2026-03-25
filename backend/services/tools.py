@@ -112,6 +112,7 @@ class SQLTool:
             "Rules:\n"
             "- Return ONLY the SQL query, no explanation\n"
             "- Use numeric_value for math/comparisons, raw_value for display\n"
+            "- ALWAYS include the 'unit' (or equivalent) column in your SELECT statement\n"
             "- Use LIKE for fuzzy Thai label matching\n"
             "- DuckDB uses standard SQL (no ->> operator, use standard column access)\n"
             "SQL:"
@@ -323,6 +324,59 @@ class MultiHopTool:
 
 
 # ---------------------------------------------------------------------------
+# 4. Web Search Tool
+# ---------------------------------------------------------------------------
+
+class WebSearchTool:
+    """Search the web for up-to-date information."""
+
+    name = "tavily_search"
+    description = (
+        "Search the internet for current events, news, or general knowledge "
+        "that might not be in the internal database. Use as a fallback "
+        "when other tools don't have the answer."
+    )
+
+    async def execute(self, query: str, session: Any = None) -> ToolResult:
+        if not settings.TAVILY_API_KEY:
+            return ToolResult(
+                tool_name=self.name,
+                success=False,
+                error="TAVILY_API_KEY is not configured.",
+            )
+            
+        try:
+            from tavily import TavilyClient
+            # Synchronous call in async wrapper for simplicity, or use async if supported
+            client = TavilyClient(api_key=settings.TAVILY_API_KEY)
+            response = client.search(query=query, search_depth="basic", max_results=3)
+            
+            summary_parts = []
+            results_data = []
+            for r in response.get("results", []):
+                summary_parts.append(f"[{r.get('title', 'Unknown')}]\n{r.get('content', '')}")
+                results_data.append(r)
+                
+            summary = "\n\n".join(summary_parts)
+            if not summary:
+                summary = "ไม่พบข้อมูลจาก Web Search"
+                
+            return ToolResult(
+                tool_name=self.name,
+                success=True,
+                data={"results": results_data},
+                summary=summary,
+            )
+        except Exception as exc:
+            logger.error("Web search failed: %s", exc)
+            return ToolResult(
+                tool_name=self.name,
+                success=False,
+                error=str(exc)
+            )
+
+
+# ---------------------------------------------------------------------------
 # Tool registry
 # ---------------------------------------------------------------------------
 
@@ -330,6 +384,7 @@ ALL_TOOLS = {
     "sql_query": SQLTool(),
     "vector_search": VectorSearchTool(),
     "multi_hop": MultiHopTool(),
+    "tavily_search": WebSearchTool(),
 }
 
 

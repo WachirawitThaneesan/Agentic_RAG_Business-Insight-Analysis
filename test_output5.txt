@@ -1,0 +1,16 @@
+found_unit_in_year: False
+unit: 
+No unit token found - direct mapping
+  2567 = (%%)
+  2566 = 1.10
+  2565 = 1.22
+  2564 = 1.20
+  2563 = 1.32
+
+Normal row - found_unit: False
+Direct mapping (correct):
+  2567 = 2620074
+  2566 = 2708296
+  2565 = 2636951
+  2564 = 2499109
+  2563 = 2609374

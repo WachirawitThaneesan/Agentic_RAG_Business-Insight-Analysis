@@ -176,6 +176,16 @@
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
 
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
         /* Quick queries */
         .quick-queries {
             display: flex;
@@ -324,6 +334,7 @@
                 <h2>🔍 SQL Query</h2>
                 <div class="btn-row">
                     <button class="btn btn-success" onclick="syncWarehouse()">🔄 Sync from PG</button>
+                    <button class="btn btn-danger" onclick="resetWarehouse()">🗑️ Reset DuckDB</button>
                 </div>
             </div>
             <div class="card-body sql-editor">
@@ -463,6 +474,25 @@
             } catch (e) {
                 btn.textContent = '❌ Failed';
                 setTimeout(() => { btn.textContent = '🔄 Sync from PG'; btn.disabled = false; }, 3000);
+            }
+        }
+
+        async function resetWarehouse() {
+            if (!confirm('⚠️ ลบข้อมูลทั้งหมดใน DuckDB?\n\nข้อมูลใน PostgreSQL จะไม่ถูกลบ — คุณสามารถ Sync from PG ใหม่ได้')) return;
+
+            const btn = event.target;
+            btn.disabled = true;
+            btn.textContent = '⏳ Resetting...';
+
+            try {
+                const res = await fetch(`${API}/api/warehouse/reset`, { method: 'DELETE' });
+                const data = await res.json();
+                btn.textContent = `✅ Deleted ${data.total_deleted} rows`;
+                setTimeout(() => { btn.textContent = '🗑️ Reset DuckDB'; btn.disabled = false; }, 3000);
+                loadStatus();
+            } catch (e) {
+                btn.textContent = '❌ Failed';
+                setTimeout(() => { btn.textContent = '🗑️ Reset DuckDB'; btn.disabled = false; }, 3000);
             }
         }
 

@@ -62,6 +62,24 @@ def close_warehouse() -> None:
             _conn = None
 
 
+def reset_warehouse() -> Dict[str, int]:
+    """Delete all data from the DuckDB warehouse tables.
+
+    Returns a dict with the number of rows deleted from each table.
+    """
+    conn = _get_conn()
+    deleted: Dict[str, int] = {}
+    for table in ("fact_financial_metrics", "dim_table_rows", "dim_tables", "dim_documents", "dim_chunks"):
+        try:
+            count = conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
+            conn.execute(f"DELETE FROM {table}")
+            deleted[table] = count
+        except Exception:
+            deleted[table] = 0
+    logger.info("DuckDB warehouse reset: %s", deleted)
+    return deleted
+
+
 # ---------------------------------------------------------------------------
 # Schema initialisation
 # ---------------------------------------------------------------------------
@@ -344,39 +362,95 @@ def _load_year_based_table(
                 unit = explicit_unit
 
         # First pass: scan year columns for misplaced unit tokens
-        # e.g. "(%)","(บาท)","(ล้านบาท)" shifted into a year column by OCR
+        # e.g. "(%)", "(บาท)", "(ล้านบาท)" shifted into a year column by OCR
+        found_unit_in_year = False
         for col_idx, _year_label in year_cols:
             raw_value = str(row[col_idx] if col_idx < len(row) else "").strip()
             extracted_unit = _extract_unit_token(raw_value)
             if extracted_unit:
                 unit = extracted_unit
+                found_unit_in_year = True
                 break  # found the unit, no need to check more columns
 
         # Second pass: insert actual data values
-        for col_idx, year_label in year_cols:
-            raw_value = str(row[col_idx] if col_idx < len(row) else "").strip()
-            if not raw_value:
-                continue
+        if found_unit_in_year:
+            # Unit token consumed one year column, so values are shifted.
+            # Collect non-unit values and assign them to year labels
+            # starting from the first year (shift-left).
+            data_values: List[str] = []
+            for col_idx, _ in year_cols:
+                rv = str(row[col_idx] if col_idx < len(row) else "").strip()
+                if rv and not _extract_unit_token(rv):
+                    data_values.append(rv)
 
-            # Skip unit tokens — they are not data
-            if _extract_unit_token(raw_value):
-                continue
+            year_labels = [yl for _, yl in year_cols]
+            inserted_years: set = set()
+            for i, raw_value in enumerate(data_values):
+                if i >= len(year_labels):
+                    break
+                year_label = year_labels[i]
+                numeric = _parse_numeric(raw_value)
+                conn.execute(
+                    """
+                    INSERT INTO fact_financial_metrics
+                        (document_id, table_name, row_label, metric_year,
+                         raw_value, numeric_value, unit, row_index)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    [document_id, _sanitize_text(table_name),
+                     _sanitize_text(label), _sanitize_text(year_label),
+                     _sanitize_text(raw_value), numeric,
+                     _sanitize_text(unit), row_idx],
+                )
+                inserted_years.add(year_label)
+                fact_count += 1
 
-            numeric = _parse_numeric(raw_value)
+            # Preserve the last year's value if not already inserted.
+            # This avoids losing the oldest year entirely.
+            last_year_label = year_labels[-1] if year_labels else None
+            if last_year_label and last_year_label not in inserted_years:
+                last_col_idx = year_cols[-1][0]
+                last_raw = str(row[last_col_idx] if last_col_idx < len(row) else "").strip()
+                if last_raw and not _extract_unit_token(last_raw):
+                    numeric = _parse_numeric(last_raw)
+                    conn.execute(
+                        """
+                        INSERT INTO fact_financial_metrics
+                            (document_id, table_name, row_label, metric_year,
+                             raw_value, numeric_value, unit, row_index)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                        """,
+                        [document_id, _sanitize_text(table_name),
+                         _sanitize_text(label), _sanitize_text(last_year_label),
+                         _sanitize_text(last_raw), numeric,
+                         _sanitize_text(unit), row_idx],
+                    )
+                    fact_count += 1
+        else:
+            for col_idx, year_label in year_cols:
+                raw_value = str(row[col_idx] if col_idx < len(row) else "").strip()
+                if not raw_value:
+                    continue
 
-            conn.execute(
-                """
-                INSERT INTO fact_financial_metrics
-                    (document_id, table_name, row_label, metric_year,
-                     raw_value, numeric_value, unit, row_index)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-                """,
-                [document_id, _sanitize_text(table_name),
-                 _sanitize_text(label), _sanitize_text(year_label),
-                 _sanitize_text(raw_value), numeric,
-                 _sanitize_text(unit), row_idx],
-            )
-            fact_count += 1
+                # Skip unit tokens — they are not data
+                if _extract_unit_token(raw_value):
+                    continue
+
+                numeric = _parse_numeric(raw_value)
+
+                conn.execute(
+                    """
+                    INSERT INTO fact_financial_metrics
+                        (document_id, table_name, row_label, metric_year,
+                         raw_value, numeric_value, unit, row_index)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    [document_id, _sanitize_text(table_name),
+                     _sanitize_text(label), _sanitize_text(year_label),
+                     _sanitize_text(raw_value), numeric,
+                     _sanitize_text(unit), row_idx],
+                )
+                fact_count += 1
 
     logger.info(
         "Loaded YEAR table %s: %d rows → %d fact records",

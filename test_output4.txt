@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\AJHom\Project_1\test_unit_fix.py", line 19, in <module>
+    conn = _get_conn()
+  File "C:\Users\AJHom\Project_1\backend\services\duckdb_warehouse.py", line 50, in _get_conn
+    _conn = duckdb.connect(db_path, read_only=False)
+_duckdb.IOException: IO Error: Cannot open file "c:\users\ajhom\project_1\warehouse.duckdb": The process cannot access the file because it is being used by another process.
+
+
+File is already open in 
+C:\Users\AJHom\AppData\Local\Programs\Python\Python313\python.exe (PID 25452)

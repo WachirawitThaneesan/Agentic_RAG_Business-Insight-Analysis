@@ -162,14 +162,10 @@ async def _process_single_page(
     )
     table_crops = crop_tables(page_image, detection)
 
-    # If no tables detected, treat the whole image as one table
+    # If no tables detected, return empty (don't force full page text into a table)
     if not table_crops:
-        logger.info("No tables detected on page %d; treating full image as table", page_num)
-        table_crops = [page_image]
-        detection = DetectionResult(
-            bboxes=[BoundingBox(0, 0, page_image.size[0], page_image.size[1])],
-            backend=backend,
-        )
+        logger.info("No tables detected on page %d; skipping table extraction", page_num)
+        return []
 
     results: List[ExtractedTable] = []
     preprocess_config = PreprocessConfig(target_dpi=dpi)
@@ -297,15 +293,21 @@ def _load_pages(
 
 
 def _pdf_to_images(pdf_bytes: bytes) -> List[Image.Image]:
-    """Convert each PDF page to a PIL Image.
-
-    Uses pypdf to extract pages, then renders via a simple approach:
-    convert each page to an image using pdf2image if available,
-    otherwise fall back to extracting embedded images.
-    """
+    """Convert each PDF page to a PIL Image."""
     try:
-        from pdf2image import convert_from_bytes
-        return convert_from_bytes(pdf_bytes, dpi=200, fmt="png")
+        import fitz  # PyMuPDF
+        import io
+        from PIL import Image
+        
+        images = []
+        doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+        zoom_matrix = fitz.Matrix(300 / 72, 300 / 72)
+        for page in doc:
+            pix = page.get_pixmap(matrix=zoom_matrix)
+            img_data = pix.tobytes("png")
+            images.append(Image.open(io.BytesIO(img_data)).convert("RGB"))
+        doc.close()
+        return images
     except ImportError:
         pass
 
