@@ -577,6 +577,115 @@ def execute_sql(sql: str) -> Dict[str, Any]:
         return {"error": str(exc), "columns": [], "rows": [], "row_count": 0}
 
 
+def lookup_table_query(question: str) -> Optional[Dict[str, Any]]:
+    """Deterministic fast-path for dim_table_rows questions.
+
+    Matches the user question to a lookup table by keyword overlap,
+    then returns the matching rows WITHOUT relying on LLM SQL generation.
+
+    Returns None if no matching lookup table is found.
+    """
+    conn = _get_conn()
+
+    # Get all lookup table names
+    try:
+        tables = conn.execute(
+            "SELECT DISTINCT table_name FROM dim_table_rows"
+        ).fetchall()
+    except Exception:
+        return None
+
+    if not tables:
+        return None
+
+    # Find the best matching table by keyword overlap
+    question_clean = re.sub(r"[?？\s]+", "", question)
+    best_table = None
+    best_score = 0
+
+    for (table_name,) in tables:
+        if not table_name:
+            continue
+        table_clean = re.sub(r"[_\s]+", "", table_name)
+        # Check how many characters of table_name are in the question
+        score = 0
+        for char in table_clean:
+            if char in question_clean:
+                score += 1
+        # Also check if the table_name is a substring of question or vice versa
+        if table_clean in question_clean or question_clean in table_clean:
+            score += len(table_clean) * 2
+        # Require at least 60% character overlap
+        if score >= len(table_clean) * 0.6 and score > best_score:
+            best_score = score
+            best_table = table_name
+
+    if not best_table:
+        return None
+
+    logger.info("lookup_table_query matched table: %s (score=%d)", best_table, best_score)
+
+    # Extract limit from question (e.g. "2 อันดับแรก" → 2)
+    limit = None
+    limit_match = re.search(r"(\d+)\s*(?:อันดับ|ลำดับ|รายการ|แรก|ตัว|บริษัท)", question)
+    if limit_match:
+        limit = int(limit_match.group(1))
+
+    # Build and execute the query
+    if limit:
+        sql = (
+            f"SELECT row_label, col_name, col_value, row_index "
+            f"FROM dim_table_rows "
+            f"WHERE table_name = ? "
+            f"AND row_index < ? "
+            f"ORDER BY row_index, col_name"
+        )
+        rows = conn.execute(sql, [best_table, limit]).fetchall()
+    else:
+        sql = (
+            f"SELECT row_label, col_name, col_value, row_index "
+            f"FROM dim_table_rows "
+            f"WHERE table_name = ? "
+            f"ORDER BY row_index, col_name"
+        )
+        rows = conn.execute(sql, [best_table]).fetchall()
+
+    if not rows:
+        return None
+
+    # Format into a readable summary grouped by company
+    columns = ["row_label", "col_name", "col_value", "row_index"]
+    row_dicts = [dict(zip(columns, row)) for row in rows]
+
+    # Group by row_label for nice output
+    from collections import OrderedDict
+    grouped: OrderedDict = OrderedDict()
+    for rd in row_dicts:
+        label = rd["row_label"]
+        if label not in grouped:
+            grouped[label] = {}
+        grouped[label][rd["col_name"]] = rd["col_value"]
+
+    # Build display SQL for reference
+    display_sql = (
+        f"SELECT row_label, col_name, col_value FROM dim_table_rows "
+        f"WHERE table_name = '{best_table}' "
+        f"ORDER BY row_index, col_name"
+        + (f" LIMIT {limit * 10}" if limit else "")
+    )
+
+    return {
+        "columns": columns,
+        "rows": row_dicts,
+        "row_count": len(row_dicts),
+        "sql": display_sql,
+        "grouped": grouped,
+        "table_name": best_table,
+    }
+
+
+
+
 def get_schema_description() -> str:
     """Return a human-readable schema summary for LLM SQL generation."""
     conn = _get_conn()
@@ -585,6 +694,8 @@ def get_schema_description() -> str:
     lookup_tables = []
     sample_labels = []
     sample_years = []
+    sample_col_names = []
+    sample_lookup_labels = []
 
     try:
         tables = conn.execute(
@@ -614,6 +725,20 @@ def get_schema_description() -> str:
     except Exception:
         pass
 
+    try:
+        sample_col_names = conn.execute(
+            "SELECT DISTINCT col_name FROM dim_table_rows LIMIT 20"
+        ).fetchall()
+    except Exception:
+        pass
+
+    try:
+        sample_lookup_labels = conn.execute(
+            "SELECT DISTINCT row_label FROM dim_table_rows LIMIT 20"
+        ).fetchall()
+    except Exception:
+        pass
+
     desc = (
         "DuckDB warehouse schema:\n\n"
         "TABLE 1: fact_financial_metrics (year-based financial data)\n"
@@ -624,9 +749,13 @@ def get_schema_description() -> str:
         "  Columns: document_id, table_name, row_label, col_name, col_value, row_index\n"
         "  Use for: non-year data like company names, business types, shareholding\n\n"
         "IMPORTANT RULES:\n"
-        "  - Use numeric_value for comparisons/aggregations (already parsed as DOUBLE)\n"
+        "  - Use numeric_value for comparisons/aggregations in fact_financial_metrics\n"
         "  - metric_year is VARCHAR (e.g. '2567', '2566')\n"
-        "  - Use LIKE '%keyword%' for fuzzy Thai label matching\n\n"
+        "  - Use LIKE '%keyword%' for fuzzy Thai label matching\n"
+        "  - CRITICAL: 'ลำดับแรก' or 'แรก' means FIRST ROWS in the physical table. NEVER sort by 'col_value' (e.g. จำนวนหุ้น) for these questions. ALWAYS use `ORDER BY row_index ASC LIMIT N`.\n"
+        "  - Only sort by 'col_value' if the user explicitly asks for 'มากที่สุด' (most), 'สูงสุด' (highest), etc.\n"
+        "  - CRITICAL for dim_table_rows: Each row_label has multiple col_names (e.g. 'จำนวนหุ้น', 'ประเภทธุรกิจ'). If asked to list companies, just `SELECT DISTINCT row_label FROM dim_table_rows WHERE ... ORDER BY row_label` or `ORDER BY row_index`.\n"
+        "  - To sort dim_table_rows by a numeric value (e.g. 'จำนวนหุ้น'), you must CAST(REPLACE(col_value, ',', '') AS DOUBLE)\n\n"
     )
 
     if tables:
@@ -648,7 +777,17 @@ def get_schema_description() -> str:
 
     if sample_years:
         years = [row[0] for row in sample_years]
-        desc += f"Available years: {', '.join(years)}\n"
+        desc += f"Available years: {', '.join(years)}\n\n"
+
+    if sample_col_names:
+        desc += "Sample col_names in dim_table_rows (use EXACT names in queries):\n"
+        names = [row[0] for row in sample_col_names]
+        desc += f"  {', '.join(names)}\n\n"
+
+    if sample_lookup_labels:
+        desc += "Sample row_labels in dim_table_rows:\n"
+        labels = [row[0] for row in sample_lookup_labels]
+        desc += f"  {', '.join(labels)}\n\n"
 
     return desc
 

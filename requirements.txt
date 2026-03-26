@@ -42,11 +42,9 @@ pydantic>=2.10.0
 pydantic-settings>=2.7.0
 aiofiles>=24.1.0
 
-# Agentic RAG Upgrade
+# Agentic RAG / Evaluation
 langchain>=0.3.0
 langchain-ollama>=0.2.0
-langgraph>=0.2.0
 tavily-python>=0.5.0
 ragas>=0.2.0
 datasets>=3.0.0
-langchain-openai>=0.2.0

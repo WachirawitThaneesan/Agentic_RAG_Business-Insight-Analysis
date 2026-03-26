@@ -1,6 +1,6 @@
-"""Agentic RAG Orchestrator — LangGraph Implementation.
+"""Agentic RAG Orchestrator — Plain LLM ReAct Loop.
 
-Replaces the previous custom ReAct loop with a stateful LangGraph agent.
+Uses direct Ollama API calls with a ReAct-style prompt.
 Tools available:
   - sql_query
   - vector_search
@@ -10,15 +10,11 @@ Tools available:
 
 import json
 import logging
-import operator
-from typing import Any, Dict, List, Optional, TypedDict
+import re
+from typing import Any, Dict, List, Optional
 
-from typing_extensions import Annotated
+import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
-from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage, ToolMessage
-from langchain_ollama import ChatOllama
-from langchain_core.tools import tool
-from langgraph.graph import StateGraph, END
 
 from backend.config import get_settings
 from backend.services.tools import ALL_TOOLS
@@ -26,42 +22,7 @@ from backend.services.tools import ALL_TOOLS
 settings = get_settings()
 logger = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# State Definition
-# ---------------------------------------------------------------------------
-
-class AgentState(TypedDict):
-    messages: Annotated[List[BaseMessage], operator.add]
-    session: AsyncSession
-    sources: List[Dict[str, Any]]
-    sql_info: Optional[Dict[str, Any]]
-    reasoning_trace: List[Dict[str, Any]]
-
-# ---------------------------------------------------------------------------
-# LangChain Tools (Schema only for binding)
-# ---------------------------------------------------------------------------
-
-@tool
-def sql_query(query: str) -> str:
-    """Query structured financial data stored in DuckDB. Use for specific numbers, statistics, comparisons, rankings, year-over-year changes, or any tabular data lookup."""
-    pass
-
-@tool
-def vector_search(query: str) -> str:
-    """Search documents by meaning. Use for explanations, concepts, summaries, policies, strategies, or qualitative information."""
-    pass
-
-@tool
-def multi_hop(query: str) -> str:
-    """Break a complex question into 2-3 simpler sub-questions, gather data from SQL and/or Vector Search, then combine."""
-    pass
-
-@tool
-def tavily_search(query: str) -> str:
-    """Search the internet for current events, news, or general knowledge that might not be in the internal database. Use as a fallback when other tools don't have the answer."""
-    pass
-
-tools_list = [sql_query, vector_search, multi_hop, tavily_search]
+HTTP_LIMITS = httpx.Limits(max_connections=4, max_keepalive_connections=2)
 
 SYSTEM_PROMPT = """\
 คุณคือ AI Agent ที่เชี่ยวชาญด้านการวิเคราะห์ข้อมูลการเงินภาษาไทย
@@ -69,165 +30,195 @@ SYSTEM_PROMPT = """\
 กฎสำคัญที่สุด:
 - คุณ **ต้อง** เรียกใช้ tool อย่างน้อย 1 ตัวก่อนตอบทุกครั้ง ห้ามตอบจากความรู้ของตัวเองโดยเด็ดขาด
 - ห้ามตอบว่า "ไม่มีข้อมูล" หรือ "ไม่พบข้อมูล" โดยไม่ได้ลองเรียก tool ค้นหาก่อน
-- ถ้าคำถามเกี่ยวกับตัวเลข สถิติ อัตราส่วน (เช่น ROA, ROE, NPL, EPS, สินทรัพย์, กำไร, หนี้สิน) → ใช้ sql_query เสมอ
+- **ให้ใช้ sql_query เป็นตัวเลือกแรกเสมอ** สำหรับคำถามที่เกี่ยวกับ:
+  - ตัวเลข สถิติ อัตราส่วน (ROA, ROE, NPL, EPS, สินทรัพย์, กำไร, หนี้สิน ฯลฯ)
+  - รายการ รายชื่อ ข้อมูลจากตาราง (เช่น "มีอะไรบ้าง", "มีบริษัทอะไร", "การลงทุน", "เงินฝาก", "สินเชื่อ")
+  - เปรียบเทียบ จัดอันดับ หาค่าสูงสุด/ต่ำสุด
+  - ข้อมูลเชิงข้อเท็จจริง (factual data) ทุกประเภท
 - ถ้า sql_query ไม่พบข้อมูล → ลอง vector_search เป็น fallback
+- ใช้ vector_search เฉพาะเมื่อคำถามถามเกี่ยวกับ นโยบาย กลยุทธ์ แนวคิด คำอธิบาย หรือเนื้อหาเชิงคุณภาพเท่านั้น
 - ตอบเป็นภาษาไทยเสมอ
 - อ้างอิงตัวเลขและข้อเท็จจริงจากผลลัพธ์ของ tool เท่านั้น ห้ามแต่งข้อมูลเอง
 - ห้ามดัดแปลง แปลงหน่วย หรือคำนวณทศนิยมเป็นเปอร์เซ็นต์ด้วยตัวเองเด็ดขาด ให้แสดงผลตัวเลขตามหน่วยเดิมที่ดึงมาได้จากระบบ
 - ให้ใส่หน่วยแนบไปกับตัวเลขเลย (เช่น 1.10%) และห้ามพิมพ์สรุปแยกบรรทัดติ่งไว้ตอนท้ายว่า "หน่วยเป็น..." อีกเด็ดขาด
 
-คุณสามารถเลือกใช้ tool เหล่านี้ได้ตามความเหมาะสม:
-1. sql_query: เมื่อคำถามต้องการข้อมูลตัวเลข งบประมาณ หรือเปรียบเทียบเชิงสถิติจากฐานข้อมูล (DuckDB)
-2. vector_search: เมื่อคำถามเกี่ยวกับนโยบาย แนวคิด หรือคำอธิบายจากเอกสาร (RAG)
-3. multi_hop: เมื่อคำถามซับซ้อนมากและต้องการข้อมูลจากหลายแหล่ง
-4. tavily_search: เมื่อไม่พบข้อมูลในฐานข้อมูลของเรา แล้วต้องการค้นหาข้อมูลจากอินเทอร์เน็ต
+Tools ที่ใช้ได้:
+1. sql_query: ค้นหาข้อมูลจากฐานข้อมูล DuckDB — ใช้สำหรับตัวเลข ตาราง รายการ รายชื่อ การเปรียบเทียบ จัดอันดับ และข้อมูลเชิงข้อเท็จจริงทุกประเภท (ใช้เป็นตัวเลือกแรก)
+2. vector_search: ค้นหาเอกสารตามความหมาย — ใช้เฉพาะนโยบาย กลยุทธ์ แนวคิด คำอธิบาย หรือเมื่อ sql_query ไม่พบข้อมูล
+3. multi_hop: แตกคำถามซับซ้อนเป็นคำถามย่อย — ใช้เมื่อคำถามต้องการข้อมูลจากหลายแหล่ง
+4. tavily_search: ค้นหาจากอินเทอร์เน็ต — ใช้เมื่อไม่พบข้อมูลในระบบเลย
+
+ขั้นตอนการตอบ (ReAct):
+1. Thought: คิดว่าควรใช้ tool ตัวไหน
+2. Action: เรียก tool ด้วยรูปแบบ JSON
+3. Observation: ผลลัพธ์จาก tool
+4. ... ทำซ้ำได้ถ้าจำเป็น
+5. Final Answer: คำตอบสุดท้ายเมื่อมีข้อมูลเพียงพอแล้ว
+
+รูปแบบการเรียก tool:
+Thought: <เหตุผลของคุณ>
+Action: {{"tool": "<tool_name>", "query": "<คำถามที่ต้องการค้นหาเป็นภาษาคน ห้ามเขียน SQL เองเด็ดขาด>"}}
+
+เมื่อพร้อมตอบ:
+Thought: <สรุปข้อมูลที่ได้>
+Final Answer: <คำตอบภาษาไทย>
 """
 
 # ---------------------------------------------------------------------------
-# Nodes
+# ReAct parsing helpers
 # ---------------------------------------------------------------------------
 
-async def agent_node(state: AgentState) -> Dict[str, Any]:
-    """Node that invokes the LLM to decide on actions or answer."""
-    messages = state["messages"]
+_FINAL_ANSWER_RE = re.compile(
+    r'Final Answer:\s*(.*)',
+    re.DOTALL,
+)
+
+
+def _parse_action(text: str) -> Optional[Dict[str, str]]:
+    """Extract the first Action JSON from LLM output.
     
-    llm = ChatOllama(
-        model=settings.OLLAMA_LLM_MODEL,
-        base_url=settings.OLLAMA_HOST,
-        temperature=getattr(settings, "AGENT_TEMPERATURE", 0.1)
-    )
-    llm_with_tools = llm.bind_tools(tools_list)
+    Handles nested braces by finding `Action:` and then extracting
+    the first balanced JSON object after it.
+    """
+    # Find where "Action:" appears
+    action_match = re.search(r'Action:\s*', text)
+    if not action_match:
+        return None
     
+    start = action_match.end()
+    # Find the opening brace
+    brace_start = text.find('{', start)
+    if brace_start == -1:
+        return None
+    
+    # Find matching closing brace
+    depth = 0
+    for i in range(brace_start, len(text)):
+        if text[i] == '{':
+            depth += 1
+        elif text[i] == '}':
+            depth -= 1
+            if depth == 0:
+                json_str = text[brace_start:i+1]
+                try:
+                    action = json.loads(json_str)
+                    if "tool" in action and "query" in action:
+                        return action
+                except json.JSONDecodeError:
+                    logger.warning("Failed to parse Action JSON: %s", json_str[:200])
+                return None
+    return None
+
+
+def _parse_final_answer(text: str) -> Optional[str]:
+    """Extract Final Answer from LLM output."""
+    match = _FINAL_ANSWER_RE.search(text)
+    if match:
+        return match.group(1).strip()
+    return None
+
+
+# ---------------------------------------------------------------------------
+# LLM call
+# ---------------------------------------------------------------------------
+
+async def _call_llm(prompt: str) -> str:
+    """Call Ollama generate API and return the response text."""
     try:
-        response = await llm_with_tools.ainvoke(messages)
+        async with httpx.AsyncClient(timeout=300.0, limits=HTTP_LIMITS) as client:
+            resp = await client.post(
+                f"{settings.OLLAMA_HOST}/api/generate",
+                json={
+                    "model": settings.OLLAMA_LLM_MODEL,
+                    "prompt": prompt,
+                    "stream": False,
+                    "options": {
+                        "temperature": getattr(settings, "AGENT_TEMPERATURE", 0.1),
+                        "num_predict": 1024,
+                    },
+                },
+            )
+            resp.raise_for_status()
+            result = resp.json().get("response", "").strip()
+            logger.info("LLM response (%d chars): %s", len(result), result[:300])
+            return result
     except Exception as e:
-        logger.error("LLM invoke failed: %s", e)
-        # Fallback if LLM fails
-        from langchain_core.messages import AIMessage
-        response = AIMessage(content="ขออภัย เกิดข้อผิดพลาดในการประมวลผลคำตอบ (LLM Error)")
-        
-    return {"messages": [response]}
+        logger.error("LLM call failed: %s", e)
+        return ""
 
-
-async def tool_node(state: AgentState) -> Dict[str, Any]:
-    """Node that executes chosen tools and updates context."""
-    messages = state["messages"]
-    session = state.get("session")
-    sources = list(state.get("sources", []))
-    sql_info = state.get("sql_info")
-    reasoning_trace = list(state.get("reasoning_trace", []))
-    
-    last_message = messages[-1]
-    new_messages = []
-    
-    if hasattr(last_message, "tool_calls") and last_message.tool_calls:
-        for tool_call in last_message.tool_calls:
-            tool_name = tool_call["name"]
-            tool_args = tool_call["args"]
-            query = tool_args.get("query", "")
-            
-            tool_obj = ALL_TOOLS.get(tool_name)
-            if not tool_obj:
-                new_messages.append(ToolMessage(
-                    tool_call_id=tool_call["id"],
-                    content=f"Error: Tool {tool_name} not found.",
-                    name=tool_name
-                ))
-                continue
-                
-            logger.info("LangGraph agent using tool: %s(%s)", tool_name, query[:80])
-            
-            try:
-                # Execute
-                if tool_name in ["vector_search", "multi_hop"]:
-                    res = await tool_obj.execute(query, session=session)
-                else:
-                    res = await tool_obj.execute(query)
-                    
-                obs = res.summary if res.success else f"Error: {res.error}"
-                
-                # Record reasoning trace
-                reasoning_trace.append({
-                    "action": tool_name,
-                    "action_input": query,
-                    "observation": obs[:500]
-                })
-                
-                # Extract specific state data for sources
-                if tool_name == "sql_query" and res.success:
-                    if not sql_info:
-                        sql_info = res.data
-                    sources.append({
-                        "type": "sql",
-                        "sql": res.data.get("sql", ""),
-                        "row_count": res.data.get("row_count", 0),
-                    })
-                elif tool_name == "vector_search" and res.success:
-                    for chunk in res.data.get("chunks", []):
-                        sources.append({
-                            "type": "vector",
-                            "filename": chunk.get("filename"),
-                            "chunk_index": chunk.get("chunk_index"),
-                            "similarity": chunk.get("similarity"),
-                            "source_kind": chunk.get("source_kind"),
-                        })
-                elif tool_name == "multi_hop" and res.success:
-                    for sr in res.data.get("sub_results", []):
-                        sources.append({
-                            "type": "multi_hop",
-                            "sub_question": sr.get("question"),
-                            "tool": sr.get("tool"),
-                        })
-                elif tool_name == "tavily_search" and res.success:
-                    for r in res.data.get("results", []):
-                        sources.append({
-                            "type": "web",
-                            "url": r.get("url"),
-                            "title": r.get("title")
-                        })
-                        
-                new_messages.append(ToolMessage(
-                    tool_call_id=tool_call["id"],
-                    content=str(obs),
-                    name=tool_name
-                ))
-            except Exception as e:
-                logger.error("Tool %s failed: %s", tool_name, e)
-                new_messages.append(ToolMessage(
-                    tool_call_id=tool_call["id"],
-                    content=f"Error executing tool {tool_name}: {e}",
-                    name=tool_name
-                ))
-            
-    return {
-        "messages": new_messages,
-        "sources": sources,
-        "sql_info": sql_info,
-        "reasoning_trace": reasoning_trace
-    }
-
-
-def should_continue(state: AgentState):
-    """Router function to decide whether to call tools or end."""
-    last_message = state["messages"][-1]
-    if hasattr(last_message, "tool_calls") and last_message.tool_calls:
-        return "tools"
-    return END
 
 # ---------------------------------------------------------------------------
-# Graph Compilation
+# Tool execution
 # ---------------------------------------------------------------------------
 
-def build_graph() -> StateGraph:
-    builder = StateGraph(AgentState)
-    builder.add_node("agent", agent_node)
-    builder.add_node("tools", tool_node)
-    
-    builder.set_entry_point("agent")
-    builder.add_conditional_edges("agent", should_continue, {"tools": "tools", END: END})
-    builder.add_edge("tools", "agent")
-    
-    return builder.compile()
+async def _execute_tool(
+    tool_name: str,
+    query: str,
+    session: AsyncSession,
+) -> Dict[str, Any]:
+    """Execute a tool by name and return structured result info."""
+    tool_obj = ALL_TOOLS.get(tool_name)
+    if not tool_obj:
+        return {"observation": f"Error: Tool '{tool_name}' not found.", "success": False}
+
+    logger.info("Agent using tool: %s(%s)", tool_name, query[:80])
+
+    try:
+        if tool_name in ["vector_search", "multi_hop"]:
+            res = await tool_obj.execute(query, session=session)
+        else:
+            res = await tool_obj.execute(query)
+
+        obs = res.summary if res.success else f"Error: {res.error}"
+        return {
+            "observation": obs,
+            "success": res.success,
+            "data": res.data,
+            "tool_name": tool_name,
+        }
+    except Exception as e:
+        logger.error("Tool %s failed: %s", tool_name, e)
+        return {"observation": f"Error executing tool {tool_name}: {e}", "success": False}
+
+
+# ---------------------------------------------------------------------------
+# Source extraction helpers
+# ---------------------------------------------------------------------------
+
+def _extract_sources(tool_name: str, data: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Extract source metadata from tool result data."""
+    sources = []
+    if tool_name == "sql_query":
+        sources.append({
+            "type": "sql",
+            "sql": data.get("sql", ""),
+            "row_count": data.get("row_count", 0),
+        })
+    elif tool_name == "vector_search":
+        for chunk in data.get("chunks", []):
+            sources.append({
+                "type": "vector",
+                "filename": chunk.get("filename"),
+                "chunk_index": chunk.get("chunk_index"),
+                "similarity": chunk.get("similarity"),
+                "source_kind": chunk.get("source_kind"),
+            })
+    elif tool_name == "multi_hop":
+        for sr in data.get("sub_results", []):
+            sources.append({
+                "type": "multi_hop",
+                "sub_question": sr.get("question"),
+                "tool": sr.get("tool"),
+            })
+    elif tool_name == "tavily_search":
+        for r in data.get("results", []):
+            sources.append({
+                "type": "web",
+                "url": r.get("url"),
+                "title": r.get("title"),
+            })
+    return sources
+
 
 # ---------------------------------------------------------------------------
 # Public API — main agent entry point
@@ -237,7 +228,7 @@ async def agent_query(
     question: str,
     session: AsyncSession,
 ) -> Dict[str, Any]:
-    """Main agent entry point using LangGraph.
+    """Main agent entry point using a plain LLM ReAct loop.
 
     Returns
     -------
@@ -246,9 +237,7 @@ async def agent_query(
            "reasoning_trace": list}``
     """
     # ------------------------------------------------------------------
-    # Fast-path: try direct structured answer before invoking LangGraph.
-    # This catches simple numeric look-ups (e.g. ROA ปี 2567) instantly
-    # without relying on the LLM to pick the right tool.
+    # Fast-path: try direct structured answer before invoking the LLM.
     # ------------------------------------------------------------------
     try:
         from backend.services.rag import try_direct_structured_answer
@@ -269,43 +258,91 @@ async def agent_query(
     except Exception as e:
         logger.warning("Direct structured answer failed, falling back to agent: %s", e)
 
-    graph = build_graph()
-    
-    initial_state = {
-        "messages": [
-            SystemMessage(content=SYSTEM_PROMPT),
-            HumanMessage(content=question)
-        ],
-        "session": session,
-        "sources": [],
-        "sql_info": None,
-        "reasoning_trace": []
-    }
-    
-    # Run the graph
-    max_iter = getattr(settings, "AGENT_MAX_ITERATIONS", 5)
-    try:
-        final_state = await graph.ainvoke(initial_state, config={"recursion_limit": max_iter * 2})
-    except Exception as e:
-        logger.error("LangGraph execution failed: %s", e)
+    # ------------------------------------------------------------------
+    # Build initial prompt
+    # ------------------------------------------------------------------
+    conversation = f"{SYSTEM_PROMPT}\n\nQuestion: {question}\n"
+
+    max_iterations = getattr(settings, "AGENT_MAX_ITERATIONS", 5)
+    reasoning_trace: List[Dict[str, Any]] = []
+    sources: List[Dict[str, Any]] = []
+    sql_info: Optional[Dict[str, Any]] = None
+
+    llm_output = ""
+    for iteration in range(max_iterations):
+        logger.info("ReAct iteration %d/%d", iteration + 1, max_iterations)
+        llm_output = await _call_llm(conversation)
+
+        if not llm_output:
+            logger.warning("LLM returned empty response at iteration %d", iteration + 1)
+            break
+
+        # Check for tool call first (prioritise action over final answer)
+        action = _parse_action(llm_output)
+        if action:
+            tool_name = action["tool"]
+            query = action["query"]
+            logger.info("ReAct action: %s(%s)", tool_name, query[:80])
+
+            result = await _execute_tool(tool_name, query, session)
+            obs = result["observation"]
+
+            # Record trace
+            reasoning_trace.append({
+                "action": tool_name,
+                "action_input": query,
+                "observation": obs[:500],
+            })
+
+            # Collect sources & sql_info
+            if result.get("success") and result.get("data"):
+                sources.extend(_extract_sources(tool_name, result["data"]))
+                if tool_name == "sql_query" and sql_info is None:
+                    sql_info = result["data"]
+
+            # Append to conversation for next iteration
+            conversation += f"{llm_output}\nObservation: {obs}\n"
+            continue
+
+        # Check for Final Answer
+        final_answer = _parse_final_answer(llm_output)
+        if final_answer:
+            logger.info("ReAct final answer at iteration %d", iteration + 1)
+            return {
+                "answer": final_answer,
+                "method": _infer_method(reasoning_trace),
+                "sources": sources,
+                "sql_info": sql_info,
+                "reasoning_trace": reasoning_trace,
+            }
+
+        # No action and no final answer — treat the whole output as the answer
+        logger.info("ReAct: no action/final answer parsed, using raw output")
+        answer = llm_output.strip()
+        # Try to clean up any Thought: prefix
+        if "Thought:" in answer:
+            parts = answer.split("Thought:")
+            answer = parts[-1].strip()
         return {
-            "answer": f"ขออภัย เกิดข้อผิดพลาดในการทำงานของระบบ (Graph Error: {e})",
-            "method": "error",
-            "sources": [],
-            "sql_info": None,
-            "reasoning_trace": []
+            "answer": answer,
+            "method": _infer_method(reasoning_trace),
+            "sources": sources,
+            "sql_info": sql_info,
+            "reasoning_trace": reasoning_trace,
         }
-    
-    final_message = final_state["messages"][-1].content
-    method = _infer_method(final_state["reasoning_trace"])
-    
+
+    # Exhausted iterations — use last LLM output
+    final_answer = _parse_final_answer(llm_output) if llm_output else None
+    answer = final_answer or llm_output or "ขออภัย ระบบไม่สามารถหาคำตอบได้ในขณะนี้"
+
     return {
-        "answer": final_message,
-        "method": method,
-        "sources": final_state["sources"],
-        "sql_info": final_state["sql_info"],
-        "reasoning_trace": final_state["reasoning_trace"],
+        "answer": answer,
+        "method": _infer_method(reasoning_trace),
+        "sources": sources,
+        "sql_info": sql_info,
+        "reasoning_trace": reasoning_trace,
     }
+
 
 def _infer_method(trace: List[Dict[str, Any]]) -> str:
     """Infer the primary method used from the reasoning trace."""
@@ -325,4 +362,4 @@ def _infer_method(trace: List[Dict[str, Any]]) -> str:
         return "sql"
     if "vector_search" in tools_used:
         return "vector"
-    return "langgraph"
+    return "agent"

@@ -56,6 +56,7 @@ class SQLTool:
 
     async def execute(self, question: str) -> ToolResult:
         """Generate SQL via LLM, execute on DuckDB, return results."""
+
         schema_desc = get_schema_description()
         sql = await self._generate_sql(question, schema_desc)
 
@@ -108,15 +109,27 @@ class SQLTool:
             prompt += f"\nPrevious attempt failed:\n{error_feedback}\nPlease fix the query.\n\n"
 
         prompt += (
-            f"Question: {question}\n\n"
-            "Rules:\n"
-            "- Return ONLY the SQL query, no explanation\n"
-            "- Use numeric_value for math/comparisons, raw_value for display\n"
-            "- ALWAYS include the 'unit' (or equivalent) column in your SELECT statement\n"
-            "- Use LIKE for fuzzy Thai label matching\n"
-            "- DuckDB uses standard SQL (no ->> operator, use standard column access)\n"
+            "CRITICAL RULES:\n"
+            "1. NEVER JOIN fact_financial_metrics with dim_table_rows. They are independent tables.\n"
+            "2. For listing companies, investments, or shareholdings → use dim_table_rows ONLY.\n"
+            "3. For financial figures with years (สินทรัพย์, กำไร, ROA, etc.) → use fact_financial_metrics ONLY.\n"
+            "4. ALWAYS include WHERE table_name LIKE '%keyword%' when querying either table.\n"
+            "5. 'อันดับแรก' or 'แรก' = first by row_index ASC. 'มากที่สุด' or 'สูงสุด' = sort by value DESC.\n"
+            "6. Use LIKE '%keyword%' for fuzzy Thai matching.\n"
+            "7. Return ONLY the SQL query, no explanation.\n\n"
+            "EXAMPLES:\n\n"
+            "Q: การลงทุนของธนาคารในบริษัทอื่น มีบริษัทอะไรบ้าง 2 อันดับแรก?\n"
+            "SQL: SELECT DISTINCT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%การลงทุนของธนาคารในบริษัทอื่น%' AND row_index < 2 ORDER BY row_index, col_name;\n\n"
+            "Q: บริษัทไหนที่ธนาคารถือหุ้นมากที่สุด?\n"
+            "SQL: SELECT row_label, col_value FROM dim_table_rows WHERE table_name LIKE '%การลงทุน%' AND col_name LIKE '%จำนวนหุ้น%' ORDER BY CAST(REPLACE(col_value, ',', '') AS DOUBLE) DESC LIMIT 1;\n\n"
+            "Q: สินทรัพย์รวมปี 2567 เท่าไร?\n"
+            "SQL: SELECT row_label, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' AND metric_year = '2567';\n\n"
+            "Q: ROA ปี 2566 กับ 2567 เปรียบเทียบกัน?\n"
+            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%ROA%' AND metric_year IN ('2566','2567') ORDER BY metric_year;\n\n"
+            f"Q: {question}\n"
             "SQL:"
         )
+
 
         try:
             async with httpx.AsyncClient(timeout=60.0, limits=HTTP_LIMITS) as client:
@@ -154,6 +167,20 @@ class SQLTool:
         for row in rows[:10]:
             parts = [f"{k}={v}" for k, v in row.items()]
             lines.append(", ".join(parts))
+        return "\n".join(lines)
+
+    @staticmethod
+    def _format_lookup_results(result: Dict[str, Any]) -> str:
+        """Format grouped lookup table results for the agent."""
+        grouped = result.get("grouped", {})
+        if not grouped:
+            return "ไม่พบข้อมูลที่ตรงกับคำถาม"
+
+        lines = []
+        for label, cols in grouped.items():
+            lines.append(f"{label}")
+            for col_name, col_value in cols.items():
+                lines.append(f"  - {col_name}: {col_value}")
         return "\n".join(lines)
 
 
