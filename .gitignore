@@ -1,0 +1,12 @@
+.venv/
+.venv_app/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+.env
+output/
+output*/
+scrape_output/

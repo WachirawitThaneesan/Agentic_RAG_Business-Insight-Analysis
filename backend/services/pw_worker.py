@@ -22,6 +22,9 @@ from urllib.parse import urljoin, urlparse, unquote, parse_qs
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeoutError
 from bs4 import BeautifulSoup
 
+from backend.services.cloudflare_solver import CloudflareSolver
+from backend.services.recaptcha_solver import RecaptchaSolver
+
 
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -282,6 +285,33 @@ def _goto_safely(page, url: str, timeout_ms: int = 90_000) -> None:
     except PWTimeoutError:
         pass
     page.wait_for_timeout(1_200)
+    _attempt_bot_challenge_solve(page)
+
+
+def _attempt_bot_challenge_solve(page) -> None:
+    """Try to solve Cloudflare and reCAPTCHA challenges on the current page."""
+    try:
+        cf_result = CloudflareSolver(page).solve()
+        if cf_result.solved:
+            page.wait_for_timeout(1500)
+            try:
+                page.wait_for_load_state("networkidle", timeout=8_000)
+            except PWTimeoutError:
+                pass
+    except Exception:
+        pass
+
+    try:
+        if page.locator('iframe[title="reCAPTCHA"]').count() > 0:
+            solver = RecaptchaSolver(page)
+            if solver.solve_captcha(max_retries=3):
+                try:
+                    page.wait_for_load_state("networkidle", timeout=10_000)
+                except PWTimeoutError:
+                    pass
+                time.sleep(2.0)
+    except Exception:
+        pass
 
 
 # ── Google Search ────────────────────────────────────────────

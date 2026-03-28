@@ -29,6 +29,9 @@ class Settings(BaseSettings):
     TYPHOON_OCR_TEMPERATURE: float = 0.1
     TYPHOON_OCR_TOP_P: float = 0.6
     TYPHOON_OCR_REPETITION_PENALTY: float = 1.2
+    TYPHOON_OCR_RENDER_DPI: int = 300
+    TYPHOON_OCR_REQUEST_TIMEOUT: float = 180.0
+    TYPHOON_OCR_SLEEP_SECONDS: float = 0.7
 
     # Table Extraction Pipeline
     TABLE_DETECTOR_BACKEND: str = "tatr"  # "opencv" or "tatr"

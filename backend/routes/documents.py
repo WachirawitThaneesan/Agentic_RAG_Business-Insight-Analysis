@@ -357,62 +357,23 @@ async def upload_document(
                     await db.commit()
                     
                     import fitz  # PyMuPDF
-                    from PIL import Image
-                    import io
-                    from backend.services.table_extractor import extract_table_from_image
                     
                     # Load page with PyMuPDF
                     doc_fitz = fitz.open(filepath)
                     page_fitz = doc_fitz.load_page(page_num - 1)  # 0-indexed
                     
-                    from text import normalize_text
-                    from backend.services.table_detector import detect_tables
-                    from PIL import Image
-                    import io
-
-                    # 1. Native text extraction check
-                    raw_native = page_fitz.get_text("text")
-                    native_text = normalize_text(raw_native)
-
-                    # 2. Render page image & detect tables with TATR
+                    # Always render the PDF page to PNG and OCR that page image.
                     zoom = 300 / 72  # 300 DPI 
                     mat = fitz.Matrix(zoom, zoom)
                     pix = page_fitz.get_pixmap(matrix=mat)
                     img_data = pix.tobytes("png")
-                    page_image = Image.open(io.BytesIO(img_data)).convert("RGB")
-                    
-                    tables_detected = False
-                    try:
-                        detection = detect_tables(page_image, backend="tatr")
-                        tables_detected = len(detection.bboxes) > 0
-                    except Exception as det_err:
-                        print(f"⚠️ Table detection failed for page {page_num}: {det_err}")
-
-                    # 3. Route to Full-Page Vision OCR if it's a scanned page OR contains a table
-                    #    Send rendered PAGE IMAGE (not full PDF) to avoid context confusion
-                    if len(native_text) < 50 or tables_detected:
-                        ocr_result = await ocr_service.extract_from_image(
-                            img_data,
-                            mime_type="image/png",
-                            filename=f"page_{page_num}.png",
-                        )
-                        
-                        # If we have good native text but triggered OCR just for tables,
-                        # replace the OCR text blocks with our clean native text
-                        if len(native_text) >= 50:
-                            ocr_result["text_blocks"] = [block for block in native_text.split('\n\n') if block.strip()]
-                    else:
-                        # 4. Fast path: Native PDF text, zero API calls
-                        ocr_result = {
-                            "text_blocks": [block for block in native_text.split('\n\n') if block.strip()],
-                            "tables": [],
-                            "pages": [{"page": page_num, "markdown": native_text}],
-                            "raw_tables": [],
-                            "errors": []
-                        }
+                    ocr_result = await ocr_service.extract_from_image(
+                        img_data,
+                        mime_type="image/png",
+                        filename=f"page_{page_num}.png",
+                    )
                     
                     doc_fitz.close()
-                    # =======================================================
 
                     batch_result = await _ingest_ocr_batch(
                         db,
