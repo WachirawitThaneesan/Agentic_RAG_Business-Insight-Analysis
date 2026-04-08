@@ -218,7 +218,8 @@ async def _find_best_structured_row(question: str, session: AsyncSession) -> Opt
                 if not year_headers:
                     continue
 
-                if score > best_score:
+                # Require a minimum score of 40 to prevent weak matches (like just matching the word "ธนาคาร")
+                if score > best_score and score >= 40:
                     best_score = score
                     best_match = {
                         "document_id": document_id,
@@ -238,6 +239,9 @@ async def try_direct_structured_answer(
     question: str,
     session: AsyncSession,
 ) -> Optional[Dict[str, Any]]:
+    # FORCE Disable fast-path to enforce use of LLM Agent and SQL generation
+    return None
+    
     best_match = await _find_best_structured_row(question, session)
     question_text = str(question or "")
 
@@ -305,6 +309,7 @@ async def try_direct_structured_answer(
                         "table_name": best_match["table_name"],
                         "row_index": best_match["row_index"],
                         "row_label": label_value,
+                        "row_count": 1,
                     }
                 ],
                 "sql_info": None,
@@ -338,6 +343,7 @@ async def try_direct_structured_answer(
                         "table_name": best_match["table_name"],
                         "row_index": best_match["row_index"],
                         "row_label": label_value,
+                        "row_count": 1,
                     }
                 ],
                 "sql_info": None,
@@ -356,6 +362,7 @@ async def try_direct_structured_answer(
                     "table_name": best_match["table_name"],
                     "row_index": best_match["row_index"],
                     "row_label": label_value,
+                    "row_count": 1,
                 }
             ],
             "sql_info": None,
@@ -379,6 +386,7 @@ async def try_direct_structured_answer(
                         "table_name": best_match["table_name"],
                         "row_index": best_match["row_index"],
                         "row_label": label_value,
+                        "row_count": 1,
                     }
                 ],
                 "sql_info": None,

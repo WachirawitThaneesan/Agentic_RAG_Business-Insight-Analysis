@@ -22,6 +22,8 @@ from ragas.metrics import (
     context_recall,
     faithfulness,
     answer_relevancy,
+    answer_correctness,
+    answer_similarity
 )
 
 from backend.config import get_settings
@@ -33,17 +35,29 @@ async def run_evaluation(data: list[dict], output_csv: str = "ragas_evaluation_r
     """
     Run Ragas evaluation on a list of samples.
     """
-    from langchain_ollama import ChatOllama, OllamaEmbeddings
+    from langchain_ollama import OllamaEmbeddings
+    from langchain_openai import ChatOpenAI
     from ragas.llms import LangchainLLMWrapper
     from ragas.embeddings import LangchainEmbeddingsWrapper
     from ragas.run_config import RunConfig
     
-    logger.info("Configuring Ragas to use local Ollama models (LLM and Embeddings)...")
+    logger.info("Configuring Ragas evaluator to use OpenTyphoon 30B v2.5 (Cloud) and Local Nomic Embeddings...")
     
-    local_llm = ChatOllama(model=settings.OLLAMA_LLM_MODEL, base_url=settings.OLLAMA_HOST, temperature=0.1)
+    # 1. Evaluator (Judge): Use Typhoon 30B v2.5 for high-precision JSON parsing
+    typhoon_api_url = settings.TYPHOON_OCR_ENDPOINT.replace("/ocr", "") if settings.TYPHOON_OCR_ENDPOINT else "https://api.opentyphoon.ai/v1"
+    evaluator_llm = ChatOpenAI(
+        model="typhoon-v2.5-30b-a3b-instruct",
+        api_key=settings.TYPHOON_API_KEY,
+        base_url=typhoon_api_url,
+        temperature=0.1,
+        max_tokens=4096,
+        max_retries=2
+    )
+    
+    # 2. Embeddings: Keep using Nomic (Local) since chunks were embedded with it
     local_embeddings = OllamaEmbeddings(model=settings.EMBED_MODEL, base_url=settings.OLLAMA_HOST)
     
-    ragas_llm = LangchainLLMWrapper(local_llm)
+    ragas_llm = LangchainLLMWrapper(evaluator_llm)
     ragas_emb = LangchainEmbeddingsWrapper(local_embeddings)
 
     df = pd.DataFrame(data)
@@ -53,8 +67,8 @@ async def run_evaluation(data: list[dict], output_csv: str = "ragas_evaluation_r
     has_ground_truth = all(bool(str(d.get("ground_truth", "")).strip()) for d in data)
     
     if has_ground_truth:
-        logger.info("Ground truth is properly provided. Running ALL 4 metrics.")
-        metrics = [context_precision, context_recall, faithfulness, answer_relevancy]
+        logger.info("Ground truth is properly provided. Running ALL metrics (Including relaxed semantic metrics).")
+        metrics = [context_precision, context_recall, faithfulness, answer_relevancy, answer_similarity, answer_correctness]
     else:
         logger.warning("Some records are missing 'ground_truth'. Running only reference-less metrics (Faithfulness, Answer Relevancy).")
         metrics = [faithfulness, answer_relevancy]
@@ -78,8 +92,11 @@ async def run_evaluation(data: list[dict], output_csv: str = "ragas_evaluation_r
     print("\n" + "="*40)
     print("      Ragas Evaluation Scores     ")
     print("="*40)
-    for metric_name, score in result.items():
-        print(f"{metric_name:20s}: {score:.4f}")
+    # Safely compute mean from dataframe due to changing ragas EvaluationResult API
+    for metric in metrics:
+        if metric.name in result_df.columns:
+            score = result_df[metric.name].mean()
+            print(f"{metric.name:20s}: {score:.4f}")
     print("="*40 + "\n")
     
     return result

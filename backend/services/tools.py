@@ -115,24 +115,31 @@ class SQLTool:
             "3. For financial figures with years (สินทรัพย์, กำไร, ROA, etc.) → use fact_financial_metrics ONLY.\n"
             "4. ALWAYS include WHERE table_name LIKE '%keyword%' when querying either table.\n"
             "5. 'อันดับแรก' or 'แรก' = first by row_index ASC. 'มากที่สุด' or 'สูงสุด' = sort by value DESC.\n"
-            "6. Use LIKE '%keyword%' for fuzzy Thai matching.\n"
-            "7. Return ONLY the SQL query, no explanation.\n\n"
+            "6. For row_label and col_name, NEVER use strict '='. ALWAYS use LIKE '%keyword%' because data often has prefixes like '15. '.\n"
+            "7. Return ONLY the SQL query, no explanation.\n"
+            "8. For Thai text matching, ALWAYS break long sentences into keywords and join them with `AND` (e.g., `col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%'`). NEVER use `OR` for phrase chunking, as it will match wrong tables.\n"
+            "9. NEVER use `ORDER BY CAST(REPLACE(col_value...` unless you ALSO filter by `col_name` that contains a numeric value (e.g., `col_name LIKE '%จำนวนหุ้น%'`).\n"
+            "10. EAV DATA RULE: To find the share count ('จำนวนหุ้น') of companies matching a specific string like 'บัตรเครดิต', YOU MUST USE A SUBQUERY: `col_name LIKE '%จำนวนหุ้น%' AND row_label IN (SELECT row_label FROM dim_table_rows WHERE col_value LIKE '%บัตรเครดิต%')`.\n"
+            "11. NEVER use aggregate functions like COUNT(), MAX() or DISTINCT if the query also asks for names/details (e.g. 'มีกี่บริษัท และบริษัทใดบ้าง'). Just SELECT the raw rows (e.g. `SELECT row_label, col_name, col_value`) and let the Python Agent count them.\n"
+            "12. NEVER cast strings to `INT` (e.g. `CAST(val AS INT)`). Financial numbers easily exceed 2 billion and will crash the database. ALWAYS cast to `DOUBLE`.\n\n"
             "EXAMPLES:\n\n"
+            "Q: จำนวนหุ้นสามัญที่ธนาคารถือใน บริษัทหลักทรัพย์จัดการกองทุน มีกี่หุ้น?\n"
+            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND row_label LIKE '%บริษัทหลักทรัพย์จัดการกองทุน%' AND col_name LIKE '%จำนวนหุ้น%';\n\n"
+            "Q: บริษัทที่ทำธุรกิจ บัตรเครดิตและสินเชื่อส่วนบุคคล มีกี่บริษัท บริษัทใดบ้าง และบริษัทใดมีหุ้นเยอะสุด?\n"
+            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND col_name LIKE '%จำนวนหุ้น%' AND row_label IN (SELECT row_label FROM dim_table_rows WHERE col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%') ORDER BY CAST(REPLACE(col_value, ',', '') AS DOUBLE) DESC;\n\n"
+            "Q: บริษัทที่บจก. (ธนาคาร) ถือหุ้นไม่ถึง 100% มีอะไรบ้าง?\n"
+            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND (col_name LIKE '%สัดส่วน%' OR col_name LIKE '%ร้อยละ%') AND CAST(REPLACE(REPLACE(col_value, ',', ''), '%', '') AS DOUBLE) < 100 ORDER BY row_index;\n\n"
             "Q: การลงทุนของธนาคารในบริษัทอื่น มีบริษัทอะไรบ้าง 2 อันดับแรก?\n"
-            "SQL: SELECT DISTINCT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%การลงทุนของธนาคารในบริษัทอื่น%' AND row_index < 2 ORDER BY row_index, col_name;\n\n"
-            "Q: บริษัทไหนที่ธนาคารถือหุ้นมากที่สุด?\n"
-            "SQL: SELECT row_label, col_value FROM dim_table_rows WHERE table_name LIKE '%การลงทุน%' AND col_name LIKE '%จำนวนหุ้น%' ORDER BY CAST(REPLACE(col_value, ',', '') AS DOUBLE) DESC LIMIT 1;\n\n"
+            "SQL: SELECT DISTINCT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND row_index < 2 ORDER BY row_index, col_name;\n\n"
             "Q: สินทรัพย์รวมปี 2567 เท่าไร?\n"
             "SQL: SELECT row_label, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' AND metric_year = '2567';\n\n"
-            "Q: ROA ปี 2566 กับ 2567 เปรียบเทียบกัน?\n"
-            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%ROA%' AND metric_year IN ('2566','2567') ORDER BY metric_year;\n\n"
             f"Q: {question}\n"
             "SQL:"
         )
 
 
         try:
-            async with httpx.AsyncClient(timeout=60.0, limits=HTTP_LIMITS) as client:
+            async with httpx.AsyncClient(timeout=120.0, limits=HTTP_LIMITS) as client:
                 resp = await client.post(
                     f"{settings.OLLAMA_HOST}/api/generate",
                     json={
@@ -164,7 +171,7 @@ class SQLTool:
             return "ไม่พบข้อมูลที่ตรงกับคำถาม"
 
         lines = []
-        for row in rows[:10]:
+        for row in rows[:50]:
             parts = [f"{k}={v}" for k, v in row.items()]
             lines.append(", ".join(parts))
         return "\n".join(lines)
@@ -326,7 +333,7 @@ class MultiHopTool:
         )
 
         try:
-            async with httpx.AsyncClient(timeout=60.0, limits=HTTP_LIMITS) as client:
+            async with httpx.AsyncClient(timeout=120.0, limits=HTTP_LIMITS) as client:
                 resp = await client.post(
                     f"{settings.OLLAMA_HOST}/api/generate",
                     json={

@@ -1,0 +1,7 @@
+{
+  "answer": "ขออภัย ระบบไม่สามารถหาคำตอบได้ในขณะนี้",
+  "method": "agent",
+  "sources": [],
+  "sql_info": null,
+  "reasoning_trace": []
+}

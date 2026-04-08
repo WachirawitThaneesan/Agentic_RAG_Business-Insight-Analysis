@@ -1,0 +1,6 @@
+typhoon-v2.5-30b-a3b-instruct
+typhoon-ocr-v1.5
+typhoon-ocr
+typhoon-ocr-preview
+typhoon-asr-realtime
+typhoon-isan-asr-realtime
