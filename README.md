@@ -1,104 +1,51 @@
-# Project_1
+# Agentic RAG Business Insight Analysis (Intelligent Financial Data Agent)
 
-This repository is a FastAPI app for:
+This repository contains a FastAPI-based **Intelligent Financial Data Agent** that implements an advanced Agentic Retrieval-Augmented Generation (RAG) system. It is designed to extract, process, and analyze Thai financial documents using a combination of LLMs, deterministic SQL queries, and robust web scraping techniques.
 
-- uploading PDFs and images
-- OCR with Typhoon OCR
-- extracting tables and raw OCR pages
-- Thai text cleaning and chunking
-- storing chunks in Postgres/pgvector
-- syncing table data into DuckDB
-- scraping websites with Playwright
+## Key Features
 
-## OCR pipeline
+### 1. Agentic RAG Architecture (ReAct & LangGraph)
+- **Hybrid Retrieval Strategy**: Dynamically routes queries between a Fast-Path (direct vector search) and an Agentic ReAct Loop (complex reasoning).
+- **LangGraph Orchestrator**: Manages state and tool execution flows for the agent.
+- **Self-Correction Logic**: Built-in mechanisms (`backend/services/self_correction.py`) to validate and correct outputs before returning them to the user.
 
-The OCR path in the app is now:
+### 2. Multi-Tool Integration
+The agent utilizes specialized tools (`backend/services/tools.py`) to answer queries:
+- `vector_search`: For semantic similarity search using PostgreSQL + pgvector.
+- `sql_query`: For precise financial metric lookups and aggregations using DuckDB.
+- `multi_hop`: For complex questions requiring reasoning across multiple documents.
+- `tavily_search`: For real-time web search capabilities.
 
-- PDF page -> render to PNG
-- PNG -> Typhoon OCR
-- Markdown -> text blocks + tables
+### 3. Advanced Data Ingestion & OCR
+- **Single-Pass Typhoon OCR**: Converts PDF pages to PNG and processes them through OpenTyphoon API for high-accuracy Thai text and table extraction.
+- **Thai Text Normalization**: Custom post-processing and cleaning routines (`thai_cleaner.py`, `thai_postprocessor.py`) ensure data quality before embedding.
+- **Semantic Chunking**: Intelligent text chunking strategies for optimal vector storage.
 
-For uploaded PDFs, every page goes through Typhoon OCR. The old native-text skip path is removed.
+### 4. Structured Data Warehouse
+- **DuckDB Integration**: Automatically syncs extracted table data from documents into a fast, in-process DuckDB warehouse for accurate SQL querying.
 
-## Scraping challenge solvers
+### 5. Web Scraping with Anti-Bot Solvers
+Robust Playwright-based scraper (`backend/services/pw_worker.py`) capable of bypassing protections:
+- **Cloudflare Challenge Solver**: Detects and naturally solves Turnstile/Cloudflare challenges.
+- **reCAPTCHA Audio Solver**: Falls back to downloading and transcribing audio challenges via FFmpeg when visual challenges fail.
 
-The Playwright worker now includes:
+### 6. Background Processing & Evaluation
+- **Celery & Redis**: Asynchronous task queue for heavy workloads like OCR and scraping.
+- **Ragas Evaluation**: Built-in tools to measure system performance (Context Precision, Recall, Faithfulness).
 
-- Cloudflare challenge handling
-- reCAPTCHA audio solving
+## System Requirements
 
-### reCAPTCHA behavior
+- **Python**: 3.10+
+- **PostgreSQL**: With `pgvector` extension
+- **Redis**: For Celery message broker
+- **Ollama**: Local LLM runner (e.g., Qwen2.5)
+- **DuckDB**: (In-process, installed via pip)
+- **FFmpeg**: Required on system PATH for the reCAPTCHA audio solver.
 
-The solver flow is:
+## Setup & Installation
 
-1. Click the reCAPTCHA circle first.
-2. If that does not solve it, open the audio challenge.
-3. Download the audio.
-4. Convert it with FFmpeg.
-5. Transcribe it and submit the answer.
-
-Implementation:
-
-- `backend/services/recaptcha_solver.py`
-
-### Cloudflare behavior
-
-The solver flow is:
-
-1. Detect the Cloudflare challenge frame.
-2. Click the checkbox area like a human.
-3. Wait for either `cf_clearance` or a Turnstile token.
-
-Implementation:
-
-- `backend/services/cloudflare_solver.py`
-
-The worker calls these solvers centrally from:
-
-- `backend/services/pw_worker.py`
-
-These solvers are used by the scraping pipeline:
-
-- `backend/routes/scraping.py`
-- `backend/services/scraper.py`
-- `backend/services/pw_worker.py`
-
-## Python environments
-
-Use separate environments:
-
-- Full app environment: `requirements.txt`
-- OCR-only utility environment: `requirements.ocr.txt`
-
-## Full app setup
-
-Create a fresh virtual environment and install:
-
-```powershell
-python -m venv .venv_app
-python -m pip --python .\.venv_app install pip==26.0
-python -m pip --python .\.venv_app install -r requirements.txt
-python -m playwright install chromium
-```
-
-## Required services
-
-The app needs more than Python packages:
-
-1. PostgreSQL with pgvector
-2. Redis
-3. Ollama
-4. Typhoon OCR API access
-
-Start Postgres and Redis with:
-
-```powershell
-docker compose up -d
-```
-
-## Environment variables
-
-Create a `.env` file with your own values:
+### 1. Environment Variables
+Create a `.env` file in the root directory:
 
 ```env
 DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5436/ragdb
@@ -114,27 +61,39 @@ APP_HOST=0.0.0.0
 APP_PORT=8000
 ```
 
-## Run the app
+### 2. Services (Docker)
+Start the required PostgreSQL (with pgvector) and Redis services:
+```powershell
+docker compose up -d
+```
 
+### 3. Python Environment
+Create a virtual environment and install dependencies:
+```powershell
+python -m venv .venv_app
+.\.venv_app\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m playwright install chromium
+```
+
+## Running the Application
+
+### Start the FastAPI Server
 ```powershell
 .\.venv_app\Scripts\Activate.ps1
 python -m backend.main
 ```
+The API will be available at `http://localhost:8000`. The frontend SPA (if built) is served at the root `/`.
 
-## Extra system dependencies
+### Start Celery Worker (Optional but recommended for async tasks)
+```powershell
+.\.venv_app\Scripts\Activate.ps1
+celery -A backend.tasks worker --loglevel=info -P solo
+```
 
-For the reCAPTCHA audio solver, install:
-
-- `ffmpeg`
-- `ffprobe`
-
-On Windows, either:
-
-- put `ffmpeg.exe` and `ffprobe.exe` in the project working directory, or
-- add them to your system `PATH`
-
-## Notes
-
-- `.env` is gitignored and should not be committed.
-- If someone else pulls this repo, they must create their own `.env`.
-- Thai text may display incorrectly in PowerShell even when saved files are valid UTF-8.
+## Project Structure
+- `backend/main.py`: FastAPI entrypoint.
+- `backend/routes/`: API endpoint definitions (documents, scraping, query, warehouse).
+- `backend/services/`: Core logic (Agent, OCR, Scraping, RAG, DuckDB, Self-Correction).
+- `backend/tasks.py`: Celery tasks for background processing.
+- `frontend/`: (Optional) Static files for the user interface.
