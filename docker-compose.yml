@@ -1,3 +1,7 @@
+# Pin the project name so `docker compose up` always reuses the same containers
+# and data volume (project1_pgdata) regardless of how the folder is named.
+name: project1
+
 services:
   pgvector:
     image: pgvector/pgvector:pg16

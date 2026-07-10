@@ -77,6 +77,9 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
+        # Ignore env vars that belong to other tools (e.g. POSTGRES_* consumed by
+        # docker-compose) instead of raising 'extra_forbidden'.
+        extra = "ignore"
 
 
 @lru_cache()
