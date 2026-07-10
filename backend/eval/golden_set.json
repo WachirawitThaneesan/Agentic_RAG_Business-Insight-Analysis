@@ -1,0 +1,32 @@
+[
+    {
+        "question": "ผลตอบแทนต่อสินทรัพย์ (ROA) ปี 2567 เท่ากับเท่าไร?",
+        "ground_truth": "1.10%",
+        "note": "fact_financial_metrics — งบการเงินรวมอัตราส่วนทางการเงิน"
+    },
+    {
+        "question": "ROA ปี 2566 มีค่าเท่าไร?",
+        "ground_truth": "1.22%",
+        "note": "fact_financial_metrics"
+    },
+    {
+        "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ ROA สูงสุด และมีค่าเท่าไร?",
+        "ground_truth": "ปี 2564 ที่ 1.32%",
+        "note": "fact_financial_metrics — max over years"
+    },
+    {
+        "question": "บริษัท บัตรกรุงศรีอยุธยา จำกัด ธนาคารถือหุ้นอยู่กี่หุ้น?",
+        "ground_truth": "590,552,000 หุ้น",
+        "note": "dim_table_rows / v_table_rows_wide"
+    },
+    {
+        "question": "Hattha Bank PLC. ทำธุรกิจประเภทใด?",
+        "ground_truth": "ธนาคารพาณิชย์",
+        "note": "v_table_rows_wide — attribute lookup"
+    },
+    {
+        "question": "บริษัทที่ธนาคารลงทุนซึ่งทำธุรกิจสินเชื่อรถยนต์ คือบริษัทใด และถือหุ้นกี่หุ้น?",
+        "ground_truth": "บริษัท อยุธยา แคปปิตอล ออโต้ ลีส จำกัด (มหาชน) จำนวน 2,554,500,000 หุ้น",
+        "note": "v_table_rows_wide — filter one attribute, return another (EAV pivot)"
+    }
+]

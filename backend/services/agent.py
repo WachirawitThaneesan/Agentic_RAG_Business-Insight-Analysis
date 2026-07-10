@@ -6,6 +6,7 @@ Tools available:
   - vector_search
   - multi_hop
   - tavily_search
+  - graph_search
 """
 
 import json
@@ -18,6 +19,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.config import get_settings
 from backend.services.tools import ALL_TOOLS
+from backend.services.answer_verifier import verify_answer
+from backend.services.query_router import route_query
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
@@ -38,6 +41,10 @@ SYSTEM_PROMPT = """\
 - **ให้ใช้ vector_search เสมอ** สำหรับคำถามที่เกี่ยวกับข้อความ (Text) หรือบทความ:
   - โครงการ นโยบาย มาตรการช่วยเหลือ กลยุทธ์องค์กร บทบาทหน้าที่
   - ESG ความยั่งยืน วิสัยทัศน์ รางวัล หรือคำอธิบายเชิงคุณภาพต่างๆ
+- **ให้ใช้ graph_search** เมื่อถามเกี่ยวกับความสัมพันธ์ระหว่างนิติบุคคล:
+  - บริษัทใดเป็นเจ้าของบริษัทใด สัดส่วนการถือหุ้น โครงสร้างบริษัทในเครือ
+  - ใครดำรงตำแหน่งกรรมการ ผู้บริหาร ในองค์กรใด
+  - ความเชื่อมโยงระหว่าง 2 บริษัทหรือบุคคล
 - ถ้าคำถามเป็นแนวผสม (Hybrid) ให้ใช้ multi_hop เพื่อดึงข้อมูลทั้งสองมารวมกัน
 - ตอบเป็นภาษาไทยเสมอ
 - อ้างอิงตัวเลขและข้อเท็จจริงจากผลลัพธ์ของ tool เท่านั้น ห้ามแต่งข้อมูลเอง
@@ -49,6 +56,7 @@ Tools ที่ใช้ได้:
 2. vector_search: ค้นหาเนื้อหาจากเอกสารความเรียง — ใช้หาเนื้อหาที่เกี่ยวกับชื่อโครงการ นโยบาย กลยุทธ์ ESG ภาพรวมการทำงาน
 3. multi_hop: แตกคำถามซับซ้อนเป็นคำถามย่อย — ใช้เมื่อคำถามต้องการข้อมูลจากทั้งรูปแบบงบการเงินและรูปแบบเอกสารรวมกัน
 4. tavily_search: ค้นหาจากอินเทอร์เน็ต — ใช้เป็นท่าสุดท้ายเมื่อไม่พบข้อมูลในระบบเลย
+5. graph_search: ค้นหากราฟความรู้เชิงความสัมพันธ์ — ใช้เมื่อถามเรื่องความสัมพันธ์ระหว่างบริษัท โครงสร้างผู้ถือหุ้น ตำแหน่งกรรมการ หรือการเชื่อมโยงระหว่างนิติบุคคล
 
 ขั้นตอนการตอบ (ReAct):
 1. Thought: คิดว่าควรใช้ tool ตัวไหน
@@ -167,7 +175,7 @@ async def _execute_tool(
     logger.info("Agent using tool: %s(%s)", tool_name, query[:80])
 
     try:
-        if tool_name in ["vector_search", "multi_hop"]:
+        if tool_name in ["vector_search", "multi_hop", "graph_search"]:
             res = await tool_obj.execute(query, session=session)
         else:
             res = await tool_obj.execute(query)
@@ -262,14 +270,71 @@ async def agent_query(
         logger.warning("Direct structured answer failed, falling back to agent: %s", e)
 
     # ------------------------------------------------------------------
+    # Deterministic tool routing hint (biases the first tool choice)
+    # ------------------------------------------------------------------
+    route = route_query(question)
+    routing_hint = ""
+    if route.suggested_tool and route.confidence in ("medium", "high"):
+        logger.info(
+            "Router suggests '%s' (confidence=%s, scores=%s)",
+            route.suggested_tool, route.confidence, route.scores,
+        )
+        routing_hint = (
+            f"\nคำแนะนำการเลือกเครื่องมือ (สำคัญมาก): จากการวิเคราะห์คำถามนี้ "
+            f"tool ที่เหมาะสมที่สุดคือ \"{route.suggested_tool}\" — "
+            f"ให้เรียกใช้ tool นี้เป็นอันดับแรกเสมอ เว้นแต่ผลลัพธ์ไม่เพียงพอจริงๆ "
+            f"จึงค่อยลอง tool อื่น\n"
+        )
+
+    # ------------------------------------------------------------------
     # Build initial prompt
     # ------------------------------------------------------------------
-    conversation = f"{SYSTEM_PROMPT}\n\nQuestion: {question}\n"
+    conversation = f"{SYSTEM_PROMPT}\n{routing_hint}\nQuestion: {question}\n"
 
     max_iterations = getattr(settings, "AGENT_MAX_ITERATIONS", 5)
     reasoning_trace: List[Dict[str, Any]] = []
     sources: List[Dict[str, Any]] = []
     sql_info: Optional[Dict[str, Any]] = None
+    full_observations: List[str] = []  # untruncated tool output for verification
+    internal_tool_succeeded = False    # gate web search until internal tools tried
+
+    self_correction_on = getattr(settings, "AGENT_SELF_CORRECTION", True)
+    verify_retries_left = getattr(settings, "AGENT_VERIFY_MAX_RETRIES", 1)
+    _INTERNAL_TOOLS = {"sql_query", "vector_search", "multi_hop", "graph_search"}
+
+    # ------------------------------------------------------------------
+    # Forced first action: when the router is highly confident, run the
+    # suggested tool deterministically instead of trusting the LLM to pick it
+    # (a soft prompt hint is not reliable with a local model). The ReAct loop
+    # then reasons over the result and can still branch to other tools.
+    # ------------------------------------------------------------------
+    if (
+        route.suggested_tool
+        and route.confidence == "high"
+        and route.suggested_tool in ALL_TOOLS
+    ):
+        forced = route.suggested_tool
+        logger.info("Forcing first tool (high-confidence route): %s", forced)
+        result = await _execute_tool(forced, question, session)
+        obs = result["observation"]
+        success = bool(result.get("success"))
+        if success and obs:
+            full_observations.append(f"[{forced}] {obs}")
+        if success and forced in _INTERNAL_TOOLS:
+            internal_tool_succeeded = True
+        reasoning_trace.append({
+            "action": forced, "action_input": question,
+            "observation": obs[:500], "success": success,
+        })
+        if success and result.get("data"):
+            sources.extend(_extract_sources(forced, result["data"]))
+            if forced == "sql_query" and sql_info is None:
+                sql_info = result["data"]
+        conversation += (
+            f"Thought: เริ่มด้วยเครื่องมือที่เหมาะสมที่สุดสำหรับคำถามนี้ ({forced})\n"
+            f'Action: {{"tool": "{forced}", "query": "{question}"}}\n'
+            f"Observation: {obs}\n"
+        )
 
     llm_output = ""
     for iteration in range(max_iterations):
@@ -287,18 +352,40 @@ async def agent_query(
             query = action["query"]
             logger.info("ReAct action: %s(%s)", tool_name, query[:80])
 
+            # Guard: don't let the agent escape to web search before it has
+            # actually tried (and exhausted) the internal knowledge sources.
+            if tool_name == "tavily_search" and not internal_tool_succeeded:
+                nudge = (
+                    "ยังไม่ควรค้นอินเทอร์เน็ต ให้ค้นจากข้อมูลภายในก่อน "
+                    "(sql_query สำหรับตัวเลข/ตาราง, vector_search สำหรับเนื้อหา, "
+                    "graph_search สำหรับความสัมพันธ์)"
+                )
+                logger.info("Blocked premature tavily_search; nudging to internal tools")
+                reasoning_trace.append({
+                    "action": tool_name, "action_input": query,
+                    "observation": nudge, "success": False,
+                })
+                conversation += f"{llm_output}\nObservation: {nudge}\n"
+                continue
+
             result = await _execute_tool(tool_name, query, session)
             obs = result["observation"]
+            success = bool(result.get("success"))
+            if success and obs:
+                full_observations.append(f"[{tool_name}] {obs}")
+            if success and tool_name in _INTERNAL_TOOLS:
+                internal_tool_succeeded = True
 
             # Record trace
             reasoning_trace.append({
                 "action": tool_name,
                 "action_input": query,
                 "observation": obs[:500],
+                "success": success,
             })
 
             # Collect sources & sql_info
-            if result.get("success") and result.get("data"):
+            if success and result.get("data"):
                 sources.extend(_extract_sources(tool_name, result["data"]))
                 if tool_name == "sql_query" and sql_info is None:
                     sql_info = result["data"]
@@ -311,6 +398,32 @@ async def agent_query(
         final_answer = _parse_final_answer(llm_output)
         if final_answer:
             logger.info("ReAct final answer at iteration %d", iteration + 1)
+
+            # --- Self-correction: verify the draft is grounded & on-topic ---
+            if self_correction_on and verify_retries_left > 0:
+                verification = await verify_answer(
+                    question, final_answer, "\n\n".join(full_observations)
+                )
+                if not verification.passed:
+                    verify_retries_left -= 1
+                    logger.info(
+                        "Self-correction triggered (retries left=%d): %s",
+                        verify_retries_left, verification.issues,
+                    )
+                    reasoning_trace.append({
+                        "action": "self_correction",
+                        "action_input": verification.critique,
+                        "observation": "; ".join(verification.issues)[:500],
+                    })
+                    # Feed the critique back and let the agent redraft.
+                    conversation += (
+                        f"{llm_output}\n"
+                        f"Observation: คำตอบยังไม่ผ่านการตรวจสอบ — "
+                        f"{verification.critique or 'คำตอบต้องอ้างอิงจากข้อมูลที่ค้นมาได้เท่านั้น'} "
+                        f"กรุณาแก้ไขและตอบใหม่ด้วย Final Answer โดยอ้างอิงเฉพาะข้อมูลจาก Observation ข้างต้น\n"
+                    )
+                    continue
+
             return {
                 "answer": final_answer,
                 "method": _infer_method(reasoning_trace),
@@ -352,13 +465,19 @@ def _infer_method(trace: List[Dict[str, Any]]) -> str:
     tools_used = set()
     for entry in trace:
         action = entry.get("action")
-        if action:
+        # Only count tools that actually returned useful data. A failed call
+        # (e.g. tavily timing out) must not dictate the reported method.
+        if action and entry.get("success", True) and action != "self_correction":
             tools_used.add(action)
 
     if "tavily_search" in tools_used:
         return "web_search"
     if "multi_hop" in tools_used:
         return "multi_hop"
+    if "graph_search" in tools_used and "sql_query" in tools_used:
+        return "graph_sql_hybrid"
+    if "graph_search" in tools_used:
+        return "graph"
     if "sql_query" in tools_used and "vector_search" in tools_used:
         return "hybrid"
     if "sql_query" in tools_used:

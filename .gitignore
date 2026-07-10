@@ -1,12 +1,48 @@
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# ---------------------------------------------------------------------------
+# Virtual environments
+# ---------------------------------------------------------------------------
 .venv/
 .venv_app/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.log
+env/
+venv/
 
+# ---------------------------------------------------------------------------
+# Secrets & local config
+# ---------------------------------------------------------------------------
 .env
+.env.*
+!.env.example
+
+# ---------------------------------------------------------------------------
+# Data warehouses / databases / runtime logs (regenerated locally)
+# ---------------------------------------------------------------------------
+*.duckdb
+*.duckdb.wal
+*.log
+qa_history.json
+
+# ---------------------------------------------------------------------------
+# Generated artifacts
+# ---------------------------------------------------------------------------
 output/
 output*/
 scrape_output/
+backend/downloads/
+backend/uploads/
+backend/knowledge_graphs/
+backend/eval/results/
+
+# Local scratch space for debug dumps / ad-hoc outputs
+scratch/
+
+# Evaluation CSV outputs (keep golden_set.json, drop generated results)
+*_evaluation_results.csv
+live_ragas_evals.csv

@@ -1,1 +1,0 @@
-import requests, os; from dotenv import load_dotenv; load_dotenv(); r = requests.get("https://api.opentyphoon.ai/v1/models", headers={"Authorization": f"Bearer {os.getenv('TYPHOON_API_KEY')}"}); print("\n".join([m["id"] for m in r.json()]))

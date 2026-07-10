@@ -101,6 +101,107 @@ async def run_evaluation(data: list[dict], output_csv: str = "ragas_evaluation_r
     
     return result
 
+def _contexts_from_agent_result(result: dict) -> list[str]:
+    """Extract the text the agent actually reasoned over, for Ragas grounding."""
+    contexts: list[str] = []
+    for step in result.get("reasoning_trace", []):
+        obs = str(step.get("observation") or "").strip()
+        if obs and obs not in contexts:
+            contexts.append(obs)
+    for src in result.get("sources", []):
+        text = src.get("text") or src.get("summary") or src.get("sql")
+        if text and text not in contexts:
+            contexts.append(str(text))
+    return contexts or ["No context used."]
+
+
+def _append_history(scores: dict, n_samples: int, label: str,
+                    history_path: str = "backend/eval/results/history.csv") -> None:
+    """Append one run's mean scores to a CSV so runs can be compared over time."""
+    from datetime import datetime
+
+    os.makedirs(os.path.dirname(history_path), exist_ok=True)
+    row = {
+        "timestamp": datetime.now().isoformat(timespec="seconds"),
+        "label": label,
+        "model": settings.OLLAMA_LLM_MODEL,
+        "n_samples": n_samples,
+        **{k: round(v, 4) for k, v in scores.items()},
+    }
+    file_exists = os.path.exists(history_path)
+    prev = pd.read_csv(history_path) if file_exists else pd.DataFrame()
+    updated = pd.concat([prev, pd.DataFrame([row])], ignore_index=True)
+    updated.to_csv(history_path, index=False, encoding="utf-8-sig")
+    logger.info("Appended run '%s' to %s", label, history_path)
+
+    # Show delta vs the previous run of the same style, if any.
+    if not prev.empty:
+        print("\n--- Change vs previous run ---")
+        last = prev.iloc[-1]
+        for metric in scores:
+            if metric in prev.columns:
+                try:
+                    delta = scores[metric] - float(last[metric])
+                    arrow = "▲" if delta > 0 else ("▼" if delta < 0 else "=")
+                    print(f"{metric:20s}: {scores[metric]:.4f}  ({arrow} {delta:+.4f})")
+                except (ValueError, TypeError):
+                    pass
+        print("-" * 30 + "\n")
+
+
+async def run_live_evaluation(
+    golden_path: str = "backend/eval/golden_set.json",
+    label: str = "live",
+) -> dict:
+    """Run the LIVE agent over a golden set, then score it with Ragas.
+
+    Unlike ``main()`` (which re-scores historical logs), this drives the real
+    ``agent_query`` pipeline end-to-end for each golden question — so the scores
+    reflect the current agent/prompts/schema. Results are timestamped and a
+    summary row is appended to ``backend/eval/results/history.csv`` so you can
+    measure the effect of a change (before vs after).
+    """
+    from datetime import datetime
+    from backend.database import AsyncSessionLocal
+    from backend.services.agent import agent_query
+
+    with open(golden_path, "r", encoding="utf-8") as f:
+        golden = json.load(f)
+    logger.info("Loaded %d golden questions from %s", len(golden), golden_path)
+
+    samples: list[dict] = []
+    async with AsyncSessionLocal() as session:
+        for i, item in enumerate(golden):
+            question = item["question"]
+            logger.info("[%d/%d] Running agent: %s", i + 1, len(golden), question[:70])
+            try:
+                result = await agent_query(question, session)
+            except Exception as exc:
+                logger.error("Agent failed on '%s': %s", question[:50], exc)
+                result = {"answer": "", "sources": [], "reasoning_trace": []}
+
+            samples.append({
+                "question": question,
+                "answer": result.get("answer", ""),
+                "contexts": _contexts_from_agent_result(result),
+                "ground_truth": str(item.get("ground_truth", "")).strip(),
+            })
+
+    stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    out_csv = f"backend/eval/results/eval_{label}_{stamp}.csv"
+    result = await run_evaluation(samples, output_csv=out_csv)
+
+    # Compute mean scores and persist to history for before/after comparison.
+    result_df = result.to_pandas()
+    scores = {
+        col: float(result_df[col].mean())
+        for col in result_df.columns
+        if result_df[col].dtype.kind in "fc" and col not in ("question",)
+    }
+    _append_history(scores, len(samples), label)
+    return scores
+
+
 async def save_qa_log(question: str, answer: str, contexts: list[str]):
     """Save real-time query to a history file for later batch evaluation."""
     log_entry = {
@@ -129,8 +230,29 @@ async def save_qa_log(question: str, answer: str, contexts: list[str]):
     logger.info(f"Saved Q&A log to {log_file} for future batch evaluation.")
 
 def main():
+    import argparse
+
     logging.basicConfig(level=logging.INFO)
-    
+
+    parser = argparse.ArgumentParser(description="Ragas evaluation for the Financial Data Agent")
+    parser.add_argument(
+        "--live", action="store_true",
+        help="Run the LIVE agent over the golden set and score it (measures the current pipeline).",
+    )
+    parser.add_argument(
+        "--golden", default="backend/eval/golden_set.json",
+        help="Path to the golden question/ground_truth set (used with --live).",
+    )
+    parser.add_argument(
+        "--label", default="live",
+        help="Label for this run in the history CSV (e.g. 'baseline', 'after-item8').",
+    )
+    args = parser.parse_args()
+
+    if args.live:
+        asyncio.run(run_live_evaluation(golden_path=args.golden, label=args.label))
+        return
+
     log_file = "qa_history.json"
     if os.path.exists(log_file):
         with open(log_file, "r", encoding="utf-8") as f:

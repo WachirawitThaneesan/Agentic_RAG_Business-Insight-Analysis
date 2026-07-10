@@ -13,6 +13,7 @@ from backend.routes.scraping import router as scraping_router
 from backend.routes.query import router as query_router
 from backend.routes.chunks import router as chunks_router
 from backend.routes.warehouse import router as warehouse_router
+from backend.routes.graph import router as graph_router
 
 
 @asynccontextmanager
@@ -23,9 +24,9 @@ async def lifespan(app: FastAPI):
     try:
         from backend.services.duckdb_warehouse import _get_conn
         _get_conn()
-        print("✅ DuckDB warehouse initialised")
+        print("[OK] DuckDB warehouse initialised")
     except Exception as exc:
-        print(f"⚠️ DuckDB init warning: {exc}")
+        print(f"[WARN] DuckDB init warning: {exc}")
     yield
 
 
@@ -51,6 +52,7 @@ app.include_router(scraping_router, prefix="/api/scrape", tags=["Scraping"])
 app.include_router(query_router, prefix="/api/query", tags=["Query"])
 app.include_router(chunks_router, prefix="/api/chunks", tags=["Chunks"])
 app.include_router(warehouse_router, prefix="/api/warehouse", tags=["Warehouse"])
+app.include_router(graph_router, prefix="/api/graphs", tags=["Knowledge Graphs"])
 
 
 @app.get("/api/health")

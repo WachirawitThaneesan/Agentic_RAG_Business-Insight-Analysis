@@ -45,6 +45,10 @@ class Settings(BaseSettings):
     # Agentic RAG
     AGENT_MAX_ITERATIONS: int = 5
     AGENT_TEMPERATURE: float = 0.1
+    # Answer self-correction (verify the drafted Final Answer against tool
+    # observations, and regenerate once if it is ungrounded / off-topic)
+    AGENT_SELF_CORRECTION: bool = True
+    AGENT_VERIFY_MAX_RETRIES: int = 1
 
     # App
     APP_HOST: str = "0.0.0.0"
@@ -56,6 +60,15 @@ class Settings(BaseSettings):
     PDF_LARGE_FILE_GENERATE_SUMMARIES: bool = False
     DOCUMENT_RAW_TEXT_LIMIT_CHARS: int = 250000
     RAW_OCR_ARTIFACT_EMBED_MAX_CHARS: int = 8000
+
+    # Hyper-Extract Knowledge Graph
+    HYPEREXTRACT_LLM_URL: str = "http://localhost:11434/v1"
+    HYPEREXTRACT_LLM_MODEL: str = "qwen2.5:14b"
+    HYPEREXTRACT_EMBED_URL: str = "http://localhost:11434/v1"
+    HYPEREXTRACT_EMBED_MODEL: str = "nomic-embed-text:latest"
+    HYPEREXTRACT_KA_DIR: str = "backend/knowledge_graphs"
+    HYPEREXTRACT_TEMPLATE: str = "finance/ownership_graph"
+    HYPEREXTRACT_LANGUAGE: str = "en"
 
     # External APIs
     TAVILY_API_KEY: str = ""

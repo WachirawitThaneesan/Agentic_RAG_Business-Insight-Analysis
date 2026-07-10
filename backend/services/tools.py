@@ -1,9 +1,11 @@
 """Agent Tools for the Agentic RAG system.
 
-Three tools the ReAct agent can invoke:
+Five tools the ReAct agent can invoke:
 1. **SQLTool**           – queries DuckDB ``fact_financial_metrics``
 2. **VectorSearchTool**  – semantic search via pgvector
 3. **MultiHopTool**      – decomposes complex questions into sub-queries
+4. **WebSearchTool**     – Tavily web search fallback
+5. **GraphSearchTool**   – entity/relationship search via Hyper-Extract KA
 """
 
 from __future__ import annotations
@@ -111,24 +113,22 @@ class SQLTool:
         prompt += (
             "CRITICAL RULES:\n"
             "1. NEVER JOIN fact_financial_metrics with dim_table_rows. They are independent tables.\n"
-            "2. For listing companies, investments, or shareholdings → use dim_table_rows ONLY.\n"
-            "3. For financial figures with years (สินทรัพย์, กำไร, ROA, etc.) → use fact_financial_metrics ONLY.\n"
-            "4. ALWAYS include WHERE table_name LIKE '%keyword%' when querying either table.\n"
-            "5. 'อันดับแรก' or 'แรก' = first by row_index ASC. 'มากที่สุด' or 'สูงสุด' = sort by value DESC.\n"
-            "6. For row_label and col_name, NEVER use strict '='. ALWAYS use LIKE '%keyword%' because data often has prefixes like '15. '.\n"
-            "7. Return ONLY the SQL query, no explanation.\n"
-            "8. For Thai text matching, ALWAYS break long sentences into keywords and join them with `AND` (e.g., `col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%'`). NEVER use `OR` for phrase chunking, as it will match wrong tables.\n"
-            "9. NEVER use `ORDER BY CAST(REPLACE(col_value...` unless you ALSO filter by `col_name` that contains a numeric value (e.g., `col_name LIKE '%จำนวนหุ้น%'`).\n"
-            "10. EAV DATA RULE: To find the share count ('จำนวนหุ้น') of companies matching a specific string like 'บัตรเครดิต', YOU MUST USE A SUBQUERY: `col_name LIKE '%จำนวนหุ้น%' AND row_label IN (SELECT row_label FROM dim_table_rows WHERE col_value LIKE '%บัตรเครดิต%')`.\n"
-            "11. NEVER use aggregate functions like COUNT(), MAX() or DISTINCT if the query also asks for names/details (e.g. 'มีกี่บริษัท และบริษัทใดบ้าง'). Just SELECT the raw rows (e.g. `SELECT row_label, col_name, col_value`) and let the Python Agent count them.\n"
-            "12. NEVER cast strings to `INT` (e.g. `CAST(val AS INT)`). Financial numbers easily exceed 2 billion and will crash the database. ALWAYS cast to `DOUBLE`.\n\n"
+            "2. For listing companies, investments, or shareholdings → use dim_table_rows or the v_table_rows_wide view. For financial figures with years (สินทรัพย์, กำไร, ROA, etc.) → use fact_financial_metrics.\n"
+            "3. ALWAYS include WHERE table_name LIKE '%keyword%' when querying dim_table_rows / v_table_rows_wide.\n"
+            "4. 'อันดับแรก' or 'แรก' = first by row_index ASC. 'มากที่สุด' or 'สูงสุด' = sort by the numeric column DESC.\n"
+            "5. For row_label and col_name, NEVER use strict '='. ALWAYS use LIKE '%keyword%' because data often has prefixes like '15. '.\n"
+            "6. Return ONLY the SQL query, no explanation.\n"
+            "7. For Thai text matching, ALWAYS break long sentences into keywords and join them with `AND` (e.g., `col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%'`). NEVER use `OR` for phrase chunking.\n"
+            "8. To sort/compare dim_table_rows numerically, use the pre-parsed `col_value_num` column directly (e.g. `ORDER BY col_value_num DESC`). Do NOT hand-write CAST(REPLACE(...)). Never CAST to INT — col_value_num is already a DOUBLE.\n"
+            "9. EAV RULE: when a question filters on one attribute and returns another (e.g. companies whose business is 'บัตรเครดิต', and their 'จำนวนหุ้น'), PREFER the wide view v_table_rows_wide and quote Thai attribute columns with double quotes. Fall back to a sub-query on dim_table_rows only if the needed column is absent from the view.\n"
+            "10. NEVER use aggregate functions like COUNT(), MAX() or DISTINCT if the query also asks for names/details (e.g. 'มีกี่บริษัท และบริษัทใดบ้าง'). Just SELECT the raw rows and let the Python Agent count them.\n\n"
             "EXAMPLES:\n\n"
             "Q: จำนวนหุ้นสามัญที่ธนาคารถือใน บริษัทหลักทรัพย์จัดการกองทุน มีกี่หุ้น?\n"
             "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND row_label LIKE '%บริษัทหลักทรัพย์จัดการกองทุน%' AND col_name LIKE '%จำนวนหุ้น%';\n\n"
             "Q: บริษัทที่ทำธุรกิจ บัตรเครดิตและสินเชื่อส่วนบุคคล มีกี่บริษัท บริษัทใดบ้าง และบริษัทใดมีหุ้นเยอะสุด?\n"
-            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND col_name LIKE '%จำนวนหุ้น%' AND row_label IN (SELECT row_label FROM dim_table_rows WHERE col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%') ORDER BY CAST(REPLACE(col_value, ',', '') AS DOUBLE) DESC;\n\n"
+            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND col_name LIKE '%จำนวนหุ้น%' AND row_label IN (SELECT row_label FROM dim_table_rows WHERE col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%') ORDER BY col_value_num DESC;\n\n"
             "Q: บริษัทที่บจก. (ธนาคาร) ถือหุ้นไม่ถึง 100% มีอะไรบ้าง?\n"
-            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND (col_name LIKE '%สัดส่วน%' OR col_name LIKE '%ร้อยละ%') AND CAST(REPLACE(REPLACE(col_value, ',', ''), '%', '') AS DOUBLE) < 100 ORDER BY row_index;\n\n"
+            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND (col_name LIKE '%สัดส่วน%' OR col_name LIKE '%ร้อยละ%') AND col_value_num < 100 ORDER BY row_index;\n\n"
             "Q: การลงทุนของธนาคารในบริษัทอื่น มีบริษัทอะไรบ้าง 2 อันดับแรก?\n"
             "SQL: SELECT DISTINCT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND row_index < 2 ORDER BY row_index, col_name;\n\n"
             "Q: สินทรัพย์รวมปี 2567 เท่าไร?\n"
@@ -411,6 +411,49 @@ class WebSearchTool:
 
 
 # ---------------------------------------------------------------------------
+# 5. Graph Search Tool — queries Hyper-Extract Knowledge Abstracts
+# ---------------------------------------------------------------------------
+
+class GraphSearchTool:
+    """Search entity-relationship knowledge graphs built by Hyper-Extract."""
+
+    name = "graph_search"
+    description = (
+        "Search the knowledge graph for entity relationships, company structures, "
+        "officer roles, ownership links, or connections between organisations. "
+        "Use when the question asks 'who', 'which company', 'what is the relationship "
+        "between', 'who owns', or requires cross-entity linking that vector search cannot answer."
+    )
+
+    async def execute(self, query: str, session: Any = None) -> ToolResult:
+        """Search all built Knowledge Abstracts for the given query."""
+        try:
+            from backend.services.graph_service import search_knowledge_graph
+            result = search_knowledge_graph(query)
+
+            if not result.get("success", True):
+                return ToolResult(
+                    tool_name=self.name,
+                    success=False,
+                    error=result.get("error", "Graph search failed"),
+                )
+
+            return ToolResult(
+                tool_name=self.name,
+                success=True,
+                summary=result.get("summary", "ไม่พบข้อมูลในกราฟความรู้"),
+                data={"results": result.get("results", [])},
+            )
+        except Exception as exc:
+            logger.error("GraphSearchTool failed: %s", exc)
+            return ToolResult(
+                tool_name=self.name,
+                success=False,
+                error=str(exc),
+            )
+
+
+# ---------------------------------------------------------------------------
 # Tool registry
 # ---------------------------------------------------------------------------
 
@@ -419,6 +462,7 @@ ALL_TOOLS = {
     "vector_search": VectorSearchTool(),
     "multi_hop": MultiHopTool(),
     "tavily_search": WebSearchTool(),
+    "graph_search": GraphSearchTool(),
 }
 
 

@@ -186,3 +186,29 @@ def scrape_and_process_task(self, keyword: str, target_urls: list = None):
         return result
 
     return asyncio.run(_scrape())
+
+
+@celery_app.task(bind=True, name="build_graph")
+def build_graph_task(self, doc_id: int, text: str):
+    """Background task: build a Hyper-Extract Knowledge Abstract for a document.
+
+    Called automatically after document ingestion completes.
+    Safe to fail — errors are logged but do not affect document status.
+    """
+    self.update_state(state="PROCESSING", meta={"step": f"Building knowledge graph for doc_id={doc_id}..."})
+    try:
+        from backend.services.graph_service import build_knowledge_graph
+        result = build_knowledge_graph(doc_id=doc_id, text=text)
+        if result.get("success"):
+            print(
+                f"[graph_task] doc_id={doc_id} — "
+                f"{result.get('entities', 0)} entities, "
+                f"{result.get('relations', 0)} relations"
+            )
+        else:
+            print(f"[graph_task] doc_id={doc_id} — build failed: {result.get('error')}")
+        return result
+    except Exception as exc:
+        print(f"[graph_task] Unexpected error for doc_id={doc_id}: {exc}")
+        return {"success": False, "error": str(exc)}
+

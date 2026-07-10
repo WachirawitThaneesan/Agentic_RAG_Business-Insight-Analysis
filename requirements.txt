@@ -53,3 +53,6 @@ langchain-ollama>=0.2.0
 tavily-python>=0.5.0
 ragas>=0.2.0
 datasets>=3.0.0
+
+# Knowledge Graph Extraction
+hyperextract>=0.3.0

@@ -16,6 +16,9 @@ from backend.services.table_utils import build_table_chunk_payloads, normalize_o
 from backend.services.thai_cleaner import clean_thai_text
 from backend.services.chunker import chunk_document
 from backend.config import get_settings
+import logging
+
+logger = logging.getLogger(__name__)
 
 settings = get_settings()
 
@@ -425,6 +428,16 @@ async def upload_document(
         else:
             doc.error_message = None
         await db.commit()
+
+        # --- Trigger knowledge graph build in the background (non-blocking) ---
+        raw_text_for_graph = (doc.raw_text or "").strip()
+        if raw_text_for_graph:
+            try:
+                from backend.tasks import build_graph_task
+                build_graph_task.delay(doc_id=doc_id, text=raw_text_for_graph)
+                logger.info("[graph] Queued build_graph_task for doc_id=%d", doc_id)
+            except Exception as _graph_exc:
+                logger.warning("[graph] Could not queue graph task (Celery may not be running): %s", _graph_exc)
 
         return {
             "id": doc_id,

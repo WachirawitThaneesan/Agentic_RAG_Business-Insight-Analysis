@@ -143,15 +143,93 @@ CREATE TABLE IF NOT EXISTS dim_chunks (
 -- ============================================================
 CREATE SEQUENCE IF NOT EXISTS seq_dim_table_rows START 1;
 CREATE TABLE IF NOT EXISTS dim_table_rows (
-    id           INTEGER PRIMARY KEY DEFAULT nextval('seq_dim_table_rows'),
-    document_id  INTEGER,
-    table_name   VARCHAR,
-    row_label    VARCHAR,
-    col_name     VARCHAR,
-    col_value    VARCHAR,
-    row_index    INTEGER
+    id             INTEGER PRIMARY KEY DEFAULT nextval('seq_dim_table_rows'),
+    document_id    INTEGER,
+    table_name     VARCHAR,
+    row_label      VARCHAR,
+    col_name       VARCHAR,
+    col_value      VARCHAR,
+    col_value_num  DOUBLE,
+    row_index      INTEGER
 );
 """
+
+
+def _migrate_schema(conn: duckdb.DuckDBPyConnection) -> None:
+    """Apply idempotent migrations for warehouses created by older versions.
+
+    1. Add ``col_value_num`` to ``dim_table_rows`` (pre-parsed numeric of
+       ``col_value``) so the SQL agent never has to CAST/REPLACE by hand.
+    2. Backfill ``col_value_num`` for any existing rows that lack it.
+    3. (Re)create the ``v_table_rows_wide`` pivot view that turns the EAV
+       ``dim_table_rows`` into one row per (table, company) with each
+       ``col_name`` as its own column — removing the need for correlated
+       sub-queries in generated SQL.
+    """
+    # --- 1. Add the numeric column if the table pre-dates it ---
+    try:
+        conn.execute("ALTER TABLE dim_table_rows ADD COLUMN IF NOT EXISTS col_value_num DOUBLE")
+    except Exception as exc:
+        logger.debug("col_value_num add skipped: %s", exc)
+
+    # --- 2. Backfill rows where the numeric value is still NULL ---
+    # Strip thousands separators, %, parentheses, and stray unit text, then
+    # TRY_CAST so non-numeric cells become NULL instead of raising.
+    try:
+        conn.execute(
+            """
+            UPDATE dim_table_rows
+            SET col_value_num = TRY_CAST(
+                NULLIF(regexp_replace(replace(replace(col_value, ',', ''), '%', ''),
+                                      '[^0-9.\\-]', '', 'g'), '')
+                AS DOUBLE)
+            WHERE col_value_num IS NULL AND col_value IS NOT NULL
+            """
+        )
+    except Exception as exc:
+        logger.debug("col_value_num backfill skipped: %s", exc)
+
+    # --- 3. Pivot view: EAV -> wide (one row per company/row_label) ---
+    _create_pivot_view(conn)
+
+
+def _create_pivot_view(conn: duckdb.DuckDBPyConnection) -> None:
+    """(Re)create v_table_rows_wide. Safe to call repeatedly.
+
+    DuckDB does not allow a PIVOT with data-derived columns inside a view, so we
+    enumerate the distinct ``col_name`` values ourselves and pin them into an
+    explicit ``IN (...)`` list. The view is rebuilt after each ingestion so new
+    attributes appear as columns.
+    """
+    try:
+        names = conn.execute(
+            "SELECT DISTINCT col_name FROM dim_table_rows "
+            "WHERE col_name IS NOT NULL AND col_name <> '' "
+            "ORDER BY col_name"
+        ).fetchall()
+    except Exception as exc:
+        logger.debug("v_table_rows_wide skipped (cannot read col_names): %s", exc)
+        return
+
+    col_names = [n[0] for n in names if n[0]]
+    if not col_names:
+        # Empty warehouse — nothing to pivot yet.
+        return
+
+    # Escape single quotes for safe embedding in the IN (...) literal list.
+    in_list = ", ".join("'" + c.replace("'", "''") + "'" for c in col_names)
+    try:
+        conn.execute(
+            f"""
+            CREATE OR REPLACE VIEW v_table_rows_wide AS
+            PIVOT dim_table_rows
+            ON col_name IN ({in_list})
+            USING first(col_value)
+            GROUP BY document_id, table_name, row_label, row_index
+            """
+        )
+    except Exception as exc:
+        logger.debug("v_table_rows_wide not created: %s", exc)
 
 
 def _init_schema(conn: duckdb.DuckDBPyConnection) -> None:
@@ -164,6 +242,7 @@ def _init_schema(conn: duckdb.DuckDBPyConnection) -> None:
             except Exception as exc:
                 # Sequences may already exist etc.
                 logger.debug("Schema stmt skipped: %s", exc)
+    _migrate_schema(conn)
     logger.info("DuckDB schema initialised")
 
 
@@ -507,17 +586,21 @@ def _load_lookup_table(
             if not col_value:
                 continue
 
+            col_value_clean = _sanitize_text(col_value)
             conn.execute(
                 """
                 INSERT INTO dim_table_rows
-                    (document_id, table_name, row_label, col_name, col_value, row_index)
-                VALUES (?, ?, ?, ?, ?, ?)
+                    (document_id, table_name, row_label, col_name, col_value, col_value_num, row_index)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
                 """,
                 [document_id, _sanitize_text(table_name),
                  _sanitize_text(label), _sanitize_text(col_name),
-                 _sanitize_text(col_value), row_idx],
+                 col_value_clean, _parse_numeric(col_value_clean), row_idx],
             )
             record_count += 1
+
+    # Refresh the pivot view so newly-seen col_names become columns.
+    _create_pivot_view(conn)
 
     logger.info(
         "Loaded LOOKUP table %s: %d rows → %d lookup records",
@@ -739,24 +822,55 @@ def get_schema_description() -> str:
     except Exception:
         pass
 
+    # Pick the most *useful* pivoted attribute columns for the LLM: rank by how
+    # often each col_name appears and drop OCR noise (auto-generated column_N,
+    # single-char tokens, and over-long garbage strings).
+    pivot_columns: List[str] = []
+    try:
+        candidates = conn.execute(
+            """
+            SELECT col_name, COUNT(*) AS c
+            FROM dim_table_rows
+            WHERE col_name IS NOT NULL
+              AND col_name NOT LIKE 'column_%'
+              AND length(col_name) BETWEEN 2 AND 40
+            GROUP BY col_name
+            ORDER BY c DESC
+            LIMIT 30
+            """
+        ).fetchall()
+        pivot_columns = [row[0] for row in candidates if row[0]]
+    except Exception:
+        pass
+
     desc = (
         "DuckDB warehouse schema:\n\n"
         "TABLE 1: fact_financial_metrics (year-based financial data)\n"
         "  Columns: document_id, table_name, row_label, metric_year,\n"
         "           raw_value, numeric_value (DOUBLE), unit, row_index\n"
         "  Use for: financial figures, assets, revenue, ratios\n\n"
-        "TABLE 2: dim_table_rows (lookup data e.g. investment holdings)\n"
-        "  Columns: document_id, table_name, row_label, col_name, col_value, row_index\n"
+        "TABLE 2: dim_table_rows (lookup data e.g. investment holdings, EAV/long format)\n"
+        "  Columns: document_id, table_name, row_label, col_name, col_value,\n"
+        "           col_value_num (DOUBLE, pre-parsed number of col_value), row_index\n"
         "  Use for: non-year data like company names, business types, shareholding\n\n"
+        "VIEW 3: v_table_rows_wide (dim_table_rows PIVOTED to wide format)\n"
+        "  Columns: document_id, table_name, row_label, row_index, + one column per attribute\n"
+        "  One row per company/row_label. PREFER this view when a question filters on one\n"
+        "  attribute and returns another (e.g. 'companies whose ประเภทธุรกิจ is บัตรเครดิต,\n"
+        "  and their จำนวนหุ้น') — it avoids correlated sub-queries on dim_table_rows.\n\n"
         "IMPORTANT RULES:\n"
         "  - Use numeric_value for comparisons/aggregations in fact_financial_metrics\n"
         "  - metric_year is VARCHAR (e.g. '2567', '2566')\n"
         "  - Use LIKE '%keyword%' for fuzzy Thai label matching\n"
-        "  - CRITICAL: 'ลำดับแรก' or 'แรก' means FIRST ROWS in the physical table. NEVER sort by 'col_value' (e.g. จำนวนหุ้น) for these questions. ALWAYS use `ORDER BY row_index ASC LIMIT N`.\n"
-        "  - Only sort by 'col_value' if the user explicitly asks for 'มากที่สุด' (most), 'สูงสุด' (highest), etc.\n"
-        "  - CRITICAL for dim_table_rows: Each row_label has multiple col_names (e.g. 'จำนวนหุ้น', 'ประเภทธุรกิจ'). If asked to list companies, just `SELECT DISTINCT row_label FROM dim_table_rows WHERE ... ORDER BY row_label` or `ORDER BY row_index`.\n"
-        "  - To sort dim_table_rows by a numeric value (e.g. 'จำนวนหุ้น'), you must CAST(REPLACE(col_value, ',', '') AS DOUBLE)\n\n"
+        "  - CRITICAL: 'ลำดับแรก' or 'แรก' means FIRST ROWS in the physical table. NEVER sort by a value column for these questions. ALWAYS use `ORDER BY row_index ASC LIMIT N`.\n"
+        "  - Only sort by a value column if the user explicitly asks for 'มากที่สุด' (most), 'สูงสุด' (highest), etc.\n"
+        "  - CRITICAL for dim_table_rows: Each row_label has multiple col_names (e.g. 'จำนวนหุ้น', 'ประเภทธุรกิจ'). If asked to list companies, just `SELECT DISTINCT row_label FROM dim_table_rows WHERE ... ORDER BY row_index`.\n"
+        "  - To sort/compare dim_table_rows by number, use the ready-made col_value_num column (already parsed) instead of CAST(REPLACE(col_value ...)).\n\n"
     )
+
+    if pivot_columns:
+        desc += "Attribute columns available in v_table_rows_wide (quote Thai names with \"\"):\n"
+        desc += f"  {', '.join(pivot_columns[:30])}\n\n"
 
     if tables:
         desc += "Year-based tables (fact_financial_metrics):\n"
