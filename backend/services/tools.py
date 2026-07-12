@@ -18,13 +18,39 @@ from typing import Any, Dict, List, Optional
 
 import httpx
 
-from backend.config import get_settings
+from backend.config import get_settings, ollama_extra_fields
 from backend.services.duckdb_warehouse import execute_sql, get_schema_description
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
 
 HTTP_LIMITS = httpx.Limits(max_connections=4, max_keepalive_connections=2)
+
+_SELECT_START_RE = re.compile(r"\b(SELECT|WITH)\b", re.IGNORECASE)
+
+
+def _clean_sql(raw: str) -> str:
+    """Extract a runnable SQL statement from a raw LLM reply.
+
+    Handles the common local-model quirks: markdown ```sql fences, an echoed
+    ``SQL:`` label (the prompt ends with ``SQL:`` and the model repeats it),
+    and any leading prose. We take everything from the first SELECT/WITH.
+    """
+    text = (raw or "").strip()
+    if text.startswith("```"):
+        # keep the fenced body
+        parts = text.split("```")
+        text = parts[1] if len(parts) > 1 else parts[0]
+        if text[:3].lower() == "sql":
+            text = text[3:]
+        text = text.strip()
+    # Drop everything before the first SELECT/WITH (kills "SQL:" and any preamble).
+    m = _SELECT_START_RE.search(text)
+    if m:
+        text = text[m.start():]
+    # Trim a trailing code fence / stray backticks and whitespace.
+    text = text.replace("```", "").strip()
+    return text
 
 
 # ---------------------------------------------------------------------------
@@ -80,6 +106,24 @@ class SQLTool:
                 result = execute_sql(sql2)
                 sql = sql2
 
+        # Retry once on an EMPTY result too — a common failure is an over-narrow
+        # LIKE (or wrong year) that misses a row which actually exists.
+        elif result.get("row_count", 0) == 0:
+            sql2 = await self._generate_sql(
+                question, schema_desc,
+                error_feedback=(
+                    f"The previous query returned 0 rows but the data likely exists.\n"
+                    f"Previous SQL: {sql}\n"
+                    "Broaden it: match only the core noun in the LIKE pattern "
+                    "(drop qualifiers), re-check the metric_year, and add "
+                    "`ORDER BY length(row_label) ASC` so the base metric surfaces."
+                ),
+            )
+            if sql2:
+                r2 = execute_sql(sql2)
+                if not r2.get("error") and r2.get("row_count", 0) > 0:
+                    result, sql = r2, sql2
+
         if result.get("error"):
             return ToolResult(
                 tool_name=self.name,
@@ -114,17 +158,26 @@ class SQLTool:
             "CRITICAL RULES:\n"
             "1. NEVER JOIN fact_financial_metrics with dim_table_rows. They are independent tables.\n"
             "2. For listing companies, investments, or shareholdings → use dim_table_rows or the v_table_rows_wide view. For financial figures with years (สินทรัพย์, กำไร, ROA, etc.) → use fact_financial_metrics.\n"
-            "3. ALWAYS include WHERE table_name LIKE '%keyword%' when querying dim_table_rows / v_table_rows_wide.\n"
+            "3. dim_table_rows: when the question names a SPECIFIC company/entity, filter by `row_label LIKE '%company name%'` + the attribute `col_name` and do NOT add a table_name filter — the same company appears in different tables, so a guessed table_name (e.g. '%ลงทุน%') will MISS it. Add `WHERE table_name LIKE '%keyword%'` ONLY when the question is about a whole table/section (e.g. 'บริษัทที่ลงทุน 2 อันดับแรก').\n"
             "4. 'อันดับแรก' or 'แรก' = first by row_index ASC. 'มากที่สุด' or 'สูงสุด' = sort by the numeric column DESC.\n"
             "5. For row_label and col_name, NEVER use strict '='. ALWAYS use LIKE '%keyword%' because data often has prefixes like '15. '.\n"
             "6. Return ONLY the SQL query, no explanation.\n"
             "7. For Thai text matching, ALWAYS break long sentences into keywords and join them with `AND` (e.g., `col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%'`). NEVER use `OR` for phrase chunking.\n"
-            "8. To sort/compare dim_table_rows numerically, use the pre-parsed `col_value_num` column directly (e.g. `ORDER BY col_value_num DESC`). Do NOT hand-write CAST(REPLACE(...)). Never CAST to INT — col_value_num is already a DOUBLE.\n"
+            "8. ALWAYS sort/compare numbers using the pre-parsed numeric columns, NEVER the text columns:\n"
+            "   - fact_financial_metrics → use `numeric_value` (NOT `raw_value`). e.g. `ORDER BY numeric_value DESC`.\n"
+            "   - dim_table_rows → use `col_value_num` (NOT `col_value`). e.g. `ORDER BY col_value_num DESC`.\n"
+            "   Sorting the text columns gives wrong (lexical) order AND can crash the database. Do NOT hand-write CAST(REPLACE(...)); never CAST to INT.\n"
             "9. EAV RULE: when a question filters on one attribute and returns another (e.g. companies whose business is 'บัตรเครดิต', and their 'จำนวนหุ้น'), PREFER the wide view v_table_rows_wide and quote Thai attribute columns with double quotes. Fall back to a sub-query on dim_table_rows only if the needed column is absent from the view.\n"
-            "10. NEVER use aggregate functions like COUNT(), MAX() or DISTINCT if the query also asks for names/details (e.g. 'มีกี่บริษัท และบริษัทใดบ้าง'). Just SELECT the raw rows and let the Python Agent count them.\n\n"
+            "10. NEVER use aggregate functions like COUNT(), MAX() or DISTINCT if the query also asks for names/details (e.g. 'มีกี่บริษัท และบริษัทใดบ้าง'). Just SELECT the raw rows and let the Python Agent count them.\n"
+            "11. A short keyword in LIKE can match many line items (e.g. '%เงินสด%' matches 25 rows). The intended BASE metric is almost always the SHORTEST row_label, so add `ORDER BY length(row_label) ASC` and `LIMIT 3` for single-metric lookups. `length(...)` is numeric — safe to sort. Also match the FULL metric phrase, not a fragment (use '%รวมสินทรัพย์%', not '%สินทรัพย์%').\n"
+            "12. YEAR-OVER-YEAR: for 'เปลี่ยนแปลง/เทียบ/ต่างจาก ปี A กับ ปี B', fetch BOTH years in ONE query with `metric_year IN ('A','B')` (never one year only). Let the Python Agent compute the difference.\n\n"
             "EXAMPLES:\n\n"
             "Q: จำนวนหุ้นสามัญที่ธนาคารถือใน บริษัทหลักทรัพย์จัดการกองทุน มีกี่หุ้น?\n"
-            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND row_label LIKE '%บริษัทหลักทรัพย์จัดการกองทุน%' AND col_name LIKE '%จำนวนหุ้น%';\n\n"
+            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%บริษัทหลักทรัพย์จัดการกองทุน%' AND col_name LIKE '%จำนวนหุ้น%';\n\n"
+            "Q: ธนาคารถือหุ้นใน บริษัท ยู เอ็ม ซี เม็ททอล จำกัด คิดเป็นร้อยละเท่าไร?\n"
+            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%ยู เอ็ม ซี เม็ททอล%' AND (col_name LIKE '%ถือหุ้น%' OR col_name LIKE '%ร้อยละ%' OR col_name LIKE '%สัดส่วน%');\n\n"
+            "Q: บริษัท บัตรกรุงศรีอยุธยา จำกัด ประกอบธุรกิจประเภทใด?\n"
+            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%บัตรกรุงศรีอยุธยา%' AND col_name LIKE '%ธุรกิจ%';\n\n"
             "Q: บริษัทที่ทำธุรกิจ บัตรเครดิตและสินเชื่อส่วนบุคคล มีกี่บริษัท บริษัทใดบ้าง และบริษัทใดมีหุ้นเยอะสุด?\n"
             "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND col_name LIKE '%จำนวนหุ้น%' AND row_label IN (SELECT row_label FROM dim_table_rows WHERE col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%') ORDER BY col_value_num DESC;\n\n"
             "Q: บริษัทที่บจก. (ธนาคาร) ถือหุ้นไม่ถึง 100% มีอะไรบ้าง?\n"
@@ -132,7 +185,11 @@ class SQLTool:
             "Q: การลงทุนของธนาคารในบริษัทอื่น มีบริษัทอะไรบ้าง 2 อันดับแรก?\n"
             "SQL: SELECT DISTINCT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND row_index < 2 ORDER BY row_index, col_name;\n\n"
             "Q: สินทรัพย์รวมปี 2567 เท่าไร?\n"
-            "SQL: SELECT row_label, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' AND metric_year = '2567';\n\n"
+            "SQL: SELECT row_label, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
+            "Q: เงินสด ปี 2567 มีค่าเท่ากับเท่าไร?\n"
+            "SQL: SELECT row_label, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%เงินสด%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
+            "Q: กำไรสุทธิ ปี 2567 เปลี่ยนแปลงจากปี 2566 เท่าไร?\n"
+            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year IN ('2567','2566') ORDER BY length(row_label) ASC, metric_year DESC LIMIT 6;\n\n"
             f"Q: {question}\n"
             "SQL:"
         )
@@ -147,19 +204,12 @@ class SQLTool:
                         "prompt": prompt,
                         "stream": False,
                         "options": {"temperature": 0.1, "num_predict": 500},
+                        **ollama_extra_fields(),
                     },
                 )
                 resp.raise_for_status()
                 sql = resp.json().get("response", "").strip()
-
-                # Clean markdown fences
-                if sql.startswith("```"):
-                    sql = sql.split("```")[1]
-                    if sql.startswith("sql"):
-                        sql = sql[3:]
-                    sql = sql.strip()
-
-                return sql
+                return _clean_sql(sql)
         except Exception as exc:
             logger.warning("SQL generation failed: %s", exc)
             return ""
@@ -341,6 +391,7 @@ class MultiHopTool:
                         "prompt": prompt,
                         "stream": False,
                         "options": {"temperature": 0.1, "num_predict": 500},
+                        **ollama_extra_fields(),
                     },
                 )
                 resp.raise_for_status()

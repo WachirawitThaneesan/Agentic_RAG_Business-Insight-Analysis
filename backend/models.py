@@ -41,7 +41,7 @@ class Chunk(Base):
     chunk_text = Column(Text, nullable=False)
     summary = Column(Text, nullable=True)  # LLM-generated summary
     token_count = Column(Integer, nullable=True)
-    embedding = Column(Vector(768), nullable=True)  # nomic-embed-text dimension
+    embedding = Column(Vector(1024), nullable=True)  # bge-m3 dimension
     metadata_ = Column("metadata", JSON, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 

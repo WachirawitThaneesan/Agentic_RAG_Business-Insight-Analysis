@@ -1,0 +1,1264 @@
+[
+  {
+    "category": "structured_sql",
+    "question": "(กำไร) ขาดทุนจากการแปลงค่าเงินตราต่างประเทศ ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "4,860,251 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 4860251.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 0
+  },
+  {
+    "category": "structured_sql",
+    "question": "กำไรที่ยังไม่เกิดขึ้นจริงจากการตีมูลค่าอนุพันธ์ ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "(1,719,943)",
+    "grader": {
+      "type": "numeric",
+      "value": -1719943.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 1
+  },
+  {
+    "category": "structured_sql",
+    "question": "กำไรสุทธิต่อหุ้น ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "4.04 บาท",
+    "grader": {
+      "type": "numeric",
+      "value": 4.04
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 2
+  },
+  {
+    "category": "structured_sql",
+    "question": "ขาดทุนจากการด้อยค่าของสินทรัพย์อื่น (โอนกลับ) ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "52,460 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 52460.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 3
+  },
+  {
+    "category": "structured_sql",
+    "question": "ค่าภาษีอากร ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "4,254,101 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 4254101.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 4
+  },
+  {
+    "category": "structured_sql",
+    "question": "ค่าใช้จ่ายค้างจ่ายอื่นเพิ่มขึ้น (ลดลง) ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "2,098,110",
+    "grader": {
+      "type": "numeric",
+      "value": 2098110.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 5
+  },
+  {
+    "category": "structured_sql",
+    "question": "ค่าใช้จ่ายเกี่ยวกับอาคารสถานที่และอุปกรณ์ ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "9,000,629 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 9000629.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 6
+  },
+  {
+    "category": "structured_sql",
+    "question": "ทรัพย์สินรอการขายสุทธิ ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "5,683,036 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 5683036.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 7
+  },
+  {
+    "category": "structured_sql",
+    "question": "ผลตอบแทนต่อส่วนของเจ้าของ (ROE) ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "7.81 %",
+    "grader": {
+      "type": "numeric",
+      "value": 7.81
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 8
+  },
+  {
+    "category": "structured_sql",
+    "question": "ยังไม่ได้จัดสรร ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "254,004,564 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 254004564.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 9
+  },
+  {
+    "category": "structured_sql",
+    "question": "รวมสินทรัพย์ ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "2,620,074,404 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 2620074404.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 10
+  },
+  {
+    "category": "structured_sql",
+    "question": "รวมหนี้สินและส่วนของเจ้าของ ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "2,620,074,404 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 2620074404.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 11
+  },
+  {
+    "category": "structured_sql",
+    "question": "รายได้ที่มิใช่ดอกเบี้ยและรายได้ที่มิใช่ค่าธรรมเนียม ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "20,467 ล้านบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 20467.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 12
+  },
+  {
+    "category": "structured_sql",
+    "question": "สินทรัพย์รวม ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "2,620,074 ล้านบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 2620074.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 13
+  },
+  {
+    "category": "structured_sql",
+    "question": "ส่วนเกินมูลค่าหุ้นสามัญ ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "52,878,749 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 52878749.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 14
+  },
+  {
+    "category": "structured_sql",
+    "question": "หนี้สินภาษีเงินได้รอตัดบัญชี ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "1,557,316 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 1557316.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 15
+  },
+  {
+    "category": "structured_sql",
+    "question": "หัก ค่าใช้จ่ายจากการดำเนินงานอื่น ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "68,131 ล้านบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 68131.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 16
+  },
+  {
+    "category": "structured_sql",
+    "question": "หัก ภาษีเงินได้ และส่วนได้เสียที่ไม่มีอำนาจควบคุม ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "9,666 ล้านบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 9666.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 17
+  },
+  {
+    "category": "structured_sql",
+    "question": "อัตราส่วนเงินกองทุนทั้งสิ้น - กลุ่มธุรกิจทางการเงิน ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "21.79 %",
+    "grader": {
+      "type": "numeric",
+      "value": 21.79
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 18
+  },
+  {
+    "category": "structured_sql",
+    "question": "เงินสด ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "28,700,785 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 28700785.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 19
+  },
+  {
+    "category": "structured_sql",
+    "question": "เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "(1,654,227)",
+    "grader": {
+      "type": "numeric",
+      "value": -1654227.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 20
+  },
+  {
+    "category": "structured_sql",
+    "question": "เงินสดจ่ายเพื่อลงทุนในบริษัทย่อยและการร่วมค้า ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "(26,990,341) พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": -26990341.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 21
+  },
+  {
+    "category": "structured_sql",
+    "question": "เงินสดรับจากเงินกู้ยืมและการออกตราสารหนี้ ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "25,973,292 พันบาท",
+    "grader": {
+      "type": "numeric",
+      "value": 25973292.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 22
+  },
+  {
+    "category": "structured_sql",
+    "question": "เงินสดและรายการเทียบเท่าเงินสดเพิ่มขึ้น (ลดลง) สุทธิ ปี 2567 มีค่าเท่ากับเท่าไร?",
+    "ground_truth": "9,506,789",
+    "grader": {
+      "type": "numeric",
+      "value": 9506789.0
+    },
+    "note": "fact_financial_metrics single lookup",
+    "id": 23
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2564 ที่ 33,794 ล้านบาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2564",
+        33794.0
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 24
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ กำไรสุทธิต่อหุ้น สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2564 ที่ 4.59 บาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2564",
+        4.59
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 25
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2566 ที่ 89,070 ล้านบาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2566",
+        89070.0
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 26
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ ค่าใช้จ่ายต่อรายได้ สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2566 ที่ 44.50 %",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2566",
+        44.5
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 27
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ ผลตอบแทนต่อสินทรัพย์ (ROA) สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2564 ที่ 1.32 %",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2564",
+        1.32
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 28
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ ผลตอบแทนต่อส่วนของเจ้าของ สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2564 ที่ 11.17%",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2564",
+        11.17
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 29
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ ผลตอบแทนต่อส่วนของเจ้าของ (ROE) สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2564 ที่ 11.17 %",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2564",
+        11.17
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 30
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ มูลค่าตามบัญชีต่อหุ้น สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2567 ที่ 53.81 บาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2567",
+        53.81
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 31
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ รายได้ที่มิใช่ดอกเบี้ยและรายได้ที่มิใช่ค่าธรรมเนียม สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2564 ที่ 28,075 ล้านบาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2564",
+        28075.0
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 32
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ ส่วนของเจ้าของ สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2567 ที่ 395,809 ล้านบาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2567",
+        395809.0
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 33
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ หนี้สินรวม สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2566 ที่ 2,396,841 ล้านบาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2566",
+        2396841.0
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 34
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ หัก ค่าใช้จ่ายจากการดำเนินงานอื่น สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2567 ที่ 68,131 ล้านบาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2567",
+        68131.0
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 35
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ หัก ค่าใช้จ่ายดอกเบี้ย สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2567 ที่ 48,644 ล้านบาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2567",
+        48644.0
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 36
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ หัก ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2567 ที่ 45,782 ล้านบาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2567",
+        45782.0
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 37
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ หัก ภาษีเงินได้ และส่วนได้เสียที่ไม่มีอำนาจควบคุม สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2567 ที่ 9,666 ล้านบาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2567",
+        9666.0
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 38
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ อัตราส่วนเงินกองทุนชั้นที่ 1 - กลุ่มธุรกิจทางการเงิน สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2567 ที่ 17.96 %",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2567",
+        17.96
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 39
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ อัตราส่วนเงินกองทุนทั้งสิ้น - กลุ่มธุรกิจทางการเงิน สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2567 ที่ 21.79 %",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2567",
+        21.79
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 40
+  },
+  {
+    "category": "hybrid_superlative",
+    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ เงินให้สินเชื่อด้อยคุณภาพ สูงที่สุด และมีค่าเท่าไร?",
+    "ground_truth": "ปี 2567 ที่ 73,666 ล้านบาท",
+    "grader": {
+      "type": "all_of",
+      "values": [
+        "2567",
+        73666.0
+      ]
+    },
+    "note": "max over years (needs aggregation/reasoning)",
+    "id": 41
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "(กำไร) ขาดทุนจากการแปลงค่าเงินตราต่างประเทศ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 7,827,853.00 (ปี 2567 = 4,860,251, ปี 2566 = (2,967,602))",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        7827853.0,
+        [
+          4860251.0,
+          -2967602.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 42
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "กำไรสุทธิ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 2,728,418.00 (ปี 2567 = 30,403,934, ปี 2566 = 33,132,352)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        2728418.0,
+        [
+          30403934.0,
+          33132352.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 43
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "ขาดทุนจากการด้อยค่าของทรัพย์สินรอการขาย ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 647,298.00 (ปี 2567 = 111,287, ปี 2566 = 758,585)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        647298.0,
+        [
+          111287.0,
+          758585.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 44
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "ค่าภาษีอากร ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 630,218.00 (ปี 2567 = 4,254,101, ปี 2566 = 3,623,883)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        630218.0,
+        [
+          4254101.0,
+          3623883.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 45
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "ค่าใช้จ่ายต่อรายได้ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 0.05 (ปี 2567 = 44.45, ปี 2566 = 44.50)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        0.05,
+        [
+          44.45,
+          44.5
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 46
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "ตราสารหนี้ที่ออกและเงินกู้ยืม ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 3,897,313.00 (ปี 2567 = 100,319,743, ปี 2566 = 104,217,056)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        3897313.0,
+        [
+          100319743.0,
+          104217056.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 47
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "ผลตอบแทนต่อส่วนของเจ้าของ (ROE) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 1.47 (ปี 2567 = 7.81, ปี 2566 = 9.28)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        1.47,
+        [
+          7.81,
+          9.28
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 48
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "รวมกำไร (ขาดทุน) เบ็ดเสร็จอื่นสุทธิ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 598,714.00 (ปี 2567 = 263,468, ปี 2566 = 862,182)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        598714.0,
+        [
+          263468.0,
+          862182.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 49
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "รวมหนี้สิน ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 172,575,575.00 (ปี 2567 = 2,224,265,645, ปี 2566 = 2,396,841,220)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        172575575.0,
+        [
+          2224265645.0,
+          2396841220.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 50
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "รายได้ที่มิใช่ดอกเบี้ยและรายได้ที่มิใช่ค่าธรรมเนียม ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 1,740.00 (ปี 2567 = 20,467, ปี 2566 = 18,727)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        1740.0,
+        [
+          20467.0,
+          18727.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 51
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "สินทรัพย์อื่นสุทธิ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 3,433,245.00 (ปี 2567 = 27,253,635, ปี 2566 = 30,686,880)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        3433245.0,
+        [
+          27253635.0,
+          30686880.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 52
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "ส่วนได้เสียที่ไม่มีอำนาจควบคุม ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 801,217.00 (ปี 2567 = 3,801,305, ปี 2566 = 3,000,088)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        801217.0,
+        [
+          3801305.0,
+          3000088.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 53
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "หัก ค่าใช้จ่ายจากการดำเนินงานอื่น ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 6,296.00 (ปี 2567 = 68,131, ปี 2566 = 61,835)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        6296.0,
+        [
+          68131.0,
+          61835.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 54
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "องค์ประกอบอื่นของส่วนของเจ้าของ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 313,654.00 (ปี 2567 = 3,992,379, ปี 2566 = 3,678,725)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        313654.0,
+        [
+          3992379.0,
+          3678725.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 55
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "เงินลงทุนในบริษัทย่อย บริษัทร่วมและการร่วมค้าสุทธิ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 821,682.00 (ปี 2567 = 18,742,197, ปี 2566 = 17,920,515)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        821682.0,
+        [
+          18742197.0,
+          17920515.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 56
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 13,357.00 (ปี 2567 = (1,654,227), ปี 2566 = (1,640,870))",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        13357.0,
+        [
+          -1654227.0,
+          -1640870.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 57
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "เงินสดรับจากการขายที่ดิน อาคารและอุปกรณ์ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 207,390.00 (ปี 2567 = 601,706, ปี 2566 = 394,316)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        207390.0,
+        [
+          601706.0,
+          394316.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 58
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "เงินสดสุทธิจากกิจกรรมลงทุน ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 42,850,635.00 (ปี 2567 = (12,903,917), ปี 2566 = 29,946,718)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        42850635.0,
+        [
+          -12903917.0,
+          29946718.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 59
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท เลนโซ่ โฟนการ์ด จำกัด ประกอบธุรกิจประเภทใด?",
+    "ground_truth": "ให้บริการโทรศัพท์สาธารณะ แบบใช้บัตร ทั้งในและต่างประเทศ",
+    "grader": {
+      "type": "text_contains",
+      "value": "ให้บริการโทรศัพท์สาธารณะ แบบใช้บัตร ทั้งในและต่างประเทศ"
+    },
+    "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
+    "id": 60
+  },
+  {
+    "category": "structured_eav",
+    "question": "ธนาคารถือหุ้นใน บริษัท เลนโซ่ โฟนการ์ด จำกัด คิดเป็นร้อยละเท่าไร?",
+    "ground_truth": "10.00",
+    "grader": {
+      "type": "numeric",
+      "value": 10.0
+    },
+    "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
+    "id": 61
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท ยู เอ็ม ซี เม็ททอล จำกัด ที่ธนาคารถือ มีจำนวนกี่หุ้น?",
+    "ground_truth": "95,000,000",
+    "grader": {
+      "type": "numeric",
+      "value": 95000000.0
+    },
+    "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
+    "id": 62
+  },
+  {
+    "category": "structured_eav",
+    "question": "Hattha Bank PLC. ประกอบธุรกิจประเภทใด?",
+    "ground_truth": "ธนาคารพาณิชย์",
+    "grader": {
+      "type": "text_contains",
+      "value": "ธนาคารพาณิชย์"
+    },
+    "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
+    "id": 63
+  },
+  {
+    "category": "structured_eav",
+    "question": "ธนาคารถือหุ้นใน Hattha Bank PLC. คิดเป็นร้อยละเท่าไร?",
+    "ground_truth": "100.00",
+    "grader": {
+      "type": "numeric",
+      "value": 100.0
+    },
+    "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
+    "id": 64
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท บริหารสินทรัพย์กรุงศรีอยุธยา จำกัด ที่ธนาคารถือ มีจำนวนกี่หุ้น?",
+    "ground_truth": "270,000,003",
+    "grader": {
+      "type": "numeric",
+      "value": 270000003.0
+    },
+    "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
+    "id": 65
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท กรุงศรี นิมเบิล จำกัด ที่ธนาคารถือ มีจำนวนกี่หุ้น?",
+    "ground_truth": "30,000,000",
+    "grader": {
+      "type": "numeric",
+      "value": 30000000.0
+    },
+    "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
+    "id": 66
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท อยุธยา ดีเวลลอปเม้นท์ ลีสซิง จำกัด ประกอบธุรกิจประเภทใด?",
+    "ground_truth": "ธุรกิจการเงิน (ลีสซิ่งและเช่าซื้อ)",
+    "grader": {
+      "type": "text_contains",
+      "value": "ธุรกิจการเงิน (ลีสซิ่งและเช่าซื้อ)"
+    },
+    "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
+    "id": 67
+  },
+  {
+    "category": "structured_eav",
+    "question": "ธนาคารถือหุ้นใน บริษัท อยุธยา ดีเวลลอปเม้นท์ ลีสซิง จำกัด คิดเป็นร้อยละเท่าไร?",
+    "ground_truth": "99.99",
+    "grader": {
+      "type": "numeric",
+      "value": 99.99
+    },
+    "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
+    "id": 68
+  },
+  {
+    "category": "structured_eav",
+    "question": "ธนาคารถือหุ้นใน บริษัท อยุธยา แคปปิตอล ออโต้ ลีส จำกัด (มหาชน) คิดเป็นร้อยละเท่าไร?",
+    "ground_truth": "100.00",
+    "grader": {
+      "type": "numeric",
+      "value": 100.0
+    },
+    "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
+    "id": 69
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท อยุธยา แคปปิตอล เซอรวิสเซส จำกัด ที่ธนาคารถือ มีจำนวนกี่หุ้น?",
+    "ground_truth": "59,250,000",
+    "grader": {
+      "type": "numeric",
+      "value": 59250000.0
+    },
+    "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
+    "id": 70
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท เจเนอรัล คาร์ด เซอรวิสเซส จำกัด ที่ธนาคารถือ มีจำนวนกี่หุ้น?",
+    "ground_truth": "345,800,000",
+    "grader": {
+      "type": "numeric",
+      "value": 345800000.0
+    },
+    "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
+    "id": 71
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท บัตรกรุงศรีอยุธยา จำกัด ประกอบธุรกิจประเภทใด?",
+    "ground_truth": "ธุรกิจการเงิน (บัตรเครดิตและ สินเชื่อส่วนบุคคล)",
+    "grader": {
+      "type": "text_contains",
+      "value": "ธุรกิจการเงิน (บัตรเครดิตและ สินเชื่อส่วนบุคคล)"
+    },
+    "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
+    "id": 72
+  },
+  {
+    "category": "structured_eav",
+    "question": "ธนาคารถือหุ้นใน บริษัท บัตรกรุงศรีอยุธยา จำกัด คิดเป็นร้อยละเท่าไร?",
+    "ground_truth": "100.00",
+    "grader": {
+      "type": "numeric",
+      "value": 100.0
+    },
+    "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
+    "id": 73
+  },
+  {
+    "category": "structured_eav",
+    "question": "ธนาคารถือหุ้นใน บริษัท กรุงศรี เจเนซิส จำกัด คิดเป็นร้อยละเท่าไร?",
+    "ground_truth": "100.00",
+    "grader": {
+      "type": "numeric",
+      "value": 100.0
+    },
+    "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
+    "id": 74
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท กรุงศรี เจเนอรัล อินชัวรันส์ โบรกเกอร์ จำกัด ที่ธนาคารถือ มีจำนวนกี่หุ้น?",
+    "ground_truth": "2,020,000",
+    "grader": {
+      "type": "numeric",
+      "value": 2020000.0
+    },
+    "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
+    "id": 75
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท โทเทิล เซอร์วิสเซส โซลูชั่นส์ จำกัด (มหาชน) ประกอบธุรกิจประเภทใด?",
+    "ground_truth": "ธุรกิจนับสนุน (เรียกเก็บชำระหนี้คืน)",
+    "grader": {
+      "type": "text_contains",
+      "value": "ธุรกิจนับสนุน (เรียกเก็บชำระหนี้คืน)"
+    },
+    "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
+    "id": 76
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท รักษาความปลอดภัย สยามเรียลตี้แอนด์เซอร์วิส จำกัด ประกอบธุรกิจประเภทใด?",
+    "ground_truth": "ธุรกิจนับสนุน (รถยนต์เช่าและบุคลากร)",
+    "grader": {
+      "type": "text_contains",
+      "value": "ธุรกิจนับสนุน (รถยนต์เช่าและบุคลากร)"
+    },
+    "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
+    "id": 77
+  },
+  {
+    "category": "structured_eav",
+    "question": "ธนาคารถือหุ้นใน บริษัท รักษาความปลอดภัย สยามเรียลตี้แอนด์เซอร์วิส จำกัด คิดเป็นร้อยละเท่าไร?",
+    "ground_truth": "100.00",
+    "grader": {
+      "type": "numeric",
+      "value": 100.0
+    },
+    "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
+    "id": 78
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัท กรุงศรี ฟินโนเวต จำกัด ที่ธนาคารถือ มีจำนวนกี่หุ้น?",
+    "ground_truth": "250,000,000",
+    "grader": {
+      "type": "numeric",
+      "value": 250000000.0
+    },
+    "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
+    "id": 79
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัทหลักทรัพย์ กรุงศรี จำกัด (มหาชน) ที่ธนาคารถือ มีจำนวนกี่หุ้น?",
+    "ground_truth": "555,000,000",
+    "grader": {
+      "type": "numeric",
+      "value": 555000000.0
+    },
+    "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
+    "id": 80
+  },
+  {
+    "category": "structured_eav",
+    "question": "บริษัทหลักทรัพย์จัดการกองทุน กรุงศรี จำกัด ประกอบธุรกิจประเภทใด?",
+    "ground_truth": "ธุรกิจการเงิน (จัดการกองทุน)",
+    "grader": {
+      "type": "text_contains",
+      "value": "ธุรกิจการเงิน (จัดการกองทุน)"
+    },
+    "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
+    "id": 81
+  },
+  {
+    "category": "graph",
+    "question": "ผู้ถือหุ้นรายใหญ่ที่สุดของธนาคารกรุงศรีอยุธยาคือใคร?",
+    "ground_truth": "MUFG (MUFG Bank, Ltd.)",
+    "grader": {
+      "type": "text_contains",
+      "value": "MUFG"
+    },
+    "note": "knowledge graph ownership edge",
+    "id": 82
+  },
+  {
+    "category": "graph",
+    "question": "MUFG มีความสัมพันธ์อย่างไรกับธนาคารกรุงศรีอยุธยา?",
+    "ground_truth": "MUFG เป็นผู้ถือหุ้น/เจ้าของรายใหญ่ของกรุงศรี (ownership)",
+    "grader": {
+      "type": "text_contains",
+      "value": "ถือหุ้น"
+    },
+    "note": "knowledge graph relationship",
+    "id": 83
+  },
+  {
+    "category": "semantic_vector",
+    "question": "finbiz by ttb จะพาผู้ประกอบการ SME มาดูอะไรเกี่ยวกับปี 2025?",
+    "ground_truth": "5 เทรนด์ธุรกิจที่จะส่งผลต่อการเติบโตในปี 2025",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "หลังจากปี 2024 ที่เต็มไปด้วยการเปลี่ยนแปลง ผู้ประกอบการ SME ต้องเตรียมพร้อมรับมือกับความท้าทายและโอกาสในปี 2025 ไม่ว่าจะเป็นการปรับตัวกับการทํางานที่เปลี่ยนไป เทคโนโลยีที่ก้าวหน้า หรือการเปลี่ยนแปลงด้านพลังงาน finbiz by ttb จะพาผู้ประกอบการ SME มาดู 5 เทรนด์ธุรกิจที่จะส่งผลต่อการเติบโตในปี 2025 นี้"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 84
+  },
+  {
+    "category": "semantic_vector",
+    "question": "ผู้บริหารสองท่านในภาพถ่ายสวมเสื้อเชิ้ตสีอะไร?",
+    "ground_truth": "สีขาว",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "RAW_OCR_PAGE: annual-report-2024-th.pdf page 1\nรายงานคณะกรรมการธนาคาร\n\n<figure>\nภาพถ่ายของผู้บริหารสองท่านในชุดสูทและเนคไท ยืนอยู่ภายในอาคารสำนักงานที่มีหน้าต่างบานใหญ่ด้านหลังซึ่งมองเห็นวิวเมืองภายนอก ผู้ชายทางซ้ายสวมเสื้อเชิ้ตสีขาวและเนคไทลายจุด ส่วนผู้ชายทางขวาสวมเสื้อเชิ้ตสีขาว เนคไทลายตาราง และแว่นตา มีป้ายโลโก้หรือข้อความ \"รายงานคณะกรรมการธนาคาร\" ปรากฏอยู่ด้านบนซ้ายของภาพ พื้นหลังเป็นผนังกระจกสะท้อนแสงสว่างจากธรรมชาติ\n</figure><page_number>14</page_number>"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 85
+  },
+  {
+    "category": "semantic_vector",
+    "question": "Home Credit Transition Videos ได้รับรางวัลอะไรในงาน Marketing-Interactive?",
+    "ground_truth": "Gold Award - Viral Marketing",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "## ASIAN BANKING &amp; FINANCE (ABF) * Finance Company of the Year - Philippines ## HUMAN RESOURCES ONLINE * Excellence in Graduate Recruitment and Development * HR Leader of the Year * Young HR Talent of the Year ## MALAYA BUSINESS INSIGHT * Diversity and Inclusion Leadership ## MARKETING-INTERACTIVE * Gold Award - Viral Marketing for Home Credit Transition Videos * Silver Award - Multilingual Marketing for Summer 2024 Programmatic Campaign"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 86
+  },
+  {
+    "category": "semantic_vector",
+    "question": "แผนกลยุทธ์ในปี 2568 ของกรุงศรีมุ่งเน้นการสนับสนุนลูกค้าในด้านใดบ้าง?",
+    "ground_truth": "สนับสนุนลูกค้าให้เปลี่ยนผ่านสู่เส้นทางการเงินเพื่อความยั่งยืน และสนับสนุนการเปลี่ยนผ่านสู่ระบบดิจิทัลอย่างต่อเนื่อง",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "# แผนกลยุทธ์ในปี 2568 กรุงศรียังคงมุ่งมั่นที่จะเป็นพันธมิตรที่ลูกค้าไว้วางใจเพื่อสร้างการเติบโตอย่างยั่งยืน พร้อมตอบสนองความต้องการของลูกค้าผ่านแนวทางต่อไปนี้ * **สนับสนุนลูกค้าเพื่อเปลี่ยนผ่านสู่เส้นทางการเงิน เพื่อความยั่งยืน** ผ่านบริการทางการเงิน พร้อมยกระดับศักยภาพและความสามารถในการเปลี่ยนผ่านให้กับธุรกิจ * **ดอกย้ำแนวทางการดำเนินงาน** เพื่อนำเสนอผลิตภัณฑ์และบริการด้วยความมุ่งมั่นเพื่อความเป็นเลิศ พร้อมสนับสนุนการให้สินเชื่อดอยมุ่งเน้นการดูแลคุณภาพสินทรัพย์ และเสริมสร้างขีดความสามารถ ทักษะ และความรู้ของบุคลากร * **ประสานพลังเครือข่ายกรุงศรี กรุ๊ป และพันธมิตรวมทั้งใช้ประโยชน์จากความเชี่ยวชาญของ MUFG เพื่อสร้างคุณค่าให้กับธุรกิจ** * **สนับสนุนลูกค้าเพื่อเปลี่ยนผ่านสู่ระบบดิจิทัลอย่างต่อเนื่อง** พร้อมส่งเสริมการนำเสนอลิขิตภัณฑ์และบริการทางด้านดิจิทัลเพื่อสร้างรายได้ให้กับธนาคาร # กลุ่มงานลูกค้าธุรกิจ SME"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 87
+  },
+  {
+    "category": "semantic_vector",
+    "question": "ทีมสตาร์ทอัพที่ผ่านการคัดเลือกมีทั้งหมดกี่ทีม?",
+    "ground_truth": "12 ทีม",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "จัดขึ้นเพื่อเร่งเติบโตของสตาร์ทอัพและสร้างความก้าวหน้าด้านนวัตกรรมและการเปลี่ยนผ่านสู่ระบบดิจิทัล ทีมที่ผ่านการคัดเลือกมีทั้งสิ้น 12 ทีม ได้แก่ ทีม AIYA ทีม Daywork ทีม Gowajee ทีม Graffiti ทีม Jobslab ทีม MUI Robotics ทีม Osseolabs ทีม PAM Real CDP ทีม Spacely AI ทีม ThaiHand ทีม Vansales และ ทีม Wang: Data Market โดยกรุงศรี ฟินโนเวตให้การสนับสนุนในด้านคำปรึกษา การฝึกอบรม และการสร้างเครือข่าย พร้อมเปิดโอกาสในการรับเงินทุนสูงสุด 40 ล้านบาท จาก Finno Efra Private Equity Trust โครงการนี้ใช้เวลาทั้งหมด 4 เดือน โดยมีที่ปรึกษาและผู้เชี่ยวชาญให้คำปรึกษาอย่างใกล้ชิด เพื่อเตรียมความพร้อมให้สตาร์ทอัพก้าวสู่ Series A อย่างมั่นคง"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 88
+  },
+  {
+    "category": "semantic_vector",
+    "question": "ธนาคารกรุงศรีอยุธยาเข้าซื้อกิจการ SHB Finance ในสัดส่วนเท่าใดในเดือนพฤษภาคม 2566?",
+    "ground_truth": "ร้อยละ 50",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 # SHBANK FINANCE CO. , LTD. (SHBF) ในเดือนพฤษภาคม 2566 ธนาคารได้เข้าซื้อกิจการโดยรับโอนส่วนของทุนในบริษัท SHB Finance โดยเข้ารับโอนในสัดส่วนร้อยละ 50 แรกจาก Saigon - Hanoi Commercial Joint Stock Bank (SHB) และจะรับโอนส่วนที่เหลืออีกร้อยละ 50 ภายในปี 2568 ขึ้นอยู่กับการอนุมัติจากธนาคารกลางเวียดนาม"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 89
+  },
+  {
+    "category": "semantic_vector",
+    "question": "จำนวนเงินรวมของสินทรัพย์ถาวรในปี 2567 อยู่ที่เท่าใด",
+    "ground_truth": "33,357",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "TABLE_NAME: (หน่วยล้านบาท)อุปกรณ์\nTABLE_TITLE: อุปกรณ์\nCOLUMNS: รายการ, หน่วย, 2567, 2566\nCSV:\nรายการ,หน่วย,2567,2566\nส่วนปรับปรุงอาคารเช่า,,\"3,885\",\"3,691\"\nอื่นๆ,,25,\"1,084\"\nรวม,,\"74,954\",\"73,433\"\nหัก ค่าเสื่อมราคาสะสม,\"(41,522)\",\"(40,512)\",\"(40,512)\"\nค่าเผื่อการด้อยค่า,(75),(26),(26)\nรวมสินทรัพย์ถาวร,,\"33,357\",\"32,895\""
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 90
+  },
+  {
+    "category": "semantic_vector",
+    "question": "ผลกระทบโดยรวมจากการประเมินความเสี่ยงด้านอัตราดอกเบี้ยต่อกลุ่มธุรกิจทางการเงินของธนาคารภายใต้สมมติฐานการปรับขึ้นอัตราดอกเบี้ยร้อยละ 1.00 อยู่ที่เท่าใด?",
+    "ground_truth": "6",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "TABLE_NAME: ผลกระทบจากการประเมินความเสี่ยงด้านอัตราดอกเบี้ยที่มีต่อกลุ่มธุรกิจทางการเงินของธนาคารภายใต้สมมติฐานการปรับขึ้นอัตราดอกเบี้ยร้อยละ1.00ของรายการสินทรัพย์หนี้สินและรายการนอกงบดุลตามระยะเวลาการปรับอัตราดอกเบี้ยของแต่ละรายการเป็นดังนี_362a3e055c\nTABLE_TITLE: ผลกระทบจากการประเมินความเสี่ยงด้านอัตราดอกเบี้ย ที่มีต่อกลุ่มธุรกิจทางการเงินของธนาคารภายใต้สมมติฐาน การปรับขึ้นอัตราดอกเบี้ยร้อยละ 1.00 ของรายการสินทรัพย์ หนี้สินและรายการนอกงบดุลตามระยะเวลาการปรับอัตรา ดอกเบี้ยของแต่ละรายการ เป็นดังนี้\nCOLUMNS: รายการ, (หน่วย: ล้านบาท), column_3\nCSV:\nรายการ,(หน่วย: ล้านบาท),column_3\n,สกุลเงิน,สิ้นสุด ณ 31 ธันวาคม 2567\nบาท,,223\nดอลลาร์สหรัฐฯ,,50\nสกุลเงินอื่นๆ,,-267\nผลกระทบโดยรวม,,6\n% ของประมาณการรายได้ ดอกเบี้ยสุทธิในอีก 1 ปี ข้างหน้า,,0.01%"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 91
+  },
+  {
+    "category": "semantic_vector",
+    "question": "คณะกรรมการทรัพยากรบุคคลของกรุงศรี กรุ๊ป มีหน้าที่อะไรบ้าง?",
+    "ground_truth": "ให้คำชี้แนะเกี่ยวกับนโยบายด้านทรัพยากรบุคคล การเปลี่ยนแปลงที่สำคัญ ทบทวนและประเมินกลยุทธ์ นโยบาย โครงการ และแผนงานด้านทรัพยากรบุคคล",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "การประกอบธุรกิจและผลการดำเนินงาน ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 * แต่งตั้ง “คณะกรรมการทรัพยากรบุคคล” (HR Committee) เพื่อให้คำชี้แนะเกี่ยวกับนโยบายด้านทรัพยากรบุคคลและการเปลี่ยนแปลงอย่างมีนัยสำคัญที่เกี่ยวข้องกับงานด้านทรัพยากรบุคคลของกรุงศรี กรุ๊ป อาทิ นโยบาย โครงการแผนงาน แผนผลประโยชน์พนักงาน เป็นต้น รวมทั้งทบทวนและประเมินกลยุทธ์ นโยบาย โครงการ และแผนงานด้านทรัพยากรบุคคลให้มีความสอดคล้องกับพันธกิจและกลยุทธ์ทางธุรกิจของกรุงศรี กรุ๊ป และสามารถแข่งขันได้ในอุตสาหกรรม รวมถึงเป็นไปตามกฎหมาย กฎระเบียบ และข้อบังคับของหน่วยงานราชการและหน่วยงานกำกับดูแลที่เกี่ยวข้อง * กำหนด \"นโยบายเกี่ยวกับทรัพยากรบุคคล\" เพื่อเป็นกรอบการทำงานพื้นฐานและใช้เป็นแนวทางในการสื่อสารบทบาทหน้าที่ ความรับผิดชอบ และกระบวนการในการบริหารและพัฒนาทรัพยากรบุคคลของกรุงศรี กรุ๊ป โดยนโยบายฉบับนี้ครอบคลุมองค์ประกอบหลัก 4 ด้าน ดังนี้"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 92
+  },
+  {
+    "category": "semantic_vector",
+    "question": "อัตราส่วนเงินกองทุนต่อสินทรัพย์เสี่ยง ณ วันที่ 31 ธันวาคม 2567 เท่ากับเท่าใด?",
+    "ground_truth": "19.38%",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "RAW_OCR_TABLE: ## อัตราส่วนเงินกองทุนต่อสินทรัพย์เสี่ยง\nRAW_PAGE: 1\nRAW_HEADERS: , งบการเงินเฉพาะธนาคาร31 ธ.ค. 67, 31 ธ.ค. 66\nRAW_CSV:\n,งบการเงินเฉพาะธนาคาร31 ธ.ค. 67,31 ธ.ค. 66\nเงินกองทุนชั้นที่ 1 ที่เป็นส่วนของเจ้าของ,,,15.11%,13.56%\nอัตราส่วนเงินกองทุนรวมชั้นที่ 1 ต่อสินทรัพย์เสี่ยง,,,15.11%,13.56%\nอัตราส่วนเงินกองทุนรวมชั้นที่ 2 ต่อสินทรัพย์เสี่ยง,,,4.27%,4.68%\nอัตราส่วนเงินกองทุนต่อสินทรัพย์เสี่ยง,,,19.38%,18.24%"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 93
+  },
+  {
+    "category": "semantic_vector",
+    "question": "สินทรัพย์ทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกำไรหรือขาดทุนส่งผลต่อการเพิ่มขึ้นของเงินลงทุนรวมอย่างไร?",
+    "ground_truth": "เป็นปัจจัยหลักที่ทำให้เงินลงทุนรวมเพิ่มขึ้น",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "การประกอบธุรกิจและผลการดำเนินงาน เมื่อเทียบกับสิ้นเดือนธันวาคม 2566 เงินลงทุนรวมเพิ่มขึ้นร้อยละ 11. 0 หรือจำนวน 16,566 ล้านบาท โดยมีปัจจัยหลักมาจาก การเพิ่มขึ้นของสินทรัพย์ทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกำไรหรือขาดทุน และเงินลงทุนในตราสารหนี้ที่วัดมูลค่า ด้วยราคาทุนตัดจำหน่าย สุทธิด้วยการลดลงของเงินลงทุนในตราสารหนี้ที่วัดด้วยมูลค่ายุติธรรมผ่านกำไรขาดทุนเบ็ดเสร็จอื่น # เงินให้สินเชื่อ สินเชื่อแยกตามภาคธุรกิจ ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 94
+  },
+  {
+    "category": "semantic_vector",
+    "question": "สถาบันจัดอันดับความน่าเชื่อถือที่ประเมินธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) มีอะไรบ้าง?",
+    "ground_truth": "มูดี้ส์ เรทติงส์, สแตนดาร์ด แอนด์ พัวร์, ฟิตช์ เรทติ้งส์, และทริสเรทติ้ง",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "การประกอบธุรกิจและผลการดำเนินงาน ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 # I อันดับความน่าเชื่อถือ อันดับความน่าเชื่อถือของธนาคาร ซึ่งจัดโดยสถาบันจัดอันดับความน่าเชื่อถือ อันได้แก่ มูดี้ส์ เรทติงส์, สแตนดาร์ด แอนด์ พัวร์, ฟิตช์ เรทติ้งส์, และทริสเรทติ้ง ปรากฏตามตาราง"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 95
+  },
+  {
+    "category": "semantic_vector",
+    "question": "คณะกรรมการชุดย่อยใดบ้างที่มีการประเมินตนเองเป็นรายบุคคล?",
+    "ground_truth": "คณะกรรมการตรวจสอบ คณะกรรมการสรรหาและพิจารณาค่าตอบแทน และคณะกรรมการเจ้าหน้าที่บริหาร",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "# • การประเมินผลการปฏิบัติงานของ คณะกรรมการชุดย่อยในระดับกำกับดูแล คณะกรรมการชุดย่อยในระดับกำกับดูแลทุกชุดได้มีการประเมินผลการปฏิบัติงานแบบทั้งคณะ และคณะกรรมการตรวจสอบ คณะกรรมการสรรหาและพิจารณาค่าตอบแทน และคณะกรรมการเจ้าหน้าที่บริหารได้จัดให้มีการประเมินตนเองเป็นรายบุคคลเพิ่มเติมด้วย โดยใช้แนวทางแบบประเมินจากตลาดหลักทรัพย์แห่งประเทศไทยและ/หรือแบบประเมินของคณะกรรมการธนาคารมาปรับใช้ให้เหมาะสมกับลักษณะและโครงสร้างของคณะกรรมการชุดย่อยแต่ละชุดโดยได้กำหนดหัวข้อการประเมินดังนี้ * สำหรับการประเมินคณะกรรมการตรวจสอบ และคณะกรรมการสรรหาและพิจารณาค่าตอบแทนแบบทั้งคณะ และหัวข้อการประเมินตนเองของคณะกรรมการตรวจสอบ คณะกรรมการสรรหาและพิจารณาค่าตอบแทนและคณะกรรมการเจ้าหน้าที่บริหารเป็นรายบุคคล * 1. โครงสร้างและคุณสมบัติของคณะกรรมการ * 2. การประชุมคณะกรรมการ"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 96
+  },
+  {
+    "category": "semantic_vector",
+    "question": "วันที่ใดที่มีการจัดประชุม e-AGM ตามกฎหมาย?",
+    "ground_truth": "25 เมษายน 2567",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "วันที่ 25 เมษายน 2567 เวลา 14. 00 น. ซึ่งเป็นการจัดประชุม e-AGM ตามที่กฎหมายกำหนดให้สามารถกระทำได้ โดย ปฏิบัติตามวิธีการที่กำหนดไว้ในกฎหมายอย่างครบถ้วน รวมถึง ปฏิบัติตามข้อบังคับของธนาคารและข้อกำหนดที่เกี่ยวข้อง และมีความสอดคล้องกับหลักการประเมินคุณภาพการจัด ประชุมผู้ถือหุ้น (AGM Checklist) มาตรฐานการกำกับดูแล กิจการที่ดีของหน่วยงานกำกับดูแล ตลอดจนหลักเกณฑ์ การสำรวจและประเมินระดับการกำกับดูแลกิจการของบริษัท จดทะเบียนไทยตาม ASEAN CG Scorecard สำหรับการ ดำเนินการจัดประชุมที่เป็นการส่งเสริมและอำนวยความสะดวก ในการใช้สิทธิของผู้ถือหุ้นทุกกลุ่มในการเข้าร่วมประชุม สรุปได้ ดังนี้ * เปิดโอกาสให้ผู้ถือหุ้นรายย่อยเสนอเรื่องเพื่อพิจารณาบรรจุ เป็นวาระการประชุมและเสนอชื่อบุคคลที่มีคุณสมบัติ เหมาะสมเพื่อเข้ารับการเลือกตั้งเป็นกรรมการเป็น"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 97
+  },
+  {
+    "category": "semantic_vector",
+    "question": "กรรมการธนาคารควรได้รับการอบรมเรื่องอะไรบ้าง?",
+    "ground_truth": "บทบาทหน้าที่ ลักษณะการประกอบธุรกิจและกฎหมายที่เกี่ยวข้อง โครงสร้างและความสัมพันธ์ของผู้ถือหุ้น รวมถึงทักษะและความรู้สำหรับการปฏิบัติหน้าที่",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "32. ดูแลให้มีการอบรมและพัฒนาให้กรรมการธนาคารมีความรู้ความเข้าใจเกี่ยวกับบทบาทหน้าที่ ลักษณะการประกอบธุรกิจและกฎหมายที่เกี่ยวข้อง ตลอดจนมีความเข้าใจโครงสร้างและความสัมพันธ์ของผู้ถือหุ้น รวมทั้งการเสริมสร้างทักษะและความรู้สำหรับการปฏิบัติหน้าที่กรรมการอย่างสม่ำเสมอ"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 98
+  },
+  {
+    "category": "semantic_vector",
+    "question": "ในปี 2567 คณะกรรมการสรรหาและพิจารณาค่าตอบแทนมีการประชุมทั้งหมดกี่ครั้ง?",
+    "ground_truth": "14 ครั้ง",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "RAW_OCR_TABLE: ในปี 2567 คณะกรรมการสรรหาและพิจารณาค่าตอบแทน มีการประชุมรวมทั้งสิ้น 14 ครั้ง ซึ่งเป็นการประชุมตามปกติที่ได้กำหนดไว้ล่วงหน้า โดยมีรายละเอียดดังนี้\nRAW_PAGE: 1\nRAW_HEADERS: , รายชื่อคณะกรรมการสรรหา และพิจารณาค่าตอบแทน, ตำแหน่ง, จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม\nRAW_CSV:\n,รายชื่อคณะกรรมการสรรหา และพิจารณาค่าตอบแทน,ตำแหน่ง,จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม\n1.,ดร. จำลอง อติกุล,ประธานกรรมการ,14/14\n2.,นางสาวนพพร ศิรวัฒนกุล,กรรมการ,14/14\n3.,นายวิรัช ไพรัชพิบูลย์,กรรมการ,14/14\n4.,นายมาซาคาซุ โอซาวะ,กรรมการ,14/14"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 99
+  }
+]

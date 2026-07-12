@@ -633,6 +633,27 @@ def load_chunk_dim(
 # Querying
 # ---------------------------------------------------------------------------
 
+_RE_ORDER_RAW_VALUE = re.compile(r"\bORDER\s+BY\s+raw_value\b", re.IGNORECASE)
+_RE_ORDER_COL_VALUE = re.compile(r"\bORDER\s+BY\s+col_value\b(?!_num)", re.IGNORECASE)
+
+
+def _harden_sql(sql: str) -> str:
+    """Rewrite fragile/incorrect sorts before execution.
+
+    Sorting a numeric fact by its *text* column (``raw_value`` / ``col_value``)
+    is both semantically wrong (lexical, not numeric order) and triggers a
+    DuckDB Top-N bug on multi-byte Thai text ("Invalid unicode ... in value
+    construction" for ``ORDER BY <text col> ... LIMIT n``). Redirect those sorts
+    to the pre-parsed numeric columns, which is what the caller almost always
+    means and which avoids the engine bug entirely.
+    """
+    hardened = _RE_ORDER_RAW_VALUE.sub("ORDER BY numeric_value", sql)
+    hardened = _RE_ORDER_COL_VALUE.sub("ORDER BY col_value_num", hardened)
+    if hardened != sql:
+        logger.info("Hardened SQL sort (text->numeric) to avoid DuckDB top-N bug")
+    return hardened
+
+
 def execute_sql(sql: str) -> Dict[str, Any]:
     """Run a SELECT query on the warehouse and return structured results.
 
@@ -642,6 +663,7 @@ def execute_sql(sql: str) -> Dict[str, Any]:
         ``{"columns": [...], "rows": [...], "row_count": int}``
     """
     conn = _get_conn()
+    sql = _harden_sql(sql)
     sql_upper = sql.strip().upper()
     if not sql_upper.startswith("SELECT"):
         return {"error": "Only SELECT queries are allowed", "columns": [], "rows": [], "row_count": 0}
@@ -859,7 +881,7 @@ def get_schema_description() -> str:
         "  attribute and returns another (e.g. 'companies whose ประเภทธุรกิจ is บัตรเครดิต,\n"
         "  and their จำนวนหุ้น') — it avoids correlated sub-queries on dim_table_rows.\n\n"
         "IMPORTANT RULES:\n"
-        "  - Use numeric_value for comparisons/aggregations in fact_financial_metrics\n"
+        "  - ALWAYS sort/compare numbers with the numeric columns, NEVER the text ones: use numeric_value (not raw_value) for fact_financial_metrics, and col_value_num (not col_value) for dim_table_rows. Sorting the text column gives wrong order and can crash the engine.\n"
         "  - metric_year is VARCHAR (e.g. '2567', '2566')\n"
         "  - Use LIKE '%keyword%' for fuzzy Thai label matching\n"
         "  - CRITICAL: 'ลำดับแรก' or 'แรก' means FIRST ROWS in the physical table. NEVER sort by a value column for these questions. ALWAYS use `ORDER BY row_index ASC LIMIT N`.\n"

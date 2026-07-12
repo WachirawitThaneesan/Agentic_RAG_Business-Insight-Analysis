@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional
 import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.config import get_settings
+from backend.config import get_settings, ollama_extra_fields
 from backend.services.tools import ALL_TOOLS
 from backend.services.answer_verifier import verify_answer
 from backend.services.query_router import route_query
@@ -83,6 +83,18 @@ _FINAL_ANSWER_RE = re.compile(
     re.DOTALL,
 )
 
+# Phrases an internal tool returns when it found nothing — a "success" with no
+# data must NOT count as "internal sources exhausted" (else the agent escapes to
+# web search prematurely).
+_NO_DATA_MARKERS = ("ไม่พบข้อมูล", "ไม่พบเอกสาร", "ไม่มีข้อมูล", "ไม่พบข้อมูลในกราฟ")
+
+
+def _has_real_data(observation: str) -> bool:
+    obs = (observation or "").strip()
+    if not obs:
+        return False
+    return not any(obs.startswith(m) or obs == m for m in _NO_DATA_MARKERS)
+
 
 def _parse_action(text: str) -> Optional[Dict[str, str]]:
     """Extract the first Action JSON from LLM output.
@@ -147,6 +159,7 @@ async def _call_llm(prompt: str) -> str:
                         "temperature": getattr(settings, "AGENT_TEMPERATURE", 0.1),
                         "num_predict": 1024,
                     },
+                    **ollama_extra_fields(),
                 },
             )
             resp.raise_for_status()
@@ -297,6 +310,10 @@ async def agent_query(
     sql_info: Optional[Dict[str, Any]] = None
     full_observations: List[str] = []  # untruncated tool output for verification
     internal_tool_succeeded = False    # gate web search until internal tools tried
+    # This corpus is entirely internal (annual report + docs). Only allow web
+    # search when the question itself carries an explicit web/news signal;
+    # otherwise the agent escapes to Tavily and hallucinates external results.
+    web_requested = route.scores.get("tavily_search", 0) > 0
 
     self_correction_on = getattr(settings, "AGENT_SELF_CORRECTION", True)
     verify_retries_left = getattr(settings, "AGENT_VERIFY_MAX_RETRIES", 1)
@@ -320,7 +337,7 @@ async def agent_query(
         success = bool(result.get("success"))
         if success and obs:
             full_observations.append(f"[{forced}] {obs}")
-        if success and forced in _INTERNAL_TOOLS:
+        if success and forced in _INTERNAL_TOOLS and _has_real_data(obs):
             internal_tool_succeeded = True
         reasoning_trace.append({
             "action": forced, "action_input": question,
@@ -352,13 +369,14 @@ async def agent_query(
             query = action["query"]
             logger.info("ReAct action: %s(%s)", tool_name, query[:80])
 
-            # Guard: don't let the agent escape to web search before it has
-            # actually tried (and exhausted) the internal knowledge sources.
-            if tool_name == "tavily_search" and not internal_tool_succeeded:
+            # Guard: this corpus is internal-only. Block web search entirely
+            # unless the question explicitly asked for web/news info — escaping
+            # to Tavily on internal questions just produces hallucinated results.
+            if tool_name == "tavily_search" and not web_requested:
                 nudge = (
-                    "ยังไม่ควรค้นอินเทอร์เน็ต ให้ค้นจากข้อมูลภายในก่อน "
-                    "(sql_query สำหรับตัวเลข/ตาราง, vector_search สำหรับเนื้อหา, "
-                    "graph_search สำหรับความสัมพันธ์)"
+                    "คำถามนี้ตอบได้จากข้อมูลภายในทั้งหมด ห้ามค้นอินเทอร์เน็ต "
+                    "ให้ใช้ vector_search สำหรับเนื้อหา/คำอธิบาย, sql_query สำหรับตัวเลข/ตาราง, "
+                    "graph_search สำหรับความสัมพันธ์ ถ้าไม่พบจริงๆ ให้ตอบว่าไม่พบข้อมูลในเอกสาร"
                 )
                 logger.info("Blocked premature tavily_search; nudging to internal tools")
                 reasoning_trace.append({
@@ -373,7 +391,7 @@ async def agent_query(
             success = bool(result.get("success"))
             if success and obs:
                 full_observations.append(f"[{tool_name}] {obs}")
-            if success and tool_name in _INTERNAL_TOOLS:
+            if success and tool_name in _INTERNAL_TOOLS and _has_real_data(obs):
                 internal_tool_succeeded = True
 
             # Record trace

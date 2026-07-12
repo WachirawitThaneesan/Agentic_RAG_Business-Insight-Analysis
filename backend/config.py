@@ -85,3 +85,16 @@ class Settings(BaseSettings):
 @lru_cache()
 def get_settings() -> Settings:
     return Settings()
+
+
+def ollama_extra_fields() -> dict:
+    """Extra top-level fields for Ollama /api/generate based on the active model.
+
+    Reasoning models (e.g. Qwen3, DeepSeek-R1) emit ``<think>...</think>`` before
+    their answer, which corrupts the ReAct ``Action:`` / JSON parsing. We disable
+    that with Ollama's ``think`` flag. Non-reasoning models ignore the absence.
+    """
+    model = get_settings().OLLAMA_LLM_MODEL.lower()
+    if "qwen3" in model or "deepseek-r1" in model or ":thinking" in model:
+        return {"think": False}
+    return {}

@@ -25,7 +25,7 @@ from typing import Any, Dict, List, Optional
 
 import httpx
 
-from backend.config import get_settings
+from backend.config import get_settings, ollama_extra_fields
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
@@ -71,6 +71,53 @@ _VERIFY_PROMPT = """\
 JSON:"""
 
 
+_NUM_RE = re.compile(r"\(?-?\d[\d,]*(?:\.\d+)?\)?")
+
+
+def _nums(text: str) -> List[float]:
+    out = []
+    for tok in _NUM_RE.findall(text or ""):
+        neg = tok.startswith("(") and tok.endswith(")")
+        t = tok.strip("()").replace(",", "").replace("%", "")
+        try:
+            v = float(t)
+        except ValueError:
+            continue
+        out.append(-v if neg else v)
+    return out
+
+
+def _numeric_grounding_ok(answer: str, observations: str) -> bool:
+    """Deterministic anti-hallucination check.
+
+    Returns False only when the answer asserts significant numbers and *every*
+    one of them is absent from the observations — a strong sign the model made
+    them up. We allow unit-scaled equivalents (×/÷1e3, ×/÷1e6) and simple
+    sums/differences of observation numbers, so legitimate unit conversions and
+    year-over-year deltas are NOT flagged.
+    """
+    ans = [n for n in _nums(answer) if abs(n) >= 1000 and not (2400 <= n <= 2600)]
+    if not ans:
+        return True  # no significant numbers to verify
+    obs = _nums(observations)
+    if not obs:
+        return True  # no data numbers to compare against — leave to caller/LLM
+
+    allowed = set()
+    for n in obs:
+        allowed.update((n, n * 1e3, n / 1e3, n * 1e6, n / 1e6))
+    # pairwise sums/differences cover computed deltas (compare questions)
+    for i, a in enumerate(obs):
+        for b in obs[i + 1:]:
+            allowed.update((a + b, abs(a - b)))
+
+    def grounded(x: float) -> bool:
+        return any(abs(x - c) <= max(1.0, abs(c) * 0.01) for c in allowed)
+
+    # Fail only if NONE of the answer's numbers are grounded.
+    return any(grounded(x) for x in ans)
+
+
 def _parse_verdict_json(raw: str) -> Optional[Dict[str, Any]]:
     """Extract the first JSON object from the judge's reply."""
     match = re.search(r"\{.*\}", raw, re.DOTALL)
@@ -109,6 +156,19 @@ async def verify_answer(
             critique="ไม่พบข้อมูลจากการค้นหา ควรเรียก tool เพื่อค้นหาข้อมูลก่อนตอบ",
         )
 
+    # Deterministic numeric-grounding guard — catches invented figures before
+    # spending an LLM call (allows unit-scaling and computed deltas).
+    if not _numeric_grounding_ok(answer, observations):
+        return VerificationResult(
+            verdict="fail",
+            grounded=False,
+            issues=["ตัวเลขในคำตอบไม่ปรากฏในข้อมูลที่ค้นมา (อาจแต่งขึ้นเอง)"],
+            critique=(
+                "ให้ใช้เฉพาะตัวเลขที่ปรากฏใน Observation เท่านั้น ห้ามแต่งตัวเลขเอง "
+                "ถ้าไม่พบตัวเลขที่ต้องการใน Observation ให้ตอบว่าไม่พบข้อมูลในเอกสาร"
+            ),
+        )
+
     prompt = _VERIFY_PROMPT.format(
         question=question,
         observations=observations[:6000],
@@ -124,6 +184,7 @@ async def verify_answer(
                     "prompt": prompt,
                     "stream": False,
                     "options": {"temperature": 0.0, "num_predict": 400},
+                    **ollama_extra_fields(),
                 },
             )
             resp.raise_for_status()

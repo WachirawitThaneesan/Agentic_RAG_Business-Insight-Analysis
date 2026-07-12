@@ -37,38 +37,42 @@ def _extract_years(question: str) -> List[str]:
     return re.findall(r"\b(25\d{2}|20\d{2})\b", question or "")
 
 
+_KEYWORD_STOPWORDS = {
+    "อะไร", "เท่าไร", "เท่าไหร่", "เท่า", "ใด", "บ้าง", "ของ", "ใน", "ปี",
+    "และ", "กับ", "ที่", "เป็น", "ได้", "หรือ", "มี", "จาก", "ให้", "ว่า",
+    "จะ", "ควร", "ทั้งหมด", "กี่", "คือ", "ด้าน", "โดย", "ซึ่ง", "นี้", "นั้น",
+    "อยู่", "ทำ", "แล้ว", "การ", "ตาม", "ต่อ", "เมื่อ", "ราย",
+    # domain-ubiquitous terms — they appear in almost every chunk of this corpus
+    # so they carry no discriminative signal and only add noise to keyword search.
+    "กรุงศรี", "ธนาคาร", "บริษัท", "จำกัด", "มหาชน", "รายงาน", "ประจำปี",
+    "กรุ๊ป", "อยุธยา", "ประเทศ", "ไทย", "กลุ่ม", "กิจการ",
+    "how", "what", "which", "does", "did", "the", "for", "from", "and", "of",
+    "is", "are", "in", "to", "a", "an",
+}
+
+
+def _thai_tokenize(text: str) -> List[str]:
+    """Word-segment mixed Thai/English text.
+
+    Thai is written without spaces, so a naive ``[ก-๙]+`` regex yields one giant
+    token (e.g. 'คณะกรรมการทรัพยากรบุคคลของกรุงศรี') that matches no chunk. We
+    use pythainlp to split it into real words ('คณะกรรมการ', 'ทรัพยากรบุคคล', …)
+    which makes keyword search actually work. Falls back to the old regex if
+    pythainlp is unavailable.
+    """
+    try:
+        from pythainlp.tokenize import word_tokenize
+        return word_tokenize(text, engine="newmm", keep_whitespace=False)
+    except Exception:
+        return re.findall(r"[A-Za-z]{2,}|\d{4}|[ก-๙]{2,}", text)
+
+
 def _extract_keyword_terms(question: str) -> List[str]:
     raw_question = str(question or "").strip()
     if not raw_question:
         return []
 
-    tokens = re.findall(r"[A-Za-z]{2,}|\d{4}|[ก-๙]{2,}", raw_question)
-    stopwords = {
-        "อะไร",
-        "เท่าไร",
-        "เท่าไหร่",
-        "เท่า",
-        "ใด",
-        "บ้าง",
-        "ของ",
-        "ใน",
-        "ปี",
-        "และ",
-        "กับ",
-        "ที่",
-        "เป็น",
-        "ได้",
-        "หรือ",
-        "how",
-        "what",
-        "which",
-        "does",
-        "did",
-        "the",
-        "for",
-        "from",
-        "and",
-    }
+    tokens = _thai_tokenize(raw_question)
 
     seen = set()
     terms: List[str] = []
@@ -77,10 +81,12 @@ def _extract_keyword_terms(question: str) -> List[str]:
         if not normalized:
             continue
         normalized_lower = normalized.lower()
-        if normalized_lower in stopwords:
+        if normalized_lower in _KEYWORD_STOPWORDS:
             continue
-        if len(normalized) < 2:
-            continue
+        # keep 4-digit years, otherwise require >=2 alnum/thai chars
+        if not re.fullmatch(r"(?:25|20)\d{2}", normalized):
+            if len(normalized) < 2 or not re.search(r"[A-Za-z0-9ก-๙]", normalized):
+                continue
         if normalized_lower in seen:
             continue
         seen.add(normalized_lower)
