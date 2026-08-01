@@ -133,6 +133,27 @@ def _report_token_usage():
     print()
 
 
+# Below this many questions a category's pass rate carries no information, so
+# it is reported as a smoke test rather than folded into the headline accuracy.
+_MIN_N_FOR_RATE = 10
+
+
+def _wilson(k: int, n: int, z: float = 1.96) -> tuple:
+    """95% confidence interval (percent) for k successes out of n.
+
+    Wilson rather than the textbook normal interval, which misbehaves exactly
+    where these categories live — near 100% and at small n.
+    """
+    import math
+    if not n:
+        return 0.0, 100.0
+    p = k / n
+    d = 1 + z * z / n
+    centre = (p + z * z / (2 * n)) / d
+    half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return max(0.0, centre - half) * 100, min(1.0, centre + half) * 100
+
+
 def summarize(out_path: str):
     rows = []
     with open(out_path, "r", encoding="utf-8") as f:
@@ -169,33 +190,63 @@ def summarize(out_path: str):
         completed = d["total"] - d["timeout"] - d["error"]
         strict = 100 * d["passed"] / d["total"] if d["total"] else 0
         qual = 100 * d["passed"] / completed if completed else 0
+        lo, hi = _wilson(d["passed"], d["total"])
         extra = ""
         if d["timeout"] or d["error"]:
-            extra = f"  (⏱{d['timeout']} ✖{d['error']} | of-finished {qual:4.0f}%)"
-        print(f"  {name:<20s} {d['passed']:>3d}/{d['total']:<3d} {strict:5.1f}%{extra}")
+            extra = f"  ⏱{d['timeout']} ✖{d['error']} (of-finished {qual:.0f}%)"
+        print(f"  {name:<20s} {d['passed']:>4d}/{d['total']:<4d} {strict:5.1f}%   "
+              f"[{lo:5.1f} – {hi:5.1f}]{extra}")
 
-    print("\n" + "=" * 66)
+    # A rate computed from a handful of questions is not a measurement: 2/2 is
+    # consistent with a true accuracy anywhere above 34%. Report those paths as
+    # smoke tests and keep them out of the headline number instead of letting
+    # them read as "100%".
+    measured = {c: d for c, d in by_cat.items() if d["total"] >= _MIN_N_FOR_RATE}
+    smoke = {c: d for c, d in by_cat.items() if d["total"] < _MIN_N_FOR_RATE}
+    m_pass = sum(d["passed"] for d in measured.values())
+    m_total = sum(d["total"] for d in measured.values())
+    m_to = sum(d["timeout"] for d in measured.values())
+    m_err = sum(d["error"] for d in measured.values())
+
+    print("\n" + "=" * 74)
     print("  ACCURACY BY CATEGORY (tool / reasoning style)")
-    print("  strict = correct/total | ⏱ = timed out | ✖ = crashed")
-    print("=" * 66)
-    for cat in sorted(by_cat):
-        _line(cat, by_cat[cat])
-    print("-" * 66)
-    _line("OVERALL", {"passed": tp, "total": total, "timeout": tto, "error": ter})
-    print("=" * 66)
+    print("  strict = correct/total | [ ] = 95% confidence interval (Wilson)")
+    print("=" * 74)
+    for cat in sorted(measured):
+        _line(cat, measured[cat])
+    print("-" * 74)
+    _line("OVERALL", {"passed": m_pass, "total": m_total,
+                      "timeout": m_to, "error": m_err})
+    print("=" * 74)
+    if smoke:
+        print(f"  smoke tests — n < {_MIN_N_FOR_RATE}, excluded from OVERALL "
+              f"(too few questions for a rate):")
+        for cat in sorted(smoke):
+            d = smoke[cat]
+            print(f"    {cat:<20s} {d['passed']}/{d['total']} passed")
+        print("=" * 74)
 
-    completed_total = total - tto - ter
+    completed_total = m_total - m_to - m_err
+    lo, hi = _wilson(m_pass, m_total)
     summary = {
         "overall": {
-            "passed": tp, "total": total, "timeout": tto, "error": ter,
+            "passed": m_pass, "total": m_total, "timeout": m_to, "error": m_err,
+            "accuracy_strict": round(m_pass / m_total, 4) if m_total else 0,
+            "accuracy_of_finished": round(m_pass / completed_total, 4) if completed_total else 0,
+            "ci95": [round(lo, 2), round(hi, 2)],
+            "excludes_smoke_tests": sorted(smoke),
+        },
+        "including_smoke_tests": {
+            "passed": tp, "total": total,
             "accuracy_strict": round(tp / total, 4) if total else 0,
-            "accuracy_of_finished": round(tp / completed_total, 4) if completed_total else 0,
         },
         "by_category": {
             c: {**d,
                 "accuracy_strict": round(d["passed"] / d["total"], 4) if d["total"] else 0,
                 "accuracy_of_finished": (round(d["passed"] / (d["total"] - d["timeout"] - d["error"]), 4)
-                                         if (d["total"] - d["timeout"] - d["error"]) else 0)}
+                                         if (d["total"] - d["timeout"] - d["error"]) else 0),
+                "ci95": [round(x, 2) for x in _wilson(d["passed"], d["total"])],
+                "smoke_test": d["total"] < _MIN_N_FOR_RATE}
             for c, d in by_cat.items()
         },
     }

@@ -56,3 +56,6 @@ scratch/
 # Evaluation CSV outputs (keep golden_set.json, drop generated results)
 *_evaluation_results.csv
 live_ragas_evals.csv
+
+# Local pre-migration snapshots (large binaries, regenerate as needed)
+backups/

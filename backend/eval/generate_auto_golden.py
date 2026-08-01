@@ -30,7 +30,7 @@ import json
 import logging
 import os
 import re
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import duckdb
 
@@ -40,13 +40,23 @@ settings = get_settings()
 logger = logging.getLogger(__name__)
 
 # ---- How many questions per category (edit to scale coverage vs runtime) ----
+# Sized against what the data can actually supply, not an even split. Measured
+# ceilings after the table re-OCR (2026-08-01): structured_sql 1250
+# (metric x year pairs), hybrid_compare 511, semantic_vector 837,
+# structured_eav 79, hybrid_superlative 36 (needs >=4 years of one metric) and
+# graph 2 (the knowledge graph really is three nodes and one edge).
+#
+# The last two are taken whole because they are the ceiling. At n=36 and n=2 a
+# category rate is indicative, not measured -- 2/2 correct is consistent with a
+# true accuracy anywhere above 34%, so report graph as a worked example rather
+# than a percentage.
 N = {
-    "structured_sql": 24,
-    "hybrid_superlative": 18,
-    "hybrid_compare": 18,
-    "structured_eav": 22,
-    "semantic_vector": 16,
-    "graph": 2,
+    "structured_sql": 150,
+    "hybrid_superlative": 36,   # ceiling
+    "hybrid_compare": 100,
+    "structured_eav": 79,       # ceiling
+    "semantic_vector": 150,
+    "graph": 2,                 # ceiling
 }
 
 YEARS = ["2563", "2564", "2565", "2566", "2567"]
@@ -59,6 +69,9 @@ _VAGUE_LABELS = {"อื่น ๆ", "อื่นๆ", "รวม", "รวม�
 
 # Strip an OCR row-number prefix like "12. " from an entity name.
 _NUM_PREFIX = re.compile(r"^\s*\d+\.\s*")
+
+# Trailing footnote markers the report attaches to entity names ("… Plc.1/").
+_FOOTNOTE = re.compile(r"\s*\d+\s*/\s*$")
 
 
 def _clean_unit(unit: str) -> str:
@@ -94,45 +107,108 @@ def _is_clean_label(label: str) -> bool:
 # fact_financial_metrics → structured_sql / hybrid_superlative / hybrid_compare
 # ---------------------------------------------------------------------------
 
-def _load_fact(con) -> Dict[str, Dict[str, Dict[str, Any]]]:
-    """Return {label: {year: {raw, num, unit}}} for clean, one-row-per-year labels."""
+# Table names carry the page tag the re-OCR loader adds, and a band suffix that
+# says which statement the column belongs to.
+_PAGE_TAG = re.compile(r"^\s*\[p\d+\]\s*")
+
+
+# A context only earns its place if it tells the reader *which* table is meant.
+# OCR often names a table after its unit annotation ("(หน่วยพันบาท)"), which
+# every financial table shares — as a disambiguator it is worse than nothing,
+# because the question looks answerable while still having several right answers.
+_UNIT_ONLY = re.compile(r"^[()\s]*(หน่วย|unit)\s*[:：]?\s*(ล้าน|พัน|ร้อยละ|บาท|%)")
+
+
+def _table_context(table_name: str) -> str:
+    """A short human phrase identifying a table, or '' if its name is unusable."""
+    name = _PAGE_TAG.sub("", str(table_name or "")).strip()
+    if _UNIT_ONLY.match(name):
+        return ""
+    # The band ("… — งบการเงินรวม") is what actually disambiguates two copies of
+    # the same metric, so prefer it over the long table title.
+    if "—" in name:
+        band = name.rsplit("—", 1)[1].strip()
+        if 3 <= len(band) <= 40:
+            return band
+    if not (4 <= len(name) <= 40):
+        return ""
+    if re.fullmatch(r"[\d.,()\-\s]+", name) or not _CLEAN_LABEL.match(name):
+        return ""
+    return name
+
+
+def _load_fact(con) -> Dict[Any, Dict[str, Dict[str, Any]]]:
+    """Return {(table, label): {year: {raw, num, unit, label, context}}}.
+
+    Keying on the label alone conflates metrics that legitimately differ: the
+    report states most figures twice, once consolidated and once bank-only, so
+    "เงินให้กู้ยืม 2567" has two correct values. The old key saw that as an
+    ambiguous duplicate and dropped both — discarding 165 of 303 metrics once
+    the statements were split into their own tables. Keying on the source table
+    keeps them apart, and ``context`` lets the question name which one it wants.
+    """
     rows = con.execute(
-        "SELECT row_label, metric_year, raw_value, numeric_value, unit "
+        "SELECT table_name, row_label, metric_year, raw_value, numeric_value, unit "
         "FROM fact_financial_metrics WHERE numeric_value IS NOT NULL"
     ).fetchall()
 
-    by_label: Dict[str, Dict[str, list]] = {}
-    for label, year, raw, num, unit in rows:
-        by_label.setdefault(label, {}).setdefault(year, []).append((raw, num, unit))
+    grouped: Dict[Any, Dict[str, list]] = {}
+    for table, label, year, raw, num, unit in rows:
+        grouped.setdefault((table, label), {}).setdefault(year, []).append((raw, num, unit))
 
-    clean: Dict[str, Dict[str, Dict[str, Any]]] = {}
-    for label, years in by_label.items():
+    # A label appearing in several tables needs its table named in the question,
+    # or the question has more than one right answer.
+    tables_per_label: Dict[str, set] = {}
+    for table, label in grouped:
+        tables_per_label.setdefault(label, set()).add(table)
+
+    clean: Dict[Any, Dict[str, Dict[str, Any]]] = {}
+    for (table, label), years in grouped.items():
         if not _is_clean_label(label):
             continue
-        # one unambiguous value per year only
         if any(len(v) != 1 for v in years.values()):
             continue
-        if len(years) < 3:
+        if len(years) < 2:
             continue
-        clean[label] = {
-            y: {"raw": v[0][0], "num": v[0][1], "unit": _clean_unit(v[0][2])}
+        context = ""
+        if len(tables_per_label.get(label, ())) > 1:
+            context = _table_context(table)
+            if not context:
+                continue  # ambiguous and we cannot say which table — unusable
+        clean[(table, label)] = {
+            y: {"raw": v[0][0], "num": v[0][1], "unit": _clean_unit(v[0][2]),
+                "label": label, "context": context}
             for y, v in years.items()
         }
     return clean
 
 
+def _phrase(years: Dict[str, Dict[str, Any]]) -> Tuple[str, str]:
+    """Return (metric phrase for a question, plain label) for a fact entry."""
+    cell = next(iter(years.values()))
+    label, context = cell["label"], cell["context"]
+    return (f"{label} ({context})" if context else label), label
+
+
 def gen_structured_sql(fact: Dict[str, Dict[str, Dict[str, Any]]]) -> List[dict]:
     out = []
-    labels = _pick_spread(sorted(fact), N["structured_sql"])
-    for label in labels:
-        years = fact[label]
-        # prefer the most recent year available for this metric
-        year = max(years)
-        cell = years[year]
+    # Every (metric, year) pair is a distinct answerable question, so sample the
+    # pairs rather than one arbitrary year per metric: 81 metrics -> 283 pairs.
+    # Interleaving by year keeps a spread sample from clustering on recent years
+    # (the metrics are sorted, so _pick_spread already spreads across labels).
+    pairs = [
+        (key, year)
+        for year in YEARS
+        for key in sorted(fact, key=lambda k: (k[1], k[0]))
+        if year in fact[key]
+    ]
+    for key, year in _pick_spread(pairs, N["structured_sql"]):
+        cell = fact[key][year]
         unit = cell["unit"] or ""
+        phrase, _ = _phrase(fact[key])
         out.append({
             "category": "structured_sql",
-            "question": f"{label} ปี {year} มีค่าเท่ากับเท่าไร?",
+            "question": f"{phrase} ปี {year} มีค่าเท่ากับเท่าไร?",
             "ground_truth": f"{cell['raw']}{(' ' + unit) if unit else ''}".strip(),
             "grader": {"type": "numeric", "value": cell["num"]},
             "note": "fact_financial_metrics single lookup",
@@ -143,14 +219,15 @@ def gen_structured_sql(fact: Dict[str, Dict[str, Dict[str, Any]]]) -> List[dict]
 def gen_hybrid_superlative(fact) -> List[dict]:
     out = []
     # metrics present in >=4 years make the strongest superlative questions
-    cands = sorted(l for l, y in fact.items() if len(y) >= 4)
-    for label in _pick_spread(cands, N["hybrid_superlative"]):
-        years = fact[label]
+    cands = sorted((k for k, y in fact.items() if len(y) >= 4), key=lambda k: (k[1], k[0]))
+    for key in _pick_spread(cands, N["hybrid_superlative"]):
+        years = fact[key]
         best_year, best = max(years.items(), key=lambda kv: kv[1]["num"])
         unit = best["unit"] or ""
+        phrase, _ = _phrase(years)
         out.append({
             "category": "hybrid_superlative",
-            "question": f"ในช่วงปี 2563 ถึง 2567 ปีใดที่ {label} สูงที่สุด และมีค่าเท่าไร?",
+            "question": f"ในช่วงปี 2563 ถึง 2567 ปีใดที่ {phrase} สูงที่สุด และมีค่าเท่าไร?",
             "ground_truth": f"ปี {best_year} ที่ {best['raw']}{(' ' + unit) if unit else ''}".strip(),
             "grader": {"type": "all_of", "values": [best_year, best["num"]]},
             "note": "max over years (needs aggregation/reasoning)",
@@ -160,15 +237,16 @@ def gen_hybrid_superlative(fact) -> List[dict]:
 
 def gen_hybrid_compare(fact) -> List[dict]:
     out = []
-    cands = sorted(l for l, y in fact.items()
-                   if "2567" in y and "2566" in y)
-    for label in _pick_spread(cands, N["hybrid_compare"]):
-        y = fact[label]
+    cands = sorted((k for k, y in fact.items() if "2567" in y and "2566" in y),
+                   key=lambda k: (k[1], k[0]))
+    for key in _pick_spread(cands, N["hybrid_compare"]):
+        y = fact[key]
         v1, v2 = y["2567"]["num"], y["2566"]["num"]
         diff = round(v1 - v2, 4)
+        phrase, _ = _phrase(y)
         out.append({
             "category": "hybrid_compare",
-            "question": f"{label} ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+            "question": f"{phrase} ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
             "ground_truth": f"ต่างกัน {abs(diff):,.2f} (ปี 2567 = {y['2567']['raw']}, ปี 2566 = {y['2566']['raw']})",
             # accept either the computed delta OR both source values quoted
             "grader": {"type": "any_of", "values": [abs(diff), [v1, v2]]},
@@ -182,39 +260,106 @@ def gen_hybrid_compare(fact) -> List[dict]:
 # ---------------------------------------------------------------------------
 
 _ENTITY_HINT = re.compile(r"บริษัท|ธนาคาร|จำกัด|Bank|PLC|กองทุน|ประกัน|หลักทรัพย์")
+_PERSON_HINT = re.compile(
+    r"^\s*\d*\.?\s*(นาย|นาง|นางสาว|ดร\.|ม\.ล\.|ม\.ร\.ว\.|พล\.|ศ\.|รศ\.|ผศ\.)"
+)
 
+# Board attendance is recorded as "11/12" (attended / held).
+_MEETING_COL = "จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม"
+_ATTENDANCE = re.compile(r"^\s*(\d+)\s*/\s*(\d+)\s*$")
+
+# col_name -> (entity kind, question template). The entity kind decides which
+# row_labels are usable: a company table is keyed by company name, the board
+# tables by person name, and mixing the two filters yields nothing.
+#
+# Only columns whose header the extractor read correctly AND whose row_label is
+# a real entity can become a question. Several other named columns look usable
+# but are not: 'รายชื่อบริษัทที่เกี่ยวข้อง' has bare row numbers for labels (no
+# entity to ask about), 'ชื่อ - นามสกุลตำแหน่ง' is two columns merged into one
+# header, and 'เปลี่ยนแปลง (ร้อยละ)' holds absolute amounts rather than the
+# percentages its header promises — questions from it would have wrong answers.
+#
+# 'ตำแหน่ง' is excluded for a subtler reason: 32 of its 41 values are the bare
+# word "กรรมการ", which is a substring of the other values ("ประธานกรรมการ")
+# and of any natural phrasing of the question. Every answer would pass, so the
+# column inflates the score instead of measuring anything.
 _EAV_ATTRS = {
-    "จำนวนหุ้น": "{e} ที่ธนาคารถือ มีจำนวนกี่หุ้น?",
-    "ประเภทธุรกิจ": "{e} ประกอบธุรกิจประเภทใด?",
-    "ธนาคารถือหุ้น (%)": "ธนาคารถือหุ้นใน {e} คิดเป็นร้อยละเท่าไร?",
+    "จำนวนหุ้น": ("company", "{e} ที่ธนาคารถือ มีจำนวนกี่หุ้น?"),
+    "ประเภทธุรกิจ": ("company", "{e} ประกอบธุรกิจประเภทใด?"),
+    "ธนาคารถือหุ้น (%)": ("company", "ธนาคารถือหุ้นใน {e} คิดเป็นร้อยละเท่าไร?"),
+    _MEETING_COL: (
+        "person",
+        "{e} เข้าร่วมประชุมคณะกรรมการกี่ครั้ง จากการประชุมทั้งหมดกี่ครั้ง?",
+    ),
 }
+
+
+def _norm_col(name: str) -> str:
+    """Collapse header spelling variants to one key.
+
+    Reading the same table twice yields cosmetically different headers —
+    'ธนาคารถือหุ้น (%)' vs 'ธนาคาร ถือหุ้น (%)', 'จำนวนหุ้น' vs 'จำนวนหุ้น:'.
+    Matching literally silently drops the variants, and the dropped rows look
+    identical to rows that were never extracted.
+    """
+    return re.sub(r"[\s:：]+", "", str(name or ""))
+
+
+_EAV_BY_NORM = {_norm_col(k): (k, v) for k, v in _EAV_ATTRS.items()}
+# The board-attendance header is truncated to varying lengths by the extractor,
+# so match it by prefix rather than equality.
+_MEETING_NORM = _norm_col("จำนวนครั้งที่เข้าร่วมประชุม")
+
+
+def _match_attr(col_name: str):
+    """Return (canonical col_name, (kind, template)) for a header, or None."""
+    n = _norm_col(col_name)
+    if n in _EAV_BY_NORM:
+        return _EAV_BY_NORM[n]
+    if n.startswith(_MEETING_NORM) or n == _norm_col("จำนวนครั้ง"):
+        return _MEETING_COL, _EAV_ATTRS[_MEETING_COL]
+    return None
 
 
 def gen_structured_eav(con) -> List[dict]:
     # rows where the row_label itself is a named entity and attr is meaningful
     rows = con.execute(
-        "SELECT row_label, col_name, col_value, col_value_num, table_name "
-        "FROM dim_table_rows "
-        "WHERE col_value <> '' AND col_name IN ('จำนวนหุ้น','ประเภทธุรกิจ','ธนาคารถือหุ้น (%)')"
+        "SELECT row_label, col_name, col_value, col_value_num "
+        "FROM dim_table_rows WHERE col_value <> ''"
     ).fetchall()
 
     cand = []
     seen = set()
-    for row_label, col_name, col_value, col_num, table in rows:
-        e = (row_label or "").strip()
-        if not _ENTITY_HINT.search(e) or not (8 <= len(e) <= 60):
+    for row_label, col_name_raw, col_value, col_num in rows:
+        matched = _match_attr(col_name_raw)
+        if not matched:
             continue
-        key = (e, col_name)
+        col_name, (kind, _tpl) = matched
+        e = (row_label or "").strip()
+        hit = _ENTITY_HINT.search(e) if kind == "company" else _PERSON_HINT.match(e)
+        if not hit or not (8 <= len(e) <= 60):
+            continue
+        # Dedupe on the displayed name: the same director appears as both
+        # "นายวิรัช …" and "1. นายวิรัช …" across tables, and the same company
+        # as both "Hattha Bank PLC." and "Hattha Bank Plc.1/" (a footnote
+        # marker) — which produced two questions about one entity with two
+        # different official answers, so either reply scored wrong on one.
+        e_disp = _FOOTNOTE.sub("", _NUM_PREFIX.sub("", e)).strip()
+        key = (_norm_col(e_disp).lower(), col_name)
         if key in seen:
             continue
         seen.add(key)
-        cand.append((e, col_name, col_value, col_num))
+        cand.append((e_disp, col_name, col_value, col_num))
 
     out = []
-    for e, col_name, col_value, col_num in _pick_spread(cand, N["structured_eav"]):
-        e_disp = _NUM_PREFIX.sub("", e).strip()  # drop OCR "12. " prefix in the question
-        q = _EAV_ATTRS[col_name].format(e=e_disp)
-        if col_num is not None:
+    for e_disp, col_name, col_value, col_num in _pick_spread(cand, N["structured_eav"]):
+        q = _EAV_ATTRS[col_name][1].format(e=e_disp)
+        attend = _ATTENDANCE.match(col_value or "")
+        if attend:
+            # "11/12" — require both halves, so "12 ครั้ง" alone does not pass
+            grader = {"type": "all_of",
+                      "values": [int(attend.group(1)), int(attend.group(2))]}
+        elif col_num is not None:
             grader = {"type": "numeric", "value": col_num}
         else:
             grader = {"type": "text_contains", "value": col_value}
@@ -245,7 +390,9 @@ def gen_graph() -> List[dict]:
             "category": "graph",
             "question": "MUFG มีความสัมพันธ์อย่างไรกับธนาคารกรุงศรีอยุธยา?",
             "ground_truth": "MUFG เป็นผู้ถือหุ้น/เจ้าของรายใหญ่ของกรุงศรี (ownership)",
-            "grader": {"type": "text_contains", "value": "ถือหุ้น"},
+            # The ground truth offers three wordings, so accept any of them --
+            # checking only "ถือหุ้น" failed a correct answer that said "เจ้าของ".
+            "grader": {"type": "any_of", "values": ["ถือหุ้น", "เจ้าของ", "ownership"]},
             "note": "knowledge graph relationship",
         },
     ]
@@ -290,7 +437,7 @@ def _typhoon_chat(prompt: str) -> Optional[str]:
         return None
 
 
-def _load_prose_chunks(limit: int) -> List[str]:
+def _load_prose_chunks() -> List[str]:
     import psycopg2
     con = psycopg2.connect(settings.DATABASE_URL_SYNC)
     con.set_client_encoding("UTF8")
@@ -303,15 +450,29 @@ def _load_prose_chunks(limit: int) -> List[str]:
     )
     rows = [r[0] for r in cur.fetchall()]
     con.close()
-    return _pick_spread(rows, limit)
+    return rows
 
 
 def gen_semantic_vector() -> List[dict]:
+    """Synthesise questions from prose chunks spread across the whole corpus.
+
+    The oversample has to be a *reserve*, not a longer queue. Taking 2N chunks
+    and stopping at N successes silently restricted every previous run to the
+    first half of the corpus by chunk id -- synthesis almost never fails, so
+    the loop always stopped halfway. Draw the N primary chunks spread across
+    the full pool, and only fall back to the reserve when one fails.
+    """
+    n = N["semantic_vector"]
+    rows = _load_prose_chunks()
+    primary = _pick_spread(list(range(len(rows))), n)
+    used = set(primary)
+    reserve = _pick_spread([i for i in range(len(rows)) if i not in used], n)
+
     out = []
-    chunks = _load_prose_chunks(N["semantic_vector"] * 2)  # oversample; some fail
-    for chunk in chunks:
-        if len(out) >= N["semantic_vector"]:
+    for i in list(primary) + list(reserve):
+        if len(out) >= n:
             break
+        chunk = rows[i]
         raw = _typhoon_chat(_SYNTH_PROMPT.format(chunk=chunk[:1500]))
         if not raw:
             continue
@@ -323,7 +484,9 @@ def gen_semantic_vector() -> List[dict]:
         except json.JSONDecodeError:
             continue
         q, a = qa.get("question", "").strip(), qa.get("answer", "").strip()
-        if not q or not a:
+        # Degenerate pairs are unjudgeable: an empty answer has nothing to grade
+        # against, and a paragraph-length one is a summary, not a fact.
+        if len(q) < 10 or not (2 <= len(a) <= 200):
             continue
         out.append({
             "category": "semantic_vector",
