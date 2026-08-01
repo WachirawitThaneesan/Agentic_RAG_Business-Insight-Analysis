@@ -21,6 +21,16 @@ venv/
 .env.*
 !.env.example
 
+# Cloud service-account keys (GCP / Vertex AI). These grant API access under
+# your billing account — never commit one. Keep the real key outside the repo
+# (e.g. ~/.gcp/) and point GOOGLE_APPLICATION_CREDENTIALS at it.
+*-service-account*.json
+*service_account*.json
+*credentials*.json
+gcp-*.json
+vertex-*.json
+*-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].json
+
 # ---------------------------------------------------------------------------
 # Data warehouses / databases / runtime logs (regenerated locally)
 # ---------------------------------------------------------------------------

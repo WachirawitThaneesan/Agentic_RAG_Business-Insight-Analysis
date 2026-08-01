@@ -99,6 +99,38 @@ async def run(golden_path: str, out_path: str, limit: int | None, timeout: float
                         i, len(todo), mark, item["category"], dt, q[:60])
 
     summarize(out_path)
+    _report_token_usage()
+
+
+# Per-1M token prices for the hosted models we evaluate with, so a run can
+# report what it actually cost instead of an estimate.
+_PRICES = {
+    "gemini-2.5-flash": (0.30, 2.50),
+    "gemini-3.5-flash": (1.50, 9.00),
+    "gemini-3.6-flash": (1.50, 7.50),
+}
+
+
+def _report_token_usage():
+    """Print tokens + dollar cost when the run used a metered provider."""
+    from backend.services import llm
+
+    u = llm.usage
+    if not u.get("calls"):
+        return  # local model — nothing metered
+
+    model = llm.settings.GEMINI_MODEL
+    print(f"  provider/model : {llm.active_model()}")
+    print(f"  LLM calls      : {u['calls']}")
+    print(f"  input tokens   : {u['input_tokens']:,}")
+    print(f"  output tokens  : {u['output_tokens']:,} (thinking {u['thinking_tokens']:,})")
+    prices = _PRICES.get(model)
+    if prices:
+        cost = llm.usage_cost(*prices)
+        print(f"  cost           : ${cost:.4f}  (~{cost * 35:.2f} THB)")
+    else:
+        print(f"  cost           : (no price on file for {model})")
+    print()
 
 
 def summarize(out_path: str):

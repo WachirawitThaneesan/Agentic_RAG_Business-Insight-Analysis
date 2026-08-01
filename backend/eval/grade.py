@@ -74,7 +74,38 @@ def _text_match(target: str, answer: str) -> bool:
     t = _norm_text(target)
     if not t:
         return False
-    return t in _norm_text(answer)
+    a = _norm_text(answer)
+    if t in a:
+        return True
+    return _near_match(t, a)
+
+
+# Ground truths are lifted from OCR'd pages, so some carry scanning artefacts
+# (e.g. "ธุรกิจนับสนุน" for "ธุรกิจสนับสนุน"). An answer that spells the word
+# correctly is not wrong, so allow a character or two of drift on long targets.
+# The threshold stays high and short targets are excluded, because a loose
+# match here would silently manufacture passes.
+_NEAR_MATCH_MIN_LEN = 8
+_NEAR_MATCH_RATIO = 0.92
+
+
+def _near_match(target: str, answer: str) -> bool:
+    if len(target) < _NEAR_MATCH_MIN_LEN or not answer:
+        return False
+    from difflib import SequenceMatcher
+
+    # Anchor on the longest shared run, then line the answer up so that run sits
+    # where it does in the target. Sliding a fixed window instead would need the
+    # offset to land exactly, which it rarely does when the answer has a prefix.
+    sm = SequenceMatcher(None, target, answer)
+    block = sm.find_longest_match(0, len(target), 0, len(answer))
+    # A short shared run means these are different strings that merely share a
+    # common word — not a scanning artefact of the same phrase.
+    if block.size < len(target) // 2:
+        return False
+    start = max(0, block.b - block.a)
+    chunk = answer[start:start + len(target)]
+    return SequenceMatcher(None, target, chunk).ratio() >= _NEAR_MATCH_RATIO
 
 
 def _value_present(value: Any, answer: str) -> bool:
@@ -101,7 +132,11 @@ _JUDGE_PROMPT = """\
 - ให้ "ถูก" (correct=true) ถ้าคำตอบของระบบ "สื่อความหมายตรงกับเฉลย" หรือครอบคลุมสาระสำคัญของเฉลย
   แม้จะใช้ถ้อยคำต่างกัน เรียบเรียงใหม่ ให้รายละเอียดมากกว่า หรือดึงข้อมูลจากส่วนอื่นของเอกสารก็ตาม
 - "ข้อความต้นฉบับ" เป็นเพียงบริบทเสริม ไม่ต้องบังคับว่าคำตอบต้องมาจากต้นฉบับนี้เท่านั้น
-- ให้ "ผิด" (correct=false) เฉพาะเมื่อคำตอบ "ขัดแย้งกับเฉลย" ตอบผิดประเด็นชัดเจน ให้ตัวเลข/ชื่อผิด หรือบอกว่าไม่พบข้อมูล
+- **ห้ามตัดสินว่าผิดเพราะคำตอบ "มีมากกว่า" เฉลย** เฉลยเป็นเกณฑ์ขั้นต่ำ ไม่ใช่รายการที่ครบถ้วน
+  ถ้าคำตอบครอบคลุมสาระของเฉลยครบแล้ว แต่เพิ่มประเด็น/หัวข้อ/รายละเอียดอื่นที่ไม่ขัดแย้งกัน
+  ให้ถือว่า "ถูก" (correct=true) เสมอ
+- ให้ "ผิด" (correct=false) เฉพาะเมื่อคำตอบ "ขัดแย้งกับเฉลย" ตอบผิดประเด็นชัดเจน ให้ตัวเลข/ชื่อผิด
+  หรือบอกว่าไม่พบข้อมูล/ไม่สามารถระบุได้ ทั้งที่เฉลยมีคำตอบ
 
 คำถาม: {question}
 เฉลย (ground truth): {truth}

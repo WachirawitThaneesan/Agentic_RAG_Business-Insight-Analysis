@@ -18,6 +18,7 @@ import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.config import get_settings, ollama_extra_fields
+from backend.services.llm import generate as llm_generate
 from backend.services.tools import ALL_TOOLS
 from backend.services.answer_verifier import verify_answer
 from backend.services.query_router import route_query
@@ -47,7 +48,19 @@ SYSTEM_PROMPT = """\
   - ความเชื่อมโยงระหว่าง 2 บริษัทหรือบุคคล
 - ถ้าคำถามเป็นแนวผสม (Hybrid) ให้ใช้ multi_hop เพื่อดึงข้อมูลทั้งสองมารวมกัน
 - ตอบเป็นภาษาไทยเสมอ
+- **คำถามเกี่ยวกับรูปภาพตอบได้** เพราะระบบ OCR ได้อ่านและถอดคำบรรยายภาพ (`<figure>...</figure>`)
+  เก็บไว้เป็นข้อความในเอกสารแล้ว ถ้าถามถึงสิ่งที่อยู่ในภาพ ให้ค้นด้วย vector_search
+  แล้วอ่านคำบรรยายภาพนั้น ห้ามปฏิเสธว่า "วิเคราะห์รูปภาพไม่ได้" ถ้ายังไม่ได้ค้นดูก่อน
+- **ปีทั้งหมดในเอกสารและคำถามเป็น พ.ศ. (พุทธศักราช)** เช่น 2567 = ค.ศ. 2024, 2566 = ค.ศ. 2023
+  ซึ่งเป็นข้อมูลในอดีตที่มีอยู่จริงในเอกสาร ห้ามตีความว่าเป็นปีในอนาคตหรือบอกว่ายังไม่มีข้อมูลเด็ดขาด
 - อ้างอิงตัวเลขและข้อเท็จจริงจากผลลัพธ์ของ tool เท่านั้น ห้ามแต่งข้อมูลเอง
+- **ตัวเลขในวงเล็บคือค่าติดลบ** ตามหลักบัญชี เช่น (12,903,917) หมายถึง -12,903,917
+  เวลาคำนวณต้องใช้ค่าติดลบเสมอ เช่น (12,903,917) เทียบกับ 29,946,718 ต่างกัน 42,850,635 ไม่ใช่ 17,042,801
+- **เลือกแถวที่ชื่อตรงกับคำถามมากที่สุด** เมื่อ tool คืนมาหลายแถว
+  เช่น ถาม "เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า" ให้ใช้แถวที่ชื่อตรงกันเป๊ะ
+  ไม่ใช่ "เงินสดจ่ายสำหรับหนี้สินภายใต้สัญญาเช่า" ซึ่งเป็นคนละรายการ
+- **เวลาเทียบสองปี ต้องใช้ค่าจากแถวที่ชื่อเดียวกัน (row_label เดียวกัน) เท่านั้น**
+  ห้ามหยิบปีหนึ่งจากแถวหนึ่งแล้วอีกปีจากอีกแถว และถ้าผลต่างออกมาเป็น 0 ให้ตรวจว่าหยิบผิดแถวหรือไม่
 - ห้ามดัดแปลง แปลงหน่วย หรือคำนวณทศนิยมเป็นเปอร์เซ็นต์ด้วยตัวเองเด็ดขาด ให้แสดงผลตัวเลขตามหน่วยเดิมที่ดึงมาได้จากระบบ
 - ให้ใส่หน่วยแนบไปกับตัวเลขเลย (เช่น 1.10%) และห้ามพิมพ์สรุปแยกบรรทัดติ่งไว้ตอนท้ายว่า "หน่วยเป็น..." เด็ดขาด
 
@@ -67,7 +80,7 @@ Tools ที่ใช้ได้:
 
 รูปแบบการเรียก tool:
 Thought: <เหตุผลของคุณ>
-Action: {{"tool": "<tool_name>", "query": "<คำถามที่ต้องการค้นหาเป็นภาษาคน ห้ามเขียน SQL เองเด็ดขาด>"}}
+Action: {"tool": "<tool_name>", "query": "<คำถามที่ต้องการค้นหาเป็นภาษาคน ห้ามเขียน SQL เองเด็ดขาด>"}
 
 เมื่อพร้อมตอบ:
 Thought: <สรุปข้อมูลที่ได้>
@@ -122,14 +135,26 @@ def _parse_action(text: str) -> Optional[Dict[str, str]]:
             depth -= 1
             if depth == 0:
                 json_str = text[brace_start:i+1]
-                try:
-                    action = json.loads(json_str)
+                for candidate in (json_str, _undouble_braces(json_str)):
+                    try:
+                        action = json.loads(candidate)
+                    except json.JSONDecodeError:
+                        continue
                     if "tool" in action and "query" in action:
                         return action
-                except json.JSONDecodeError:
-                    logger.warning("Failed to parse Action JSON: %s", json_str[:200])
+                logger.warning("Failed to parse Action JSON: %s", json_str[:200])
                 return None
     return None
+
+
+def _undouble_braces(text: str) -> str:
+    """Collapse ``{{...}}`` to ``{...}``.
+
+    Models sometimes echo the doubled braces used for ``str.format`` escaping,
+    which is not valid JSON. Accepting both spellings means a formatting slip
+    costs a retry at worst instead of the whole question.
+    """
+    return text.replace("{{", "{").replace("}}", "}")
 
 
 def _parse_final_answer(text: str) -> Optional[str]:
@@ -145,30 +170,8 @@ def _parse_final_answer(text: str) -> Optional[str]:
 # ---------------------------------------------------------------------------
 
 async def _call_llm(prompt: str) -> str:
-    """Call Ollama generate API and return the response text."""
-    try:
-        # Increased timeout to 600s (10 mins) as local LLM inference can take a long time and cause 'empty response'
-        async with httpx.AsyncClient(timeout=600.0, limits=HTTP_LIMITS) as client:
-            resp = await client.post(
-                f"{settings.OLLAMA_HOST}/api/generate",
-                json={
-                    "model": settings.OLLAMA_LLM_MODEL,
-                    "prompt": prompt,
-                    "stream": False,
-                    "options": {
-                        "temperature": getattr(settings, "AGENT_TEMPERATURE", 0.1),
-                        "num_predict": 1024,
-                    },
-                    **ollama_extra_fields(),
-                },
-            )
-            resp.raise_for_status()
-            result = resp.json().get("response", "").strip()
-            logger.info("LLM response (%d chars): %s", len(result), result[:300])
-            return result
-    except Exception as e:
-        logger.error("LLM call failed: %s", e)
-        return ""
+    """Generate with the configured provider (Ollama local or Gemini)."""
+    return await llm_generate(prompt, max_tokens=1024)
 
 
 # ---------------------------------------------------------------------------
@@ -310,6 +313,7 @@ async def agent_query(
     sql_info: Optional[Dict[str, Any]] = None
     full_observations: List[str] = []  # untruncated tool output for verification
     internal_tool_succeeded = False    # gate web search until internal tools tried
+    attempted_calls: set = set()       # (tool, query) already run — blocks ReAct loops
     # This corpus is entirely internal (annual report + docs). Only allow web
     # search when the question itself carries an explicit web/news signal;
     # otherwise the agent escapes to Tavily and hallucinates external results.
@@ -353,6 +357,30 @@ async def agent_query(
             f"Observation: {obs}\n"
         )
 
+        # The router is keyword-based, so a prose question worded like a metric
+        # ("อัตราส่วน…เท่าใด") gets sent to SQL and comes back empty even though
+        # the answer sits in a chunk at rank 1. Rather than tune those keywords —
+        # brittle, and it risks the many questions routed correctly — sweep the
+        # document index before the agent is allowed to conclude "not found".
+        if not internal_tool_succeeded and forced != "vector_search":
+            logger.info("Forced tool '%s' found nothing; falling back to vector_search", forced)
+            fb = await _execute_tool("vector_search", question, session)
+            fb_obs = fb["observation"]
+            if fb.get("success") and _has_real_data(fb_obs):
+                internal_tool_succeeded = True
+                full_observations.append(f"[vector_search] {fb_obs}")
+                if fb.get("data"):
+                    sources.extend(_extract_sources("vector_search", fb["data"]))
+            reasoning_trace.append({
+                "action": "vector_search", "action_input": question,
+                "observation": fb_obs[:500], "success": bool(fb.get("success")),
+            })
+            conversation += (
+                f"Thought: {forced} ไม่พบข้อมูล ลองค้นจากเอกสารด้วย vector_search\n"
+                f'Action: {{"tool": "vector_search", "query": "{question}"}}\n'
+                f"Observation: {fb_obs}\n"
+            )
+
     llm_output = ""
     for iteration in range(max_iterations):
         logger.info("ReAct iteration %d/%d", iteration + 1, max_iterations)
@@ -385,6 +413,26 @@ async def agent_query(
                 })
                 conversation += f"{llm_output}\nObservation: {nudge}\n"
                 continue
+
+            # Re-issuing a call already made returns the same observation, so the
+            # agent can sit in that loop until it runs out of iterations and the
+            # answer it already found never becomes a Final Answer. Refuse the
+            # repeat and ask it to conclude from what it has.
+            call_key = (tool_name, query.strip())
+            if call_key in attempted_calls:
+                nudge = (
+                    "คุณเรียก tool นี้ด้วยคำค้นเดิมไปแล้ว และได้ผลลัพธ์เดิม "
+                    "ห้ามค้นซ้ำอีก ให้สรุปคำตอบจากข้อมูลที่มีอยู่แล้วด้วย Final Answer: ทันที "
+                    "ถ้าข้อมูลที่มีตอบได้ให้ตอบเลย ถ้าไม่พบจริงๆ จึงบอกว่าไม่พบข้อมูลในเอกสาร"
+                )
+                logger.info("Blocked repeated call %s(%s); nudging to conclude", tool_name, query[:50])
+                reasoning_trace.append({
+                    "action": tool_name, "action_input": query,
+                    "observation": nudge, "success": False,
+                })
+                conversation += f"{llm_output}\nObservation: {nudge}\n"
+                continue
+            attempted_calls.add(call_key)
 
             result = await _execute_tool(tool_name, query, session)
             obs = result["observation"]
@@ -450,7 +498,20 @@ async def agent_query(
                 "reasoning_trace": reasoning_trace,
             }
 
-        # No action and no final answer — treat the whole output as the answer
+        # Neither an Action nor a Final Answer parsed. If the model clearly *meant*
+        # to call a tool (it wrote "Action:") the reply is reasoning, not an answer —
+        # returning it verbatim leaks scaffolding like 'Thought: ... Action: {...}'
+        # to the user. Restate the format and let it try again instead.
+        if "Action:" in llm_output and iteration < max_iterations - 1:
+            logger.info("ReAct: malformed Action, re-prompting with the exact format")
+            conversation += (
+                f"{llm_output}\n"
+                "Observation: รูปแบบ Action ไม่ถูกต้อง ให้เขียนใหม่เป็น JSON บรรทัดเดียว "
+                'ด้วยวงเล็บปีกกาชั้นเดียว เช่น Action: {"tool": "vector_search", "query": "..."} '
+                "หรือถ้ามีข้อมูลพอแล้วให้ตอบด้วย Final Answer:\n"
+            )
+            continue
+
         logger.info("ReAct: no action/final answer parsed, using raw output")
         answer = llm_output.strip()
         # Try to clean up any Thought: prefix

@@ -624,23 +624,56 @@ async def vector_search(
             )
 
         scored_keyword_hits.sort(key=lambda item: item[0], reverse=True)
+        keyword_ranking = [hit for _, hit in scored_keyword_hits]
 
-        prioritized_keyword_hits = []
-        for _, hit in scored_keyword_hits:
-            prioritized_keyword_hits.append(hit)
-
-        final_results: List[Dict[str, Any]] = []
-        final_seen = set()
-        for result in prioritized_keyword_hits + merged:
-            if result["chunk_id"] in final_seen:
-                continue
-            final_seen.add(result["chunk_id"])
-            final_results.append(result)
-            if len(final_results) >= top_k:
-                break
-        return final_results
+        return _reciprocal_rank_fusion(merged, keyword_ranking, top_k)
 
     return merged[:top_k]
+
+
+# Rank at which a result's fusion contribution is roughly halved. The standard
+# constant from the RRF literature; large enough that the top few ranks of each
+# list stay close together instead of the first one dominating.
+_RRF_K = 60
+
+
+def _reciprocal_rank_fusion(
+    semantic: List[Dict[str, Any]],
+    keyword: List[Dict[str, Any]],
+    top_k: int,
+) -> List[Dict[str, Any]]:
+    """Blend the semantic and keyword rankings by reciprocal rank.
+
+    Concatenating the lists instead — keyword first, semantic with whatever
+    slots remain — silently discards the semantic half: keyword search returns
+    up to 200 candidates, so it fills every slot and the vector ranking never
+    contributes. Measured on this corpus, chunks sitting at semantic rank 1 were
+    absent from the top 40 of the concatenated list. Reciprocal rank fusion lets
+    a result that either retriever ranks highly surface, and rewards the ones
+    both agree on.
+    """
+    fused: Dict[Any, Dict[str, Any]] = {}
+    for ranking, method in ((semantic, "semantic"), (keyword, "keyword")):
+        for rank, item in enumerate(ranking):
+            cid = item["chunk_id"]
+            entry = fused.get(cid)
+            if entry is None:
+                entry = {"item": dict(item), "score": 0.0, "methods": set()}
+                fused[cid] = entry
+            entry["score"] += 1.0 / (_RRF_K + rank + 1)
+            entry["methods"].add(method)
+
+    ordered = sorted(fused.values(), key=lambda e: e["score"], reverse=True)
+
+    out: List[Dict[str, Any]] = []
+    for entry in ordered[:top_k]:
+        item = entry["item"]
+        item["retrieval_method"] = (
+            "hybrid" if len(entry["methods"]) > 1 else next(iter(entry["methods"]))
+        )
+        item["fusion_score"] = round(entry["score"], 6)
+        out.append(item)
+    return out
 
 
 async def generate_sql_from_query(question: str, session: AsyncSession) -> str:

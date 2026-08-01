@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import logging
 import os
+import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -127,6 +128,50 @@ def build_knowledge_graph(
 # Search
 # ---------------------------------------------------------------------------
 
+# A graph this size fits in a prompt whole, so an unmatched query can fall back
+# to returning all of it instead of reporting nothing.
+_SMALL_GRAPH_LIMIT = 60
+
+# Question scaffolding that appears in almost any Thai relationship query and so
+# would match every node, drowning out the entity names that actually matter.
+_GRAPH_STOPWORDS = {
+    "ความสัมพันธ์", "อย่างไร", "อะไร", "ใคร", "ของ", "กับ", "คือ", "มี", "ที่",
+    "ใด", "บ้าง", "เป็น", "และ", "หรือ", "ไหน", "ราย", "ใหญ่", "สุด", "ที่สุด",
+    "บริษัท", "ธนาคาร", "จำกัด", "มหาชน", "กลุ่ม", "กิจการ",
+    "what", "who", "which", "the", "of", "is", "are", "and", "relationship",
+}
+
+
+def _query_terms(query: str) -> List[str]:
+    """Split a query into entity-ish terms for matching against graph elements."""
+    text = str(query or "")
+    if not text.strip():
+        return []
+    try:
+        from pythainlp.tokenize import word_tokenize
+        tokens = word_tokenize(text, engine="newmm", keep_whitespace=False)
+    except Exception:
+        tokens = re.findall(r"[A-Za-z]{2,}|\d{4}|[ก-๙]{2,}", text)
+
+    terms, seen = [], set()
+    for tok in tokens:
+        t = tok.strip()
+        low = t.lower()
+        if len(t) < 2 or low in _GRAPH_STOPWORDS or low in seen:
+            continue
+        if not re.search(r"[A-Za-z0-9ก-๙]", t):
+            continue
+        seen.add(low)
+        terms.append(t)
+    return terms
+
+
+def _match_score(text: str, terms: List[str]) -> int:
+    """Number of query terms present in *text*, weighted by term length."""
+    low = (text or "").lower()
+    return sum(len(t) for t in terms if t.lower() in low)
+
+
 def search_knowledge_graph(
     query: str,
     doc_ids: Optional[List[int]] = None,
@@ -164,8 +209,9 @@ def search_knowledge_graph(
         }
 
     try:
-        all_results: List[Dict[str, Any]] = []
-        summary_lines = []
+        # (score, summary_line, result) per graph element, ranked before returning.
+        scored: List[tuple] = []
+        every: List[tuple] = []
 
         for ka_dir in ka_dirs:
             data_file = ka_dir / "data.json"
@@ -181,40 +227,51 @@ def search_knowledge_graph(
                 nodes = data.get("nodes", [])
                 edges = data.get("edges", [])
                 
-                # We can filter locally by simple keyword match, or just return all if it's small.
-                # Since graphs per doc are usually compact, returning all for the LLM is often best.
-                # But let's do a basic keyword filter if query is provided, or return all if query is broad.
-                q = query.lower()
-                
-                # Format nodes
-                for node in nodes:
-                    node_text = ", ".join(f"{k}: {v}" for k, v in node.items())
-                    if not q or q in node_text.lower():
-                        summary_lines.append(f"[doc_id={doc_id_str}] [Entity] {node_text}")
-                        all_results.append({"doc_id": doc_id_str, "type": "node", "data": node})
-                
-                # Format edges
-                for edge in edges:
-                    edge_text = ", ".join(f"{k}: {v}" for k, v in edge.items())
-                    if not q or q in edge_text.lower():
-                        summary_lines.append(f"[doc_id={doc_id_str}] [Relation] {edge_text}")
-                        all_results.append({"doc_id": doc_id_str, "type": "edge", "data": edge})
+                # Match on individual query terms, not the whole query string: the
+                # agent passes a full sentence ("MUFG มีความสัมพันธ์อย่างไรกับ…"),
+                # which is never a substring of a node, so a whole-string test
+                # reports "not found" on a graph that does contain the entity.
+                terms = _query_terms(query)
+
+                for kind, label, items in (
+                    ("node", "Entity", nodes),
+                    ("edge", "Relation", edges),
+                ):
+                    for item in items:
+                        item_text = ", ".join(f"{k}: {v}" for k, v in item.items())
+                        score = _match_score(item_text, terms)
+                        entry = (
+                            score,
+                            f"[doc_id={doc_id_str}] [{label}] {item_text}",
+                            {"doc_id": doc_id_str, "type": kind, "data": item},
+                        )
+                        every.append(entry)
+                        if not terms or score > 0:
+                            scored.append(entry)
 
             except Exception as ka_exc:
                 logger.warning("Failed to read graph data for %s: %s", ka_dir, ka_exc)
                 continue
 
-        if not all_results:
+        # Nothing matched by term. These graphs are small, so handing the whole
+        # thing to the agent beats a false "not found" — it can judge relevance
+        # itself, which it cannot do with an empty observation.
+        if not scored and len(every) <= _SMALL_GRAPH_LIMIT:
+            scored = every
+
+        if not scored:
             return {
                 "success": True,
                 "summary": "ค้นหาในกราฟความรู้แล้ว ไม่พบข้อมูลที่ตรงกัน",
                 "results": [],
             }
 
+        scored.sort(key=lambda e: e[0], reverse=True)
+        top = scored[:top_k]
         return {
             "success": True,
-            "summary": "\n\n".join(summary_lines),
-            "results": all_results,
+            "summary": "\n\n".join(line for _, line, _ in top),
+            "results": [res for _, _, res in top],
         }
 
     except Exception as exc:

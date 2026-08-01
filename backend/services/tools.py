@@ -20,6 +20,7 @@ import httpx
 
 from backend.config import get_settings, ollama_extra_fields
 from backend.services.duckdb_warehouse import execute_sql, get_schema_description
+from backend.services.llm import generate as llm_generate
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
@@ -27,6 +28,37 @@ logger = logging.getLogger(__name__)
 HTTP_LIMITS = httpx.Limits(max_connections=4, max_keepalive_connections=2)
 
 _SELECT_START_RE = re.compile(r"\b(SELECT|WITH)\b", re.IGNORECASE)
+
+
+def _focus_excerpt(text: str, terms: List[str], budget: int, head: int = 400) -> str:
+    """Excerpt that keeps the region where the query terms actually appear.
+
+    Corpus chunks are whole OCR pages (3-5k chars) and the answer to a specific
+    question often sits deep inside one — measured positions for real failures
+    were 1376, 2077 and 2206. A head-only cut drops those silently, so the model
+    is handed the right chunk and still reports "ไม่พบข้อมูล". Window around the
+    densest cluster of term hits instead, always keeping a head slice so the
+    chunk's topic survives.
+    """
+    text = text or ""
+    if len(text) <= budget:
+        return text
+    low = text.lower()
+    positions = sorted({p for p in (low.find(t.lower()) for t in terms if t) if p >= 0})
+    if not positions:
+        return text[:budget]
+    win = max(budget - head, 200)
+    best_start, best_cov = positions[0], -1
+    for p in positions:
+        cov = sum(1 for q in positions if p <= q < p + win)
+        if cov > best_cov:
+            best_cov, best_start = cov, p
+    start = best_start
+    if start + win > len(text):
+        start = max(0, len(text) - win)
+    if start <= head:
+        return text[: start + win]
+    return text[:head].rstrip() + " … " + text[start : start + win]
 
 
 def _clean_sql(raw: str) -> str:
@@ -170,7 +202,9 @@ class SQLTool:
             "9. EAV RULE: when a question filters on one attribute and returns another (e.g. companies whose business is 'บัตรเครดิต', and their 'จำนวนหุ้น'), PREFER the wide view v_table_rows_wide and quote Thai attribute columns with double quotes. Fall back to a sub-query on dim_table_rows only if the needed column is absent from the view.\n"
             "10. NEVER use aggregate functions like COUNT(), MAX() or DISTINCT if the query also asks for names/details (e.g. 'มีกี่บริษัท และบริษัทใดบ้าง'). Just SELECT the raw rows and let the Python Agent count them.\n"
             "11. A short keyword in LIKE can match many line items (e.g. '%เงินสด%' matches 25 rows). The intended BASE metric is almost always the SHORTEST row_label, so add `ORDER BY length(row_label) ASC` and `LIMIT 3` for single-metric lookups. `length(...)` is numeric — safe to sort. Also match the FULL metric phrase, not a fragment (use '%รวมสินทรัพย์%', not '%สินทรัพย์%').\n"
-            "12. YEAR-OVER-YEAR: for 'เปลี่ยนแปลง/เทียบ/ต่างจาก ปี A กับ ปี B', fetch BOTH years in ONE query with `metric_year IN ('A','B')` (never one year only). Let the Python Agent compute the difference.\n\n"
+            "12. YEAR-OVER-YEAR: for 'เปลี่ยนแปลง/เทียบ/ต่างจาก ปี A กับ ปี B', fetch BOTH years in ONE query with `metric_year IN ('A','B')` (never one year only). Let the Python Agent compute the difference.\n"
+            "13. ALWAYS include `metric_year` in the SELECT list whenever you filter on it. The year must be visible in the result, not hidden in the WHERE clause — a downstream grounding check treats a year it cannot see in the output as invented and discards the answer.\n"
+            "14. LIKE often matches a NEAR-MISS line item as well as the one asked for (e.g. 'เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า' vs 'เงินสดจ่ายสำหรับหนี้สินภายใต้สัญญาเช่า' — different rows, different values). Rank the exact wording first: `ORDER BY (row_label = '<metric exactly as asked>') DESC, length(row_label) ASC`. Keep LIMIT high enough (>=6) on year-over-year queries that BOTH years of the right row survive.\n\n"
             "EXAMPLES:\n\n"
             "Q: จำนวนหุ้นสามัญที่ธนาคารถือใน บริษัทหลักทรัพย์จัดการกองทุน มีกี่หุ้น?\n"
             "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%บริษัทหลักทรัพย์จัดการกองทุน%' AND col_name LIKE '%จำนวนหุ้น%';\n\n"
@@ -185,31 +219,21 @@ class SQLTool:
             "Q: การลงทุนของธนาคารในบริษัทอื่น มีบริษัทอะไรบ้าง 2 อันดับแรก?\n"
             "SQL: SELECT DISTINCT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND row_index < 2 ORDER BY row_index, col_name;\n\n"
             "Q: สินทรัพย์รวมปี 2567 เท่าไร?\n"
-            "SQL: SELECT row_label, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
+            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
             "Q: เงินสด ปี 2567 มีค่าเท่ากับเท่าไร?\n"
-            "SQL: SELECT row_label, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%เงินสด%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
+            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%เงินสด%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
             "Q: กำไรสุทธิ ปี 2567 เปลี่ยนแปลงจากปี 2566 เท่าไร?\n"
-            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year IN ('2567','2566') ORDER BY length(row_label) ASC, metric_year DESC LIMIT 6;\n\n"
+            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year IN ('2567','2566') ORDER BY (row_label = 'กำไรสุทธิ') DESC, length(row_label) ASC, metric_year DESC LIMIT 6;\n\n"
+            "Q: เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า ปี 2567 มีค่าเท่ากับเท่าไร?\n"
+            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สัญญาเช่า%' AND metric_year = '2567' ORDER BY (row_label = 'เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า') DESC, length(row_label) ASC LIMIT 3;\n\n"
             f"Q: {question}\n"
             "SQL:"
         )
 
 
         try:
-            async with httpx.AsyncClient(timeout=120.0, limits=HTTP_LIMITS) as client:
-                resp = await client.post(
-                    f"{settings.OLLAMA_HOST}/api/generate",
-                    json={
-                        "model": settings.OLLAMA_LLM_MODEL,
-                        "prompt": prompt,
-                        "stream": False,
-                        "options": {"temperature": 0.1, "num_predict": 500},
-                        **ollama_extra_fields(),
-                    },
-                )
-                resp.raise_for_status()
-                sql = resp.json().get("response", "").strip()
-                return _clean_sql(sql)
+            sql = await llm_generate(prompt, temperature=0.1, max_tokens=500)
+            return _clean_sql(sql)
         except Exception as exc:
             logger.warning("SQL generation failed: %s", exc)
             return ""
@@ -258,7 +282,7 @@ class VectorSearchTool:
         self,
         query: str,
         session: Any = None,
-        top_k: int = 5,
+        top_k: int | None = None,
     ) -> ToolResult:
         if session is None:
             return ToolResult(
@@ -267,9 +291,13 @@ class VectorSearchTool:
                 error="No database session available",
             )
 
-        from backend.services.rag import vector_search
+        from backend.services.rag import vector_search, _extract_keyword_terms
 
+        if top_k is None:
+            top_k = getattr(settings, "VECTOR_TOP_K", 10)
         results = await vector_search(query, session, top_k=top_k)
+        focus_terms = _extract_keyword_terms(query)
+        budget = getattr(settings, "VECTOR_CHUNK_CHARS", 2500)
 
         if not results:
             return ToolResult(
@@ -282,7 +310,7 @@ class VectorSearchTool:
         summary_parts = []
         chunks_data = []
         for r in results:
-            text = (r.get("text") or "")[:600]
+            text = _focus_excerpt(r.get("text") or "", focus_terms, budget)
             source = r.get("source_kind", "semantic")
             sim = r.get("similarity", 0)
             summary_parts.append(
@@ -383,25 +411,13 @@ class MultiHopTool:
         )
 
         try:
-            async with httpx.AsyncClient(timeout=120.0, limits=HTTP_LIMITS) as client:
-                resp = await client.post(
-                    f"{settings.OLLAMA_HOST}/api/generate",
-                    json={
-                        "model": settings.OLLAMA_LLM_MODEL,
-                        "prompt": prompt,
-                        "stream": False,
-                        "options": {"temperature": 0.1, "num_predict": 500},
-                        **ollama_extra_fields(),
-                    },
-                )
-                resp.raise_for_status()
-                raw = resp.json().get("response", "").strip()
+            raw = await llm_generate(prompt, temperature=0.1, max_tokens=500)
 
-                # Extract JSON from response
-                match = re.search(r"\[.*\]", raw, re.DOTALL)
-                if match:
-                    return json.loads(match.group())
-                return json.loads(raw)
+            # Extract JSON from response
+            match = re.search(r"\[.*\]", raw, re.DOTALL)
+            if match:
+                return json.loads(match.group())
+            return json.loads(raw)
         except Exception as exc:
             logger.warning("Decomposition failed: %s", exc)
             # Fallback: use original question as single sub-query

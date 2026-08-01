@@ -26,6 +26,7 @@ from typing import Any, Dict, List, Optional
 import httpx
 
 from backend.config import get_settings, ollama_extra_fields
+from backend.services.llm import generate as llm_generate
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
@@ -53,9 +54,18 @@ _VERIFY_PROMPT = """\
 หน้าที่ของคุณคือตรวจว่าคำตอบด้านล่าง **อ้างอิงจากข้อมูล (Observations) ที่ระบบค้นมาได้จริง** หรือไม่ และ **ตอบตรงคำถาม** หรือไม่
 
 เกณฑ์การตรวจ:
-1. grounded = ตัวเลข ชื่อบริษัท ปี และข้อเท็จจริงทุกอย่างในคำตอบ ต้องปรากฏอยู่ใน Observations เท่านั้น ห้ามมีตัวเลขหรือข้อมูลที่แต่งขึ้นเอง
+1. grounded = **ตัวเลขและข้อเท็จจริงที่เป็นคำตอบ** ต้องปรากฏอยู่ใน Observations ห้ามแต่งตัวเลขขึ้นเอง
 2. relevant = คำตอบต้องตอบคำถามที่ถูกถามจริง ไม่ใช่ตอบเรื่องอื่น
 - ถ้า Observations ว่างเปล่าหรือไม่มีข้อมูลเลย แต่คำตอบดันระบุตัวเลข/ข้อเท็จจริง ให้ถือว่า grounded = false
+
+สิ่งที่ **ห้ามนับว่าไม่ grounded** (สำคัญมาก):
+- **ปีหรือชื่อรายการที่มาจากคำถาม** — ระบบกรองข้อมูลด้วยปีอยู่แล้ว ผลลัพธ์จึงมักไม่พิมพ์ปีซ้ำ
+  เช่น ถาม "สินทรัพย์รวม ปี 2567" แล้ว Observations มี "row_label=สินทรัพย์รวม, raw_value=2,620,074"
+  การที่คำตอบเขียนว่า "ปี 2567 เท่ากับ 2,620,074" ถือว่า **grounded = true** เพราะปีมาจากคำถาม
+- การจัดรูปแบบตัวเลขใหม่ ใส่เครื่องหมายจุลภาค หรือระบุหน่วยที่มีอยู่ใน Observations
+- การเรียบเรียงถ้อยคำใหม่โดยความหมายเดิม
+
+ให้ grounded = false เฉพาะเมื่อคำตอบมี **ตัวเลขหรือข้อเท็จจริงที่หาไม่ได้เลยใน Observations**
 
 คำถาม:
 {question}
@@ -176,19 +186,7 @@ async def verify_answer(
     )
 
     try:
-        async with httpx.AsyncClient(timeout=180.0, limits=HTTP_LIMITS) as client:
-            resp = await client.post(
-                f"{settings.OLLAMA_HOST}/api/generate",
-                json={
-                    "model": settings.OLLAMA_LLM_MODEL,
-                    "prompt": prompt,
-                    "stream": False,
-                    "options": {"temperature": 0.0, "num_predict": 400},
-                    **ollama_extra_fields(),
-                },
-            )
-            resp.raise_for_status()
-            raw = resp.json().get("response", "").strip()
+        raw = await llm_generate(prompt, temperature=0.0, max_tokens=400)
     except Exception as exc:
         logger.warning("Answer verification call failed (failing open): %s", exc)
         return VerificationResult(verdict="pass")

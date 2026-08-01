@@ -19,6 +19,27 @@ class Settings(BaseSettings):
     EMBED_MODEL: str = "nomic-embed-text:latest"
     OLLAMA_LLM_MODEL: str = "llama3.1:8b"
 
+    # Text generation provider: "ollama" (local) or "gemini" (Vertex AI).
+    # Embeddings stay on Ollama regardless — only generation switches.
+    LLM_PROVIDER: str = "ollama"
+
+    # Gemini on Vertex AI (used when LLM_PROVIDER=gemini)
+    GOOGLE_APPLICATION_CREDENTIALS: str = ""
+    VERTEX_PROJECT: str = ""
+    VERTEX_LOCATION: str = "global"
+    GEMINI_MODEL: str = "gemini-2.5-flash"
+    # Thinking tokens are billed as output and drawn from max_output_tokens.
+    # 0 disables thinking (default); -1 lets the model decide; >0 caps the budget.
+    GEMINI_THINKING_BUDGET: int = 0
+    # Vertex uses a dynamic shared quota, so 429s are routine under bursts.
+    # Total attempts per call, and the base for exponential backoff (seconds).
+    GEMINI_MAX_RETRIES: int = 8
+    GEMINI_RETRY_BASE_DELAY: float = 2.0
+    # Proactive pacing: floor on the gap between calls, widened automatically
+    # when the shared pool returns 429 and relaxed back on success.
+    GEMINI_MIN_INTERVAL: float = 1.0
+    GEMINI_MAX_INTERVAL: float = 20.0
+
     # Typhoon OCR
     TYPHOON_API_KEY: str = ""
     TYPHOON_OCR_API_KEY: str = ""
@@ -41,6 +62,12 @@ class Settings(BaseSettings):
 
     # DuckDB Data Warehouse
     DUCKDB_PATH: str = "warehouse.duckdb"
+
+    # Retrieval passed to the agent. Chunks are whole OCR pages, so the
+    # per-chunk budget has to be wide enough to reach an answer buried mid-page
+    # (measured positions on real failures: 1376, 2077, 2206 chars in).
+    VECTOR_TOP_K: int = 10
+    VECTOR_CHUNK_CHARS: int = 2500
 
     # Agentic RAG
     AGENT_MAX_ITERATIONS: int = 5

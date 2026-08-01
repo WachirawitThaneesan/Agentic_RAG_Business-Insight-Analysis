@@ -1079,8 +1079,12 @@
     "question": "MUFG มีความสัมพันธ์อย่างไรกับธนาคารกรุงศรีอยุธยา?",
     "ground_truth": "MUFG เป็นผู้ถือหุ้น/เจ้าของรายใหญ่ของกรุงศรี (ownership)",
     "grader": {
-      "type": "text_contains",
-      "value": "ถือหุ้น"
+      "type": "any_of",
+      "values": [
+        "ถือหุ้น",
+        "เจ้าของ",
+        "ownership"
+      ]
     },
     "note": "knowledge graph relationship",
     "id": 83
