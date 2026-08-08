@@ -41,10 +41,11 @@ logger = logging.getLogger(__name__)
 
 # ---- How many questions per category (edit to scale coverage vs runtime) ----
 # Sized against what the data can actually supply, not an even split. Measured
-# ceilings after the table re-OCR (2026-08-01): structured_sql 1250
-# (metric x year pairs), hybrid_compare 511, semantic_vector 837,
-# structured_eav 79, hybrid_superlative 36 (needs >=4 years of one metric) and
-# graph 2 (the knowledge graph really is three nodes and one edge).
+# ceilings after the table re-OCR and the ambiguity filter (2026-08-02):
+# structured_sql 787 (metric x year pairs), hybrid_compare 180,
+# semantic_vector 837, structured_eav 78, hybrid_superlative 31 (needs >=4
+# years of one metric) and graph 2 (the knowledge graph really is three nodes
+# and one edge).
 #
 # The last two are taken whole because they are the ceiling. At n=36 and n=2 a
 # category rate is indicative, not measured -- 2/2 correct is consistent with a
@@ -52,9 +53,9 @@ logger = logging.getLogger(__name__)
 # than a percentage.
 N = {
     "structured_sql": 150,
-    "hybrid_superlative": 36,   # ceiling
+    "hybrid_superlative": 31,   # ceiling
     "hybrid_compare": 100,
-    "structured_eav": 79,       # ceiling
+    "structured_eav": 78,       # ceiling
     "semantic_vector": 150,
     "graph": 2,                 # ceiling
 }
@@ -72,6 +73,11 @@ _NUM_PREFIX = re.compile(r"^\s*\d+\.\s*")
 
 # Trailing footnote markers the report attaches to entity names ("… Plc.1/").
 _FOOTNOTE = re.compile(r"\s*\d+\s*/\s*$")
+
+# How many distinct values one (label, year) may carry across the warehouse and
+# still make a fair question. Above this, naming the table is not enough to
+# single out an answer (see the note in _load_fact).
+_MAX_VALUES_PER_LABEL_YEAR = 2
 
 
 def _clean_unit(unit: str) -> str:
@@ -153,8 +159,10 @@ def _load_fact(con) -> Dict[Any, Dict[str, Dict[str, Any]]]:
     ).fetchall()
 
     grouped: Dict[Any, Dict[str, list]] = {}
+    values_per_ly: Dict[Any, set] = {}
     for table, label, year, raw, num, unit in rows:
         grouped.setdefault((table, label), {}).setdefault(year, []).append((raw, num, unit))
+        values_per_ly.setdefault((label, year), set()).add(num)
 
     # A label appearing in several tables needs its table named in the question,
     # or the question has more than one right answer.
@@ -168,17 +176,29 @@ def _load_fact(con) -> Dict[Any, Dict[str, Dict[str, Any]]]:
             continue
         if any(len(v) != 1 for v in years.values()):
             continue
-        if len(years) < 2:
-            continue
         context = ""
         if len(tables_per_label.get(label, ())) > 1:
             context = _table_context(table)
             if not context:
                 continue  # ambiguous and we cannot say which table — unusable
+        # Naming the band is not always enough to single out one value: the
+        # report repeats a label like "มูลค่าตามบัญชีขั้นต้น (GCA)" across
+        # several similarly-named classification tables. Measured on run 13, a
+        # question whose (label, year) has one or two values in the warehouse
+        # scores 92-97%; at three or more it collapses to 47-56%, because the
+        # agent retrieves a *different but equally valid* figure. Those are
+        # unanswerable as posed, so drop the year rather than score them.
+        usable = {
+            y: v for y, v in years.items()
+            if len(values_per_ly.get((label, y), ())) <= _MAX_VALUES_PER_LABEL_YEAR
+        }
+        if len(usable) < 2:
+            continue
         clean[(table, label)] = {
             y: {"raw": v[0][0], "num": v[0][1], "unit": _clean_unit(v[0][2]),
-                "label": label, "context": context}
-            for y, v in years.items()
+                "label": label, "context": context,
+                "nvals": len(values_per_ly.get((label, y), ()))}
+            for y, v in usable.items()
         }
     return clean
 
@@ -237,8 +257,16 @@ def gen_hybrid_superlative(fact) -> List[dict]:
 
 def gen_hybrid_compare(fact) -> List[dict]:
     out = []
-    cands = sorted((k for k, y in fact.items() if "2567" in y and "2566" in y),
-                   key=lambda k: (k[1], k[0]))
+    # A delta needs the right figure on *both* sides, so ambiguity multiplies:
+    # on run 13, compare questions scored 92% where each year had a single value
+    # in the warehouse but 77% where either year had two, against 97% for the
+    # single-year lookups. Require both sides to be unique.
+    cands = sorted(
+        (k for k, y in fact.items()
+         if "2567" in y and "2566" in y
+         and y["2567"]["nvals"] == 1 and y["2566"]["nvals"] == 1),
+        key=lambda k: (k[1], k[0]),
+    )
     for key in _pick_spread(cands, N["hybrid_compare"]):
         y = fact[key]
         v1, v2 = y["2567"]["num"], y["2566"]["num"]
@@ -410,6 +438,15 @@ _SYNTH_PROMPT = """\
 ข้อความ:
 \"\"\"{chunk}\"\"\"
 
+กฎของคำตอบ (สำคัญมาก เพราะคำตอบนี้จะถูกใช้เป็นเฉลยที่ตรวจแบบตรงตัว):
+1. **คัดลอกตัวเลขจากข้อความมาทั้งตัว ห้ามตัดทศนิยมหรือปัดเศษ**
+   ถ้าข้อความว่า "ร้อยละ 0.125" เฉลยต้องเป็น "ร้อยละ 0.125" ไม่ใช่ "ร้อยละ 0"
+   ถ้าข้อความว่า "35.5 ล้านคน" เฉลยต้องเป็น "35.5 ล้านคน" ไม่ใช่ "35"
+2. ใส่หน่วยกำกับด้วยถ้าข้อความมี (ล้านบาท / ล้านคน / ร้อยละ / ครั้ง)
+3. **เฉลยต้องตอบสิ่งที่คำถามถามจริงๆ** ถ้าถามว่า "บริษัทใดได้รับรางวัล"
+   เฉลยต้องเป็นชื่อบริษัท ไม่ใช่ชื่อผู้มอบรางวัล
+4. ถ้าข้อความไม่มีคำตอบที่ชัดเจนพอ ให้ตอบ {{"question": "", "answer": ""}}
+
 ตอบกลับเป็น JSON เท่านั้น รูปแบบ:
 {{"question": "<คำถามภาษาไทย>", "answer": "<คำตอบสั้นๆ ที่ถูกต้องจากข้อความ>"}}
 JSON:"""
@@ -437,6 +474,25 @@ def _typhoon_chat(prompt: str) -> Optional[str]:
         return None
 
 
+def _is_tabular(text: str) -> bool:
+    """True when a chunk is a serialised table rather than prose.
+
+    Those chunks produce questions like "ใครเป็นบุคคลที่มีค่าในคอลัมน์
+    '31 ธันวาคม 2567' เป็น '1,000'?" — a reverse cell lookup dressed as a
+    reading-comprehension question. Semantic search is the wrong instrument for
+    it (the cell has no distinguishing prose to match), and the structured
+    categories already cover that ground properly, so such a question measures
+    nothing except which tool the router happened to pick.
+    """
+    t = str(text or "")
+    if "CSV:" in t or "TABLE_NAME:" in t or t.count("---") >= 2:
+        return True
+    if sum(l.count("|") for l in t.splitlines()) >= 6:
+        return True
+    digits = sum(c.isdigit() for c in t)
+    return digits / max(len(t), 1) > 0.18
+
+
 def _load_prose_chunks() -> List[str]:
     import psycopg2
     con = psycopg2.connect(settings.DATABASE_URL_SYNC)
@@ -448,7 +504,7 @@ def _load_prose_chunks() -> List[str]:
         "WHERE length(chunk_text) BETWEEN 250 AND 900 AND chunk_text ~ '[0-9]' "
         "ORDER BY id"
     )
-    rows = [r[0] for r in cur.fetchall()]
+    rows = [r[0] for r in cur.fetchall() if not _is_tabular(r[0])]
     con.close()
     return rows
 
