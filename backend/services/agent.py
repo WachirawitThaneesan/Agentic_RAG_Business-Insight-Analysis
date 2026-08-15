@@ -458,6 +458,38 @@ async def agent_query(
 
             # Append to conversation for next iteration
             conversation += f"{llm_output}\nObservation: {obs}\n"
+
+            # Same rescue as the forced-tool path above, which only covered the
+            # *first* call. A prose question worded like a metric ("CAGR เท่าใด",
+            # "มูลค่าสุทธิต่อหุ้น…") reaches sql_query on the agent's own choice
+            # too; SQL comes back empty, the repeat guard then blocks the retry,
+            # and the agent concludes "ไม่พบข้อมูล" while the answer sits in a
+            # chunk at rank 1. Sweep the document index once before letting it
+            # reach that conclusion.
+            if (
+                tool_name in _INTERNAL_TOOLS
+                and tool_name != "vector_search"
+                and not _has_real_data(obs)
+                and ("vector_search", query.strip()) not in attempted_calls
+            ):
+                attempted_calls.add(("vector_search", query.strip()))
+                logger.info("'%s' returned no data; sweeping vector_search", tool_name)
+                fb = await _execute_tool("vector_search", query, session)
+                fb_obs = fb["observation"]
+                if fb.get("success") and _has_real_data(fb_obs):
+                    internal_tool_succeeded = True
+                    full_observations.append(f"[vector_search] {fb_obs}")
+                    if fb.get("data"):
+                        sources.extend(_extract_sources("vector_search", fb["data"]))
+                reasoning_trace.append({
+                    "action": "vector_search", "action_input": query,
+                    "observation": fb_obs[:500], "success": bool(fb.get("success")),
+                })
+                conversation += (
+                    f"Thought: {tool_name} ไม่พบข้อมูล ลองค้นจากเอกสารด้วย vector_search\n"
+                    f'Action: {{"tool": "vector_search", "query": "{query}"}}\n'
+                    f"Observation: {fb_obs}\n"
+                )
             continue
 
         # Check for Final Answer
