@@ -130,6 +130,11 @@ def _table_context(table_name: str) -> str:
     name = _PAGE_TAG.sub("", str(table_name or "")).strip()
     if _UNIT_ONLY.match(name):
         return ""
+    # Re-OCR'd headers carry line-break spaces mid-word ("มูลค่า ยุติธรรมถือ
+    # ตามยอด คงเหลือ"). As a question context that garble is unanswerable — the
+    # agent cannot match it against anything. Thai needs no spaces, so collapse
+    # any space between two Thai characters and keep the rest.
+    name = re.sub(r"(?<=[ก-๙])\s+(?=[ก-๙])", "", name)
     # The band ("… — งบการเงินรวม") is what actually disambiguates two copies of
     # the same metric, so prefer it over the long table title.
     if "—" in name:
@@ -239,7 +244,15 @@ def gen_structured_sql(fact: Dict[str, Dict[str, Dict[str, Any]]]) -> List[dict]
 def gen_hybrid_superlative(fact) -> List[dict]:
     out = []
     # metrics present in >=4 years make the strongest superlative questions
-    cands = sorted((k for k, y in fact.items() if len(y) >= 4), key=lambda k: (k[1], k[0]))
+    # Same uniqueness rule as hybrid_compare, for a stronger reason: a max-over-
+    # years question mixes every year into one comparison, so a single ambiguous
+    # year silently changes which year "wins" (run 14's ส่วนของเจ้าของ failure —
+    # the agent's max came from the other table carrying the same label).
+    cands = sorted(
+        (k for k, y in fact.items()
+         if len(y) >= 4 and all(c["nvals"] == 1 for c in y.values())),
+        key=lambda k: (k[1], k[0]),
+    )
     for key in _pick_spread(cands, N["hybrid_superlative"]):
         years = fact[key]
         best_year, best = max(years.items(), key=lambda kv: kv[1]["num"])
@@ -267,6 +280,11 @@ def gen_hybrid_compare(fact) -> List[dict]:
          and y["2567"]["nvals"] == 1 and y["2566"]["nvals"] == 1),
         key=lambda k: (k[1], k[0]),
     )
+    # Identical values on both sides are almost always one OCR-duplicated row
+    # (run 14: "ตั๋วแลกเงิน (รวม)" = 1 in both years), and a delta of 0 is a
+    # hazardous grading target besides — skip rather than ask "how much did
+    # nothing change".
+    cands = [k for k in cands if fact[k]["2567"]["num"] != fact[k]["2566"]["num"]]
     for key in _pick_spread(cands, N["hybrid_compare"]):
         y = fact[key]
         v1, v2 = y["2567"]["num"], y["2566"]["num"]
@@ -431,6 +449,14 @@ def gen_graph() -> List[dict]:
 # chunks (Postgres) → semantic_vector  (questions synthesised by Typhoon)
 # ---------------------------------------------------------------------------
 
+# Questions that point back into their source ("according to the text…") are
+# unanswerable once separated from it. Matched against synthesised questions.
+_DEIXIS = re.compile(
+    r"ตามข้อความ|ในข้อความ|ข้อความนี้|ข้อความข้างต้น|ตามที่กล่าว|จากข้อความ"
+    r"|ในเอกสาร|ของเอกสาร|เอกสารนี้|ในบทความ|ย่อหน้า|ส่วนใดของ|หน้าที่\s*\d+"
+    r"|ในตารางนี้|คอลัมน์"
+)
+
 _SYNTH_PROMPT = """\
 ต่อไปนี้คือข้อความจากเอกสาร กรุณาสร้างคำถาม 1 ข้อที่ผู้อ่านทั่วไปอาจถาม
 โดยคำถามต้อง "ตอบได้จากข้อความนี้เท่านั้น" และมีคำตอบที่ชัดเจน กระชับ
@@ -445,7 +471,10 @@ _SYNTH_PROMPT = """\
 2. ใส่หน่วยกำกับด้วยถ้าข้อความมี (ล้านบาท / ล้านคน / ร้อยละ / ครั้ง)
 3. **เฉลยต้องตอบสิ่งที่คำถามถามจริงๆ** ถ้าถามว่า "บริษัทใดได้รับรางวัล"
    เฉลยต้องเป็นชื่อบริษัท ไม่ใช่ชื่อผู้มอบรางวัล
-4. ถ้าข้อความไม่มีคำตอบที่ชัดเจนพอ ให้ตอบ {{"question": "", "answer": ""}}
+4. **คำถามต้องยืนได้ด้วยตัวเอง** ผู้ตอบไม่เห็นข้อความนี้ — ห้ามใช้คำว่า
+   "ตามข้อความ" "ในเอกสารนี้" "ส่วนใดของเอกสาร" "หน้าที่ X" หรืออ้างตำแหน่งในเอกสาร
+   และห้ามถามสิ่งที่มีหลายคำตอบในเอกสาร (เช่น งานที่จัดหลายปี แล้วถามว่า "จัดปีใด")
+5. ถ้าข้อความไม่มีคำตอบที่ชัดเจนพอ ให้ตอบ {{"question": "", "answer": ""}}
 
 ตอบกลับเป็น JSON เท่านั้น รูปแบบ:
 {{"question": "<คำถามภาษาไทย>", "answer": "<คำตอบสั้นๆ ที่ถูกต้องจากข้อความ>"}}
@@ -543,6 +572,13 @@ def gen_semantic_vector() -> List[dict]:
         # Degenerate pairs are unjudgeable: an empty answer has nothing to grade
         # against, and a paragraph-length one is a summary, not a fact.
         if len(q) < 10 or not (2 <= len(a) <= 200):
+            continue
+        # Belt to the prompt's braces: a question that points back into the
+        # chunk ("ตามข้อความ…", "ส่วนใดของเอกสาร") is unanswerable for an agent
+        # that retrieves by meaning — it cannot know which text is meant. The
+        # previous filter missed bare "ตามข้อความ" (no "นี้"), which leaked 9
+        # such questions into run 14.
+        if _DEIXIS.search(q):
             continue
         out.append({
             "category": "semantic_vector",
