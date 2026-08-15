@@ -667,6 +667,13 @@ def execute_sql(sql: str) -> Dict[str, Any]:
     sql_upper = sql.strip().upper()
     if not sql_upper.startswith("SELECT"):
         return {"error": "Only SELECT queries are allowed", "columns": [], "rows": [], "row_count": 0}
+    # The SELECT-prefix check alone is bypassable: DuckDB executes every
+    # statement in the string, so "SELECT 1; DROP TABLE x" passes the check and
+    # drops the table (verified). The SQL comes from an LLM fed the user's
+    # question, so treat it as attacker-controlled and allow one statement only.
+    if ";" in sql.rstrip().rstrip(";"):
+        return {"error": "Multiple SQL statements are not allowed",
+                "columns": [], "rows": [], "row_count": 0}
 
     try:
         result = conn.execute(sql)

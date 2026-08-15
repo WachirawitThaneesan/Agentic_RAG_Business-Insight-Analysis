@@ -41,19 +41,20 @@ logger = logging.getLogger(__name__)
 
 # ---- How many questions per category (edit to scale coverage vs runtime) ----
 # Sized against what the data can actually supply, not an even split. Measured
-# ceilings after the table re-OCR and the ambiguity filter (2026-08-02):
-# structured_sql 787 (metric x year pairs), hybrid_compare 180,
-# semantic_vector 837, structured_eav 78, hybrid_superlative 31 (needs >=4
-# years of one metric) and graph 2 (the knowledge graph really is three nodes
-# and one edge).
+# ceilings under ALL current filters (ambiguity, zero-display-delta, unique-max;
+# 2026-08-16): structured_sql 787 (metric x year pairs), hybrid_compare 162,
+# semantic_vector ~730 prose chunks, structured_eav 78, hybrid_superlative 28
+# (needs >=4 years of one metric with a unique maximum) and graph 2 (the
+# knowledge graph really is three nodes and one edge).
 #
-# The last two are taken whole because they are the ceiling. At n=36 and n=2 a
-# category rate is indicative, not measured -- 2/2 correct is consistent with a
-# true accuracy anywhere above 34%, so report graph as a worked example rather
-# than a percentage.
+# The small categories are taken whole because they are the ceiling. At small n
+# a category rate is indicative, not measured -- 2/2 correct is consistent with
+# a true accuracy anywhere above 34%, so report graph as a worked example
+# rather than a percentage. These numbers move whenever a filter changes;
+# re-measure before trusting them for sizing.
 N = {
     "structured_sql": 150,
-    "hybrid_superlative": 31,   # ceiling
+    "hybrid_superlative": 28,   # ceiling
     "hybrid_compare": 100,
     "structured_eav": 78,       # ceiling
     "semantic_vector": 150,
@@ -128,13 +129,17 @@ _UNIT_ONLY = re.compile(r"^[()\s]*(หน่วย|unit)\s*[:：]?\s*(ล้า�
 def _table_context(table_name: str) -> str:
     """A short human phrase identifying a table, or '' if its name is unusable."""
     name = _PAGE_TAG.sub("", str(table_name or "")).strip()
-    if _UNIT_ONLY.match(name):
+    # Run the unit-only test on a space-collapsed copy too, or OCR's mid-word
+    # break defeats it ("(หน่วย ล้ านบาท)" fails to match "ล้าน"). The collapsed
+    # form is for this check ONLY — an earlier version returned it as the
+    # context, which broke more than it fixed: some spaces are deliberate
+    # ("งบการเงินรวม รวม" = statement + column band), and the verbatim spaced
+    # name is exactly what fact_financial_metrics.table_name stores, so it is
+    # the only form a generated SQL LIKE can actually match. Questions carrying
+    # verbatim spaced contexts passed in run 14; collapsed ones match nothing.
+    collapsed = re.sub(r"(?<=[ก-๙])\s+(?=[ก-๙])", "", name)
+    if _UNIT_ONLY.match(name) or _UNIT_ONLY.match(collapsed):
         return ""
-    # Re-OCR'd headers carry line-break spaces mid-word ("มูลค่า ยุติธรรมถือ
-    # ตามยอด คงเหลือ"). As a question context that garble is unanswerable — the
-    # agent cannot match it against anything. Thai needs no spaces, so collapse
-    # any space between two Thai characters and keep the rest.
-    name = re.sub(r"(?<=[ก-๙])\s+(?=[ก-๙])", "", name)
     # The band ("… — งบการเงินรวม") is what actually disambiguates two copies of
     # the same metric, so prefer it over the long table title.
     if "—" in name:
@@ -253,6 +258,14 @@ def gen_hybrid_superlative(fact) -> List[dict]:
          if len(y) >= 4 and all(c["nvals"] == 1 for c in y.values())),
         key=lambda k: (k[1], k[0]),
     )
+    # A metric constant across years (OCR-duplicated rows survive the per-year
+    # nvals check) has no single "highest year": max() picks whichever year the
+    # unordered SELECT returned first, so the gold year would be arbitrary and
+    # an equally-correct tied year would grade as wrong.
+    cands = [
+        k for k in cands
+        if [c["num"] for c in fact[k].values()].count(max(c["num"] for c in fact[k].values())) == 1
+    ]
     for key in _pick_spread(cands, N["hybrid_superlative"]):
         years = fact[key]
         best_year, best = max(years.items(), key=lambda kv: kv[1]["num"])
@@ -283,8 +296,11 @@ def gen_hybrid_compare(fact) -> List[dict]:
     # Identical values on both sides are almost always one OCR-duplicated row
     # (run 14: "ตั๋วแลกเงิน (รวม)" = 1 in both years), and a delta of 0 is a
     # hazardous grading target besides — skip rather than ask "how much did
-    # nothing change".
-    cands = [k for k in cands if fact[k]["2567"]["num"] != fact[k]["2566"]["num"]]
+    # nothing change". Test the delta as it will be DISPLAYED (2 decimals), not
+    # raw inequality: 0.1250 vs 0.1254 differs, yet still renders "ต่างกัน 0.00"
+    # and grades against 0.0004, which any near-zero answer trivially matches.
+    cands = [k for k in cands
+             if round(abs(fact[k]["2567"]["num"] - fact[k]["2566"]["num"]), 2) > 0]
     for key in _pick_spread(cands, N["hybrid_compare"]):
         y = fact[key]
         v1, v2 = y["2567"]["num"], y["2566"]["num"]
@@ -452,9 +468,15 @@ def gen_graph() -> List[dict]:
 # Questions that point back into their source ("according to the text…") are
 # unanswerable once separated from it. Matched against synthesised questions.
 _DEIXIS = re.compile(
-    r"ตามข้อความ|ในข้อความ|ข้อความนี้|ข้อความข้างต้น|ตามที่กล่าว|จากข้อความ"
-    r"|ในเอกสาร|ของเอกสาร|เอกสารนี้|ในบทความ|ย่อหน้า|ส่วนใดของ|หน้าที่\s*\d+"
-    r"|ในตารางนี้|คอลัมน์"
+    # any of {จาก|ตาม|ใน|ของ} + {ข้อความ|เอกสาร|ตาราง|บทความ|รายงาน|ภาพ|หน้า}
+    # covers the productive combinations in one place; the corpus IS an annual
+    # report, so "ตามรายงาน…" phrasings are the likeliest leak. Over-blocking
+    # costs one reserve chunk; under-blocking ships an unanswerable question.
+    # ("ภาพ" is deliberately absent: image-caption questions are a supported,
+    # answerable class — OCR stores figure descriptions as searchable text.)
+    r"(จาก|ตาม|ใน|ของ)(ข้อความ|เอกสาร|ตาราง|บทความ|รายงาน|หน้า)"
+    r"|ข้อความ(นี้|ข้างต้น|ดังกล่าว)|ตามที่กล่าว|ย่อหน้า|ส่วนใดของ"
+    r"|หน้าที่\s*[\d๐-๙]+|คอลัมน์|ข้างต้น|ดังกล่าว"
 )
 
 _SYNTH_PROMPT = """\

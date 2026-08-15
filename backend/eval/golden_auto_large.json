@@ -1833,48 +1833,6 @@
   },
   {
     "category": "hybrid_superlative",
-    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ รวมรายได้จากการดำเนินงาน (งบการเงินรวม) สูงที่สุด และมีค่าเท่าไร?",
-    "ground_truth": "ปี 2567 ที่ 153,279 ล้านบาท",
-    "grader": {
-      "type": "all_of",
-      "values": [
-        "2567",
-        153279.0
-      ]
-    },
-    "note": "max over years (needs aggregation/reasoning)",
-    "id": 163
-  },
-  {
-    "category": "hybrid_superlative",
-    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ รายได้ค่าธรรมเนียมและบริการสุทธิ (งบการเงินรวม) สูงที่สุด และมีค่าเท่าไร?",
-    "ground_truth": "ปี 2567 ที่ 24,918 ล้านบาท",
-    "grader": {
-      "type": "all_of",
-      "values": [
-        "2567",
-        24918.0
-      ]
-    },
-    "note": "max over years (needs aggregation/reasoning)",
-    "id": 164
-  },
-  {
-    "category": "hybrid_superlative",
-    "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ รายได้ดอกเบี้ย (งบการเงินรวม) สูงที่สุด และมีค่าเท่าไร?",
-    "ground_truth": "ปี 2567 ที่ 156,538 ล้านบาท",
-    "grader": {
-      "type": "all_of",
-      "values": [
-        "2567",
-        156538.0
-      ]
-    },
-    "note": "max over years (needs aggregation/reasoning)",
-    "id": 165
-  },
-  {
-    "category": "hybrid_superlative",
     "question": "ในช่วงปี 2563 ถึง 2567 ปีใดที่ รายได้ที่มิใช่ดอกเบี้ยและรายได้ที่มิใช่ค่าธรรมเนียม สูงที่สุด และมีค่าเท่าไร?",
     "ground_truth": "ปี 2564 ที่ 28,075 ล้านบาท",
     "grader": {
@@ -1885,7 +1843,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 166
+    "id": 163
   },
   {
     "category": "hybrid_superlative",
@@ -1899,7 +1857,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 167
+    "id": 164
   },
   {
     "category": "hybrid_superlative",
@@ -1913,7 +1871,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 168
+    "id": 165
   },
   {
     "category": "hybrid_superlative",
@@ -1927,7 +1885,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 169
+    "id": 166
   },
   {
     "category": "hybrid_superlative",
@@ -1941,7 +1899,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 170
+    "id": 167
   },
   {
     "category": "hybrid_superlative",
@@ -1955,7 +1913,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 171
+    "id": 168
   },
   {
     "category": "hybrid_superlative",
@@ -1969,7 +1927,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 172
+    "id": 169
   },
   {
     "category": "hybrid_superlative",
@@ -1983,7 +1941,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 173
+    "id": 170
   },
   {
     "category": "hybrid_superlative",
@@ -1997,7 +1955,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 174
+    "id": 171
   },
   {
     "category": "hybrid_superlative",
@@ -2011,7 +1969,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 175
+    "id": 172
   },
   {
     "category": "hybrid_superlative",
@@ -2025,7 +1983,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 176
+    "id": 173
   },
   {
     "category": "hybrid_superlative",
@@ -2039,7 +1997,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 177
+    "id": 174
   },
   {
     "category": "hybrid_superlative",
@@ -2053,7 +2011,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 178
+    "id": 175
   },
   {
     "category": "hybrid_superlative",
@@ -2067,7 +2025,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 179
+    "id": 176
   },
   {
     "category": "hybrid_superlative",
@@ -2081,7 +2039,7 @@
       ]
     },
     "note": "max over years (needs aggregation/reasoning)",
-    "id": 180
+    "id": 177
   },
   {
     "category": "hybrid_compare",
@@ -2098,7 +2056,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 181
+    "id": 178
   },
   {
     "category": "hybrid_compare",
@@ -2115,7 +2073,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 182
+    "id": 179
   },
   {
     "category": "hybrid_compare",
@@ -2132,11 +2090,11 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 183
+    "id": 180
   },
   {
     "category": "hybrid_compare",
-    "question": "- อื่น ๆ (งบการเงินเฉพาะธนาคาร) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "question": "- อื่น ๆ (งบการเงินรวม) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
     "ground_truth": "ต่างกัน 2,308.00 (ปี 2567 = 15,837, ปี 2566 = 18,145)",
     "grader": {
       "type": "any_of",
@@ -2149,24 +2107,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 184
+    "id": 181
   },
   {
     "category": "hybrid_compare",
-    "question": "1.2 สังหาริมทรัพย์ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 16,619.00 (ปี 2567 = 1,142, ปี 2566 = 17,761)",
+    "question": "1.1 อสังหาริมทรัพย์ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 3,777.00 (ปี 2567 = 4,635, ปี 2566 = 858)",
     "grader": {
       "type": "any_of",
       "values": [
-        16619.0,
+        3777.0,
         [
-          1142.0,
-          17761.0
+          4635.0,
+          858.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 185
+    "id": 182
   },
   {
     "category": "hybrid_compare",
@@ -2183,7 +2141,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 186
+    "id": 183
   },
   {
     "category": "hybrid_compare",
@@ -2200,7 +2158,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 187
+    "id": 184
   },
   {
     "category": "hybrid_compare",
@@ -2217,41 +2175,41 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 188
+    "id": 185
   },
   {
     "category": "hybrid_compare",
-    "question": "การเติบโตของเงินให้สินเชื่อ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 9.50 (ปี 2567 = -6.0%, ปี 2566 = 3.5%)",
+    "question": "การเติบโตของเงินรับฝาก ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 2.80 (ปี 2567 = -0.9%, ปี 2566 = 1.9%)",
     "grader": {
       "type": "any_of",
       "values": [
-        9.5,
+        2.8,
         [
-          -6.0,
-          3.5
+          -0.9,
+          1.9
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 189
+    "id": 186
   },
   {
     "category": "hybrid_compare",
-    "question": "กำไรจากการขายทรัพย์สินรอการขาย ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = (91), ปี 2566 = (91))",
+    "question": "กำไรขาดทุนเบ็ดเสร็จอื่น ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 1,189.00 (ปี 2567 = 11,884, ปี 2566 = 10,695)",
     "grader": {
       "type": "any_of",
       "values": [
-        0.0,
+        1189.0,
         [
-          -91.0,
-          -91.0
+          11884.0,
+          10695.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 190
+    "id": 187
   },
   {
     "category": "hybrid_compare",
@@ -2268,7 +2226,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 191
+    "id": 188
   },
   {
     "category": "hybrid_compare",
@@ -2285,7 +2243,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 192
+    "id": 189
   },
   {
     "category": "hybrid_compare",
@@ -2302,7 +2260,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 193
+    "id": 190
   },
   {
     "category": "hybrid_compare",
@@ -2319,11 +2277,28 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 194
+    "id": 191
   },
   {
     "category": "hybrid_compare",
-    "question": "กำไรสุทธิต่อหุ้น ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "question": "กำไรสุทธิคงเหลือหลังการจัดสรร ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 15,605.00 (ปี 2567 = 132,025, ปี 2566 = 116,420)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        15605.0,
+        [
+          132025.0,
+          116420.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 192
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "กำไรสุทธิต่อหุ้น (บาท) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
     "ground_truth": "ต่างกัน 0.44 (ปี 2567 = 4.04, ปี 2566 = 4.48)",
     "grader": {
       "type": "any_of",
@@ -2336,7 +2311,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 195
+    "id": 193
   },
   {
     "category": "hybrid_compare",
@@ -2353,41 +2328,41 @@
       ]
     },
     "note": "year-over-year delta",
+    "id": 194
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "ขาดทุนจากการด้อยค่าของทรัพย์สินรอการขาย ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 647,298.00 (ปี 2567 = 111,287, ปี 2566 = 758,585)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        647298.0,
+        [
+          111287.0,
+          758585.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 195
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "ขาดทุนจากการด้อยค่าของสินทรัพย์อื่น (โอนกลับ) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 79,342.00 (ปี 2567 = 52,460, ปี 2566 = (26,882))",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        79342.0,
+        [
+          52460.0,
+          -26882.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
     "id": 196
-  },
-  {
-    "category": "hybrid_compare",
-    "question": "ขาดทุนจากการจำหน่ายที่ดิน อาคารและอุปกรณ์ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 32,282.00 (ปี 2567 = 347,190, ปี 2566 = 314,908)",
-    "grader": {
-      "type": "any_of",
-      "values": [
-        32282.0,
-        [
-          347190.0,
-          314908.0
-        ]
-      ]
-    },
-    "note": "year-over-year delta",
-    "id": 197
-  },
-  {
-    "category": "hybrid_compare",
-    "question": "ขาดทุนจากการด้อยค่าของที่ดิน อาคารและอุปกรณ์ (โอนกลับ) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 98,068.00 (ปี 2567 = 53,143, ปี 2566 = (44,925))",
-    "grader": {
-      "type": "any_of",
-      "values": [
-        98068.0,
-        [
-          53143.0,
-          -44925.0
-        ]
-      ]
-    },
-    "note": "year-over-year delta",
-    "id": 198
   },
   {
     "category": "hybrid_compare",
@@ -2404,7 +2379,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 199
+    "id": 197
   },
   {
     "category": "hybrid_compare",
@@ -2421,7 +2396,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 200
+    "id": 198
   },
   {
     "category": "hybrid_compare",
@@ -2438,41 +2413,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 201
+    "id": 199
   },
   {
     "category": "hybrid_compare",
-    "question": "ค่าธรรมเนียมจากธุรกิจเช่าซื้อ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = 14%, ปี 2566 = 14%)",
+    "question": "ค่าธรรมเนียมบริการบัตร ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 3.00 (ปี 2567 = 31%, ปี 2566 = 34%)",
     "grader": {
       "type": "any_of",
       "values": [
-        0.0,
+        3.0,
         [
-          14.0,
-          14.0
+          31.0,
+          34.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 202
-  },
-  {
-    "category": "hybrid_compare",
-    "question": "ค่าเผื่อการด้อยค่า ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = (26), ปี 2566 = (26))",
-    "grader": {
-      "type": "any_of",
-      "values": [
-        0.0,
-        [
-          -26.0,
-          -26.0
-        ]
-      ]
-    },
-    "note": "year-over-year delta",
-    "id": 203
+    "id": 200
   },
   {
     "category": "hybrid_compare",
@@ -2489,24 +2447,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 204
+    "id": 201
   },
   {
     "category": "hybrid_compare",
-    "question": "ค่าใช้จ่ายจากผลประโยชน์พนักงาน ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = 3, ปี 2566 = 3)",
+    "question": "ค่าใช้จ่ายค้างจ่ายอื่นเพิ่มขึ้น (ลดลง) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 1,164,551.00 (ปี 2567 = 2,098,110, ปี 2566 = 933,559)",
     "grader": {
       "type": "any_of",
       "values": [
-        0.0,
+        1164551.0,
         [
-          3.0,
-          3.0
+          2098110.0,
+          933559.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 205
+    "id": 202
   },
   {
     "category": "hybrid_compare",
@@ -2523,24 +2481,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 206
+    "id": 203
   },
   {
     "category": "hybrid_compare",
-    "question": "ค่าใช้จ่ายต่อรายได้ (%) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.05 (ปี 2567 = 44.45, ปี 2566 = 44.50)",
+    "question": "ค่าใช้จ่ายอื่นๆ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 1,735.00 (ปี 2567 = 19,468, ปี 2566 = 17,733)",
     "grader": {
       "type": "any_of",
       "values": [
-        0.05,
+        1735.0,
         [
-          44.45,
-          44.5
+          19468.0,
+          17733.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 207
+    "id": 204
   },
   {
     "category": "hybrid_compare",
@@ -2557,75 +2515,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 208
+    "id": 205
   },
   {
     "category": "hybrid_compare",
-    "question": "ตราสารทุนที่ไม่อยู่ในความต้องการของตลาดต่างประเทศ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = 3, ปี 2566 = 3)",
+    "question": "ต่างประเทศ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 2,908.00 (ปี 2567 = 19,575, ปี 2566 = 16,667)",
     "grader": {
       "type": "any_of",
       "values": [
-        0.0,
+        2908.0,
         [
-          3.0,
-          3.0
+          19575.0,
+          16667.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 209
-  },
-  {
-    "category": "hybrid_compare",
-    "question": "ตั๋วแลกเงิน (รวม) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = 1, ปี 2566 = 1)",
-    "grader": {
-      "type": "any_of",
-      "values": [
-        0.0,
-        [
-          1.0,
-          1.0
-        ]
-      ]
-    },
-    "note": "year-over-year delta",
-    "id": 210
-  },
-  {
-    "category": "hybrid_compare",
-    "question": "ตั๋วแลกเงิน (งบการเงินรวม รวม) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = 1, ปี 2566 = 1)",
-    "grader": {
-      "type": "any_of",
-      "values": [
-        0.0,
-        [
-          1.0,
-          1.0
-        ]
-      ]
-    },
-    "note": "year-over-year delta",
-    "id": 211
-  },
-  {
-    "category": "hybrid_compare",
-    "question": "ตั๋วแลกเงิน (งบการเงินรวม ในประเทศ) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = 1, ปี 2566 = 1)",
-    "grader": {
-      "type": "any_of",
-      "values": [
-        0.0,
-        [
-          1.0,
-          1.0
-        ]
-      ]
-    },
-    "note": "year-over-year delta",
-    "id": 212
+    "id": 206
   },
   {
     "category": "hybrid_compare",
@@ -2642,7 +2549,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 213
+    "id": 207
   },
   {
     "category": "hybrid_compare",
@@ -2659,24 +2566,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 214
+    "id": 208
   },
   {
     "category": "hybrid_compare",
-    "question": "ทุนที่ออกและชำระแล้ว ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = 73,558, ปี 2566 = 73,558)",
+    "question": "บัตรเงินฝาก ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 330.00 (ปี 2567 = 1,023, ปี 2566 = 1,353)",
     "grader": {
       "type": "any_of",
       "values": [
-        0.0,
+        330.0,
         [
-          73558.0,
-          73558.0
+          1023.0,
+          1353.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 215
+    "id": 209
   },
   {
     "category": "hybrid_compare",
@@ -2693,28 +2600,11 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 216
+    "id": 210
   },
   {
     "category": "hybrid_compare",
-    "question": "ประเมินราคาโดยผู้ประเมินภายใน ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 134.00 (ปี 2567 = 2,773, ปี 2566 = 2,639)",
-    "grader": {
-      "type": "any_of",
-      "values": [
-        134.0,
-        [
-          2773.0,
-          2639.0
-        ]
-      ]
-    },
-    "note": "year-over-year delta",
-    "id": 217
-  },
-  {
-    "category": "hybrid_compare",
-    "question": "ผลตอบแทนต่อสินทรัพย์ (ROA) (%) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "question": "ผลตอบแทนต่อสินทรัพย์ (ROA) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
     "ground_truth": "ต่างกัน 0.12 (ปี 2567 = 1.10, ปี 2566 = 1.22)",
     "grader": {
       "type": "any_of",
@@ -2727,7 +2617,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 218
+    "id": 211
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "ผลตอบแทนต่อส่วนของเจ้าของ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 1.47 (ปี 2567 = 7.81%, ปี 2566 = 9.28%)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        1.47,
+        [
+          7.81,
+          9.28
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 212
   },
   {
     "category": "hybrid_compare",
@@ -2744,7 +2651,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 219
+    "id": 213
   },
   {
     "category": "hybrid_compare",
@@ -2761,45 +2668,28 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 220
+    "id": 214
   },
   {
     "category": "hybrid_compare",
-    "question": "ภาษีเงินได้ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 597,788.00 (ปี 2567 = 8,961,901, ปี 2566 = 8,364,113)",
+    "question": "ภาระตามตั๋วแลกเงินค่าสินค้าเข้า ที่ยังไม่ครบกำหนด (งบการเงินเฉพาะธนาคาร) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 593.00 (ปี 2567 = 3,150, ปี 2566 = 2,557)",
     "grader": {
       "type": "any_of",
       "values": [
-        597788.0,
+        593.0,
         [
-          8961901.0,
-          8364113.0
+          3150.0,
+          2557.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 221
+    "id": 215
   },
   {
     "category": "hybrid_compare",
-    "question": "ภาษีเงินได้ที่เกี่ยวข้องกับมูลค่าที่ตัดจำหน่าย/โอนย้าย ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = 3, ปี 2566 = 3)",
-    "grader": {
-      "type": "any_of",
-      "values": [
-        0.0,
-        [
-          3.0,
-          3.0
-        ]
-      ]
-    },
-    "note": "year-over-year delta",
-    "id": 222
-  },
-  {
-    "category": "hybrid_compare",
-    "question": "มูลค่าตามบัญชีต่อหุ้น (บาท) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "question": "มูลค่าตามบัญชีต่อหุ้น ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
     "ground_truth": "ต่างกัน 3.31 (ปี 2567 = 53.81, ปี 2566 = 50.50)",
     "grader": {
       "type": "any_of",
@@ -2812,7 +2702,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 223
+    "id": 216
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "ยอดคงเหลือต้นปี ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 374.00 (ปี 2567 = 208, ปี 2566 = (166))",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        374.0,
+        [
+          208.0,
+          -166.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 217
   },
   {
     "category": "hybrid_compare",
@@ -2829,7 +2736,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 224
+    "id": 218
   },
   {
     "category": "hybrid_compare",
@@ -2846,24 +2753,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 225
-  },
-  {
-    "category": "hybrid_compare",
-    "question": "รวมรายได้ค่าธรรมเนียมและบริการ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = 100%, ปี 2566 = 100%)",
-    "grader": {
-      "type": "any_of",
-      "values": [
-        0.0,
-        [
-          100.0,
-          100.0
-        ]
-      ]
-    },
-    "note": "year-over-year delta",
-    "id": 226
+    "id": 219
   },
   {
     "category": "hybrid_compare",
@@ -2880,24 +2770,41 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 227
+    "id": 220
   },
   {
     "category": "hybrid_compare",
-    "question": "รวมสินทรัพย์สิทธิการใช้ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 328.00 (ปี 2567 = 3,105, ปี 2566 = 3,433)",
+    "question": "รวมสินทรัพย์ถาวร ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 462.00 (ปี 2567 = 33,357, ปี 2566 = 32,895)",
     "grader": {
       "type": "any_of",
       "values": [
-        328.0,
+        462.0,
         [
-          3105.0,
-          3433.0
+          33357.0,
+          32895.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 228
+    "id": 221
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "รวมส่วนของธนาคาร (งบการเงินรวม) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 23,553,868.00 (ปี 2567 = 392,007,454, ปี 2566 = 368,453,586)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        23553868.0,
+        [
+          392007454.0,
+          368453586.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 222
   },
   {
     "category": "hybrid_compare",
@@ -2914,7 +2821,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 229
+    "id": 223
   },
   {
     "category": "hybrid_compare",
@@ -2931,7 +2838,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 230
+    "id": 224
   },
   {
     "category": "hybrid_compare",
@@ -2948,7 +2855,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 231
+    "id": 225
   },
   {
     "category": "hybrid_compare",
@@ -2965,7 +2872,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 232
+    "id": 226
   },
   {
     "category": "hybrid_compare",
@@ -2982,7 +2889,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 233
+    "id": 227
   },
   {
     "category": "hybrid_compare",
@@ -2999,11 +2906,11 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 234
+    "id": 228
   },
   {
     "category": "hybrid_compare",
-    "question": "รายการระหว่างธนาคาร และตลาดเงิน (ยอดคงเหลือ) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "question": "รายการระหว่างธนาคาร และตลาดเงิน (มูลค่า ยุติธรรมถือ ตามยอด คงเหลือ) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
     "ground_truth": "ต่างกัน 137,408.00 (ปี 2567 = 186,588, ปี 2566 = 323,996)",
     "grader": {
       "type": "any_of",
@@ -3016,7 +2923,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 235
+    "id": 229
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "รายการระหว่างธนาคาร และตลาดเงิน (รวมมูลค่า ยุติธรรม) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 137,408.00 (ปี 2567 = 186,588, ปี 2566 = 323,996)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        137408.0,
+        [
+          186588.0,
+          323996.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 230
   },
   {
     "category": "hybrid_compare",
@@ -3033,11 +2957,11 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 236
+    "id": 231
   },
   {
     "category": "hybrid_compare",
-    "question": "รายการระหว่างธนาคาร และตลาดเงินสุทธิ (ยอดคงเหลือ) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "question": "รายการระหว่างธนาคาร และตลาดเงินสุทธิ (รวมมูลค่า ยุติธรรม) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
     "ground_truth": "ต่างกัน 37,784.00 (ปี 2567 = 470,190, ปี 2566 = 507,974)",
     "grader": {
       "type": "any_of",
@@ -3050,24 +2974,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 237
+    "id": 232
   },
   {
     "category": "hybrid_compare",
-    "question": "รายการระหว่างธนาคารและ ตลาดเงิน (งบการเงินรวม รวมยอดคงเหลือ) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 137,408.00 (ปี 2567 = 186,588, ปี 2566 = 323,996)",
+    "question": "รายการระหว่างธนาคารและ ตลาดเงินสุทธิ (งบการเงินรวม รวมยอดคงเหลือ) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 37,784.00 (ปี 2567 = 470,190, ปี 2566 = 507,974)",
     "grader": {
       "type": "any_of",
       "values": [
-        137408.0,
+        37784.0,
         [
-          186588.0,
-          323996.0
+          470190.0,
+          507974.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 238
+    "id": 233
   },
   {
     "category": "hybrid_compare",
@@ -3084,24 +3008,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 239
+    "id": 234
   },
   {
     "category": "hybrid_compare",
-    "question": "รายการอื่นของการเปลี่ยนแปลงที่เกิดจากผู้เป็นเจ้าของ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = (5,218), ปี 2566 = (5,218))",
+    "question": "รายได้จากการดำเนินงาน ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 14,331.00 (ปี 2567 = 153,279, ปี 2566 = 138,948)",
     "grader": {
       "type": "any_of",
       "values": [
-        0.0,
+        14331.0,
         [
-          -5218.0,
-          -5218.0
+          153279.0,
+          138948.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 240
+    "id": 235
   },
   {
     "category": "hybrid_compare",
@@ -3118,41 +3042,41 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 241
+    "id": 236
   },
   {
     "category": "hybrid_compare",
-    "question": "รายได้ที่มิใช่ดอกเบี้ย ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 5,827.00 (ปี 2567 = 45,385, ปี 2566 = 39,558)",
+    "question": "รายได้ที่มิใช่ดอกเบี้ยและรายได้ที่มิใช่ค่าธรรมเนียม ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 1,740.00 (ปี 2567 = 20,467, ปี 2566 = 18,727)",
     "grader": {
       "type": "any_of",
       "values": [
-        5827.0,
+        1740.0,
         [
-          45385.0,
-          39558.0
+          20467.0,
+          18727.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 242
+    "id": 237
   },
   {
     "category": "hybrid_compare",
-    "question": "ลูกหนี้บัตรเครดิต ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 261.00 (ปี 2567 = 84,217, ปี 2566 = 84,478)",
+    "question": "สัดส่วนการตั้งสำรองต่อสินเชื่อรวม (bps) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 70.00 (ปี 2567 = 245, ปี 2566 = 175)",
     "grader": {
       "type": "any_of",
       "values": [
-        261.0,
+        70.0,
         [
-          84217.0,
-          84478.0
+          245.0,
+          175.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 243
+    "id": 238
   },
   {
     "category": "hybrid_compare",
@@ -3169,7 +3093,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 244
+    "id": 239
   },
   {
     "category": "hybrid_compare",
@@ -3186,7 +3110,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 245
+    "id": 240
   },
   {
     "category": "hybrid_compare",
@@ -3203,7 +3127,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 246
+    "id": 241
   },
   {
     "category": "hybrid_compare",
@@ -3220,24 +3144,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 247
-  },
-  {
-    "category": "hybrid_compare",
-    "question": "ส่วนเกินมูลค่าหุ้น ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 0.00 (ปี 2567 = 52,879, ปี 2566 = 52,879)",
-    "grader": {
-      "type": "any_of",
-      "values": [
-        0.0,
-        [
-          52879.0,
-          52879.0
-        ]
-      ]
-    },
-    "note": "year-over-year delta",
-    "id": 248
+    "id": 242
   },
   {
     "category": "hybrid_compare",
@@ -3254,41 +3161,41 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 249
+    "id": 243
   },
   {
     "category": "hybrid_compare",
-    "question": "หนี้สินภาษีเงินได้รอตัดบัญชี (งบการเงินรวม) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 253,252.00 (ปี 2567 = 1,557,316, ปี 2566 = 1,304,064)",
+    "question": "ส่วนได้เสียที่ไม่มีอำนาจควบคุม (งบการเงินรวม) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 801,217.00 (ปี 2567 = 3,801,305, ปี 2566 = 3,000,088)",
     "grader": {
       "type": "any_of",
       "values": [
-        253252.0,
+        801217.0,
         [
-          1557316.0,
-          1304064.0
+          3801305.0,
+          3000088.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 250
+    "id": 244
   },
   {
     "category": "hybrid_compare",
-    "question": "หลักประกันที่นำไปวางกับคู่สัญญา (งบการเงินรวม) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 729.00 (ปี 2567 = 4,217, ปี 2566 = 3,488)",
+    "question": "หนี้สินรวม ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 172,576.00 (ปี 2567 = 2,224,265, ปี 2566 = 2,396,841)",
     "grader": {
       "type": "any_of",
       "values": [
-        729.0,
+        172576.0,
         [
-          4217.0,
-          3488.0
+          2224265.0,
+          2396841.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 251
+    "id": 245
   },
   {
     "category": "hybrid_compare",
@@ -3305,11 +3212,11 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 252
+    "id": 246
   },
   {
     "category": "hybrid_compare",
-    "question": "หลักประกันที่รับมาจากคู่สัญญา (งบการเงินเฉพาะธนาคาร) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "question": "หลักประกันที่รับมาจากคู่สัญญา (งบการเงินรวม) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
     "ground_truth": "ต่างกัน 669.00 (ปี 2567 = 9,331, ปี 2566 = 8,662)",
     "grader": {
       "type": "any_of",
@@ -3322,24 +3229,41 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 253
+    "id": 247
   },
   {
     "category": "hybrid_compare",
-    "question": "หัก ค่าใช้จ่ายจากการดำเนินงานอื่น ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 6,296.00 (ปี 2567 = 68,131, ปี 2566 = 61,835)",
+    "question": "หัก ค่าเผื่อการด้อยค่า ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 15,580.00 (ปี 2567 = (8,028), ปี 2566 = 7,552)",
     "grader": {
       "type": "any_of",
       "values": [
-        6296.0,
+        15580.0,
         [
-          68131.0,
-          61835.0
+          -8028.0,
+          7552.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 254
+    "id": 248
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "หัก ค่าใช้จ่ายดอกเบี้ย ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 8,783.00 (ปี 2567 = 48,644, ปี 2566 = 39,861)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        8783.0,
+        [
+          48644.0,
+          39861.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 249
   },
   {
     "category": "hybrid_compare",
@@ -3356,7 +3280,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 255
+    "id": 250
   },
   {
     "category": "hybrid_compare",
@@ -3373,7 +3297,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 256
+    "id": 251
   },
   {
     "category": "hybrid_compare",
@@ -3390,7 +3314,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 257
+    "id": 252
   },
   {
     "category": "hybrid_compare",
@@ -3407,7 +3331,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 258
+    "id": 253
   },
   {
     "category": "hybrid_compare",
@@ -3424,11 +3348,11 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 259
+    "id": 254
   },
   {
     "category": "hybrid_compare",
-    "question": "อัตราส่วนเงินกองทุนชั้นที่ 1 ต่อสินทรัพย์เสี่ยงทั้งสิ้น ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "question": "อัตราส่วนเงินกองทุนชั้นที่ 1 - กลุ่มธุรกิจทางการเงิน ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
     "ground_truth": "ต่างกัน 1.84 (ปี 2567 = 17.96, ปี 2566 = 16.12)",
     "grader": {
       "type": "any_of",
@@ -3441,7 +3365,24 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 260
+    "id": 255
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "อัตราส่วนเงินกองทุนทั้งสิ้น - กลุ่มธุรกิจทางการเงิน ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 1.45 (ปี 2567 = 21.79, ปี 2566 = 20.34)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        1.45,
+        [
+          21.79,
+          20.34
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 256
   },
   {
     "category": "hybrid_compare",
@@ -3458,41 +3399,41 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 261
+    "id": 257
   },
   {
     "category": "hybrid_compare",
-    "question": "อัตราส่วนเงินกองทุนทั้งสิ้นต่อสินทรัพย์เสี่ยงทั้งสิ้น ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 1.45 (ปี 2567 = 21.79, ปี 2566 = 20.34)",
+    "question": "อัตราส่วนเงินสำรองต่อสินเชื่อด้อยคุณภาพ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 25.90 (ปี 2567 = 123.2%, ปี 2566 = 149.1%)",
     "grader": {
       "type": "any_of",
       "values": [
-        1.45,
+        25.9,
         [
-          21.79,
-          20.34
+          123.2,
+          149.1
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 262
+    "id": 258
   },
   {
     "category": "hybrid_compare",
-    "question": "อัตราส่วนเงินให้สินเชื่อต่อเงินรับฝาก ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 6.00 (ปี 2567 = 104%, ปี 2566 = 110%)",
+    "question": "อัตราส่วนเงินให้สินเชื่อต่อเงินรับฝากและหุ้นกู้ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 6.00 (ปี 2567 = 101%, ปี 2566 = 107%)",
     "grader": {
       "type": "any_of",
       "values": [
         6.0,
         [
-          104.0,
-          110.0
+          101.0,
+          107.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 263
+    "id": 259
   },
   {
     "category": "hybrid_compare",
@@ -3509,7 +3450,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 264
+    "id": 260
   },
   {
     "category": "hybrid_compare",
@@ -3526,7 +3467,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 265
+    "id": 261
   },
   {
     "category": "hybrid_compare",
@@ -3543,7 +3484,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 266
+    "id": 262
   },
   {
     "category": "hybrid_compare",
@@ -3560,7 +3501,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 267
+    "id": 263
   },
   {
     "category": "hybrid_compare",
@@ -3577,7 +3518,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 268
+    "id": 264
   },
   {
     "category": "hybrid_compare",
@@ -3594,7 +3535,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 269
+    "id": 265
   },
   {
     "category": "hybrid_compare",
@@ -3611,7 +3552,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 270
+    "id": 266
   },
   {
     "category": "hybrid_compare",
@@ -3628,7 +3569,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 271
+    "id": 267
   },
   {
     "category": "hybrid_compare",
@@ -3645,7 +3586,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 272
+    "id": 268
   },
   {
     "category": "hybrid_compare",
@@ -3662,7 +3603,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 273
+    "id": 269
   },
   {
     "category": "hybrid_compare",
@@ -3679,24 +3620,41 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 274
+    "id": 270
   },
   {
     "category": "hybrid_compare",
-    "question": "เงินสำรองสำหรับการป้องกันความเสี่ยงในกระแสเงินสด ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
-    "ground_truth": "ต่างกัน 322.00 (ปี 2567 = 227, ปี 2566 = (95))",
+    "question": "เงินสำรองทั่วไป ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 644.00 (ปี 2567 = 17,918, ปี 2566 = 18,562)",
     "grader": {
       "type": "any_of",
       "values": [
-        322.0,
+        644.0,
         [
-          227.0,
-          -95.0
+          17918.0,
+          18562.0
         ]
       ]
     },
     "note": "year-over-year delta",
-    "id": 275
+    "id": 271
+  },
+  {
+    "category": "hybrid_compare",
+    "question": "เงินให้สินเชื่อด้อยคุณภาพ ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "ground_truth": "ต่างกัน 12,185.00 (ปี 2567 = 73,666, ปี 2566 = 61,481)",
+    "grader": {
+      "type": "any_of",
+      "values": [
+        12185.0,
+        [
+          73666.0,
+          61481.0
+        ]
+      ]
+    },
+    "note": "year-over-year delta",
+    "id": 272
   },
   {
     "category": "hybrid_compare",
@@ -3713,11 +3671,11 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 276
+    "id": 273
   },
   {
     "category": "hybrid_compare",
-    "question": "เงินให้สินเชื่อต่อเงินรับฝาก ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "question": "เงินให้สินเชื่อต่อเงินรับฝาก (%) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
     "ground_truth": "ต่างกัน 5.61 (ปี 2567 = 104.04, ปี 2566 = 109.65)",
     "grader": {
       "type": "any_of",
@@ -3730,11 +3688,11 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 277
+    "id": 274
   },
   {
     "category": "hybrid_compare",
-    "question": "เงินให้สินเชื่อแก่ลูกหนี้ และดอกเบี้ยค้างรับสุทธิ (มูลค่า ยุติธรรมถือ ตามยอด คงเหลือ) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
+    "question": "เงินให้สินเชื่อแก่ลูกหนี้ และดอกเบี้ยค้างรับสุทธิ (ยอดคงเหลือ) ปี 2567 เปลี่ยนแปลงจากปี 2566 เป็นจำนวนเท่าไร?",
     "ground_truth": "ต่างกัน 126,021.00 (ปี 2567 = 1,799,434, ปี 2566 = 1,925,455)",
     "grader": {
       "type": "any_of",
@@ -3747,7 +3705,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 278
+    "id": 275
   },
   {
     "category": "hybrid_compare",
@@ -3764,7 +3722,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 279
+    "id": 276
   },
   {
     "category": "hybrid_compare",
@@ -3781,7 +3739,7 @@
       ]
     },
     "note": "year-over-year delta",
-    "id": 280
+    "id": 277
   },
   {
     "category": "structured_eav",
@@ -3792,7 +3750,7 @@
       "value": "ธนาคารพาณิชย์ในประเทศ กัมพูชา"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 281
+    "id": 278
   },
   {
     "category": "structured_eav",
@@ -3803,7 +3761,7 @@
       "value": 140000000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 282
+    "id": 279
   },
   {
     "category": "structured_eav",
@@ -3814,7 +3772,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 283
+    "id": 280
   },
   {
     "category": "structured_eav",
@@ -3825,7 +3783,7 @@
       "value": "ธุรกิจการเงิน (บริหารสินทรัพย์)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 284
+    "id": 281
   },
   {
     "category": "structured_eav",
@@ -3836,7 +3794,7 @@
       "value": 270000003.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 285
+    "id": 282
   },
   {
     "category": "structured_eav",
@@ -3847,7 +3805,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 286
+    "id": 283
   },
   {
     "category": "structured_eav",
@@ -3858,7 +3816,7 @@
       "value": "ให้บริการด้านเทคโนโลยี"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 287
+    "id": 284
   },
   {
     "category": "structured_eav",
@@ -3869,7 +3827,7 @@
       "value": 30000000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 288
+    "id": 285
   },
   {
     "category": "structured_eav",
@@ -3880,7 +3838,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 289
+    "id": 286
   },
   {
     "category": "structured_eav",
@@ -3891,7 +3849,7 @@
       "value": "ธุรกิจการเงิน (ลีสซิ่งและเช่าซื้อ)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 290
+    "id": 287
   },
   {
     "category": "structured_eav",
@@ -3902,7 +3860,7 @@
       "value": 123499999.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 291
+    "id": 288
   },
   {
     "category": "structured_eav",
@@ -3913,7 +3871,7 @@
       "value": 99.99
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 292
+    "id": 289
   },
   {
     "category": "structured_eav",
@@ -3924,7 +3882,7 @@
       "value": "ธุรกิจการเงิน (สินเชื่อรถยนต์)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 293
+    "id": 290
   },
   {
     "category": "structured_eav",
@@ -3935,7 +3893,7 @@
       "value": 2554500000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 294
+    "id": 291
   },
   {
     "category": "structured_eav",
@@ -3946,7 +3904,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 295
+    "id": 292
   },
   {
     "category": "structured_eav",
@@ -3957,7 +3915,7 @@
       "value": "ธุรกิจการเงิน (บัตรเครดิตและ สินเชื่อส่วนบุคคล)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 296
+    "id": 293
   },
   {
     "category": "structured_eav",
@@ -3968,7 +3926,7 @@
       "value": 59250000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 297
+    "id": 294
   },
   {
     "category": "structured_eav",
@@ -3979,7 +3937,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 298
+    "id": 295
   },
   {
     "category": "structured_eav",
@@ -3990,7 +3948,7 @@
       "value": "ธุรกิจการเงิน (บัตรเครดิตและ สินเชื่อส่วนบุคคล)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 299
+    "id": 296
   },
   {
     "category": "structured_eav",
@@ -4001,7 +3959,7 @@
       "value": 345800000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 300
+    "id": 297
   },
   {
     "category": "structured_eav",
@@ -4012,7 +3970,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 301
+    "id": 298
   },
   {
     "category": "structured_eav",
@@ -4023,7 +3981,7 @@
       "value": "ธุรกิจการเงิน (บัตรเครดิตและ สินเชื่อส่วนบุคคล)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 302
+    "id": 299
   },
   {
     "category": "structured_eav",
@@ -4034,7 +3992,7 @@
       "value": 590552000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 303
+    "id": 300
   },
   {
     "category": "structured_eav",
@@ -4045,7 +4003,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 304
+    "id": 301
   },
   {
     "category": "structured_eav",
@@ -4056,7 +4014,7 @@
       "value": "สินเชื่อส่วนบุคคล"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 305
+    "id": 302
   },
   {
     "category": "structured_eav",
@@ -4067,7 +4025,7 @@
       "value": 2950000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 306
+    "id": 303
   },
   {
     "category": "structured_eav",
@@ -4078,7 +4036,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 307
+    "id": 304
   },
   {
     "category": "structured_eav",
@@ -4089,7 +4047,7 @@
       "value": "ธุรกิจการเงิน (นายหน้าประกันวินาศภัย)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 308
+    "id": 305
   },
   {
     "category": "structured_eav",
@@ -4100,7 +4058,7 @@
       "value": 2020000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 309
+    "id": 306
   },
   {
     "category": "structured_eav",
@@ -4111,7 +4069,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 310
+    "id": 307
   },
   {
     "category": "structured_eav",
@@ -4122,7 +4080,7 @@
       "value": "ธุรกิจนับสนุน (เรียกเก็บชำระหนี้คืน)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 311
+    "id": 308
   },
   {
     "category": "structured_eav",
@@ -4133,7 +4091,7 @@
       "value": 160599822.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 312
+    "id": 309
   },
   {
     "category": "structured_eav",
@@ -4144,7 +4102,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 313
+    "id": 310
   },
   {
     "category": "structured_eav",
@@ -4155,7 +4113,7 @@
       "value": "ธุรกิจนับสนุน (รถยนต์เช่าและบุคลากร)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 314
+    "id": 311
   },
   {
     "category": "structured_eav",
@@ -4166,7 +4124,7 @@
       "value": 1000000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 315
+    "id": 312
   },
   {
     "category": "structured_eav",
@@ -4177,7 +4135,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 316
+    "id": 313
   },
   {
     "category": "structured_eav",
@@ -4188,7 +4146,7 @@
       "value": "ธุรกิจการเงิน (ธุรกิจเงินร่วมลงทุน)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 317
+    "id": 314
   },
   {
     "category": "structured_eav",
@@ -4199,7 +4157,7 @@
       "value": 250000000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 318
+    "id": 315
   },
   {
     "category": "structured_eav",
@@ -4210,7 +4168,7 @@
       "value": 100.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 319
+    "id": 316
   },
   {
     "category": "structured_eav",
@@ -4221,7 +4179,7 @@
       "value": "ธุรกิจการเงิน (ธุรกิจหลักทรัพย์)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 320
+    "id": 317
   },
   {
     "category": "structured_eav",
@@ -4232,7 +4190,7 @@
       "value": 555000000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 321
+    "id": 318
   },
   {
     "category": "structured_eav",
@@ -4243,7 +4201,7 @@
       "value": 99.96
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 322
+    "id": 319
   },
   {
     "category": "structured_eav",
@@ -4254,7 +4212,7 @@
       "value": "ธุรกิจการเงิน (จัดการกองทุน)"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 323
+    "id": 320
   },
   {
     "category": "structured_eav",
@@ -4265,7 +4223,7 @@
       "value": 3500000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 324
+    "id": 321
   },
   {
     "category": "structured_eav",
@@ -4276,7 +4234,7 @@
       "value": 86.86
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 325
+    "id": 322
   },
   {
     "category": "structured_eav",
@@ -4290,7 +4248,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 326
+    "id": 323
   },
   {
     "category": "structured_eav",
@@ -4304,7 +4262,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 327
+    "id": 324
   },
   {
     "category": "structured_eav",
@@ -4318,7 +4276,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 328
+    "id": 325
   },
   {
     "category": "structured_eav",
@@ -4332,7 +4290,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 329
+    "id": 326
   },
   {
     "category": "structured_eav",
@@ -4346,7 +4304,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 330
+    "id": 327
   },
   {
     "category": "structured_eav",
@@ -4360,7 +4318,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 331
+    "id": 328
   },
   {
     "category": "structured_eav",
@@ -4374,7 +4332,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 332
+    "id": 329
   },
   {
     "category": "structured_eav",
@@ -4385,7 +4343,7 @@
       "value": "ผลิตเฟอร์นิเจอร์ ไม้ยางพารา"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 333
+    "id": 330
   },
   {
     "category": "structured_eav",
@@ -4396,7 +4354,7 @@
       "value": 95000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 334
+    "id": 331
   },
   {
     "category": "structured_eav",
@@ -4407,7 +4365,7 @@
       "value": 10.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 335
+    "id": 332
   },
   {
     "category": "structured_eav",
@@ -4418,7 +4376,7 @@
       "value": "ผู้นำเข้าและจำหน่าย เครื่องจักร อุปกรณ์ ที่ใช้ธุรกิจอุตสาหกรรม"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 336
+    "id": 333
   },
   {
     "category": "structured_eav",
@@ -4429,7 +4387,7 @@
       "value": 1500000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 337
+    "id": 334
   },
   {
     "category": "structured_eav",
@@ -4440,7 +4398,7 @@
       "value": 10.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 338
+    "id": 335
   },
   {
     "category": "structured_eav",
@@ -4451,7 +4409,7 @@
       "value": "ให้บริการโทรศัพท์สาธารณะ แบบใช้บัตร ทั้งในและต่างประเทศ"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 339
+    "id": 336
   },
   {
     "category": "structured_eav",
@@ -4462,7 +4420,7 @@
       "value": 62423190.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 340
+    "id": 337
   },
   {
     "category": "structured_eav",
@@ -4473,7 +4431,7 @@
       "value": 10.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 341
+    "id": 338
   },
   {
     "category": "structured_eav",
@@ -4484,7 +4442,7 @@
       "value": "ผลิตและจำหน่ายเหล็กเส้น"
     },
     "note": "dim_table_rows EAV lookup (ประเภทธุรกิจ)",
-    "id": 342
+    "id": 339
   },
   {
     "category": "structured_eav",
@@ -4495,7 +4453,7 @@
       "value": 95000000.0
     },
     "note": "dim_table_rows EAV lookup (จำนวนหุ้น)",
-    "id": 343
+    "id": 340
   },
   {
     "category": "structured_eav",
@@ -4506,7 +4464,7 @@
       "value": 10.0
     },
     "note": "dim_table_rows EAV lookup (ธนาคารถือหุ้น (%))",
-    "id": 344
+    "id": 341
   },
   {
     "category": "structured_eav",
@@ -4520,7 +4478,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 345
+    "id": 342
   },
   {
     "category": "structured_eav",
@@ -4534,7 +4492,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 346
+    "id": 343
   },
   {
     "category": "structured_eav",
@@ -4548,7 +4506,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 347
+    "id": 344
   },
   {
     "category": "structured_eav",
@@ -4562,7 +4520,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 348
+    "id": 345
   },
   {
     "category": "structured_eav",
@@ -4576,7 +4534,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 349
+    "id": 346
   },
   {
     "category": "structured_eav",
@@ -4590,7 +4548,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 350
+    "id": 347
   },
   {
     "category": "structured_eav",
@@ -4604,7 +4562,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 351
+    "id": 348
   },
   {
     "category": "structured_eav",
@@ -4618,7 +4576,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 352
+    "id": 349
   },
   {
     "category": "structured_eav",
@@ -4632,7 +4590,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 353
+    "id": 350
   },
   {
     "category": "structured_eav",
@@ -4646,7 +4604,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 354
+    "id": 351
   },
   {
     "category": "structured_eav",
@@ -4660,7 +4618,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 355
+    "id": 352
   },
   {
     "category": "structured_eav",
@@ -4674,7 +4632,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 356
+    "id": 353
   },
   {
     "category": "structured_eav",
@@ -4688,7 +4646,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 357
+    "id": 354
   },
   {
     "category": "structured_eav",
@@ -4702,7 +4660,7 @@
       ]
     },
     "note": "dim_table_rows EAV lookup (จำนวนครั้งที่เข้าร่วมประชุม / จำนวนครั้งที่มีการจัดประชุม)",
-    "id": 358
+    "id": 355
   },
   {
     "category": "graph",
@@ -4713,7 +4671,7 @@
       "value": "MUFG"
     },
     "note": "knowledge graph ownership edge",
-    "id": 359
+    "id": 356
   },
   {
     "category": "graph",
@@ -4728,18 +4686,18 @@
       ]
     },
     "note": "knowledge graph relationship",
-    "id": 360
+    "id": 357
   },
   {
     "category": "semantic_vector",
-    "question": "ผู้ประกอบการ SME จะต้องเตรียมพร้อมรับมือกับอะไรบ้างในปี 2025?",
-    "ground_truth": "ความท้าทายและโอกาสในปี 2025 ไม่ว่าจะเป็นการปรับตัวกับการทํางานที่เปลี่ยนไป เทคโนโลยีที่ก้าวหน้า หรือการเปลี่ยนแปลงด้านพลังงาน",
+    "question": "finbiz by ttb จะพาผู้ประกอบการ SME มาดูกี่เทรนด์ธุรกิจที่จะส่งผลต่อการเติบโตในปี 2025?",
+    "ground_truth": "5 เทรนด์ธุรกิจ",
     "grader": {
       "type": "llm_judge",
       "reference": "หลังจากปี 2024 ที่เต็มไปด้วยการเปลี่ยนแปลง ผู้ประกอบการ SME ต้องเตรียมพร้อมรับมือกับความท้าทายและโอกาสในปี 2025 ไม่ว่าจะเป็นการปรับตัวกับการทํางานที่เปลี่ยนไป เทคโนโลยีที่ก้าวหน้า หรือการเปลี่ยนแปลงด้านพลังงาน finbiz by ttb จะพาผู้ประกอบการ SME มาดู 5 เทรนด์ธุรกิจที่จะส่งผลต่อการเติบโตในปี 2025 นี้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 361
+    "id": 358
   },
   {
     "category": "semantic_vector",
@@ -4750,40 +4708,40 @@
       "reference": "4. AI และระบบอัตโนมัติขับเคลื่อนอนาคต AI และระบบ Automation จะเข้ามามีบทบาท และธุรกิจโดยหลีกเลี่ยงไม่ได้ ข้อมูลของ McKinsey ชี้ว่าประมาณ 60% ของบริษัททั่วโลกจะมีการใช้ AI ในกระบวนการธุรกิจภายในปี 2025 เพื่อการตัดสินใจที่มีข้อมูลและการบริการที่ทันสมัย ส่วน Gartner คาดว่าภายในปี 2025 ประมาณ 70%"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 362
+    "id": 359
   },
   {
     "category": "semantic_vector",
-    "question": "ตามข้อความ ร้อยละเท่าใดของบริษัททั่วโลกจะนำ AI มาใช้ในกระบวนการต่าง ๆ ภายในปี 2025?",
+    "question": "ร้อยละเท่าใดของบริษัททั่วโลกจะนำ AI มาใช้ในกระบวนการต่าง ๆ ภายในปี 2025?",
     "ground_truth": "ร้อยละ 60",
     "grader": {
       "type": "llm_judge",
       "reference": "ระบุว่า 60% ของบริษัททั่วโลกจะนํา AI มาใช้ในกระบวนการต่าง ๆ ภายในปี 2025 ใช้ AI และระบบอัตโนมัติในงานบริการลูกค้า เช่น Chatbot หรือ CRM วิเคราะห์ข้อมูลเชิงลึกเพื่อนําไปปรับปรุงกระบวนการ พัฒนาบริการที่ปรึกษาส่วนตัวด้วย AI เพื่อช่วยให้ลูกค้าตัดสินใจได้ง่ายขึ้น"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 363
+    "id": 360
   },
   {
     "category": "semantic_vector",
     "question": "แนวคิดเศรษฐกิจหมุนเวียนมีเป้าหมายหลักอะไรบ้าง?",
-    "ground_truth": "การ “ยืดอายุผลิตภัณฑ์” “การนํากลับมาใช้ใหม่” และ “การรีไซเคิล”",
+    "ground_truth": "การยืดอายุผลิตภัณฑ์ การนำกลับมาใช้ใหม่ และการรีไซเคิล",
     "grader": {
       "type": "llm_judge",
       "reference": "“ลดการใช้ทรัพยากร” เพื่อลดการปล่อยของเสีย ต้นตอของการทําลายสิ่งแวดล้อมมากขึ้น และกลยุทธ์ความยั่งยืนจะนําไปสู่ผลกําไรได้จริงในปีนี้ แนวคิดเรื่อง “Circular Economy” หรือแนวคิดเศรษฐกิจหมุนเวียนจะถูกนํากลับมาใช้กันอย่างแพร่หลายมากขึ้น โดยจะเน้นที่ 3 เรื่องหลักทั้ง การ “ยืดอายุผลิตภัณฑ์” “การนํากลับมาใช้ใหม่” และ “การรีไซเคิล” ที่สําคัญ จะกลายเป็นเป้าหมายหลักของ Circular Economy นั่นเพราะปัจจุบันการพัฒนานวัตกรรมพลาสติกเพื่อใช้ในบรรจุภัณฑ์ก้าวหน้ามากขึ้น ส่งผลให้การใช้พลาสติกแบบครั้งเดียวทิ้งจะลดลง"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 364
+    "id": 361
   },
   {
     "category": "semantic_vector",
-    "question": "ป้ายชื่อบริษัทที่ตั้งอยู่บนอาคารทางซ้ายในภาพคืออะไร?",
+    "question": "ป้ายที่ติดอยู่บนอาคารทางซ้ายมีข้อความว่าอะไร?",
     "ground_truth": "krungsri",
     "grader": {
       "type": "llm_judge",
       "reference": "RAW_OCR_PAGE: annual-report-2024-th.pdf page 1\n<figure>\nภาพแสดงอาคารสูงสองหลังที่สร้างด้วยกระจกและเหล็ก ตั้งอยู่ริมแม่น้ำ มีป้าย \"krungsri\" สีทองบนอาคารทางซ้าย และป้าย \"krungthai bank\" สีขาวพร้อมโลโก้สีน้ำเงินบนอาคารทางขวา อาคารทั้งสองเป็นแบบโมเดิร์นและสูงชัน เหนือไปถึงท้องฟ้าสีครามสดใส ด้านล่างของภาพคือผืนน้ำแม่น้ำที่สะท้อนแสงแดดจางๆ และฝั่งตรงข้ามที่เต็มไปด้วยต้นไม้เขียวขจี บรรยากาศโดยรวมให้ความรู้สึกสงบและเป็นธรรมชาติ โดยมีเมืองหรือเขตพื้นที่อื่น ๆ เป็นฉากหลังไกลออกไป\n</figure>"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 365
+    "id": 362
   },
   {
     "category": "semantic_vector",
@@ -4794,18 +4752,18 @@
       "reference": "RAW_OCR_PAGE: annual-report-2024-th.pdf page 1\n# การเงินเพื่อการเปลี่ยนผ่าน สู่เศรษฐกิจยั่งยืน\n\nกรุงศรีพัฒนาและนำเสนอผลิตภัณฑ์ทางการเงินที่ครอบคลุม ภาคเศรษฐกิจไทย และตอบโจทย์บริบทของประเทศในการเปลี่ยนผ่านสู่ความยั่งยืน อาทิ การออกตราสารหนี้และสนับสนุนสินเชื่อแก่ธุรกิจ และอุตสาหกรรมที่เป็นมิตรต่อสิ่งแวดล้อม ทั้งด้านการบริหาร จัดการพลังงาน การขนส่ง การจัดการของเสีย และการพัฒนา อสังหาริมทรัพย์ เป็นต้น เพื่อมุ่งสู่เป้าหมายการลดการปล่อย ก๊าซเรือนกระจกทั้งในระดับประเทศและระดับสากล\n\n<figure>\nภาพแสดงชายสองคน คนแรกสวมชุดสูทกำลังจับมือกับชายที่อยู่ข้างๆ เขา ชายที่อยู่ข้างๆ เป็นวัยทำงานสวมหมวกนิรภัยสีเหลืองและแจ็กเก็ตสะท้อนแสง พร้อมถือเอกสาร ทั้งคู่ยืนอยู่บนลานกว้าง มีแผงโซลาร์เซลล์จำนวนมากอยู่เบื้องหลัง รวมถึงกังหันลมขนาดใหญ่หลายตัว ภาพสื่อถึงการทำงานร่วมกันระหว่างภาคเอกชนและการลงทุนในโครงการพลังงานสะอาดเพื่ออนามัยโลกและความยั่งยืน\n</figure>"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 366
+    "id": 363
   },
   {
     "category": "semantic_vector",
-    "question": "ข้อมูลเกี่ยวกับคณะกรรมการ คณะกรรมการชุดย่อย ผู้บริหาร และพนักงานอยู่ในส่วนใดของเอกสาร?",
-    "ground_truth": "256",
+    "question": "บริษัทมีนโยบายการกำกับดูแลกิจการอยู่ที่หมายเลขหน้าใด?",
+    "ground_truth": "175",
     "grader": {
       "type": "llm_judge",
       "reference": "# 2 การกำกับดูแลกิจการ 175 นโยบายการกำกับดูแลกิจการ 218 การควบคุมภายในและการตรวจสอบภายใน 221 โครงสร้างการกำกับดูแลกิจการ ข้อมูลสำคัญ เกี่ยวกับคณะกรรมการ คณะกรรมการชุดย่อย ผู้บริหาร และพนักงาน 256 รายงานผลการดำเนินงานสำคัญ ด้านการกำกับดูแลกิจการ 263 สรุปรายการระหว่างกันที่สำคัญกับบุคคล หรือบริษัทที่เกี่ยวข้อง"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 367
+    "id": 364
   },
   {
     "category": "semantic_vector",
@@ -4816,73 +4774,62 @@
       "reference": "RAW_OCR_PAGE: annual-report-2024-th.pdf page 1\n# พันธกิจ วิสัยทัศน์ ค่านิยมกรุงศรี\n\n## พันธกิจ\nมุ่งสู่การเป็นสถาบันการเงินชั้นนำระดับภูมิภาคที่ก้าวสู่เวทีโลก ด้วยการเติบโตที่ยั่งยืน รับผิดชอบต่อสังคม และสนองต่อความต้องการของลูกค้า\n\n## วิสัยทัศน์\nทีมงานมืออาชีพที่มีความสามารถและเป็นหนึ่งเดียว พร้อม มุ่งมั่นสร้างสรรค์ผลิตภัณฑ์และบริการชั้นเลิศ เพื่อเป็นกลุ่ม การเงินอันดับหนึ่งในใจลูกค้า\n\n12"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 368
+    "id": 365
   },
   {
     "category": "semantic_vector",
-    "question": "กรุงศรีได้รับรางวัลทั้งหมดกี่รางวัลในปี 2567?",
+    "question": "กรุงศรีได้รับรางวัลระดับนานาชาติจำนวนกี่รางวัลในปี 2567?",
     "ground_truth": "19 รางวัล",
     "grader": {
       "type": "llm_judge",
       "reference": "ความมุ่งมั่นทุ่มเททำงานอย่างไม่ย่อท้อของกรุงศรีตามพันธสัญญาความยั่งยืน ที่ผนวกวิสัยทัศน์การขับเคลื่อนการเติบโตแข็งแกร่งทั้งในประเทศและภูมิภาค อาเซียน ส่งผลให้ธนาคารได้รับรางวัลอันทรงเกียรติทั้งในระดับประเทศและ ระดับนานาชาติรวม 19 รางวัลในปี 2567 สะท้อนให้เห็นถึงกระบวนการ กำกับดูแลกิจการอันเป็นเลิศและผลการดำเนินงานด้านความยั่งยืนที่โดด เด่น รวมถึงรางวัล \"Best Bank for ESG\" จาก Euromoney หนึ่งในวารสาร ทรงอิทธิพลระดับโลก ที่ยกย่องให้กรุงศรีเป็นธนาคารที่ดีที่สุดด้านสิ่งแวดล้อม สังคม และธรรมาภิบาล (ESG) ของประเทศไทย โดยกรุงศรีเป็นสถาบัน การเงินแห่งแรกและแห่งเดียวที่ได้รับรางวัลนี้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 369
+    "id": 366
   },
   {
     "category": "semantic_vector",
-    "question": "ภาพถ่ายในหน้าที่ 16 ของเอกสารแสดงชายคนหนึ่งสวมชุดสูทสีอะไร?",
+    "question": "ชายในภาพถ่ายสวมชุดสูทสีอะไร?",
     "ground_truth": "สีน้ำเงินเข้ม",
     "grader": {
       "type": "llm_judge",
       "reference": "RAW_OCR_PAGE: annual-report-2024-th.pdf page 1\nสารจากกรรมการผู้จัดการใหญ่ และประธานเจ้าหน้าที่บริหาร\n\n<figure>\nภาพถ่ายครึ่งตัวของชายคนหนึ่งสวมชุดสูทสีน้ำเงินเข้ม เสื้อเชิ้ตสีขาว และเนคไทลายทาง ยืนหันหน้าตรงและยิ้มอย่างเป็นกันเอง โดยมือข้างซ้ายของเขาพับไว้อยู่ในกระเป๋ากางเกงด้านซ้าย มือข้างขวาประคองขอบเสื้อด้านซ้าย พื้นหลังเป็นกระจกบานใหญ่ที่มองเห็นวิวเมืองภายนอกพร้อมอาคารสูงหลายแห่งและต้นไม้บางส่วน บนโต๊ะทำงานด้านขวาของภาพมีแล็ปท็อปวางอยู่\n</figure><page_number>16</page_number>"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 370
+    "id": 367
   },
   {
     "category": "semantic_vector",
-    "question": "อัตราส่วนเงินสำรองต่อสินเชื่อด้อยคุณภาพของธนาคารในปี 2567 อยู่ที่เท่าใด?",
+    "question": "อัตราส่วนเงินสำรองต่อสินเชื่อด้อยคุณภาพของธนาคารในปี 2567 อยู่ที่เท่าใด",
     "ground_truth": "ร้อยละ 123.2",
     "grader": {
       "type": "llm_judge",
       "reference": "มาตรการช่วยเหลือลูกค้าดังกล่าวข้างต้น กอปรกับการบริหารความเสี่ยง อย่างรอบคอบระมัดระวัง ในสภาวะเศรษฐกิจที่ไม่เอื้ออำนาจในปี 2567 ส่งผลให้เงินให้สินเชื่อรวมของธนาคารลดลงร้อยละ 6 และมีกำไรสุทธิจำนวน 29,700 ล้านบาท ลดลงร้อยละ 9. 8 จากปี 2566 อัตราส่วนสินเชื่อด้อยคุณภาพ อยู่ที่ร้อยละ 3. 23 ขณะที่อัตราส่วนเงินสำรองต่อสินเชื่อด้อยคุณภาพยังคงอยู่ ในระดับดีที่ร้อยละ 123. 2 นอกจากนี้ อัตราส่วนเงินกองทุนต่อสินทรัพย์เสียง (CAR) ของธนาคารปรับตัวเพิ่มขึ้นอยู่ที่ร้อยละ 21."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 371
+    "id": 368
   },
   {
     "category": "semantic_vector",
-    "question": "ใครเป็นกรรมการอิสระและประธานกรรมการตรวจสอบตามข้อความ?",
-    "ground_truth": "นางทองอุไร ลิ้มปิติ",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "8 นายมาซาคาซุ โอชาวะ กรรมการ กรรมการสรรหา และพิจารณาค่าตอบแทน 9 นางทองอุไร ลิ้มปิติ กรรมการอิสระ ประธานกรรมการตรวจสอบ 10 ศาสตราจารย์ ดร. ศักดา ธนิตกุล กรรมการอิสระ กรรมการตรวจสอบ 11 นายวิรัช ไพรัชพิบูลย์ กรรมการ ประธานกรรมการกำกับนโยบาย ความเสี่ยงและธรรมาภิบาล กรรมการสรรหา และพิจารณาค่าตอบแทน 12 นายเคนอีจิ ยามาโตะ กรรมการบริหาร ประธานคณะกรรมการ เจ้าหน้าที่บริหาร 13 นางสาวดวงดาว วงศ์พินิตกฤต กรรมการบริหาร กรรมการเจ้าหน้าที่บริหาร (ภาพเงาของบุคคลในองค์กร)"
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 372
-  },
-  {
-    "category": "semantic_vector",
-    "question": "บริษัทได้รับรางวัล Asset Management Company of the Year, Thailand เป็นกี่ปีแล้ว?",
-    "ground_truth": "ปีที่ 10",
+    "question": "บริษัทใดได้รับรางวัล Asset Management Company of the Year, Thailand เป็นปีที่ 10?",
+    "ground_truth": "Asset Management Company of the Year, Thailand (ปีที่ 10)",
     "grader": {
       "type": "llm_judge",
       "reference": "### GLOBAL BANKING &amp; FINANCE REVIEW * Pension Fund Manager of the Year, Thailand (ต่อเนื่องเป็นปีที่ 4) ### INTERNATIONAL FINANCE * Best Mutual Fund House, Thailand (ต่อเนื่องเป็นปีที่ 4) ### THE ASSET * Asset Management Company of the Year, Thailand (ปีที่ 10)"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 373
+    "id": 369
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัทใดได้รับรางวัล Best Brand Performance on Social Media 2024 ในหมวดบริการทางการเงิน (สินเชื่อ) เป็นเวลา 4 ปีติดต่อกัน?",
+    "question": "บริษัทใดได้รับรางวัล Best Brand Performance on Social Media 2024 ในหมวดบริการทางการเงิน (สินเชื่อ) เป็นปีที่ 4 ติดต่อกัน?",
     "ground_truth": "THE DIGITAL BANKER",
     "grader": {
       "type": "llm_judge",
       "reference": "* The Sauciest Corporate 2024 TelltScore * Thailand Influencer Awards 2024 THAILAND SOCIAL AWARDS BY WISESIGHT (THAILAND) * Best Brand Performance on Social Media 2024 ในหมวดบริการทางการเงิน (สินเชื่อ) (ต่อเนื่องเป็นปีที่ 4) THE DIGITAL BANKER * Best Customer Centric Business Model 2024 (ต่อเนื่องเป็นปีที่ 3) * Outstanding Omnichannel Integration 2024 HATTHA BANK INTERNATIONAL FINANCE * Best New Mobile Banking App"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 374
+    "id": 370
   },
   {
     "category": "semantic_vector",
@@ -4893,62 +4840,62 @@
       "reference": "## PHILIPPINE INSIGHT AWARDS * Best Recruitment Innovation for Young Talents # SB FINANCE ## RETAIL BANKER INTERNATIONAL * Best Loan Offering ## THE ASIAN BUSINESS REVIEW * Philippines Team of the Year - Financial Services # SHB FINANCE ## HR ASIA * Best Company to Work for in Asia (Vietnam) 2024"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 375
+    "id": 371
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารกลางสหรัฐฯ (Fed) ปรับลดอัตราดอกเบี้ยนโยบายลงกี่ร้อยละในช่วงไตรมาส 3 ของปี 2567?",
+    "question": "ธนาคารกลางสหรัฐฯ ปรับลดอัตราดอกเบี้ยนโยบายลงกี่ร้อยละในการปรับลดครั้งแรกในรอบ 4 ปี?",
     "ground_truth": "ร้อยละ 0.50",
     "grader": {
       "type": "llm_judge",
       "reference": "25 ในช่วงต้นไตรมาสสุดท้ายของปี และคงไว้ที่ระดับดังกล่าวจนถึงสิ้นปี 2567 ทั้งนี้ เพื่อช่วยบรรเทาภาระหนี้และภาวะการเงินที่ตึงตัวซึ่งสะท้อนจากการหดตัวของสินเชื่อ รวมถึงช่วยสนับสนุนการเติบโตของเศรษฐกิจ ด้านค่าเงินบาทเมื่อเทียบกับดอลลาร์สหรัฐฯ เคลื่อนไหวผันผวนอ่อนค่าในช่วงครึ่งแรกของปี ก่อนที่จะกลับมาแข็งค่าขึ้นในช่วงไตรมาส 3 ของปี 2567 ภายหลังธนาคารกลางสหรัฐฯ (Fed) ปรับลดอัตราดอกเบี้ยนโยบายลงร้อยละ 0. 50 ซึ่งเป็นการปรับลดครั้งแรกในรอบ 4 ปี อย่างไรก็ตาม ในช่วงท้ายปีค่าเงินบาทกลับมาอ่อนค่าตามการแข็งค่าของเงินดอลลาร์ภายหลังสหรัฐฯ ส่งสัญญาณอาจจะขอการปรับลดดอกเบี้ยในปี 2568"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 376
+    "id": 372
   },
   {
     "category": "semantic_vector",
-    "question": "อัตราการเติบโตของเงินให้สินเชื่อธนาคารพาณิชย์เมื่อเทียบกับปี 2566 ลดลงกี่ร้อยละ?",
+    "question": "อัตราการเติบโตของเงินให้สินเชื่อธนาคารพาณิชย์เมื่อเทียบกับปี 2566 เป็นเท่าใด?",
     "ground_truth": "ร้อยละ 0.4",
     "grader": {
       "type": "llm_judge",
       "reference": "ภายใต้บริบทของสภาพแวดล้อมทางธุรกิจที่มีความท้าทายดังกล่าวข้างต้น ธนาคารพาณิชย์ไทยยังคงมีผลการดำเนินงานที่แข็งแกร่ง โดยมีเงินกองทุนที่อยู่ในระดับสูง สภาพคล่องที่มากเพียงพอ และการบริหารความเสี่ยงอย่างรอบคอบระมัดระวัง อย่างไรก็ตาม อัตราการเติบโตของเงินให้สินเชื่อธนาคารพาณิชย์ลดลงร้อยละ 0. 4 เมื่อเทียบกับปี 2566 ส่วนใหญ่เป็นผลมาจากการชำระคืนสินเชื่อของภาครัฐ และธุรกิจขนาดใหญ่ โดยสินเชื่อธุรกิจขยายตัวร้อยละ 0. 5 จากการเติบโตของสินเชื่อธุรกิจขนาดใหญ่ ขณะที่สินเชื่อธุรกิจขนาดกลางและขนาดย่อมลดลงอย่างต่อเนื่อง สะท้อนถึง ภาพแสดงเรือขนส่งสินค้าขนาดใหญ่กำลังแล่นอยู่บนผืนน้ำ โดยมีแท่นยกคอนเทนเนอร์หรือรถบรรทุกวางซ้อนกันอยู่บนลำเรือจำนวนมาก ซึ่งเป็นภาพที่เกี่ยวข้องกับธุรกิจการขนส่งทางทะเลและการค้าระหว่างประเทศ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 377
+    "id": 373
   },
   {
     "category": "semantic_vector",
     "question": "บริษัทใดได้ยื่นขออนุมัติการเสนอขายหุ้นสามัญที่ออกใหม่เพื่อเสนอขายต่อประชาชนเป็นครั้งแรก (IPO) ในเดือนธันวาคม 2563?",
-    "ground_truth": "บริษัท เงินติดล้อ จำกัด (มหาชน) (TIDLOR)",
+    "ground_truth": "บริษัท เงินติดล้อ จำกัด (มหาชน)",
     "grader": {
       "type": "llm_judge",
       "reference": "(SBF) ในประเทศฟิลิปปินส์เสร็จสิ้น โดยการซื้อหุ้นจาก Security Bank Corporation (SBC) ในอัตราส่วนร้อยละ 50 ของหุ้นที่จำหน่ายได้แล้วทั้งหมด ส่งผลให้ SBF มีฐานะเป็นบริษัทในกลุ่มธุรกิจทางการเงินของ ธนาคาร (Non-Solo Consolidation) ในเดือนธันวาคม 2563 บริษัท เงินติดล้อ จำกัด (มหาชน) (TIDLOR) ซึ่งประกอบธุรกิจสินเชื่อที่มีทะเบียนรถเป็นประกัน และเป็นกิจการร่วมค้าของกรุงศรีที่กรุงศรีถือหุ้นร้อยละ 50 และ Siam Asia Credit Access Pte Ltd. (SACA) ถือหุ้นอีก ร้อยละ 50 ได้ยื่นขออนุมัติการเสนอขายหุ้นสามัญที่ออกใหม่ เพื่อเสนอขายต่อประชาชนเป็นครั้งแรก (IPO) และยื่นคำขอ ต่อตลาดหลักทรัพย์แห่งประเทศไทยให้รับหุ้นสามัญเป็น หลักทรัพย์จดทะเบียนในตลาดหลักทรัพย์แห่งประเทศไทย ต่อมาในเดือนพฤษภาคม 2564 หุ้นสามัญของ TIDLOR ได้เข้าซื้อขายในตลาดหลักทรัพย์แห่งประเทศไทยครั้งแรก"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 378
+    "id": 374
   },
   {
     "category": "semantic_vector",
-    "question": "กรุงศรีเข้าซื้อกิจการบริษัทหลักทรัพย์ โนมูระ พัฒนสิน จำกัด (มหาชน) โดยการซื้อหุ้นในอัตราส่วนเท่าใด?",
+    "question": "กรุงศรีเข้าซื้อกิจการบริษัทหลักทรัพย์ โนมูระ พัฒนสิน จำกัด (มหาชน) โดยซื้อหุ้นในอัตราส่วนเท่าใด?",
     "ground_truth": "ร้อยละ 99.1",
     "grader": {
       "type": "llm_judge",
       "reference": "* เมื่อวันที่ 7 มีนาคม 2566 กรุงศรีได้เข้าซื้อกิจการโดยการซื้อหุ้นในอัตราร้อยละ 99. 1 ของหุ้นที่จำหน่ายได้แล้วทั้งหมดของบริษัทหลักทรัพย์ โนมูระ พัฒนสิน จำกัด (มหาชน) (CNS) จาก Nomura Asia Investment (Singapore) Pte Ltd. (NAIS) เป็นผลให้ CNS ซึ่งต่อมาได้เปลี่ยนชื่อเป็นบริษัทหลักทรัพย์ กรุงศรี พัฒนสิน จำกัด (มหาชน) (KCS) มีฐานะเป็นบริษัทในกลุ่มธุรกิจทางการเงินของธนาคาร (Non-Solo Consolidation)"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 379
+    "id": 375
   },
   {
     "category": "semantic_vector",
-    "question": "กรุงศรีถือหุ้นทางอ้อมในบริษัท บจก. กรุงศรี บริการเช่า สินเชื่อ ร้อยละเท่าใด?",
-    "ground_truth": "ร้อยละ 100",
+    "question": "กรุงศรีถือหุ้นทางอ้อมในบริษัทสินเชื่อ 4/ ร้อยละเท่าใดผ่าน บจก. อยุธยา แคปปิตอล เซอร์วิสเซส?",
+    "ground_truth": "ร้อยละ 100.00",
     "grader": {
       "type": "llm_judge",
       "reference": "00 และ บจก. อยุธยา แคปปิตอล เซอร์วิสเซส ร้อยละ 25. 00 3/ เป็นบริษัทย่อยของกรุงศรี โดยกรุงศรีถือหุ้นทางอ้อมร้อยละ 99. 99 ผ่าน บจก. กรุงศรี บริการเช่า สินเชื่อ 4/ เป็นบริษัทย่อยของกรุงศรี โดยกรุงศรีถือหุ้นทางอ้อมร้อยละ 100. 00 ผ่าน บจก. อยุธยา แคปปิตอล เซอร์วิสเซส 5/ เป็นบริษัทย่อยของกรุงศรี โดยกรุงศรีถือหุ้นทางอ้อมร้อยละ 49. 00 ผ่าน Hattha Bank Plc. 6/ เป็นบริษัทย่อยของ บจก. โลตัสส์ มันนี่ เซอรวิสเซส"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 380
+    "id": 376
   },
   {
     "category": "semantic_vector",
@@ -4959,29 +4906,29 @@
       "reference": "สำหรับแผนธุรกิจระยะกลางฉบับที่ 4 กรุงศรีมีจุดมุ่งหมาย สู่การเป็น “ธนาคารชั้นนำแห่งภูมิภาคเพื่อความยั่งยืน” โดยธนาคารได้กำหนดกลยุทธ์ด้านธุรกิจ 6 ประการ และกลยุทธ์ด้านการบริหาร 5 ประการ ดังนี้ ### กลยุทธ์ด้านธุรกิจ 6 ประการ * **การเสริมความแข็งแกร่งในการเป็นผู้นำ** ทางธุรกิจผ่านการรวมธุรกิจลูกค้ารายย่อยให้เป็นหนึ่งเดียว * **การยกระดับบริการลูกค้าธุรกิจให้ตอบโจทย์ความต้องการในอนาคต** * **การขยายธุรกรรมการเงินด้วยนวัตกรรม** * **การขยายธุรกิจและสร้างความเชื่อมต่อในระดับภูมิภาค** * **การขับเคลื่อนธุรกิจสู่ความยั่งยืนโดยมุ่งลดการปล่อยคาร์บอนไดออกไซด์จากการให้บริการทางการเงินทั้งหมดภายใน พ. ศ."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 381
+    "id": 377
   },
   {
     "category": "semantic_vector",
-    "question": "กรุงศรีมุ่งมั่นเป็นพันธมิตรที่ลูกค้าไว้วางใจเพื่อสร้างการเติบโตอย่างไรในปี 2568?",
-    "ground_truth": "สนับสนุนลูกค้าเพื่อเปลี่ยนผ่านสู่เส้นทางการเงิน เพื่อความยั่งยืน",
+    "question": "กรุงศรีมุ่งมั่นที่จะเป็นพันธมิตรที่ลูกค้าไว้วางใจเพื่อสร้างการเติบโตอย่างไร?",
+    "ground_truth": "เพื่อสร้างการเติบโตอย่างยั่งยืน",
     "grader": {
       "type": "llm_judge",
       "reference": "# แผนกลยุทธ์ในปี 2568 กรุงศรียังคงมุ่งมั่นที่จะเป็นพันธมิตรที่ลูกค้าไว้วางใจเพื่อสร้างการเติบโตอย่างยั่งยืน พร้อมตอบสนองความต้องการของลูกค้าผ่านแนวทางต่อไปนี้ * **สนับสนุนลูกค้าเพื่อเปลี่ยนผ่านสู่เส้นทางการเงิน เพื่อความยั่งยืน** ผ่านบริการทางการเงิน พร้อมยกระดับศักยภาพและความสามารถในการเปลี่ยนผ่านให้กับธุรกิจ * **ดอกย้ำแนวทางการดำเนินงาน** เพื่อนำเสนอผลิตภัณฑ์และบริการด้วยความมุ่งมั่นเพื่อความเป็นเลิศ พร้อมสนับสนุนการให้สินเชื่อดอยมุ่งเน้นการดูแลคุณภาพสินทรัพย์ และเสริมสร้างขีดความสามารถ ทักษะ และความรู้ของบุคลากร * **ประสานพลังเครือข่ายกรุงศรี กรุ๊ป และพันธมิตรวมทั้งใช้ประโยชน์จากความเชี่ยวชาญของ MUFG เพื่อสร้างคุณค่าให้กับธุรกิจ** * **สนับสนุนลูกค้าเพื่อเปลี่ยนผ่านสู่ระบบดิจิทัลอย่างต่อเนื่อง** พร้อมส่งเสริมการนำเสนอลิขิตภัณฑ์และบริการทางด้านดิจิทัลเพื่อสร้างรายได้ให้กับธนาคาร # กลุ่มงานลูกค้าธุรกิจ SME"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 382
+    "id": 378
   },
   {
     "category": "semantic_vector",
-    "question": "ดอกเบี้ยของบัตรเครดิต Krungsi SME Sustainability Loan for All ที่ระบุไว้ในโฆษณาคือเท่าใดตลอด 2 ปี?",
+    "question": "ดอกเบี้ยของบัตรเครดิต Krungsi SME Sustainability Loan for All ที่ระบุไว้คือเท่าใดตลอด 2 ปี?",
     "ground_truth": "ร้อยละ 3.5",
     "grader": {
       "type": "llm_judge",
       "reference": "ภาพแสดงโฆษณาบัตรเครดิต Krungsi SME Sustainability Loan for All สีเหลือง มีโลโก้ Krungsi และข้อความ \"กลุ่มผลิตภัณฑ์สินเชื่อ SME เพื่อความยั่งยืน\" ตรงกลางเป็นหกเหลี่ยมแบ่งออกเป็นหลายส่วน แต่ละส่วนแสดงแนวคิดหลักของสินเชื่อ เช่น Solar Rooftop, Sustainable Business, PPA (Power Purchase Agreement), แผนงานวงเงินสูง, และโครงการขนาดใหญ่ ด้านขวาบนระบุดอกเบี้ย 3. 5% ตลอด 2 ปียอด และมีคำบรรยายใต้ว่า \"มอบกำเนิดเศรษฐกิจและความสัมพันธ์องค์กรให้อย่างครอบคลุม\" * **สนับสนุนสินเชื่อเพื่อความยั่งยืน (ESG)** จากกลุ่มผลิตภัณฑ์สินเชื่อ “Krungsi SME Sustainability Loan for All” ซึ่งประกอบไปด้วย 4 ผลิตภัณฑ์สินเชื่อเพื่อความยั่งยืน ดังนี้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 383
+    "id": 379
   },
   {
     "category": "semantic_vector",
@@ -4992,95 +4939,95 @@
       "reference": "ความสำเร็จและโครงการที่สำคัญในปี 2567 ในปี 2567 อุตสาหกรรมธนาคารไทยเผชิญกับความท้าทายสำคัญทั้งในประเทศและต่างประเทศ อาทิ ความเสี่ยงทางภูมิรัฐศาสตร์ที่รุนแรงขึ้นเรื่อยๆ ส่งผลให้การเติบโตของเงินให้สินเชื่อมีอัตราการขยายตัวที่ค่อนข้างต่ำ นอกจากนี้ การลดลงของยอดจำหน่ายรถยนต์ภายในประเทศส่งผลกระทบต่อความต้องการใช้เงินทุน ขณะที่การลงทุนโดยตรงจากประเทศญี่ปุ่นยังคงอยู่ในระดับต่ำกว่าก่อนการแพร่ระบาดของโควิด ประกอบกับระดับหนี้ครัวเรือนที่ยังคงสูง และปัญหาเชิงโครงสร้างในภาคการผลิตของประเทศไทย ส่งผลให้ตลาดส่งออกยังคงอ่อนแอ ซึ่งเพิ่มความซับซ้อนให้กับสถานการณ์เศรษฐกิจ อย่างไรก็ตาม ท่ามกลางความท้าทายนี้ เรายังคงสามารถรักษาตำแหน่งผู้นำในตลาดลูกค้าบริษัทญี่ปุ่นในประเทศไทยต่อไปได้อย่างมั่นคง โดยการเสริมสร้างความแข็งแกร่งของธุรกิจในตลาดลูกค้าบริษัทญี่ปุ่นและบรรษัทข้ามชาติ ในปี 2567 เราบรรลุเป้าหมายสำคัญหลายประการเพื่อขับเคลื่อนการขยายธุรกิจในระดับสากลและบรรลุเป้าหมายด้านความยั่งยืน ดังนี้:"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 384
+    "id": 380
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารกรุงศรีมีการเติบโตของปริมาณการทำธุรกรรมร้อยละเท่าใดจากปี 2566?",
+    "question": "ปริมาณการทำธุรกรรมของธนาคารกรุงศรีเติบโตขึ้นกี่ร้อยละจากปี 2566?",
     "ground_truth": "ร้อยละ 20",
     "grader": {
       "type": "llm_judge",
       "reference": "ในด้านการชำระเงินดิจิทัล ธนาคารกรุงศรีมีการเติบโตอย่างชัดเจนของธุรกรรม Application Programming Interface (API) การใช้งาน Make a Pay และ บริการ One Payment Service ซึ่งมีผลทำให้ปริมาณการทำธุรกรรมเติบโตขึ้นร้อยละ 20 จากปี 2566 ซึ่งสะท้อนถึงความสำเร็จของการขยายบริการของธนาคารที่ตอบโจทย์ลูกค้ามากยิ่งขึ้น ด้วยโซลูชันการเงินดิจิทัลที่ให้บริการจากลูกค้าธุรกิจขนาดใหญ่ไปสู่การให้บริการผ่านช่องทางดิจิทัลแก่ลูกค้ารายย่อย ในระดับภูมิภาค ธนาคารเน้นการขยายบริการในตลาดอาเซียน อาทิ ประเทศอินโดนีเซีย มาเลเซีย เวียดนาม สิงคโปร์ กัมพูชา ฮ่องกง และญี่ปุ่น โดยในปี 2567 ธนาคารประสบความสำเร็จในการเพิ่มช่องทางการชำระเงินข้ามพรมแดนผ่านคิวอาร์โค้ด กับประเทศ สปป."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 385
+    "id": 381
   },
   {
     "category": "semantic_vector",
-    "question": "ยอดสินเชื่อรวมของเงินติดล้อ ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) ในปี 2567 อยู่ที่เท่าใด?",
+    "question": "ยอดสินเชื่อรวมของเงินติดล้อ ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) ในปี 2567 อยู่ที่เท่าใด",
     "ground_truth": "103,934 ล้านบาท",
     "grader": {
       "type": "llm_judge",
       "reference": "การประกอบธุรกิจและผลการดำเนินงาน # เงินติดล้อ ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 ## สร้างโอกาสให้ลูกค้าเข้าถึงบริการด้านการเงินมากกว่า **1. 2 ล้านราย** ยอดสินเชื่อรวมอยู่ที่ **103,934 ล้านบาท** **ร้อยละ 11 ในปี 2567** ### ธุรกิจนายหน้าประกันภัย"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 386
+    "id": 382
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัทหลักทรัพย์ใดได้รับโอนกิจการทั้งหมดในวันที่ 7 พฤษภาคม 2567?",
-    "ground_truth": "บริษัทหลักทรัพย์ กรุงศรี พัฒนสิน จำกัด (มหาชน)",
+    "question": "บริษัทหลักทรัพย์ใดได้รับโอนกิจการทั้งหมดจากบริษัทหลักทรัพย์ กรุงศรี พัฒนสิน จำกัด (มหาชน) ในปี 2567?",
+    "ground_truth": "บริษัทหลักทรัพย์ กรุงศรี จำกัด (มหาชน)",
     "grader": {
       "type": "llm_judge",
       "reference": "การประกอบธุรกิจและผลการดำเนินงาน ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 # ธุรกิจหลักทรัพย์ ## อุตสาหกรรมธุรกิจหลักทรัพย์ ในปี 2567 บริษัทหลักทรัพย์ กรุงศรี จำกัด (มหาชน) ได้ดำเนินการรับโอนกิจการทั้งหมด (Entire Business Transfer: EBT) ของบริษัทหลักทรัพย์ กรุงศรี พัฒนสิน จำกัด (มหาชน) ได้อย่างราบรื่นเมื่อวันที่ 7 พฤษภาคม 2567"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 387
+    "id": 383
   },
   {
     "category": "semantic_vector",
-    "question": "Home Credit Philippines มีอัตราการเติบโตเฉลี่ยสะสมต่อปี (CAGR) เท่าใดในช่วง 5 ปีที่ผ่านมา?",
+    "question": "Home Credit Philippines มีอัตราการเติบโตเฉลี่ยสะสมต่อปี (CAGR) เท่าใดตลอด 5 ปีที่ผ่านมา?",
     "ground_truth": "ร้อยละ 14",
     "grader": {
       "type": "llm_judge",
       "reference": "Home Credit Philippines ยังคงครองความเป็นผู้นำตลาดด้วยการให้บริการลูกค้ากว่า 11 ล้านราย และมีอัตราการเติบโตเฉลี่ยสะสมต่อปี (Compound Annual Growth Rate: CAGR) ที่ร้อยละ 14 ตลอด 5 ปีที่ผ่านมา ความหลากหลายของผลิตภัณฑ์เป็นหัวใจสำคัญ โดยได้เพิ่มพอร์ตสินค้าให้ครอบคลุมกว่า 80 หมวดหมู่ พร้อมตัวเลือกผ่อนชำระที่ยืดหยุ่นในสินค้ามูลค่าสูง ทั้งยังให้บริการบนแพลตฟอร์มดิจิทัล อาทิ Marketplace และ Shoppingmall."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 388
+    "id": 384
   },
   {
     "category": "semantic_vector",
-    "question": "โครงการ FINNO EFRA ACCELERATOR รุ่นที่ 1 เป็นส่วนหนึ่งของความพยายามใดของกรุงศรี ฟินโนเวต?",
-    "ground_truth": "การส่งเสริมธุรกิจสตาร์ทอัพ และสร้างความแข็งแกร่งให้แก่ระบบนิเวศด้านเทคโนโลยี",
+    "question": "โครงการ FINNO EFRA ACCELERATOR รุ่นที่ 1 เป็นส่วนหนึ่งของความพยายามใดของกรุงศรี ฟินโนเวตในปี 2567?",
+    "ground_truth": "ส่งเสริมธุรกิจสตาร์ทอัพ และสร้างความแข็งแกร่งให้แก่ระบบนิเวศด้านเทคโนโลยี",
     "grader": {
       "type": "llm_judge",
       "reference": "## ความสามารถและความริเริ่มที่สำคัญในปี 2567 กรุงศรี ฟินโนเวต ยังคงตอกย้ำความมุ่งมั่นในการส่งเสริมธุรกิจสตาร์ทอัพ และสร้างความแข็งแกร่งให้แก่ระบบนิเวศด้านเทคโนโลยีผ่านโครงการและการลงทุนเชิงกลยุทธ์ที่สำคัญ ดังนี้ ไอคอนวงกลมสีขาวขอบดำ ภายในมีรูปเอกสารสองฉบับวางซ้อนกัน โดยมีเส้นโค้งพาดผ่านด้านบนของเอกสาร ซึ่งสื่อถึงการทำงานร่วมกัน การนำเสนอ หรือการวางแผน ### โครงการ FINNO EFRA ACCELERATOR รุ่นที่ 1"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 389
+    "id": 385
   },
   {
     "category": "semantic_vector",
-    "question": "ในปี 2567 ได้มีการจัดงานสัมมนาและให้ความรู้แก่ใครบ้าง?",
-    "ground_truth": "นักศึกษาและบุคคลทั่วไป",
+    "question": "ในปี 2567 บริษัทได้รับเชิญให้เป็นวิทยากรจากสถาบันการศึกษาชั้นนำของประเทศกี่แห่ง?",
+    "ground_truth": "3 แห่ง",
     "grader": {
       "type": "llm_judge",
       "reference": "ในปี 2567 เรายังได้จัดงานสัมมนาและให้ความรู้แก่นักศึกษาและบุคคลทั่วไป ทั้งยังได้รับเชิญให้เป็นวิทยากรจากสถาบันการศึกษาชั้นนำของประเทศ อาทิ จุฬาลงกรณ์มหาวิทยาลัย มหาวิทยาลัยมหิดล มหาวิทยาลัยเชียงใหม่ รวมถึงองค์กรและงานกิจกรรมระดับโลกอื่นๆ ทั้งในกรุงเทพฯ และเชียงใหม่ อาทิ งาน Techsauce Global Summit งาน Code Mania หรืองานสมาคมผู้ประกอบการธุรกิจดิจิทัลภาคเหนือ (NDEA) เป็นต้น"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 390
+    "id": 386
   },
   {
     "category": "semantic_vector",
     "question": "โครงการ Krungsri The COACH ให้ความรู้เรื่องใดผ่านโซเชียลมีเดียและเว็บไซต์ krungsri?",
-    "ground_truth": "เรื่องการเงิน",
+    "ground_truth": "เรื่องการบริหารจัดการเรื่องการเงิน",
     "grader": {
       "type": "llm_judge",
       "reference": "การประกอบธุรกิจและผลการดำเนินงาน ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 ภายใต้คำมั่นสัญญาแบรนด์ “ชีวิตง่าย ได้ทุกวัน” เรามุ่งเน้น การสร้างการรับรู้และความสนใจ รวมถึงส่งเสริมให้เกิดการตัดสินใจ ผ่านผลิตภัณฑ์และการตลาดที่ตอบโจทย์ลูกค้ากลุ่มเป้าหมาย พร้อมทั้งรักษาการมีส่วนร่วมของแบรนด์ด้วยกิจกรรมและเนื้อหาที่ตอบสนองความต้องการของคนรุ่นใหม่ อาทิ โครงการ Krungsri The COACH ซึ่งให้ความรู้ และเคล็ดลับในการบริหารจัดการเรื่องการเงิน ผ่านโซเชียลมีเดียและเว็บไซต์ krungsri."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 391
+    "id": 387
   },
   {
     "category": "semantic_vector",
-    "question": "Krungsri Data Center ได้รับการรับรองมาตรฐาน ISO/IEC27001:2022 ในปีใด?",
+    "question": "Krungsri Data Center ได้รับการรับรองมาตรฐาน ISO/IEC 27001 ในปีใด?",
     "ground_truth": "ปี 2567",
     "grader": {
       "type": "llm_judge",
       "reference": "* Krungsri Data Center ผ่านการรับรองมาตรฐาน ISO/IEC27001: 2022 ในปี 2567 ศูนย์ข้อมูลแห่งใหม่ของกรุงศรีที่ได้รับการจัดตั้งอย่างเป็นทางการในปี 2565 ได้รับการรับรองมาตรฐาน ISO/IEC 27001 ซึ่งเป็นมาตรฐานระดับนานาชาติสำหรับระบบการจัดการความปลอดภัยข้อมูล (ISMS) โดยมุ่งเน้นการป้องกันความเสี่ยงต่อข้อมูลและระบบสารสนเทศความมั่นคงปลอดภัยสารสนเทศ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 392
+    "id": 388
   },
   {
     "category": "semantic_vector",
@@ -5091,29 +5038,29 @@
       "reference": "ภาพหน้าจอโทรศัพท์มือถือแสดงแอปพลิเคชัน \"Kept\" โดยมีโลโก้ Krungthai และข้อความ \"Kept by krungsri\" พร้อมไอคอนแชทสีแดงขนาดใหญ่อยู่ด้านบนซ้ายของหน้าจอ มีข้อความแนะนำว่า \"รู้หรือไม่? ลูกค้า Kept สามารถพูดคุย สอบถามข้อมูลต่างๆ ผ่านช่องทาง Live chat ได้ง่ายๆ เพียงแค่\" และมีปุ่ม \"Live chat\" สีแดงเด่นชัด นอกจากนี้ยังมีภาพหน้าจอแอปพลิเคชันสามภาพเรียงกันในแนวนอน แต่ละภาพแสดงหน้าจอหลักของแอปพลิเคชัน เช่น หน้าแรก หน้าเมนู และหน้าแจ้งเตือน พร้อมระบุหมายเลขโทรศัพท์สำหรับติดต่อ 02-296-6299"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 393
+    "id": 389
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) มีส่วนแบ่งตลาดเพิ่มขึ้นกี่เท่าตั้งแต่การต่อสัญญาครั้งล่าสุดในปี 2560?",
-    "ground_truth": "เกือบ 3 เท่า",
+    "question": "ส่วนแบ่งตลาดของธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) เติบโตเกือบกี่เท่าตั้งแต่การต่อสัญญาครั้งล่าสุดในปี 2560?",
+    "ground_truth": "3 เท่า",
     "grader": {
       "type": "llm_judge",
       "reference": "การประกอบธุรกิจและผลการดำเนินงาน ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 รายใหญ่ที่สุดในประเทศไทย โดยเป็นธุรกิจที่เติบโตสูงแบบก้าวกระโดดด้วยส่วนแบ่งตลาดในปัจจุบันที่เติบโตเกือบ 3 เท่านับตั้งแต่การต่อสัญญาครั้งล่าสุดในปี 2560"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 394
+    "id": 390
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัท ติดล้อ โฮลดิ้งส์ จำกัด (มหาชน) จะเข้าทำการซื้อขายหลักทรัพย์ในตลาดหลักทรัพย์แห่งประเทศไทยภายในไตรมาสใดของปี 2568?",
-    "ground_truth": "ไตรมาส 2",
+    "question": "บริษัทมหาชนจำกัดแห่งใหม่ที่จัดตั้งขึ้นในปี 2567 มีชื่อว่าอะไร?",
+    "ground_truth": "บริษัท ติดล้อ โฮลดิ้งส์ จำกัด (มหาชน)",
     "grader": {
       "type": "llm_judge",
       "reference": "ในปี 2567 เงินติดล้อได้รับอนุมัติแผนการปรับโครงสร้างการถือหุ้นและการจัดการ โดยมีการจัดตั้งบริษัทมหาชนจำกัดแห่งใหม่ คือ บริษัท ติดล้อ โฮลดิ้งส์ จำกัด (มหาชน) (Tidlor Holdings Public Company Limited) (ติดล้อ โฮลดิ้งส์) ขึ้นเพื่อประกอบธุรกิจเป็นบริษัทลงทุน (Holding Company) และจะเข้าทำการซื้อขายหลักทรัพย์ในตลาดหลักทรัพย์แห่งประเทศไทยภายในไตรมาส 2 ปี 2568 ภายใต้สัญลักษณ์หุ้น TIDLOR แทนหลักทรัพย์ของเงินติดล้อที่จะถูกเพิกถอนจากการเป็นหลักทรัพย์จดทะเบียนในตลาดหลักทรัพย์ฯ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 395
+    "id": 391
   },
   {
     "category": "semantic_vector",
@@ -5124,7 +5071,7 @@
       "reference": "ในเดือนตุลาคม 2563 ธนาคารได้เข้าซื้อร้อยละ 50 ของหุ้นที่ออกและชำระแล้วใน SBF ซึ่งเป็นบริษัทดะเบียนในตลาดหลักทรัพย์ฟิลิปปินส์ และเป็นบริษัทย่อยที่ให้บริการด้านสินเชื่อเพื่อผู้บริโภคในเครือ Security Bank Corporation (SCBC) หนึ่งในธนาคารชั้นนำของประเทศฟิลิปปินส์"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 396
+    "id": 392
   },
   {
     "category": "semantic_vector",
@@ -5135,29 +5082,29 @@
       "reference": "**ประเภทของบริการ:** HCPH ประกอบธุรกิจการให้บริการสินเชื่อ เพื่อผู้บริโภคประเภทธุรกิจสินเชื่อผ่อนชำระสินค้า ณ จุดขาย (Point-of-Sale Loan) สินเชื่อส่วนบุคคล สินเชื่อมูลค่าสูงส่วนบุคคล ดิจิตอล และบัตรเครดิต **แหล่งที่มาของเงินทุน:** บริษัทและสินเชื่อจากสถาบันการเงิน การเงินในประเทศและต่างประเทศ ## HCPH FINANCING 1, INC. (HCPH1)"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 397
+    "id": 393
   },
   {
     "category": "semantic_vector",
     "question": "สัดส่วนของ HCID ที่เกี่ยวข้องกับสินเชื่อผ่อนชำระสินค้า ณ จุดขาย คือเท่าใด?",
-    "ground_truth": "83",
+    "ground_truth": "ร้อยละ 83",
     "grader": {
       "type": "llm_judge",
       "reference": "83 ของ HCID ด้วย **ประเภทของบริการ:** สินเชื่อเพื่อผู้บริโภคประเภท สินเชื่อผ่อนชำระสินค้า ณ จุดขาย (Point-of-Sale Loan) สินเชื่อส่วนบุคคล สินเชื่อผ่อนชำระระยะสั้น (Pay Later) **แหล่งที่มาของเงินทุน:** บริษัทและสินเชื่อจากสถาบันการเงินในประเทศและต่างประเทศ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 398
+    "id": 394
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัทย่อยต้องจัดสรรเงินไว้เป็นทุนสำรองตามกฎหมายเมื่อใด?",
+    "question": "บริษัทย่อยต้องจัดสรรเงินไว้เป็นทุนสำรองตามกฎหมายหรือสำรองอื่นๆ ตามความจำเป็นในการดำเนินธุรกิจเมื่อใด?",
     "ground_truth": "เมื่อจ่ายเงินปันผลทุกครั้ง",
     "grader": {
       "type": "llm_judge",
       "reference": "2\\. นโยบายการจ่ายเงินปันผลของบริษัทย่อย การจ่ายเงินปันผลของบริษัทย่อยต้องได้รับอนุมัติจากมติ ที่ประชุมผู้ถือหุ้นของบริษัทนั้น และต้องเป็นไปตามกฎระเบียบ และกฎเกณฑ์ที่เกี่ยวข้อง บริษัทย่อยอาจจ่ายเงินปันผล ระหว่างกาลให้ผู้ถือหุ้นเป็นครั้งคราว เมื่อคณะกรรมการบริษัท เห็นว่าบริษัทมีกำไรสมควรพอที่จะทำเช่นนั้น โดยการจ่าย เงินปันผลทุกครั้ง บริษัทต้องจัดสรรเงินไว้เป็นทุนสำรองตาม กฎหมายหรือสำรองอื่นๆ ตามความจำเป็นในการดำเนินธุรกิจ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 399
+    "id": 395
   },
   {
     "category": "semantic_vector",
@@ -5168,7 +5115,7 @@
       "reference": "8 ส่วนของเจ้าของร้อยละ 15. 1 และแหล่งเงินทุนอื่นๆ ร้อยละ 4. 4 โดยกรุงศรีให้บริการรับฝากเงินอยู่ 2 ประเภท คือ เงินรับฝากประเภทไม่มีดอกเบี้ยได้แก่ เงินรับฝากกระแสรายวัน และเงินรับฝากประเภทมีดอกเบี้ยได้แก่ เงินรับฝากออมทรัพย์ และเงินรับฝากประจำ I ความสามารถในการดำรง เงินกองทุน กรุงศรีจัดให้มีกระบวนการประเมินความเพียงพอของ เงินกองทุนภายในให้สอดคล้องกับกระบวนการกำกับดูแล ของธนาคารแห่งประเทศไทยและมีการประเมินอย่าง สม่ำเสมอเพื่อให้มั่นใจว่าความต้องการเงินกองทุนของกรุงศรี ทั้งในปัจจุบันและอนาคตสอดคล้องกับระดับความเสี่ยงที่ ยอมรับได้ กรุงศรีดำรงเงินกองทุนทั้งสิ้นเป็นอัตราส่วนกับสินทรัพย์เสี่ยง ตามหลักเกณฑ์วิธีการ และเงื่อนไขที่ธนาคารแห่งประเทศไทย กำหนด โดยอ้างอิงจากหลักเกณฑ์ Basel III ซึ่ง ณ วันที่ 31 ธันวาคม 2567 กรุงศรีมีเงินกองทุนตามกฎหมายและ อัตราส่วนเงินกองทุนต่อสินทรัพย์เสี่ยงจำแนกได้ ดังนี้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 400
+    "id": 396
   },
   {
     "category": "semantic_vector",
@@ -5179,29 +5126,29 @@
       "reference": "กรุงศรีและบริษัทย่อยได้ตั้งค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นครบทั่วนตามหลักเกณฑ์ของธนาคารแห่งประเทศไทย โดยณวันที่ 31 ธันวาคม 2567 กรุงศรีและบริษัทย่อยได้ตั้งค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นไว้เป็นจำนวน 90,745 ล้านบาท ในงบการเงินรวม ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นดังกล่าวประกอบด้วย ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นของเงินให้สินเชื่อและดอกเบี้ยค้างรับ รายการระหว่างธนาคารและตลาดเงิน และภาระผูกพันวงเงินสินเชื่อและสัญญาค้ำประกันทางการเงิน"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 401
+    "id": 397
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) รายงานความเสี่ยงที่มีนัยสำคัญในระดับใดบ้าง?",
-    "ground_truth": "ระดับพอร์ตสินเชื่อ และระดับรายบัญชี",
+    "question": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) รายงานความเสี่ยงที่มีนัยสำคัญในระดับพอร์ตสินเชื่อและระดับรายบัญชีต่อใคร?",
+    "ground_truth": "คณะกรรมการธนาคารและคณะกรรมการอื่นๆ ที่เกี่ยวข้อง",
     "grader": {
       "type": "llm_judge",
       "reference": "การประกอบธุรกิจและผลการดำเนินงาน ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 ความเสี่ยงที่มีนัยสำคัญ รวมถึงกำหนดกลยุทธ์ในการจัดการ ความเสี่ยงที่อาจเกิดขึ้นในอนาคต ทั้งในระดับพอร์ตสินเชื่อ และระดับรายบัญชีต่อคณะกรรมการธนาคารและคณะ กรรมการอื่นๆ ที่เกี่ยวข้อง อำนาจหน้าที่และความรับผิดชอบ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 402
+    "id": 398
   },
   {
     "category": "semantic_vector",
-    "question": "ระยะเวลาที่ธนาคารกำหนดนโยบายปรับปรุงโครงสร้างหนี้เพื่อช่วยเหลือลูกค้าที่ได้รับผลกระทบจากโควิดและเศรษฐกิจชะลอตัวคือช่วงใด?",
-    "ground_truth": "ระหว่างปี 2563 ถึงปี 2566",
+    "question": "ในช่วงปี 2563 ถึงปี 2566 ธนาคารมีนโยบายอะไรเพื่อช่วยเหลือลูกค้าที่ได้รับผลกระทบจากสถานการณ์การระบาดของโควิดและเศรษฐกิจชะลอตัว?",
+    "ground_truth": "นโยบายปรับปรุงโครงสร้างหนี้",
     "grader": {
       "type": "llm_judge",
       "reference": "สำหรับธุรกรรมสินเชื่อรายย่อย ธนาคารกำหนดนโยบายการอนุมัติสินเชื่อด้วยแนวทางการให้สินเชื่อย่างรับผิดชอบ เพื่อป้องกันปัญหาระดับหนี้สินสูงเกินควร และนโยบายการอนุมัติสินเชื่อที่สนับสนุนผลิตภัณฑ์ที่ช่วยลดความเสี่ยงด้าน ESG ทั้งในด้านสิ่งแวดล้อม สังคม และธรรมาภิบาล ในระหว่างปี 2563 ถึงปี 2566 ธนาคารกำหนดนโยบายปรับปรุงโครงสร้างหนี้สำหรับช่วยเหลือลูกค้าที่ได้รับผลกระทบจากสถานการณ์การระบาดของโควิดและสถานการณ์เศรษฐกิจชะลอตัวและต่อเนื่องด้วยนโยบายปรับปรุงโครงสร้างหนี้แบบยั่งยืน สำหรับปี 2567 เป็นต้นไป ธนาคารจะยังคงสานต่อนโยบายการปรับปรุงโครงสร้างหนี้ด้วยกรอบของความรับผิดชอบต่อสังคมเพื่อช่วยเหลือลูกค้าที่ได้รับผลกระทบจากสภาวะเศรษฐกิจ ภัยธรรมชาติ และสถานการณ์ความไม่ปกติต่างๆ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 403
+    "id": 399
   },
   {
     "category": "semantic_vector",
@@ -5212,29 +5159,29 @@
       "reference": "ธนาคารกันเงินสำรองตามมาตรฐานบัญชี IFRS 9 และ TFRS 9 และหลักเกณฑ์ของธนาคารแห่งประเทศไทย โดยกลุ่มงานบริหารความเสี่ยงเป็นผู้รับผิดชอบในการคำนวณเงินสำรองและนำเสนอต่อประธานคณะเจ้าหน้าที่ด้านบริหารความเสี่ยงและประธานคณะเจ้าหน้าที่ด้านการเงินเพื่อพิจารณาและอนุมัติ ธนาคารจัดสรรเงินสำรองเพิ่มเติม รายพอร์ตโฟลิโอหรือรายลูกค้า เพื่อรองรับความเสี่ยงที่คาดว่าจะเกิดขึ้น หรือปัจจัยที่นอกเหนือแบบจำลองสำหรับการคำนวณผลขาดทุน"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 404
+    "id": 400
   },
   {
     "category": "semantic_vector",
     "question": "ในปี 2567 ธนาคารได้ทบทวนนโยบาย แนวปฏิบัติ และเครื่องมือการบริหารความเสี่ยงด้านอัตราดอกเบี้ยในบัญชีเพื่อการธนาคารเพื่ออะไร?",
-    "ground_truth": "เพื่อเพิ่มประสิทธิภาพและยกระดับมาตรฐานการกำกับดูแลความเสี่ยงที่ดีที่สอดคล้องกับหลักเกณฑ์ของธนาคารแห่งประเทศไทย เรื่องหลักเกณฑ์การกำกับดูแลความเสี่ยงด้านอัตรา",
+    "ground_truth": "เพิ่มประสิทธิภาพและยกระดับมาตรฐานการกำกับดูแลความเสี่ยงที่ดีที่สอดคล้องกับหลักเกณฑ์ของธนาคารแห่งประเทศไทย เรื่องหลักเกณฑ์การกำกับดูแลความเสี่ยงด้านอัตรา",
     "grader": {
       "type": "llm_judge",
       "reference": "* การเพิ่มประสิทธิภาพเครื่องมือการบริหารความเสี่ยง ด้านอัตราดอกเบี้ยในบัญชีเพื่อการธนาคารในปี 2567 ธนาคารพัฒนาเครื่องมือวัดความเสี่ยงที่เหมาะสมอย่าง ต่อเนื่อง สอดคล้องกับหลักปฏิบัติสากลและกฎระเบียบ ของทางการ ในปี 2567 ธนาคารได้ทบทวนนโยบาย แนวปฏิบัติ และเครื่องมือการบริหารความเสี่ยงด้านอัตราดอกเบี้ย ในบัญชีเพื่อการธนาคาร เพื่อเพิ่มประสิทธิภาพและ ยกระดับมาตรฐานการกำกับดูแลความเสี่ยงที่ดี ที่สอดคล้องกับหลักเกณฑ์ของธนาคารแห่งประเทศไทย เรื่องหลักเกณฑ์การกำกับดูแลความเสี่ยงด้านอัตรา"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 405
+    "id": 401
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารเตรียมความพร้อมเครื่องมือใดเพื่อป้องกันปัญหาที่อาจเกิดขึ้นจากความเสี่ยงด้านสภาพคล่อง?",
-    "ground_truth": "เครื่องมือที่เหมาะสมสำหรับการบริหารจัดการฐานะสภาพคล่องทั้งสกุลเงินต่างประเทศและสกุลเงินบาท",
+    "question": "ปัจจัยใดที่ทำให้เศรษฐกิจไทยขยายตัวอย่างต่อเนื่องในปี 2567?",
+    "ground_truth": "การฟื้นตัวของภาคการท่องเที่ยวและการส่งออก รวมถึงการใช้จ่ายภายในประเทศที่เติบโตต่อเนื่อง และมาตรการกระตุ้นเศรษฐกิจในช่วงปลายปี",
     "grader": {
       "type": "llm_judge",
       "reference": "### ฐานะสภาพคล่องปี 2567 และแนวโน้ม ความเสี่ยงด้านสภาพคล่องในปี 2568 ภาพรวมเศรษฐกิจไทยในปี 2567 ขยายตัวอย่างต่อเนื่องจากปี 2566 โดยปัจจัยขับเคลื่อนหลักมาจากการฟื้นตัวของภาคการท่องเที่ยวและการส่งออก รวมถึงการใช้จ่ายภายในประเทศที่เติบโตต่อเนื่อง และมาตรการกระตุ้นเศรษฐกิจในช่วงปลายปี อย่างไรก็ตาม เศรษฐกิจไทยเผชิญแรงกดดันจากสถานการณ์น้ำท่วม การหดตัวของการลงทุนภาคเอกชน รวมถึงการอุปโภคและการลงทุนภาครัฐ ขยายตัวเพียงเล็กน้อย ซึ่งปัจจัยทั้งหมดส่งผลต่อการดำเนินธุรกิจของธนาคาร ดังนั้น ธนาคารจึงได้เตรียมความพร้อมของเครื่องมือที่เหมาะสมสำหรับการบริหารจัดการฐานะสภาพคล่องทั้งสกุลเงินต่างประเทศและสกุลเงินบาทเพื่อป้องกันปัญหาที่อาจเกิดขึ้น สำหรับปี 2568 ธนาคารคาดว่าภาวะเศรษฐกิจของประเทศไทยมีแนวโน้มเติบโตดีขึ้นเล็กน้อย โดยได้รับแรงสนับสนุนจากการใช้จ่ายภาครัฐที่เพิ่มขึ้น และการฟื้นตัวของการท่องเที่ยวที่มีแนวโน้มกลับสู่ระดับก่อนการระบาดของโควิด อย่างไรก็ตาม ภาวะเศรษฐกิจของประเทศไทยยังคงได้รับผลกระทบจาก"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 406
+    "id": 402
   },
   {
     "category": "semantic_vector",
@@ -5245,62 +5192,62 @@
       "reference": "# การวิเคราะห์ผู้มีส่วนได้เสีย กรุงศรีให้ความสำคัญกับผู้มีส่วนได้เสียทุกกลุ่มทั้งภายในและภายนอกองค์กรอย่างเท่าเทียมและทั่วถึง โดยกำหนดให้มีขั้นตอนการวิเคราะห์และจัดลำดับความสำคัญของผู้มีส่วนได้เสียโดยพิจารณาปัจจัยที่เกี่ยวข้องต่างๆ อาทิ ความสัมพันธ์กับผู้มีส่วนได้เสีย ความคาดหวัง ความสนใจ และอิทธิพลของผู้มีส่วนได้เสียในระดับที่แตกต่างกัน ความเกี่ยวเนื่องกับการสร้างคุณค่าเพิ่มตลอดห่วงโซ่อุปทาน ผลกระทบต่อการดำเนินงานของธนาคารภายใต้มิติด้านเศรษฐกิจ สังคม สิ่งแวดล้อม และธรรมาภิบาล ภาวะการพึ่งพากัน จรรยาบรรณและความรับผิดชอบต่อผู้มีส่วนได้เสีย เป็นต้น ซึ่งผู้มีส่วนได้เสียของกรุงศรีสามารถแบ่งออกเป็น 9 กลุ่ม ดังนี้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 407
+    "id": 403
   },
   {
     "category": "semantic_vector",
-    "question": "เป้าหมายการเพิ่มการสนับสนุนทางการเงินให้แก่โครงการธุรกิจเพื่อสังคมและความยั่งยืนภายในปี 2573 คือเท่าใด?",
-    "ground_truth": "250,000 ล้านบาท",
+    "question": "ธนาคารมีเป้าหมายในการลดการปล่อยคาร์บอนไดออกไซด์จากการให้บริการทางการเงินทั้งหมดให้เหลือศูนย์ภายในปีใด?",
+    "ground_truth": "ปี 2593",
     "grader": {
       "type": "llm_judge",
       "reference": "* ลดการปล่อยคาร์บอนไดออกไซด์จากกระบวนการทางธุรกิจของธนาคารให้เหลือศูนย์ภายในปี 2573 * ลดการปล่อยคาร์บอนไดออกไซด์จากการให้บริการทางการเงินทั้งหมดให้เหลือศูนย์ภายในปี 2593 - ลดการสนับสนุนทางการเงินแก่โรงไฟฟ้าพลังงานถ่านหินให้เหลือศูนย์ภายในปี 2573 และกำหนดแผนการดำเนินนโยบายการเปิดเผยข้อมูลทางการเงินอย่างโปร่งใสที่ครอบคลุมข้อมูลการปล่อยและเป้าหมายการปรับลดก๊าซเรือนกระจกที่เกี่ยวข้องกับการให้สินเชื่อและการลงทุนของธนาคาร - เพิ่มการสนับสนุนทางการเงินให้แก่โครงการธุรกิจเพื่อสังคมและความยั่งยืน โดยปรับเพิ่มเป้าหมายจากเดิม 100,000 ล้านบาท เป็น 250,000 ล้านบาท ภายในปี 2573 (จากปีฐาน 2564)"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 408
+    "id": 404
   },
   {
     "category": "semantic_vector",
-    "question": "ปริมาณการลดการปล่อยก๊าซเรือนกระจกจากการชดเชยด้วยใบรับรองการผลิตไฟฟ้าจากพลังงานหมุนเวียนในปี 2567 เท่ากับเท่าใด?",
+    "question": "ปริมาณการลดการปล่อยก๊าซเรือนกระจกจากการชดเชยด้วยใบรับรองพลังงานหมุนเวียนในปี 2567 เท่ากับเท่าใด",
     "ground_truth": "4,000 ตันคาร์บอนไดออกไซด์เทียบเท่า",
     "grader": {
       "type": "llm_judge",
       "reference": "20 ตันคาร์บอนไดออกไซด์ เทียบเท่าต่อคน หมายเหตุ: สามารถดูรายละเอียดข้อมูลการปล่อยก๊าซเรือนกระจกเพิ่มเติมได้ในรายงานความยั่งยืนประจำปี 2567 หัวข้อ \"การบริหารจัดการด้านการเปลี่ยนแปลงสภาพภูมิอากาศ\" และตารางข้อมูลการปล่อยก๊าซเรือนกระจก ¹/ ปี 2567 เปิดเผยข้อมูลปริมาณการปล่อยก๊าซเรือนกระจกจากสำนักงานใหญ่ อาคารกรุงศรี สำนักงานเพลินจิต สาขาธนาคารทั่วประเทศ และบริษัทย่อย (เฉพาะที่ตั้งอยู่ในประเทศไทย) โดยมีการชดเชยการปล่อยก๊าซเรือนกระจกที่เกิดขึ้นโดยทางอ้อม (ขอบเขตที่ 2: การใช้ไฟฟ้าที่มีการซื้อพลังงานจากภายนอกมาใช้ภายในองค์กร) ผ่านการซื้อใบรับรองการผลิตไฟฟ้าจากพลังงานหมุนเวียน (Renewable Energy Certificate: REC) จำนวน 8,000 RECs หรือเทียบเท่าปริมาณการลดการปล่อยก๊าซเรือนกระจก 4,000 ตันคาร์บอนไดออกไซด์เทียบเท่า (tCO₂e) โดยข้อมูลดังกล่าวอยู่ระหว่างการยื่นขอรับรองจากองค์การบริหารจัดการก๊าซเรือนกระจก (องค์การมหาชน)"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 409
+    "id": 405
   },
   {
     "category": "semantic_vector",
-    "question": "จำนวนเงินที่ประหยัดได้ต่อปีจากน้ำที่นำกลับมาใช้ประโยชน์ที่อาคารกรุงศรี สำนักงานเพลินจิตคือเท่าใด?",
-    "ground_truth": "47,210",
+    "question": "จำนวนน้ำที่ใช้หมุนเวียนซ้ำในระบบหอหล่อเย็นต่อปีคือเท่าใด?",
+    "ground_truth": "2,752 ลูกบาศก์เมตรต่อปี",
     "grader": {
       "type": "llm_judge",
       "reference": "90 บาทต่อปี สำหรับอาคารกรุงศรี สำนักงานเพลินจิต ได้นำน้ำจากบ่อกักเก็บน้ำฝน น้ำทิ้งจากระบบหอหล่อเย็น รวมถึงน้ำหยดจากการควบแน่นของระบบคอยล์เย็นที่ผ่านการบำบัดแล้วกลับมาใช้ประโยชน์ โดยนำมารดน้ำต้นไม้มอบอาคารสำนักงาน และใช้หมุนเวียนซ้ำในระบบหอหล่อเย็นโดยเฉลี่ยเดือนละ 229 ลูกบาศก์เมตร หรือ 2,752 ลูกบาศก์เมตรต่อปี คิดเป็นจำนวนเงินที่ประหยัดได้ 47,210."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 410
+    "id": 406
   },
   {
     "category": "semantic_vector",
-    "question": "แนวทางพื้นฐานหลักในการสรรหาว่าจ้างตามข้อความคืออะไรบ้าง?",
+    "question": "แนวทางพื้นฐานหลักในการว่าจ้างตามด้านการสรรหาว่าจ้างคืออะไรบ้าง?",
     "ground_truth": "การว่าจ้างอย่างเป็นธรรม การป้องกันความขัดแย้งทางผลประโยชน์ การเคารพต่อความแตกต่างและความหลากหลาย และการสร้างความผูกพันของพนักงานที่มีต่องค์กร",
     "grader": {
       "type": "llm_judge",
       "reference": "1. **ด้านการสรรหาว่าจ้าง** ครอบคลุมเรื่องการพิจารณาสรรหาว่าจ้าง การคัดเลือกบุคคลภายนอก การโอนย้ายภายใน โดยตั้งอยู่บนแนวทางพื้นฐานหลักคือ การว่าจ้างอย่างเป็นธรรม การป้องกันความขัดแย้งทางผลประโยชน์ การเคารพต่อความแตกต่างและความหลากหลาย และการสร้างความผูกพันของพนักงานที่มีต่องค์กร"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 411
+    "id": 407
   },
   {
     "category": "semantic_vector",
-    "question": "ระบบ Bella Chatbot ให้บริการลูกค้าผ่านช่องทางใดบ้าง?",
-    "ground_truth": "ช่องทางโซเชียลมีเดีย อาทิ เฟซบุ๊ก “Krungsi Simple” และ Krungsri app",
+    "question": "บริษัทเปิดเผยรายงานข้อมูลคุณภาพการให้บริการและรายงานสถิติระบบเทคโนโลยีสารสนเทศขัดข้องที่กระทบต่อการให้บริการผ่านช่องทางสำคัญกี่ครั้งต่อปี?",
+    "ground_truth": "เป็นประจำทุกไตรมาส",
     "grader": {
       "type": "llm_judge",
       "reference": "* พัฒนาระบบ “Bella Chatbot” ผู้ช่วยอัจฉริยะที่ให้บริการ ด้านข้อมูล และตอบข้อสงสัย ข้อซักถาม ให้แก่ลูกค้าได้ ตลอดเวลา 24 ชั่วโมง ผ่านช่องทางโซเชียลมีเดีย อาทิ เฟซบุ๊ก “Krungsi Simple” รวมทั้งเพิ่มช่องทางบริการ ทางดิจิทัลให้หลากหลาย อาทิ การให้บริการผ่านทาง Krungsri app * เปิดเผยรายงานข้อมูลคุณภาพการให้บริการ และรายงาน สถิติระบบเทคโนโลยีสารสนเทศขัดข้องที่กระทบต่อการให้ บริการผ่านช่องทางสำคัญ อาทิ kRUNGSRI app, Internet Banking, Automated Teller Machine (ATM), Cash Deposit Machine (CDM) และสาขาธนาคาร โดยรายงาน เป็นประจำทุกไตรมาสบนเว็บไซต์ krungsri."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 412
+    "id": 408
   },
   {
     "category": "semantic_vector",
@@ -5311,18 +5258,18 @@
       "reference": "กรุงศรีได้ริเริ่มโครงการ “กรุงศรีห่วงใย ต้านภัยมะเร็งเต้านม” ขึ้นในปี 2553 โดยได้รับการสนับสนุนจากมูลนิธิดันยรักษ์ ในพระราชูปถัมภ์สมเด็จพระศรีนครินทราบรมราชชนนี ซึ่งโครงการดังกล่าวมีวัตถุประสงค์เพื่อสนับสนุนยุทธศาสตร์ ประเทศด้านสาธารณสุข ผ่านกิจกรรมย่อยของโครงการฯ อาทิ การจัดกิจกรรมอบรมให้ความรู้และรณรงค์การตรวจ เต้านมด้วยตัวเอง (Breast Self-Examination) ที่ถูกต้อง โดยผู้เชี่ยวชาญ การสนับสนุนให้ประชาชนได้เข้ารับบริการ ตรวจวินิจฉัยเต้านมจากรถเอกซเรย์เต้านมเคลื่อนที่ (Mobile Mammography Unit) ที่มีคุณภาพและได้มาตรฐานเหมือนกับ การเข้าตรวจในศูนย์ถันยรักษ์ เป็นต้น สำหรับปี 2567 ได้ดำเนินกิจกรรมภายใต้โครงการกรุงศรี ห่วงใย ต้านภัยมะเร็งเต้านม ดังนี้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 413
+    "id": 409
   },
   {
     "category": "semantic_vector",
-    "question": "ในปี 2567 กรุงศรีดำเนินกิจกรรมอนุรักษ์และพัฒนาโบราณสถานในพื้นที่เกาะเมืองอยุธยาและพื้นที่รอบนอกเกาะเมืองกี่ครั้ง?",
+    "question": "ในปี 2567 กรุงศรีดำเนินกิจกรรมอนุรักษ์และพัฒนาโบราณสถานจำนวนกี่ครั้ง?",
     "ground_truth": "4 ครั้ง",
     "grader": {
       "type": "llm_judge",
       "reference": "กรุงศรีได้ริเริ่มดำเนินกิจกรรมอนุรักษ์พัฒนาโบราณสถาน ในพื้นที่จังหวัดพระนครศรีอยุธยาซึ่งถือเป็นจังหวัดบ้านเกิด ของธนาคารมาตั้งแต่ปี 2558 โดยร่วมกับสำนักศิลปากรที่ 3 พระนครศรีอยุธยา กรมศิลปากร เพื่อสนับสนุนให้พนักงาน และชุมชนท้องถิ่นตระหนักถึงความสำคัญของมรดกทาง วัฒนธรรมที่สำคัญ โดยเฉพาะอย่างยิ่งโบราณสถาน อุทยาน ประวัติศาสตร์พระนครศรีอยุธยาที่ได้รับยกย่องให้เป็น มรดกโลก และมีส่วนร่วมในการดูแลและอนุรักษ์มรดกทาง วัฒนธรรมของประเทศให้คงอยู่สืบไป ในปี 2567 กรุงศรีได้ดำเนินกิจกรรมอนุรักษ์และพัฒนาโบราณ สถานในพื้นที่เกาะเมืองอยุธยาและพื้นที่รอบนอกเกาะเมือง จำนวน 4 ครั้ง ได้แก่ วัดเชิงท่า วัดวรเชษฐ์ วัดสมณโกฏฐาราม และวัดเจ้าย่า โดยมีอาสาสมัครกรุงศรี กรุ๊ป เข้าร่วมจำนวน 313 คน คิดเป็นชั่วโมงจิตอาสารวมทั้งสิ้น 2,504 ชั่วโมง และ ได้รับผลประเมินความพึงพอใจโดยรวมของผู้เข้าร่วมกิจกรรม ร้อยละ 98"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 414
+    "id": 410
   },
   {
     "category": "semantic_vector",
@@ -5333,40 +5280,40 @@
       "reference": "9 ในปี 2567 ครอบคลุมตราสารหนี้ที่ออกโดยบริษัทเอกชน รัฐวิสาหกิจ และหน่วยงานของรัฐบาล จากสภาพแวดล้อมในการดำเนินธุรกิจที่ท้าทาย ส่งผลให้เงินให้สินเชื่อรวมในปี 2567 ลดลงร้อยละ 6. 0 อยู่ที่ 1,895,869 ล้านบาท โดยลดลงจำนวน 121,335 ล้านบาท ขณะที่กำไรสุทธิอยู่ที่ 29,700 ล้านบาท ลดลงร้อยละ 9. 8 หรือจำนวน 3,229 ล้านบาท จากปีที่ผ่านมา โดยมีปัจจัยหลักมาจาก การเพิ่มขึ้นของผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นสะท้อนนโยบายบริหารจัดการความเสี่ยงที่เข้มงวดระมัดระวัง **เงินรับฝากอยู่ที่จำนวน 1,822,229 ล้านบาท ลดลงจำนวน 17,372 ล้านบาท หรือร้อยละ 0. 9 จากสิ้นเดือนธันวาคม 2566** ตามนโยบายการบริหารสภาพคล่องที่เหมาะสมรัดกุม **อัตราส่วนสินเชื่อด้อยคุณภาพอยู่ที่ร้อยละ 3. 23 เทียบกับร้อยละ 2."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 415
+    "id": 411
   },
   {
     "category": "semantic_vector",
-    "question": "กรุงศรีมีส่วนแบ่งการตลาดในการสนับสนุนการออกแบบตราสารหนี้ ESG ในปี 2567 เท่าใด?",
+    "question": "กรุงศรีมีส่วนแบ่งการตลาดในการสนับสนุนการออกแบบตราสารหนี้ ESG ในปี 2567 เท่าใด",
     "ground_truth": "ร้อยละ 18.9",
     "grader": {
       "type": "llm_judge",
       "reference": "# • ตราสารหนี้เพื่อความยั่งยืน (ESG Debentures) กรุงศรีให้ความสำคัญกับพัฒนาการด้าน ESG และยังคงรักษาตำแหน่งผู้นำในด้านการเงินเพื่อความยั่งยืน ในปี 2567 กรุงศรีเป็นผู้นำอันดับหนึ่งในการสนับสนุนการออกแบบตราสารหนี้ ESG ด้วยส่วนแบ่งการตลาดที่ร้อยละ 18. 9 ครอบคลุมผลิตภัณฑ์และบริการทางการเงินเพื่อความยั่งยืนที่หลากหลาย รวมถึงตราสารหนี้ที่ออกโดยบริษัทเอกชน รัฐวิสาหกิจ และหน่วยงานของรัฐบาล"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 416
+    "id": 412
   },
   {
     "category": "semantic_vector",
-    "question": "ส่วนต่างอัตราดอกเบี้ยสุทธิในปี 2567 อยู่ที่เท่าใด?",
+    "question": "ส่วนต่างอัตราดอกเบี้ยสุทธิในปี 2567 อยู่ที่เท่าใด",
     "ground_truth": "ร้อยละ 4.28",
     "grader": {
       "type": "llm_judge",
       "reference": "# ส่วนต่างอัตราดอกเบี้ยสุทธิ ส่วนต่างอัตราดอกเบี้ยสุทธิในปี 2567 อยู่ที่ร้อยละ 4. 28 เพิ่มขึ้น 37 เบสิสพอท์ จากร้อยละ 3. 91 ในปี 2566 โดยมีปัจจัยหลัก มาจากการเพิ่มขึ้นของอัตราผลตอบแทนของสินทรัพย์ 73 เบสิสพอท์ มาอยู่ที่ร้อยละ 6. 21 สุทธิด้วยต้นทุนทางการเงินที่เพิ่มขึ้น 44 เบสิสพอท์ มาอยู่ที่ร้อยละ 2. 23 โดยส่วนต่างอัตราดอกเบี้ยสุทธิที่ปรับตัวดีขึ้นมีปัจจัยหลักมาจากการรับรู้รายได้ทั้งปีของธุรกิจ สินเชื่อเพื่อผู้บริโภคในต่างประเทศที่ควบรวมในปี 2566 และการบริหารสภาพคล่องที่เหมาะสมรัดกุม สอดคล้องกับอุปสงค์ ต่อเงินให้สินเชื่อที่ชะลอตัวระหว่างปี"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 417
+    "id": 413
   },
   {
     "category": "semantic_vector",
-    "question": "รายได้ค่าธรรมเนียมและบริการในปี 2567 อยู่ที่เท่าใด",
-    "ground_truth": "34,645 ล้านบาท",
+    "question": "ในปี 2567 รายได้ค่าธรรมเนียมและบริการเพิ่มขึ้นจากปีก่อนหน้ากี่ร้อยละ?",
+    "ground_truth": "ร้อยละ 18.6",
     "grader": {
       "type": "llm_judge",
       "reference": "ในปี 2567 รายได้ค่าธรรมเนียมและบริการอยู่ที่จำนวน 34,645 ล้านบาท เพิ่มขึ้นร้อยละ 18. 6 หรือจำนวน 5,433 ล้านบาท จาก ปี 2566 จากธุรกิจภายในประเทศและธุรกิจในอาเซียน โดยส่วนใหญ่มาจากรายได้ค่าธรรมเนียมธุรกรรมบริหารความมั่งคั่ง กองทุน ค่าธรรมเนียมจากการเป็นตัวแทนจำหน่ายประกัน และค่าธรรมเนียมบริการบัตร"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 418
+    "id": 414
   },
   {
     "category": "semantic_vector",
@@ -5377,18 +5324,18 @@
       "reference": "# โครงสร้างพอร์ตเงินให้สินเชื่อ ## สินเชื่อเพื่อรายย่อย ### สินเชื่อเพื่อรายย่อย จากสภาพแวดล้อมในการดำเนินธุรกิจที่ท้าทาย สะท้อนความเชื่อมั่นของภาคธุรกิจและผู้บริโภคที่เปราะบาง กอปรกับการดำเนินธุรกิจตามหลักการให้สินเชื่ออย่างรับผิดชอบและเป็นธรรมของธนาคาร ส่งผลให้เงินให้สินเชื่อลดลงร้อยละ 6. 0 หรือจำนวน 121,335 ล้านบาท จากสิ้นเดือนธันวาคม 2566"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 419
+    "id": 415
   },
   {
     "category": "semantic_vector",
-    "question": "มูลค่าสุทธิต่อหุ้นของธนาคาร ณ วันที่ 31 ธันวาคม 2567 อยู่ที่เท่าใด?",
+    "question": "มูลค่าสุทธิต่อหุ้นของธนาคารอยู่ที่เท่าใด ณ วันที่ 31 ธันวาคม 2567?",
     "ground_truth": "53.81 บาท",
     "grader": {
       "type": "llm_judge",
       "reference": "ณ วันที่ 31 ธันวาคม 2567 หนี้สินรวมอยู่ที่จำนวน 2,224,265 ล้านบาท ลดลงจำนวน 172,576 ล้านบาท หรือร้อยละ 7. 2 ส่วนใหญ่มาจาก การลดลงของรายการระหว่างธนาคารและตลาดเงิน จำนวน 137,408 ล้านบาท จากการชำระคืนเงินให้สินเชื่อจาก MUFG และการลดลงของเงินรับฝากจำนวน 17,372 ล้านบาท ณ วันที่ 31 ธันวาคม 2567 ส่วนของเจ้าของที่เป็นของธนาคารอยู่ที่จำนวน 392,008 ล้านบาท เพิ่มขึ้นจำนวน 23,554 ล้านบาท หรือร้อยละ 6. 4 จากสิ้นเดือนธันวาคม 2566 เป็นผลจากการเพิ่มขึ้นของกำไรสุทธิในส่วนของผู้ถือหุ้นที่เป็นของธนาคารจำนวน 29,700 ล้านบาท ในปี 2567 สุทธิด้วยการจ่ายเงินปันผลจำนวน 6,252 ล้านบาท มูลค่าสุทธิต่อหุ้น ณ วันที่ 31 ธันวาคม 2567 เพิ่มขึ้นมาอยู่ที่ 53. 81 บาท จาก 50. 50 บาท ณ สิ้นเดือนธันวาคม 2566"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 420
+    "id": 416
   },
   {
     "category": "semantic_vector",
@@ -5399,7 +5346,7 @@
       "reference": "27 ทั้งนี้ ระดับเงินกองทุนในปัจจุบันอยู่ในระดับที่สูงกว่าเกณฑ์ขั้นต่ำที่กฎหมายกำหนด รวมเงินกองทุนส่วนเพิ่มเพื่อรองรับ ผลขาดทุนในภาวะวิกฤต (Capital Conservation Buffer) และดำรงเงินกองทุนส่วนเพิ่มเพื่อรองรับความเสียหาย (Higher Loss Absorbency) สำหรับสถาบันการเงินที่มีความสำคัญเชิงระบบ (D-SIB)"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 421
+    "id": 417
   },
   {
     "category": "semantic_vector",
@@ -5410,29 +5357,29 @@
       "reference": "รายละเอียดมาตรการช่วยเหลือลูกค้าที่ได้รับผลกระทบจากสถานการณ์น้ำท่วม 1) ลูกค้าสินเชื่อส่วนบุคคล สินเชื่อเพื่อที่อยู่อาศัย และสินเชื่อธุรกิจรายย่อย * ลดยอดผ่อนชำระต่อเดือน ระยะเวลาสูงสุดนาน 6 เดือน * พักชำระเงินต้น (ชำระเฉพาะดอกเบี้ย) ระยะเวลาสูงสุดนาน 3 เดือน 2) ลูกค้าสินเชื่อเพื่อธุรกิจขนาดกลางและขนาดย่อม * ลดยอดผ่อนชำระต่อเดือน ระยะเวลาสูงสุดนาน 6 เดือน * พักชำระเงินต้น (ชำระเฉพาะดอกเบี้ย) ระยะเวลาสูงสุดนาน 6 เดือน 3) ลูกค้ากรุงศรี ออโต้ * พักชำระค่างวดต่อเดือน ระยะเวลาสูงสุดนาน 3 เดือน หรือ * ลดยอดผ่อนชำระต่อเดือนและขยายเวลาการผ่อนชำระ 4) ลูกค้าบัตรเครดิต และสินเชื่อส่วนบุคคล ของกรุงศรี คอนซูเมอร์ * พักชำระหนี้ ระยะเวลาสูงสุดนาน 3 รอบบัญชี โดยดอกเบี้ยคงคำนวณตามอัตราปกติแบบลดต้นลดดอก * ลดยอดผ่อนชำระต่อเดือนและการขยายเวลาการผ่อนชำระ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 422
+    "id": 418
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัท ศูนย์รับฝากหลักทรัพย์ (ประเทศไทย) จำกัด ตั้งอยู่ที่อยู่ไหน?",
-    "ground_truth": "อาคารตลาดหลักทรัพย์แห่งประเทศไทย เลขที่ 93 ถนนรัชดาภิเษก แขวงดินแดง เขตดินแดง กรุงเทพฯ 10400",
+    "question": "บริษัทใดออกตราสารด้อยสิทธิ ครั้งที่ 1/2564?",
+    "ground_truth": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน)",
     "grader": {
       "type": "llm_judge",
       "reference": "* หุ้นสามัญ : บริษัท ศูนย์รับฝากหลักทรัพย์ (ประเทศไทย) จำกัด อาคารตลาดหลักทรัพย์แห่งประเทศไทย เลขที่ 93 ถนนรัชดาภิเษก แขวงดินแดง เขตดินแดง กรุงเทพฯ 10400 โทรศัพท์ 0-2009-9999 * ตราสารด้อยสิทธิ ครั้งที่ 1/2564 : ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) เลขที่ 1222 ถนนพระรามที่ 3 แขวงบางโพงพาง เขตยานนาวา กรุงเทพฯ 10120 โทรศัพท์ 0-2296-5999 * ตราสารด้อยสิทธิ ครั้งที่ 1/2565 * ตราสารด้อยสิทธิ ครั้งที่ 2/2565 * ตราสารด้อยสิทธิ ครั้งที่ 1/2567 * หุ้นกู้ระยะยาว ครั้งที่ 1/2566 ชุดที่ 1 * หุ้นกู้ระยะยาว ครั้งที่ 1/2566 ชุดที่ 2 * หุ้นกู้ระยะยาว ครั้งที่ 2/2566 ชุดที่ 1 * หุ้นกู้ระยะยาว ครั้งที่ 2/2566 ชุดที่ 2 * หุ้นกู้ระยะยาว ครั้งที่ 1/2567 ชุดที่ 1 * หุ้นกู้ระยะยาว ครั้งที่ 1/2567 ชุดที่ 2"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 423
+    "id": 419
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัท บริหารสินทรัพย์กรุงศรีอยุธยา จำกัด มีที่ตั้งอยู่ที่ใด?",
+    "question": "บริษัท บริหารสินทรัพย์กรุงศรีอยุธยา จำกัด ตั้งอยู่ที่ใด?",
     "ground_truth": "อาคารธนาคารกรุงศรีอยุธยา จำกัด (มหาชน), สำนักงานใหญ่ ชั้น 11",
     "grader": {
       "type": "llm_judge",
       "reference": "การประกอบธุรกิจและผลการดำเนินงาน ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 # I บริษัทในเครือธนาคารกรุงศรีอยุธยา ## บริษัทย่อย และการร่วมค้า **บริษัท บริหารสินทรัพย์กรุงศรีอยุธยา จำกัด** * **ที่ตั้ง:** อาคารธนาคารกรุงศรีอยุธยา จำกัด (มหาชน), สำนักงานใหญ่ ชั้น 11"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 424
+    "id": 420
   },
   {
     "category": "semantic_vector",
@@ -5443,62 +5390,51 @@
       "reference": "* การประชุมแต่ละครั้งจะใช้เวลาเฉลี่ยประมาณ 4 ชั่วโมง โดยประธานกรรมการได้เปิดโอกาสให้กับกรรมการ ทุกคนได้ใช้เวลาอย่างเต็มที่ และมีอิสระในการซักถาม การให้ข้อเสนอแนะ ตลอดจนอภิปรายและแสดงความคิดเห็น ในประเด็นต่างๆ เพื่อให้กรรมการใช้ดุลยพินิจอย่างรอบคอบ โดยได้มีการเชิญผู้บริหารระดับสูงและเจ้าหน้าที่ที่เกี่ยวข้อง ในเรื่องนั้นๆ เข้าร่วมประชุมด้วย เพื่อตอบข้อซักถาม และรับทราบความคิดเห็นและข้อสังเกตของคณะกรรมการ ธนาคาร"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 425
+    "id": 421
   },
   {
     "category": "semantic_vector",
-    "question": "คณะกรรมการชุดย่อยในระดับกำกับดูแลมีการประเมินผลการปฏิบัติงานอย่างไร?",
-    "ground_truth": "มีการประเมินผลการปฏิบัติงานแบบทั้งคณะ และคณะกรรมการตรวจสอบ คณะกรรมการสรรหาและพิจารณาค่าตอบแทน และคณะกรรมการเจ้าหน้าที่บริหารได้จัดให้มีการประเมินตนเองเป็นรายบุคคลเพิ่มเติม",
+    "question": "คณะกรรมการชุดย่อยในระดับกำกับดูแลทุกชุดมีการประเมินผลการปฏิบัติงานอย่างไร?",
+    "ground_truth": "ได้มีการประเมินผลการปฏิบัติงานแบบทั้งคณะ",
     "grader": {
       "type": "llm_judge",
       "reference": "# • การประเมินผลการปฏิบัติงานของ คณะกรรมการชุดย่อยในระดับกำกับดูแล คณะกรรมการชุดย่อยในระดับกำกับดูแลทุกชุดได้มีการประเมินผลการปฏิบัติงานแบบทั้งคณะ และคณะกรรมการตรวจสอบ คณะกรรมการสรรหาและพิจารณาค่าตอบแทน และคณะกรรมการเจ้าหน้าที่บริหารได้จัดให้มีการประเมินตนเองเป็นรายบุคคลเพิ่มเติมด้วย โดยใช้แนวทางแบบประเมินจากตลาดหลักทรัพย์แห่งประเทศไทยและ/หรือแบบประเมินของคณะกรรมการธนาคารมาปรับใช้ให้เหมาะสมกับลักษณะและโครงสร้างของคณะกรรมการชุดย่อยแต่ละชุดโดยได้กำหนดหัวข้อการประเมินดังนี้ * สำหรับการประเมินคณะกรรมการตรวจสอบ และคณะกรรมการสรรหาและพิจารณาค่าตอบแทนแบบทั้งคณะ และหัวข้อการประเมินตนเองของคณะกรรมการตรวจสอบ คณะกรรมการสรรหาและพิจารณาค่าตอบแทนและคณะกรรมการเจ้าหน้าที่บริหารเป็นรายบุคคล * 1. โครงสร้างและคุณสมบัติของคณะกรรมการ * 2. การประชุมคณะกรรมการ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 426
+    "id": 422
   },
   {
     "category": "semantic_vector",
-    "question": "กรรมการผู้จัดการใหญ่และประธานเจ้าหน้าที่บริหารของกรุงศรีสามารถดำรงตำแหน่งกรรมการในบริษัทในกรุงศรี กรุ๊ปได้กี่บริษัทอย่างมาก?",
-    "ground_truth": "ไม่เกิน 5 บริษัท",
+    "question": "กรรมการผู้จัดการใหญ่และประธานเจ้าหน้าที่บริหารของกรุงศรีสามารถดำรงตำแหน่งกรรมการในบริษัทในกรุงศรี กรุ๊ปได้ไม่เกินกี่บริษัท?",
+    "ground_truth": "5 บริษัท",
     "grader": {
       "type": "llm_judge",
       "reference": "กรุงศรีกำหนดให้กรรมการผู้จัดการใหญ่และประธานเจ้าหน้าที่บริหาร และผู้บริหารระดับสูงของกรุงศรีสามารถดำรงตำแหน่งกรรมการในบริษัทในกรุงศรี กรุ๊ปได้ไม่เกิน 5 บริษัท โดยกรรมการผู้จัดการใหญ่และประธานเจ้าหน้าที่บริหารเป็นผู้พิจารณาความเหมาะสมและเสนอต่อคณะกรรมการสรรหาและพิจารณาค่าตอบแทนเพื่อพิจารณาความเหมาะสมและให้ความเห็นชอบก่อนนำเสนอคณะกรรมการธนาคารพิจารณาต่อไป ทั้งนี้ ไม่สามารถดำรงตำแหน่งกรรมการบริษัทจดทะเบียนที่ไม่ใช่บริษัทในกรุงศรี กรุ๊ป เว้นแต่มีเหตุผลความจำเป็นที่สมควรโดยต้องได้รับความเห็นชอบจากผู้บังคับบัญชา/ประธานคณะเจ้าหน้าที่ ประธานคณะเจ้าหน้าที่ด้านทรัพยากรบุคคล และกรรมการผู้จัดการใหญ่และประธานเจ้าหน้าที่บริหาร"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 427
+    "id": 423
   },
   {
     "category": "semantic_vector",
-    "question": "กรุงศรีกำหนดมาตรการเก็บรักษาข้อมูลลูกค้าตามกฎหมายใดบ้าง?",
-    "ground_truth": "2562 รวมถึงกฎหมายอื่นที่เกี่ยวข้อง",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "2562 รวมถึงกฎหมายอื่นที่เกี่ยวข้อง กรุงศรีจึงได้กำหนดมาตรการ ในการเก็บรักษาข้อมูลของลูกค้าอย่างเคร่งครัดไว้ในคู่มือ พนักงาน (Employee Handbook) รวมทั้งนโยบายเกี่ยวกับ การคุ้มครองข้อมูลส่วนบุคคล (Policy for Personnel Data Protection) ระเบียบปฏิบัติงาน เรื่องการคุ้มครองข้อมูล ส่วนบุคคล (PDPA Common Procedure) และคู่มือ ปฏิบัติงานที่เกี่ยวข้อง โดยไม่ให้มีการเปิดเผยข้อมูลหรือ ความลับของลูกค้าเว้นแต่กฎหมายกำหนดให้ต้องเปิดเผย หรือได้รับอนุญาตเป็นลายลักษณ์อักษรจากลูกค้า และ ไม่นำข้อมูลของลูกค้าไปแสวงหาประโยชน์ ซึ่งสามารถ ศึกษาประกาศการคุ้มครองข้อมูลส่วนบุคคลได้จากเว็บไซต์ ของกรุงศรี"
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 428
-  },
-  {
-    "category": "semantic_vector",
-    "question": "กรุงศรีมุ่งเน้นการสร้างการมีส่วนร่วมกับชุมชนผ่านโครงการ/กิจกรรมเพื่อสังคมในด้านใดบ้าง?",
+    "question": "กรุงศรีมุ่งเน้นการสร้างการมีส่วนร่วมกับชุมชนผ่านโครงการ/กิจกรรมเพื่อสังคมในรูปแบบใดบ้าง?",
     "ground_truth": "การให้ความรู้ด้านการเงินและสนับสนุนสิ่งอำนวยความสะดวกทางการศึกษา การพัฒนาชุมชน และสังคม การสนับสนุนด้านศิลปวัฒนธรรมและประเพณี และการส่งเสริมการเข้าถึงบริการสุขภาพ",
     "grader": {
       "type": "llm_judge",
       "reference": "2. การตอบแทนคืนสู่สังคม: มุ่งเน้นการสร้างการมีส่วนร่วม กับชุมชน ทั้งชุมชนโดยรอบพื้นที่ดำเนินงานของกรุงศรี และสังคมวงกว้างผ่านโครงการ/กิจกรรมเพื่อสังคมใน รูปแบบต่างๆ อาทิ การให้ความรู้ด้านการเงินและสนับสนุน สิ่งอำนวยความสะดวกทางการศึกษา การพัฒนาชุมชน และสังคม การสนับสนุนด้านศิลปวัฒนธรรมและประเพณี และการส่งเสริมการเข้าถึงบริการสุขภาพ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 429
+    "id": 424
   },
   {
     "category": "semantic_vector",
-    "question": "ช่องทางใดที่ธนาคารกรุงศรีอยุธยาใช้ในการเปิดเผยข้อมูลข่าวสารสำคัญ?",
+    "question": "กรุงศรีเปิดเผยข้อมูลข่าวสารสำคัญผ่านช่องทางใดบ้าง?",
     "ground_truth": "เว็บไซต์ของกรุงศรี (www.",
     "grader": {
       "type": "llm_judge",
       "reference": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 ของกรุงศรีโดยความเห็นชอบด้านข้อมูลจากกรรมการผู้จัดการใหญ่และประธานเจ้าหน้าที่บริหาร ทั้งนี้ โฆษกของกรุงศรีจำเป็นต้องผ่านการอบรมทักษะด้านการสื่อสารเพื่อให้การสื่อสารข้อมูลมีความน่าเชื่อถือและเกิดประสิทธิผลสูงสุด * ฝ่าย Corporate Affairs เป็นหน่วยงานกลางในการรับคำขอ สัมภาษณ์ และข้อมูลจากนักลงทุน นักวิเคราะห์ ผู้จัดการกองทุน ฯลฯ เพื่อเสนอต่อประธานคณะเจ้าหน้าที่ด้านการเงินในการพิจารณาให้สัมภาษณ์ และเห็นชอบข้อมูล **ช่องทางการเปิดเผยข้อมูล** กรุงศรีได้เปิดเผยข้อมูลข่าวสารสำคัญที่เกี่ยวข้องกับกรุงศรีทั้งข้อมูลด้านการเงินและข้อมูลอื่นๆ เพื่อให้ผู้มีส่วนได้เสียสามารถเข้าถึงข้อมูลได้อย่างสะดวก ทั่วถึง และเท่าเทียมกัน โดยเผยแพร่ผ่านช่องทางต่างๆ อาทิ เว็บไซต์ของกรุงศรี (www."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 430
+    "id": 425
   },
   {
     "category": "semantic_vector",
@@ -5509,51 +5445,51 @@
       "reference": "2. พันธกิจ วิสัยทัศน์ และวิถีในการดำเนินธุรกิจของกรุงศรีซึ่งเป็นความมุ่งหมายพื้นฐานและเป้าหมายของกรุงศรี ในช่วงระยะกลางถึงระยะยาว และได้มีการกำหนดค่านิยม (Core Values) ของกรุงศรี ซึ่งเป็นพื้นฐานของการสร้างวัฒนธรรมองค์กรไว้อย่างชัดเจนเสมอ มานั้น ในปี 2567 กรุงศรีได้ทำการสำรวจ “วัฒนธรรมองค์กรของชาวกรุงศรี (Krungsri Organizational Culture Survey)” เพื่อนำผลวิเคราะห์และข้อมูลเชิงลึกมากำหนดแนวทางวัฒนธรรมที่เรียกว่า \"3Cs\" ได้แก่ การใส่ใจ (Care) การสื่อสาร (Communicate) และการโค้ช (Coach) ซึ่งตั้งอยู่บนพื้นฐานที่แข็งแกร่งของการปฏิบัติอย่างถูกต้อง โปร่งใส (Compliance) และมีความสม่ำเสมอต่อเนื่อง (Consistency) เพื่อเป็นแนวทางให้กับพนักงานในการปฏิบัติได้ในแต่ละวันและสนับสนุนต่อการบรรลุเป้าหมายของกรุงศรี นอกจากนี้ วัฒนธรรม 3Cs ยังมีความสอดคล้องอย่างยิ่งกับสมรรถนะผู้นำองค์กร (Leadership Competency) ซึ่งจะขับเคลื่อนกรุงศรีสู่ความเป็นเลิศอีกด้วย"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 431
+    "id": 426
   },
   {
     "category": "semantic_vector",
-    "question": "ค่าตอบแทนของผู้สอบบัญชีที่ต้องมีการเปิดเผยประกอบด้วยอะไรบ้าง?",
-    "ground_truth": "ค่าตอบแทนจากงานสอบบัญชี และค่าบริการอื่นๆ",
+    "question": "ผู้สอบบัญชีที่ว่าจ้างต้องไม่มีความสัมพันธ์หรือมีส่วนได้เสียกับใครบ้าง?",
+    "ground_truth": "กรุงศรี ผู้บริหาร ผู้ถือหุ้น รายใหญ่ หรือผู้ที่เกี่ยวข้องในลักษณะที่จะมีผลกระทบต่อการปฏิบัติงานที่มีความเป็นอิสระ",
     "grader": {
       "type": "llm_judge",
       "reference": "18. การว่าจ้างผู้สอบบัญชีที่มีความเป็นอิสระ โดยพิจารณา คัดเลือกและมีการเสนอแต่งตั้งผู้สอบบัญชีของกรุงศรี ให้เป็นไปตามคุณสมบัติที่ธนาคารแห่งประเทศไทย และสำนักงานคณะกรรมการกำกับหลักทรัพย์และ ตลาดหลักทรัพย์กำหนด โดยผู้สอบบัญชีต้องไม่มีความ สัมพันธ์หรือมีส่วนได้เสียกับกรุงศรี ผู้บริหาร ผู้ถือหุ้น รายใหญ่ หรือผู้ที่เกี่ยวข้องในลักษณะที่จะมีผลกระทบ ต่อการปฏิบัติงานที่มีความเป็นอิสระ นอกจากนี้ ยังมี การเปิดเผยค่าตอบแทนของผู้สอบบัญชี (ค่าตอบแทน จากการสอบบัญชี และค่าบริการอื่นๆ) ไว้ด้วย"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 432
+    "id": 427
   },
   {
     "category": "semantic_vector",
-    "question": "ผู้ช่วยกรรมการผู้จัดการใหญ่สายงานใดที่เข้าร่วมเสวนาในงาน Moody’s Inside ASEAN?",
-    "ground_truth": "ผู้บริหารสายงานการพัฒนาด้านสิ่งแวดล้อม สังคม และธรรมาภิบาลสู่ความยั่งยืน",
+    "question": "ผู้ช่วยกรรมการผู้จัดการใหญ่ ผู้บริหารสายงานการพัฒนาด้านสิ่งแวดล้อม สังคม และธรรมาภิบาลสู่ความยั่งยืน เข้าร่วมเสวนาเมื่อวันที่เท่าใด",
+    "ground_truth": "15 พฤษภาคม 2567",
     "grader": {
       "type": "llm_judge",
       "reference": "* เมื่อวันที่ 15 พฤษภาคม 2567 ผู้ช่วยกรรมการผู้จัดการใหญ่ ผู้บริหารสายงานการพัฒนาด้านสิ่งแวดล้อม สังคม และธรรมาภิบาลสู่ความยั่งยืน ได้เข้าร่วมเสวนาในหัวข้อ \"Facilitating Climate Transition through Sustainable Finance\" ในงาน Moody’s Inside ASEAN ซึ่งเป็นงานสำคัญประจำปีของมูดีส์ที่จัดขึ้นเพื่อนำเสนอภาพรวมแนวโน้มเศรษฐกิจมหภาคและภาคการธนาคาร รวมถึงประเด็นสำคัญอื่นๆ ที่มีผลกระทบต่อระบบเศรษฐกิจของภูมิภาคเอเชียตะวันออกเฉียงใต้ ณ โรงแรม Waldorf Astoria กรุงเทพฯ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 433
+    "id": 428
   },
   {
     "category": "semantic_vector",
-    "question": "ในปี 2567 คณะกรรมการธนาคารได้ทบทวนหลักการกำกับดูแลกิจการที่ดีของกรุงศรี โดยมีการเปลี่ยนแปลงเนื้อหาสาระอย่างไร?",
+    "question": "ในปี 2567 คณะกรรมการธนาคารได้มีการทบทวนหลักการกำกับดูแลกิจการที่ดีของกรุงศรี โดยมีการเปลี่ยนแปลงเนื้อหาสาระอย่างไร?",
     "ground_truth": "มีการเปลี่ยนแปลงเนื้อหาสาระอย่างมีนัยสำคัญ",
     "grader": {
       "type": "llm_judge",
       "reference": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 # การนำหลักปฏิบัติตามหลักการกำกับ ดูแลกิจการที่ดีสำหรับบริษัทจดทะเบียน ปี 2560 ของสำนักงานคณะกรรมการ กำกับหลักทรัพย์และตลาดหลักทรัพย์ มาปรับใช้ ในปี 2567 คณะกรรมการธนาคารได้มีการทบทวนหลักการ กำกับดูแลกิจการที่ดีของกรุงศรี ซึ่งมีการเปลี่ยนแปลงเนื้อหา สาระอย่างมีนัยสำคัญ โดยมีรายละเอียดการแก้ไขและเพิ่มเติม เนื้อหาดังนี้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 434
+    "id": 429
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัทที่ปรึกษาภายนอกประเมินการปฏิบัติงานตรวจสอบภายในของธนาคารทุกกี่ปี?",
-    "ground_truth": "ทุก 5 ปี",
+    "question": "ผลการประเมินล่าสุดระบุว่าการปฏิบัติงานเป็นไปตามมาตรฐานสากลสำหรับการปฏิบัติงานวิชาชีพการตรวจสอบภายในในระดับใด?",
+    "ground_truth": "ตามมาตรฐานสากลสำหรับการปฏิบัติงานวิชาชีพการตรวจสอบ ภายใน",
     "grader": {
       "type": "llm_judge",
       "reference": "เป็นระยะ และจากบริษัทที่ปรึกษาภายนอกทุก 5 ปี โดย ผลการประเมินล่าสุดสรุปว่าการปฏิบัติงานเป็นไปตาม มาตรฐานสากลสำหรับการปฏิบัติงานวิชาชีพการตรวจสอบ ภายใน ทั้งนี้ ฝ่ายตรวจสอบของ MUFG Bank ได้เข้าสอบทาน คุณภาพงานตรวจสอบ (Audit on Audit) เพื่อให้คำแนะนำใน การตรวจสอบอย่างสม่ำเสมอ นอกจากนี้ ธนาคารมีการกำกับ ดูแลการปฏิบัติงานตรวจสอบภายในของหน่วยงานตรวจสอบ ภายในของบริษัทย่อยเพื่อให้เป็นมาตรฐานเดียวกันของทั้ง กลุ่มธุรกิจทางการเงิน โดยการพิจารณาและดำเนินการ Audit on Audit ตามความเหมาะสม"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 435
+    "id": 430
   },
   {
     "category": "semantic_vector",
@@ -5564,51 +5500,51 @@
       "reference": "ตามกฎบัตรคณะกรรมการธนาคาร กรรมการมีกำหนด เกษียณอายุเมื่อครบอายุ 75 ปีเป็นหลัก โดยหากกรรมการ มีอายุครบ 75 ปี ในขณะที่ยังดำรงตำแหน่งอยู่ ก็ให้ดำรง ตำแหน่งต่อไปจนครบกำหนดวาระแล้วจึงเกษียณอายุ และ หากขณะเสนอเลือกตั้ง กรรมการผู้นั้นมีอายุยังไม่ครบ 75 ปี ก็ยังสามารถได้รับเลือกตั้งให้กลับเข้ามาดำรงตำแหน่งได้ ทั้งนี้ กรรมการอิสระสามารถดำรงตำแหน่งต่อเนื่องได้ไม่เกิน 9 ปี โดยนับระยะเวลาการดำรงตำแหน่งกรรมการอิสระของบริษัท ในกลุ่มกรุงศรีด้วย #### อำนาจจัดการของคณะกรรมการธนาคาร คณะกรรมการธนาคารมีอำนาจจัดการธนาคารให้เป็นไป ตามกฎหมาย วัตถุประสงค์ ข้อบังคับ และมติของที่ประชุม ผู้ถือหุ้น โดยอย่างน้อยเรื่องดังต่อไปนี้ต้องได้รับการอนุมัติ จากคณะกรรมการธนาคาร"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 436
+    "id": 431
   },
   {
     "category": "semantic_vector",
-    "question": "ประธานที่ประชุมผู้ถือหุ้นมีหน้าที่ควบคุมการประชุมให้เป็นไปตามข้อใดบ้าง?",
-    "ground_truth": "กฎหมาย ข้อกำหนด และข้อบังคับของธนาคาร",
+    "question": "ประธานที่ประชุมผู้ถือหุ้นต้องควบคุมการประชุมให้เป็นไปตามกฎหมาย ข้อกำหนด และข้อบังคับของธนาคารอย่างไร?",
+    "ground_truth": "ดำเนินการประชุมให้เป็นไปตามลำดับระเบียบวาระที่กำหนดไว้ในหนังสือนัดประชุม เว้นแต่ที่ประชุมจะมีมติเป็นอย่างอื่น",
     "grader": {
       "type": "llm_judge",
       "reference": "1. ทำหน้าที่ประธานของที่ประชุมผู้ถือหุ้น โดยควบคุมการประชุมให้เป็นไปตามกฎหมาย ข้อกำหนด และข้อบังคับของธนาคาร ดำเนินการประชุมให้เป็นไปตามลำดับระเบียบวาระที่กำหนดไว้ในหนังสือนัดประชุม เว้นแต่ที่ประชุมจะมีมติเป็นอย่างอื่น 2. ดูแลโครงสร้างคณะกรรมการธนาคารให้มีความเหมาะสมรวมถึงติดตาม และดูแลให้การปฏิบัติหน้าที่ของคณะกรรมการธนาคารมีความสมดุลทั้งในเรื่องหลักการกำกับดูแลกิจการที่ดีและประสิทธิภาพ และบรรลุตามพันธกิจวิสัยทัศน์ ค่านิยม นโยบาย ตลอดจนวัตถุประสงค์และเป้าหมายหลักขององค์กร"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 437
+    "id": 432
   },
   {
     "category": "semantic_vector",
-    "question": "คณะกรรมการธนาคารมีหน้าที่อะไรเมื่อฝ่ายจัดการไม่เป็นไปตามแผนที่กำหนด?",
-    "ground_truth": "สั่งการแก้ไขปัญหาหรือปรับแผนให้เหมาะสม",
+    "question": "ฝ่ายจัดการต้องรายงานสาเหตุและแนวทางดำเนินการให้คณะกรรมการธนาคารทราบในกรณีใด?",
+    "ground_truth": "ในกรณีที่ไม่เป็นไปตามที่กำหนด",
     "grader": {
       "type": "llm_judge",
       "reference": "ติดตามดูแลการทำหน้าที่ของฝ่ายจัดการให้เป็นไปตามแผนกลยุทธ์ แผนธุรกิจ และนโยบายที่คณะกรรมการธนาคารอนุมัติไว้ ซึ่งรวมถึงกรอบการบริหารความเสี่ยงที่ดีของธนาคาร และกำหนดให้ฝ่ายจัดการรายงานสาเหตุและแนวทางดำเนินการให้คณะกรรมการธนาคารทราบเพื่อสั่งการแก้ไขปัญหาหรือปรับแผนให้เหมาะสม ในกรณีที่ไม่เป็นไปตามที่กำหนด 4. ดูแลให้ผู้บริหารระดับสูงบอกกล่าวเรื่องที่สำคัญของธนาคารต่อคณะกรรมการธนาคาร และมีกระบวนการในการรายงานข้อมูลเพื่อให้คณะกรรมการธนาคารได้รับข้อมูลอย่างทันกาลและเพียงพอที่จะทำให้สามารถปฏิบัติตามอำนาจ หน้าที่ และความรับผิดชอบได้อย่างสมบูรณ์"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 438
+    "id": 433
   },
   {
     "category": "semantic_vector",
-    "question": "ต้องรายงานการมีส่วนได้เสียต่อธนาคารเป็นระยะกี่เดือนตามข้อความ?",
+    "question": "ต้องรายงานการมีส่วนได้เสียต่อธนาคารเป็นระยะเวลานานเท่าใด?",
     "ground_truth": "รายไตรมาส",
     "grader": {
       "type": "llm_judge",
       "reference": "16. เป็นแบบอย่างที่ดี ทั้งในรูปแบบพฤติกรรม การกระทำ คำพูดและการสื่อสาร เพื่อส่งเสริมวัฒนธรรมด้านความเสี่ยง ของธนาคาร ## ด้านการป้องกันความขัดแย้งในผลประโยชน์ 17. ต้องแจ้งให้ธนาคารทราบทันที เมื่อมีส่วนได้เสียไม่ว่า โดยตรงหรือโดยอ้อมในสัญญาใดๆ ที่ธนาคาร หรือบริษัท ในกลุ่มกรุงศรีทำขึ้น หรือเมื่อมีข้อสงสัยว่าอาจเกิดความ ขัดแย้งในผลประโยชน์ 18. ต้องรายงานการมีส่วนได้เสียต่อธนาคารเป็นรายไตรมาส และเมื่อมีการเปลี่ยนแปลงตามหลักเกณฑ์ที่กำหนด 19."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 439
+    "id": 434
   },
   {
     "category": "semantic_vector",
-    "question": "ข้อใดระบุถึงการดูแลให้มีการกำหนด สื่อสาร และปฏิบัติตามหลักการกำกับดูแลกิจการที่ดี?",
+    "question": "ข้อใดระบุหน้าที่ในการดูแลให้มีการกำหนด สื่อสาร และปฏิบัติตามหลักการกำกับดูแลกิจการที่ดี?",
     "ground_truth": "27",
     "grader": {
       "type": "llm_judge",
       "reference": "27. ดูแลให้มีการกำหนด สื่อสาร และปฏิบัติตามหลักการกำกับดูแลกิจการที่ดี ซึ่งรวมถึงความรับผิดชอบของกลุ่มธุรกิจต่อผู้มีส่วนได้เสีย ตลอดจนยึดถือจรรยาบรรณธุรกิจของธนาคาร และจรรยาบรรณของธนาคารพาณิชย์ 28. ดูแลให้มีกรอบการกำกับดูแลและการบริหารจัดการเทคโนโลยีสารสนเทศที่สอดคล้องกับความต้องการของกลุ่มธุรกิจ รวมทั้งดูแลให้มีการนำเทคโนโลยีสารสนเทศมาใช้ในการเพิ่มโอกาสทางธุรกิจและพัฒนาการดำเนินงาน การบริหารความเสี่ยง เพื่อให้กลุ่มธุรกิจสามารถบรรลุวัตถุประสงค์และเป้าหมายหลักได้ 29. ดูแลให้บริษัทในกลุ่มธุรกิจมีกลไกในการรับเรื่องร้องเรียนและการดำเนินการกรณีมีการชี้เบาะแส ### ด้านการจัดการองค์กร 30."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 440
+    "id": 435
   },
   {
     "category": "semantic_vector",
@@ -5619,84 +5555,62 @@
       "reference": "39. จัดให้มีการประชุมสามัญประจำปีของผู้ถือหุ้นภายใน 4 เดือนนับแต่วันสิ้นสุดของรอบปีบัญชีของธนาคาร และ ดูแลให้การดำเนินการในวันประชุมผู้ถือหุ้นเป็นไปด้วย ความเรียบร้อย โปร่งใส มีประสิทธิภาพ และเอื้อให้ผู้ถือหุ้น สามารถใช้สิทธิของตน ดูแลให้ผู้ถือหุ้นมีส่วนร่วมในการ ตัดสินใจในเรื่องสำคัญ รวมถึงดูแลให้มีการเปิดเผยมติ ที่ประชุมและการจัดทำรายงานการประชุมผู้ถือหุ้นให้ เป็นไปอย่างถูกต้องและครบถ้วน 40."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 441
+    "id": 436
   },
   {
     "category": "semantic_vector",
-    "question": "ผู้บริหารที่ทำธุรกรรมกับกลุ่มกรุงศรีต้องทำธุรกรรมในระดับใด?",
-    "ground_truth": "ระดับที่เหมาะสม",
+    "question": "ผู้บริหารที่ทำธุรกรรมกับกลุ่มกรุงศรีต้องอยู่ในระดับใดหรือเป็นการทำธุรกรรมแบบใด?",
+    "ground_truth": "อยู่ในระดับที่เหมาะสม หรือเป็นการทำธุรกรรมที่เป็นไปตามปกติธุรกิจการค้า เสมือน เป็นการทำธุรกรรมกับบุคคลทั่วไป ที่มิได้มีความเกี่ยวข้องกัน เป็นพิเศษ โดยมุ่งประโยชน์ต่อองค์กรเป็นหลัก",
     "grader": {
       "type": "llm_judge",
       "reference": "11. หลีกเลี่ยงความขัดแย้งในผลประโยชน์ที่อาจเกิดขึ้นหรือคาดว่าจะเกิดขึ้น และหากเกิดกรณีความขัดแย้งในผลประโยชน์ จะต้องจัดการความขัดแย้งในผลประโยชน์นั้นอย่างเป็นธรรมและรวดเร็ว ในกรณีที่ผู้บริหารมีการทำธุรกรรมกับกลุ่มกรุงศรี จะต้องอยู่ในระดับที่เหมาะสม หรือเป็นการทำธุรกรรมที่เป็นไปตามปกติธุรกิจการค้า เสมือน เป็นการทำธุรกรรมกับบุคคลทั่วไป ที่มิได้มีความเกี่ยวข้องกัน เป็นพิเศษ โดยมุ่งประโยชน์ต่อองค์กรเป็นหลัก"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 442
+    "id": 437
   },
   {
     "category": "semantic_vector",
-    "question": "ภาพในเอกสารแสดงผู้คนกี่คนกำลังทำงานร่วมกันบนโต๊ะ?",
-    "ground_truth": "สามคน",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 ภาพแสดงผู้คนสามคนกำลังทำงานร่วมกันบนโต๊ะ โดยมีแล็ปท็อปเปิดอยู่ตรงกลาง หน้าจอแล็ปท็อปแสดงแผนภูมิวงกลมและกราฟแท่ง ซึ่งอาจใช้ในการวิเคราะห์ข้อมูลทางการเงินหรือธุรกิจ มีแว่นตา เครื่องเขียน และเอกสารวางอยู่รอบๆ คนด้านขวาสวมเสื้อแขนยาวสีเหลืองทอง กำลังพิมพ์ลงบนแป้นพิมพ์ ส่วนคนด้านซ้ายกำลังชี้ไปที่หน้าจอแล็ปท็อป และอีกด้านหนึ่งกำลังถือปากกา บรรยากาศโดยรวมบ่งบอกถึงการทำงานในสำนักงานและการประมวลผลข้อมูล"
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 443
-  },
-  {
-    "category": "semantic_vector",
-    "question": "จำนวนค่าตอบแทนและผลประโยชน์อื่นสำหรับกรรมการผู้จัดการหรือผู้บริหารระดับสูงตั้งแต่ระดับผู้ช่วยกรรมการผู้จัดการใหญ่ขึ้นไป ต้องได้รับความเห็นชอบจากใครก่อนเสนอให้คณะกรรมการธนาคารพิจารณาอนุมัติ?",
+    "question": "จำนวนค่าตอบแทนและผลประโยชน์อื่นที่กำหนดให้แก่กรรมการผู้จัดการหรือผู้บริหารระดับสูงตั้งแต่ระดับผู้ช่วยกรรมการผู้จัดการใหญ่ขึ้นไป ต้องได้รับความเห็นชอบจากใครก่อนเสนอคณะกรรมการธนาคารพิจารณาอนุมัติ?",
     "ground_truth": "คณะกรรมการสรรหาและพิจารณาค่าตอบแทน",
     "grader": {
       "type": "llm_judge",
       "reference": "3. 2 กำหนดจำนวนค่าตอบแทนและผลประโยชน์อื่นให้แก่กรรมการกรรมการผู้จัดการ หรือผู้ซึ่งมีตำแหน่งเทียบเท่าที่เรียกชื่อเป็นอย่างอื่น และผู้บริหารระดับสูงตั้งแต่ระดับผู้ช่วยกรรมการผู้จัดการใหญ่ขึ้นไป ซึ่งเทียบเท่าระดับผู้ช่วยกรรมการผู้จัดการใหญ่ของธนาคาร ของกิจการที่ธนาคารถือหุ้นมมากกว่าร้อยละ 50 หรือตามที่คณะกรรมการสรรหาและพิจารณาค่าตอบแทนกำหนด เพื่อให้ความเห็นชอบก่อนเสนอคณะกรรมการธนาคารพิจารณาอนุมัติ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 444
+    "id": 438
   },
   {
     "category": "semantic_vector",
-    "question": "คณะกรรมการเจ้าหน้าที่บริหารของธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) มีหน้าที่พิจารณาอนุมัติแผนสืบทอดตำแหน่งผู้บริหารสูงสุดในระดับใด?",
-    "ground_truth": "ระดับผู้บริหารสูงสุดของธนาคารหรือผู้ซึ่งมีตำแหน่งเทียบเท่าที่เรียกชื่อเป็นอย่างอื่น",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 ให้คณะกรรมการเจ้าหน้าที่บริหารเป็นผู้พิจารณาให้ความเห็นชอบเพื่อเสนอบริษัทแม่ของบริษัทนั้นต่อไปแล้วนำมารายงานคณะกรรมการสรรหาและพิจารณาค่าตอบแทนเพื่อทราบโดยเอกสาร 6. พิจารณาแผนสืบทอดตำแหน่งผู้บริหารสูงสุดของธนาคารหรือผู้ซึ่งมีตำแหน่งเทียบเท่าที่เรียกชื่อเป็นอย่างอื่น เพื่อนำเสนอคณะกรรมการธนาคารพิจารณาอนุมัติ และพิจารณาอนุมัติแผนสืบทอดตำแหน่งประธานคณะเจ้าหน้าที่ด้านต่างๆ 7. พิจารณาความเหมาะสมการปรับโครงสร้างองค์กรของธนาคารตั้งแต่ระดับกลุ่มงานขึ้นไป หรือการเปลี่ยนแปลงโครงสร้างองค์กรที่มีนัยสำคัญ เพื่อให้ความเห็นชอบก่อนเสนอคณะกรรมการธนาคารพิจารณาอนุมัติ 8. ปฏิบัติงานอื่นๆ ตามที่ได้รับมอบหมายจากคณะกรรมการธนาคารและ/หรือประธานกรรมการธนาคาร"
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 445
-  },
-  {
-    "category": "semantic_vector",
-    "question": "คณะทำงานที่เสนอให้คณะกรรมการธนาคารพิจารณาการแต่งตั้งประกอบด้วยบุคคลในตำแหน่งใดบ้าง?",
+    "question": "คณะทำงานที่เสนอให้คณะกรรมการธนาคารพิจารณาการแต่งตั้งประกอบด้วยบุคคลใดบ้าง?",
     "ground_truth": "ประธานคณะเจ้าหน้าที่ด้านตรวจสอบภายใน ประธานคณะเจ้าหน้าที่ด้านทรัพยากรบุคคล และผู้บริหารสายงานกำกับดูแลธุรกิจธนาคาร",
     "grader": {
       "type": "llm_judge",
       "reference": "13. พิจารณาเรื่องร้องเรียนตามนโยบายเกี่ยวกับการแจ้งเบาะแสและการร้องเรียน ดังนี้ 13. 1 เสนอคณะกรรมการธนาคารพิจารณาการแต่งตั้งคณะทำงานประกอบด้วยประธานคณะเจ้าหน้าที่ด้านตรวจสอบภายใน ประธานคณะเจ้าหน้าที่ด้านทรัพยากรบุคคล และผู้บริหารสายงานกำกับดูแลธุรกิจธนาคาร เพื่อให้ความเห็นเกี่ยวกับเรื่องร้องเรียนที่เกี่ยวข้องกับพนักงานที่มีตำแหน่งตั้งแต่ผู้อำนวยการอาวุโสขึ้นไป"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 446
+    "id": 439
   },
   {
     "category": "semantic_vector",
-    "question": "ข้อใดที่เกี่ยวข้องกับการสอบทานระบบการควบคุมภายในและการกำกับดูแลของธนาคารและบริษัทในกลุ่มฯ?",
-    "ground_truth": "4. สอบทานระบบการควบคุมภายใน การบริหารความเสี่ยง และการกำกับดูแลของธนาคารและบริษัทในกลุ่มฯ",
+    "question": "ข้อใดเป็นหนึ่งในกระบวนการที่ต้องได้รับการสอบทานเพื่อให้มั่นใจว่าไม่ส่งผลกระทบต่อความเป็นอิสระในการปฏิบัติงานของผู้สอบบัญชี?",
+    "ground_truth": "การใช้บริการอื่นที่มิใช่ งานสอบบัญชี (Non-audit Services) จากสำนักงานของผู้สอบบัญชี",
     "grader": {
       "type": "llm_judge",
       "reference": "3. สอบทานกระบวนการเกี่ยวกับการใช้บริการอื่นที่มิใช่ งานสอบบัญชี (Non-audit Services) จากสำนักงาน ของผู้สอบบัญชี พร้อมพิจารณาให้ความเห็นชอบในการ ใช้บริการดังกล่าวและค่าตอบแทน เพื่อให้มั่นใจว่าจะ ไม่ส่งผลกระทบต่อความเป็นอิสระในการปฏิบัติงานของ ผู้สอบบัญชี * **ระบบการควบคุมภายใน การบริหาร ความเสี่ยง การกำกับดูแล และการตรวจสอบภายใน** 4. สอบทานระบบการควบคุมภายใน การบริหารความเสี่ยง และการกำกับดูแลของธนาคารและบริษัทในกลุ่มฯ เพื่อให้มั่นใจว่าระบบดังกล่าวนั้นมีความเหมาะสม เพียงพอ มีประสิทธิภาพ และการตรวจสอบภายในเป็นไป ตามมาตรฐานการปฏิบัติงานวิชาชีพการตรวจสอบภายใน รวมถึงพิจารณาความเป็นอิสระของหน่วยงานตรวจสอบ ภายในตลอดจนอนุมัติการแต่งตั้ง โยกย้าย ถอดถอนและ แจ้งต่อธนาคารแห่งประเทศไทยตามที่กำหนด รวมทั้งประเมิน ผลงาน ประสิทธิภาพและประสิทธิผลในการปฏิบัติงาน ของหัวหน้าหน่วยงานตรวจสอบภายในของธนาคาร"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 447
+    "id": 440
   },
   {
     "category": "semantic_vector",
-    "question": "ช่องทางใดสามารถใช้ในการรับแจ้งเบาะแสหรือเรื่องร้องเรียนเกี่ยวกับการกระทำของพนักงานที่อาจเข้าข่ายทุจริตหรือฝ่าฝืนกฎหมายและกฎเกณฑ์ของธนาคาร?",
+    "question": "ช่องทางใดที่ใช้ในการรับแจ้งเบาะแสหรือเรื่องร้องเรียนเกี่ยวกับการกระทำของพนักงานที่อาจเข้าข่ายทุจริตหรือฝ่าฝืนกฎหมายและกฎเกณฑ์ทางการ?",
     "ground_truth": "เป็นช่องทางหนึ่งในการรับแจ้งเบาะแสหรือเรื่องร้องเรียน",
     "grader": {
       "type": "llm_judge",
       "reference": "เป็นช่องทางหนึ่งในการรับแจ้งเบาะแสหรือเรื่องร้องเรียน เกี่ยวกับการกระทำของพนักงานที่อาจเข้าข่ายเป็นการ ทุจริตหรือฝ่าฝืนไม่ปฏิบัติตามกฎหมายและกฎเกณฑ์ ทางการ รวมทั้งนโยบาย ระเบียบ ข้อบังคับและคำสั่ง ของธนาคาร และเป็นช่องทางให้ผู้มีส่วนได้เสียทุกกลุ่ม รายงานหรือร้องเรียนในเรื่องที่อาจทำให้เกิดความเสียหาย ต่อธนาคาร ## • การปฏิบัติตามกฎเกณฑ์ 11\\."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 448
+    "id": 441
   },
   {
     "category": "semantic_vector",
@@ -5707,29 +5621,40 @@
       "reference": "# รายชื่อและการเข้าประชุมของคณะกรรมการตรวจสอบ ในปี 2567 คณะกรรมการตรวจสอบมีการประชุมรวมทั้งสิ้น 14 ครั้ง เป็นการประชุมร่วมกับฝ่ายจัดการ ผู้บริหารระดับสูงจากกลุ่มงานที่เกี่ยวข้อง ผู้ตรวจสอบภายใน ตลอดจนมีการประชุมร่วมกับผู้สอบบัญชีเป็นการเฉพาะโดยไม่มีฝ่ายจัดการเข้าร่วมประชุมด้วย 2 ครั้ง และเป็นการประชุมร่วมกับคณะกรรมการตรวจสอบบริษัทในเครือจำนวน 2 ครั้ง โดยมีรายละเอียดดังนี้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 449
+    "id": 442
   },
   {
     "category": "semantic_vector",
-    "question": "กรรมการที่เข้ามาแทนที่เมื่อมีตำแหน่งว่างลงจะดำรงตำแหน่งได้นานเท่าใด?",
+    "question": "กรรมการที่เข้ามาแทนที่เมื่อมีตำแหน่งว่างลงจะอยู่ในตำแหน่งได้นานเท่าใด?",
     "ground_truth": "เพียงวาระที่เหลืออยู่ของกรรมการ ซึ่งตนเข้ามาแทน",
     "grader": {
       "type": "llm_judge",
       "reference": "กรรมการเจ้าหน้าที่บริหารมีวาระในการดำรงตำแหน่งคราวละ 2 ปี ในกรณีที่มีการแต่งตั้งกรรมการเพิ่มเติม ให้กรรมการที่เข้า มาใหม่มีวาระการดำรงตำแหน่งตามระยะเวลาที่กำหนดไว้ ในคำสั่งแต่งตั้ง ในกรณีที่มีตำแหน่งในคณะกรรมการว่างลง ไม่ว่าด้วยเหตุผลใด นอกเหนือจากการครบกำหนดวาระการ ดำรงตำแหน่ง ให้คณะกรรมการธนาคารแต่งตั้งบุคคลที่มี คุณสมบัติครบถ้วนเป็นกรรมการแทนที่ โดยกรรมการที่เข้า แทนที่จะอยู่ในตำแหน่งได้เพียงวาระที่เหลืออยู่ของกรรมการ ซึ่งตนเข้ามาแทน ในระหว่างที่ยังไม่ได้มีการแต่งตั้งกรรมการ ขึ้นใหม่ ให้กรรมการที่เหลือสามารถปฏิบัติหน้าที่ต่อไปได้ แม้จะไม่ครอบองค์ประกอบตามที่กำหนด ทั้งนี้ กรรมการที่ ครบวาระการดำรงตำแหน่งอาจได้รับแต่งตั้งให้กลับเข้าดำรง ตำแหน่งได้อีก เพื่อให้มีความต่อเนื่องในการปฏิบัติหน้าที่ #### ขอบเขตอำนาจหน้าที่และความรับผิดชอบ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 450
+    "id": 443
   },
   {
     "category": "semantic_vector",
-    "question": "ข้อใดที่อยู่ในขอบเขตของการดำเนินการที่ต้องได้รับการพิจารณาจากคณะกรรมการธนาคารตามข้อความ?",
-    "ground_truth": "9. 10",
+    "question": "ข้อใดที่อยู่ในรายการการดำเนินการที่ต้องได้รับการพิจารณาเป็นพิเศษนอกเหนือจากอำนาจของผู้บริหารระดับสูงของธนาคาร?",
+    "ground_truth": "9. 9 การทำข้อตกลงหรือกำหนดนโยบายเกี่ยวกับการทำข้อตกลงกับหน่วยงานที่กำกับดูแลการทำธุรกิจของธนาคาร ในกรณีนอกเหนือไปจากที่มีการมอบอำนาจให้ผู้บริหารระดับสูงของธนาคาร",
     "grader": {
       "type": "llm_judge",
       "reference": "9. 3 การเข้าร่วมทุน การซื้อหุ้น การเป็นพันธมิตรทางธุรกิจ หรือการทำสัญญา หรือข้อตกลงในลักษณะเดียวกัน 9. 4 การให้กู้ยืมเงิน หรือการค้ำประกันนอกเหนือไปจากการ ทำธุรกิจตามปกติของธนาคาร 9. 5 การก่อให้เกิดสิทธิเหนือทรัพย์สิน หรือสินทรัพย์ของ ธนาคาร 9. 6 การจ่ายคืนหนี้สิน หรือการจ่ายคืนหนี้สินก่อนกำหนด 9. 7 การเปลี่ยนแปลงกลยุทธ์นโยบายเกี่ยวกับการให้สินเชื่อ และการรับเงินฝาก 9. 8 การเปิด หรือปิดวงเงินกู้ของธนาคาร 9. 9 การทำข้อตกลงหรือกำหนดนโยบายเกี่ยวกับการทำ ข้อตกลงกับหน่วยงานที่กำกับดูแลการทำธุรกิจของ ธนาคาร ในกรณีนอกเหนือไปจากที่มีการมอบอำนาจ ให้ผู้บริหารระดับสูงของธนาคาร 9. 10 คำขอสินเชื่อและการดำเนินการอื่นที่เกี่ยวข้องกับ สินเชื่อภายในขอบอำนาจที่ได้รับจากคณะกรรมการ ธนาคารตามนโยบายการให้สินเชื่อและเป็นไปตาม ระดับความเสี่ยงที่ยอมรับได้ตามนโยบายความเสี่ยง ของธนาคาร 10. ติดตามเร่งรัดการปฏิบัติงานของหน่วยงานต่างๆ ให้ เป็นไปตามแผนงาน และเป้าหมายที่กำหนดไว้ ให้มี ประสิทธิภาพและประสิทธิผล"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 451
+    "id": 444
+  },
+  {
+    "category": "semantic_vector",
+    "question": "กรรมการควรมีคุณลักษณะใดบ้างที่เกี่ยวข้องกับการตัดสินใจ?",
+    "ground_truth": "ตัดสินใจด้วยข้อมูลและเหตุผล",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "1. กรรมการควรมีคุณลักษณะดังต่อไปนี้ (1) มีคุณธรรมและความรับผิดชอบ (2) ตัดสินใจด้วยข้อมูลและเหตุผล (3) มีวุฒิภาวะและความมั่นคง เป็นผู้รับฟังที่ดีและ กล้าแสดงความคิดเห็นที่แตกต่างและเป็นอิสระ (4) ยึดมั่นในการทำงานอย่างมีหลักการ (5) อุทิศเวลาให้กับการปฏิบัติหน้าที่กรรมการอย่าง เพียงพอ"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 445
   },
   {
     "category": "semantic_vector",
@@ -5740,51 +5665,40 @@
       "reference": "1\\. การเลือกตั้งกรรมการ โดยมติที่ประชุมผู้ถือหุ้น ได้แก่ การเลือกตั้งกรรมการแทนกรรมการที่พ้นจากตำแหน่งตามวาระ และ/หรือการเลือกตั้งกรรมการเพิ่มเติม(กรรมการใหม่) จะเป็นไปตามหลักเกณฑ์และวิธีการตามข้อบังคับของธนาคารคือ (1) ผู้ถือหุ้นคนหนึ่งมีคะแนนเสียงเท่ากับ 1 หุ้นต่อ 1 เสียง (2) ผู้ถือหุ้นออกเสียงลงคะแนนเลือกตั้งกรรมการ เป็นรายบุคคลโดยต้องออกเสียงด้วยคะแนนที่มีอยู่ทั้งหมดจะแบ่งคะแนนเสียงแก่คนใดมากน้อย เพียงใดไม่ได้ (3) การออกเสียงลงคะแนนเลือกตั้งกรรมการ ให้ใช้เสียงข้างมาก หากมีคะแนนเสียงเท่ากันให้ประธานที่ประชุมเป็นผู้ออกเสียงชี้ขาด 2\\."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 452
+    "id": 446
   },
   {
     "category": "semantic_vector",
-    "question": "ระยะเวลาที่กำหนดในการตรวจสอบความสัมพันธ์ทางธุรกิจกับกรุงศรีและบริษัทที่เกี่ยวข้องก่อนได้รับการแต่งตั้งคือกี่ปี?",
+    "question": "ระยะเวลาที่ห้ามเป็นหรือเคยเป็นผู้ถือหุ้นที่มีนัย หรือผู้มีอำนาจควบคุมของผู้ที่มีความสัมพันธ์ทางธุรกิจกับกรุงศรี บริษัทใหญ่ บริษัทย่อย บริษัทร่วม ผู้ถือหุ้นรายใหญ่ หรือผู้มีอำนาจควบคุมของกรุงศรี ก่อนได้รับการแต่งตั้งคือกี่ปี?",
     "ground_truth": "2 ปี",
     "grader": {
       "type": "llm_judge",
       "reference": "4\\. ไม่มีหรือเคยมีความสัมพันธ์ทางธุรกิจกับกรุงศรี บริษัทใหญ่ บริษัทย่อย บริษัทร่วม ผู้ถือหุ้นรายใหญ่ หรือผู้มีอำนาจควบคุมของกรุงศรีในลักษณะที่อาจเป็นการขัดขวางการใช้วิจารณญาณอย่างอิสระของตน รวมทั้งไม่เป็นหรือเคยเป็นผู้ถือหุ้นที่มีนัย หรือผู้มีอำนาจควบคุมของผู้ที่มีความสัมพันธ์ทางธุรกิจกับกรุงศรี บริษัทใหญ่ บริษัทย่อย บริษัทร่วม ผู้ถือหุ้นรายใหญ่ หรือผู้มีอำนาจควบคุมของกรุงศรี ภายในระยะเวลา 2 ปีก่อนได้รับการแต่งตั้ง การกำกับดูแลกิจการ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 453
+    "id": 447
   },
   {
     "category": "semantic_vector",
-    "question": "ตามข้อความ หุ้นส่วนที่มีส่วนร่วมในกิจการของบริษัทอื่นต้องไม่ถือหุ้นเกินกี่เปอร์เซ็นต์ของจำนวนหุ้นที่มีสิทธิออกเสียงทั้งหมด?",
+    "question": "สัดส่วนหุ้นที่ห้ามเกินเมื่อเป็นผู้ถือหุ้นในบริษัทอื่นที่ประกอบกิจการที่มีสภาพอย่างเดียวกันและเป็นการแข่งขันที่มีนัยกับกิจการของกรุงศรี บริษัทย่อย หรือบริษัทร่วมคือเท่าใด?",
     "ground_truth": "ร้อยละ 0.5",
     "grader": {
       "type": "llm_judge",
       "reference": "8. ไม่ประกอบกิจการที่มีสภาพอย่างเดียวกันและเป็นการแข่งขันที่มีนัยกับกิจการของกรุงศรี บริษัทย่อย หรือบริษัทร่วม หรือไม่เป็นหุ้นส่วนที่มีนัยในห้างหุ้นส่วน หรือเป็นกรรมการที่มีส่วนร่วมบริหารงาน ลูกจ้าง พนักงานที่ปรึกษาที่ได้เงินเดือนประจำ หรือถือหุ้นเกินร้อยละ 0. 5 ของจำนวนหุ้นที่มีสิทธิออกเสียงทั้งหมดของบริษัทอื่น ซึ่งประกอบกิจการที่มีสภาพอย่างเดียวกันและเป็นการแข่งขันที่มีนัยกับกิจการของกรุงศรี บริษัทย่อย หรือบริษัทร่วม"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 454
+    "id": 448
   },
   {
     "category": "semantic_vector",
-    "question": "ค่าตอบแทนรวมของผู้บริหารในปี 2567 ตามเอกสารคือเท่าใด?",
-    "ground_truth": "35.5 ล้านบาท",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 หน่วย : บาท หมายเหตุ: * กรรมการที่เป็นผู้บริหารจะไม่ได้รับค่าตอบแทนกรรมการธนาคาร (2) คณะกรรมการเจ้าหน้าที่บริหาร ไม่มีการจ่ายค่าตอบแทน (3) ค่าตอบแทนรวมของผู้บริหาร ปี 2567 มีดังนี้ (3."
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 455
-  },
-  {
-    "category": "semantic_vector",
-    "question": "ในปี 2567 เงินสมทบกองทุนสำรองเลี้ยงชีพผู้บริหารตามข้อ (3.1) ของกรุงศรีมีจำนวนเท่าใด?",
-    "ground_truth": "12,111,805.80 บาท",
+    "question": "จำนวนเงินที่กรุงศรีสมทบให้กองทุนสำรองเลี้ยงชีพผู้บริหารตามข้อ (3.2) ในปี 2567 เท่ากับเท่าใด",
+    "ground_truth": "47,719,581.93 บาท",
     "grader": {
       "type": "llm_judge",
       "reference": "กรรมการและผู้บริหารของกรุงศรีได้รับผลประโยชน์และ สวัสดิการอื่นๆ ตามระเบียบของธนาคาร โดยกรรมการมีสิทธิ ได้รับการรักษาพยาบาลและการตรวจสุขภาพ สิทธิในการใช้ รถยนต์ประจำตำแหน่ง สำหรับผู้บริหารได้รับผลประโยชน์ และสวัสดิการต่าง ๆ ได้แก่ ค่ารักษาพยาบาล การตรวจสุขภาพ ประกันชีวิตและอุบัติเหตุ สวัสดิการเงินกู้ เงินสมทบกองทุน ประกันสังคม เงินสมทบกองทุนสำรองเลี้ยงชีพ โดยปี 2567 เงินสมทบกองทุนสำรองเลี้ยงชีพผู้บริหาร ตามข้อ (3. 1) เป็นเงิน 12,111,805. 80 บาท และข้อ (3. 2) เป็นเงิน 47,719,581. 93 บาท ทั้งนี้ กรุงศรีไม่มีค่าตอบแทนอื่นๆ ที่ไม่ใช่ตัวเงิน เช่น การให้หุ้น / Warrant แก่ผู้บริหาร การทำกับดูแลกิจการ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 456
+    "id": 449
   },
   {
     "category": "semantic_vector",
@@ -5795,18 +5709,18 @@
       "reference": "กรุงศรีมุ่งมั่นพัฒนาระบบบริหารจัดการการเรียนรู้อย่างครบวงจร โดยเฉพาะการพัฒนาศักยภาพผู้บริหารและการวางแผนผู้สืบทอดตำแหน่ง ผ่านการจัดทำแผนพัฒนารายบุคคล (Individual Development Plan) สำหรับผู้บริหารทุกระดับในกรุงศรี กรุ๊ป บนแพลตฟอร์ม Krungsri Learning Companion (KLC) นอกจากนี้ ยังได้นำระบบ Gamified Learning มาประยุกต์ใช้เพื่อสร้างบรรยากาศการเรียนรู้ที่น่าสนใจและกระตุ้นการพัฒนาศักยภาพอย่างมีประสิทธิภาพสูงสุด ซึ่งทั้งหมดนี้มุ่งสู่เป้าหมายในการสร้างความต่อเนื่องทางการบริหารและความสำเร็จที่ยั่งยืนขององค์กร การทำกำกับดูแลกิจการ 3 4"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 457
+    "id": 450
   },
   {
     "category": "semantic_vector",
     "question": "ในปี 2567 กรุงศรีมีกรณีฝ่าฝืนหรือไม่ปฏิบัติตามหลักเกณฑ์การทำรายการระหว่างกันหรือไม่?",
-    "ground_truth": "ไม่มีกรณี",
+    "ground_truth": "ไม่มี",
     "grader": {
       "type": "llm_judge",
       "reference": "* • ในปี 2567 กรุงศรีไม่มีกรณีฝ่าฝืนหรือไม่ปฏิบัติตาม หลักเกณฑ์การทำรายการระหว่างกัน หลักเกณฑ์การซื้อขาย สินทรัพย์ และการทำผิดเกี่ยวกับการป้องกันความขัดแย้ง ในผลประโยชน์ตามข้อกำหนดของหน่วยงานกำกับดูแล อาทิ สำนักงานคณะกรรมการกำกับหลักทรัพย์และ ตลาดหลักทรัพย์หรือตลาดหลักทรัพย์แห่งประเทศไทย"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 458
+    "id": 451
   },
   {
     "category": "semantic_vector",
@@ -5817,29 +5731,29 @@
       "reference": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 # 1. พบการกระทำความผิดจริงตามการแจ้งเบาะแส ## 19 เรื่อง ซึ่งกรุงศรีได้ดำเนินการแก้ไขตามกระบวนการภายในที่กำหนดไว้แล้ว ประกอบด้วย * เรื่องที่เกี่ยวกับการไม่ปฏิบัติตามกฎหมาย นโยบายระเบียบปฏิบัติงาน และจรรยาบรรณทางธุรกิจรวมทั้งสิ้น 5 เรื่อง * - เรื่องอื่นๆ เช่น การปฏิบัติหน้าที่ที่ไม่เหมาะสม และพฤติกรรมที่ไม่เหมาะสม รวมทั้งสิ้น 14 เรื่อง ## 2."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 459
+    "id": 452
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) และบริษัทย่อย รายงานงบกระแสเงินสดสำหรับปีสิ้นสุดวันที่ใด?",
-    "ground_truth": "31 ธันวาคม 2567",
+    "question": "บริษัทใดเป็นผู้ออกงบกระแสเงินสดสำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567?",
+    "ground_truth": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) และบริษัทย่อย",
     "grader": {
       "type": "llm_judge",
       "reference": "# ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) และบริษัทย่อย งบกระแสเงินสด (ต่อ) สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567 หน่วย : พันบาท หมายเหตุประกอบงบการเงินรวมและงบการเงินเฉพาะธนาคารเป็นส่วนหนึ่งของงบการเงินนี้ (นายเคนอิจิ ยามาโตะ) กรรมการผู้จัดการใหญ่และประธานเจ้าหน้าที่บริหาร (นางสาวดวงดาว วงศ์พนิตกฤต) กรรมการ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 460
+    "id": 453
   },
   {
     "category": "semantic_vector",
-    "question": "จำนวนบริษัทที่ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) มีในวันที่ 31 ธันวาคม 2567 รวมทั้งหมดกี่แห่ง?",
+    "question": "จำนวนบริษัทย่อย บริษัทร่วม และการร่วมค้าทั้งหมดของธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) ณ วันที่ 31 ธันวาคม 2567 มีทั้งหมดกี่แห่ง?",
     "ground_truth": "29 บริษัท",
     "grader": {
       "type": "llm_judge",
       "reference": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 # ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) และบริษัทย่อย หมายเหตุประกอบงบการเงินรวมและงบการเงินเฉพาะธนาคาร สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567 ## 1. ข้อมูลทั่วไป ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) (\"ธนาคาร\") เป็นบริษัทมหาชนที่จดทะเบียนในราชอาณาจักรไทย โดยมีสำนักงานใหญ่อยู่ที่ 1222 ถนนพระรามที่ 3 แขวงบางโพงพาง เขตยานนาวา กรุงเทพมหานคร ประกอบธุรกิจการธนาคารพาณิชย์เป็นกิจกรรมหลัก โดยมีสาขาอยู่ทั่วทุกภูมิภาคในประเทศไทย และ ในบางประเทศ บริษัทใหญ่และบริษัทใหญ่ลำดับสูงสุดของธนาคารคือ MUFG Bank, Ltd. และ บริษัท Mitsubishi UFJ Financial Group, Inc. ตามลำดับ ทั้งสองบริษัทจดทะเบียนในประเทศญี่ปุ่น ณ วันที่ 31 ธันวาคม 2567 และ 2566 ธนาคารมีบริษัทย่อย บริษัทร่วมและการร่วมค้ารวมจำนวน 29 บริษัท ดังนี้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 461
+    "id": 454
   },
   {
     "category": "semantic_vector",
@@ -5850,18 +5764,18 @@
       "reference": "1. 3 บริษัท อยุธยา แคปปิตอล เซอร์วิสเซส จำกัด จดทะเบียนในประเทศไทยเมื่อวันที่ 9 พฤศจิกายน 2537 โดยมีสถานประกอบการตั้งอยู่เลขที่ 550 อาคารกรุงศรีเพลินจิต ทาวเวอร์ ถนนเพลินจิต แขวงลุมพินี เขตปทุมวัน กรุงเทพมหานคร และมีวัตถุประสงค์หลักเพื่อให้บริการสินเชื่อบัตรเครดิต และสินเชื่อบุคคล"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 462
+    "id": 455
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัทหลักทรัพย์ กรุงศรี จำกัด (มหาชน) จดทะเบียนในประเทศไทยเมื่อวันที่เท่าใด?",
+    "question": "บริษัทหลักทรัพย์กรุงศรี จำกัด (มหาชน) จดทะเบียนในประเทศไทยเมื่อวันที่เท่าใด?",
     "ground_truth": "16 เมษายน 2547",
     "grader": {
       "type": "llm_judge",
       "reference": "10 บริษัทหลักทรัพย์ กรุงศรี จำกัด (มหาชน) จดทะเบียนในประเทศไทย เมื่อวันที่ 16 เมษายน 2547 โดยมีสถานประกอบการตั้งอยู่เลขที่ 898 อาคารเพลินจิตทาวเวอร์ ชั้น 3 ถนนเพลินจิต แขวงลุมพินี เขตปทุมวัน กรุงเทพมหานคร และมีวัตถุประสงค์หลักเพื่อประกอบกิจการด้านธุรกิจหลักทรัพย์"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 463
+    "id": 456
   },
   {
     "category": "semantic_vector",
@@ -5872,40 +5786,40 @@
       "reference": "1. 17 Hattha Bank Plc. จดทะเบียนในประเทศกัมพูชา เมื่อเดือนพฤศจิกายน 2539 บริษัทได้เปลี่ยนที่อยู่ จดทะเบียนจากเลขที่ 606, Street 271, Sansam Kosal 3 Village, Sangkat Boeng Tumpun 1, Khan Mean Chey, Phnom Penh, the Kingdom of Cambodia เป็น Hattha Bank Tower, Samdech Techo Hun Sen Blvd. (Street 60 meters), Chak Angrae Leu, Mean Chey District, Phnom Penh, the Kingdom of Cambodia และมีวัตถุประสงค์หลักเพื่อประกอบกิจการธนาคาร"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 464
+    "id": 457
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารถือส่วนของทุนใน 25 SHBank Finance Company Limited ในอัตราส่วนเท่าใด?",
+    "question": "ธนาคารถือส่วนของทุนใน 25 SHBank Finance Company Limited ในอัตราร้อยละเท่าใด?",
     "ground_truth": "ร้อยละ 50",
     "grader": {
       "type": "llm_judge",
       "reference": "1. 25 SHBank Finance Company Limited ถือส่วนของทุนโดยธนาคารในอัตราร้อยละ 50 แต่เนื่องจาก ธนาคารมีอำนาจในการเข้าไปมีส่วนร่วมในการบริหารจนถึงระดับการควบคุม ดังนั้นธนาคารจึงจัด ประเภทเป็นบริษัทย่อยของธนาคาร บริษัทจดทะเบียนในประเทศเวียดนาม เมื่อวันที่ 28 มีนาคม 2560 โดยมีสถานประกอบการตั้งอยู่ที่ Gelex Building ชั้น 6, 52 Le Dai Hanh Street, Le Dai Hanh Ward, Hai Ba Trung District, Hanoi City, Vietnam และมีวัตถุประสงค์หลักเพื่อให้ บริการสินเชื่อบุคคล"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 465
+    "id": 458
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัท 28 HCPH Insurance Brokerage, Inc จดทะเบียนในประเทศฟิลิปปินส์เมื่อวันที่เท่าใด?",
+    "question": "บริษัท 28 HCPH Insurance Brokerage, Inc จดทะเบียนในประเทศฟิลิปปินส์เมื่อวันที่เท่าใด",
     "ground_truth": "12 กรกฎาคม 2561",
     "grader": {
       "type": "llm_judge",
       "reference": "1. 28 HCPH Insurance Brokerage, Inc จดทะเบียนในประเทศฟิลิปปินส์ เมื่อวันที่ 12 กรกฎาคม 2561 โดยมีสถานประกอบการตั้งอยู่ที่ ชั้น 35 Penthouse Unit 4, Eco Tower, 32nd Street corner, 9th Avenue, Bonifacio Global City, Taguig City, Philippines และมีวัตถุประสงค์หลักเพื่อให้บริการนายหน้า ประกันภัย"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 466
+    "id": 459
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารและบริษัทย่อยได้ปรับปรุงการแสดงรายการในหมายเหตุข้อใดเกี่ยวกับภาษีเงินได้รอตัดบัญชี?",
+    "question": "ธนาคารและบริษัทย่อยปรับปรุงการแสดงรายการในหมายเหตุข้อใดเกี่ยวกับภาษีเงินได้รอตัดบัญชี?",
     "ground_truth": "หมายเหตุข้อ 7. 13",
     "grader": {
       "type": "llm_judge",
       "reference": "ทั้งนี้ การนำมาตรฐานการรายงานทางการเงินดังกล่าวมาถือปฏิบัตินี้ไม่มีผลกระทบอย่างเป็นสาระสำคัญ ต่องบการเงินของธนาคารและบริษัทย่อย อย่างไรก็ตาม ธนาคารและบริษัทย่อยได้ปรับปรุงการแสดงรายการ ในหมายเหตุข้อ 7. 13 เรื่อง ภาษีเงินได้รอตัดบัญชี โดยแยกแสดงรายการระหว่างสินทรัพย์ภาษีเงินได้รอตัดบัญชี และหนี้สินภาษีเงินได้รอตัดบัญชีของรายการที่ก่อให้เกิดมูลค่าที่เท่ากันของผลแตกต่างชั่วคราวที่ต้องเสียภาษีและผลแตกต่างชั่วคราวที่ใช้หักภาษี เพื่อให้สอดคล้องกับข้อกำหนดของการปรับปรุงมาตรฐาน การบัญชี ฉบับที่ 12 เรื่อง ภาษีเงินได้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 467
+    "id": 460
   },
   {
     "category": "semantic_vector",
@@ -5916,7 +5830,7 @@
       "reference": "3. ตราสารการเงินแบบผสมนี้ไม่ได้ถูกรับรู้และวัดด้วยมูลค่ายุติธรรมผ่านกำไรหรือขาดทุน ในกรณีที่อนุพันธ์แฝงแยกออกจากสัญญาหลัก อนุพันธ์แฝงจะถูกรับรู้ตามมาตรฐานการรายงานทาง การเงินที่เหมาะสม อนุพันธ์แฝงจะถูกรับรู้ด้วยมูลค่ายุติธรรมใน งบฐานะการเงินและรับรู้การ เปลี่ยนแปลงของมูลค่ายุติธรรมผ่านกำไรหรือขาดทุน ในกรณีที่ต้องแยกอนุพันธ์แฝงออกจากสัญญาหลัก แต่ไม่สามารถวัดมูลค่าอนุพันธ์แฝงแยกต่างหากได้ ทั้ง ณ วันที่ได้มา หรือ ณ วันที่สิ้นรอบระยะเวลารายงานในภายหลัง สัญญาแบบผสมทั้งสัญญาจะถูก วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกำไรหรือขาดทุน"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 468
+    "id": 461
   },
   {
     "category": "semantic_vector",
@@ -5927,7 +5841,7 @@
       "reference": "เมื่อสินทรัพย์ค้างชำระเกินกว่า 30 วัน ธนาคารและบริษัทย่อยพิจารณาว่ามีการเพิ่มขึ้นอย่างมีนัยสำคัญ ของความเสี่ยงด้านเครดิตและจัดเป็นกลุ่มสินทรัพย์ในชั้นที่ 2 ของโมเดลการด้อยค่า โดยค่าเผื่อผลขาดทุน จะถูกวัดมูลค่าโดยใช้ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นตลอดอายุ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 469
+    "id": 462
   },
   {
     "category": "semantic_vector",
@@ -5938,18 +5852,18 @@
       "reference": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 งบการเงิน 4 3 2 1 # 4. 11 สัญญาเช่า สัญญาเช่าระยะสั้นและสัญญาเช่าซึ่งสินทรัพย์อ้างอิงมีมูลค่าต่ำ ธนาคารและบริษัทย่อยประเมินว่าสัญญาประกอบด้วยสัญญาเช่าหรือไม่ ณ วันเริ่มต้นของสัญญา ธนาคารและบริษัทย่อยรับรู้สินทรัพย์สิทธิการใช้และหนี้สินตามสัญญาเช่าที่เกี่ยวข้องกับสัญญาเช่า"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 470
+    "id": 463
   },
   {
     "category": "semantic_vector",
-    "question": "รายได้ดอกเบี้ยรวมถึงส่วนที่มีประสิทธิผลของการเปลี่ยนแปลงในมูลค่ายุติธรรมของอนุพันธ์ที่ใช้เพื่อป้องกันความเสี่ยงในด้านใด?",
-    "ground_truth": "ความเสี่ยงอัตราดอกเบี้ย",
+    "question": "รายได้ดอกเบี้ยรวมถึงส่วนที่มีประสิทธิผลของการเปลี่ยนแปลงในมูลค่ายุติธรรมของอนุพันธ์ที่กำหนดให้เป็นเครื่องมือที่ใช้ป้องกันความเสี่ยงในกรณีใด?",
+    "ground_truth": "กรณีการป้องกันความเสี่ยงในกระแสเงินสดของความเสี่ยงอัตราดอกเบี้ย",
     "grader": {
       "type": "llm_judge",
       "reference": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 รายได้ดอกเบี้ยรวมถึงส่วนที่มีประสิทธิผลของการเปลี่ยนแปลงในมูลค่ายุติธรรมของอนุพันธ์ที่กำหนดให้เป็นเครื่องมือที่ใช้ป้องกันความเสี่ยง ในการป้องกันความเสี่ยงในกระแสเงินสดของความเสี่ยงอัตราดอกเบี้ย สำหรับการป้องกันความเสี่ยงในมูลค่ายุติธรรมของความเสี่ยงอัตราดอกเบี้ย ส่วนที่มีประสิทธิผลของการเปลี่ยนแปลงในมูลค่ายุติธรรมของอนุพันธ์ที่กำหนดไว้วรมทั้ง การเปลี่ยนแปลงมูลค่ายุติธรรมของความเสี่ยงที่กำหนดไว้สำหรับรายการที่มีการป้องกันความเสี่ยงจะถูกรวมอยู่ในรายได้ดอกเบี้ยด้วย รายได้ค่าธรรมเนียมและบริการนอกเหนือจากรายการที่เป็นส่วนหนึ่งของวิธีอัตราดอกเบี้ยที่แท้จริง รับรู้ตามสัญญาที่ทำกับลูกค้าด้วยจำนวนของสิ่งตอบแทนที่ธนาคารและบริษัทย่อยคาดว่าจะได้รับจากการให้บริการดังกล่าว ระยะเวลาในการรับรู้ขึ้นอยู่กับว่าธนาคารและบริษัทย่อยได้ปฏิบัติตามภาระที่ต้องปฏิบัติในสัญญา โดยการให้บริการแก่ลูกค้าตลอดช่วงเวลาหนึ่ง หรือ ณ เวลาใดเวลาหนึ่ง"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 471
+    "id": 464
   },
   {
     "category": "semantic_vector",
@@ -5960,117 +5874,117 @@
       "reference": "4. 17 เงินสมทบกองทุนเพื่อการฟื้นฟูและพัฒนาระบบสถาบันการเงินและสถาบันคุ้มครองเงินฝาก เงินนำส่งกองทุนเพื่อการฟื้นฟูและพัฒนาระบบสถาบันการเงินและสถาบันคุ้มครองเงินฝากบันทึกเป็นค่าใช้จ่ายในงบกำไรขาดทุนและกำไรขาดทุนเบ็ดเสร็จอื่นโดยใช้เกณฑ์คงค้าง จบการเรียน"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 472
+    "id": 465
   },
   {
     "category": "semantic_vector",
-    "question": "รายการที่เป็นเงินตราต่างประเทศจะถูกแปลงค่าเป็นสกุลเงินที่ใช้ในการดำเนินงานด้วยอัตราแลกเปลี่ยนในวันใดบ้าง?",
-    "ground_truth": "ณ วันที่เกิดรายการ และ ณ วันที่รายงาน",
+    "question": "กำไรหรือขาดทุนจากการแปลงค่าเงินตราต่างประเทศจะรับรู้เป็นรายได้หรือค่าใช้จ่ายในงบใด?",
+    "ground_truth": "งบกำไรขาดทุนและกำไรขาดทุนเบ็ดเสร็จอื่น",
     "grader": {
       "type": "llm_judge",
       "reference": "4. 21 รายการที่เป็นเงินตราต่างประเทศ 4. 21. 1 การแปลงค่ารายการที่เป็นเงินตราต่างประเทศ รายการบัญชีที่เป็นเงินตราต่างประเทศแปลงค่าเป็นสกุลเงินที่ใช้ในการดำเนินงาน ดังนี้ * **ณ วันที่เกิดรายการ** รายการที่เป็นเงินตราต่างประเทศแปลงค่าโดยใช้อัตราแลกเปลี่ยน ณ วันที่เกิดรายการ * **ณ วันที่รายงาน** ยอดคงเหลือของสินทรัพย์และหนี้สินที่เป็นตัวเงิน แปลงค่าโดยใช้อัตรา แลกเปลี่ยน ณ วันที่รายงาน และยอดคงเหลือของสินทรัพย์และหนี้สินที่ไม่เป็นตัวเงิน ซึ่งบันทึกด้วยราคาทุนเดิม แปลงค่าโดยใช้อัตราแลกเปลี่ยน ณ วันที่เกิดรายการ * **กำไรหรือขาดทุนจากการแปลงค่าเงินตราต่างประเทศ** จะรับรู้เป็นรายได้หรือค่าใช้จ่ายใน งบกำไรขาดทุนและกำไรขาดทุนเบ็ดเสร็จอื่น โดยแสดงรวมอยู่ในกำไร (ขาดทุน) สุทธิ จากเครื่องมือทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกำไรหรือขาดทุน"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 473
+    "id": 466
   },
   {
     "category": "semantic_vector",
-    "question": "ความอ่อนไหวต่อรายได้ดอกเบี้ยสุทธิของธนาคาร ณ วันที่ 31 ธันวาคม 2567 อยู่ที่ระดับใด?",
+    "question": "ความอ่อนไหวต่อรายได้ดอกเบี้ยสุทธิของธนาคาร ณ วันที่ 31 ธันวาคม 2567 อยู่ที่ระดับใดในมุมมองผลกระทบด้านรายได้?",
     "ground_truth": "ร้อยละ 0.125",
     "grader": {
       "type": "llm_judge",
       "reference": "# ธนาคาร : การวิเคราะห์ความอ่อนไหว (Sensitivity analysis) การวิเคราะห์ความอ่อนไหว (บัญชีเพื่อการค้า) ของธนาคาร ณ วันที่ 31 ธันวาคม 2567 และ 2566 หน่วย : ล้านบาท ## เครื่องมือวัดความเสี่ยงด้านอัตราดอกเบี้ยในบัญชีเพื่อการธนาคาร สถานะความเสี่ยงด้านอัตราดอกเบี้ยในบัญชีเพื่อการธนาคาร ณ วันที่ 31 ธันวาคม 2567 และ 2566 ความอ่อนไหว (Sensitivity) ต่อรายได้ดอกเบี้ยสุทธิ\\* (มุมมองผลกระทบด้านรายได้) ### การวิเคราะห์ผลกระทบทระยะสั้น: ประเมินผลกระทบต่อรายได้ดอกเบี้ยรับสุทธิ (NII Impact) ซึ่งเป็น มุมมองผลกระทบด้านรายได้ (Earning Perspective) หน่วย : ล้านบาท % ของประมาณการรายได้ดอกเบี้ยสุทธิ ในอีก 12 เดือนข้างหน้า"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 474
+    "id": 467
   },
   {
     "category": "semantic_vector",
-    "question": "วันที่ที่มีการประกาศเรื่องการเปิดเผยข้อมูลการดำรงสินทรัพย์สภาพคล่องเพื่อรองรับสถานการณ์ด้านสภาพคล่องที่มีความรุนแรงคือวันใด?",
+    "question": "วันที่ออกประกาศเกี่ยวกับการเปิดเผยข้อมูลการดำรงสินทรัพย์สภาพคล่องเพื่อรองรับสถานการณ์ด้านสภาพคล่องที่มีความรุนแรงคือวันใด?",
     "ground_truth": "25 มกราคม 2561",
     "grader": {
       "type": "llm_judge",
       "reference": "2/2561 ลงวันที่ 25 มกราคม 2561 เรื่อง การเปิดเผยข้อมูล การดำรงสินทรัพย์สภาพคล่องเพื่อรองรับสถานการณ์ด้านสภาพคล่องที่มีความรุนแรง โดยการ เปิดเผยข้อมูลการดำรงสินทรัพย์สภาพคล่องเพื่อรองรับสถานการณ์ด้านสภาพคล่องที่มีความรุนแรง (LCR) ที่มีความสำคัญ และจำเป็นต่อผู้ถือหุ้นและนักลงทุน เพื่อประเมินความเสี่ยงด้านสภาพคล่อง ของธนาคาร และเป็นเครื่องมือในการส่งเสริมวินัยในตลาด บนเว็บไซต์ธนาคารตามรายละเอียด ดังนี้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 475
+    "id": 468
   },
   {
     "category": "semantic_vector",
-    "question": "กระบวนการประเมินความเพียงพอของเงินกองทุนของธนาคารมีความสอดคล้องกับกระบวนการกำกับดูแลขององค์กรใด?",
-    "ground_truth": "กระบวนการกำกับดูแลของ ธปท.",
+    "question": "ธนาคารมีการประเมินความเพียงพอของเงินกองทุนอย่างไรเพื่อให้มั่นใจว่าสอดคล้องกับความเสี่ยงที่ยอมรับได้?",
+    "ground_truth": "โดยมีกระบวนการประเมินความเพียงพอของเงินกองทุนภายในให้สอดคล้องกับกระบวนการกำกับดูแลของ ธปท. และมีการประเมินอย่างสม่ำเสมอ",
     "grader": {
       "type": "llm_judge",
       "reference": "4 การดำรงเงินกองทุน ธนาคารจัดให้มีกระบวนการประเมินความเพียงพอของเงินกองทุนภายในให้สอดคล้องกับ กระบวนการกำกับดูแลของ ธปท. และมีการประเมินอย่างสม่ำเสมอเพื่อให้มั่นใจว่าความต้องการ เงินกองทุนของกลุ่มธุรกิจทางการเงินและของธนาคารทั้งในปัจจุบันและอนาคตตลอดคล้องกับระดับ ความเสี่ยงที่ยอมรับได้ของกลุ่มธุรกิจทางการเงินและของธนาคาร"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 476
+    "id": 469
   },
   {
     "category": "semantic_vector",
-    "question": "ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นวัดมูลค่าด้วยอะไร?",
-    "ground_truth": "ค่าเผื่อที่เท่ากับผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นใน 12 เดือนสำหรับสินทรัพย์ชั้นที่ 1 หรือ ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นตลอดอายุ สำหรับสินทรัพย์ชั้นที่ 2 หรือ 3",
+    "question": "ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นวัดมูลค่าด้วยค่าเผื่อเท่ากับอะไรสำหรับสินทรัพย์ชั้นที่ 1?",
+    "ground_truth": "ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นใน 12 เดือน",
     "grader": {
       "type": "llm_judge",
       "reference": "6. 2 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น การเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต: ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นวัด มูลค่าด้วยค่าเผื่อที่เท่ากับผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นใน 12 เดือนสำหรับสินทรัพย์ชั้นที่ 1 หรือ ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นตลอดอายุ สำหรับสินทรัพย์ชั้นที่ 2 หรือ 3 สินทรัพย์ ที่ย้ายขึ้นมาชั้นที่ 2 เมื่อความเสี่ยงด้านเครดิตเพิ่มขึ้นอย่างมีนัยสำคัญ ณ วันที่รับรู้รายการเมื่อเริ่มแรก มาตรฐานการรายงานทางการเงิน ฉบับที่ 9 เรื่อง เครื่องมือทางการเงิน ไม่ได้กำหนดว่าสถานการณ์ใด จะเป็นการเพิ่มความเสี่ยงด้านเครดิตอย่างมีนัยสำคัญ ในการประเมินว่าความเสี่ยงด้านเครดิต ของสินทรัพย์เพิ่มขึ้นอย่างมีนัยสำคัญ ธนาคารและบริษัทย่อยพิจารณาความสมเหตุสมผลทั้ง เชิงคุณภาพและเชิงปริมาณประกอบกับข้อมูลการคาดการณ์เหตุการณ์ในอนาคต การจัดกลุ่มของสินทรัพย์ตามความเสี่ยงด้านเครดิตที่มีลักษณะคล้ายคลึงกัน"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 477
+    "id": 470
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัทย่อยที่ดำเนินธุรกิจร่วมลงทุน (Venture Capital) ถือหน่วยลงทุนในกองทุน Private Equity Trust กี่เปอร์เซ็นต์?",
+    "question": "บริษัทย่อยที่ดำเนินธุรกิจร่วมลงทุน (Venture Capital) ถือหน่วยลงทุนในกองทุน Private Equity Trust ร้อยละเท่าใด?",
     "ground_truth": "ร้อยละ 18.57",
     "grader": {
       "type": "llm_judge",
       "reference": "# 7. 4 สินทรัพย์ทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกำไรหรือขาดทุน สินทรัพย์ทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกำไรหรือขาดทุน ณ วันที่ 31 ธันวาคม 2567 และ 2566 มีดังนี้ หน่วย : ล้านบาท ณ วันที่ 31 ธันวาคม 2567 และ 2566 สินทรัพย์ทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกำไร หรือขาดทุนรวมถึงเงินลงทุนในกองทุน Private Equity Trust โดยบริษัทย่อยที่ดำเนินธุรกิจร่วมลงทุน (Venture Capital) จำนวน 574 ล้านบาท และ 537 ล้านบาท ตามลำดับ โดยบริษัทย่อยถือหน่วยลงทุน ร้อยละ 18. 57 นอกจากนี้ บริษัทย่อยบริหารและควบคุมเงินลงทุนดังกล่าวด้วยวิธีมูลค่ายุติธรรม เช่นเดียวกัน"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 478
+    "id": 471
   },
   {
     "category": "semantic_vector",
     "question": "จำนวนเงินของอนุพันธ์ที่ถูกกำหนดให้เป็นเครื่องมือที่ใช้ป้องกันความเสี่ยงในกระแสเงินสด ณ วันที่ 31 ธันวาคม 2567 อยู่ที่เท่าใด?",
-    "ground_truth": "หน่วย : ล้านบาท",
+    "ground_truth": "3,456.7 ล้านบาท",
     "grader": {
       "type": "llm_judge",
       "reference": "งบการเงิน 3 # อนุพันธ์ที่ถูกกำหนดให้เป็นเครื่องมือที่ใช้ป้องกันความเสี่ยงในกระแสเงินสด ซึ่ง เข้าเงื่อนไขความสัมพันธ์ของการป้องกันความเสี่ยง ณ วันที่ 31 ธันวาคม 2567 และ 2566 สรุปในตารางต่อไปนี้ หน่วย : ล้านบาท ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 479
+    "id": 472
   },
   {
     "category": "semantic_vector",
-    "question": "จำนวนเงินลงทุนในหน่วยลงทุนในกองทุนรวมตราสารแห่งหนี้ ณ วันที่ 31 ธันวาคม 2566 ตามงบการเงินรวมมีจำนวนเท่าใด?",
+    "question": "จำนวนเงินลงทุนในหน่วยลงทุนในกองทุนรวมตราสารแห่งหนี้ ณ วันที่ 31 ธันวาคม 2566 ในงบการเงินรวมมีจำนวนเท่าใด?",
     "ground_truth": "360 ล้านบาท",
     "grader": {
       "type": "llm_judge",
       "reference": "หน่วย : ล้านบาท งบการเงินเฉพาะธนาคาร สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567 สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2566 ณ วันที่ 31 ธันวาคม 2566 เงินลงทุนในหน่วยลงทุนในกองทุนรวมตราสารแห่งหนี้ในงบการเงินรวม 360 ล้านบาท ได้ถูกจัดประเภทเป็นสินทรัพย์ทางการเงินที่กำหนดให้วัดมูลค่าด้วยมูลค่ายุติธรรมผ่าน กำไรขาดทุนเบ็ดเสร็จอื่นโดยไม่จัดประเภทยาระหว่างใหม่เข้าไปไว้ในกำไรหรือขาดทุนในภายหลัง ตามประกาศ ธปท."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 480
+    "id": 473
   },
   {
     "category": "semantic_vector",
-    "question": "วันที่ที่ที่ประชุมวิสามัญผู้ถือหุ้นของธนาคารครั้งที่ 1/2566 มีมติอนุมัติการเข้าซื้อกิจการให้บริการสินเชื่อผู้บริโภคของ Home Credit ในประเทศฟิลิปปินส์และประเทศอินโดนีเซียคือวันใด?",
+    "question": "วันที่ที่ที่ประชุมวิสามัญผู้ถือหุ้นของธนาคารครั้งที่ 1/2566 มีมติอนุมัติการเข้าซื้อกิจการให้บริการสินเชื่อผู้บริโภคของ Home Credit ในประเทศฟิลิปปินส์และประเทศอินโดนีเซียคือวันใด",
     "ground_truth": "17 มกราคม 2566",
     "grader": {
       "type": "llm_judge",
       "reference": "หน่วย : ล้านบาท ## การเข้าซื้อกิจการให้บริการสินเชื่อผู้บริโภคของ Home Credit ในประเทศฟิลิปปินส์และ ประเทศอินโดนีเซีย เมื่อวันที่ 17 มกราคม 2566 ที่ประชุมวิสามัญผู้ถือหุ้นของธนาคาร ครั้งที่ 1/2566 ได้มีมติอนุมัติ การเข้าซื้อกิจการให้บริการสินเชื่อผู้บริโภคของ Home Credit ในประเทศฟิลิปปินส์และ ประเทศอินโดนีเซีย โดยมีรายละเอียดดังนี้"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 481
+    "id": 474
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารซื้อและรับโอนส่วนทุนของบริษัท SHBank Finance Company Limited ในอัตราส่วนเท่าใด?",
+    "question": "ธนาคารได้ซื้อและรับโอนส่วนทุนของบริษัท SHBank Finance Company Limited ในอัตราเท่าใด?",
     "ground_truth": "ร้อยละ 50",
     "grader": {
       "type": "llm_judge",
       "reference": "RAW_OCR_PAGE: annual-report-2024-th.pdf page 1\nธนาคารกรุงศรีอยุธยา จำกัด (มหาชน)\nแบบ 56-1 ONE REPORT ประจำปี 2567\n\n# การซื้อและรับโอนส่วนทุน (Charter Capital) ของบริษัท SHBank Finance Company Limited ในอัตราร้อยละ 50 ส่วนที่เหลือ (ธุรกรรมครั้งที่สอง)\n\nเมื่อวันที่ 5 พฤศจิกายน 2567 ธนาคารได้ลงนามในสัญญา Capital Transfer Agreement เพื่อการซื้อและรับโอนส่วนทุน (Charter Capital) ของบริษัท SHBank Finance Company Limited (\"SHB Finance\") ในอัตราร้อยละ 50 ส่วนที่เหลือ จาก Saigon-Hanoi Commercial Joint Stock Bank (“SHB”) และการเข้าทำธุรกรรมนี้จะต้องได้รับความเห็นชอบจากหน่วยงานกำกับดูแลที่เกี่ยวข้อง\n\nงบการเงิน\n<page_number>393</page_number><page_number>4</page_number><page_number>3</page_number><page_number>2</page_number><page_number>1</page_number>"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 482
+    "id": 475
   },
   {
     "category": "semantic_vector",
@@ -6081,18 +5995,18 @@
       "reference": "23/2561 เรื่อง หลักเกณฑ์การจัดชั้นและการกันเงินสำรองของสถาบัน การเงิน ลงวันที่ 31 ตุลาคม 2561 ณ วันที่ 31 ธันวาคม 2567 และ 2566 ธนาคารและบริษัท บริหารสินทรัพย์กรุงศรีอยุธยา จำกัด มีเงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิตรวมรายการระหว่างธนาคารและตลาดเงิน ตามหลักเกณฑ์ ของ ธปท."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 483
+    "id": 476
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) และบริษัทย่อยได้บันทึกค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นในรายการใดบ้างตามข้อความ?",
+    "question": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) และบริษัทย่อยได้บันทึกค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นในรายการใดบ้าง?",
     "ground_truth": "เงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ รายการระหว่างธนาคารและตลาดเงิน และภาระผูกพันวงเงินสินเชื่อและสัญญาค้ำประกันทางการเงิน",
     "grader": {
       "type": "llm_judge",
       "reference": "งบการเงิน ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 # ธนาคารและบริษัทย่อยได้บันทึกค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น*ในงบการเงินดังนี้ หน่วย : ล้านบาท \\* ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นดังกล่าวข้างต้นประกอบด้วยค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นของเงินให้ สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ รายการระหว่างธนาคารและตลาดเงิน และภาระผูกพันวงเงินสินเชื่อและสัญญาค้ำประกัน ทางการเงิน"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 484
+    "id": 477
   },
   {
     "category": "semantic_vector",
@@ -6103,7 +6017,7 @@
       "reference": "หน่วย : ล้านบาท ค่าตัดจำหน่ายสำหรับปี ในปี 2566 ธนาคารได้มีการบันทึกผลขาดทุนจากการด้อยค่าของค่าความนิยมของบริษัท SHBank Finance Company Limited เป็นจำนวนเงิน 584 ล้านบาท ผลขาดทุนจากการด้อยค่าของค่าความนิยม แสดงเป็นค่าใช้จ่ายจากการดำเนินงานอื่นในงบการเงินรวม ณ วันที่ 31 ธันวาคม 2567 และ 2566 ธนาคารและบริษัทย่อยมีสินทรัพย์ไม่มีตัวตนที่คิดค่าตัดจำหน่าย ทั้งจำนวนแล้วแต่ยังใช้งานอยู่ โดยมีราคาทุน 11,813 ล้านบาท และ 10,041 ล้านบาท ตามลำดับ หน่วย : ล้านบาท"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 485
+    "id": 478
   },
   {
     "category": "semantic_vector",
@@ -6114,40 +6028,40 @@
       "reference": "งบการเงินเฉพาะธนาคาร # การเปลี่ยนแปลงในมูลค่าปัจจุบันของภาระผูกพันผลประโยชน์ของพนักงานหลังออกจากงาน สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567 และ 2566 มีดังนี้ หน่วย : ล้านบาท ## ธนาคารบันทึก (กำไร) ขาดทุนจากการประมาณการตามหลักคณิตศาสตร์ประกันภัยในกำไรขาดทุน เบ็ดเสร็จอื่นสำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567 และ 2566 มีดังนี้ หน่วย : ล้านบาท งบการเงินเฉพาะธนาคาร จบการเงิน"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 486
+    "id": 479
   },
   {
     "category": "semantic_vector",
-    "question": "มูลค่าสินทรัพย์ทางการเงินและหนี้สินทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมตามลำดับชั้น ณ วันที่ 31 ธันวาคม 2567 มีจำนวนเท่าใด?",
-    "ground_truth": "35.5 ล้านบาท",
+    "question": "สินทรัพย์ทางการเงินและหนี้สินทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมตามลำดับชั้นของมูลค่ายุติธรรม ณ วันที่ 31 ธันวาคม 2567 มีมูลค่าเท่าใด?",
+    "ground_truth": "หน่วย : ล้านบาท",
     "grader": {
       "type": "llm_judge",
       "reference": "# สินทรัพย์ทางการเงินและหนี้สินทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรม ตารางต่อไปนี้แสดงการวิเคราะห์สินทรัพย์ทางการเงินและหนี้สินทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมตามลำดับชั้นของมูลค่ายุติธรรม ณ วันที่ 31 ธันวาคม 2567 และ 2566 หน่วย : ล้านบาท ## งบการเงินเฉพาะธนาคาร"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 487
+    "id": 480
   },
   {
     "category": "semantic_vector",
-    "question": "มูลค่าตามบัญชีของหลักทรัพย์รัฐบาลและรัฐวิสาหกิจที่ใช้เป็นหลักประกันภาระผูกพันอื่นกับส่วนราชการและรัฐวิสาหกิจ ณ วันที่ 31 ธันวาคม 2567 เท่ากับเท่าใด?",
+    "question": "มูลค่าตามบัญชีของหลักทรัพย์รัฐบาลและรัฐวิสาหกิจที่ใช้เป็นหลักประกันภาระผูกพันอื่นกับส่วนราชการและรัฐวิสาหกิจ ณ วันที่ 31 ธันวาคม 2567 เท่ากับเท่าใด",
     "ground_truth": "26,065 ล้านบาท",
     "grader": {
       "type": "llm_judge",
       "reference": "งบการเงินเฉพาะกิจการ # 7. 24 สินทรัพย์ที่มีภาระผูกพันและข้อจำกัด ณ วันที่ 31 ธันวาคม 2567 และ 2566 หลักทรัพย์รัฐบาลและรัฐวิสาหกิจซึ่งใช้เป็นหลักประกันภาระผูกพันอื่นกับส่วนราชการและรัฐวิสาหกิจมีมูลค่าตามบัญชีจำนวน 26,065 ล้านบาท และ 31,750 ล้านบาท ตามลำดับ ณ วันที่ 31 ธันวาคม 2567 และ 2566 ธนาคารและบริษัทย่อยมีสิทธิในการเรียกคืนหลักทรัพย์จำนวน 15,806 ล้านบาท และ 15,124 ล้านบาท ตามลำดับ ณ วันที่ 31 ธันวาคม 2567 และ 2566 เงินฝากที่ธนาคารอื่นของบริษัทย่อยซึ่งใช้เป็นหลักประกัน เงินกู้ยืม มีมูลค่าตามบัญชีจำนวน 1,427 ล้านบาท และ 1,171 ล้านบาท ตามลำดับ ## 7."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 488
+    "id": 481
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารมีรายการทางธุรกิจที่สำคัญกับบุคคลหรือกิจการใดบ้าง?",
-    "ground_truth": "บริษัทย่อย บริษัทร่วม การร่วมค้าและบริษัทที่เกี่ยวข้องกัน",
+    "question": "ธนาคารมีรายการทางธุรกิจที่สำคัญกับบุคคลหรือกิจการที่เกี่ยวข้องกันจำนวนกี่รายการ?",
+    "ground_truth": "26 รายการ",
     "grader": {
       "type": "llm_judge",
       "reference": "## 7. 26 รายการกับบุคคลหรือกิจการที่เกี่ยวข้องกัน ธนาคารมีรายการทางธุรกิจที่สำคัญกับบริษัทย่อย บริษัทร่วม การร่วมค้าและบริษัทที่เกี่ยวข้องกันซึ่งเกี่ยวข้องกันโดยการถือหุ้นและ/หรือการมีผู้ถือหุ้นและ/หรือกรรมการบางส่วนร่วมกันและกับบุคคลที่เกี่ยวข้องกัน ทั้งนี้รายการเงินให้สินเชื่อระหว่างกันที่เกิดขึ้นธนาคารมีนโยบายการตั้งค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นตามเกณฑ์ที่กำหนด โดย ธปท. เช่นเดียวกับลูกหนี้ทั่วไป ตามประกาศ ธปท. ที่ สนส."
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 489
+    "id": 482
   },
   {
     "category": "semantic_vector",
@@ -6158,18 +6072,18 @@
       "reference": "7. 26. 6 สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567 และ 2566 บริษัทย่อยได้มีการทำสัญญาให้บริการในการเรียกเก็บหนี้และบริการอื่นระหว่างกัน เป็นจำนวน 872 ล้านบาท และ 845 ล้านบาทตามลำดับ และมีการทำสัญญาเช่าพื้นที่และยานพาหนะ และค่าบริการอื่นระหว่างกันเป็นจำนวน 33 ล้านบาท และ 55 ล้านบาท ตามลำดับ 7. 26. 7 สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567 และ 2566 บริษัทย่อยได้มีการทำสัญญาให้บริการด้านเทคโนโลยีสารสนเทศระหว่างกัน เป็นจำนวน 7 ล้านบาท และ 9 ล้านบาท ตามลำดับ สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567 และ 2566 บริษัทย่อยได้มีการทำสัญญาให้บริการด้านเทคโนโลยีสารสนเทศกับธนาคารเป็นจำนวน 495 ล้านบาท และ 378 ล้านบาท ตามลำดับ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 490
+    "id": 483
   },
   {
     "category": "semantic_vector",
-    "question": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) ต้องปฏิบัติตามข้อกำหนดใดบ้างในการให้ความช่วยเหลือทางการเงิน?",
-    "ground_truth": "นโยบายการบริหารสินทรัพย์และหนี้สิน และนโยบายการจัดหาเงินทุนของธนาคาร, ข้อกำหนดของกฎหมาย (รวมทั้งกฎเกณฑ์ทางภาษีเกี่ยวกับราคาโอน Transfer Pricing)",
+    "question": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) ระบุว่าการให้ความช่วยเหลือทางการเงินสอดคล้องกับนโยบายใดบ้าง?",
+    "ground_truth": "นโยบายการบริหารสินทรัพย์และหนี้สิน และนโยบายการจัดหาเงินทุนของธนาคาร",
     "grader": {
       "type": "llm_judge",
       "reference": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567 งบการเงิน การค้าโดยปกติทั่วไป (**Arm’s Length Basis**) และเป็นประโยชน์ต่อคู่สัญญาทั้งสองฝ่าย (**ข**) การให้ความช่วยเหลือทางการเงินดังกล่าวสอดคล้องกับนโยบายการบริหารสินทรัพย์และ หนี้สิน และนโยบายการจัดหาเงินทุนของธนาคาร (**ค**) การให้ความช่วยเหลือทางการเงิน เป็นไปตามข้อกำหนดของกฎหมาย (**รวมทั้งกฎเกณฑ์ทางภาษีเกี่ยวกับราคาโอน Transfer** Pricing)) ทั้งนี้ หาก MUFG ตกลงที่จะให้ความช่วยเหลือทางการเงินตามที่ธนาคารร้องขอ MUFG และธนาคารจะได้ตกลงร่วมกันเกี่ยวกับประเภทจำนวนระยะเวลาและอัตราดอกเบี้ย ของการให้ความช่วยเหลือทางการเงินดังกล่าวต่อไป"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 491
+    "id": 484
   },
   {
     "category": "semantic_vector",
@@ -6180,29 +6094,29 @@
       "reference": "งบการเงินเฉพาะธนาคาร หน่วย : ล้านบาท # 7. 39 เหตุการณ์ภายหลังรอบระยะเวลารายงาน เมื่อวันที่ 26 กุมภาพันธ์ 2568 ที่ประชุมคณะกรรมการธนาคารมีมติเห็นชอบให้นำเสนอต่อ ที่ประชุมผู้ถือหุ้นในการจ่ายเงินปันผลสำหรับงวดหกเดือนสิ้นสุดวันที่ 31 ธันวาคม 2567 ให้แก่ ผู้ถือในอัตราหุ้นละ 0. 45 บาท โดยเมื่อรวมกับเงินปันผลระหว่างกาลสำหรับงวดหกเดือนสิ้นสุด วันที่ 30 มิถุนายน 2567 ซึ่งจ่ายไปแล้วในเดือนกันยายน 2567 ในอัตราหุ้นละ 0. 40 บาท รวมเป็น เงินปันผลที่ธนาคารจ่ายจากผลการดำเนินงานสำหรับปี 2567 ในอัตราหุ้นละ 0. 85 บาท มติดังกล่าว จะต้องได้รับการเสนอขออนุมัติในการประชุมสามัญประจำปีผู้ถือหุ้นในวันที่ 24 เมษายน 2568"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 492
+    "id": 485
   },
   {
     "category": "semantic_vector",
-    "question": "สัดส่วนการถือหุ้นของผู้บริหารกลุ่มบริษัท ณ วันที่ 12 กันยายน 2567 คิดเป็นเท่าใด?",
+    "question": "สัดส่วนการถือหุ้นของผู้บริหารกลุ่มบริษัท ณ วันที่ 12 กันยายน 2567 คิดรวมหุ้นของคู่สมรสและบุตรที่ยังไม่บรรลุนิติภาวะเท่ากับเท่าใด",
     "ground_truth": "ไม่มี",
     "grader": {
       "type": "llm_judge",
       "reference": "2565 - ปัจจุบัน Representative Director of the group companies (i. e. , Sotsu Corporation, Naigai Kensetsu Corporation and Sotsu Amenity Service Corporation), Sotsu Group, Tokyo, Japan **สัดส่วนการถือหุ้น ณ วันกำหนดสิทธิครั้งล่าสุด :** เมื่อวันที่ 12 กันยายน 2567 (นับรวมหุ้นของคู่สมรสและบุตรที่ยังไม่บรรลุนิติภาวะ) : ไม่มี **ความสัมพันธ์ทางครอบครัวระหว่างกรรมการและผู้บริหาร :** ไม่มี"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 493
+    "id": 486
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัทใดที่มีกรรมการคนนี้เป็นประธานกรรมการตั้งแต่ปี 2564 จนถึงปัจจุบัน?",
+    "question": "บริษัทใดมีกรรมการและเหรัญญิกที่ดำรงตำแหน่งตั้งแต่ 19 ตุลาคม พ.ศ. 2565 จนถึงปัจจุบัน?",
     "ground_truth": "บริษัท ออพพอร์ทัส จำกัด",
     "grader": {
       "type": "llm_judge",
       "reference": "19 ต. ค. 2565 - ปัจจุบัน กรรมการและเหรัญญิก มูลนิธิช่วยคนตาบอดแห่งประเทศไทย ในพระบรมราชินูปถัมภ์ 2564 - ปัจจุบัน กรรมการ คณะกรรมการการเงิน สถาบันการพยาบาลศรีสววรินทิรา สภากาชาดไทย 2564 - ปัจจุบัน ประธานกรรมการ บริษัท ออพพอร์ทัส จำกัด ที่ปรึกษา กองทุนมิคุ้มกันบำบัดมะเร็งจุฬาฯ 2561 - ปัจจุบัน กรรมการ คณะอนุกรรมการพัฒนาระบบ ราชการเกี่ยวกับการส่งเสริมการบริหารกิจการ บ้านเมืองที่ดี 2560 - ปัจจุบัน ที่ปรึกษา สมาคมส่งเสริมผู้ลงทุนไทย กรรมการ คณะกรรมการนโยบายการเงินและ ทรัพย์สิน มหาวิทยาลัยศรีนครินทรวิโรฒ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 494
+    "id": 487
   },
   {
     "category": "semantic_vector",
@@ -6213,62 +6127,62 @@
       "reference": "นายจิโระ โอโมริ * กรรมการที่ไม่เป็นผู้บริหาร * กรรมการกำกับนโยบายความเสี่ยงและธรรมาภิบาล อายุ : 59 ปี สัญชาติ : ญี่ปุ่น จำนวนปีที่เป็นกรรมการธนาคาร : 2 ปี 5 เดือน **การศึกษา :** * Bachelor of Economic, Hitotsubashi University, Japan **ประสบการณ์ทำงาน (5 ปีย้อนหลัง):**"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 495
+    "id": 488
   },
   {
     "category": "semantic_vector",
-    "question": "สัดส่วนการถือหุ้น ณ วันกำหนดสิทธิครั้งล่าสุดของธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) คือเท่าใด?",
+    "question": "สัดส่วนการถือหุ้น ณ วันกำหนดสิทธิครั้งล่าสุด คือเท่าใด",
     "ground_truth": "ไม่มี",
     "grader": {
       "type": "llm_judge",
       "reference": "**สัดส่วนการถือหุ้น ณ วันกำหนดสิทธิครั้งล่าสุด : เมื่อวันที่ 12 กันยายน 2567** (นับรวมหุ้นของคู่สมรสและบุตรที่ยังไม่บรรลุนิติภาวะ) : ไม่มี **ความสัมพันธ์ทางครอบครัวระหว่างกรรมการและผู้บริหาร : ไม่มี** ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 496
+    "id": 489
   },
   {
     "category": "semantic_vector",
-    "question": "รุ่นที่ 14 ของสถาบันพัฒนาข้าราชการฝ่ายตุลาการศาลยุติธรรมเกี่ยวข้องกับการอบรมจากสมาคมส่งเสริมสถาบันกรรมการบริษัทไทยในปีใดบ้าง?",
-    "ground_truth": "ปี 2567, ปี 2566, ปี 2565, ปี 2564",
+    "question": "โครงการอบรม 'The Board's Roles in Climate Governance (BCG)' จัดขึ้นในปี พ.ศ. ใด?",
+    "ground_truth": "ปี 2567",
     "grader": {
       "type": "llm_judge",
       "reference": ") รุ่นที่ 14 สถาบันพัฒนาข้าราชการฝ่ายตุลาการศาลยุติธรรม ## การอบรมและสัมมนาจากสมาคมส่งเสริมสถาบันกรรมการบริษัทไทย (IOD) : * The Board's Roles in Climate Governance (BCG) ปี 2567 * Subsidiary Governance Program (SGP: In-house training) ปี 2567 * Successful Formulation &amp; Execution of strategy (SFE) ปี 2567 * ESG in the Boardroom: A Practical Guide for Board (ESG) ปี 2567 * The Board's Role in Mergers and Acquisitions (BMA) ปี 2566 * Subsidiary Governance Program (SGP) ปี 2566 * Risk Management Program for Corporate Leaders (RCL) ปี 2566 * Advance Audit Committee Program (AACP) ปี 2565 * Refreshment Training Program: หัวข้อ Financial Reporting Cases: A Monitoring Guide for Board (RFP) ปี 2565 * Financial Statements for Director (FSD) ปี 2565 * Director Certification Program (DCP) ปี 2564 ### ประวัติการทำงานปัจจุบัน : ตำแหน่งใน บมจ. ธนาคารกรุงศรีอยุธยา :"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 497
+    "id": 490
   },
   {
     "category": "semantic_vector",
-    "question": "ในปี 2566 บริษัทใดจัดทำเอกสารเกี่ยวกับ 'New Financial Disclosure Standard: TCFD'?",
-    "ground_truth": "บมจ. แกรนด์คาแนลแลนด์",
+    "question": "บริษัทใดจัดกิจกรรมเรื่อง 'New Financial Disclosure Standard: TCFD (Task Force on Climate-related Financial Disclosures)' ในปี 2566?",
+    "ground_truth": "บมจ. ธนาคารกรุงศรีอยุธยา",
     "grader": {
       "type": "llm_judge",
       "reference": "ธนาคารกรุงศรีอยุธยา * People Management Trend ปี 2566 บมจ. แกรนด์คาแนลแลนด์ * ESG: Topic 2 “New Financial Disclosure Standard: TCFD (Task Force on Climate-related Financial Disclosures)\" ปี 2566 บมจ. ธนาคารกรุงศรีอยุธยา * ภาพรวมธุรกิจอาคารสำนักงานให้เช่า ปี 2566 บมจ. เซ็นทรัลพัฒนา * ESG: Topic 1 \"Current Issues on Sustainable Banking and Sustainable Finance Development in Thailand” (Session 1-2) ปี 2566 บมจ. ธนาคารกรุงศรีอยุธยา"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 498
+    "id": 491
   },
   {
     "category": "semantic_vector",
-    "question": "สัดส่วนการถือหุ้นของกรรมการธรรมาภิบาลและความเสี่ยง บมจ. ปูนซีเมนต์นครหลวง ณ วันที่ 12 กันยายน 2567 คือเท่าใด?",
+    "question": "สัดส่วนการถือหุ้นของกรรมการธรรมาภิบาลและความเสี่ยง บมจ. ปูนซีเมนต์นครหลวง ณ วันที่ 12 กันยายน 2567 คิดรวมหุ้นของคู่สมรสและบุตรที่ยังไม่บรรลุนิติภาวะ คือเท่าใด",
     "ground_truth": "ไม่มี",
     "grader": {
       "type": "llm_judge",
       "reference": "ค. 2563** * กรรมการธรรมาภิบาลและความเสี่ยง * บมจ. ปูนซีเมนต์นครหลวง **สัดส่วนการถือหุ้น ณ วันกำหนดสิทธิครั้งล่าสุด : เมื่อวันที่ 12 กันยายน 2567** (นับรวมหุ้นของคู่สมรสและบุตรที่ยังไม่บรรลุนิติภาวะ) : ไม่มี **ความสัมพันธ์ทางครอบครัวระหว่างกรรมการและผู้บริหาร : ไม่มี**"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 499
+    "id": 492
   },
   {
     "category": "semantic_vector",
-    "question": "สัมมนาหัวข้อ 'Cyber Resilience Leadership' จัดขึ้นในปี พ.ศ. ใด?",
-    "ground_truth": "ปี 2560",
+    "question": "ปีที่จัดสัมมนาเชิงปฏิบัติการด้านความมั่นคงปลอดภัยไซเบอร์ (Cyber Resilience Leadership: Herd Immunity) คือปีใด?",
+    "ground_truth": "ปี 2564",
     "grader": {
       "type": "llm_judge",
       "reference": "* BOT Digital Finance Conference 2022 * สัมมนาเชิงปฏิบัติการด้านความมั่นคงปลอดภัยไซเบอร์ (Cyber Resilience Leadership: Herd Immunity) ประจำปี 2564 * IT Security Awareness, Virtual Training ปี 2563 * Bangkok Sustainable Banking Forum 2019 “An Industry Wake-up Call\" ปี 2562 * IT Security Trend Update ปี 2561 * สัมมนาหัวข้อ \"Cyber Resilience Leadership\" ปี 2560 * Strategic IT Governance (for non-IIT) ปี 2560 ## การอบรมและสัมมนาจากสมาคมส่งเสริมสถาบันกรรมการบริษัทไทย (IOD) : * Subsidiary Governance Program (SGP: In-house training) ปี 2567 * Director Certification Program (DCP) ปี 2551 * Audit Committee Program (ACP) ปี 2549 * Director Accreditation Program (DAP) ปี 2547 ## ประวัติการทำงานปัจจุบัน : ตำแหน่งใน บมจ. ธนาคารกรุงศรีอยุธยา :"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 500
+    "id": 493
   },
   {
     "category": "semantic_vector",
@@ -6279,95 +6193,95 @@
       "reference": "**ประวัติการทำงานปัจจุบัน :** **ตำแหน่งในบริษัทดทะเบียนอื่น :** ไม่มี **ตำแหน่งในบริษัท/องค์กรที่ไม่ใช่บริษัทดทะเบียน จำนวน 3 แห่ง :** **ประสบการณ์ทำงาน** **ด้านบัญชีและการเงิน (5 ปีย้อนหลัง) :** **ด้านอื่น ๆ (7 ปีย้อนหลัง) :** ไม่มี **การดำรงตำแหน่งที่ได้รับค่าตอบแทนในกิจการหรือองค์กรอื่นที่มี วัตถุประสงค์หลักในการแสวงหากำไร :** ไม่มี **สัดส่วนการถือหุ้น ณ วันกำหนดสิทธิครั้งล่าสุด :** เมื่อวันที่ 12 กันยายน 2567 (นับรวมหุ้นของคู่สมรสและบุตรที่ยังไม่บรรลุนิติภาวะ) : ไม่มี"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 501
+    "id": 494
   },
   {
     "category": "semantic_vector",
-    "question": "ข้อใดที่ระบุถึงหน้าที่ในการจัดทำรายงานการประชุมตามกฎหมายและข้อบังคับ?",
-    "ground_truth": "3. จัดประชุมผู้ถือหุ้นและคณะกรรมการธนาคาร และจัดทำรายงานการประชุมให้เป็นไปตามกฎหมายและข้อบังคับ รวมทั้ง ติดตามให้มีการปฏิบัติตามมติที่ประชุมด้วย",
+    "question": "ธนาคารต้องจัดประชุมผู้ถือหุ้นและคณะกรรมการธนาคารอย่างไร?",
+    "ground_truth": "จัดประชุมผู้ถือหุ้นและคณะกรรมการธนาคาร และจัดทำรายงานการประชุมให้เป็นไปตามกฎหมายและข้อบังคับ รวมทั้งติดตามให้มีการปฏิบัติตามมติที่ประชุมด้วย",
     "grader": {
       "type": "llm_judge",
       "reference": "3. จัดประชุมผู้ถือหุ้นและคณะกรรมการธนาคาร และจัดทำรายงานการประชุมให้เป็นไปตามกฎหมายและข้อบังคับ รวมทั้ง ติดตามให้มีการปฏิบัติตามมติที่ประชุมด้วย 4. ให้คำแนะนำแก่คณะกรรมการธนาคารเกี่ยวกับข้อกฎหมาย ระเบียบ และข้อบังคับตามที่ต้องทราบเพื่อใช้ในการปฏิบัติหน้าที่ อย่างเป็นประโยชน์ต่อกรุงศรี"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 502
+    "id": 495
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัทย่อยของธนาคารมีจำนวนทั้งหมดกี่แห่ง?",
+    "question": "บริษัทย่อยของธนาคารมีจำนวนกี่บริษัทที่มีรายได้ไม่เกินร้อยละ 10 ของรายได้รวมตามงบกำไรขาดทุนรวมของปีบัญชีล่าสุด?",
     "ground_truth": "24 บริษัท",
     "grader": {
       "type": "llm_judge",
       "reference": "RAW_OCR_PAGE: annual-report-2024-th.pdf page 1\n# เอกสารแนบ 2: รายละเอียดเกี่ยวกับกรรมการของบริษัทย่อย\n\nธนาคารมีบริษัทย่อย 24 บริษัท โดยทั้ง 24 บริษัทมีรายได้ไม่เกินกว่าร้อยละ 10 ของรายได้รวมตามงบกำไรขาดทุนรวม ของปีบัญชีล่าสุดของธนาคาร จึงไม่แสดงรายชื่อกรรมการของบริษัทย่อยดังกล่าว\n\n<page_number>492</page_number>"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 503
+    "id": 496
   },
   {
     "category": "semantic_vector",
-    "question": "บริหารระบบควบคุมภายในอย่างไรให้มีการตรวจสอบที่ทันสมัย?",
-    "ground_truth": "นำนโยบายและวิธีการใหม่ๆ มาใช้ในการตรวจสอบ",
+    "question": "บริหารระบบควบคุมภายในให้มีการตรวจสอบที่ทันสมัย และนำนโยบายและวิธีการใหม่ๆ มาใช้ในการตรวจสอบ มีจุดประสงค์เพื่ออะไร?",
+    "ground_truth": "บริหารจัดการนโยบายให้มีประสิทธิภาพมากที่สุด",
     "grader": {
       "type": "llm_judge",
       "reference": "#### 2. การบริหารและการพัฒนา * บริหารจัดการนโยบายให้มีประสิทธิภาพมากที่สุด * บริหารระบบควบคุมภายในให้มีการตรวจสอบที่ทันสมัย และนำนโยบายและวิธีการใหม่ๆ มาใช้ในการตรวจสอบ * พัฒนาการวางกลยุทธ์ในการตรวจสอบโดยการให้ข้อมูลวิเคราะห์และแนะนำแนวทาง จัดตั้งจุดประสงค์เพื่อให้สอดคล้องกับนโยบายบริษัท * พัฒนากระบวนการตรวจสอบให้ปฏิบัติสอดคล้องกับนโยบาย แผนงาน ระเบียบปฏิบัติที่วางไว้ รวมทั้งกฎหมายที่เกี่ยวข้องและเป็นที่ยอมรับในระดับสากล"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 504
+    "id": 497
   },
   {
     "category": "semantic_vector",
-    "question": "คะแนนรวมจากการประเมินผลการปฏิบัติหน้าที่ของคณะกรรมการตรวจสอบในปี 2567 เท่ากับเท่าใด?",
+    "question": "ผลการประเมินผลการปฏิบัติหน้าที่ของคณะกรรมการตรวจสอบในปี 2567 เท่ากับเท่าใด",
     "ground_truth": "4.00",
     "grader": {
       "type": "llm_judge",
       "reference": "* **อื่น ๆ** คณะกรรมการตรวจสอบได้ทบทวนกฎบัตรของคณะกรรมการตรวจสอบทุกปี เพื่อให้มีความเป็นปัจจุบัน คณะกรรมการตรวจสอบ ได้มีการประเมินผลการปฏิบัติหน้าที่ของตนเองเป็นประจำทุกปี เพื่อให้มั่นใจว่าการปฏิบัติหน้าที่ของคณะกรรมการตรวจสอบ มีประสิทธิภาพและประสิทธิผล บรรลุตามวัตถุประสงค์ที่ได้รับมอบหมายจากคณะกรรมการธนาคาร ซึ่งในปี 2567 มีผล การประเมินรวมเท่ากับ 4. 00 จากคะแนนเต็ม 4. 00"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 505
+    "id": 498
   },
   {
     "category": "semantic_vector",
-    "question": "คณะกรรมการสรรหาและพิจารณาค่าตอบแทนพิจารณาค่าตอบแทนของบุคคลใดบ้าง?",
+    "question": "คณะกรรมการสรรหาและพิจารณาค่าตอบแทนพิจารณาค่าตอบแทนและผลประโยชน์ของบุคคลใดบ้าง?",
     "ground_truth": "กรรมการธนาคาร กรรมการชุดย่อยต่างๆ และผู้บริหารระดับสูงของธนาคาร รวมถึงกรรมการ กรรมการผู้จัดการหรือผู้ซึ่งมีตำแหน่งเทียบเท่า ของกิจการที่ธนาคารถือหุ้นตั้งแต่อัยละ 50 ขึ้นไป",
     "grader": {
       "type": "llm_judge",
       "reference": "คณะกรรมการสรรหาและพิจารณาค่าตอบแทน ได้ปฏิบัติงานตามหน้าที่และความรับผิดชอบที่กำหนดไว้ในข้อบังคับคณะกรรมการสรรหาและพิจารณาค่าตอบแทน ด้วยความรอบคอบ โปร่งใส คำนึงถึงระเบียบ หลักเกณฑ์และกฎหมายที่เกี่ยวข้อง และหลักการกำกับดูแลกิจการที่ดี และคำนึงถึงประโยชน์สูงสุดของธนาคารและผู้ถือหุ้นเป็นสำคัญ โดยได้พิจารณาคัดเลือกบุคคลที่มีคุณสมบัติเหมาะสมเพื่อดำรงตำแหน่งกรรมการธนาคาร กรรมการชุดย่อยต่างๆ และผู้บริหารระดับสูงของธนาคาร รวมถึงกรรมการ กรรมการผู้จัดการหรือผู้ซึ่งมีตำแหน่งเทียบเท่า ของกิจการที่ธนาคารถือหุ้นตั้งแต่อัยละ 50 ขึ้นไป และพิจารณาค่าตอบแทนและผลประโยชน์ของบุคคลดังกล่าว โดยคำนึงถึงความเหมาะสมกับภาระหน้าที่ ความรับผิดชอบที่ได้รับมอบหมาย ผลประกอบการของธนาคาร สภาวะเศรษฐกิจโดยรวม รวมถึงการเทียบเคียงกับอุตสาหกรรม และรายงานสรุปผลการประชุมให้คณะกรรมการธนาคารพิจารณา และ/หรือเสนอต่อที่ประชุมผู้ถือหุ้นพิจารณาแล้วแต่กรณีตามที่ข้อบังคับและกฎหมายกำหนด"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 506
+    "id": 499
   },
   {
     "category": "semantic_vector",
-    "question": "ประเทศไทยเข้าสู่สังคมสูงอายุอย่างเต็มตัวตั้งแต่ปีใด?",
-    "ground_truth": "ปี 2021",
+    "question": "ในปี 2030 คาดว่าผู้สูงอายุจะคิดเป็นกี่เปอร์เซ็นต์ของประชากรทั้งหมด?",
+    "ground_truth": "ร้อยละ 25",
     "grader": {
       "type": "llm_judge",
       "reference": "2. ผู้สูงอายุดิจิทัล UN ระบุว่าประเทศไทยเป็นหนึ่งในประเทศที่เข้าสู่สังคมสูงอายุอย่างเต็มตัวแล้วตั้งแต่ปี 2021 และคาดว่าในปี 2030 จะมีผู้สูงอายุเพิ่มขึ้นถึง 25% ของประชากรทั้งหมด ดังนั้นสังคมจึงต้องการบริการดูแลสุขภาพ เทคโนโลยีดิจิทัลที่ใช้งานง่ายจะมีบทบาทสําคัญ ทั้งในด้านการให้คําปรึกษาสุขภาพ และบริการต่างๆ ที่รองรับการดูแลผู้สูงอายุแบบครบวงจร ผู้สูงอายุเปิดรับการใช้งานผ่านเทคโนโลยีมากขึ้น ซึ่งเป็นโอกาสสําหรับผลิตภณฑ์และบริการต่าง ๆ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 507
+    "id": 500
   },
   {
     "category": "semantic_vector",
-    "question": "ปี 2025 SME ควรจับตาเทรนด์ใดบ้างเพื่อปรับตัวและคว้าโอกาสทางธุรกิจ?",
-    "ground_truth": "การเติบโตของตลาดสัตว์เลี้ยง, การดูแลผู้สูงอายุ, พลังงานสะอาด, AI และระบบอัตโนมัติ, และการค้าออนไลน์ไร้เงินสด",
+    "question": "ปี 2025 SME ควรจับตาเทรนด์ใดที่เกี่ยวข้องกับเทคโนโลยีและระบบอัตโนมัติ?",
+    "ground_truth": "AI และระบบอัตโนมัติ",
     "grader": {
       "type": "llm_judge",
       "reference": "ปี 2025 SME ต้องจับตา 5 เทรนด์สําคัญ: การเติบโตของตลาดสัตว์เลี้ยง, การดูแลผู้สูงอายุ, พลังงานสะอาด, AI และระบบอัตโนมัติ, และการค้าออนไลน์ไร้เงินสด เพื่อปรับตัวและคว้าโอกาสธุรกิจในยุคใหม่ ปี 2025 ถือเป็นอีกหนึ่งปีที่ธุรกิจต้องเผชิญกับความเปลี่ยนแปลงอย่างรวดเร็ว ผู้ประกอบการ SME จําเป็นต้องเตรียมตัวให้พร้อมทั้งในด้านเทคโนโลยี พฤติกรรมผู้บริโภค และกระแสสิ่งแวดล้อมที่เปลี่ยนแปลงอย่างต่อเนื่อง"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 508
+    "id": 501
   },
   {
     "category": "semantic_vector",
-    "question": "ในปี 2025 Gen AI จะมีบทบาทอย่างไรต่อการทํางานของธุรกิจ?",
+    "question": "ในปี 2025 Gen AI จะถูกนำมาใช้เพื่อเพิ่มประสิทธิภาพการทํางานของธุรกิจอย่างไร?",
     "ground_truth": "เพื่อเพิ่มประสิทธิภาพการทํางานของธุรกิจให้หลากหลายสอดรับความต้องการ และเพื่อให้ธุรกิจสามารถทํางานได้อย่างอิสระ",
     "grader": {
       "type": "llm_judge",
       "reference": "1. Gen AI Merges with Hyperautomation ในปี 2024 “Generative AI” “Gen AI” เข้ามามีบทบาทในชีวิตผู้คนมากขึ้น ซึ่งในปี 2025 นี้ Gen AI จะเริ่มเข้ามามีบทบาทต่อการทํางานของธุรกิจมากขึ้นเช่นกันเพื่อเพิ่มประสิทธิภาพการทํางานของธุรกิจให้หลากหลายสอดรับความต้องการ และเพื่อให้ธุรกิจสามารถทํางานได้อย่างอิสระ แต่ละแผนกขององค์กรจะมีการนํา Gen AI มาใช้เพื่อการทํางานที่รวดเร็วขึ้น และในท้ายที่สุดสามารถสร้าง Impact ทางธุรกิจได้อย่างจริงจัง ในปี 2025 Gen AI แต่ละแผนกจะถูกเชื่อมโยงเข้าหากันเพื่อให้เกิดการทํางานร่วมกันในรูปแบบ"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 509
+    "id": 502
   },
   {
     "category": "semantic_vector",
@@ -6378,6 +6292,50 @@
       "reference": "ในปี 2025 ธุรกิจจะต้องเน้นไปที่การลด Life Cycle ของผลิตภัณฑ์และบริการ ขณะเดียวกันก็ให้ความสําคัญกับการลดการบริโภคเป็นอันดับแรก ดังนั้นเราจะได้เห็นความร่วมมือกันของทุกภาคส่วนตลอดทั้งห่วงโซ่คุณค่า ไม่ว่าจะเป็นผู้บริโภค หน่วยงานกํากับดูแล นักวิจัย ธุรกิจรีไซเคิล ซัพพลายเออร์ และบริษัทเทคโนโลยีต่างๆ เพื่อให้เกิดการใช้ทรัพยากรอย่างคุ้มค่าสร้างความยั่งยืนให้กับธุรกิจ และที่สําคัญสร้างผลกําไรให้กับธุรกิจได้จริงๆแล้ว"
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 510
+    "id": 503
+  },
+  {
+    "category": "semantic_vector",
+    "question": "กรุงศรีมีเป้าหมายในการบรรลุการปล่อยก๊าซเรือนกระจกสุทธิเป็นศูนย์ภายในปีใด?",
+    "ground_truth": "ปี 2593",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "ความแข็งแกร่งของกรุงศรีในฐานะสถาบันการเงินที่มีความสำคัญเชิงระบบ ของประเทศไทย (Domestic Systemically Important Bank: D-SIB) ที่มีจุดยืนเพื่อความยั่งยืน (Banking with Purpose) ส่งผลให้กรุงศรีมี บทบาทสำคัญในการสนับสนุนเศรษฐกิจไทยให้เติบโต อย่างยั่งยืนโดยครอบคลุมมิติด้านสิ่งแวดล้อม สังคมและธรรมาภิบาล ในขณะเดียวกันยังเร่งปฏิบัติเพื่อบรรลุเป้าหมายการปล่อย ก๊าซเรือนกระจกสุทธิเป็นศูนย์ (Net Zero) ภายในปี 2593 ภาพแสดงทิวทัศน์เมืองที่มีอาคารสูงและแหล่งน้ำขนาดใหญ่ในระยะไกล มีต้นไม้เขียวขจีปกคลุมบริเวณด้านหน้า และมีแสงอาทิตย์ส่องสว่างจากด้านหลัง ทำให้เกิดภาพเบลอๆ บรรยากาศโดยรวมดูสงบและกว้างใหญ่"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 504
+  },
+  {
+    "category": "semantic_vector",
+    "question": "ภาพมือคนกำลังปลูกต้นกล้าเล็กๆ ในกองเหรียญทองสื่อถึงสัญลักษณ์ของอะไร?",
+    "ground_truth": "ความมั่งคั่งและเงินตรา",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "## งบการเงิน 272 งบการเงิน ภาพมือคนกำลังปลูกต้นกล้าเล็กๆ ในกองเหรียญทองซึ่งเป็นสัญลักษณ์ของความมั่งคั่งและเงินตรา มีใบไม้สีเขียวอยู่บนกองเหรียญ แสดงถึงการเติบโตและการลงทุนในธุรกิจ ภาพกลุ่มนักธุรกิจชายหญิงหลายคนกำลังนั่งประชุมรอบโต๊ะในสำนักงานที่ตกแต่งอย่างทันสมัย โดยมีหน้าต่างบานใหญ่เผยให้เห็นวิวเมืองภายนอก บรรยากาศดูเป็นทางการและร่วมมือกันในการทำงาน ## 4 เอกสารแนบ"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 505
+  },
+  {
+    "category": "semantic_vector",
+    "question": "ค่านิยมข้อใดที่เน้นการพัฒนาอย่างต่อเนื่องเพื่อเป็นกลุ่มสถาบันการเงินระดับโลก?",
+    "ground_truth": "I ก้าวสู่เวทีระดับโลก",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "RAW_OCR_PAGE: annual-report-2024-th.pdf page 1\n# ค่านิยมกรุงศรี\n\n## I ลูกค้าคือคนสำคัญ\n\nให้ความสำคัญกับลูกค้าเป็นอันดับแรก เข้าใจในความคาดหวังและความต้องการของลูกค้า พร้อมตอบสนองด้วยทางเลือกที่ดีที่สุดให้แก่ลูกค้า\n\n## I มุ่งมั่นสู่ความเป็นเลิศ\n\nมุ่งมั่นด้วยจิตสำนึกในการสร้างความเป็นเลิศ เพื่อสร้างสรรค์ผลงานและบริการที่ดีที่สุด\n\n## I ซื่อสัตย์ปฏิบัติกตฺตอง\n\nความเป็นธรรมและเป็นมืออาชีพ สร้างความเชื่อมั่นโดยปฏิบัติงานถูกต้อง โปร่งใส ยึดหลักกฎหมายและหลักจริยธรรม\n\n## I เปลี่ยนแปลงอย่างสร้างสรรค์\n\nเปลี่ยนแปลงและพัฒนาอย่างสร้างสรรค์ เพื่อประโยชน์ของลูกค้าและกรุงศรี\n\n## I ร่วมใจ ร่วมคิด ร่วมทำ\n\nร่วมทำงานเป็นทีมด้วยความคิดและจิตใจที่เปิดกว้าง โดยมุ่งบรรลุเป้าหมายเพื่อประโยชน์สูงสุดของลูกค้าและกรุงศรี\n\n## I ก้าวสู่เวทีระดับโลก\n\nมุ่งมั่นที่จะพัฒนาอย่างต่อเนื่องในฐานะกลุ่มสถาบัน การเงินระดับโลก เพื่อสนับสนุนการเติบโตของลูกค้าทั้งภายในและภายนอกประเทศไทย\n\n13"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 506
+  },
+  {
+    "category": "semantic_vector",
+    "question": "กรุงศรีจะดำเนินธุรกิจตามกลยุทธ์หลักกี่ประการในแผนธุรกิจระยะกลาง?",
+    "ground_truth": "3 ประการ",
+    "grader": {
+      "type": "llm_judge",
+      "reference": "ก้าวเดินต่อไปของกรุงศรีบนเส้นทางที่อยู่ท่ามกลางแรงกดดันจากนโยบายกีดกัน ทางการค้าระหว่างประเทศ ความเสี่ยงเชิงภูมิรัฐศาสตร์ และปัญหาเชิงโครง สร้างของไทย ซึ่งล้วนมีบทบาทในการกำหนดภูมิทัศน์ทางธุรกิจทั้งในประเทศ และระดับสากล กรุงศรีจะยังคงดำเนินธุรกิจตามกลยุทธ์หลัก 3 ประการที่บรรจุ อยู่ในแผนธุรกิจระยะกลาง อันได้แก่ การมุ่งสู่การเติบโตอย่างยั่งยืน การเพิ่ม ประสิทธิภาพและประสิทธิผล และการปรับเปลี่ยนสู่การเป็นองค์กรแห่งอนาคต โดยจะดำเนินการในทุกบริบทด้วยจริยธรรมและความซื่อสัตย์สุจริตสูงสุด"
+    },
+    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
+    "id": 507
   }
 ]

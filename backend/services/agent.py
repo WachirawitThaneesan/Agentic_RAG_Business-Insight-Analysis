@@ -342,6 +342,10 @@ async def agent_query(
         forced = route.suggested_tool
         logger.info("Forcing first tool (high-confidence route): %s", forced)
         result = await _execute_tool(forced, question, session)
+        # The conversation shows this call as a literal Action example — the one
+        # the model is most likely to echo verbatim. Register it, or the repeat
+        # guard lets the identical call run again for a burned iteration.
+        attempted_calls.add((forced, question.strip()))
         obs = result["observation"]
         success = bool(result.get("success"))
         if success and obs:
@@ -371,14 +375,19 @@ async def agent_query(
             logger.info("Forced tool '%s' found nothing; falling back to vector_search", forced)
             fb = await _execute_tool("vector_search", question, session)
             fb_obs = fb["observation"]
-            if fb.get("success") and _has_real_data(fb_obs):
+            fb_found = bool(fb.get("success")) and _has_real_data(fb_obs)
+            if fb.get("success"):
+                # Register only a completed call: a transient error must not
+                # lock the agent out of deliberately retrying this search.
+                attempted_calls.add(("vector_search", question.strip()))
+            if fb_found:
                 internal_tool_succeeded = True
                 full_observations.append(f"[vector_search] {fb_obs}")
                 if fb.get("data"):
                     sources.extend(_extract_sources("vector_search", fb["data"]))
             reasoning_trace.append({
                 "action": "vector_search", "action_input": question,
-                "observation": fb_obs[:500], "success": bool(fb.get("success")),
+                "observation": fb_obs[:500], "success": fb_found,
             })
             conversation += (
                 f"Thought: {forced} ไม่พบข้อมูล ลองค้นจากเอกสารด้วย vector_search\n"
@@ -474,26 +483,42 @@ async def agent_query(
             if (
                 tool_name in _INTERNAL_TOOLS
                 and tool_name != "vector_search"
+                and not internal_tool_succeeded  # a safety net for the found-
+                # nothing-anywhere case, like its forced-path twin — not a tax
+                # on every empty exploratory call after data is already in hand
                 and not _has_real_data(obs)
                 and ("vector_search", query.strip()) not in attempted_calls
             ):
-                attempted_calls.add(("vector_search", query.strip()))
                 logger.info("'%s' returned no data; sweeping vector_search", tool_name)
                 fb = await _execute_tool("vector_search", query, session)
                 fb_obs = fb["observation"]
-                if fb.get("success") and _has_real_data(fb_obs):
+                fb_found = bool(fb.get("success")) and _has_real_data(fb_obs)
+                if fb.get("success"):
+                    # Register only a completed call — recording it up front let
+                    # a transient embedding error permanently block the agent's
+                    # own vector_search retry, with a nudge falsely claiming it
+                    # had "already got this result".
+                    attempted_calls.add(("vector_search", query.strip()))
+                if fb_found:
                     internal_tool_succeeded = True
                     full_observations.append(f"[vector_search] {fb_obs}")
                     if fb.get("data"):
                         sources.extend(_extract_sources("vector_search", fb["data"]))
                 reasoning_trace.append({
                     "action": "vector_search", "action_input": query,
-                    "observation": fb_obs[:500], "success": bool(fb.get("success")),
+                    # Data-success, not call-success: VectorSearchTool reports
+                    # success=True for "no documents found", and _infer_method
+                    # counts successful entries — an empty sweep must not
+                    # relabel a pure-SQL answer as "hybrid".
+                    "observation": fb_obs[:500], "success": fb_found,
                 })
+                # A fruitless sweep must not balloon the prompt: the full dump
+                # is up to top_k x 2,500 chars, re-sent every iteration.
+                conv_obs = fb_obs if fb_found else "ไม่พบข้อมูลจากเอกสารเช่นกัน"
                 conversation += (
                     f"Thought: {tool_name} ไม่พบข้อมูล ลองค้นจากเอกสารด้วย vector_search\n"
                     f'Action: {{"tool": "vector_search", "query": "{query}"}}\n'
-                    f"Observation: {fb_obs}\n"
+                    f"Observation: {conv_obs}\n"
                 )
             continue
 
