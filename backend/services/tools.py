@@ -146,8 +146,10 @@ class SQLTool:
                 error_feedback=(
                     f"The previous query returned 0 rows but the data likely exists.\n"
                     f"Previous SQL: {sql}\n"
-                    "Broaden it: match only the core noun in the LIKE pattern "
-                    "(drop qualifiers), re-check the metric_year, and add "
+                    "Broaden it: DROP the `table_name LIKE` filter first if there is "
+                    "one (the parenthesised section may not be a real table section), "
+                    "then match only the core noun in the LIKE pattern (drop "
+                    "qualifiers), re-check the metric_year, and add "
                     "`ORDER BY length(row_label) ASC` so the base metric surfaces."
                 ),
             )
@@ -164,7 +166,7 @@ class SQLTool:
                 data={"sql": sql},
             )
 
-        summary = self._format_results(result)
+        summary = self._format_results(result, question)
         return ToolResult(
             tool_name=self.name,
             success=True,
@@ -204,7 +206,9 @@ class SQLTool:
             "11. A short keyword in LIKE can match many line items (e.g. '%เงินสด%' matches 25 rows). The intended BASE metric is almost always the SHORTEST row_label, so add `ORDER BY length(row_label) ASC` and `LIMIT 3` for single-metric lookups. `length(...)` is numeric — safe to sort. Also match the FULL metric phrase, not a fragment (use '%รวมสินทรัพย์%', not '%สินทรัพย์%').\n"
             "12. YEAR-OVER-YEAR: for 'เปลี่ยนแปลง/เทียบ/ต่างจาก ปี A กับ ปี B', fetch BOTH years in ONE query with `metric_year IN ('A','B')` (never one year only). Let the Python Agent compute the difference.\n"
             "13. ALWAYS include `metric_year` in the SELECT list whenever you filter on it. The year must be visible in the result, not hidden in the WHERE clause — a downstream grounding check treats a year it cannot see in the output as invented and discards the answer.\n"
-            "14. LIKE often matches a NEAR-MISS line item as well as the one asked for (e.g. 'เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า' vs 'เงินสดจ่ายสำหรับหนี้สินภายใต้สัญญาเช่า' — different rows, different values). Rank the exact wording first: `ORDER BY (row_label = '<metric exactly as asked>') DESC, length(row_label) ASC`. Keep LIMIT high enough (>=6) on year-over-year queries that BOTH years of the right row survive.\n\n"
+            "14. LIKE often matches a NEAR-MISS line item as well as the one asked for (e.g. 'เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า' vs 'เงินสดจ่ายสำหรับหนี้สินภายใต้สัญญาเช่า' — different rows, different values). Rank the exact wording first: `ORDER BY (row_label = '<metric exactly as asked>') DESC, length(row_label) ASC`. Keep LIMIT high enough (>=6) on year-over-year queries that BOTH years of the right row survive.\n"
+            "15. SECTION IN PARENTHESES → RANK it, never filter on it. One statement page is split into SECTIONS and `table_name` carries the section after an em-dash, e.g. '[p435] สินทรัพย์ทางการเงิน… — ยอดคงเหลือ' vs '… — รวมมูลค่า ยุติธรรม' vs '… — ระดับ 2'. The SAME row_label exists in every section with DIFFERENT values, so row_label alone picks one at random. When the question carries a trailing '(…)', put it in the ORDER BY: `ORDER BY (table_name LIKE '%<parenthesised text verbatim>%') DESC, length(row_label) ASC` and raise LIMIT to 6. Copy the text EXACTLY, keeping every space (Thai table names contain deliberate spaces; a respaced pattern matches nothing). NEVER write `AND table_name LIKE …` in the WHERE clause of a fact_financial_metrics query: the parenthesis is often part of the metric name itself ('กำไรสุทธิ (ส่วนที่เป็นของธนาคาร)', 'ค่าใช้จ่ายต่อรายได้ (%)') and a WHERE on it returns 0 rows, losing the answer completely. Ranking costs nothing when the guess is wrong.\n"
+            "16. For fact_financial_metrics ALWAYS put `table_name` in the SELECT list. Without it the answer step cannot tell which section a value came from and will quote the wrong one.\n\n"
             "EXAMPLES:\n\n"
             "Q: จำนวนหุ้นสามัญที่ธนาคารถือใน บริษัทหลักทรัพย์จัดการกองทุน มีกี่หุ้น?\n"
             "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%บริษัทหลักทรัพย์จัดการกองทุน%' AND col_name LIKE '%จำนวนหุ้น%';\n\n"
@@ -219,13 +223,17 @@ class SQLTool:
             "Q: การลงทุนของธนาคารในบริษัทอื่น มีบริษัทอะไรบ้าง 2 อันดับแรก?\n"
             "SQL: SELECT DISTINCT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND row_index < 2 ORDER BY row_index, col_name;\n\n"
             "Q: สินทรัพย์รวมปี 2567 เท่าไร?\n"
-            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
+            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
             "Q: เงินสด ปี 2567 มีค่าเท่ากับเท่าไร?\n"
-            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%เงินสด%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
+            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%เงินสด%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
             "Q: กำไรสุทธิ ปี 2567 เปลี่ยนแปลงจากปี 2566 เท่าไร?\n"
-            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year IN ('2567','2566') ORDER BY (row_label = 'กำไรสุทธิ') DESC, length(row_label) ASC, metric_year DESC LIMIT 6;\n\n"
+            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year IN ('2567','2566') ORDER BY (row_label = 'กำไรสุทธิ') DESC, length(row_label) ASC, metric_year DESC LIMIT 6;\n\n"
             "Q: เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า ปี 2567 มีค่าเท่ากับเท่าไร?\n"
-            "SQL: SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สัญญาเช่า%' AND metric_year = '2567' ORDER BY (row_label = 'เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า') DESC, length(row_label) ASC LIMIT 3;\n\n"
+            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สัญญาเช่า%' AND metric_year = '2567' ORDER BY (row_label = 'เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า') DESC, length(row_label) ASC LIMIT 3;\n\n"
+            "Q: สินทรัพย์อนุพันธ์ - เพื่อป้องกันความเสี่ยง แบบพลวัต (ยอดคงเหลือ) ปี 2567 มีค่าเท่ากับเท่าไร?\n"
+            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%แบบพลวัต%' AND metric_year = '2567' ORDER BY (table_name LIKE '%ยอดคงเหลือ%') DESC, length(row_label) ASC LIMIT 6;\n\n"
+            "Q: กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2563 มีค่าเท่ากับเท่าไร?  -- the parenthesis here is part of the METRIC name, not a section; ranking on it is harmless, a WHERE on it would return nothing\n"
+            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year = '2563' ORDER BY (table_name LIKE '%ส่วนที่เป็นของธนาคาร%') DESC, length(row_label) ASC LIMIT 6;\n\n"
             f"Q: {question}\n"
             "SQL:"
         )
@@ -239,16 +247,59 @@ class SQLTool:
             return ""
 
     @staticmethod
-    def _format_results(result: Dict[str, Any]) -> str:
+    def _exact_label_rows(rows: List[Dict[str, Any]], question: str) -> set:
+        """Indices of rows whose ``row_label`` appears verbatim in the question.
+
+        ``LIKE '%keyword%'`` routinely returns the line item that was asked for
+        *and* near-miss ones, and the answering LLM has been seen picking the near
+        miss even when the SQL already ranked the right row first — asked for
+        'ต่างประเทศ' it answered 76,289 from 'รวมต่างประเทศ' while the correct
+        19,575 sat in row 1. Row order alone clearly does not carry, so mark the
+        row the question actually names and let the marker carry it instead.
+
+        Whitespace is significant here and must NOT be normalised away:
+        'รวมในประเทศและ ต่างประเทศ' and 'รวมในประเทศและต่างประเทศ' are different
+        rows on different statements with different values, and only one of the two
+        is spelled the way the question spells it.
+
+        A marker on every row says nothing, so in that case mark none — that keeps
+        the annotation silent on genuinely ambiguous lookups ('อื่น ๆ' matches 29
+        rows, all of them equally).
+        """
+        if not question:
+            return set()
+        hits = set()
+        for i, row in enumerate(rows):
+            label = str(row.get("row_label", "") or "").strip()
+            if label and label in question:
+                hits.add(i)
+        return set() if len(hits) == len(rows) else hits
+
+    @staticmethod
+    def _format_results(result: Dict[str, Any], question: str = "") -> str:
         rows = result.get("rows", [])
         if not rows:
             return "ไม่พบข้อมูลที่ตรงกับคำถาม"
 
+        shown = rows[:50]
+        exact = SQLTool._exact_label_rows(shown, question)
+
         lines = []
-        for row in rows[:50]:
+        for i, row in enumerate(shown):
             parts = [f"{k}={v}" for k, v in row.items()]
-            lines.append(", ".join(parts))
-        return "\n".join(lines)
+            line = ", ".join(parts)
+            if i in exact:
+                line += "   <== ชื่อรายการตรงกับคำถามพอดี"
+            lines.append(line)
+
+        body = "\n".join(lines)
+        if exact:
+            body = (
+                "(แถวที่มี <== คือแถวที่ row_label ตรงกับชื่อรายการในคำถามพอดี "
+                "ให้ใช้แถวนั้นตอบ ห้ามหยิบแถวอื่นที่ชื่อใกล้เคียงหรือมีคำนำหน้าเพิ่ม)\n"
+                + body
+            )
+        return body
 
     @staticmethod
     def _format_lookup_results(result: Dict[str, Any]) -> str:
