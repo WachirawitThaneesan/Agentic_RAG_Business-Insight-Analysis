@@ -4756,17 +4756,6 @@
   },
   {
     "category": "semantic_vector",
-    "question": "บริษัทมีนโยบายการกำกับดูแลกิจการอยู่ที่หมายเลขหน้าใด?",
-    "ground_truth": "175",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "# 2 การกำกับดูแลกิจการ 175 นโยบายการกำกับดูแลกิจการ 218 การควบคุมภายในและการตรวจสอบภายใน 221 โครงสร้างการกำกับดูแลกิจการ ข้อมูลสำคัญ เกี่ยวกับคณะกรรมการ คณะกรรมการชุดย่อย ผู้บริหาร และพนักงาน 256 รายงานผลการดำเนินงานสำคัญ ด้านการกำกับดูแลกิจการ 263 สรุปรายการระหว่างกันที่สำคัญกับบุคคล หรือบริษัทที่เกี่ยวข้อง"
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 364
-  },
-  {
-    "category": "semantic_vector",
     "question": "พันธกิจของกรุงศรีคืออะไร?",
     "ground_truth": "มุ่งสู่การเป็นสถาบันการเงินชั้นนำระดับภูมิภาคที่ก้าวสู่เวทีโลก ด้วยการเติบโตที่ยั่งยืน รับผิดชอบต่อสังคม และสนองต่อความต้องการของลูกค้า",
     "grader": {
@@ -4819,28 +4808,6 @@
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
     "id": 369
-  },
-  {
-    "category": "semantic_vector",
-    "question": "บริษัทใดได้รับรางวัล Best Brand Performance on Social Media 2024 ในหมวดบริการทางการเงิน (สินเชื่อ) เป็นปีที่ 4 ติดต่อกัน?",
-    "ground_truth": "THE DIGITAL BANKER",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "* The Sauciest Corporate 2024 TelltScore * Thailand Influencer Awards 2024 THAILAND SOCIAL AWARDS BY WISESIGHT (THAILAND) * Best Brand Performance on Social Media 2024 ในหมวดบริการทางการเงิน (สินเชื่อ) (ต่อเนื่องเป็นปีที่ 4) THE DIGITAL BANKER * Best Customer Centric Business Model 2024 (ต่อเนื่องเป็นปีที่ 3) * Outstanding Omnichannel Integration 2024 HATTHA BANK INTERNATIONAL FINANCE * Best New Mobile Banking App"
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 370
-  },
-  {
-    "category": "semantic_vector",
-    "question": "บริษัทใดได้รับรางวัล Best Company to Work for in Asia (Vietnam) 2024?",
-    "ground_truth": "SHB FINANCE",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "## PHILIPPINE INSIGHT AWARDS * Best Recruitment Innovation for Young Talents # SB FINANCE ## RETAIL BANKER INTERNATIONAL * Best Loan Offering ## THE ASIAN BUSINESS REVIEW * Philippines Team of the Year - Financial Services # SHB FINANCE ## HR ASIA * Best Company to Work for in Asia (Vietnam) 2024"
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 371
   },
   {
     "category": "semantic_vector",
@@ -4995,17 +4962,6 @@
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
     "id": 385
-  },
-  {
-    "category": "semantic_vector",
-    "question": "ในปี 2567 บริษัทได้รับเชิญให้เป็นวิทยากรจากสถาบันการศึกษาชั้นนำของประเทศกี่แห่ง?",
-    "ground_truth": "3 แห่ง",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "ในปี 2567 เรายังได้จัดงานสัมมนาและให้ความรู้แก่นักศึกษาและบุคคลทั่วไป ทั้งยังได้รับเชิญให้เป็นวิทยากรจากสถาบันการศึกษาชั้นนำของประเทศ อาทิ จุฬาลงกรณ์มหาวิทยาลัย มหาวิทยาลัยมหิดล มหาวิทยาลัยเชียงใหม่ รวมถึงองค์กรและงานกิจกรรมระดับโลกอื่นๆ ทั้งในกรุงเทพฯ และเชียงใหม่ อาทิ งาน Techsauce Global Summit งาน Code Mania หรืองานสมาคมผู้ประกอบการธุรกิจดิจิทัลภาคเหนือ (NDEA) เป็นต้น"
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 386
   },
   {
     "category": "semantic_vector",
@@ -5636,17 +5592,6 @@
   },
   {
     "category": "semantic_vector",
-    "question": "ข้อใดที่อยู่ในรายการการดำเนินการที่ต้องได้รับการพิจารณาเป็นพิเศษนอกเหนือจากอำนาจของผู้บริหารระดับสูงของธนาคาร?",
-    "ground_truth": "9. 9 การทำข้อตกลงหรือกำหนดนโยบายเกี่ยวกับการทำข้อตกลงกับหน่วยงานที่กำกับดูแลการทำธุรกิจของธนาคาร ในกรณีนอกเหนือไปจากที่มีการมอบอำนาจให้ผู้บริหารระดับสูงของธนาคาร",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "9. 3 การเข้าร่วมทุน การซื้อหุ้น การเป็นพันธมิตรทางธุรกิจ หรือการทำสัญญา หรือข้อตกลงในลักษณะเดียวกัน 9. 4 การให้กู้ยืมเงิน หรือการค้ำประกันนอกเหนือไปจากการ ทำธุรกิจตามปกติของธนาคาร 9. 5 การก่อให้เกิดสิทธิเหนือทรัพย์สิน หรือสินทรัพย์ของ ธนาคาร 9. 6 การจ่ายคืนหนี้สิน หรือการจ่ายคืนหนี้สินก่อนกำหนด 9. 7 การเปลี่ยนแปลงกลยุทธ์นโยบายเกี่ยวกับการให้สินเชื่อ และการรับเงินฝาก 9. 8 การเปิด หรือปิดวงเงินกู้ของธนาคาร 9. 9 การทำข้อตกลงหรือกำหนดนโยบายเกี่ยวกับการทำ ข้อตกลงกับหน่วยงานที่กำกับดูแลการทำธุรกิจของ ธนาคาร ในกรณีนอกเหนือไปจากที่มีการมอบอำนาจ ให้ผู้บริหารระดับสูงของธนาคาร 9. 10 คำขอสินเชื่อและการดำเนินการอื่นที่เกี่ยวข้องกับ สินเชื่อภายในขอบอำนาจที่ได้รับจากคณะกรรมการ ธนาคารตามนโยบายการให้สินเชื่อและเป็นไปตาม ระดับความเสี่ยงที่ยอมรับได้ตามนโยบายความเสี่ยง ของธนาคาร 10. ติดตามเร่งรัดการปฏิบัติงานของหน่วยงานต่างๆ ให้ เป็นไปตามแผนงาน และเป้าหมายที่กำหนดไว้ ให้มี ประสิทธิภาพและประสิทธิผล"
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 444
-  },
-  {
-    "category": "semantic_vector",
     "question": "กรรมการควรมีคุณลักษณะใดบ้างที่เกี่ยวข้องกับการตัดสินใจ?",
     "ground_truth": "ตัดสินใจด้วยข้อมูลและเหตุผล",
     "grader": {
@@ -5889,17 +5834,6 @@
   },
   {
     "category": "semantic_vector",
-    "question": "ความอ่อนไหวต่อรายได้ดอกเบี้ยสุทธิของธนาคาร ณ วันที่ 31 ธันวาคม 2567 อยู่ที่ระดับใดในมุมมองผลกระทบด้านรายได้?",
-    "ground_truth": "ร้อยละ 0.125",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "# ธนาคาร : การวิเคราะห์ความอ่อนไหว (Sensitivity analysis) การวิเคราะห์ความอ่อนไหว (บัญชีเพื่อการค้า) ของธนาคาร ณ วันที่ 31 ธันวาคม 2567 และ 2566 หน่วย : ล้านบาท ## เครื่องมือวัดความเสี่ยงด้านอัตราดอกเบี้ยในบัญชีเพื่อการธนาคาร สถานะความเสี่ยงด้านอัตราดอกเบี้ยในบัญชีเพื่อการธนาคาร ณ วันที่ 31 ธันวาคม 2567 และ 2566 ความอ่อนไหว (Sensitivity) ต่อรายได้ดอกเบี้ยสุทธิ\\* (มุมมองผลกระทบด้านรายได้) ### การวิเคราะห์ผลกระทบทระยะสั้น: ประเมินผลกระทบต่อรายได้ดอกเบี้ยรับสุทธิ (NII Impact) ซึ่งเป็น มุมมองผลกระทบด้านรายได้ (Earning Perspective) หน่วย : ล้านบาท % ของประมาณการรายได้ดอกเบี้ยสุทธิ ในอีก 12 เดือนข้างหน้า"
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 467
-  },
-  {
-    "category": "semantic_vector",
     "question": "วันที่ออกประกาศเกี่ยวกับการเปิดเผยข้อมูลการดำรงสินทรัพย์สภาพคล่องเพื่อรองรับสถานการณ์ด้านสภาพคล่องที่มีความรุนแรงคือวันใด?",
     "ground_truth": "25 มกราคม 2561",
     "grader": {
@@ -5941,17 +5875,6 @@
     },
     "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
     "id": 471
-  },
-  {
-    "category": "semantic_vector",
-    "question": "จำนวนเงินของอนุพันธ์ที่ถูกกำหนดให้เป็นเครื่องมือที่ใช้ป้องกันความเสี่ยงในกระแสเงินสด ณ วันที่ 31 ธันวาคม 2567 อยู่ที่เท่าใด?",
-    "ground_truth": "3,456.7 ล้านบาท",
-    "grader": {
-      "type": "llm_judge",
-      "reference": "งบการเงิน 3 # อนุพันธ์ที่ถูกกำหนดให้เป็นเครื่องมือที่ใช้ป้องกันความเสี่ยงในกระแสเงินสด ซึ่ง เข้าเงื่อนไขความสัมพันธ์ของการป้องกันความเสี่ยง ณ วันที่ 31 ธันวาคม 2567 และ 2566 สรุปในตารางต่อไปนี้ หน่วย : ล้านบาท ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) แบบ 56-1 ONE REPORT ประจำปี 2567"
-    },
-    "note": "prose comprehension (Typhoon-synthesised, LLM-judged)",
-    "id": 472
   },
   {
     "category": "semantic_vector",

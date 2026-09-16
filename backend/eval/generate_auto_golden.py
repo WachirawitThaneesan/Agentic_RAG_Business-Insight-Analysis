@@ -560,6 +560,59 @@ def _load_prose_chunks() -> List[str]:
     return rows
 
 
+_ENTITY_HINT = re.compile(
+    r"บริษัท|บมจ\.|บจก\.|ธนาคาร|จำกัด|มหาชน|กองทุน|สถาบัน|สำนักงาน|กลุ่ม|Bank|Company|Co\.|Ltd|PLC"
+)
+_ASKS_ENTITY = re.compile(r"^(บริษัทใด|หน่วยงานใด|ธนาคารใด|องค์กรใด|ใครเป็น|ผู้ใด)")
+_ASKS_PAGE = re.compile(r"หมายเลขหน้า|หน้าใด|อยู่หน้าไหน|เลขหน้า")
+_ASKS_LIST_ITEM = re.compile(r"^ข้อใด")
+_LIST_NUMBER_GT = re.compile(r"^\s*[\d๐-๙]+\s*[.)]")
+
+
+def _num_tokens(text: str) -> List[str]:
+    """Figures in a Thai answer, minus Buddhist-Era years (they are never the point)."""
+    years = {"2563", "2564", "2565", "2566", "2567", "2568", "2022", "2023", "2024", "2025"}
+    return [t.rstrip(".,") for t in re.findall(r"\d[\d,]*\.?\d*", text)
+            if t.rstrip(".,") not in years]
+
+
+def _canon_digits(text: str) -> str:
+    """OCR splits figures — 'ร้อยละ 99. 1', '1, 234' — so compare without the gaps."""
+    text = re.sub(r"(\d)\s*[.]\s*(\d)", r"\1.\2", text)
+    text = re.sub(r"(\d)\s*,\s*(\d)", r"\1\2", text)
+    return text.replace(",", "")
+
+
+def _bad_qa_pair(q: str, a: str, chunk: str) -> bool:
+    """Reject a synthesised pair that has no correct answer to find.
+
+    Every rule here was read off a real v16 failure, and each is about the
+    question being unanswerable — not about it being hard:
+
+    * A figure the chunk does not contain was invented. Two v16 questions came
+      from table *captions* whose body lives in a different chunk ("…สรุปในตาราง
+      ต่อไปนี้ หน่วย : ล้านบาท" and nothing else), so Typhoon supplied 0.125 and
+      3,456.7 from nowhere and the agent was marked wrong for not reproducing
+      a number that exists in no chunk.
+    * "บริษัทใด…" answered with something that is not an organisation — v16 asked
+      which company won an award and the ground truth was the award's *name*
+      (id 369) and the *awarding body* (id 370). The agent named the winner
+      correctly both times and was failed for it.
+    * A page-number question: the corpus is chunked prose, page numbers are not
+      reliably in the text.
+    * "ข้อใด…" over a numbered list: every item in the list is a correct answer,
+      so the single stored one cannot be graded fairly.
+    """
+    if _ASKS_PAGE.search(q):
+        return True
+    if _ASKS_LIST_ITEM.match(q.strip()) and _LIST_NUMBER_GT.match(a):
+        return True
+    if _ASKS_ENTITY.match(q.strip()) and not _ENTITY_HINT.search(a):
+        return True
+    body = _canon_digits(chunk)
+    return any(n not in body for n in (_canon_digits(t) for t in _num_tokens(a)))
+
+
 def gen_semantic_vector() -> List[dict]:
     """Synthesise questions from prose chunks spread across the whole corpus.
 
@@ -601,6 +654,8 @@ def gen_semantic_vector() -> List[dict]:
         # previous filter missed bare "ตามข้อความ" (no "นี้"), which leaked 9
         # such questions into run 14.
         if _DEIXIS.search(q):
+            continue
+        if _bad_qa_pair(q, a, chunk):
             continue
         out.append({
             "category": "semantic_vector",
