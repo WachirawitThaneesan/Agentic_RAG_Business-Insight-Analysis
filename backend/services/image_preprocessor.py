@@ -165,7 +165,8 @@ def _detect_skew_angle(gray: np.ndarray, config: PreprocessConfig) -> float:
 
     angles: list[float] = []
     for line in lines:
-        x1, y1, x2, y2 = line[0]
+        # OpenCV builds return either (N, 1, 4) or (N, 4).
+        x1, y1, x2, y2 = np.asarray(line).reshape(4)
         dx = x2 - x1
         dy = y2 - y1
         if abs(dx) < 1:

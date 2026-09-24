@@ -15,16 +15,6 @@ import json
 import logging
 import asyncio
 import pandas as pd
-from datasets import Dataset
-from ragas import evaluate
-from ragas.metrics import (
-    context_precision,
-    context_recall,
-    faithfulness,
-    answer_relevancy,
-    answer_correctness,
-    answer_similarity
-)
 
 from backend.config import get_settings
 
@@ -35,6 +25,16 @@ async def run_evaluation(data: list[dict], output_csv: str = "ragas_evaluation_r
     """
     Run Ragas evaluation on a list of samples.
     """
+    from datasets import Dataset
+    from ragas import evaluate
+    from ragas.metrics import (
+        context_precision,
+        context_recall,
+        faithfulness,
+        answer_relevancy,
+        answer_correctness,
+        answer_similarity,
+    )
     from langchain_ollama import OllamaEmbeddings
     from langchain_openai import ChatOpenAI
     from ragas.llms import LangchainLLMWrapper

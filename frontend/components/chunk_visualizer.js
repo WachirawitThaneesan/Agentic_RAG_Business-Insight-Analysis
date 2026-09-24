@@ -45,7 +45,7 @@ async function loadVisDocList() {
     const select = document.getElementById('vis-doc-select');
     try {
         const data = await api.get('/documents');
-        const docs = (data.documents || []).filter(d => d.status === 'completed' && d.chunk_count > 0);
+        const docs = (data.documents || []).filter(d => ['completed', 'partial'].includes(d.status) && d.chunk_count > 0);
 
         select.innerHTML = '<option value="">— Select a document —</option>';
         docs.forEach(d => {

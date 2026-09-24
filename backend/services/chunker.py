@@ -5,6 +5,7 @@
 """
 
 import re
+import logging
 import httpx
 import numpy as np
 from typing import List, Optional
@@ -13,6 +14,7 @@ from backend.config import get_settings
 from backend.services.embedding import get_embedding, get_embeddings_batch
 
 settings = get_settings()
+logger = logging.getLogger(__name__)
 HTTP_LIMITS = httpx.Limits(max_connections=4, max_keepalive_connections=2)
 
 
@@ -138,7 +140,7 @@ async def generate_chunk_summary(chunk_text: str) -> str:
             response.raise_for_status()
             return response.json().get("response", "").strip()
     except Exception as e:
-        print(f"⚠️ LLM summary generation failed: {e}")
+        logger.warning("LLM summary generation failed: %s", e)
         return ""
 
 

@@ -61,6 +61,7 @@ class TyphoonOCRService:
         self.base_url = self._derive_base_url(settings.TYPHOON_OCR_ENDPOINT)
         self.render_dpi = max(int(settings.TYPHOON_OCR_RENDER_DPI or 300), 72)
         self.timeout_seconds = max(float(settings.TYPHOON_OCR_REQUEST_TIMEOUT or 180.0), 1.0)
+        self.page_timeout_seconds = max(float(settings.TYPHOON_OCR_PAGE_TIMEOUT_SECONDS or 240.0), 1.0)
         self.sleep_seconds = max(float(settings.TYPHOON_OCR_SLEEP_SECONDS or 0.7), 0.0)
         self.max_tokens = int(settings.TYPHOON_OCR_MAX_TOKENS or 16384)
         self.temperature = float(settings.TYPHOON_OCR_TEMPERATURE or 0.1)
@@ -83,14 +84,19 @@ class TyphoonOCRService:
         image_bytes: bytes,
         mime_type: str = "image/png",
         filename: str = "image.png",
+        page_number: int = 1,
     ) -> Dict[str, Any]:
         """Extract text and tables from a single image."""
         if not self.api_key:
             raise RuntimeError("Typhoon OCR API key is not configured")
 
         png_bytes = self._normalize_image_to_png(image_bytes, filename, mime_type)
-        markdown = await asyncio.to_thread(self._ocr_png_bytes, png_bytes)
-        return self._parse_markdown_pages([{"page": 1, "markdown": markdown}])
+        try:
+            async with asyncio.timeout(self.page_timeout_seconds):
+                markdown = await self._ocr_png_bytes_async(png_bytes)
+        except TimeoutError as exc:
+            raise TimeoutError(f"Typhoon OCR image exceeded {self.page_timeout_seconds:g} seconds") from exc
+        return self._parse_markdown_pages([{"page": page_number, "markdown": markdown}])
 
     async def extract_from_pdf(
         self,
@@ -116,6 +122,7 @@ class TyphoonOCRService:
         pdf_path: str,
         filename: str = "document.pdf",
         pages: Optional[List[int]] = None,
+        render_dpi: Optional[int] = None,
     ) -> Dict[str, Any]:
         """Extract text and tables from a PDF already stored on disk."""
         if not self.api_key:
@@ -124,7 +131,12 @@ class TyphoonOCRService:
         page_numbers = pages or self._all_pdf_pages(pdf_path)
         outputs: List[Dict[str, Any]] = []
         for index, page_num in enumerate(page_numbers):
-            markdown = await asyncio.to_thread(self._ocr_pdf_page, pdf_path, page_num)
+            try:
+                async with asyncio.timeout(self.page_timeout_seconds):
+                    png_bytes = await asyncio.to_thread(self._render_pdf_page_to_png, pdf_path, page_num, render_dpi)
+                    markdown = await self._ocr_png_bytes_async(png_bytes)
+            except TimeoutError as exc:
+                raise TimeoutError(f"Typhoon OCR PDF page {page_num} exceeded {self.page_timeout_seconds:g} seconds") from exc
             outputs.append({"page": page_num, "markdown": markdown})
             if index < len(page_numbers) - 1 and self.sleep_seconds > 0:
                 await asyncio.sleep(self.sleep_seconds)
@@ -143,8 +155,8 @@ class TyphoonOCRService:
         png_bytes = self._normalize_image_to_png(image_bytes, path, self._mime_from_extension(ext))
         return self._ocr_png_bytes(png_bytes)
 
-    def _ocr_pdf_page(self, pdf_path: str, page_num: int) -> str:
-        png_bytes = self._render_pdf_page_to_png(pdf_path, page_num)
+    def _ocr_pdf_page(self, pdf_path: str, page_num: int, render_dpi: Optional[int] = None) -> str:
+        png_bytes = self._render_pdf_page_to_png(pdf_path, page_num, render_dpi)
         return self._ocr_png_bytes(png_bytes)
 
     def _ocr_png_bytes(self, png_bytes: bytes) -> str:
@@ -153,6 +165,8 @@ class TyphoonOCRService:
             try:
                 return self._request_markdown(png_bytes)
             except Exception as exc:
+                if "echoed the instruction prompt" in str(exc):
+                    raise
                 last_error = f"{type(exc).__name__}: {exc}"
                 logger.warning(
                     "Typhoon OCR failed on attempt %d/3: %s",
@@ -162,6 +176,48 @@ class TyphoonOCRService:
                 if attempt < 3:
                     time.sleep(10 + (attempt - 1) * 10)
         raise RuntimeError(last_error or "Typhoon OCR request failed")
+
+    async def _ocr_png_bytes_async(self, png_bytes: bytes) -> str:
+        """Cancelable OCR path used by uploads, bounded by a page deadline."""
+        last_error: Optional[str] = None
+        for attempt in range(1, 4):
+            try:
+                return await self._request_markdown_async(png_bytes)
+            except Exception as exc:
+                if "echoed the instruction prompt" in str(exc):
+                    raise
+                last_error = f"{type(exc).__name__}: {exc}"
+                logger.warning("Typhoon OCR failed on attempt %d/3: %s", attempt, last_error)
+                if attempt < 3:
+                    await asyncio.sleep(10 + (attempt - 1) * 10)
+        raise RuntimeError(last_error or "Typhoon OCR request failed")
+
+    async def _request_markdown_async(self, png_bytes: bytes) -> str:
+        payload = self._build_payload(png_bytes)
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+        }
+        async with httpx.AsyncClient(
+            base_url=self.base_url,
+            headers=headers,
+            timeout=httpx.Timeout(self.timeout_seconds),
+            follow_redirects=True,
+            trust_env=False,
+        ) as client:
+            response = await client.post("/chat/completions", json=payload)
+        try:
+            response.raise_for_status()
+        except httpx.HTTPStatusError as exc:
+            body = exc.response.text[:1000]
+            raise RuntimeError(f"Typhoon OCR HTTP {exc.response.status_code}: {body}") from exc
+        return self._validate_markdown(self._extract_message_content(response.json()))
+
+    def _validate_markdown(self, markdown: str) -> str:
+        result = (markdown or "").strip()
+        if result.startswith("Extract all text from the image.") and "Formatting Rules:" in result[:1200]:
+            raise RuntimeError("Typhoon OCR echoed the instruction prompt instead of transcribing the page")
+        return result
 
     def _request_markdown(self, png_bytes: bytes) -> str:
         payload = self._build_payload(png_bytes)
@@ -187,7 +243,7 @@ class TyphoonOCRService:
 
         data = response.json()
         content = self._extract_message_content(data)
-        return content.strip()
+        return self._validate_markdown(content)
 
     def _build_payload(self, png_bytes: bytes) -> Dict[str, Any]:
         return {
@@ -228,7 +284,8 @@ class TyphoonOCRService:
             return "\n".join(part for part in parts if part)
         return str(content or "")
 
-    def _render_pdf_page_to_png(self, pdf_path: str, page_num: int) -> bytes:
+    def _render_pdf_page_to_png(self, pdf_path: str, page_num: int, render_dpi: Optional[int] = None) -> bytes:
+        dpi = max(int(render_dpi or self.render_dpi), 72)
         try:
             import pypdfium2 as pdfium
 
@@ -237,7 +294,7 @@ class TyphoonOCRService:
             bitmap = None
             try:
                 bitmap = page.render(
-                    scale=self.render_dpi / 72.0,
+                    scale=dpi / 72.0,
                     rev_byteorder=True,
                     optimize_mode="print",
                 )
@@ -257,7 +314,7 @@ class TyphoonOCRService:
             document = fitz.open(pdf_path)
             try:
                 page = document.load_page(page_num - 1)
-                matrix = fitz.Matrix(self.render_dpi / 72.0, self.render_dpi / 72.0)
+                matrix = fitz.Matrix(dpi / 72.0, dpi / 72.0)
                 pixmap = page.get_pixmap(matrix=matrix)
                 return pixmap.tobytes("png")
             finally:
@@ -371,12 +428,18 @@ class TyphoonOCRService:
             table_html = match.group(0)
             prefix = content_before[:match.start()]
             title = self._infer_table_title_from_prefix(prefix)
-            rows_html = re.findall(r"<tr[^>]*>(.*?)</tr>", table_html, flags=re.IGNORECASE | re.DOTALL)
+            rows_html = re.findall(r"<tr\b[^>]*>(.*?)</tr\s*>", table_html, flags=re.IGNORECASE | re.DOTALL)
             parsed_rows: List[List[str]] = []
 
             for row_html in rows_html:
-                cells = re.findall(r"<t[hd][^>]*>(.*?)</t[hd]>", row_html, flags=re.IGNORECASE | re.DOTALL)
-                cleaned_cells = [self._clean_layout_markup(cell) for cell in cells]
+                # OCR often omits </th> in multi-row headers. Split at the next
+                # opening cell tag rather than requiring a matching closing tag.
+                cell_tags = list(re.finditer(r"<t[hd]\b[^>]*>", row_html, flags=re.IGNORECASE))
+                cleaned_cells = []
+                for index, tag in enumerate(cell_tags):
+                    end = cell_tags[index + 1].start() if index + 1 < len(cell_tags) else len(row_html)
+                    cell_html = re.sub(r"</?t[hd]\b[^>]*>", "", row_html[tag.end():end], flags=re.IGNORECASE)
+                    cleaned_cells.append(self._clean_layout_markup(cell_html))
                 if any(cell.strip() for cell in cleaned_cells):
                     parsed_rows.append(cleaned_cells)
 
@@ -384,7 +447,26 @@ class TyphoonOCRService:
                 return ""
 
             headers = parsed_rows[0]
-            data_rows = parsed_rows[1:] if len(parsed_rows) > 1 else []
+            data_rows = parsed_rows[1:]
+            width = max((len(row) for row in data_rows), default=len(headers))
+            if len(data_rows) > 1 and width > len(headers):
+                subheaders = data_rows[0]
+                if len(subheaders) == width - 1:
+                    headers = [headers[0] or "รายการ", *subheaders]
+                    data_rows = data_rows[1:]
+                elif self._is_financial_comparison_header(headers, subheaders, width):
+                    years_in_header = re.findall(r"(?<!\d)(?:25|20)\d{2}(?!\d)", " ".join(headers))
+                    years_in_prefix = re.findall(
+                        r"(?<!\d)(?:25|20)\d{2}(?!\d)",
+                        self._clean_layout_markup(prefix[-500:]),
+                    )
+                    printed_year = int(years_in_header[0])
+                    current_year = printed_year + 1 if str(printed_year + 1) in years_in_prefix else printed_year
+                    headers = [
+                        headers[0] or "รายการ", str(current_year), str(current_year - 1),
+                        "การเปลี่ยนแปลง (จำนวน)", "การเปลี่ยนแปลง (%)",
+                    ]
+                    data_rows = data_rows[1:]
             if data_rows:
                 tables.append({"title": title, "headers": headers, "rows": data_rows})
             return ""
@@ -397,16 +479,25 @@ class TyphoonOCRService:
         )
         return tables, without_tables
 
+    def _is_financial_comparison_header(self, headers: List[str], subheaders: List[str], width: int) -> bool:
+        return (
+            width == 5
+            and len(headers) == 3
+            and len(subheaders) == 3
+            and len(re.findall(r"(?<!\d)(?:25|20)\d{2}(?!\d)", " ".join(headers))) == 1
+            and any("เปลี่ยนแปลง" in cell for cell in headers)
+            and any("ร้อยละ" in cell or "%" in cell for cell in subheaders)
+        )
+
     def _infer_table_title_from_prefix(self, prefix: str) -> str:
         lines = [self._clean_layout_markup(line) for line in prefix.splitlines()]
         lines = [line.strip() for line in lines if line and line.strip()]
 
         ignored_patterns = (
-            r"^\(เธซเธเนเธงเธข.*\)$",
-            r"^เธ“ เธงเธฑเธเธ—เธตเน",
-            r"^เธเธเธฒเธเธฒเธฃเธเธฃเธธเธเธจเธฃเธตเธญเธขเธธเธเธขเธฒ",
-            r"^เนเธเธ 56-1",
-            r"^เธฃเธฒเธขเธเธฒเธเธเธฃเธฐเธเธณเธเธต",
+            r"^\(?\s*หน่วย\s*[:：]",
+            r"^ณ\s+วันที่",
+            r"^แบบ\s*56-1",
+            r"^รายงานประจำปี",
             r"^<page_number>",
         )
 
@@ -414,6 +505,8 @@ class TyphoonOCRService:
             if any(re.search(pattern, line, flags=re.IGNORECASE) for pattern in ignored_patterns):
                 continue
             if len(line) < 4:
+                continue
+            if len(line) > 160:
                 continue
             return line
 

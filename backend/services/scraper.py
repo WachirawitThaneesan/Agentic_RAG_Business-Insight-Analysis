@@ -7,14 +7,16 @@ import os
 import sys
 import re
 import json
+import logging
 import time
 import asyncio
 import subprocess
 from typing import List, Dict, Any, Optional
 from urllib.parse import urlparse
+from sqlalchemy import select
 
 from backend.database import AsyncSessionLocal
-from backend.models import Document, Chunk, StructuredData
+from backend.models import Document, DocumentPage, Chunk, StructuredData
 from backend.config import get_settings
 from backend.services.chunker import chunk_document
 from backend.services.embedding import get_embedding
@@ -24,6 +26,7 @@ from backend.services.table_utils import build_table_chunk_payloads, normalize_o
 from backend.services.thai_cleaner import clean_thai_text
 
 settings = get_settings()
+logger = logging.getLogger(__name__)
 
 DOWNLOAD_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "downloads")
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
@@ -73,11 +76,25 @@ def _warning_message(errors: list[str]) -> str:
         if match:
             page = match.group(1)
             failed_pages.append(page)
-            reason_parts.append(f"{page}={_summarize_page_error(error)}")
+            reason = re.sub(r"^page\s+\d+\s*:\s*", "", str(error), flags=re.IGNORECASE)
+            reason_parts.append(f"{page}={_summarize_page_error(reason)}")
 
     failed_part = f"Failed pages: {', '.join(failed_pages)}" if failed_pages else ""
     reason_part = f"Failed page reasons: {'; '.join(reason_parts)}" if reason_parts else ""
-    return "Partial OCR warnings: " + " | ".join(part for part in [failed_part, reason_part] if part)
+    return "Page processing warnings: " + " | ".join(part for part in [failed_part, reason_part] if part)
+
+
+async def _mark_pdf_page_failed(db, doc_id: int, page_num: int, stage: str, exc: Exception) -> Document:
+    await db.rollback()
+    page = (await db.execute(select(DocumentPage).where(
+        DocumentPage.document_id == doc_id, DocumentPage.page_number == page_num,
+    ))).scalar_one()
+    page.status = "failed"
+    page.error_stage = stage
+    page.error_message = f"{type(exc).__name__}: {str(exc).strip()}" if str(exc).strip() else type(exc).__name__
+    doc = (await db.execute(select(Document).where(Document.id == doc_id))).scalar_one()
+    await db.commit()
+    return doc
 
 
 def _run_pw_worker(command: str, args: dict, timeout_sec: int = 300) -> Any:
@@ -226,7 +243,7 @@ async def _store_prebuilt_chunks(
                 embedding = await get_embedding(chunk_text)
             except Exception as exc:
                 if source_kind.startswith("raw_ocr"):
-                    print(f"⚠️ Raw OCR artifact embedding failed: {exc}")
+                    logger.warning("Raw OCR artifact embedding failed: %s", exc)
                     embedding = None
                 else:
                     raise
@@ -323,6 +340,11 @@ async def _ingest_scraped_file(filepath: str, source_url: str = "") -> Dict[str,
             if ext == "pdf":
                 page_count = ocr_service.get_pdf_page_count(filepath)
                 use_large_file_mode = page_count >= settings.PDF_LARGE_FILE_PAGE_THRESHOLD
+                db.add_all(
+                    DocumentPage(document_id=doc_id, page_number=page_num, status="pending")
+                    for page_num in range(1, page_count + 1)
+                )
+                await db.commit()
 
                 for page_num in range(1, page_count + 1):
                     raw_page_budget = None
@@ -331,6 +353,10 @@ async def _ingest_scraped_file(filepath: str, source_url: str = "") -> Dict[str,
 
                     try:
                         doc.error_message = _progress_message(page_num, page_count)
+                        page = (await db.execute(select(DocumentPage).where(
+                            DocumentPage.document_id == doc_id, DocumentPage.page_number == page_num,
+                        ))).scalar_one()
+                        page.status = "processing"
                         await db.commit()
                         ocr_result = await ocr_service.extract_from_pdf_path(
                             filepath,
@@ -338,59 +364,89 @@ async def _ingest_scraped_file(filepath: str, source_url: str = "") -> Dict[str,
                             pages=[page_num],
                         )
                     except Exception as page_error:
-                        batch_errors.append(f"page {page_num}: {page_error}")
-                        await db.rollback()
-                        result = await db.execute(select(Document).where(Document.id == doc_id))
-                        doc = result.scalar_one()
+                        batch_errors.append(f"page {page_num}: {type(page_error).__name__}: {page_error}")
+                        doc = await _mark_pdf_page_failed(db, doc_id, page_num, "ocr", page_error)
                         continue
 
-                    text_blocks = ocr_result.get("text_blocks", [])
-                    tables = normalize_ocr_tables(filename, ocr_result.get("tables", []))
-                    raw_ocr_chunk_payloads = build_raw_ocr_chunk_payloads(
-                        filename,
-                        ocr_result,
-                        max_pages=raw_page_budget,
-                    )
-                    cleaned_text = clean_thai_text("\n\n".join(text_blocks))
-                    table_chunk_payloads = build_table_chunk_payloads(filename, tables)
-                    table_csv_text = "\n\n".join(
-                        f"[TABLE] {table.get('table_name')}\n{table.get('csv_text')}"
-                        for table in tables
-                        if table.get("csv_text")
-                    ).strip()
-                    _append_document_raw_text(
-                        doc,
-                        "\n\n".join(part for part in [cleaned_text, table_csv_text] if part).strip(),
-                    )
+                    markdown = str((ocr_result.get("raw_pages") or [{}])[0].get("markdown") or "")
+                    try:
+                        if raw_page_budget != 0:
+                            db.add(Chunk(
+                                document_id=doc_id,
+                                chunk_index=chunks_created,
+                                chunk_text=f"RAW_OCR_PAGE: {filename} page {page_num}\n{markdown}",
+                                summary="",
+                                token_count=len(markdown.split()),
+                                embedding=None,
+                                metadata_={"source_kind": "raw_ocr_page", "page": page_num, "markdown": markdown},
+                            ))
+                            chunks_created += 1
+                            stored_raw_pages += 1
+                        page.status = "ocr_complete" if markdown.strip() else "empty"
+                        await db.commit()
+                    except Exception as page_error:
+                        if raw_page_budget != 0:
+                            chunks_created -= 1
+                            stored_raw_pages -= 1
+                        batch_errors.append(f"page {page_num}: {type(page_error).__name__}: {page_error}")
+                        doc = await _mark_pdf_page_failed(db, doc_id, page_num, "raw_storage", page_error)
+                        continue
 
-                    await _store_structured_tables(db, doc_id, filename, tables)
-                    chunks_created += await _store_chunks(
-                        db,
-                        doc_id,
-                        cleaned_text,
-                        generate_summaries=False if use_large_file_mode else True,
-                        start_index=chunks_created,
-                    )
-                    chunks_created += await _store_prebuilt_chunks(
-                        db,
-                        doc_id,
-                        table_chunk_payloads,
-                        start_index=chunks_created,
-                    )
-                    chunks_created += await _store_prebuilt_chunks(
-                        db,
-                        doc_id,
-                        raw_ocr_chunk_payloads,
-                        start_index=chunks_created,
-                    )
-                    total_text_blocks += len(text_blocks)
-                    total_tables += len(tables)
-                    stored_raw_pages += sum(
-                        1 for payload in raw_ocr_chunk_payloads if (payload.get("metadata") or {}).get("source_kind") == "raw_ocr_page"
-                    )
-                    await db.commit()
+                    if not markdown.strip():
+                        continue
 
-                if batch_errors and chunks_created == 0:
+                    start_index = chunks_created
+                    try:
+                        text_blocks = ocr_result.get("text_blocks", [])
+                        tables = normalize_ocr_tables(filename, ocr_result.get("tables", []))
+                        raw_ocr_chunk_payloads = build_raw_ocr_chunk_payloads(
+                            filename,
+                            ocr_result,
+                            max_pages=0,
+                        )
+                        cleaned_text = clean_thai_text("\n\n".join(text_blocks))
+                        table_chunk_payloads = build_table_chunk_payloads(filename, tables)
+                        table_csv_text = "\n\n".join(
+                            f"[TABLE] {table.get('table_name')}\n{table.get('csv_text')}"
+                            for table in tables
+                            if table.get("csv_text")
+                        ).strip()
+                        _append_document_raw_text(
+                            doc,
+                            "\n\n".join(part for part in [cleaned_text, table_csv_text] if part).strip(),
+                        )
+
+                        await _store_structured_tables(db, doc_id, filename, tables)
+                        chunks_created += await _store_chunks(
+                            db,
+                            doc_id,
+                            cleaned_text,
+                            generate_summaries=False,
+                            start_index=chunks_created,
+                        )
+                        chunks_created += await _store_prebuilt_chunks(
+                            db,
+                            doc_id,
+                            table_chunk_payloads,
+                            start_index=chunks_created,
+                        )
+                        chunks_created += await _store_prebuilt_chunks(
+                            db,
+                            doc_id,
+                            raw_ocr_chunk_payloads,
+                            start_index=chunks_created,
+                        )
+                        page.status = "indexed"
+                        await db.commit()
+                        total_text_blocks += len(text_blocks)
+                        total_tables += len(tables)
+                    except Exception as page_error:
+                        batch_errors.append(f"page {page_num}: {type(page_error).__name__}: {page_error}")
+                        doc = await _mark_pdf_page_failed(db, doc_id, page_num, "indexing", page_error)
+                        chunks_created = start_index
+
+                all_pages = (await db.execute(select(DocumentPage).where(DocumentPage.document_id == doc_id))).scalars().all()
+                if not any(page.status in {"indexed", "empty"} for page in all_pages):
                     raise RuntimeError("; ".join(batch_errors) or "No PDF pages could be processed")
             else:
                 with open(filepath, "rb") as f:
@@ -432,17 +488,21 @@ async def _ingest_scraped_file(filepath: str, source_url: str = "") -> Dict[str,
                 total_text_blocks = len(text_blocks)
                 total_tables = len(tables)
 
-            doc.status = "completed"
+            empty_page_numbers = [page.page_number for page in all_pages if page.status == "empty"] if ext == "pdf" else []
+            doc.status = "partial" if batch_errors or empty_page_numbers else "completed"
+            details = []
             if batch_errors:
-                doc.error_message = _warning_message(batch_errors)
-            else:
-                doc.error_message = None
+                details.append(_warning_message(batch_errors))
+            if empty_page_numbers:
+                details.append(f"OCR returned no text on pages: {', '.join(map(str, empty_page_numbers))}")
+            doc.error_message = " | ".join(details) or None
             await db.commit()
 
             return {
                 "document_id": doc.id,
                 "filename": filename,
                 "doc_type": ext,
+                "status": doc.status,
                 "chunks_created": chunks_created,
                 "tables_extracted": total_tables,
                 "text_blocks": total_text_blocks,
@@ -450,6 +510,16 @@ async def _ingest_scraped_file(filepath: str, source_url: str = "") -> Dict[str,
                 "filepath": filepath,
             }
     except Exception as e:
+        if "doc_id" in locals():
+            try:
+                async with AsyncSessionLocal() as failure_db:
+                    failed_doc = (await failure_db.execute(select(Document).where(Document.id == doc_id))).scalar_one_or_none()
+                    if failed_doc:
+                        failed_doc.status = "failed"
+                        failed_doc.error_message = str(e) or type(e).__name__
+                        await failure_db.commit()
+            except Exception:
+                pass
         print(f"⚠️ Failed to OCR/ingest scraped file {filepath}: {e}")
         return {"error": str(e), "source_kind": "scraped_file", "filepath": filepath}
 

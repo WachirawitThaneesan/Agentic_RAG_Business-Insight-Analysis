@@ -1,0 +1,112 @@
+PROJECT UPDATE — 24 September 2026
+Agentic RAG Business Insight Analysis | OCR reliability checkpoint
+
+Short version
+The project now tracks the real physical PDF page, preserves raw Typhoon OCR,
+labels table rows by what can be checked, and prevents known contradictory rows
+from becoming structured facts. This is a useful thesis milestone, not a claim
+that arbitrary financial reports are fully accurate without review.
+
+What changed
+1. Page tracking: each PDF page can be pending, processing, indexed, empty, or
+   failed. A failed page makes the document partial rather than silently
+   completed. Page numbers are the PDF's physical order; printed numbers are
+   not required.
+2. OCR safety: a page has a wall-clock timeout. Typhoon responses that repeat
+   its instruction prompt are rejected as failures. The original OCR is kept
+   for inspection and is not embedded as an unqualified search answer.
+3. Financial quality: each parsed row is labeled unresolved, unverified, or
+   passed_checks. Contradictory/malformed rows are excluded from structured
+   search and DuckDB. Unverified rows remain provisional; a passing arithmetic
+   check is internal consistency, NOT proof against the PDF.
+4. Targeted retry: contradictory pages may receive a 400-DPI Typhoon retry,
+   capped at 20 pages per upload. One changed cell is provisionally accepted
+   only when table structure matches and the printed relationship agrees.
+   Other numeric disagreements between the two OCR passes are quarantined.
+5. Viewer and tests: the table viewer shows quality reasons, original OCR, and
+   retry differences. Automated service tests cover page provenance, malformed
+   headers, quality decisions, prompt echoes, and timeouts.
+6. Maintenance: table IDs include page identity; missing numeric cells are no
+   longer filled by copying another year's value; deleted documents can be
+   removed from the DuckDB warehouse. Ancillary logging, settings, and test
+   fixes are included in this checkpoint.
+
+Current workflow (copy this block into a Notion code block)
+
+  PDF upload
+      |
+      v
+  Physical-page tracker ----> failed/empty/partial status
+      |
+      v
+  Render page -> Typhoon OCR -> timeout/prompt-echo guard
+                         |
+              +----------+-----------+
+              |                      |
+              v                      v
+        Raw OCR audit          Table parser
+        (viewer only)                |
+                                     v
+                              Row quality gate
+                              /             \
+                             v               v
+                       unresolved      passed/unverified
+                       audit only      structured search
+                                       + DuckDB warehouse
+
+What the 20-page diagnostic actually found
+- Four report excerpts; 20 visually labeled pages; nine numeric anchors
+  checked at readable resolution.
+- Table-present/table-absent decision: 18/20 correct. Two rotated/two-up bank
+  pages returned Typhoon's instruction prompt instead of table text; the new
+  guard now fails those pages rather than indexing the prompt.
+- All 9/9 selected numbers appeared somewhere in raw OCR. This is sparse token
+  recall, NOT correct row/column placement or whole-report accuracy.
+- Of 373 parsed rows, five were quarantined, 368 were unverified, and zero had
+  an applicable arithmetic check. Therefore this benchmark does not justify
+  calling the financial data trusted.
+- A real 400-DPI retry on the earlier five-page PDF corrected one visually
+  checked value (49,585 -> 49,565), but another contradictory row remained.
+  That diagnostic retry did not update the existing stored document.
+
+Next improvement 1 — Split and rotate difficult two-up pages
+Do: Inspect a low-resolution render for sideways text and a central gutter.
+Only suspicious pages get candidate 90/180/270-degree rotations or a two-page
+split; ordinary pages continue through the current single OCR call. OCR each
+selected region, then merge results with source physical page, crop box, and
+rotation metadata. Do not mistake an excerpt page for a printed page number.
+Test: Re-run the two failed bank pages; require real table cells (not a prompt
+echo), correct reading order, and lower error on verified cell labels. Track
+extra OCR calls, latency, and memory so a 500-page report stays bounded.
+
+Next improvement 2 — Real row/column gold answers, including charts
+Do: During development, manually read a stratified sample of cells from the
+rendered PDFs. For each answer store: source PDF hash, physical page, crop,
+table or chart, row label, column label/year, printed value, unit, and any
+footnote. Keep a held-out test set separate from pages used to tune rules.
+For charts, label only visible facts; do not assume a matching table exists.
+Test: Measure exact value match, correct row/column placement, missing-cell
+rate, chart-fact recall, and whether incorrect cells were wrongly marked
+passed_checks. Report the denominator and failures, not only a single score.
+People label the DEV test set; ordinary users do not review each upload.
+
+Next improvement 3 — Resumable jobs and a paginated OCR viewer
+Do: First refactor the API and existing Celery task to call ONE shared
+per-page ingestion service. The current Celery process_document path is older
+and would otherwise bypass the new quality gate. Upload should save the file
+and return document_id immediately; workers claim pending pages, write a
+checkpoint per page, and resume failed/interrupted work without duplicate
+rows. Keep Typhoon concurrency/rate limits modest and use a single serialized
+DuckDB writer to avoid file-lock conflicts.
+Viewer: Fetch page summaries first; load/render only the selected PDF page and
+its raw OCR, parsed table, final stored rows, and quality reasons on demand.
+Test: Interrupt a long upload, restart the worker, verify no duplicate data,
+correct final page counts, bounded browser memory, and usable 500-page search.
+
+Release note
+- Version-control code, documentation, benchmark labels, and the selection
+  manifest on the current branch. User-supplied PDF files, OCR response caches,
+  .env, databases, and secrets stay local and are not pushed.
+- Existing uploaded documents are not retroactively revalidated. Restart the
+  API and re-upload a small test PDF to see the new runtime behavior.
+- Detailed evidence: TestFile/ocr_benchmark_report.md and docs/ocr-quality.md.

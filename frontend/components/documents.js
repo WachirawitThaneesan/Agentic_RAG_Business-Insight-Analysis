@@ -188,6 +188,7 @@ async function loadDocumentList() {
                                 <span class="badge ${doc.status === 'completed' ? 'badge-success' : doc.status === 'failed' ? 'badge-danger' : 'badge-warning'}">
                                     ${doc.status}
                                 </span>
+                                ${doc.page_count != null ? `<div style="margin-top:6px;font-size:0.76rem;color:var(--text-muted)">indexed ${doc.indexed_pages || 0}/${doc.page_count} pages${doc.empty_pages ? ` • ${doc.empty_pages} empty` : ''}</div>` : ''}
                                 ${doc.progress_text ? `<div style="margin-top:6px;font-size:0.78rem;color:var(--accent-primary-light)">กำลัง OCR ${escapeDocHtml(doc.progress_text)}</div>` : ''}
                                 ${doc.failed_pages?.length ? `<div style="margin-top:6px;font-size:0.76rem;color:var(--accent-warning)">failed pages: ${escapeDocHtml(doc.failed_pages.join(', '))}</div>` : ''}
                                 ${doc.failed_page_reasons && Object.keys(doc.failed_page_reasons).length ? `<div style="margin-top:6px;font-size:0.74rem;color:var(--text-muted);max-width:360px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeDocHtml(Object.entries(doc.failed_page_reasons).slice(0, 2).map(([page, reason]) => `p.${page}: ${reason}`).join(' • '))}</div>` : ''}
@@ -250,11 +251,26 @@ async function viewDocTables(docId) {
             })),
         }));
         const rawPages = (doc.raw_ocr_pages || []).slice().sort((a, b) => (a.page || 0) - (b.page || 0));
+        const retryPages = (doc.raw_ocr_retry_pages || []).slice().sort((a, b) => (a.page || 0) - (b.page || 0));
         const rawTables = (doc.raw_ocr_tables || []).slice().sort((a, b) => {
             const pageDiff = (a.page || 0) - (b.page || 0);
             if (pageDiff !== 0) return pageDiff;
             return (a.table_index || 0) - (b.table_index || 0);
         });
+        const qualityReports = doc.quality_reports || [];
+        const unresolvedRows = qualityReports.flatMap((report) =>
+            (report.row_reports || [])
+                .filter((row) => row.status === 'unresolved')
+                .map((row) => ({ ...row, page: report.page, tableName: report.table_name }))
+        );
+        const unverifiedRows = qualityReports.flatMap((report) =>
+            (report.row_reports || [])
+                .filter((row) => row.status === 'unverified')
+                .map((row) => ({ ...row, page: report.page, tableName: report.table_name }))
+        );
+        const retryChanges = qualityReports.flatMap((report) => report.retry_changes || []);
+        const retryAccepted = retryChanges.filter((change) => change.status === 'retry_consistent_not_source_verified');
+        const retryDisputed = retryChanges.filter((change) => change.status === 'ocr_passes_disagree_unresolved');
         const renderedRowCount = tables.reduce((sum, table) => sum + (table.rows?.length || 0), 0);
         const singlePageGroup = rawPages.length <= 1;
 
@@ -357,6 +373,61 @@ async function viewDocTables(docId) {
             </div>
         ` : '';
 
+        const retryPagesHtml = retryPages.length ? `
+            <div style="margin-bottom:20px">
+                <div style="font-size:0.88rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)">Higher-resolution OCR retries</div>
+                ${retryPages.map((page) => `<details style="padding:16px;background:var(--bg-tertiary);border-radius:var(--radius-md);margin-bottom:12px">
+                    <summary style="cursor:pointer">Retry page ${escapeDocHtml(page.page ?? '?')}</summary>
+                    <pre style="white-space:pre-wrap;overflow:auto;font-size:0.76rem">${escapeDocHtml(page.markdown || '')}</pre>
+                </details>`).join('')}
+            </div>
+        ` : '';
+
+        const qualityHtml = qualityReports.length ? `
+            <div style="padding:14px 16px;background:var(--bg-tertiary);border:1px solid var(--border-primary);border-radius:var(--radius-md);margin-bottom:20px">
+                <div style="font-weight:600;margin-bottom:6px">OCR value checks</div>
+                <div style="font-size:0.8rem;color:var(--text-secondary)">
+                    ${unresolvedRows.length} unresolved rows excluded from structured search and warehouse.
+                    ${unverifiedRows.length} rows had no applicable numeric cross-check and are not proven correct.
+                    ${retryAccepted.length} cells provisionally corrected after a higher-resolution retry;
+                    ${retryDisputed.length} cross-pass disagreements quarantined.
+                    Passing a check is not proof that OCR matches the PDF.
+                </div>
+                ${retryChanges.length ? `<details style="margin-top:10px"><summary style="cursor:pointer">Show OCR retry changes</summary>
+                    ${retryChanges.map((change) => `<div style="margin-top:6px;font-size:0.78rem">
+                        ${escapeDocHtml(change.table_name || 'table')} row ${change.row_index + 1}, column ${change.column}:
+                        ${escapeDocHtml(change.first_value)} → ${escapeDocHtml(change.retry_value)}
+                        (${change.status === 'ocr_passes_disagree_unresolved' ? 'unresolved disagreement' : 'internally consistent, still OCR-derived'})
+                    </div>`).join('')}
+                </details>` : ''}
+                ${unresolvedRows.length ? `
+                    <details style="margin-top:10px">
+                        <summary style="cursor:pointer;color:var(--accent-warning)">Show unresolved rows and reasons</summary>
+                        ${unresolvedRows.slice(0, 50).map((row) => `
+                            <div style="margin-top:8px;font-size:0.78rem;color:var(--text-secondary)">
+                                Page ${escapeDocHtml(row.page ?? '?')}, ${escapeDocHtml(row.tableName || 'table')}, row ${row.row_index + 1}:
+                                ${escapeDocHtml((row.reasons || []).join(', '))}
+                                <div>${escapeDocHtml((row.cells || []).map((cell) => cell.value).join(' | '))}</div>
+                            </div>
+                        `).join('')}
+                        ${unresolvedRows.length > 50 ? `<div style="margin-top:8px">Showing first 50 of ${unresolvedRows.length} unresolved rows.</div>` : ''}
+                    </details>
+                ` : ''}
+                ${unverifiedRows.length ? `
+                    <details style="margin-top:10px">
+                        <summary style="cursor:pointer">Show rows with no applicable cross-check</summary>
+                        ${unverifiedRows.slice(0, 50).map((row) => `
+                            <div style="margin-top:8px;font-size:0.78rem;color:var(--text-secondary)">
+                                Page ${escapeDocHtml(row.page ?? '?')}, ${escapeDocHtml(row.tableName || 'table')}, row ${row.row_index + 1}:
+                                ${escapeDocHtml((row.cells || []).map((cell) => cell.value).join(' | '))}
+                            </div>
+                        `).join('')}
+                        ${unverifiedRows.length > 50 ? `<div style="margin-top:8px">Showing first 50 of ${unverifiedRows.length} unverified rows.</div>` : ''}
+                    </details>
+                ` : ''}
+            </div>
+        ` : '';
+
         const combinedSinglePageHtml = singlePageGroup ? `
             <div style="padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--border-primary);border-radius:var(--radius-lg);margin-bottom:20px">
                 <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px">
@@ -400,9 +471,11 @@ async function viewDocTables(docId) {
             <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:16px">
                 Structured rows: ${renderedRowCount}
             </div>
+            ${qualityHtml}
             ${combinedSinglePageHtml}
             ${singlePageGroup ? '' : structuredHtml}
             ${singlePageGroup ? '' : rawPagesHtml}
+            ${retryPagesHtml}
             ${singlePageGroup ? '' : rawTablesHtml}
         `;
     } catch (e) {

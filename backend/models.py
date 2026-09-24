@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from sqlalchemy import (
-    Column, Integer, String, Text, DateTime, ForeignKey, JSON, Index
+    Column, Integer, String, Text, DateTime, ForeignKey, JSON, Index, UniqueConstraint
 )
 from sqlalchemy.orm import DeclarativeBase, relationship
 from pgvector.sqlalchemy import Vector
@@ -21,7 +21,7 @@ class Document(Base):
     source_url = Column(String(2000), nullable=True)
     raw_text = Column(Text, nullable=True)
     doc_type = Column(String(50), default="pdf")  # pdf, image, html
-    status = Column(String(50), default="pending")  # pending, processing, completed, failed
+    status = Column(String(50), default="pending")  # pending, processing, completed, partial, failed
     error_message = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow,
@@ -29,6 +29,27 @@ class Document(Base):
 
     chunks = relationship("Chunk", back_populates="document", cascade="all, delete-orphan")
     structured_data = relationship("StructuredData", back_populates="document", cascade="all, delete-orphan")
+    pages = relationship("DocumentPage", back_populates="document", cascade="all, delete-orphan")
+
+
+class DocumentPage(Base):
+    """Durable PDF-page progress, independent of OCR artifacts and indexing."""
+    __tablename__ = "document_pages"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    document_id = Column(Integer, ForeignKey("documents.id", ondelete="CASCADE"), nullable=False)
+    page_number = Column(Integer, nullable=False)
+    status = Column(String(32), nullable=False, default="pending")
+    error_stage = Column(String(32), nullable=True)
+    error_message = Column(Text, nullable=True)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    document = relationship("Document", back_populates="pages")
+
+    __table_args__ = (
+        UniqueConstraint("document_id", "page_number", name="uq_document_pages_document_page"),
+        Index("ix_document_pages_document_id", "document_id"),
+    )
 
 
 class Chunk(Base):

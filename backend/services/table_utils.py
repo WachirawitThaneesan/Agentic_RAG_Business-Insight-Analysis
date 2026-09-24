@@ -38,7 +38,10 @@ def _normalize_headers(headers: List[str], column_count: int) -> List[str]:
 
 
 def safe_table_name(value: str, fallback: str, max_len: int = 240) -> str:
-    raw = _strip_markdown(value) or _strip_markdown(fallback) or "table"
+    # Generated page/table identifiers use underscores; stripping Markdown
+    # emphasis here used to erase those separators and break grouping.
+    raw = str(value or "").strip() or str(fallback or "").strip() or "table"
+    raw = re.sub(r"[*`#]+", "", raw)
     raw = re.sub(r"\s+", "_", raw)
     raw = re.sub(r"[^\w\u0E00-\u0E7F\-\.\(\)]", "_", raw)
     raw = re.sub(r"_+", "_", raw).strip("_")
@@ -616,7 +619,7 @@ def normalize_ocr_table(table: Dict[str, Any], default_name: str) -> Dict[str, A
     raw_headers = table.get("headers") or []
     raw_rows = table.get("rows") or []
     title = _normalize_repeated_title(_strip_markdown(table.get("title") or "") or default_name)
-    table_name = safe_table_name(_normalize_repeated_title(table.get("table_name") or title), default_name)
+    table_name = safe_table_name(table.get("table_name") or title, default_name)
 
     clean_rows = [[_strip_markdown(cell) for cell in row] for row in raw_rows]
     max_cols = max([len(raw_headers)] + [len(row) for row in clean_rows] + [1])
@@ -636,12 +639,13 @@ def normalize_ocr_table(table: Dict[str, Any], default_name: str) -> Dict[str, A
     headers, rows = _trim_empty_trailing_columns(headers, rows)
     headers, rows = _promote_year_row_into_headers(headers, rows)
     title, headers, rows = _repair_stored_financial_investment_table(title, headers, rows)
-    table_name = safe_table_name(_normalize_repeated_title(table_name), default_name)
+    table_name = safe_table_name(table_name, default_name)
 
     csv_text = table_to_csv(headers, rows) if rows else ""
     return {
         "title": title,
         "table_name": table_name,
+        "page": table.get("page"),
         "headers": headers,
         "rows": rows,
         "csv_text": csv_text,
@@ -674,6 +678,8 @@ def _merge_header_fragment_tables(tables: List[Dict[str, Any]]) -> List[Dict[str
 
 
 def _should_merge_header_fragment(fragment: Dict[str, Any], body: Dict[str, Any]) -> bool:
+    if fragment.get("page") is not None and body.get("page") is not None and fragment["page"] != body["page"]:
+        return False
     fragment_headers = fragment.get("headers") or []
     fragment_rows = fragment.get("rows") or []
     body_headers = body.get("headers") or []
@@ -719,6 +725,7 @@ def _merge_header_fragment_pair(fragment: Dict[str, Any], body: Dict[str, Any]) 
     return {
         "title": body.get("title") or fragment.get("title") or body.get("table_name") or fragment.get("table_name"),
         "table_name": body.get("table_name") or fragment.get("table_name"),
+        "page": body.get("page") if body.get("page") is not None else fragment.get("page"),
         "headers": headers,
         "rows": merged_rows,
         "csv_text": table_to_csv(headers, merged_rows) if merged_rows else "",
@@ -759,6 +766,7 @@ def _combine_sections_into_single_table(
         {
             "title": combined_title,
             "table_name": combined_table_name,
+            "page": table.get("page"),
             "headers": first_headers,
             "rows": combined_rows,
             "csv_text": table_to_csv(first_headers, combined_rows),
@@ -816,10 +824,9 @@ def split_normalized_table_into_sections(table: Dict[str, Any]) -> List[Dict[str
                     if extra_val:
                         year_values.append(extra_val)
                     else:
-                        # OCR lost the last year's value — duplicate the last
-                        # available value so all years have data.
-                        last_year_pg_val = row.get(year_headers[-1], "")
-                        year_values.append(last_year_pg_val)
+                        # Keep an unobserved value empty; duplicating an adjacent
+                        # year's number would silently create a false fact.
+                        year_values.append("")
                 else:
                     # Normal row without a unit token — map year values directly
                     unit = ""
@@ -828,7 +835,8 @@ def split_normalized_table_into_sections(table: Dict[str, Any]) -> List[Dict[str
                 padded = out_row + [""] * max(0, len(section_headers) - len(out_row))
                 normalized_rows.append(padded[:len(section_headers)])
         else:
-            section_headers = [label_header, *year_headers] if year_headers else effective_headers
+            # Year columns do not make change/percentage columns disposable.
+            section_headers = effective_headers
             normalized_rows = []
             for row in section_rows:
                 normalized_rows.append([row.get(header, "") for header in section_headers])
@@ -841,6 +849,7 @@ def split_normalized_table_into_sections(table: Dict[str, Any]) -> List[Dict[str
             {
                 "title": title,
                 "table_name": section_table_name,
+                "page": table.get("page"),
                 "headers": section_headers,
                 "rows": normalized_rows,
                 "csv_text": table_to_csv(section_headers, normalized_rows),
@@ -862,7 +871,13 @@ def split_normalized_table_into_sections(table: Dict[str, Any]) -> List[Dict[str
 def normalize_ocr_tables(table_prefix: str, tables: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     normalized: List[Dict[str, Any]] = []
     for index, table in enumerate(tables):
-        normalized_table = normalize_ocr_table(table, f"{table_prefix}_table_{index}")
+        page = table.get("page")
+        default_name = f"{table_prefix}_page_{page}_table_{index}" if page is not None else f"{table_prefix}_table_{index}"
+        table_with_name = dict(table)
+        if not table_with_name.get("table_name"):
+            title = str(table_with_name.get("title") or table_prefix)
+            table_with_name["table_name"] = f"{title}_{default_name}"
+        normalized_table = normalize_ocr_table(table_with_name, default_name)
         normalized.extend(split_normalized_table_into_sections(normalized_table))
     return _merge_header_fragment_tables(normalized)
 

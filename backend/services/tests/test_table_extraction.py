@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import asyncio
 from unittest.mock import AsyncMock, patch
 
 import numpy as np
@@ -242,8 +243,7 @@ class TestThaiPostprocessor:
 # Integration smoke test (mocked OCR)
 # ---------------------------------------------------------------------------
 class TestPipelineIntegration:
-    @pytest.mark.asyncio
-    async def test_pipeline_with_synthetic_image(self):
+    def test_pipeline_with_synthetic_image(self):
         """Smoke test: the pipeline runs without errors on a grid image."""
         from backend.services.table_extractor import extract_tables_high_fidelity
 
@@ -260,29 +260,18 @@ class TestPipelineIntegration:
         img.save(buf, format="PNG")
         img_bytes = buf.getvalue()
 
-        # Mock the Typhoon OCR call to return a known table
-        mock_markdown = (
-            "| รายการ | 2566 | 2565 |\n"
-            "|---|---|---|\n"
-            "| รายได้ | 1,234 | 1,100 |\n"
-            "| ค่าใช้จ่าย | 890 | 820 |\n"
-        )
-
+        # Mock only the external OCR step; detection and normalization remain real.
         with patch(
-            "backend.services.table_extractor.TyphoonOCRService"
-        ) as MockOCR:
-            instance = MockOCR.return_value
-            instance._ocr_single_page.return_value = mock_markdown
-
-            # Need to also mock the _parse_markdown_pages method
-            from backend.services.ocr import TyphoonOCRService
-            real_service = TyphoonOCRService.__new__(TyphoonOCRService)
-
-            instance._parse_markdown_pages = real_service._parse_markdown_pages
-
-            tables = await extract_tables_high_fidelity(
-                img_bytes, "test.png", "image/png",
-            )
+            "backend.services.table_extractor._run_typhoon_ocr",
+            new_callable=AsyncMock,
+            return_value={
+                "headers": ["รายการ", "2566", "2565"],
+                "rows": [["รายได้", "1,234", "1,100"], ["ค่าใช้จ่าย", "890", "820"]],
+            },
+        ):
+            tables = asyncio.run(extract_tables_high_fidelity(
+                img_bytes, "test.png", "image/png", detector_backend="opencv",
+            ))
 
         # Should have at least one table
         assert len(tables) >= 1

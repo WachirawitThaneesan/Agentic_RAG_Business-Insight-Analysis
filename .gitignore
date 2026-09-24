@@ -50,6 +50,10 @@ backend/uploads/
 backend/knowledge_graphs/
 backend/eval/results/
 
+# User-supplied annual-report PDFs stay local; commit only the benchmark labels
+# and selection manifest unless the source files are cleared for publication.
+TestFile/*.pdf
+
 # Local scratch space for debug dumps / ad-hoc outputs
 scratch/
 

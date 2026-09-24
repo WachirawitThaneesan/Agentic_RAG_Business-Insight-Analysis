@@ -47,6 +47,15 @@ answer self-correction step.
 
 ### 4. Data Ingestion & OCR
 - **Typhoon OCR** converts PDF pages to images and extracts Thai text + tables.
+- PDF uploads record each physical PDF page in `document_pages`. Raw OCR is saved
+  before embedding/table indexing, so a later failure is reported as `partial`
+  with its page number and stage instead of silently losing the OCR. The document
+  API exposes `page_statuses` and `raw_ocr_pages` for inspection. Page numbers
+  refer to the PDF's page order; printed page numbers are not required.
+- PDF ingestion skips optional Ollama chunk summaries; OCR, embeddings, and
+  structured tables still run, without a summary outage blocking a page.
+- Malformed multi-row financial HTML headers are normalized into year and change
+  columns, and table IDs include the PDF page/index to avoid warehouse overwrites.
 - **OCR table self-correction** ([`backend/services/self_correction.py`](backend/services/self_correction.py))
   validates column counts / numeric cells and repairs unit-column shifts.
 - **Thai text normalization** ([`thai_cleaner.py`](backend/services/thai_cleaner.py),

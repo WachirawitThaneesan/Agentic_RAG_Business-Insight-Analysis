@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "page_numbering": "1-based physical pages, not printed page numbers",
+  "label_method": "Page roles and listed numeric anchors were checked against rendered PDF images; embedded PDF text was not used as ground truth. Numeric anchors test token recall, not correct table-cell alignment.",
+  "pages": [
+    {"excerpt_file": "2025_105466_E_ONE_REPORT_BBIKT_selected50.pdf", "excerpt_page": 5, "source_pdf_page": 30, "role": "financial_table", "expected_table": true, "numeric_anchors": ["1,313.29"]},
+    {"excerpt_file": "2025_105466_E_ONE_REPORT_BBIKT_selected50.pdf", "excerpt_page": 17, "source_pdf_page": 120, "role": "financial_table", "expected_table": true, "numeric_anchors": ["1,297.92"]},
+    {"excerpt_file": "2025_105466_E_ONE_REPORT_BBIKT_selected50.pdf", "excerpt_page": 25, "source_pdf_page": 182, "role": "charts_and_table", "expected_table": true, "numeric_anchors": ["66.67"]},
+    {"excerpt_file": "2025_105466_E_ONE_REPORT_BBIKT_selected50.pdf", "excerpt_page": 37, "source_pdf_page": 287, "role": "dense_financial_table", "expected_table": true, "numeric_anchors": []},
+    {"excerpt_file": "2025_105466_E_ONE_REPORT_BBIKT_selected50.pdf", "excerpt_page": 48, "source_pdf_page": 363, "role": "dense_financial_table", "expected_table": true, "numeric_anchors": []},
+
+    {"excerpt_file": "AnnualSynnex2025_THA_selected50.pdf", "excerpt_page": 19, "source_pdf_page": 108, "role": "financial_table", "expected_table": true, "numeric_anchors": ["16,501,070"]},
+    {"excerpt_file": "AnnualSynnex2025_THA_selected50.pdf", "excerpt_page": 21, "source_pdf_page": 114, "role": "ratio_table", "expected_table": true, "numeric_anchors": ["1.22"]},
+    {"excerpt_file": "AnnualSynnex2025_THA_selected50.pdf", "excerpt_page": 25, "source_pdf_page": 130, "role": "organization_diagram_no_table", "expected_table": false, "numeric_anchors": []},
+    {"excerpt_file": "AnnualSynnex2025_THA_selected50.pdf", "excerpt_page": 29, "source_pdf_page": 161, "role": "compensation_table", "expected_table": true, "numeric_anchors": ["390,000"]},
+    {"excerpt_file": "AnnualSynnex2025_THA_selected50.pdf", "excerpt_page": 49, "source_pdf_page": 275, "role": "contract_table", "expected_table": true, "numeric_anchors": []},
+
+    {"excerpt_file": "onereport_2568TH_selected50.pdf", "excerpt_page": 9, "source_pdf_page": 54, "role": "investment_table", "expected_table": true, "numeric_anchors": ["7,757"]},
+    {"excerpt_file": "onereport_2568TH_selected50.pdf", "excerpt_page": 15, "source_pdf_page": 96, "role": "bar_chart_and_table", "expected_table": true, "numeric_anchors": ["24,143"]},
+    {"excerpt_file": "onereport_2568TH_selected50.pdf", "excerpt_page": 19, "source_pdf_page": 117, "role": "demographic_table", "expected_table": true, "numeric_anchors": []},
+    {"excerpt_file": "onereport_2568TH_selected50.pdf", "excerpt_page": 33, "source_pdf_page": 211, "role": "financial_statement", "expected_table": true, "numeric_anchors": []},
+    {"excerpt_file": "onereport_2568TH_selected50.pdf", "excerpt_page": 42, "source_pdf_page": 270, "role": "table_and_trend_chart", "expected_table": true, "numeric_anchors": ["311,379"]},
+
+    {"excerpt_file": "y2025-onereport-th_selected50.pdf", "excerpt_page": 5, "source_pdf_page": 12, "role": "table_and_diagram_two_up", "expected_table": true, "numeric_anchors": []},
+    {"excerpt_file": "y2025-onereport-th_selected50.pdf", "excerpt_page": 24, "source_pdf_page": 86, "role": "rotated_tables_two_up", "expected_table": true, "numeric_anchors": []},
+    {"excerpt_file": "y2025-onereport-th_selected50.pdf", "excerpt_page": 30, "source_pdf_page": 105, "role": "financial_tables_two_up", "expected_table": true, "numeric_anchors": []},
+    {"excerpt_file": "y2025-onereport-th_selected50.pdf", "excerpt_page": 36, "source_pdf_page": 130, "role": "rotated_tables_two_up", "expected_table": true, "numeric_anchors": []},
+    {"excerpt_file": "y2025-onereport-th_selected50.pdf", "excerpt_page": 46, "source_pdf_page": 169, "role": "dense_tables_two_up", "expected_table": true, "numeric_anchors": []}
+  ]
+}

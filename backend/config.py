@@ -1,11 +1,14 @@
 """Application configuration loaded from .env file."""
 
 from pydantic_settings import BaseSettings
+from pydantic import model_validator
 from functools import lru_cache
+from sqlalchemy.engine import make_url
 
 
 class Settings(BaseSettings):
     # Database
+    POSTGRES_PASSWORD: str = ""
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5436/ragdb"
     DATABASE_URL_SYNC: str = "postgresql://postgres:postgres@localhost:5436/ragdb"
     DB_POOL_SIZE: int = 3
@@ -51,6 +54,10 @@ class Settings(BaseSettings):
     TYPHOON_OCR_TOP_P: float = 0.6
     TYPHOON_OCR_REPETITION_PENALTY: float = 1.2
     TYPHOON_OCR_RENDER_DPI: int = 300
+    TYPHOON_OCR_PAGE_TIMEOUT_SECONDS: float = 240.0
+    PDF_QUALITY_REOCR_ENABLED: bool = True
+    PDF_QUALITY_REOCR_DPI: int = 400
+    PDF_QUALITY_REOCR_MAX_PAGES: int = 20
     TYPHOON_OCR_REQUEST_TIMEOUT: float = 180.0
     TYPHOON_OCR_SLEEP_SECONDS: float = 0.7
 
@@ -87,6 +94,18 @@ class Settings(BaseSettings):
     PDF_LARGE_FILE_GENERATE_SUMMARIES: bool = False
     DOCUMENT_RAW_TEXT_LIMIT_CHARS: int = 250000
     RAW_OCR_ARTIFACT_EMBED_MAX_CHARS: int = 8000
+
+    @model_validator(mode="after")
+    def use_postgres_password(self) -> "Settings":
+        """Keep app connections aligned with Docker's POSTGRES_PASSWORD."""
+        if self.POSTGRES_PASSWORD:
+            self.DATABASE_URL = make_url(self.DATABASE_URL).set(
+                password=self.POSTGRES_PASSWORD
+            ).render_as_string(hide_password=False)
+            self.DATABASE_URL_SYNC = make_url(self.DATABASE_URL_SYNC).set(
+                password=self.POSTGRES_PASSWORD
+            ).render_as_string(hide_password=False)
+        return self
 
     # Hyper-Extract Knowledge Graph
     HYPEREXTRACT_LLM_URL: str = "http://localhost:11434/v1"

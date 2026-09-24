@@ -80,6 +80,19 @@ def reset_warehouse() -> Dict[str, int]:
     return deleted
 
 
+def delete_document_data(document_id: int) -> None:
+    """Remove a deleted document's warehouse rows, including table facts."""
+    conn = _get_conn()
+    conn.execute("BEGIN TRANSACTION")
+    try:
+        for table in ("fact_financial_metrics", "dim_table_rows", "dim_tables", "dim_chunks", "dim_documents"):
+            conn.execute(f"DELETE FROM {table} WHERE document_id = ?", [document_id])
+        conn.execute("COMMIT")
+    except Exception:
+        conn.execute("ROLLBACK")
+        raise
+
+
 # ---------------------------------------------------------------------------
 # Schema initialisation
 # ---------------------------------------------------------------------------

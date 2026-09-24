@@ -1,0 +1,2047 @@
+{
+  "purpose": "Representative OCR testing, not human-verified ground truth",
+  "page_numbering": "1-based physical PDF pages; printed page numbers may differ",
+  "selection": "Five page roles in each of ten position strata per report; deterministic",
+  "documents": [
+    {
+      "source_file": "2025_105466_E_ONE_REPORT_BBIKT.pdf",
+      "source_sha256": "a503530fa33a7bf15eca45078eda245c24e177cdaaea61111ee1daa27fd39692",
+      "source_page_count": 377,
+      "excerpt_file": "2025_105466_E_ONE_REPORT_BBIKT_selected50.pdf",
+      "excerpt_sha256": "57f408f0471f079807cc3d81eeea48f223cc0d8c8eab838790404228c25e08e8",
+      "excerpt_page_count": 50,
+      "pages": [
+        {
+          "excerpt_page": 1,
+          "source_pdf_page": 1,
+          "selection_reason": "opening_page",
+          "text_chars": 170,
+          "number_tokens": 5,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 2,
+          "source_pdf_page": 7,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 1543,
+          "number_tokens": 10,
+          "financial_terms": 4,
+          "images": 3,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 3,
+          "source_pdf_page": 17,
+          "selection_reason": "financial_topic",
+          "text_chars": 1063,
+          "number_tokens": 66,
+          "financial_terms": 13,
+          "images": 0,
+          "drawings": 354
+        },
+        {
+          "excerpt_page": 4,
+          "source_pdf_page": 19,
+          "selection_reason": "middle_of_section",
+          "text_chars": 2799,
+          "number_tokens": 8,
+          "financial_terms": 2,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 5,
+          "source_pdf_page": 30,
+          "selection_reason": "number_dense",
+          "text_chars": 3223,
+          "number_tokens": 88,
+          "financial_terms": 6,
+          "images": 0,
+          "drawings": 388
+        },
+        {
+          "excerpt_page": 6,
+          "source_pdf_page": 45,
+          "selection_reason": "number_dense",
+          "text_chars": 1348,
+          "number_tokens": 70,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 282
+        },
+        {
+          "excerpt_page": 7,
+          "source_pdf_page": 47,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 1888,
+          "number_tokens": 66,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 820
+        },
+        {
+          "excerpt_page": 8,
+          "source_pdf_page": 56,
+          "selection_reason": "middle_of_section",
+          "text_chars": 4003,
+          "number_tokens": 7,
+          "financial_terms": 4,
+          "images": 0,
+          "drawings": 1
+        },
+        {
+          "excerpt_page": 9,
+          "source_pdf_page": 57,
+          "selection_reason": "financial_topic",
+          "text_chars": 3577,
+          "number_tokens": 17,
+          "financial_terms": 15,
+          "images": 0,
+          "drawings": 2
+        },
+        {
+          "excerpt_page": 10,
+          "source_pdf_page": 60,
+          "selection_reason": "narrative",
+          "text_chars": 4201,
+          "number_tokens": 20,
+          "financial_terms": 2,
+          "images": 0,
+          "drawings": 1
+        },
+        {
+          "excerpt_page": 11,
+          "source_pdf_page": 80,
+          "selection_reason": "financial_topic",
+          "text_chars": 3247,
+          "number_tokens": 17,
+          "financial_terms": 5,
+          "images": 0,
+          "drawings": 43
+        },
+        {
+          "excerpt_page": 12,
+          "source_pdf_page": 92,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 158,
+          "number_tokens": 3,
+          "financial_terms": 1,
+          "images": 8,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 13,
+          "source_pdf_page": 94,
+          "selection_reason": "middle_of_section",
+          "text_chars": 226,
+          "number_tokens": 3,
+          "financial_terms": 1,
+          "images": 6,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 14,
+          "source_pdf_page": 98,
+          "selection_reason": "number_dense",
+          "text_chars": 1155,
+          "number_tokens": 48,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 292
+        },
+        {
+          "excerpt_page": 15,
+          "source_pdf_page": 113,
+          "selection_reason": "narrative",
+          "text_chars": 4651,
+          "number_tokens": 9,
+          "financial_terms": 3,
+          "images": 0,
+          "drawings": 10
+        },
+        {
+          "excerpt_page": 16,
+          "source_pdf_page": 115,
+          "selection_reason": "financial_topic",
+          "text_chars": 2932,
+          "number_tokens": 111,
+          "financial_terms": 29,
+          "images": 0,
+          "drawings": 529
+        },
+        {
+          "excerpt_page": 17,
+          "source_pdf_page": 120,
+          "selection_reason": "number_dense",
+          "text_chars": 2782,
+          "number_tokens": 154,
+          "financial_terms": 21,
+          "images": 0,
+          "drawings": 835
+        },
+        {
+          "excerpt_page": 18,
+          "source_pdf_page": 121,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 2634,
+          "number_tokens": 127,
+          "financial_terms": 22,
+          "images": 0,
+          "drawings": 741
+        },
+        {
+          "excerpt_page": 19,
+          "source_pdf_page": 132,
+          "selection_reason": "middle_of_section",
+          "text_chars": 871,
+          "number_tokens": 39,
+          "financial_terms": 7,
+          "images": 0,
+          "drawings": 232
+        },
+        {
+          "excerpt_page": 20,
+          "source_pdf_page": 150,
+          "selection_reason": "narrative",
+          "text_chars": 4317,
+          "number_tokens": 8,
+          "financial_terms": 2,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 21,
+          "source_pdf_page": 161,
+          "selection_reason": "financial_topic",
+          "text_chars": 3979,
+          "number_tokens": 24,
+          "financial_terms": 4,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 22,
+          "source_pdf_page": 168,
+          "selection_reason": "narrative",
+          "text_chars": 4526,
+          "number_tokens": 29,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 23,
+          "source_pdf_page": 169,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 2133,
+          "number_tokens": 12,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 42
+        },
+        {
+          "excerpt_page": 24,
+          "source_pdf_page": 170,
+          "selection_reason": "middle_of_section",
+          "text_chars": 3563,
+          "number_tokens": 5,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 2
+        },
+        {
+          "excerpt_page": 25,
+          "source_pdf_page": 182,
+          "selection_reason": "number_dense",
+          "text_chars": 1727,
+          "number_tokens": 25,
+          "financial_terms": 1,
+          "images": 1,
+          "drawings": 79
+        },
+        {
+          "excerpt_page": 26,
+          "source_pdf_page": 191,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 656,
+          "number_tokens": 17,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 337
+        },
+        {
+          "excerpt_page": 27,
+          "source_pdf_page": 192,
+          "selection_reason": "number_dense",
+          "text_chars": 1592,
+          "number_tokens": 66,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 247
+        },
+        {
+          "excerpt_page": 28,
+          "source_pdf_page": 198,
+          "selection_reason": "narrative",
+          "text_chars": 4474,
+          "number_tokens": 21,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 29,
+          "source_pdf_page": 207,
+          "selection_reason": "middle_of_section",
+          "text_chars": 1175,
+          "number_tokens": 15,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 72
+        },
+        {
+          "excerpt_page": 30,
+          "source_pdf_page": 220,
+          "selection_reason": "financial_topic",
+          "text_chars": 4217,
+          "number_tokens": 25,
+          "financial_terms": 8,
+          "images": 0,
+          "drawings": 5
+        },
+        {
+          "excerpt_page": 31,
+          "source_pdf_page": 230,
+          "selection_reason": "financial_topic",
+          "text_chars": 2724,
+          "number_tokens": 97,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 490
+        },
+        {
+          "excerpt_page": 32,
+          "source_pdf_page": 231,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 932,
+          "number_tokens": 48,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 438
+        },
+        {
+          "excerpt_page": 33,
+          "source_pdf_page": 232,
+          "selection_reason": "number_dense",
+          "text_chars": 2124,
+          "number_tokens": 72,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 190
+        },
+        {
+          "excerpt_page": 34,
+          "source_pdf_page": 243,
+          "selection_reason": "narrative",
+          "text_chars": 4517,
+          "number_tokens": 19,
+          "financial_terms": 2,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 35,
+          "source_pdf_page": 245,
+          "selection_reason": "middle_of_section",
+          "text_chars": 3017,
+          "number_tokens": 16,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 43
+        },
+        {
+          "excerpt_page": 36,
+          "source_pdf_page": 282,
+          "selection_reason": "middle_of_section",
+          "text_chars": 3447,
+          "number_tokens": 114,
+          "financial_terms": 19,
+          "images": 0,
+          "drawings": 29
+        },
+        {
+          "excerpt_page": 37,
+          "source_pdf_page": 287,
+          "selection_reason": "number_dense",
+          "text_chars": 8039,
+          "number_tokens": 161,
+          "financial_terms": 8,
+          "images": 0,
+          "drawings": 88
+        },
+        {
+          "excerpt_page": 38,
+          "source_pdf_page": 288,
+          "selection_reason": "narrative",
+          "text_chars": 5499,
+          "number_tokens": 100,
+          "financial_terms": 10,
+          "images": 0,
+          "drawings": 67
+        },
+        {
+          "excerpt_page": 39,
+          "source_pdf_page": 290,
+          "selection_reason": "financial_topic",
+          "text_chars": 5798,
+          "number_tokens": 126,
+          "financial_terms": 24,
+          "images": 0,
+          "drawings": 37
+        },
+        {
+          "excerpt_page": 40,
+          "source_pdf_page": 292,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 1212,
+          "number_tokens": 34,
+          "financial_terms": 13,
+          "images": 0,
+          "drawings": 262
+        },
+        {
+          "excerpt_page": 41,
+          "source_pdf_page": 311,
+          "selection_reason": "narrative",
+          "text_chars": 2743,
+          "number_tokens": 5,
+          "financial_terms": 16,
+          "images": 0,
+          "drawings": 4
+        },
+        {
+          "excerpt_page": 42,
+          "source_pdf_page": 318,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 2004,
+          "number_tokens": 24,
+          "financial_terms": 5,
+          "images": 0,
+          "drawings": 155
+        },
+        {
+          "excerpt_page": 43,
+          "source_pdf_page": 320,
+          "selection_reason": "financial_topic",
+          "text_chars": 3946,
+          "number_tokens": 212,
+          "financial_terms": 7,
+          "images": 0,
+          "drawings": 155
+        },
+        {
+          "excerpt_page": 44,
+          "source_pdf_page": 321,
+          "selection_reason": "middle_of_section",
+          "text_chars": 2239,
+          "number_tokens": 76,
+          "financial_terms": 14,
+          "images": 0,
+          "drawings": 54
+        },
+        {
+          "excerpt_page": 45,
+          "source_pdf_page": 330,
+          "selection_reason": "number_dense",
+          "text_chars": 2299,
+          "number_tokens": 125,
+          "financial_terms": 4,
+          "images": 0,
+          "drawings": 74
+        },
+        {
+          "excerpt_page": 46,
+          "source_pdf_page": 351,
+          "selection_reason": "narrative",
+          "text_chars": 2440,
+          "number_tokens": 7,
+          "financial_terms": 8,
+          "images": 0,
+          "drawings": 2
+        },
+        {
+          "excerpt_page": 47,
+          "source_pdf_page": 358,
+          "selection_reason": "middle_of_section",
+          "text_chars": 1706,
+          "number_tokens": 74,
+          "financial_terms": 4,
+          "images": 0,
+          "drawings": 40
+        },
+        {
+          "excerpt_page": 48,
+          "source_pdf_page": 363,
+          "selection_reason": "number_dense",
+          "text_chars": 2991,
+          "number_tokens": 201,
+          "financial_terms": 8,
+          "images": 1,
+          "drawings": 138
+        },
+        {
+          "excerpt_page": 49,
+          "source_pdf_page": 366,
+          "selection_reason": "financial_topic",
+          "text_chars": 3130,
+          "number_tokens": 160,
+          "financial_terms": 17,
+          "images": 0,
+          "drawings": 270
+        },
+        {
+          "excerpt_page": 50,
+          "source_pdf_page": 376,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 1155,
+          "number_tokens": 21,
+          "financial_terms": 0,
+          "images": 5,
+          "drawings": 10
+        }
+      ]
+    },
+    {
+      "source_file": "AnnualSynnex2025_THA.pdf",
+      "source_sha256": "aa0f6d0cfe13b0038d40e46926021937771e596ddb1cfac3751bd4791c75b9b1",
+      "source_page_count": 278,
+      "excerpt_file": "AnnualSynnex2025_THA_selected50.pdf",
+      "excerpt_sha256": "9d26c3f2866b09e809e1daefa37fc3c00cd4341ae210fcd36185515e2d143754",
+      "excerpt_page_count": 50,
+      "pages": [
+        {
+          "excerpt_page": 1,
+          "source_pdf_page": 1,
+          "selection_reason": "opening_page",
+          "text_chars": 41,
+          "number_tokens": 3,
+          "financial_terms": 0,
+          "images": 4,
+          "drawings": 85
+        },
+        {
+          "excerpt_page": 2,
+          "source_pdf_page": 7,
+          "selection_reason": "financial_topic",
+          "text_chars": 1963,
+          "number_tokens": 82,
+          "financial_terms": 1,
+          "images": 17,
+          "drawings": 89
+        },
+        {
+          "excerpt_page": 3,
+          "source_pdf_page": 14,
+          "selection_reason": "middle_of_section",
+          "text_chars": 135,
+          "number_tokens": 5,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 2
+        },
+        {
+          "excerpt_page": 4,
+          "source_pdf_page": 21,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 2280,
+          "number_tokens": 11,
+          "financial_terms": 0,
+          "images": 21,
+          "drawings": 61
+        },
+        {
+          "excerpt_page": 5,
+          "source_pdf_page": 27,
+          "selection_reason": "number_dense",
+          "text_chars": 4550,
+          "number_tokens": 43,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 15
+        },
+        {
+          "excerpt_page": 6,
+          "source_pdf_page": 29,
+          "selection_reason": "financial_topic",
+          "text_chars": 2574,
+          "number_tokens": 68,
+          "financial_terms": 4,
+          "images": 0,
+          "drawings": 15
+        },
+        {
+          "excerpt_page": 7,
+          "source_pdf_page": 41,
+          "selection_reason": "middle_of_section",
+          "text_chars": 2036,
+          "number_tokens": 7,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 24
+        },
+        {
+          "excerpt_page": 8,
+          "source_pdf_page": 43,
+          "selection_reason": "number_dense",
+          "text_chars": 2655,
+          "number_tokens": 70,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 8
+        },
+        {
+          "excerpt_page": 9,
+          "source_pdf_page": 46,
+          "selection_reason": "narrative",
+          "text_chars": 5806,
+          "number_tokens": 19,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 10,
+          "source_pdf_page": 48,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 1467,
+          "number_tokens": 15,
+          "financial_terms": 1,
+          "images": 38,
+          "drawings": 278
+        },
+        {
+          "excerpt_page": 11,
+          "source_pdf_page": 56,
+          "selection_reason": "narrative",
+          "text_chars": 5333,
+          "number_tokens": 19,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 12,
+          "source_pdf_page": 64,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 3029,
+          "number_tokens": 43,
+          "financial_terms": 0,
+          "images": 18,
+          "drawings": 39
+        },
+        {
+          "excerpt_page": 13,
+          "source_pdf_page": 69,
+          "selection_reason": "middle_of_section",
+          "text_chars": 3603,
+          "number_tokens": 11,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 18
+        },
+        {
+          "excerpt_page": 14,
+          "source_pdf_page": 82,
+          "selection_reason": "financial_topic",
+          "text_chars": 2265,
+          "number_tokens": 64,
+          "financial_terms": 4,
+          "images": 2,
+          "drawings": 27
+        },
+        {
+          "excerpt_page": 15,
+          "source_pdf_page": 83,
+          "selection_reason": "number_dense",
+          "text_chars": 2174,
+          "number_tokens": 47,
+          "financial_terms": 4,
+          "images": 1,
+          "drawings": 36
+        },
+        {
+          "excerpt_page": 16,
+          "source_pdf_page": 91,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 1427,
+          "number_tokens": 6,
+          "financial_terms": 0,
+          "images": 212,
+          "drawings": 16
+        },
+        {
+          "excerpt_page": 17,
+          "source_pdf_page": 97,
+          "selection_reason": "middle_of_section",
+          "text_chars": 2836,
+          "number_tokens": 12,
+          "financial_terms": 0,
+          "images": 4,
+          "drawings": 12
+        },
+        {
+          "excerpt_page": 18,
+          "source_pdf_page": 107,
+          "selection_reason": "narrative",
+          "text_chars": 4364,
+          "number_tokens": 30,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 19,
+          "source_pdf_page": 108,
+          "selection_reason": "number_dense",
+          "text_chars": 1776,
+          "number_tokens": 124,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 16
+        },
+        {
+          "excerpt_page": 20,
+          "source_pdf_page": 110,
+          "selection_reason": "financial_topic",
+          "text_chars": 1983,
+          "number_tokens": 127,
+          "financial_terms": 5,
+          "images": 0,
+          "drawings": 33
+        },
+        {
+          "excerpt_page": 21,
+          "source_pdf_page": 114,
+          "selection_reason": "number_dense",
+          "text_chars": 2370,
+          "number_tokens": 93,
+          "financial_terms": 2,
+          "images": 0,
+          "drawings": 31
+        },
+        {
+          "excerpt_page": 22,
+          "source_pdf_page": 117,
+          "selection_reason": "financial_topic",
+          "text_chars": 2842,
+          "number_tokens": 111,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 17
+        },
+        {
+          "excerpt_page": 23,
+          "source_pdf_page": 120,
+          "selection_reason": "narrative",
+          "text_chars": 5843,
+          "number_tokens": 7,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 24,
+          "source_pdf_page": 125,
+          "selection_reason": "middle_of_section",
+          "text_chars": 4130,
+          "number_tokens": 15,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 25,
+          "source_pdf_page": 130,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 1065,
+          "number_tokens": 5,
+          "financial_terms": 0,
+          "images": 23,
+          "drawings": 47
+        },
+        {
+          "excerpt_page": 26,
+          "source_pdf_page": 145,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 585,
+          "number_tokens": 4,
+          "financial_terms": 0,
+          "images": 7,
+          "drawings": 18
+        },
+        {
+          "excerpt_page": 27,
+          "source_pdf_page": 153,
+          "selection_reason": "middle_of_section",
+          "text_chars": 1686,
+          "number_tokens": 23,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 26
+        },
+        {
+          "excerpt_page": 28,
+          "source_pdf_page": 159,
+          "selection_reason": "financial_topic",
+          "text_chars": 2691,
+          "number_tokens": 124,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 29
+        },
+        {
+          "excerpt_page": 29,
+          "source_pdf_page": 161,
+          "selection_reason": "number_dense",
+          "text_chars": 2285,
+          "number_tokens": 112,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 30
+        },
+        {
+          "excerpt_page": 30,
+          "source_pdf_page": 162,
+          "selection_reason": "narrative",
+          "text_chars": 5839,
+          "number_tokens": 12,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 31,
+          "source_pdf_page": 171,
+          "selection_reason": "number_dense",
+          "text_chars": 4677,
+          "number_tokens": 16,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 6
+        },
+        {
+          "excerpt_page": 32,
+          "source_pdf_page": 172,
+          "selection_reason": "financial_topic",
+          "text_chars": 4753,
+          "number_tokens": 26,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 33,
+          "source_pdf_page": 175,
+          "selection_reason": "narrative",
+          "text_chars": 6034,
+          "number_tokens": 9,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 34,
+          "source_pdf_page": 179,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 88,
+          "number_tokens": 4,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 4
+        },
+        {
+          "excerpt_page": 35,
+          "source_pdf_page": 180,
+          "selection_reason": "middle_of_section",
+          "text_chars": 88,
+          "number_tokens": 4,
+          "financial_terms": 0,
+          "images": 1,
+          "drawings": 4
+        },
+        {
+          "excerpt_page": 36,
+          "source_pdf_page": 196,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 88,
+          "number_tokens": 4,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 4
+        },
+        {
+          "excerpt_page": 37,
+          "source_pdf_page": 207,
+          "selection_reason": "middle_of_section",
+          "text_chars": 88,
+          "number_tokens": 4,
+          "financial_terms": 0,
+          "images": 1,
+          "drawings": 4
+        },
+        {
+          "excerpt_page": 38,
+          "source_pdf_page": 208,
+          "selection_reason": "financial_topic",
+          "text_chars": 88,
+          "number_tokens": 4,
+          "financial_terms": 0,
+          "images": 1,
+          "drawings": 4
+        },
+        {
+          "excerpt_page": 39,
+          "source_pdf_page": 209,
+          "selection_reason": "narrative",
+          "text_chars": 88,
+          "number_tokens": 4,
+          "financial_terms": 0,
+          "images": 1,
+          "drawings": 4
+        },
+        {
+          "excerpt_page": 40,
+          "source_pdf_page": 217,
+          "selection_reason": "number_dense",
+          "text_chars": 88,
+          "number_tokens": 4,
+          "financial_terms": 0,
+          "images": 1,
+          "drawings": 5
+        },
+        {
+          "excerpt_page": 41,
+          "source_pdf_page": 236,
+          "selection_reason": "middle_of_section",
+          "text_chars": 88,
+          "number_tokens": 4,
+          "financial_terms": 0,
+          "images": 1,
+          "drawings": 4
+        },
+        {
+          "excerpt_page": 42,
+          "source_pdf_page": 247,
+          "selection_reason": "number_dense",
+          "text_chars": 2282,
+          "number_tokens": 35,
+          "financial_terms": 0,
+          "images": 3,
+          "drawings": 3
+        },
+        {
+          "excerpt_page": 43,
+          "source_pdf_page": 248,
+          "selection_reason": "financial_topic",
+          "text_chars": 2713,
+          "number_tokens": 54,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 44,
+          "source_pdf_page": 249,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 1604,
+          "number_tokens": 13,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 3
+        },
+        {
+          "excerpt_page": 45,
+          "source_pdf_page": 250,
+          "selection_reason": "narrative",
+          "text_chars": 1606,
+          "number_tokens": 14,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 3
+        },
+        {
+          "excerpt_page": 46,
+          "source_pdf_page": 258,
+          "selection_reason": "narrative",
+          "text_chars": 2584,
+          "number_tokens": 36,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 47,
+          "source_pdf_page": 264,
+          "selection_reason": "middle_of_section",
+          "text_chars": 1176,
+          "number_tokens": 15,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 3
+        },
+        {
+          "excerpt_page": 48,
+          "source_pdf_page": 273,
+          "selection_reason": "financial_topic",
+          "text_chars": 2018,
+          "number_tokens": 74,
+          "financial_terms": 3,
+          "images": 0,
+          "drawings": 30
+        },
+        {
+          "excerpt_page": 49,
+          "source_pdf_page": 275,
+          "selection_reason": "number_dense",
+          "text_chars": 1109,
+          "number_tokens": 79,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 12
+        },
+        {
+          "excerpt_page": 50,
+          "source_pdf_page": 278,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 0,
+          "number_tokens": 0,
+          "financial_terms": 0,
+          "images": 3,
+          "drawings": 644
+        }
+      ]
+    },
+    {
+      "source_file": "onereport_2568TH.pdf",
+      "source_sha256": "2dc35b64c53a5df48ce7ad2ee16ca58fce2296e85816014946097a9f88dcd5dd",
+      "source_page_count": 328,
+      "excerpt_file": "onereport_2568TH_selected50.pdf",
+      "excerpt_sha256": "7d0fc73a05dd6a6ae6e67d1ee1c93d7c47f2f8f9fb69f0ae136d41eecca0c752",
+      "excerpt_page_count": 50,
+      "pages": [
+        {
+          "excerpt_page": 1,
+          "source_pdf_page": 1,
+          "selection_reason": "opening_page",
+          "text_chars": 80,
+          "number_tokens": 3,
+          "financial_terms": 0,
+          "images": 1,
+          "drawings": 65
+        },
+        {
+          "excerpt_page": 2,
+          "source_pdf_page": 5,
+          "selection_reason": "financial_topic",
+          "text_chars": 1211,
+          "number_tokens": 65,
+          "financial_terms": 7,
+          "images": 0,
+          "drawings": 166
+        },
+        {
+          "excerpt_page": 3,
+          "source_pdf_page": 7,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 2,
+          "number_tokens": 1,
+          "financial_terms": 0,
+          "images": 7,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 4,
+          "source_pdf_page": 16,
+          "selection_reason": "middle_of_section",
+          "text_chars": 5134,
+          "number_tokens": 15,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 5,
+          "source_pdf_page": 30,
+          "selection_reason": "number_dense",
+          "text_chars": 3902,
+          "number_tokens": 47,
+          "financial_terms": 2,
+          "images": 0,
+          "drawings": 82
+        },
+        {
+          "excerpt_page": 6,
+          "source_pdf_page": 34,
+          "selection_reason": "narrative",
+          "text_chars": 4894,
+          "number_tokens": 8,
+          "financial_terms": 5,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 7,
+          "source_pdf_page": 45,
+          "selection_reason": "financial_topic",
+          "text_chars": 4827,
+          "number_tokens": 116,
+          "financial_terms": 17,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 8,
+          "source_pdf_page": 49,
+          "selection_reason": "middle_of_section",
+          "text_chars": 2188,
+          "number_tokens": 39,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 75
+        },
+        {
+          "excerpt_page": 9,
+          "source_pdf_page": 54,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 2378,
+          "number_tokens": 162,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 462
+        },
+        {
+          "excerpt_page": 10,
+          "source_pdf_page": 60,
+          "selection_reason": "number_dense",
+          "text_chars": 2321,
+          "number_tokens": 193,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 11,
+          "source_pdf_page": 67,
+          "selection_reason": "financial_topic",
+          "text_chars": 5069,
+          "number_tokens": 5,
+          "financial_terms": 10,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 12,
+          "source_pdf_page": 82,
+          "selection_reason": "middle_of_section",
+          "text_chars": 3008,
+          "number_tokens": 4,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 26
+        },
+        {
+          "excerpt_page": 13,
+          "source_pdf_page": 93,
+          "selection_reason": "number_dense",
+          "text_chars": 3229,
+          "number_tokens": 63,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 81
+        },
+        {
+          "excerpt_page": 14,
+          "source_pdf_page": 95,
+          "selection_reason": "narrative",
+          "text_chars": 6201,
+          "number_tokens": 48,
+          "financial_terms": 1,
+          "images": 3,
+          "drawings": 235
+        },
+        {
+          "excerpt_page": 15,
+          "source_pdf_page": 96,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 3580,
+          "number_tokens": 48,
+          "financial_terms": 0,
+          "images": 8,
+          "drawings": 1338
+        },
+        {
+          "excerpt_page": 16,
+          "source_pdf_page": 114,
+          "selection_reason": "narrative",
+          "text_chars": 5094,
+          "number_tokens": 33,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 17,
+          "source_pdf_page": 115,
+          "selection_reason": "middle_of_section",
+          "text_chars": 3816,
+          "number_tokens": 51,
+          "financial_terms": 2,
+          "images": 0,
+          "drawings": 74
+        },
+        {
+          "excerpt_page": 18,
+          "source_pdf_page": 116,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 2949,
+          "number_tokens": 88,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 186
+        },
+        {
+          "excerpt_page": 19,
+          "source_pdf_page": 117,
+          "selection_reason": "number_dense",
+          "text_chars": 948,
+          "number_tokens": 109,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 356
+        },
+        {
+          "excerpt_page": 20,
+          "source_pdf_page": 119,
+          "selection_reason": "financial_topic",
+          "text_chars": 3833,
+          "number_tokens": 28,
+          "financial_terms": 15,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 21,
+          "source_pdf_page": 133,
+          "selection_reason": "narrative",
+          "text_chars": 4807,
+          "number_tokens": 8,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 22,
+          "source_pdf_page": 148,
+          "selection_reason": "middle_of_section",
+          "text_chars": 3169,
+          "number_tokens": 40,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 6
+        },
+        {
+          "excerpt_page": 23,
+          "source_pdf_page": 150,
+          "selection_reason": "number_dense",
+          "text_chars": 4325,
+          "number_tokens": 50,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 24,
+          "source_pdf_page": 153,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 1605,
+          "number_tokens": 13,
+          "financial_terms": 2,
+          "images": 0,
+          "drawings": 34
+        },
+        {
+          "excerpt_page": 25,
+          "source_pdf_page": 160,
+          "selection_reason": "financial_topic",
+          "text_chars": 3126,
+          "number_tokens": 58,
+          "financial_terms": 2,
+          "images": 0,
+          "drawings": 61
+        },
+        {
+          "excerpt_page": 26,
+          "source_pdf_page": 178,
+          "selection_reason": "narrative",
+          "text_chars": 4911,
+          "number_tokens": 27,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 27,
+          "source_pdf_page": 180,
+          "selection_reason": "middle_of_section",
+          "text_chars": 3353,
+          "number_tokens": 23,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 28,
+          "source_pdf_page": 187,
+          "selection_reason": "financial_topic",
+          "text_chars": 6100,
+          "number_tokens": 131,
+          "financial_terms": 0,
+          "images": 1,
+          "drawings": 2
+        },
+        {
+          "excerpt_page": 29,
+          "source_pdf_page": 191,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 3281,
+          "number_tokens": 68,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 4
+        },
+        {
+          "excerpt_page": 30,
+          "source_pdf_page": 196,
+          "selection_reason": "number_dense",
+          "text_chars": 4751,
+          "number_tokens": 101,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 3
+        },
+        {
+          "excerpt_page": 31,
+          "source_pdf_page": 209,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 3081,
+          "number_tokens": 4,
+          "financial_terms": 7,
+          "images": 1,
+          "drawings": 0
+        },
+        {
+          "excerpt_page": 32,
+          "source_pdf_page": 210,
+          "selection_reason": "financial_topic",
+          "text_chars": 5496,
+          "number_tokens": 195,
+          "financial_terms": 28,
+          "images": 0,
+          "drawings": 179
+        },
+        {
+          "excerpt_page": 33,
+          "source_pdf_page": 211,
+          "selection_reason": "number_dense",
+          "text_chars": 4582,
+          "number_tokens": 126,
+          "financial_terms": 16,
+          "images": 0,
+          "drawings": 198
+        },
+        {
+          "excerpt_page": 34,
+          "source_pdf_page": 213,
+          "selection_reason": "middle_of_section",
+          "text_chars": 4125,
+          "number_tokens": 105,
+          "financial_terms": 19,
+          "images": 0,
+          "drawings": 134
+        },
+        {
+          "excerpt_page": 35,
+          "source_pdf_page": 217,
+          "selection_reason": "narrative",
+          "text_chars": 4161,
+          "number_tokens": 54,
+          "financial_terms": 1,
+          "images": 0,
+          "drawings": 133
+        },
+        {
+          "excerpt_page": 36,
+          "source_pdf_page": 237,
+          "selection_reason": "narrative",
+          "text_chars": 2634,
+          "number_tokens": 5,
+          "financial_terms": 6,
+          "images": 0,
+          "drawings": 2
+        },
+        {
+          "excerpt_page": 37,
+          "source_pdf_page": 246,
+          "selection_reason": "middle_of_section",
+          "text_chars": 2029,
+          "number_tokens": 3,
+          "financial_terms": 9,
+          "images": 0,
+          "drawings": 3
+        },
+        {
+          "excerpt_page": 38,
+          "source_pdf_page": 254,
+          "selection_reason": "financial_topic",
+          "text_chars": 2663,
+          "number_tokens": 66,
+          "financial_terms": 19,
+          "images": 0,
+          "drawings": 169
+        },
+        {
+          "excerpt_page": 39,
+          "source_pdf_page": 256,
+          "selection_reason": "number_dense",
+          "text_chars": 2736,
+          "number_tokens": 75,
+          "financial_terms": 16,
+          "images": 0,
+          "drawings": 193
+        },
+        {
+          "excerpt_page": 40,
+          "source_pdf_page": 257,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 2728,
+          "number_tokens": 75,
+          "financial_terms": 16,
+          "images": 0,
+          "drawings": 191
+        },
+        {
+          "excerpt_page": 41,
+          "source_pdf_page": 266,
+          "selection_reason": "narrative",
+          "text_chars": 2654,
+          "number_tokens": 67,
+          "financial_terms": 11,
+          "images": 0,
+          "drawings": 161
+        },
+        {
+          "excerpt_page": 42,
+          "source_pdf_page": 270,
+          "selection_reason": "number_dense",
+          "text_chars": 2046,
+          "number_tokens": 121,
+          "financial_terms": 2,
+          "images": 0,
+          "drawings": 152
+        },
+        {
+          "excerpt_page": 43,
+          "source_pdf_page": 279,
+          "selection_reason": "middle_of_section",
+          "text_chars": 1211,
+          "number_tokens": 22,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 61
+        },
+        {
+          "excerpt_page": 44,
+          "source_pdf_page": 283,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 2414,
+          "number_tokens": 107,
+          "financial_terms": 4,
+          "images": 0,
+          "drawings": 262
+        },
+        {
+          "excerpt_page": 45,
+          "source_pdf_page": 290,
+          "selection_reason": "financial_topic",
+          "text_chars": 2000,
+          "number_tokens": 69,
+          "financial_terms": 15,
+          "images": 0,
+          "drawings": 77
+        },
+        {
+          "excerpt_page": 46,
+          "source_pdf_page": 300,
+          "selection_reason": "number_dense",
+          "text_chars": 2310,
+          "number_tokens": 90,
+          "financial_terms": 3,
+          "images": 0,
+          "drawings": 183
+        },
+        {
+          "excerpt_page": 47,
+          "source_pdf_page": 304,
+          "selection_reason": "narrative",
+          "text_chars": 2724,
+          "number_tokens": 7,
+          "financial_terms": 0,
+          "images": 0,
+          "drawings": 9
+        },
+        {
+          "excerpt_page": 48,
+          "source_pdf_page": 312,
+          "selection_reason": "middle_of_section",
+          "text_chars": 2120,
+          "number_tokens": 64,
+          "financial_terms": 5,
+          "images": 0,
+          "drawings": 185
+        },
+        {
+          "excerpt_page": 49,
+          "source_pdf_page": 313,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 2066,
+          "number_tokens": 64,
+          "financial_terms": 4,
+          "images": 0,
+          "drawings": 185
+        },
+        {
+          "excerpt_page": 50,
+          "source_pdf_page": 322,
+          "selection_reason": "financial_topic",
+          "text_chars": 2700,
+          "number_tokens": 69,
+          "financial_terms": 28,
+          "images": 0,
+          "drawings": 47
+        }
+      ]
+    },
+    {
+      "source_file": "y2025-onereport-th.pdf",
+      "source_sha256": "e10c025a7e24671b7ffbfb668d477f6122912baff45ba4606c0582f8f2969b44",
+      "source_page_count": 180,
+      "excerpt_file": "y2025-onereport-th_selected50.pdf",
+      "excerpt_sha256": "be19231791ba1215764c74eea9c9f0f70e7499a633ccdabc2c23f1b0baa03584",
+      "excerpt_page_count": 50,
+      "pages": [
+        {
+          "excerpt_page": 1,
+          "source_pdf_page": 1,
+          "selection_reason": "opening_page",
+          "text_chars": 1509,
+          "number_tokens": 24,
+          "financial_terms": 0,
+          "images": 5,
+          "drawings": 544
+        },
+        {
+          "excerpt_page": 2,
+          "source_pdf_page": 4,
+          "selection_reason": "financial_topic",
+          "text_chars": 8320,
+          "number_tokens": 365,
+          "financial_terms": 43,
+          "images": 2,
+          "drawings": 210
+        },
+        {
+          "excerpt_page": 3,
+          "source_pdf_page": 5,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 5579,
+          "number_tokens": 136,
+          "financial_terms": 6,
+          "images": 11,
+          "drawings": 161
+        },
+        {
+          "excerpt_page": 4,
+          "source_pdf_page": 9,
+          "selection_reason": "middle_of_section",
+          "text_chars": 8737,
+          "number_tokens": 105,
+          "financial_terms": 6,
+          "images": 2,
+          "drawings": 25
+        },
+        {
+          "excerpt_page": 5,
+          "source_pdf_page": 12,
+          "selection_reason": "number_dense",
+          "text_chars": 7434,
+          "number_tokens": 201,
+          "financial_terms": 23,
+          "images": 3,
+          "drawings": 254
+        },
+        {
+          "excerpt_page": 6,
+          "source_pdf_page": 19,
+          "selection_reason": "number_dense",
+          "text_chars": 4112,
+          "number_tokens": 144,
+          "financial_terms": 2,
+          "images": 2,
+          "drawings": 269
+        },
+        {
+          "excerpt_page": 7,
+          "source_pdf_page": 23,
+          "selection_reason": "financial_topic",
+          "text_chars": 8264,
+          "number_tokens": 378,
+          "financial_terms": 2,
+          "images": 2,
+          "drawings": 830
+        },
+        {
+          "excerpt_page": 8,
+          "source_pdf_page": 26,
+          "selection_reason": "narrative",
+          "text_chars": 8633,
+          "number_tokens": 29,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 18
+        },
+        {
+          "excerpt_page": 9,
+          "source_pdf_page": 27,
+          "selection_reason": "middle_of_section",
+          "text_chars": 8399,
+          "number_tokens": 38,
+          "financial_terms": 10,
+          "images": 2,
+          "drawings": 21
+        },
+        {
+          "excerpt_page": 10,
+          "source_pdf_page": 35,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 7333,
+          "number_tokens": 50,
+          "financial_terms": 2,
+          "images": 5,
+          "drawings": 81
+        },
+        {
+          "excerpt_page": 11,
+          "source_pdf_page": 38,
+          "selection_reason": "financial_topic",
+          "text_chars": 5674,
+          "number_tokens": 187,
+          "financial_terms": 29,
+          "images": 2,
+          "drawings": 119
+        },
+        {
+          "excerpt_page": 12,
+          "source_pdf_page": 43,
+          "selection_reason": "number_dense",
+          "text_chars": 9618,
+          "number_tokens": 163,
+          "financial_terms": 11,
+          "images": 2,
+          "drawings": 108
+        },
+        {
+          "excerpt_page": 13,
+          "source_pdf_page": 45,
+          "selection_reason": "middle_of_section",
+          "text_chars": 4791,
+          "number_tokens": 92,
+          "financial_terms": 1,
+          "images": 2,
+          "drawings": 44
+        },
+        {
+          "excerpt_page": 14,
+          "source_pdf_page": 47,
+          "selection_reason": "narrative",
+          "text_chars": 8401,
+          "number_tokens": 48,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 44
+        },
+        {
+          "excerpt_page": 15,
+          "source_pdf_page": 50,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 2431,
+          "number_tokens": 29,
+          "financial_terms": 0,
+          "images": 18,
+          "drawings": 13
+        },
+        {
+          "excerpt_page": 16,
+          "source_pdf_page": 63,
+          "selection_reason": "middle_of_section",
+          "text_chars": 10514,
+          "number_tokens": 47,
+          "financial_terms": 3,
+          "images": 2,
+          "drawings": 8
+        },
+        {
+          "excerpt_page": 17,
+          "source_pdf_page": 64,
+          "selection_reason": "financial_topic",
+          "text_chars": 7726,
+          "number_tokens": 349,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 472
+        },
+        {
+          "excerpt_page": 18,
+          "source_pdf_page": 65,
+          "selection_reason": "number_dense",
+          "text_chars": 7921,
+          "number_tokens": 157,
+          "financial_terms": 7,
+          "images": 2,
+          "drawings": 119
+        },
+        {
+          "excerpt_page": 19,
+          "source_pdf_page": 71,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 8840,
+          "number_tokens": 106,
+          "financial_terms": 5,
+          "images": 3,
+          "drawings": 143
+        },
+        {
+          "excerpt_page": 20,
+          "source_pdf_page": 72,
+          "selection_reason": "narrative",
+          "text_chars": 11084,
+          "number_tokens": 33,
+          "financial_terms": 3,
+          "images": 2,
+          "drawings": 26
+        },
+        {
+          "excerpt_page": 21,
+          "source_pdf_page": 79,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 3670,
+          "number_tokens": 35,
+          "financial_terms": 14,
+          "images": 5,
+          "drawings": 11
+        },
+        {
+          "excerpt_page": 22,
+          "source_pdf_page": 81,
+          "selection_reason": "middle_of_section",
+          "text_chars": 1533,
+          "number_tokens": 29,
+          "financial_terms": 0,
+          "images": 4,
+          "drawings": 8
+        },
+        {
+          "excerpt_page": 23,
+          "source_pdf_page": 85,
+          "selection_reason": "narrative",
+          "text_chars": 7928,
+          "number_tokens": 205,
+          "financial_terms": 25,
+          "images": 3,
+          "drawings": 16
+        },
+        {
+          "excerpt_page": 24,
+          "source_pdf_page": 86,
+          "selection_reason": "number_dense",
+          "text_chars": 27097,
+          "number_tokens": 392,
+          "financial_terms": 14,
+          "images": 3,
+          "drawings": 15
+        },
+        {
+          "excerpt_page": 25,
+          "source_pdf_page": 87,
+          "selection_reason": "financial_topic",
+          "text_chars": 11221,
+          "number_tokens": 277,
+          "financial_terms": 29,
+          "images": 3,
+          "drawings": 16
+        },
+        {
+          "excerpt_page": 26,
+          "source_pdf_page": 94,
+          "selection_reason": "financial_topic",
+          "text_chars": 5953,
+          "number_tokens": 42,
+          "financial_terms": 40,
+          "images": 2,
+          "drawings": 8
+        },
+        {
+          "excerpt_page": 27,
+          "source_pdf_page": 99,
+          "selection_reason": "narrative",
+          "text_chars": 8218,
+          "number_tokens": 48,
+          "financial_terms": 9,
+          "images": 2,
+          "drawings": 9
+        },
+        {
+          "excerpt_page": 28,
+          "source_pdf_page": 100,
+          "selection_reason": "middle_of_section",
+          "text_chars": 4314,
+          "number_tokens": 132,
+          "financial_terms": 21,
+          "images": 2,
+          "drawings": 85
+        },
+        {
+          "excerpt_page": 29,
+          "source_pdf_page": 104,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 4927,
+          "number_tokens": 213,
+          "financial_terms": 10,
+          "images": 2,
+          "drawings": 108
+        },
+        {
+          "excerpt_page": 30,
+          "source_pdf_page": 105,
+          "selection_reason": "number_dense",
+          "text_chars": 4875,
+          "number_tokens": 231,
+          "financial_terms": 8,
+          "images": 2,
+          "drawings": 117
+        },
+        {
+          "excerpt_page": 31,
+          "source_pdf_page": 109,
+          "selection_reason": "narrative",
+          "text_chars": 6269,
+          "number_tokens": 117,
+          "financial_terms": 7,
+          "images": 2,
+          "drawings": 54
+        },
+        {
+          "excerpt_page": 32,
+          "source_pdf_page": 115,
+          "selection_reason": "number_dense",
+          "text_chars": 4597,
+          "number_tokens": 227,
+          "financial_terms": 15,
+          "images": 2,
+          "drawings": 132
+        },
+        {
+          "excerpt_page": 33,
+          "source_pdf_page": 116,
+          "selection_reason": "financial_topic",
+          "text_chars": 5504,
+          "number_tokens": 161,
+          "financial_terms": 26,
+          "images": 2,
+          "drawings": 104
+        },
+        {
+          "excerpt_page": 34,
+          "source_pdf_page": 117,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 4788,
+          "number_tokens": 184,
+          "financial_terms": 11,
+          "images": 2,
+          "drawings": 138
+        },
+        {
+          "excerpt_page": 35,
+          "source_pdf_page": 118,
+          "selection_reason": "middle_of_section",
+          "text_chars": 3309,
+          "number_tokens": 114,
+          "financial_terms": 5,
+          "images": 2,
+          "drawings": 71
+        },
+        {
+          "excerpt_page": 36,
+          "source_pdf_page": 130,
+          "selection_reason": "number_dense",
+          "text_chars": 4759,
+          "number_tokens": 251,
+          "financial_terms": 2,
+          "images": 2,
+          "drawings": 110
+        },
+        {
+          "excerpt_page": 37,
+          "source_pdf_page": 132,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 4467,
+          "number_tokens": 177,
+          "financial_terms": 6,
+          "images": 2,
+          "drawings": 165
+        },
+        {
+          "excerpt_page": 38,
+          "source_pdf_page": 133,
+          "selection_reason": "financial_topic",
+          "text_chars": 4627,
+          "number_tokens": 210,
+          "financial_terms": 16,
+          "images": 2,
+          "drawings": 90
+        },
+        {
+          "excerpt_page": 39,
+          "source_pdf_page": 135,
+          "selection_reason": "middle_of_section",
+          "text_chars": 3774,
+          "number_tokens": 165,
+          "financial_terms": 6,
+          "images": 2,
+          "drawings": 92
+        },
+        {
+          "excerpt_page": 40,
+          "source_pdf_page": 144,
+          "selection_reason": "narrative",
+          "text_chars": 6423,
+          "number_tokens": 137,
+          "financial_terms": 4,
+          "images": 2,
+          "drawings": 8
+        },
+        {
+          "excerpt_page": 41,
+          "source_pdf_page": 148,
+          "selection_reason": "financial_topic",
+          "text_chars": 4885,
+          "number_tokens": 164,
+          "financial_terms": 15,
+          "images": 2,
+          "drawings": 80
+        },
+        {
+          "excerpt_page": 42,
+          "source_pdf_page": 153,
+          "selection_reason": "middle_of_section",
+          "text_chars": 2044,
+          "number_tokens": 34,
+          "financial_terms": 0,
+          "images": 4,
+          "drawings": 9
+        },
+        {
+          "excerpt_page": 43,
+          "source_pdf_page": 155,
+          "selection_reason": "narrative",
+          "text_chars": 9081,
+          "number_tokens": 124,
+          "financial_terms": 1,
+          "images": 4,
+          "drawings": 14
+        },
+        {
+          "excerpt_page": 44,
+          "source_pdf_page": 156,
+          "selection_reason": "number_dense",
+          "text_chars": 10522,
+          "number_tokens": 170,
+          "financial_terms": 0,
+          "images": 3,
+          "drawings": 12
+        },
+        {
+          "excerpt_page": 45,
+          "source_pdf_page": 160,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 8559,
+          "number_tokens": 122,
+          "financial_terms": 0,
+          "images": 5,
+          "drawings": 16
+        },
+        {
+          "excerpt_page": 46,
+          "source_pdf_page": 169,
+          "selection_reason": "number_dense",
+          "text_chars": 6724,
+          "number_tokens": 351,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 20415
+        },
+        {
+          "excerpt_page": 47,
+          "source_pdf_page": 170,
+          "selection_reason": "financial_topic",
+          "text_chars": 11081,
+          "number_tokens": 445,
+          "financial_terms": 2,
+          "images": 2,
+          "drawings": 11424
+        },
+        {
+          "excerpt_page": 48,
+          "source_pdf_page": 171,
+          "selection_reason": "middle_of_section",
+          "text_chars": 4295,
+          "number_tokens": 84,
+          "financial_terms": 0,
+          "images": 2,
+          "drawings": 45
+        },
+        {
+          "excerpt_page": 49,
+          "source_pdf_page": 173,
+          "selection_reason": "narrative",
+          "text_chars": 8945,
+          "number_tokens": 31,
+          "financial_terms": 2,
+          "images": 3,
+          "drawings": 8
+        },
+        {
+          "excerpt_page": 50,
+          "source_pdf_page": 178,
+          "selection_reason": "visual_or_chart_candidate",
+          "text_chars": 6488,
+          "number_tokens": 38,
+          "financial_terms": 1,
+          "images": 10,
+          "drawings": 37
+        }
+      ]
+    }
+  ]
+}
