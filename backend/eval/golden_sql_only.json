@@ -1,0 +1,1652 @@
+[
+ {
+  "category": "structured_sql",
+  "question": "กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2563 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "23,040 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 23040.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 0
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าใช้จ่ายต่อรายได้ (%) ปี 2563 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "42.52 %",
+  "grader": {
+   "type": "numeric",
+   "value": 42.52
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 1
+ },
+ {
+  "category": "structured_sql",
+  "question": "ผลตอบแทนต่อส่วนของเจ้าของ (ROE) (%) ปี 2563 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "8.25 %",
+  "grader": {
+   "type": "numeric",
+   "value": 8.25
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 2
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายได้ค่าธรรมเนียมและบริการสุทธิ (งบการเงินรวม) ปี 2563 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "17,564 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 17564.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 3
+ },
+ {
+  "category": "structured_sql",
+  "question": "ส่วนของเจ้าของ ปี 2563 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "289,179 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 289179.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 4
+ },
+ {
+  "category": "structured_sql",
+  "question": "อัตราส่วนเงินกองทุนชั้นที่ 1 - กลุ่มธุรกิจทางการเงิน ปี 2563 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "14.51 %",
+  "grader": {
+   "type": "numeric",
+   "value": 14.51
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 5
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินให้สินเชื่อด้อยคุณภาพต่อเงินให้สินเชื่อรวม (%) ปี 2563 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "2.00 %",
+  "grader": {
+   "type": "numeric",
+   "value": 2.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 6
+ },
+ {
+  "category": "structured_sql",
+  "question": "กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2564 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "33,794 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 33794.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 7
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าใช้จ่ายต่อรายได้ (%) ปี 2564 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "39.83 %",
+  "grader": {
+   "type": "numeric",
+   "value": 39.83
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 8
+ },
+ {
+  "category": "structured_sql",
+  "question": "มูลค่าตามบัญชีต่อหุ้น ปี 2564 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "43.26 บาท",
+  "grader": {
+   "type": "numeric",
+   "value": 43.26
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 9
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายได้ดอกเบี้ย (งบการเงินรวม) ปี 2564 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "99,804 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 99804.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 10
+ },
+ {
+  "category": "structured_sql",
+  "question": "หนี้สินรวม ปี 2564 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "2,180,872 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 2180872.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 11
+ },
+ {
+  "category": "structured_sql",
+  "question": "อัตราส่วนเงินกองทุนชั้นที่ 1 - กลุ่มธุรกิจทางการเงิน ปี 2564 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "15.60 %",
+  "grader": {
+   "type": "numeric",
+   "value": 15.6
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 12
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินให้สินเชื่อต่อเงินรับฝาก ปี 2564 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "106.25 %",
+  "grader": {
+   "type": "numeric",
+   "value": 106.25
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 13
+ },
+ {
+  "category": "structured_sql",
+  "question": "การให้เช่าซื้อและสัญญาเช่าทางการเงิน (โครงสร้างรายได้) ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "32,748",
+  "grader": {
+   "type": "numeric",
+   "value": 32748.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 14
+ },
+ {
+  "category": "structured_sql",
+  "question": "กำไรสุทธิ ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "30,889,697 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 30889697.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 15
+ },
+ {
+  "category": "structured_sql",
+  "question": "ขาดทุนจากการจำหน่ายที่ดิน อาคารและอุปกรณ์ ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "322,445 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 322445.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 16
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าใช้จ่ายค้างจ่ายอื่นเพิ่มขึ้น (ลดลง) ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "933,559",
+  "grader": {
+   "type": "numeric",
+   "value": 933559.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 17
+ },
+ {
+  "category": "structured_sql",
+  "question": "ตราสารหนี้ที่ออกและเงินกู้ยืม (งบการเงินรวม) ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "98,198,641 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 98198641.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 18
+ },
+ {
+  "category": "structured_sql",
+  "question": "ผลตอบแทนต่อสินทรัพย์ (ROA) ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1.20 %",
+  "grader": {
+   "type": "numeric",
+   "value": 1.2
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 19
+ },
+ {
+  "category": "structured_sql",
+  "question": "ภาษีเงินได้ ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "7,838,517 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 7838517.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 20
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมรายได้จากการดำเนินงาน (งบการเงินรวม) ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "116,416 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 116416.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 21
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมรายได้ทั้งหมด (โครงสร้างรายได้) ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "145,359",
+  "grader": {
+   "type": "numeric",
+   "value": 145359.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 22
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมหนี้สิน (งบการเงินรวม) ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "2,295,191,798 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 2295191798.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 23
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายได้ดอกเบี้ย (งบการเงินรวม) ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "105,428 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 105428.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 24
+ },
+ {
+  "category": "structured_sql",
+  "question": "สินทรัพย์รวม ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "2,636,951 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 2636951.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 25
+ },
+ {
+  "category": "structured_sql",
+  "question": "ส่วนได้เสียที่ไม่มีอำนาจควบคุม (งบการเงินรวม) ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "840,141 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 840141.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 26
+ },
+ {
+  "category": "structured_sql",
+  "question": "หัก ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "26,652 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 26652.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 27
+ },
+ {
+  "category": "structured_sql",
+  "question": "อัตราส่วนเงินกองทุนทั้งสิ้น - กลุ่มธุรกิจทางการเงิน (%) ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "20.23 %",
+  "grader": {
+   "type": "numeric",
+   "value": 20.23
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 28
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินลงทุนในบริษัทย่อย บริษัทร่วมและการร่วมค้าสุทธิ ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "16,580,435 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 16580435.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 29
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินสดจ่ายเพื่อซื้อสินทรัพย์ไม่มีตัวตน ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "(1,312,901) พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": -1312901.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 30
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินสดรับจากเงินกู้ยืมและการออกตราสารหนี้ ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "45,501,864 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 45501864.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 31
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินให้สินเชื่อ (ร้อยละ) ปี 2565 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "46.57",
+  "grader": {
+   "type": "numeric",
+   "value": 46.57
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 32
+ },
+ {
+  "category": "structured_sql",
+  "question": "(กำไร) ขาดทุนจากการเปลี่ยนแปลงเงื่อนไขสุทธิ (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "(80) ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": -80.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 33
+ },
+ {
+  "category": "structured_sql",
+  "question": "- วงเงินสินเชื่อที่ยังไม่ได้เบิกใช้ (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "60,153 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 60153.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 34
+ },
+ {
+  "category": "structured_sql",
+  "question": "1 ปี และ 1 ปีขึ้นไป (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "436,882 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 436882.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 35
+ },
+ {
+  "category": "structured_sql",
+  "question": "6 เดือน ไม่ถึง 1 ปี (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "39,929 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 39929.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 36
+ },
+ {
+  "category": "structured_sql",
+  "question": "การรับอาวัลตั๋วเงิน (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1,111 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 1111.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 37
+ },
+ {
+  "category": "structured_sql",
+  "question": "กำไรก่อนภาษีเงินได้ (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "41,496",
+  "grader": {
+   "type": "numeric",
+   "value": 41496.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 38
+ },
+ {
+  "category": "structured_sql",
+  "question": "กำไรจากการดำเนินงาน ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "77,113 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 77113.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 39
+ },
+ {
+  "category": "structured_sql",
+  "question": "กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "32,929 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 32929.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 40
+ },
+ {
+  "category": "structured_sql",
+  "question": "ขาดทุนจากการด้อยค่าของทรัพย์สินรอการขาย ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "758,585 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 758585.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 41
+ },
+ {
+  "category": "structured_sql",
+  "question": "ครบกำหนดชำระภายในหนึ่งปี (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "958 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 958.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 42
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าความนิยมและสินทรัพย์ไม่มีตัวตนอื่นสุทธิ ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "31,540,062 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 31540062.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 43
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าธรรมเนียมจากธุรกิจเช่าซื้อ ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "14%",
+  "grader": {
+   "type": "numeric",
+   "value": 14.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 44
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าใช้จ่ายค้างจ่าย (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "20,849 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 20849.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 45
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าใช้จ่ายจ่ายล่วงหน้า (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1,132 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 1132.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 46
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าใช้จ่ายเกี่ยวกับพนักงาน (ค่าใช้จ่ายจากการดำเนินงาน) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "32,152 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 32152.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 47
+ },
+ {
+  "category": "structured_sql",
+  "question": "จ่ายคืนเมื่อทวงถาม (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "50,732 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 50732.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 48
+ },
+ {
+  "category": "structured_sql",
+  "question": "ตราสารหนี้ภาคเอกชน ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "18,513 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 18513.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 49
+ },
+ {
+  "category": "structured_sql",
+  "question": "ตั๋วแลกเงิน (งบการเงินรวม รวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 1.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 50
+ },
+ {
+  "category": "structured_sql",
+  "question": "ต้นทุนของมูลค่าเงินสำรองสำหรับการป้องกันความเสี่ยง (งบการเงินรวมยอดคงเหลือต้นปี) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "(243)",
+  "grader": {
+   "type": "numeric",
+   "value": -243.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 51
+ },
+ {
+  "category": "structured_sql",
+  "question": "ทุนที่ออกและชำระแล้ว ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "73,558 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 73558.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 52
+ },
+ {
+  "category": "structured_sql",
+  "question": "ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "35,617 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 35617.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 53
+ },
+ {
+  "category": "structured_sql",
+  "question": "ผลตอบแทนต่อส่วนของเจ้าของ (ROE) (%) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "9.28 %",
+  "grader": {
+   "type": "numeric",
+   "value": 9.28
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 54
+ },
+ {
+  "category": "structured_sql",
+  "question": "ภาษีเงินได้ ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "8,364,113 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 8364113.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 55
+ },
+ {
+  "category": "structured_sql",
+  "question": "ภาษีเงินได้สำหรับปีปัจจุบัน (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "5,971 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 5971.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 56
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมค่าใช้จ่ายจากการดำเนินงาน ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "61,835 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 61835.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 57
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมรายได้จากการดำเนินงาน (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "138,948 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 138948.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 58
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมรายได้ทั้งหมด (โครงสร้างรายได้) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "187,190",
+  "grader": {
+   "type": "numeric",
+   "value": 187190.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 59
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมส่วนของธนาคาร (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "368,453,586 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 368453586.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 60
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมเงินกองทุนชั้นที่ 2 ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "79,388 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 79388.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 61
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมเงินให้สินเชื่อแก่ลูกหนี้ (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "2,000,537 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 2000537.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 62
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมเงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับสุทธิ (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1,701,805 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 1701805.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 63
+ },
+ {
+  "category": "structured_sql",
+  "question": "ระดับความเสี่ยงต่ำ (งบการเงินรวม การจัดชั้นหนี้ ชั้นที่ 1) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "707,280 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 707280.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 64
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายการระหว่างธนาคาร และตลาดเงิน (มูลค่า ยุติธรรมถือ ตามยอด คงเหลือ) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "323,996 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 323996.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 65
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายการระหว่างธนาคาร และตลาดเงินสุทธิ (รวมมูลค่า ยุติธรรม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "507,974 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 507974.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 66
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายการระหว่างธนาคารและตลาดเงินสุทธิ ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "507,974,332 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 507974332.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 67
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายได้ค้างรับ (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "989 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 989.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 68
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายได้อื่น (โครงสร้างรายได้) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "3,555",
+  "grader": {
+   "type": "numeric",
+   "value": 3555.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 69
+ },
+ {
+  "category": "structured_sql",
+  "question": "ลูกหนี้ตามสัญญาเช่าซื้อ (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "392,179 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 392179.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 70
+ },
+ {
+  "category": "structured_sql",
+  "question": "สถาบันการเงินเฉพาะกิจ (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "25,880 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 25880.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 71
+ },
+ {
+  "category": "structured_sql",
+  "question": "สินทรัพย์ภาษีเงินได้รอตัดบัญชี ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "6,086,001 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 6086001.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 72
+ },
+ {
+  "category": "structured_sql",
+  "question": "ส่วนของเจ้าของ ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "371,454 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 371454.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 73
+ },
+ {
+  "category": "structured_sql",
+  "question": "ส่วนเกินมูลค่าเงินลงทุนในตราสารหนี้ตัดจำหน่าย ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "353,535 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 353535.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 74
+ },
+ {
+  "category": "structured_sql",
+  "question": "หนี้สินอนุพันธ์ - เพื่อป้องกันความเสี่ยง แบบพลวัต (รวมมูลค่า ยุติธรรม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "3,884 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 3884.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 75
+ },
+ {
+  "category": "structured_sql",
+  "question": "หลักประกันที่รับมาจากคู่สัญญา (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "8,662 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 8662.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 76
+ },
+ {
+  "category": "structured_sql",
+  "question": "หัก ภาษีเงินได้ และส่วนได้เสียที่ไม่มีอำนาจควบคุม ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "8,567 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 8567.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 77
+ },
+ {
+  "category": "structured_sql",
+  "question": "องค์ประกอบอื่นของส่วนของเจ้าของ (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "3,678,725 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 3678725.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 78
+ },
+ {
+  "category": "structured_sql",
+  "question": "อัตราส่วนค่าใช้จ่ายต่อรายได้ (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "44.5% %",
+  "grader": {
+   "type": "numeric",
+   "value": 44.5
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 79
+ },
+ {
+  "category": "structured_sql",
+  "question": "อัตราส่วนเงินกองทุนทั้งสิ้น - กลุ่มธุรกิจทางการเงิน ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "20.34 %",
+  "grader": {
+   "type": "numeric",
+   "value": 20.34
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 80
+ },
+ {
+  "category": "structured_sql",
+  "question": "อัตราส่วนเงินให้สินเชื่อต่อเงินรับฝากและหุ้นกู้ ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "107% %",
+  "grader": {
+   "type": "numeric",
+   "value": 107.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 81
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินยูโร (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "914 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 914.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 82
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินลงทุนในตราสารหนี้ (ร้อยละ) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "0.95",
+  "grader": {
+   "type": "numeric",
+   "value": 0.95
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 83
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินสด (ยอดคงเหลือ) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "28,170 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 28170.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 84
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินสดจ่ายดอกเบี้ย ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "(20,010,682)",
+  "grader": {
+   "type": "numeric",
+   "value": -20010682.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 85
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินสดรับจากการจำหน่ายเงินลงทุนในหลักทรัพย์ ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "61,169,022 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 61169022.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 86
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินสดและรายการเทียบเท่าเงินสดเพิ่มขึ้นสุทธิ ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "149 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 149.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 87
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินเยน (งบการเงินรวม) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "43,422 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 43422.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 88
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินให้สินเชื่อด้อยคุณภาพต่อเงินให้สินเชื่อรวม (%) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "2.53 %",
+  "grader": {
+   "type": "numeric",
+   "value": 2.53
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 89
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินให้สินเชื่อแก่ลูกหนี้ และดอกเบี้ยค้างรับสุทธิ (ยอดคงเหลือ) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1,925,455 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 1925455.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 90
+ },
+ {
+  "category": "structured_sql",
+  "question": "เลตเตอร์ออฟเครดิต (งบการเงินเฉพาะธนาคาร) ปี 2566 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "7,004 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 7004.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 91
+ },
+ {
+  "category": "structured_sql",
+  "question": "- การค้ำประกันอื่น (งบการเงินรวม) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "62,694 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 62694.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 92
+ },
+ {
+  "category": "structured_sql",
+  "question": "- อื่น ๆ (งบการเงินรวม) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "15,837 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 15837.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 93
+ },
+ {
+  "category": "structured_sql",
+  "question": "29. นางธิดารัตน์ เศรษฐวรวิจิตร (31 ธันวาคม กรรมการ/ผู้บริหาร) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1,000 หุ้น",
+  "grader": {
+   "type": "numeric",
+   "value": 1000.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 94
+ },
+ {
+  "category": "structured_sql",
+  "question": "การค้ำประกันการกู้ยืมเงิน (งบการเงินรวม) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "4,190 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 4190.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 95
+ },
+ {
+  "category": "structured_sql",
+  "question": "การเติบโตของเงินให้สินเชื่อ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "-6.0% %",
+  "grader": {
+   "type": "numeric",
+   "value": -6.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 96
+ },
+ {
+  "category": "structured_sql",
+  "question": "กำไรขาดทุนเบ็ดเสร็จอื่น ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "11,884 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 11884.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 97
+ },
+ {
+  "category": "structured_sql",
+  "question": "กำไรที่ยังไม่เกิดขึ้นจริงจากการตีมูลค่าอนุพันธ์ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "(1,719,943)",
+  "grader": {
+   "type": "numeric",
+   "value": -1719943.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 98
+ },
+ {
+  "category": "structured_sql",
+  "question": "กำไรสุทธิต่อหุ้น (บาท) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "4.04 %",
+  "grader": {
+   "type": "numeric",
+   "value": 4.04
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 99
+ },
+ {
+  "category": "structured_sql",
+  "question": "ขาดทุนจากการด้อยค่าของสินทรัพย์อื่น (โอนกลับ) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "52,460 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 52460.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 100
+ },
+ {
+  "category": "structured_sql",
+  "question": "ครบกำหนดชำระหลังจากหนึ่งปีถึงห้าปี (งบการเงินเฉพาะธนาคาร) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1,521 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 1521.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 101
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าธรรมเนียมจากการเป็นตัวแทนจำหน่ายประกัน ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "12%",
+  "grader": {
+   "type": "numeric",
+   "value": 12.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 102
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าเผื่อการด้อยค่า ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "(26)",
+  "grader": {
+   "type": "numeric",
+   "value": -26.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 103
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าใช้จ่ายค้างจ่ายอื่นเพิ่มขึ้น (ลดลง) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "2,098,110",
+  "grader": {
+   "type": "numeric",
+   "value": 2098110.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 104
+ },
+ {
+  "category": "structured_sql",
+  "question": "ค่าใช้จ่ายต่อรายได้ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "44.45 %",
+  "grader": {
+   "type": "numeric",
+   "value": 44.45
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 105
+ },
+ {
+  "category": "structured_sql",
+  "question": "จำนวนหุ้นสามัญถัวเฉลี่ยถ่วงน้ำหนัก (หุ้น) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "7,355,761,773 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 7355761773.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 106
+ },
+ {
+  "category": "structured_sql",
+  "question": "ตราสารทุนที่ไม่อยู่ในความต้องการของตลาดต่างประเทศ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "3 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 3.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 107
+ },
+ {
+  "category": "structured_sql",
+  "question": "ตั๋วเงิน (งบการเงินเฉพาะธนาคาร) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "348,903 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 348903.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 108
+ },
+ {
+  "category": "structured_sql",
+  "question": "ต่างประเทศ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "19,575 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 19575.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 109
+ },
+ {
+  "category": "structured_sql",
+  "question": "ที่ดิน อาคาร และอุปกรณ์สุทธิ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "36,462 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 36462.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 110
+ },
+ {
+  "category": "structured_sql",
+  "question": "บัตรเงินฝาก ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1,023 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 1023.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 111
+ },
+ {
+  "category": "structured_sql",
+  "question": "ผลตอบแทนต่อสินทรัพย์ (ROA) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1.10 %",
+  "grader": {
+   "type": "numeric",
+   "value": 1.1
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 112
+ },
+ {
+  "category": "structured_sql",
+  "question": "ภาระตามตั๋วแลกเงินค่าสินค้าเข้า ที่ยังไม่ครบกำหนด (งบการเงินรวม) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "3,150 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 3150.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 113
+ },
+ {
+  "category": "structured_sql",
+  "question": "ภาษีเงินได้รอตัดบัญชี (งบการเงินรวม) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "(404) ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": -404.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 114
+ },
+ {
+  "category": "structured_sql",
+  "question": "มูลค่าตามบัญชีต่อหุ้น (บาท) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "53.81 %",
+  "grader": {
+   "type": "numeric",
+   "value": 53.81
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 115
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมค่าใช้จ่ายจากการดำเนินงานอื่น ๆ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "68,131,300 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 68131300.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 116
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมรายได้จากการดำเนินงานอื่นๆ (โครงสร้างรายได้) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "55,113",
+  "grader": {
+   "type": "numeric",
+   "value": 55113.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 117
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมสินทรัพย์ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "2,620,074,404 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 2620074404.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 118
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมหนี้สิน (งบการเงินรวม) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "2,224,265,645 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 2224265645.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 119
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมเงินกองทุนทั้งสิ้นตามกฎหมาย ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "317,631 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 317631.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 120
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมเงินให้สินเชื่อแก่ลูกหนี้ (งบการเงินเฉพาะธนาคาร) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1,642,180 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 1642180.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 121
+ },
+ {
+  "category": "structured_sql",
+  "question": "รวมในประเทศและ ต่างประเทศ (งบการเงินเฉพาะธนาคาร) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "142,311 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 142311.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 122
+ },
+ {
+  "category": "structured_sql",
+  "question": "ระดับความเสี่ยงสูง (งบการเงินรวม การจัดชั้นหนี้ ชั้นที่ 2) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "89 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 89.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 123
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายการระหว่างธนาคาร และตลาดเงิน (ยอดคงเหลือ) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "186,588 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 186588.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 124
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายการระหว่างธนาคารและ ตลาดเงิน (งบการเงินรวม รวมยอดคงเหลือ) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "186,588 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 186588.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 125
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายการอื่นของการเปลี่ยนแปลงที่เกิดจากผู้เป็นเจ้าของ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "(5,218) ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": -5218.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 126
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายได้จากการดำเนินงานอื่น ๆ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "2,892,285 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 2892285.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 127
+ },
+ {
+  "category": "structured_sql",
+  "question": "รายได้อื่น (ร้อยละ) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1.37",
+  "grader": {
+   "type": "numeric",
+   "value": 1.37
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 128
+ },
+ {
+  "category": "structured_sql",
+  "question": "ลูกหนี้บัตรเครดิต ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "84,217 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 84217.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 129
+ },
+ {
+  "category": "structured_sql",
+  "question": "สถาบันการเงินเฉพาะกิจ (งบการเงินเฉพาะธนาคาร) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "5,565 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 5565.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 130
+ },
+ {
+  "category": "structured_sql",
+  "question": "สินทรัพย์อนุพันธ์ - เพื่อป้องกันความเสี่ยง แบบพลวัต (ยอดคงเหลือ) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "657 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 657.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 131
+ },
+ {
+  "category": "structured_sql",
+  "question": "ส่วนต่างอัตราดอกเบี้ยสุทธิ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "4.28% %",
+  "grader": {
+   "type": "numeric",
+   "value": 4.28
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 132
+ },
+ {
+  "category": "structured_sql",
+  "question": "ส่วนได้เสียที่ไม่มีอำนาจควบคุม (งบการเงินรวม) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "3,801,305 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 3801305.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 133
+ },
+ {
+  "category": "structured_sql",
+  "question": "หลักประกันที่นำไปวางกับคู่สัญญา (งบการเงินรวม) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "4,217 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 4217.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 134
+ },
+ {
+  "category": "structured_sql",
+  "question": "หัก ค่าใช้จ่ายจากการดำเนินงานอื่น ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "68,131 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 68131.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 135
+ },
+ {
+  "category": "structured_sql",
+  "question": "หุ้นกู้ด้อยสิทธิ (รวม) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "52,000 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 52000.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 136
+ },
+ {
+  "category": "structured_sql",
+  "question": "ออมทรัพย์ (งบการเงินรวม) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "921,721 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 921721.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 137
+ },
+ {
+  "category": "structured_sql",
+  "question": "อัตราส่วนสินเชื่อด้อยคุณภาพ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "3.23% %",
+  "grader": {
+   "type": "numeric",
+   "value": 3.23
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 138
+ },
+ {
+  "category": "structured_sql",
+  "question": "อัตราส่วนเงินกองทุนทั้งสิ้นต่อสินทรัพย์เสี่ยงทั้งสิ้น ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "21.79 %",
+  "grader": {
+   "type": "numeric",
+   "value": 21.79
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 139
+ },
+ {
+  "category": "structured_sql",
+  "question": "อุปกรณ์ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1,381 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 1381.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 140
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินยูโร (งบการเงินเฉพาะธนาคาร) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "4,609 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 4609.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 141
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินลงทุนในบริษัทย่อย บริษัทร่วมและการร่วมค้าสุทธิ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "18,742,197 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 18742197.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 142
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินสดจ่ายจากการซื้อเงินลงทุนในหลักทรัพย์ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "(42,757,004) พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": -42757004.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 143
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินสดจ่ายเพื่อซื้อสินทรัพย์ไม่มีตัวตน ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "(1,655,171) พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": -1655171.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 144
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินสดรับจากเงินกู้ยืมและการออกตราสารหนี้ ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "25,973,292 พันบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 25973292.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 145
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินสำรองสำหรับการป้องกันความเสี่ยงในกระแสเงินสด ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "227",
+  "grader": {
+   "type": "numeric",
+   "value": 227.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 146
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินให้สินเชื่อ (โครงสร้างรายได้) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "106,787",
+  "grader": {
+   "type": "numeric",
+   "value": 106787.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 147
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินให้สินเชื่อต่อเงินรับฝาก (%) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "104.04 %",
+  "grader": {
+   "type": "numeric",
+   "value": 104.04
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 148
+ },
+ {
+  "category": "structured_sql",
+  "question": "เงินให้สินเชื่อแก่ลูกหนี้ และดอกเบี้ยค้างรับสุทธิ (รวมมูลค่า ยุติธรรม) ปี 2567 มีค่าเท่ากับเท่าไร?",
+  "ground_truth": "1,799,434 ล้านบาท",
+  "grader": {
+   "type": "numeric",
+   "value": 1799434.0
+  },
+  "note": "fact_financial_metrics single lookup",
+  "id": 149
+ }
+]
