@@ -125,6 +125,17 @@ def _has_real_data(observation: str) -> bool:
     return not any(obs.startswith(m) or obs == m for m in _NO_DATA_MARKERS)
 
 
+# Phrases a *draft answer* uses to give up. Distinct from _NO_DATA_MARKERS,
+# which describe a tool's observation: these appear anywhere in prose.
+_GIVE_UP_MARKERS = ("ไม่พบ", "ไม่มีข้อมูล", "ไม่ปรากฏข้อมูล", "ไม่สามารถหาข้อมูล")
+
+
+def _is_non_answer(answer: str) -> bool:
+    """True when the draft answer is a "could not find it" rather than a fact."""
+    text = (answer or "").strip()
+    return bool(text) and any(m in text for m in _GIVE_UP_MARKERS)
+
+
 def _parse_action(text: str) -> Optional[Dict[str, str]]:
     """Extract the first Action JSON from LLM output.
     
@@ -337,6 +348,7 @@ async def agent_query(
 
     self_correction_on = getattr(settings, "AGENT_SELF_CORRECTION", True)
     verify_retries_left = getattr(settings, "AGENT_VERIFY_MAX_RETRIES", 1)
+    last_resort_sweeps_left = 1        # one document sweep before giving up
     _INTERNAL_TOOLS = {"sql_query", "vector_search", "multi_hop", "graph_search"}
 
     # ------------------------------------------------------------------
@@ -537,6 +549,46 @@ async def agent_query(
         final_answer = _parse_final_answer(llm_output)
         if final_answer:
             logger.info("ReAct final answer at iteration %d", iteration + 1)
+
+            # --- Last-resort sweep before accepting "ไม่พบข้อมูล" ------------
+            # The mid-loop sweep above only fires when a tool returns *nothing*.
+            # sql_query almost always returns something — its LIKE matches some
+            # near-miss row — so a question whose answer lives in prose ends as
+            # "ไม่พบข้อมูล" with the document never read (traced on ids 382/477,
+            # gold chunk at rank 1 both times). Give up only after looking there.
+            if (
+                last_resort_sweeps_left > 0
+                and _is_non_answer(final_answer)
+                and not any(
+                    step.get("action") == "vector_search" and step.get("success")
+                    for step in reasoning_trace
+                )
+            ):
+                last_resort_sweeps_left -= 1
+                logger.info("Draft answer found nothing; last-resort vector_search")
+                fb = await _execute_tool("vector_search", question, session)
+                fb_obs = fb["observation"]
+                fb_found = bool(fb.get("success")) and _has_real_data(fb_obs)
+                if fb.get("success"):
+                    attempted_calls.add(("vector_search", question.strip()))
+                reasoning_trace.append({
+                    "action": "vector_search",
+                    "action_input": question,
+                    "observation": fb_obs[:500],
+                    "success": fb_found,
+                })
+                if fb_found:
+                    internal_tool_succeeded = True
+                    full_observations.append(f"[vector_search] {fb_obs}")
+                    if fb.get("data"):
+                        sources.extend(_extract_sources("vector_search", fb["data"]))
+                    conversation += (
+                        f"{llm_output}\n"
+                        f'Action: {{"tool": "vector_search", "query": "{question}"}}\n'
+                        f"Observation: {fb_obs}\n"
+                    )
+                    continue
+                # Nothing there either — the draft stands, fall through.
 
             # --- Self-correction: verify the draft is grounded & on-topic ---
             if self_correction_on and verify_retries_left > 0:

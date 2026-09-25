@@ -128,6 +128,118 @@ def _numeric_grounding_ok(answer: str, observations: str) -> bool:
     return any(grounded(x) for x in ans)
 
 
+# --------------------------------------------------------------------------
+# Answer focus: a single-value question answered with several candidate values
+# --------------------------------------------------------------------------
+# The SYSTEM_PROMPT has carried a "answer only what was asked" rule since
+# Aug 15 and the agent still volunteers extra figures ("60% … Gartner คาดว่า
+# 70%"), which the judge rightly fails. A standing prompt rule the model
+# ignores is not made to work by rewording it — the check belongs in the loop,
+# where a violation produces a concrete critique naming the competing values.
+_PLURAL_MARKERS = ("บ้าง", "แต่ละ", "ทั้งหมด", "ประกอบด้วย", "ใดบ้าง", "อะไรบ้าง", "รายการใด")
+_COMPARE_MARKERS = ("เปรียบเทียบ", "ผลต่าง", "เทียบกับ", "เพิ่มขึ้นหรือลดลง", "มากกว่าหรือน้อยกว่า")
+_YEAR_RE = re.compile(r"(?:25|20)\d{2}")
+_PCT_RE = re.compile(r"(?:ร้อยละ\s*|)(\d+(?:\.\d+)?)\s*(?:%|เปอร์เซ็นต์)|ร้อยละ\s*(\d+(?:\.\d+)?)")
+_TH_MONTHS = (
+    "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+    "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม",
+)
+_DATE_RE = re.compile(
+    r"(\d{1,2})\s*(?:-\s*\d{1,2}\s*)?(" + "|".join(_TH_MONTHS) + r")\s*(?:พ\.ศ\.\s*)?((?:25|20)\d{2})?"
+)
+_HOW_MANY_RE = re.compile(r"กี่\s*([ก-๙A-Za-z]{2,12})")
+
+
+def _percentages(text: str) -> List[float]:
+    out = []
+    for m in _PCT_RE.finditer(text or ""):
+        raw = m.group(1) or m.group(2)
+        if raw:
+            out.append(float(raw))
+    return out
+
+
+def _years(text: str) -> List[int]:
+    return [int(y) for y in _YEAR_RE.findall(text or "")]
+
+
+def _dates(text: str) -> List[str]:
+    return [
+        f"{m.group(1)} {m.group(2)} {m.group(3) or ''}".strip()
+        for m in _DATE_RE.finditer(text or "")
+    ]
+
+
+def _counts_of(text: str, classifier: str) -> List[float]:
+    return [
+        float(m.group(1))
+        for m in re.finditer(r"(\d+(?:\.\d+)?)\s*" + re.escape(classifier), text or "")
+    ]
+
+
+def _classifier_counts(question: str, answer: str) -> tuple:
+    """Values counted by the classifier a "กี่X" question asks for.
+
+    Thai is unsegmented, so the regex capture after "กี่" runs into the next
+    word ("กี่ประการในแผน…"); walk the prefix down until one appears in the
+    answer after a number. Returns ``(classifier, values)``.
+    """
+    m = _HOW_MANY_RE.search(question)
+    if not m:
+        return None, []
+    tail = m.group(1)
+    for size in range(len(tail), 1, -1):
+        classifier = tail[:size]
+        values = _counts_of(answer, classifier)
+        if values:
+            return classifier, values
+    return None, []
+
+
+def _focus_violation(question: str, answer: str) -> Optional[str]:
+    """Critique when a question asking for one value got several back.
+
+    Deliberately narrow: it fires on 3 of 501 stored answers of the last full
+    run, all three genuine contamination failures, and on none of the 458 that
+    passed. Anything broader starts redrafting answers that were already right.
+    """
+    q, a = str(question or ""), str(answer or "")
+    if not q or not a:
+        return None
+    # Questions that legitimately ask for a list, or for two sides of a compare.
+    if any(w in q for w in _PLURAL_MARKERS) or any(w in q for w in _COMPARE_MARKERS):
+        return None
+    if len(set(_years(q))) >= 2:
+        return None
+
+    kind: Optional[str] = None
+    values: List[Any] = []
+    if "ร้อยละ" in q or "%" in q or "สัดส่วน" in q:
+        kind, values = "ร้อยละ", _percentages(a)
+    elif re.search(r"ปีใด|ปีไหน|ภายในปี|ในปีใด|เมื่อปีใด", q):
+        asked = set(_years(q))          # a year the question names is not an extra
+        kind, values = "ปี", [y for y in _years(a) if y not in asked]
+    elif re.search(r"เมื่อใด|เมื่อไร|วันใด|วันที่เท่าใด|เมื่อวันที่ใด", q):
+        kind, values = "วันที่", _dates(a)
+    else:
+        kind, values = _classifier_counts(q, a)
+    if not kind:
+        return None
+
+    distinct = list(dict.fromkeys(values))
+    if len(distinct) < 2:
+        return None
+    shown = ", ".join(str(v) for v in distinct[:4])
+    return (
+        f"คำถามถาม{kind}เพียงค่าเดียว แต่คำตอบเสนอหลายค่า ({shown}) "
+        f"ให้เลือกค่าเดียวที่ตอบคำถามตรงที่สุดจาก Observation แล้วเขียน Final Answer ใหม่ "
+        f"เป็นประโยคบอกเล่าสั้น ๆ ประโยคเดียวที่ระบุค่านั้น "
+        f"ห้ามอธิบายเหตุผล ห้ามเทียบข้อดีข้อเสียของแต่ละค่า ห้ามกล่าวถึงค่าอื่น "
+        f"และห้ามนำค่ามารวมหรือบวกกันเป็นค่าใหม่ "
+        f"ถ้าลังเลระหว่างสองค่า ให้เลือกค่าที่ข้อความระบุเจาะจงที่สุดแล้วตอบไปเลย"
+    )
+
+
 def _parse_verdict_json(raw: str) -> Optional[Dict[str, Any]]:
     """Extract the first JSON object from the judge's reply."""
     match = re.search(r"\{.*\}", raw, re.DOTALL)
@@ -177,6 +289,18 @@ async def verify_answer(
                 "ให้ใช้เฉพาะตัวเลขที่ปรากฏใน Observation เท่านั้น ห้ามแต่งตัวเลขเอง "
                 "ถ้าไม่พบตัวเลขที่ต้องการใน Observation ให้ตอบว่าไม่พบข้อมูลในเอกสาร"
             ),
+        )
+
+    # Answer-focus guard — deterministic, so it costs no LLM call. A right
+    # answer carrying an extra wrong figure grades as wrong, and the judge is
+    # correct to fail it; ask for the one value the question wanted instead.
+    focus_critique = _focus_violation(question, answer)
+    if focus_critique:
+        return VerificationResult(
+            verdict="fail",
+            relevant=False,
+            issues=["คำตอบเสนอหลายค่าให้คำถามที่ต้องการค่าเดียว"],
+            critique=focus_critique,
         )
 
     prompt = _VERIFY_PROMPT.format(

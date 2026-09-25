@@ -29,8 +29,52 @@ HTTP_LIMITS = httpx.Limits(max_connections=4, max_keepalive_connections=2)
 
 _SELECT_START_RE = re.compile(r"\b(SELECT|WITH)\b", re.IGNORECASE)
 
+# Cap per-term occurrences so a stop-word-ish token on a long page cannot make
+# the window search quadratic in the page length.
+_MAX_TERM_HITS = 40
 
-def _focus_excerpt(text: str, terms: List[str], budget: int, head: int = 400) -> str:
+# Shorter verbatim spans than this match generic Thai prose and anchor nothing.
+_MIN_SPAN = 10
+
+
+def _question_spans(question: str, text: str, limit: int = 5) -> List[str]:
+    """Longest verbatim substrings of *question* that occur in *text*.
+
+    The same signal ``SQLTool._exact_label_rows`` uses on table rows: a phrase
+    the question spells out and the page repeats verbatim points at the answer
+    far more reliably than the frequency of its individual words. Whitespace is
+    never normalised — in this corpus "รวมในประเทศและ ต่างประเทศ" and
+    "รวมในประเทศและต่างประเทศ" are different things.
+    """
+    q = str(question or "")
+    if not q or not text:
+        return []
+    found: List[str] = []
+    for start in range(len(q)):
+        lo, hi, best = _MIN_SPAN, len(q) - start, None
+        while lo <= hi:                       # longest span that still occurs
+            mid = (lo + hi) // 2
+            if q[start:start + mid] in text:
+                best, lo = mid, mid + 1
+            else:
+                hi = mid - 1
+        if best:
+            found.append(q[start:start + best])
+    found.sort(key=len, reverse=True)
+    keep: List[str] = []
+    for span in found:
+        if not any(span in k for k in keep):  # drop spans inside a longer one
+            keep.append(span)
+    return keep[:limit]
+
+
+def _focus_excerpt(
+    text: str,
+    terms: List[str],
+    budget: int,
+    head: int = 400,
+    question: str = "",
+) -> str:
     """Excerpt that keeps the region where the query terms actually appear.
 
     Corpus chunks are whole OCR pages (3-5k chars) and the answer to a specific
@@ -44,15 +88,51 @@ def _focus_excerpt(text: str, terms: List[str], budget: int, head: int = 400) ->
     if len(text) <= budget:
         return text
     low = text.lower()
-    positions = sorted({p for p in (low.find(t.lower()) for t in terms if t) if p >= 0})
-    if not positions:
+    # Every occurrence, not just the first. A page repeats its query terms, so
+    # scoring on first hits alone pinned the window near the top of the chunk
+    # and the answer further down was dropped (measured on ids 439/498/507).
+    hits: List[tuple] = []
+    for idx, term in enumerate(terms):
+        if not term:
+            continue
+        needle, at, found = term.lower(), 0, 0
+        while found < _MAX_TERM_HITS:
+            p = low.find(needle, at)
+            if p < 0:
+                break
+            hits.append((p, idx))
+            at, found = p + max(1, len(needle)), found + 1
+    anchors: List[int] = []
+    for span in _question_spans(question, text):
+        at = 0
+        while True:
+            p = text.find(span, at)
+            if p < 0:
+                break
+            anchors.append(p)
+            at = p + max(1, len(span))
+    if not hits and not anchors:
         return text[:budget]
+    hits.sort()
     win = max(budget - head, 200)
-    best_start, best_cov = positions[0], -1
-    for p in positions:
-        cov = sum(1 for q in positions if p <= q < p + win)
-        if cov > best_cov:
-            best_cov, best_start = cov, p
+    # Rank a window by the verbatim question spans it covers first, then by how
+    # many *distinct* query terms — so a window is not won by one common word
+    # repeating; total hits only breaks ties.
+    candidates = sorted({p for p, _ in hits} | set(anchors)) or [0]
+    best_start, best_key = candidates[0], (-1, -1, -1)
+    for p in candidates:
+        covered = sum(1 for a in anchors if p <= a < p + win)
+        seen, total = set(), 0
+        for q, term_idx in hits:
+            if q < p:
+                continue
+            if q >= p + win:
+                break
+            seen.add(term_idx)
+            total += 1
+        key = (covered, len(seen), total)
+        if key > best_key:
+            best_key, best_start = key, p
     start = best_start
     if start + win > len(text):
         start = max(0, len(text) - win)
@@ -361,7 +441,7 @@ class VectorSearchTool:
         summary_parts = []
         chunks_data = []
         for r in results:
-            text = _focus_excerpt(r.get("text") or "", focus_terms, budget)
+            text = _focus_excerpt(r.get("text") or "", focus_terms, budget, question=query)
             source = r.get("source_kind", "semantic")
             sim = r.get("similarity", 0)
             summary_parts.append(
