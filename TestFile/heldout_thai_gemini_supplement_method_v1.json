@@ -1,0 +1,21 @@
+{
+  "frozen_utc": "2026-09-27T12:33:41.752573+00:00",
+  "classification": "post-hoc supplemental normal-provider comparison, not an untouched final test",
+  "cloud_use": "Gemini 2.5 Flash on Vertex for public-report answer generation and agent steps; no cloud OCR",
+  "corpus": "the same 568-page SCBX/Thai Union selectable PDF text and bge-m3 embeddings as the frozen offline test",
+  "arms": [
+    "Thai BM25 top three passages + Gemini",
+    "online app agent + Gemini"
+  ],
+  "question_count": 20,
+  "sha256": {
+    "scripts/benchmark_heldout_gemini.py": "754e2953c0d25b98e2ce5d2beb531e4124cf4f9a5a966c8f32274117230d06ca",
+    "scripts/benchmark_heldout.py": "f4385951e5cf462d3ee305907beb7792d663584f99ba2599f5127ba2a2aee0ca",
+    "backend/services/agent.py": "63d8ae47fcb1200384c27546e5101e6b4c5356c2017fe3fc0f5536d79c4ae3a0",
+    "backend/services/llm.py": "174cbefd8755bd864653054fae7f4a78e8d1e9918b8f7a3fa1e56dfb37c98546",
+    "backend/services/rag.py": "81d9841a0e6048005842b11a1eb848701b709eb635a71307f4ceb639012e11c7",
+    "backend/eval/numeric.py": "1ced04f5c85e271f0619e60218b1e8e4547689bc1626332e0c9b09ff7ac869c5",
+    "backend/eval/score_layers.py": "915298cc41e874801b964b3814496084a7b4951ec77cbc959f27af6ba6c8c20c",
+    "TestFile/heldout_thai_final_reference_v1.json": "35a203b6e9c6cc26fd2cd4d95ac590efb5e5ae5dd14808bf2709fcbc440f9276"
+  }
+}

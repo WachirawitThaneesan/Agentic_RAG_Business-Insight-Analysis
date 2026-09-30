@@ -1,7 +1,7 @@
-"""Typhoon OCR service using direct HTTP image requests.
+"""Document OCR service using Typhoon for text and optional Gemini tables.
 
-This service standardizes OCR around a single path:
-PDF page -> render page to PNG -> send PNG to Typhoon OCR
+PDF pages are rendered once per region. Typhoon reads prose; when a table is
+detected, Gemini reads its cells and replaces Typhoon's table interpretation.
 
 It avoids the old ``typhoon_ocr`` SDK / OpenAI client stack, which was the
 source of the ``proxies`` compatibility error in this project environment.
@@ -25,6 +25,7 @@ from PIL import Image
 from pypdf import PdfReader
 
 from backend.config import get_settings
+from backend.services.pdf_layout import crop_and_rotate_png, plan_pdf_regions
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
@@ -55,6 +56,8 @@ class TyphoonOCRService:
     """Calls Typhoon OCR and normalizes the Markdown response."""
 
     def __init__(self) -> None:
+        if settings.OFFLINE_MODE:
+            raise RuntimeError("Typhoon OCR is disabled in OFFLINE_MODE")
         self.api_key = settings.TYPHOON_OCR_API_KEY or settings.TYPHOON_API_KEY
         self.model = settings.TYPHOON_OCR_MODEL
         self.figure_language = "Thai"
@@ -91,12 +94,50 @@ class TyphoonOCRService:
             raise RuntimeError("Typhoon OCR API key is not configured")
 
         png_bytes = self._normalize_image_to_png(image_bytes, filename, mime_type)
+        use_gemini_tables = settings.PDF_TABLE_OCR_PROVIDER.lower() == "gemini"
+        visual_hint = False
+        if use_gemini_tables:
+            from backend.services.gemini_tables import image_has_table_hint
+            visual_hint = await asyncio.to_thread(image_has_table_hint, png_bytes)
+        typhoon_error = None
         try:
-            async with asyncio.timeout(self.page_timeout_seconds):
+            text_deadline = min(self.page_timeout_seconds, 90.0) if visual_hint else self.page_timeout_seconds
+            async with asyncio.timeout(text_deadline):
                 markdown = await self._ocr_png_bytes_async(png_bytes)
-        except TimeoutError as exc:
-            raise TimeoutError(f"Typhoon OCR image exceeded {self.page_timeout_seconds:g} seconds") from exc
-        return self._parse_markdown_pages([{"page": page_number, "markdown": markdown}])
+        except Exception as exc:
+            if not (use_gemini_tables and visual_hint):
+                raise RuntimeError(f"Typhoon OCR image failed: {exc}") from exc
+            typhoon_error = f"{type(exc).__name__}: {exc}"
+            markdown = ""
+        tables = []
+        usage = None
+        table_warnings = []
+        if use_gemini_tables:
+            typhoon_tables, text_only = self._extract_structured_tables(markdown)
+            if typhoon_tables or visual_hint:
+                from backend.services.gemini_tables import extract_tables_from_png
+                tables, usage = await extract_tables_from_png(
+                    png_bytes, page=page_number, region={"region": "full"},
+                )
+                if typhoon_error and not tables:
+                    raise RuntimeError("Typhoon text failed and Gemini found no table")
+                if tables:
+                    markdown = text_only
+                elif typhoon_tables:
+                    markdown = text_only
+                    table_warnings.append({
+                        "page": page_number, "region": "full",
+                        "warning": "Typhoon detected a table but Gemini returned no confirmed cells",
+                    })
+        result = self._parse_markdown_pages([{"page": page_number, "markdown": markdown}])
+        if use_gemini_tables:
+            result["tables"] = tables
+            result["raw_tables"] = [dict(table) for table in tables]
+            result["gemini_table_usage"] = ([{"page": page_number, "region": "full", **usage}] if usage else [])
+            result["typhoon_text_errors"] = ([{"page": page_number, "region": "full", "error": typhoon_error}] if typhoon_error else [])
+            result["table_extraction_warnings"] = table_warnings
+            result["pages"][0]["tables"] = len(tables)
+        return result
 
     async def extract_from_pdf(
         self,
@@ -130,17 +171,87 @@ class TyphoonOCRService:
 
         page_numbers = pages or self._all_pdf_pages(pdf_path)
         outputs: List[Dict[str, Any]] = []
+        use_gemini_tables = settings.PDF_TABLE_OCR_PROVIDER.lower() == "gemini"
+        gemini_tables: List[Dict[str, Any]] = []
+        gemini_usage: List[Dict[str, Any]] = []
+        typhoon_errors: List[Dict[str, Any]] = []
+        table_warnings: List[Dict[str, Any]] = []
         for index, page_num in enumerate(page_numbers):
+            regions = [{"region": "full", "crop_box": [0.0, 0.0, 1.0, 1.0], "rotation": 0}]
             try:
-                async with asyncio.timeout(self.page_timeout_seconds):
+                preview = await asyncio.to_thread(self._render_pdf_page_to_png, pdf_path, page_num, 96)
+                regions = plan_pdf_regions(pdf_path, page_num, preview)
+                # Gemini table reads need their own time after the Typhoon text
+                # request; do not consume the entire page budget before rescue.
+                async with asyncio.timeout((self.page_timeout_seconds + 180) * len(regions)):
                     png_bytes = await asyncio.to_thread(self._render_pdf_page_to_png, pdf_path, page_num, render_dpi)
-                    markdown = await self._ocr_png_bytes_async(png_bytes)
+                    for region in regions:
+                        image_bytes = (
+                            png_bytes if region["region"] == "full" and region["rotation"] == 0
+                            else await asyncio.to_thread(crop_and_rotate_png, png_bytes, region)
+                        )
+                        visual_hint = False
+                        if use_gemini_tables:
+                            from backend.services.gemini_tables import image_has_table_hint
+                            visual_hint = await asyncio.to_thread(image_has_table_hint, image_bytes)
+                        typhoon_error = None
+                        try:
+                            text_deadline = min(self.page_timeout_seconds, 90.0) if visual_hint else self.page_timeout_seconds
+                            async with asyncio.timeout(text_deadline):
+                                markdown = await self._ocr_png_bytes_async(image_bytes)
+                        except Exception as exc:
+                            if not (use_gemini_tables and visual_hint):
+                                if isinstance(exc, TimeoutError):
+                                    raise TimeoutError(
+                                        f"Typhoon OCR PDF page {page_num} exceeded {text_deadline:g} seconds"
+                                    ) from exc
+                                raise RuntimeError(
+                                    f"PDF page {page_num} region {region['region']} Typhoon OCR failed: {exc}"
+                                ) from exc
+                            typhoon_error = f"{type(exc).__name__}: {exc}"
+                            markdown = ""
+                            logger.warning("Typhoon text failed on table page %d %s: %s", page_num, region['region'], typhoon_error)
+                        if use_gemini_tables:
+                            typhoon_tables, text_only = self._extract_structured_tables(markdown)
+                            if typhoon_tables or visual_hint:
+                                from backend.services.gemini_tables import extract_tables_from_png
+                                tables, usage = await extract_tables_from_png(
+                                    image_bytes, page=page_num, region=region,
+                                )
+                                if typhoon_error and not tables:
+                                    raise RuntimeError(
+                                        f"Typhoon text failed and Gemini found no table on PDF page {page_num}"
+                                    )
+                                if tables:
+                                    markdown = text_only
+                                    gemini_tables.extend(tables)
+                                elif typhoon_tables:
+                                    markdown = text_only
+                                    table_warnings.append({
+                                        "page": page_num, "region": region["region"],
+                                        "warning": "Typhoon detected a table but Gemini returned no confirmed cells",
+                                    })
+                                gemini_usage.append({"page": page_num, "region": region["region"], **usage})
+                        if typhoon_error:
+                            typhoon_errors.append({"page": page_num, "region": region["region"], "error": typhoon_error})
+                        outputs.append({"page": page_num, "markdown": markdown, **region})
             except TimeoutError as exc:
-                raise TimeoutError(f"Typhoon OCR PDF page {page_num} exceeded {self.page_timeout_seconds:g} seconds") from exc
-            outputs.append({"page": page_num, "markdown": markdown})
+                raise TimeoutError(f"PDF page {page_num} OCR exceeded its deadline") from exc
             if index < len(page_numbers) - 1 and self.sleep_seconds > 0:
                 await asyncio.sleep(self.sleep_seconds)
-        return self._parse_markdown_pages(outputs)
+        result = self._parse_markdown_pages(outputs)
+        if use_gemini_tables:
+            result["tables"] = gemini_tables
+            result["raw_tables"] = [dict(table) for table in gemini_tables]
+            result["gemini_table_usage"] = gemini_usage
+            result["typhoon_text_errors"] = typhoon_errors
+            result["table_extraction_warnings"] = table_warnings
+            for page in result["pages"]:
+                page["tables"] = sum(
+                    table["page"] == page["page"] and table.get("region") == page.get("region")
+                    for table in gemini_tables
+                )
+        return result
 
     def get_pdf_page_count(self, pdf_path: str) -> int:
         return len(PdfReader(pdf_path).pages)
@@ -165,7 +276,9 @@ class TyphoonOCRService:
             try:
                 return self._request_markdown(png_bytes)
             except Exception as exc:
-                if "echoed the instruction prompt" in str(exc):
+                if any(marker in str(exc) for marker in (
+                    "echoed the instruction prompt", "degenerate repeated slash sequence",
+                )):
                     raise
                 last_error = f"{type(exc).__name__}: {exc}"
                 logger.warning(
@@ -184,7 +297,9 @@ class TyphoonOCRService:
             try:
                 return await self._request_markdown_async(png_bytes)
             except Exception as exc:
-                if "echoed the instruction prompt" in str(exc):
+                if any(marker in str(exc) for marker in (
+                    "echoed the instruction prompt", "degenerate repeated slash sequence",
+                )):
                     raise
                 last_error = f"{type(exc).__name__}: {exc}"
                 logger.warning("Typhoon OCR failed on attempt %d/3: %s", attempt, last_error)
@@ -217,6 +332,11 @@ class TyphoonOCRService:
         result = (markdown or "").strip()
         if result.startswith("Extract all text from the image.") and "Formatting Rules:" in result[:1200]:
             raise RuntimeError("Typhoon OCR echoed the instruction prompt instead of transcribing the page")
+        # A real sparse matrix may contain many marks, but hundreds of slash
+        # tokens with no cell boundaries are the observed p46 generation loop.
+        # Never store that completion as document text or repeat the same call.
+        if re.search(r"(?:\s*/){200,}", result):
+            raise RuntimeError("Typhoon OCR produced a degenerate repeated slash sequence")
         return result
 
     def _request_markdown(self, png_bytes: bytes) -> str:
@@ -357,6 +477,9 @@ class TyphoonOCRService:
             page_tables, text_only = self._extract_structured_tables(markdown)
             for table in page_tables:
                 table["page"] = page_num
+                for key in ("region", "crop_box", "rotation"):
+                    if key in output:
+                        table[key] = output[key]
             cleaned = self._clean_layout_markup(text_only)
             page_blocks = self._split_text_blocks(cleaned)
 
@@ -368,6 +491,7 @@ class TyphoonOCRService:
                     "title": table.get("title", ""),
                     "headers": list(table.get("headers", []) or []),
                     "rows": [list(row) for row in (table.get("rows", []) or [])],
+                    **{key: table[key] for key in ("region", "crop_box", "rotation") if key in table},
                 }
                 for table in page_tables
             )
@@ -377,6 +501,7 @@ class TyphoonOCRService:
                     "markdown": markdown,
                     "text_blocks": len(page_blocks),
                     "tables": len(page_tables),
+                    **{key: output[key] for key in ("region", "crop_box", "rotation") if key in output},
                 }
             )
 
@@ -385,7 +510,11 @@ class TyphoonOCRService:
             "tables": tables,
             "raw_tables": raw_tables,
             "pages": pages,
-            "raw_pages": [{"page": page["page"], "markdown": page.get("markdown", "")} for page in pages],
+            "raw_pages": [
+                {"page": page["page"], "markdown": page.get("markdown", ""),
+                 **{key: page[key] for key in ("region", "crop_box", "rotation") if key in page}}
+                for page in pages
+            ],
             "errors": [],
         }
 
@@ -575,4 +704,7 @@ class TyphoonOCRService:
             pass
 
 
-ocr_service = TyphoonOCRService()
+if settings.OFFLINE_MODE:
+    from backend.services.local_ocr import ocr_service
+else:
+    ocr_service = TyphoonOCRService()

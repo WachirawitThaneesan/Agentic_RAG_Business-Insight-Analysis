@@ -1,0 +1,362 @@
+[
+  {
+    "id": "H01",
+    "answer": "300 million people in Africa",
+    "citations": [
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 12
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 32
+      }
+    ]
+  },
+  {
+    "id": "H02",
+    "answer": "$9 billion annually by 2030",
+    "citations": [
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 7
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 4
+      }
+    ]
+  },
+  {
+    "id": "H03",
+    "answer": "244M",
+    "citations": [
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 8
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 15
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 51
+      }
+    ]
+  },
+  {
+    "id": "H04",
+    "answer": "406M",
+    "citations": [
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 8
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 51
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 8
+      }
+    ]
+  },
+  {
+    "id": "H05",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 5
+      }
+    ]
+  },
+  {
+    "id": "H06",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 51
+      }
+    ]
+  },
+  {
+    "id": "H07",
+    "answer": "$39.9 billion",
+    "citations": [
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 53
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 53
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 51
+      }
+    ]
+  },
+  {
+    "id": "H08",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 46
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 54
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 10
+      }
+    ]
+  },
+  {
+    "id": "H09",
+    "answer": "2,332 ล้านดอลลาร์สหรัฐ",
+    "citations": [
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 54
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 53
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 53
+      }
+    ]
+  },
+  {
+    "id": "H10",
+    "answer": "$12.3 billion",
+    "citations": [
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 62
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 60
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 4
+      }
+    ]
+  },
+  {
+    "id": "H11",
+    "answer": "$47.5 billion",
+    "citations": [
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 20
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 13
+      }
+    ]
+  },
+  {
+    "id": "H12",
+    "answer": "126%",
+    "citations": [
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 50
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 13
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 123
+      }
+    ]
+  },
+  {
+    "id": "H13",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 55
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 27
+      }
+    ]
+  },
+  {
+    "id": "H14",
+    "answer": "$60.9 billion",
+    "citations": [
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 20
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 27
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 21
+      }
+    ]
+  },
+  {
+    "id": "H15",
+    "answer": "$60,922 million",
+    "citations": [
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 166
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 13
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 137
+      }
+    ]
+  },
+  {
+    "id": "H16",
+    "answer": "$29,760",
+    "citations": [
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 137
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 52
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 166
+      }
+    ]
+  },
+  {
+    "id": "H17",
+    "answer": "72.7%",
+    "citations": [
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 20
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 21
+      }
+    ]
+  },
+  {
+    "id": "H18",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 50
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 137
+      }
+    ]
+  },
+  {
+    "id": "H19",
+    "answer": "8,675 million US dollars.",
+    "citations": [
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 137
+      },
+      {
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 54
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 166
+      }
+    ]
+  },
+  {
+    "id": "H20",
+    "answer": "$16,621 million",
+    "citations": [
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 137
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 13
+      },
+      {
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 166
+      }
+    ]
+  }
+]

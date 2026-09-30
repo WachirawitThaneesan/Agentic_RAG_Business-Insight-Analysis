@@ -1,0 +1,109 @@
+PROJECT UPDATE V2 — 24 September 2026
+Agentic RAG Business Insight Analysis | Implementation after V1 checkpoint 5883362
+
+What was built
+1. Two-up layout preprocessing: a 96-DPI preview finds a wide landscape
+   page's central gutter. PDF text geometry selects rotation; embedded text
+   values are never used as ground truth. Each OCR region keeps its physical
+   page, crop box, and rotation. A green contents sidebar on the bank report
+   is trimmed from the left crop.
+2. Exact-cell gold set: 13 manually read table cells and four chart facts are
+   labeled with physical source page, row/category, column/year, value, unit,
+   and evidence crop. Two table labels and one chart label are held out.
+   A cache-only scorer checks the exact row and column and reports wrong
+   accepted values. Result on the small selected set: 13/13 table cells;
+   all four chart values appear in raw OCR, but chart value-to-category
+   extraction is NOT implemented or scored as correct.
+3. Background upload: files are streamed to unique paths. The API returns a
+   document ID and processes PDF pages in a single in-process queue, saving
+   status per page in PostgreSQL. API restart queues pending/interrupted jobs;
+   already indexed pages are skipped, and an interrupted page's old rows are
+   cleared before retry. DuckDB stays owned by one API process. Celery remains
+   for graph work; the old Celery document task is retired because it bypassed
+   quality checks and could collide with DuckDB's file lock.
+4. Viewer: requests a 25-page status window plus only the selected page's
+   PDF image, raw Typhoon OCR, parsed tables, final stored rows, and quality
+   issues. It does not render or hold 500 PDF pages in the browser at once.
+
+New workflow (copy into a Notion code block)
+
+  Upload PDF --stream to unique saved file--> document ID returned
+                                           |
+                                           v
+                                  API-owned job queue (one writer)
+                                           |
+                                  physical-page checkpoint
+                                           |
+                            low-res layout check / split / rotate
+                                           |
+                                  Typhoon OCR by region
+                                           |
+                                 parse + quality gate
+                                           |
+                              PostgreSQL + DuckDB + page status
+                                           |
+                           viewer loads ONE selected page
+
+  Offline thesis evaluation: manually labeled PDF cells/chart facts
+                              -> compare with cached OCR
+                              -> exact-cell errors and unresolved chart facts
+
+Important live result and limits
+- Page 24 of the bank excerpt recovered after trimming its green sidebar:
+  Typhoon returned two OCR regions and two tables. Three manually labeled
+  cells matched the correct half, row, and column. Other cells on the page
+  remain unverified. Page 46 still times out after 300 seconds and is failed.
+  Re-scoring the 20-page sample now gives 19/20 table-presence decisions,
+  not a whole-document accuracy rate.
+- A five-page live PostgreSQL/DuckDB retry test with fake OCR passed: page 3
+  failed once, only page 3 was retried, and no rows or raw pages duplicated.
+  A real process-crash/restart test and a 500-page load test remain undone.
+- Use one API process while it owns DuckDB; do not start a second API process
+  against the same warehouse file. Restart the API to load these code changes.
+- Existing stored documents are not reprocessed automatically. New uploads
+  use the new path; failed new pages can be retried with POST
+  /api/documents/{id}/resume.
+
+ADDENDUM — 25 September 2026: Why bank excerpt page 46 stalls
+
+Visual diagnosis: the 300-DPI OCR image is sharp, not blurry. The page is an
+exceptionally wide, sparse person-by-company position matrix (~100 numbered
+company columns per printed half). The old Typhoon prompt requests every
+cell as HTML with up to 16,384 output tokens, and the request is non-streamed.
+
+Actual bounded tests on the same 2493 x 415 pixel header + 4-row crop:
+- Original HTML prompt, 4096 max tokens: 38.02 s; 3390 slash characters in
+  7923 output characters, many invented over blank cells; table never closed.
+- Sparse prompt, 1024 max tokens: 3.68 s; no slash loop, but column mapping
+  and JSON format were not reliable. Do NOT accept it as the matrix answer.
+- A narrower 540 x 415 row-and-column tile returned in 1.94 s, but misread
+  two names and missed visible row-2 slash marks. Cropping improves speed,
+  not automatically cell accuracy.
+- Full left/right page still has a cached 240-second timeout. Root cause is
+  not proven inside Typhoon, but repetitive generation plus giant HTML output
+  is a strong explanation. Provider load cannot be ruled out.
+
+Typhoon's generic chat API documentation says max_tokens is at most 8192
+shared with the prompt; this project's 16384 setting is higher. The OCR
+endpoint may differ, so this mismatch is a test lead, not a confirmed cause.
+Typhoon's official OCR page identifies typhoon-ocr as OCR 1.5, rate limited
+to 2 requests/second and 20/minute; these serial probes did not return 429.
+
+Guard added: never store or retry a response with the observed 200-plus
+consecutive slash-token loop. Three exact person/position cells on page 46
+were added to development gold labels. They currently score OCR_FAILED,
+not correct; a name appearing somewhere is not sufficient evidence.
+Current exact-cell total: 16 labeled, 13/16 correct on cached OCR; the
+remaining three are page-46 OCR failures. This is not report-wide accuracy.
+
+Long-document reliability: live PostgreSQL/DuckDB integration tests with
+fake OCR passed on the 50-page bank excerpt. A failed page 27 was retried
+without duplicate rows; an interrupted job resumed from page 27, skipped
+pages 1-26, and finished all 50 with one raw-page artifact each. This is
+checkpoint testing, not a live 50-page Typhoon/OCR throughput result or an
+actual OS process restart. See docs/ocr-render-audit.md for reproduction.
+
+NEXT: tile the dense matrix by both rows and numbered columns, keeping
+person labels and column headers in each tile. Require exact row + group +
+column + mark matches against hand-read PDF labels before production use.
+Until then, page 46 remains unresolved rather than invented.

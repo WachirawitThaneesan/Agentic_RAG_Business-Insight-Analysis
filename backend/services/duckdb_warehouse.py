@@ -44,8 +44,10 @@ def _get_conn() -> duckdb.DuckDBPyConnection:
     with _lock:
         if _conn is not None:
             return _conn
-        db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", _DB_PATH)
-        db_path = os.path.abspath(db_path)
+        configured_path = Path(_DB_PATH)
+        db_path = str(configured_path if configured_path.is_absolute() else (
+            Path(__file__).resolve().parents[2] / configured_path
+        ))
         Path(db_path).parent.mkdir(parents=True, exist_ok=True)
         _conn = duckdb.connect(db_path, read_only=False)
         logger.info("DuckDB connected: %s", db_path)
@@ -93,6 +95,29 @@ def delete_document_data(document_id: int) -> None:
         raise
 
 
+def delete_page_tables(document_id: int, page_number: int) -> None:
+    """Remove just one physical page's tables before an interrupted-page retry."""
+    conn = _get_conn()
+    marker = f"page_{page_number}_table_"
+    names = [row[0] for row in conn.execute(
+        "SELECT table_name FROM dim_tables WHERE document_id = ?", [document_id]
+    ).fetchall() if marker in row[0]]
+    if not names:
+        return
+    conn.execute("BEGIN TRANSACTION")
+    try:
+        for name in names:
+            for table in ("fact_financial_metrics", "dim_table_rows", "dim_tables"):
+                conn.execute(
+                    f"DELETE FROM {table} WHERE document_id = ? AND table_name = ?",
+                    [document_id, name],
+                )
+        conn.execute("COMMIT")
+    except Exception:
+        conn.execute("ROLLBACK")
+        raise
+
+
 # ---------------------------------------------------------------------------
 # Schema initialisation
 # ---------------------------------------------------------------------------
@@ -119,7 +144,11 @@ CREATE TABLE IF NOT EXISTS dim_tables (
     table_name   VARCHAR,
     title        VARCHAR,
     headers      VARCHAR[],
-    row_count    INTEGER DEFAULT 0
+    row_count    INTEGER DEFAULT 0,
+    source_page  INTEGER,
+    quality_status VARCHAR,
+    unit VARCHAR,
+    source_provider VARCHAR
 );
 
 -- ============================================================
@@ -135,7 +164,10 @@ CREATE TABLE IF NOT EXISTS fact_financial_metrics (
     raw_value     VARCHAR,
     numeric_value DOUBLE,
     unit          VARCHAR,
-    row_index     INTEGER
+    row_index     INTEGER,
+    source_page INTEGER,
+    quality_status VARCHAR,
+    source_provider VARCHAR
 );
 
 -- ============================================================
@@ -163,7 +195,11 @@ CREATE TABLE IF NOT EXISTS dim_table_rows (
     col_name       VARCHAR,
     col_value      VARCHAR,
     col_value_num  DOUBLE,
-    row_index      INTEGER
+    row_index      INTEGER,
+    unit VARCHAR,
+    source_page INTEGER,
+    quality_status VARCHAR,
+    source_provider VARCHAR
 );
 """
 
@@ -184,6 +220,38 @@ def _migrate_schema(conn: duckdb.DuckDBPyConnection) -> None:
         conn.execute("ALTER TABLE dim_table_rows ADD COLUMN IF NOT EXISTS col_value_num DOUBLE")
     except Exception as exc:
         logger.debug("col_value_num add skipped: %s", exc)
+
+    conn.execute("ALTER TABLE dim_tables ADD COLUMN IF NOT EXISTS source_page INTEGER")
+    conn.execute("ALTER TABLE dim_tables ADD COLUMN IF NOT EXISTS quality_status VARCHAR")
+    conn.execute("ALTER TABLE dim_tables ADD COLUMN IF NOT EXISTS unit VARCHAR")
+    conn.execute("ALTER TABLE dim_tables ADD COLUMN IF NOT EXISTS source_provider VARCHAR")
+    for column, data_type in (("source_page", "INTEGER"), ("quality_status", "VARCHAR"),
+                              ("source_provider", "VARCHAR")):
+        conn.execute(f"ALTER TABLE fact_financial_metrics ADD COLUMN IF NOT EXISTS {column} {data_type}")
+    for column, data_type in (("unit", "VARCHAR"), ("source_page", "INTEGER"),
+                              ("quality_status", "VARCHAR"), ("source_provider", "VARCHAR")):
+        conn.execute(f"ALTER TABLE dim_table_rows ADD COLUMN IF NOT EXISTS {column} {data_type}")
+    conn.execute("""
+        UPDATE dim_tables
+        SET source_page = TRY_CAST(regexp_extract(table_name, 'page_([0-9]+)_table_', 1) AS INTEGER)
+        WHERE source_page IS NULL AND table_name LIKE '%page_%_table_%'
+    """)
+    for cell_table in ("fact_financial_metrics", "dim_table_rows"):
+        conn.execute(f"""
+            UPDATE {cell_table} AS c
+            SET source_page = t.source_page,
+                quality_status = t.quality_status,
+                source_provider = t.source_provider
+            FROM dim_tables AS t
+            WHERE c.document_id = t.document_id AND c.table_name = t.table_name
+              AND c.source_page IS NULL
+        """)
+    conn.execute("""
+        UPDATE dim_table_rows AS c SET unit = t.unit
+        FROM dim_tables AS t
+        WHERE c.document_id = t.document_id AND c.table_name = t.table_name
+          AND c.unit IS NULL
+    """)
 
     # --- 2. Backfill rows where the numeric value is still NULL ---
     # Strip thousands separators, %, parentheses, and stray unit text, then
@@ -364,6 +432,11 @@ def load_table_into_warehouse(
     headers: List[str],
     rows: List[List[str]],
     title: str = "",
+    source_page: Optional[int] = None,
+    quality_status: str = "unknown",
+    source_provider: Optional[str] = None,
+    unit: Optional[str] = None,
+    row_indices: Optional[List[int]] = None,
 ) -> int:
     """Load one OCR-extracted table into the warehouse.
 
@@ -395,10 +468,10 @@ def load_table_into_warehouse(
     # dim_tables
     conn.execute(
         """
-        INSERT INTO dim_tables (document_id, table_name, title, headers, row_count)
-        VALUES (?, ?, ?, ?, ?)
+        INSERT INTO dim_tables (document_id, table_name, title, headers, row_count, source_page, quality_status, unit, source_provider)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
-        [document_id, table_name, title, headers, len(rows)],
+        [document_id, table_name, title, headers, len(rows), source_page, quality_status, unit, source_provider],
     )
 
     # Identify year columns and label column
@@ -418,11 +491,13 @@ def load_table_into_warehouse(
         return _load_year_based_table(
             conn, document_id, table_name, headers, rows,
             label_col, year_cols, unit_col,
+            source_page, quality_status, source_provider, unit, row_indices,
         )
 
     # ── Non-year table → dim_table_rows (key-value) ──
     return _load_lookup_table(
         conn, document_id, table_name, headers, rows, label_col,
+        source_page, quality_status, source_provider, unit, row_indices,
     )
 
 
@@ -435,17 +510,23 @@ def _load_year_based_table(
     label_col: int,
     year_cols: List[Tuple[int, str]],
     unit_col: Optional[int],
+    source_page: Optional[int],
+    quality_status: str,
+    source_provider: Optional[str],
+    table_unit: Optional[str],
+    row_indices: Optional[List[int]],
 ) -> int:
     """Store year-based rows in fact_financial_metrics."""
     fact_count = 0
 
     for row_idx, row in enumerate(rows):
+        original_row_idx = row_indices[row_idx] if row_indices and row_idx < len(row_indices) else row_idx
         label = str(row[label_col] if label_col < len(row) else "").strip()
         if not label:
             continue
 
         row_dict = {h: (row[i] if i < len(row) else "") for i, h in enumerate(headers)}
-        unit = _guess_unit(label, table_name, row_dict)
+        unit = table_unit or _guess_unit(label, table_name, row_dict)
 
         # Override with explicit หน่วย column
         if unit_col is not None and unit_col < len(row):
@@ -486,13 +567,13 @@ def _load_year_based_table(
                     """
                     INSERT INTO fact_financial_metrics
                         (document_id, table_name, row_label, metric_year,
-                         raw_value, numeric_value, unit, row_index)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                         raw_value, numeric_value, unit, row_index, source_page, quality_status, source_provider)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                     [document_id, _sanitize_text(table_name),
                      _sanitize_text(label), _sanitize_text(year_label),
                      _sanitize_text(raw_value), numeric,
-                     _sanitize_text(unit), row_idx],
+                     _sanitize_text(unit), original_row_idx, source_page, quality_status, source_provider],
                 )
                 inserted_years.add(year_label)
                 fact_count += 1
@@ -509,13 +590,13 @@ def _load_year_based_table(
                         """
                         INSERT INTO fact_financial_metrics
                             (document_id, table_name, row_label, metric_year,
-                             raw_value, numeric_value, unit, row_index)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                             raw_value, numeric_value, unit, row_index, source_page, quality_status, source_provider)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                         """,
                         [document_id, _sanitize_text(table_name),
                          _sanitize_text(label), _sanitize_text(last_year_label),
                          _sanitize_text(last_raw), numeric,
-                         _sanitize_text(unit), row_idx],
+                         _sanitize_text(unit), original_row_idx, source_page, quality_status, source_provider],
                     )
                     fact_count += 1
         else:
@@ -534,13 +615,13 @@ def _load_year_based_table(
                     """
                     INSERT INTO fact_financial_metrics
                         (document_id, table_name, row_label, metric_year,
-                         raw_value, numeric_value, unit, row_index)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                         raw_value, numeric_value, unit, row_index, source_page, quality_status, source_provider)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                     [document_id, _sanitize_text(table_name),
                      _sanitize_text(label), _sanitize_text(year_label),
                      _sanitize_text(raw_value), numeric,
-                     _sanitize_text(unit), row_idx],
+                     _sanitize_text(unit), original_row_idx, source_page, quality_status, source_provider],
                 )
                 fact_count += 1
 
@@ -583,11 +664,17 @@ def _load_lookup_table(
     headers: List[str],
     rows: List[List[str]],
     label_col: int,
+    source_page: Optional[int],
+    quality_status: str,
+    source_provider: Optional[str],
+    table_unit: Optional[str],
+    row_indices: Optional[List[int]],
 ) -> int:
     """Store non-year rows in dim_table_rows (key-value pairs)."""
     record_count = 0
 
     for row_idx, row in enumerate(rows):
+        original_row_idx = row_indices[row_idx] if row_indices and row_idx < len(row_indices) else row_idx
         label = str(row[label_col] if label_col < len(row) else "").strip()
         if not label:
             label = f"row_{row_idx}"
@@ -600,15 +687,21 @@ def _load_lookup_table(
                 continue
 
             col_value_clean = _sanitize_text(col_value)
+            column_unit = table_unit or (
+                "%" if ("%" in str(col_name) or "ร้อยละ" in str(col_name))
+                else _guess_unit(f"{label} {col_name}", table_name)
+            )
             conn.execute(
                 """
                 INSERT INTO dim_table_rows
-                    (document_id, table_name, row_label, col_name, col_value, col_value_num, row_index)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                    (document_id, table_name, row_label, col_name, col_value, col_value_num,
+                     row_index, unit, source_page, quality_status, source_provider)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 [document_id, _sanitize_text(table_name),
                  _sanitize_text(label), _sanitize_text(col_name),
-                 col_value_clean, _parse_numeric(col_value_clean), row_idx],
+                 col_value_clean, _parse_numeric(col_value_clean), original_row_idx,
+                 column_unit, source_page, quality_status, source_provider],
             )
             record_count += 1
 
@@ -700,6 +793,45 @@ def execute_sql(sql: str) -> Dict[str, Any]:
     except Exception as exc:
         logger.warning("DuckDB query error: %s | SQL: %s", exc, sql[:200])
         return {"error": str(exc), "columns": [], "rows": [], "row_count": 0}
+
+
+def resolve_result_evidence(rows: List[Dict[str, Any]], limit: int = 20) -> List[Dict[str, Any]]:
+    """Cite an exact stored cell, including its row, year/column, value and page."""
+    conn = _get_conn()
+    evidence = []
+    for row in rows[:limit]:
+        document_id, table_name, label = (row.get("document_id"), row.get("table_name"),
+                                          row.get("row_label"))
+        if document_id is None or not table_name or not label:
+            continue
+        if row.get("metric_year") is not None and row.get("raw_value") is not None:
+            column, value = row["metric_year"], row["raw_value"]
+            cell_table, column_name, value_name = "fact_financial_metrics", "metric_year", "raw_value"
+        elif row.get("col_name") is not None and row.get("col_value") is not None:
+            column, value = row["col_name"], row["col_value"]
+            cell_table, column_name, value_name = "dim_table_rows", "col_name", "col_value"
+        else:
+            continue
+        found = conn.execute(f"""
+            SELECT d.filename, d.source_url, c.source_page, c.quality_status,
+                   c.source_provider, c.unit, c.row_index
+            FROM {cell_table} AS c JOIN dim_documents AS d USING (document_id)
+            WHERE c.document_id = ? AND c.table_name = ? AND c.row_label = ?
+              AND c.{column_name} = ? AND c.{value_name} = ?
+            LIMIT 2
+        """, [document_id, table_name, label, column, str(value)]).fetchall()
+        if len(found) != 1:
+            continue
+        filename, source_url, source_page, quality_status, provider, unit, row_index = found[0]
+        evidence.append({
+            "document_id": document_id, "filename": filename, "source_url": source_url,
+            "page": source_page, "table_name": table_name,
+            "row_label": label, "column": column, "value": value,
+            "unit": unit, "row_index": row_index, "source_provider": provider,
+            "quality_status": quality_status or "unknown",
+            "evidence_status": "ocr_extracted_unverified",
+        })
+    return evidence
 
 
 def lookup_table_query(question: str) -> Optional[Dict[str, Any]]:
@@ -811,6 +943,25 @@ def lookup_table_query(question: str) -> Optional[Dict[str, Any]]:
 
 
 
+def warehouse_capabilities() -> Dict[str, bool]:
+    """Report usable structured data and optional views before SQL planning."""
+    conn = _get_conn()
+    result = {"year_cells": False, "lookup_cells": False, "wide_view": False}
+    for key, table in (("year_cells", "fact_financial_metrics"),
+                       ("lookup_cells", "dim_table_rows")):
+        try:
+            result[key] = bool(conn.execute(f"SELECT 1 FROM {table} LIMIT 1").fetchone())
+        except Exception:
+            pass
+    try:
+        result["wide_view"] = bool(conn.execute(
+            "SELECT 1 FROM information_schema.tables WHERE table_name = 'v_table_rows_wide' LIMIT 1"
+        ).fetchone())
+    except Exception:
+        pass
+    return result
+
+
 def get_schema_description() -> str:
     """Return a human-readable schema summary for LLM SQL generation."""
     conn = _get_conn()
@@ -895,11 +1046,6 @@ def get_schema_description() -> str:
         "  Columns: document_id, table_name, row_label, col_name, col_value,\n"
         "           col_value_num (DOUBLE, pre-parsed number of col_value), row_index\n"
         "  Use for: non-year data like company names, business types, shareholding\n\n"
-        "VIEW 3: v_table_rows_wide (dim_table_rows PIVOTED to wide format)\n"
-        "  Columns: document_id, table_name, row_label, row_index, + one column per attribute\n"
-        "  One row per company/row_label. PREFER this view when a question filters on one\n"
-        "  attribute and returns another (e.g. 'companies whose ประเภทธุรกิจ is บัตรเครดิต,\n"
-        "  and their จำนวนหุ้น') — it avoids correlated sub-queries on dim_table_rows.\n\n"
         "IMPORTANT RULES:\n"
         "  - ALWAYS sort/compare numbers with the numeric columns, NEVER the text ones: use numeric_value (not raw_value) for fact_financial_metrics, and col_value_num (not col_value) for dim_table_rows. Sorting the text column gives wrong order and can crash the engine.\n"
         "  - metric_year is VARCHAR (e.g. '2567', '2566')\n"
@@ -909,8 +1055,15 @@ def get_schema_description() -> str:
         "  - CRITICAL for dim_table_rows: Each row_label has multiple col_names (e.g. 'จำนวนหุ้น', 'ประเภทธุรกิจ'). If asked to list companies, just `SELECT DISTINCT row_label FROM dim_table_rows WHERE ... ORDER BY row_index`.\n"
         "  - To sort/compare dim_table_rows by number, use the ready-made col_value_num column (already parsed) instead of CAST(REPLACE(col_value ...)).\n\n"
     )
+    if warehouse_capabilities()["wide_view"]:
+        desc += (
+            "VIEW 3: v_table_rows_wide (dim_table_rows pivoted by col_name)\n"
+            "  Columns: document_id, table_name, row_label, row_index, + available attributes\n\n"
+        )
+    else:
+        desc += "The v_table_rows_wide view is unavailable; query dim_table_rows directly.\n\n"
 
-    if pivot_columns:
+    if pivot_columns and warehouse_capabilities()["wide_view"]:
         desc += "Attribute columns available in v_table_rows_wide (quote Thai names with \"\"):\n"
         desc += f"  {', '.join(pivot_columns[:30])}\n\n"
 

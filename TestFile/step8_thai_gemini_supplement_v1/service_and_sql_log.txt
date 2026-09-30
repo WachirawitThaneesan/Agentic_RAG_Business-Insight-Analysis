@@ -1,0 +1,78 @@
+Direct use of automatic function calling (AFC) in AsyncModels.generate_content is not recommended. Instead, we recommend to use AFC in AsyncChat.send_message. Similarly, direct use of AFC in AsyncModels.generate_content_stream is not recommended. Instead, we recommend to use AFC in AsyncChat.send_message_stream.
+Gemini ClientError — retry 1/7 in 1.6s (pace 1.8s)
+Gemini ClientError — retry 2/7 in 4.1s (pace 3.2s)
+Gemini ClientError — retry 3/7 in 10.4s (pace 5.8s)
+Gemini ClientError — retry 4/7 in 10.4s (pace 10.5s)
+Gemini ClientError — retry 1/7 in 2.0s (pace 2.1s)
+Gemini ClientError — retry 2/7 in 5.3s (pace 3.7s)
+Gemini ClientError — retry 3/7 in 10.9s (pace 6.7s)
+Gemini ClientError — retry 4/7 in 9.6s (pace 12.1s)
+Gemini ClientError — retry 1/7 in 1.7s (pace 3.3s)
+Gemini ClientError — retry 2/7 in 2.2s (pace 5.9s)
+Gemini ClientError — retry 3/7 in 11.3s (pace 10.6s)
+Gemini ClientError — retry 4/7 in 15.6s (pace 19.0s)
+Gemini ClientError — retry 1/7 in 2.1s (pace 4.2s)
+Gemini ClientError — retry 2/7 in 2.7s (pace 7.5s)
+Gemini ClientError — retry 3/7 in 5.7s (pace 13.5s)
+Gemini ClientError — retry 1/7 in 1.4s (pace 4.5s)
+Gemini ClientError — retry 2/7 in 6.0s (pace 8.1s)
+Gemini ClientError — retry 1/7 in 1.4s (pace 4.6s)
+Gemini ClientError — retry 2/7 in 3.6s (pace 8.2s)
+DuckDB query error: Binder Error: Could not choose a best candidate function for the function call "+(STRING_LITERAL, STRING_LITERAL)". In order to select one, please add explicit type casts.
+	Candidate functions:
+	+(SMALLINT, SMALLINT) -> SMALLINT
+	+(INTEGER, INTEGER) -> INTEGER
+	+(BIGINT, BIGINT) -> BIGINT
+	+(HUGEINT, HUGEINT) -> HUGEINT
+	+(FLOAT, FLOAT) -> FLOAT
+	+(DOUBLE, DOUBLE) -> DOUBLE
+	+(UTINYINT, UTINYINT) -> UTINYINT
+	+(USMALLINT, USMALLINT) -> USMALLINT
+	+(UINTEGER, UINTEGER) -> UINTEGER
+	+(UBIGINT, UBIGINT) -> UBIGINT
+	+(UHUGEINT, UHUGEINT) -> UHUGEINT
+	+(DATE, INTEGER) -> DATE
+	+(INTEGER, DATE) -> DATE
+	+(INTERVAL, INTERVAL) -> INTERVAL
+	+(DATE, INTERVAL) -> TIMESTAMP
+	+(INTERVAL, DATE) -> TIMESTAMP
+	+(TIME, INTERVAL) -> TIME
+	+(INTERVAL, TIME) -> TIME
+	+(TIMESTAMP, INTERVAL) -> TIMESTAMP
+	+(INTERVAL, TIMESTAMP) -> TIMESTAMP
+	+(TIME WITH TIME ZONE, INTERVAL) -> TIME WITH TIME ZONE
+	+(INTERVAL, TIME WITH TIME ZONE) -> TIME WITH TIME ZONE
+	+(TIME, DATE) -> TIMESTAMP
+	+(DATE, TIME) -> TIMESTAMP
+	+(TIME WITH TIME ZONE, DATE) -> TIMESTAMP WITH TIME ZONE
+	+(DATE, TIME WITH TIME ZONE) -> TIMESTAMP WITH TIME ZONE
+	+(BIGNUM, BIGNUM) -> BIGNUM
+	+(TIMESTAMP WITH TIME ZONE, INTERVAL) -> TIMESTAMP WITH TIME ZONE
+	+(INTERVAL, TIMESTAMP WITH TIME ZONE) -> TIMESTAMP WITH TIME ZONE
+	+(TINYINT, TINYINT) -> TINYINT
+
+
+LINE 1: SELECT '0.31' + '0.35' AS total_dividend
+                      ^ | SQL: SELECT '0.31' + '0.35' AS total_dividend
+Gemini ClientError — retry 1/7 in 2.0s (pace 4.6s)
+Gemini ClientError — retry 1/7 in 2.7s (pace 2.6s)
+Gemini ClientError — retry 2/7 in 2.1s (pace 4.7s)
+Gemini ClientError — retry 3/7 in 5.5s (pace 8.5s)
+Gemini ClientError — retry 4/7 in 15.3s (pace 15.3s)
+DuckDB query error: Binder Error: Referenced column "metric_year" not found in FROM clause!
+Candidate bindings: "id", "row_index", "row_label", "table_name"
+
+LINE 9:   row_label LIKE '%FTSE4Good Emerging Index%' AND metric_year = '2567'
+                                                          ^ | SQL: SELECT
+  document_id,
+  table_name,
+  row_label,
+  col_name,
+  col_value
+FROM dim_table_rows
+WHERE
+  row_label LIKE '%FTSE4Good Emerging Index%' AND metric_year = '2567'
+ORDER BY
+  row_index ASC
+LIMIT
+Gemini ClientError — retry 1/7 in 2.0s (pace 5.1s)

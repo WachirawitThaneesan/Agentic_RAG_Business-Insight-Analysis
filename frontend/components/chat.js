@@ -44,6 +44,35 @@ function renderChat(container) {
     `;
 }
 
+function renderChatSource(source) {
+    const documentId = Number(source.document_id);
+    const page = Number(source.page);
+    const hasPage = Number.isInteger(documentId) && documentId > 0
+        && Number.isInteger(page) && page > 0;
+    const filename = escapeHtml(String(source.filename || 'Document'));
+    const location = `${filename}${hasPage ? ` · PDF page ${page}` : ' · page unresolved'}`;
+    const cell = [source.row_label, source.column, source.value]
+        .filter(value => value !== null && value !== undefined && String(value).trim())
+        .map(value => escapeHtml(String(value))).join(' · ');
+    const detail = cell ? ` <small>(${cell})</small>` : '';
+    const quality = source.quality_status === 'passed_checks' ? 'internal checks passed'
+        : source.quality_status === 'unverified' ? 'no numeric cross-check'
+        : source.quality_status === 'unknown' ? 'quality unknown' : '';
+    const label = `📄 ${location}${detail}${quality ? ` <small>· ${quality}</small>` : ''}`;
+    if (hasPage) {
+        return `<a class="method-badge ${source.type === 'sql' ? 'sql' : 'vector'}" style="margin:2px" href="/api/documents/${documentId}/pages/${page}/image" target="_blank" rel="noopener">${label}</a>`;
+    }
+    if (source.type === 'web' && source.url) {
+        try {
+            const url = new URL(source.url);
+            if (url.protocol === 'https:' || url.protocol === 'http:') {
+                return `<a class="method-badge vector" style="margin:2px" href="${escapeHtml(url.href)}" target="_blank" rel="noopener">🌐 ${escapeHtml(String(source.title || url.hostname))}</a>`;
+            }
+        } catch (_) { /* Invalid URL remains uncited. */ }
+    }
+    return `<span class="method-badge ${source.type === 'sql' ? 'sql' : 'vector'}" style="margin:2px">${label}</span>`;
+}
+
 async function sendMessage() {
     const input = document.getElementById('chat-input');
     const question = input.value.trim();
@@ -94,14 +123,8 @@ async function sendMessage() {
         if (result.sources && result.sources.length > 0) {
             sourcesHtml = `
                 <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border-primary)">
-                    <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px">Sources:</div>
-                    ${result.sources.map(s => {
-                        if (s.type === 'vector') {
-                            return `<span class="method-badge vector" style="margin:2px">📄 ${s.filename} (chunk ${s.chunk_index}, ${(s.similarity * 100).toFixed(1)}%)</span>`;
-                        } else {
-                            return `<span class="method-badge sql" style="margin:2px">🔍 SQL: ${s.row_count} rows</span>`;
-                        }
-                    }).join(' ')}
+                    <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px">Retrieved evidence — OCR values are not visually verified. Open the PDF page to check them.</div>
+                    ${result.sources.map(renderChatSource).join(' ')}
                 </div>
             `;
         }

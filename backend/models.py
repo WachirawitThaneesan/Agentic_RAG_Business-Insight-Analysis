@@ -83,10 +83,15 @@ class StructuredData(Base):
     headers = Column(JSON, nullable=True)   # List of column names
     row_data = Column(JSON, nullable=False)  # JSONB row in long format
     row_index = Column(Integer, nullable=True)
+    source_page = Column(Integer, nullable=True)
+    unit = Column(String(100), nullable=True)
+    source_provider = Column(String(40), nullable=True)
+    quality_status = Column(String(40), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     document = relationship("Document", back_populates="structured_data")
 
     __table_args__ = (
         Index("ix_structured_data_document_id", "document_id"),
+        Index("ix_structured_data_source_page", "document_id", "source_page"),
     )

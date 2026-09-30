@@ -46,6 +46,7 @@ python-dotenv>=1.0.0
 pydantic>=2.10.0
 pydantic-settings>=2.7.0
 aiofiles>=24.1.0
+psutil>=7.0.0  # process-tree memory sampling for long-document benchmarks
 
 # Agentic RAG / Evaluation
 langchain>=0.3.0

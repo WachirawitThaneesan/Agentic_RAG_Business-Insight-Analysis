@@ -1,0 +1,1517 @@
+{
+  "schema_version": 2,
+  "classification": "post-run provisional rescore; not a new held-out model run",
+  "review_status": "one-reader PDF inspection; independent human second review pending",
+  "questions": 20,
+  "changed_question_ids": {
+    "search": {
+      "bm25": [
+        "TF08",
+        "TF09",
+        "TF14"
+      ],
+      "dense": [
+        "TF06",
+        "TF09",
+        "TF14"
+      ],
+      "app_hybrid": [
+        "TF06",
+        "TF09",
+        "TF14"
+      ]
+    },
+    "answers": {
+      "bm25_rag": [
+        "TF08",
+        "TF14"
+      ],
+      "app_agent": [
+        "TF06",
+        "TF09"
+      ],
+      "bm25_gemini": [
+        "TF08",
+        "TF14"
+      ],
+      "app_gemini": [
+        "TF09",
+        "TF10",
+        "TF14"
+      ]
+    }
+  },
+  "original_frozen_counts": {
+    "search_hit_at_5": {
+      "bm25": 0.25,
+      "dense": 0.15,
+      "app_hybrid": 0.15
+    },
+    "answer_correct": {
+      "bm25_rag": 0,
+      "app_agent": 1,
+      "bm25_gemini": 6,
+      "app_gemini": 2
+    }
+  },
+  "search": {
+    "bm25": {
+      "layer": "search",
+      "k": 5,
+      "n_questions": 20,
+      "n_missing_predictions": 0,
+      "n_unlocatable_results_top_k": 0,
+      "hit_at_k": 0.4,
+      "recall_at_k": 0.4,
+      "ndcg_at_k": 0.3193426403617271,
+      "details": [
+        {
+          "id": "TF01",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF02",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF03",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF04",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF05",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF06",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF07",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF08",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.5,
+          "first_relevant_rank": 3,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF09",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.38685280723454163,
+          "first_relevant_rank": 5,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF10",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.5,
+          "first_relevant_rank": 3,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF11",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF12",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF13",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF14",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF15",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF16",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF17",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF18",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF19",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF20",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        }
+      ]
+    },
+    "dense": {
+      "layer": "search",
+      "k": 5,
+      "n_questions": 20,
+      "n_missing_predictions": 0,
+      "n_unlocatable_results_top_k": 0,
+      "hit_at_k": 0.3,
+      "recall_at_k": 0.3,
+      "ndcg_at_k": 0.2565464876785729,
+      "details": [
+        {
+          "id": "TF01",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF02",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF03",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF04",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF05",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF06",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF07",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF08",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF09",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF10",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.6309297535714575,
+          "first_relevant_rank": 2,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF11",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF12",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF13",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF14",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.5,
+          "first_relevant_rank": 3,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF15",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF16",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF17",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF18",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF19",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF20",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        }
+      ]
+    },
+    "app_hybrid": {
+      "layer": "search",
+      "k": 5,
+      "n_questions": 20,
+      "n_missing_predictions": 0,
+      "n_unlocatable_results_top_k": 0,
+      "hit_at_k": 0.3,
+      "recall_at_k": 0.3,
+      "ndcg_at_k": 0.24087646826539671,
+      "details": [
+        {
+          "id": "TF01",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF02",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF03",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF04",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF05",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF06",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF07",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF08",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF09",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.43067655807339306,
+          "first_relevant_rank": 4,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF10",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF11",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF12",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF13",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF14",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.38685280723454163,
+          "first_relevant_rank": 5,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF15",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF16",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF17",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF18",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF19",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TF20",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        }
+      ]
+    }
+  },
+  "answers": {
+    "bm25_rag": {
+      "layer": "answers",
+      "n_questions": 20,
+      "n_correct": 1,
+      "n_incorrect": 16,
+      "n_needs_review": 3,
+      "n_missing_predictions": 0,
+      "fact_accuracy_determined": 0.058823529411764705,
+      "fact_accuracy_strict_lower_bound": 0.05,
+      "citation_page_hit_rate": 0.35,
+      "citation_page_recall": 0.35,
+      "citation_all_required_rate": 0.35,
+      "unsupported_abstention_rate": null,
+      "details": [
+        {
+          "id": "TF01",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF02",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF03",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF04",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF05",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF06",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF07",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF08",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF09",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF10",
+          "fact_status": "needs_review",
+          "reason": "missing_or_ambiguous_unit",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF11",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF12",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF13",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF14",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF15",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF16",
+          "fact_status": "needs_review",
+          "reason": "missing_or_ambiguous_unit",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF17",
+          "fact_status": "needs_review",
+          "reason": "missing_or_ambiguous_unit",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF18",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF19",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF20",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        }
+      ]
+    },
+    "app_agent": {
+      "layer": "answers",
+      "n_questions": 20,
+      "n_correct": 1,
+      "n_incorrect": 19,
+      "n_needs_review": 0,
+      "n_missing_predictions": 0,
+      "fact_accuracy_determined": 0.05,
+      "fact_accuracy_strict_lower_bound": 0.05,
+      "citation_page_hit_rate": 0.25,
+      "citation_page_recall": 0.25,
+      "citation_all_required_rate": 0.25,
+      "unsupported_abstention_rate": null,
+      "details": [
+        {
+          "id": "TF01",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF02",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF03",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF04",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF05",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF06",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF07",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF08",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF09",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF10",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF11",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF12",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF13",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF14",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF15",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF16",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF17",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF18",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF19",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF20",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        }
+      ]
+    },
+    "bm25_gemini": {
+      "layer": "answers",
+      "n_questions": 20,
+      "n_correct": 7,
+      "n_incorrect": 13,
+      "n_needs_review": 0,
+      "n_missing_predictions": 0,
+      "fact_accuracy_determined": 0.35,
+      "fact_accuracy_strict_lower_bound": 0.35,
+      "citation_page_hit_rate": 0.35,
+      "citation_page_recall": 0.35,
+      "citation_all_required_rate": 0.35,
+      "unsupported_abstention_rate": null,
+      "details": [
+        {
+          "id": "TF01",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF02",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF03",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF04",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF05",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF06",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF07",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF08",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF09",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF10",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF11",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF12",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF13",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF14",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF15",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF16",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF17",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF18",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF19",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF20",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        }
+      ]
+    },
+    "app_gemini": {
+      "layer": "answers",
+      "n_questions": 20,
+      "n_correct": 4,
+      "n_incorrect": 16,
+      "n_needs_review": 0,
+      "n_missing_predictions": 0,
+      "fact_accuracy_determined": 0.2,
+      "fact_accuracy_strict_lower_bound": 0.2,
+      "citation_page_hit_rate": 0.25,
+      "citation_page_recall": 0.25,
+      "citation_all_required_rate": 0.25,
+      "unsupported_abstention_rate": null,
+      "details": [
+        {
+          "id": "TF01",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF02",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF03",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF04",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF05",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF06",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF07",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF08",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF09",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF10",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF11",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF12",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF13",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF14",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF15",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF16",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF17",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF18",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF19",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "TF20",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        }
+      ]
+    }
+  },
+  "sha256": {
+    "TestFile/heldout_thai_final_reference_v1.json": "35a203b6e9c6cc26fd2cd4d95ac590efb5e5ae5dd14808bf2709fcbc440f9276",
+    "TestFile/heldout_thai_final_adjudication_v2.json": "e67e9e6b7cd8e75f9ef68a0efbc89d9aa0b180261a35a33bbe689bfbd4d626e1",
+    "TestFile/step8_thai_final_results_v1/metrics.json": "c06be0b7ebb641c0938ae0077241d8885a25910de07f205aa5a4c0181c466f4d",
+    "TestFile/step8_thai_gemini_supplement_v1/metrics.json": "debb82e4a759c4f3dfffec929f0c334a108db2ac95b12800286dfc96fda60978",
+    "TestFile/step8_thai_final_results_v1/bm25_predictions.json": "046396762ec2592e3a57dd5e39c09e678ca026be05e1773fcd7e3ffb47e141d2",
+    "TestFile/step8_thai_final_results_v1/dense_predictions.json": "66ccbf334043d9ed4712ead2e60183bce8fc2ab4f06437f143f7fd91108cd398",
+    "TestFile/step8_thai_final_results_v1/app_hybrid_predictions.json": "80ce93d47dd6777d0fc591fca17ae2203d9e5bb66027cb8063b9c57dabc007f5",
+    "TestFile/step8_thai_final_results_v1/bm25_rag_answers.json": "1c8f41eef36775988b1235970be0749842d0698924047fd72530cf04143f7018",
+    "TestFile/step8_thai_final_results_v1/app_agent_answers.json": "2806404f319a3f303f29b176c4261cf7734ee75d8f85737867d382bbc894f998",
+    "TestFile/step8_thai_gemini_supplement_v1/bm25_gemini_answers.json": "f5bab619d737122c96525c283c4d6dfc1e2b3f010826f784ff25eccb1bdd34f1",
+    "TestFile/step8_thai_gemini_supplement_v1/app_gemini_answers.json": "ec7e0e571a4122a76d0a54ac354a19582e5f80bc9695a119480af3430c5e6a6f",
+    "backend/eval/numeric.py": "77fdff84c6119bbfbed661a2e793fa3a0976181c8b7ad4f919560299f931e412",
+    "backend/eval/score_layers.py": "de2a3e31d6d4f451803c7f8a8579f3edc728fdcae87153a0e618fb13323f9c78",
+    "scripts/rescore_heldout_thai_v2.py": "0ec58eb1d3276cfecefdab71d249992b321d92062d2656725c85459f8ae86c31"
+  }
+}

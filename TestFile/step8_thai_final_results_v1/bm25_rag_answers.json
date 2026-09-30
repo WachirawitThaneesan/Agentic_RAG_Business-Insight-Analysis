@@ -1,0 +1,422 @@
+[
+  {
+    "id": "TF01",
+    "answer": "43.9 พันล้านบาท",
+    "citations": [
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 218
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 199
+      }
+    ]
+  },
+  {
+    "id": "TF02",
+    "answer": "17.7%",
+    "citations": [
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 220
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 201
+      }
+    ]
+  },
+  {
+    "id": "TF03",
+    "answer": "ณ สิ้นปี 2567 SCBX มีสินทรัพย์รวมตามงบการเงินรวมเท่า 10,572,259 พันล้านบาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 173
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 218
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 172
+      }
+    ]
+  },
+  {
+    "id": "TF04",
+    "answer": "2567: 862,372 พันบาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 142
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 173
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 172
+      }
+    ]
+  },
+  {
+    "id": "TF05",
+    "answer": "90,750 ล้านบาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 199
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 187
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 234
+      }
+    ]
+  },
+  {
+    "id": "TF06",
+    "answer": "8,988.4 ล้านบาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 172
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 218
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 164
+      }
+    ]
+  },
+  {
+    "id": "TF07",
+    "answer": "The exact percentage is not stated in the provided passages. However, the document states that the net interest margin NIM for SCBX in 2567 was at least 25% for the portion due for collection within 12 months and no more than 75%.",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 144
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 153
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 209
+      }
+    ]
+  },
+  {
+    "id": "TF08",
+    "answer": "1.35",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 122
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 252
+      }
+    ]
+  },
+  {
+    "id": "TF09",
+    "answer": "7.84 บาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 172
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 246
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 192
+      }
+    ]
+  },
+  {
+    "id": "TF10",
+    "answer": "16",
+    "citations": [
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 249
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 249
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 33
+      }
+    ]
+  },
+  {
+    "id": "TF11",
+    "answer": "19,613,166 พันบาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 152
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 199
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 178
+      }
+    ]
+  },
+  {
+    "id": "TF12",
+    "answer": "กำไรก่อนหักดอกเบี้ย ภาษี ค่าเสื่อมราคา และค่าตัดจำหน่ายของไทยยูเนี่ยนในปี 2567 เท่ากับ 24,520 พันบาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 187
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 177
+      }
+    ]
+  },
+  {
+    "id": "TF13",
+    "answer": "18,095,472 บาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 154
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 155
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 147
+      }
+    ]
+  },
+  {
+    "id": "TF14",
+    "answer": "4,984,894 พันบาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 182
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 189
+      }
+    ]
+  },
+  {
+    "id": "TF15",
+    "answer": "0.31 บาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 192
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 122
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      }
+    ]
+  },
+  {
+    "id": "TF16",
+    "answer": "85",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 5
+      }
+    ]
+  },
+  {
+    "id": "TF17",
+    "answer": "9",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      }
+    ]
+  },
+  {
+    "id": "TF18",
+    "answer": "The report states that the overall competitive landscape and market for frozen tuna saw a growth of 1.5% to 2.5% compared to the previous year.",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 140
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 167
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 182
+      }
+    ]
+  },
+  {
+    "id": "TF19",
+    "answer": "5 ถึง 120 วัน",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 130
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 153
+      }
+    ]
+  },
+  {
+    "id": "TF20",
+    "answer": "The average sales term of Thai Union in 2567 is not stated.",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 213
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 140
+      }
+    ]
+  }
+]

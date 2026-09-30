@@ -1,0 +1,632 @@
+{
+  "schema_version": 1,
+  "purpose": "Development diagnostic reference set for OCR, evidence retrieval, and answer evaluation",
+  "limitations": [
+    "These four source reports were already used during development; none is an unseen-report final test set.",
+    "Each answer was checked by one reviewer against a rendered page from the original PDF. Owner or second-reader review is still desirable before thesis reporting.",
+    "One reference item per page samples content but does not measure complete page or report accuracy.",
+    "No cloud OCR output, cached model response, or database row is treated as ground truth."
+  ],
+  "page_numbering": "All source_pdf_page and excerpt_page values are 1-based physical PDF page indices, not printed numbers.",
+  "documents": [
+    {
+      "code": "BBIKT",
+      "source_file": "2025_105466_E_ONE_REPORT_BBIKT.pdf",
+      "source_sha256": "a503530fa33a7bf15eca45078eda245c24e177cdaaea61111ee1daa27fd39692",
+      "source_page_count": 377,
+      "excerpt_file": "2025_105466_E_ONE_REPORT_BBIKT_selected50.pdf",
+      "excerpt_sha256": "57f408f0471f079807cc3d81eeea48f223cc0d8c8eab838790404228c25e08e8",
+      "excerpt_page_count": 50
+    },
+    {
+      "code": "SYNNEX",
+      "source_file": "AnnualSynnex2025_THA.pdf",
+      "source_sha256": "aa0f6d0cfe13b0038d40e46926021937771e596ddb1cfac3751bd4791c75b9b1",
+      "source_page_count": 278,
+      "excerpt_file": "AnnualSynnex2025_THA_selected50.pdf",
+      "excerpt_sha256": "9d26c3f2866b09e809e1daefa37fc3c00cd4341ae210fcd36185515e2d143754",
+      "excerpt_page_count": 50
+    },
+    {
+      "code": "BKI",
+      "source_file": "onereport_2568TH.pdf",
+      "source_sha256": "2dc35b64c53a5df48ce7ad2ee16ca58fce2296e85816014946097a9f88dcd5dd",
+      "source_page_count": 328,
+      "excerpt_file": "onereport_2568TH_selected50.pdf",
+      "excerpt_sha256": "7d0fc73a05dd6a6ae6e67d1ee1c93d7c47f2f8f9fb69f0ae136d41eecca0c752",
+      "excerpt_page_count": 50
+    },
+    {
+      "code": "KBANK",
+      "source_file": "y2025-onereport-th.pdf",
+      "source_sha256": "e10c025a7e24671b7ffbfb668d477f6122912baff45ba4606c0582f8f2969b44",
+      "source_page_count": 180,
+      "excerpt_file": "y2025-onereport-th_selected50.pdf",
+      "excerpt_sha256": "be19231791ba1215764c74eea9c9f0f70e7499a633ccdabc2c23f1b0baa03584",
+      "excerpt_page_count": 50
+    }
+  ],
+  "items": [
+    {
+      "id": "RP01",
+      "document": "BBIKT",
+      "excerpt_page": 5,
+      "source_pdf_page": 30,
+      "page_role": "financial_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "ปี 2568 รายได้จากลูกค้ากลุ่มธุรกิจการเงินเท่าไร (ล้านบาท)?",
+      "reference_answer": "254.29 ล้านบาท",
+      "answer_components": {
+        "value": "254.29",
+        "unit": "ล้านบาท",
+        "year_be": 2568,
+        "row": "ธุรกิจการเงิน",
+        "column": "ปี 2568 / ล้านบาท"
+      },
+      "evidence_locator": "โครงสร้างรายได้จากการบริการ; แถวธุรกิจการเงิน; คอลัมน์ปี 2568 ล้านบาท",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP02",
+      "document": "BBIKT",
+      "excerpt_page": 10,
+      "source_pdf_page": 60,
+      "page_role": "narrative",
+      "answer_kind": "short_text",
+      "question_th": "ช่องทางสรรหาบุคลากรหลักข้อที่ 4 ที่ระบุในหัวข้อความเสี่ยงด้านทรัพยากรบุคคลคืออะไร?",
+      "reference_answer": "การแนะนำจากพนักงานภายในกลุ่มบริษัท",
+      "answer_components": {},
+      "evidence_locator": "มาตรการจัดการความเสี่ยง; รายการช่องทางสรรหาบุคลากรข้อ 4",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP03",
+      "document": "BBIKT",
+      "excerpt_page": 12,
+      "source_pdf_page": 92,
+      "page_role": "photo_caption",
+      "answer_kind": "short_text",
+      "question_th": "ภาพกิจกรรมบริจาคโลหิตบนหน้านี้ใช้ชื่อกิจกรรมภาษาอังกฤษว่าอะไร?",
+      "reference_answer": "World Blood Donor Day",
+      "answer_components": {},
+      "evidence_locator": "คำบรรยายระหว่างภาพชุดแรกกับโปสเตอร์กิจกรรม",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP04",
+      "document": "BBIKT",
+      "excerpt_page": 17,
+      "source_pdf_page": 120,
+      "page_role": "financial_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "สินทรัพย์รวมปี 2568 ในตารางคำอธิบายรายการเท่าไร (ล้านบาท)?",
+      "reference_answer": "2,645.38 ล้านบาท",
+      "answer_components": {
+        "value": "2645.38",
+        "unit": "ล้านบาท",
+        "year_be": 2568,
+        "row": "รวมสินทรัพย์",
+        "column": "ปี 2568 / จำนวนเงิน"
+      },
+      "evidence_locator": "ตารางสินทรัพย์; แถวรวมสินทรัพย์; คอลัมน์ปี 2568 จำนวนเงิน",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP05",
+      "document": "BBIKT",
+      "excerpt_page": 25,
+      "source_pdf_page": 182,
+      "page_role": "charts_and_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "ปี 2568 กรรมการหญิงมีจำนวนและสัดส่วนเท่าไร?",
+      "reference_answer": "1 คน; 11.11%",
+      "answer_components": {
+        "count": "1",
+        "count_unit": "คน",
+        "percent": "11.11",
+        "percent_unit": "%",
+        "year_be": 2568,
+        "row": "กรรมการหญิง"
+      },
+      "evidence_locator": "ตารางใต้กราฟองค์ประกอบคณะกรรมการ; แถวกรรมการหญิง",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP06",
+      "document": "BBIKT",
+      "excerpt_page": 25,
+      "source_pdf_page": 182,
+      "page_role": "donut_chart",
+      "answer_kind": "chart_numeric",
+      "question_th": "กรรมการบริษัทช่วงอายุ 41–50 ปีมีกี่คนจากกรรมการทั้งหมด 9 คน?",
+      "reference_answer": "4 คนจาก 9 คน",
+      "answer_components": {
+        "value": "4",
+        "unit": "คน",
+        "total": "9",
+        "chart": "อายุ (ปี)",
+        "category": "41–50"
+      },
+      "evidence_locator": "กราฟวงแหวนอายุ (ปี); ส่วนสีส้มช่วง 41–50; ป้าย 4 / 9",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP07",
+      "document": "BBIKT",
+      "excerpt_page": 34,
+      "source_pdf_page": 243,
+      "page_role": "policy_text",
+      "answer_kind": "numeric_fact",
+      "question_th": "กรรมการหรือผู้บริหารที่ได้รับแต่งตั้งต้องส่งรายงานการถือครองหลักทรัพย์ภายในกี่วัน?",
+      "reference_answer": "30 วัน",
+      "answer_components": {
+        "value": "30",
+        "unit": "วัน"
+      },
+      "evidence_locator": "นโยบายป้องกันการใช้ข้อมูลภายใน; ข้อ 2 ช่วงท้าย",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP08",
+      "document": "BBIKT",
+      "excerpt_page": 37,
+      "source_pdf_page": 287,
+      "page_role": "dense_equity_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "งบการเงินรวม ณ 31 ธันวาคม 2568 รวมส่วนของผู้ถือหุ้นเท่าไร (บาท)?",
+      "reference_answer": "2,144,125,483 บาท",
+      "answer_components": {
+        "value": "2144125483",
+        "unit": "บาท",
+        "date": "2568-12-31",
+        "scope": "งบการเงินรวม",
+        "row": "ยอดคงเหลือ ณ วันที่ 31 ธันวาคม 2568",
+        "column": "รวมส่วนของผู้ถือหุ้น"
+      },
+      "evidence_locator": "งบแสดงการเปลี่ยนแปลงส่วนของผู้ถือหุ้น; แถววันที่ 31 ธันวาคม 2568; คอลัมน์รวมส่วนของผู้ถือหุ้นขวาสุด",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP09",
+      "document": "BBIKT",
+      "excerpt_page": 48,
+      "source_pdf_page": 363,
+      "page_role": "dense_segment_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "ปี 2568 รายได้จากการขายให้ลูกค้าภายนอกของส่วนงานออกแบบและพัฒนาระบบเท่าไร (ล้านบาท)?",
+      "reference_answer": "1,272.11 ล้านบาท",
+      "answer_components": {
+        "value": "1272.11",
+        "unit": "ล้านบาท",
+        "year_be": 2568,
+        "row": "รายได้จากการขายให้ลูกค้าภายนอก",
+        "column": "การออกแบบและพัฒนาระบบ / 2568"
+      },
+      "evidence_locator": "หมายเหตุ 21 ส่วนงานดำเนินงาน; แถวรายได้จากการขายให้ลูกค้าภายนอก; คอลัมน์การออกแบบและพัฒนาระบบ ปี 2568",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP10",
+      "document": "SYNNEX",
+      "excerpt_page": 9,
+      "source_pdf_page": 46,
+      "page_role": "strategy_narrative",
+      "answer_kind": "short_text",
+      "question_th": "งานแสดงเทคโนโลยีที่บริษัทกล่าวถึงในกลยุทธ์การแข่งขันใช้ชื่อว่าอะไร?",
+      "reference_answer": "Synnex Technology Showcase",
+      "answer_components": {},
+      "evidence_locator": "ย่อหน้ากลยุทธ์การแข่งขันที่กล่าวถึงการจัดงานในปี 2568",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP11",
+      "document": "SYNNEX",
+      "excerpt_page": 16,
+      "source_pdf_page": 91,
+      "page_role": "training_visual",
+      "answer_kind": "short_text",
+      "question_th": "หลักสูตรพัฒนาบุคลากรข้อที่ 2 ในหน้านี้มีชื่อภาษาอังกฤษว่าอะไร?",
+      "reference_answer": "Core Skills Development",
+      "answer_components": {},
+      "evidence_locator": "หลักสูตรการพัฒนาบุคลากร; หัวข้อหมายเลข 2",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP12",
+      "document": "SYNNEX",
+      "excerpt_page": 19,
+      "source_pdf_page": 108,
+      "page_role": "balance_sheet_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "ณ 31 ธันวาคม 2568 เงินสดและรายการเทียบเท่าเงินสดเท่าไร (พันบาท)?",
+      "reference_answer": "90,000 พันบาท",
+      "answer_components": {
+        "value": "90000",
+        "unit": "พันบาท",
+        "date": "2568-12-31",
+        "row": "เงินสดและรายการเทียบเท่าเงินสด",
+        "column": "31 ธ.ค. 2568 / จำนวนเงิน"
+      },
+      "evidence_locator": "งบฐานะการเงิน; แถวเงินสดและรายการเทียบเท่าเงินสด; คอลัมน์ 31 ธ.ค. 2568 จำนวนเงิน",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP13",
+      "document": "SYNNEX",
+      "excerpt_page": 21,
+      "source_pdf_page": 114,
+      "page_role": "financial_ratio_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "อัตราส่วนสภาพคล่องปี 2568 เท่ากับเท่าไร?",
+      "reference_answer": "1.22 เท่า",
+      "answer_components": {
+        "value": "1.22",
+        "unit": "เท่า",
+        "year_be": 2568,
+        "row": "อัตราส่วนสภาพคล่อง",
+        "column": "2568"
+      },
+      "evidence_locator": "ตารางอัตราส่วนทางการเงิน; แถวอัตราส่วนสภาพคล่อง; คอลัมน์ 2568",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP14",
+      "document": "SYNNEX",
+      "excerpt_page": 25,
+      "source_pdf_page": 130,
+      "page_role": "organization_diagram",
+      "answer_kind": "diagram_label",
+      "question_th": "หน่วยงานบนสุดในโครงสร้างการกำกับดูแลกิจการคืออะไร?",
+      "reference_answer": "คณะกรรมการบริษัท",
+      "answer_components": {},
+      "evidence_locator": "ผังโครงสร้างการกำกับดูแลกิจการ; กล่องสีน้ำเงินเข้มด้านซ้าย",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP15",
+      "document": "SYNNEX",
+      "excerpt_page": 29,
+      "source_pdf_page": 161,
+      "page_role": "compensation_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "กรรมการลำดับที่ 1 ในตารางค่าตอบแทนปี 2568 ได้รับค่าตอบแทนรวมเท่าไร?",
+      "reference_answer": "390,000 บาท",
+      "answer_components": {
+        "value": "390000",
+        "unit": "บาท",
+        "year_be": 2568,
+        "row": "กรรมการลำดับ 1",
+        "column": "รวม (บาท)"
+      },
+      "evidence_locator": "ตารางรายละเอียดค่าตอบแทนกรรมการปี 2568; แถวลำดับ 1; คอลัมน์รวม (บาท)",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP16",
+      "document": "SYNNEX",
+      "excerpt_page": 39,
+      "source_pdf_page": 209,
+      "page_role": "related_party_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "ปี 2568 ยอดขายสินค้าหรือการให้บริการแก่บริษัทร่วมในงบการเงินรวมเท่าไร (พันบาท)?",
+      "reference_answer": "1,124 พันบาท",
+      "answer_components": {
+        "value": "1124",
+        "unit": "พันบาท",
+        "year_be": 2568,
+        "scope": "งบการเงินรวม",
+        "row": "บริษัทร่วม / ขายสินค้าหรือการให้บริการ",
+        "column": "2568"
+      },
+      "evidence_locator": "รายการที่สำคัญกับบุคคลหรือกิจการที่เกี่ยวข้องกัน; บริษัทร่วม; แถวขายสินค้าหรือการให้บริการ; งบการเงินรวม 2568",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP17",
+      "document": "SYNNEX",
+      "excerpt_page": 49,
+      "source_pdf_page": 275,
+      "page_role": "lease_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "สาขาเชียงใหม่มีค่าเช่าและค่าบริการต่อเดือนเท่าไร?",
+      "reference_answer": "29,473.68 บาทต่อเดือน",
+      "answer_components": {
+        "value": "29473.68",
+        "unit": "บาทต่อเดือน",
+        "row": "เชียงใหม่",
+        "column": "ค่าเช่าและค่าบริการ/เดือน"
+      },
+      "evidence_locator": "ตารางสำนักงานสาขาต่างจังหวัด; แถวเชียงใหม่; คอลัมน์ค่าเช่าและค่าบริการ/เดือน",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP18",
+      "document": "BKI",
+      "excerpt_page": 6,
+      "source_pdf_page": 34,
+      "page_role": "policy_narrative",
+      "answer_kind": "short_text",
+      "question_th": "หน้านี้อ้างถึงมาตรฐานรายงานทางการเงินฉบับใดสำหรับเครื่องมือทางการเงิน?",
+      "reference_answer": "TFRS 9",
+      "answer_components": {},
+      "evidence_locator": "ย่อหน้าเรื่องการประเมินมูลค่ายุติธรรมของหุ้นนอกตลาด; คอลัมน์ขวา",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP19",
+      "document": "BKI",
+      "excerpt_page": 9,
+      "source_pdf_page": 54,
+      "page_role": "investment_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "ณ 31 ธันวาคม 2568 มูลค่าตามบัญชีรวมของเงินลงทุนในหลักทรัพย์จดทะเบียนเท่าไร (ล้านบาท)?",
+      "reference_answer": "7,757 ล้านบาท",
+      "answer_components": {
+        "value": "7757",
+        "unit": "ล้านบาท",
+        "date": "2568-12-31",
+        "row": "รวม",
+        "column": "มูลค่าตามบัญชี / จำนวนเงิน"
+      },
+      "evidence_locator": "การลงทุนในหลักทรัพย์; แถวรวม; คอลัมน์มูลค่าตามบัญชี จำนวนเงิน (ล้านบาท)",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP20",
+      "document": "BKI",
+      "excerpt_page": 15,
+      "source_pdf_page": 96,
+      "page_role": "bar_chart",
+      "answer_kind": "chart_numeric",
+      "question_th": "ปี 2568 อาคารสำนักงานใหญ่ใช้กระดาษกี่รีมตามกราฟ?",
+      "reference_answer": "27,243 รีม",
+      "answer_components": {
+        "value": "27243",
+        "unit": "รีม",
+        "year_be": 2568,
+        "chart": "ปริมาณการใช้กระดาษของอาคารกรุงเทพประกันภัย (สำนักงานใหญ่)",
+        "category": "ปี 2568"
+      },
+      "evidence_locator": "กราฟปริมาณการใช้กระดาษของอาคารกรุงเทพประกันภัย (สำนักงานใหญ่); แท่งปี 2568",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP21",
+      "document": "BKI",
+      "excerpt_page": 15,
+      "source_pdf_page": 96,
+      "page_role": "bar_chart",
+      "answer_kind": "chart_numeric",
+      "question_th": "ปี 2567 อาคารสำนักงานใหญ่ใช้กระดาษกี่รีมตามกราฟ?",
+      "reference_answer": "29,290 รีม",
+      "answer_components": {
+        "value": "29290",
+        "unit": "รีม",
+        "year_be": 2567,
+        "chart": "ปริมาณการใช้กระดาษของอาคารกรุงเทพประกันภัย (สำนักงานใหญ่)",
+        "category": "ปี 2567"
+      },
+      "evidence_locator": "กราฟปริมาณการใช้กระดาษของอาคารกรุงเทพประกันภัย (สำนักงานใหญ่); แท่งปี 2567",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP22",
+      "document": "BKI",
+      "excerpt_page": 18,
+      "source_pdf_page": 116,
+      "page_role": "training_narrative",
+      "answer_kind": "short_text",
+      "question_th": "ปี 2568 บริษัทจัดอบรมหลักสูตรขับขี่ปลอดภัยชื่อภาษาอังกฤษว่าอะไร?",
+      "reference_answer": "Zero Accident",
+      "answer_components": {},
+      "evidence_locator": "การจัดการสอนหลักสูตรสำหรับลูกค้า; คอลัมน์ขวา",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP23",
+      "document": "BKI",
+      "excerpt_page": 19,
+      "source_pdf_page": 117,
+      "page_role": "demographic_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "ปี 2568 พนักงานที่มีภูมิลำเนาภาคตะวันออกเฉียงเหนือมีกี่คน?",
+      "reference_answer": "210 คน",
+      "answer_components": {
+        "value": "210",
+        "unit": "คน",
+        "year_be": 2568,
+        "row": "ภาคตะวันออกเฉียงเหนือ",
+        "column": "ปี 2568 / จำนวนพนักงาน"
+      },
+      "evidence_locator": "ตารางข้อมูลพนักงาน; แถวภาคตะวันออกเฉียงเหนือ; คอลัมน์ปี 2568 จำนวนพนักงาน",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP24",
+      "document": "BKI",
+      "excerpt_page": 24,
+      "source_pdf_page": 153,
+      "page_role": "kpi_table",
+      "answer_kind": "table_label",
+      "question_th": "มิติเชิงกลยุทธ์ด้านการเงินในตาราง KPI ใช้ชื่อภาษาอังกฤษว่าอะไร?",
+      "reference_answer": "Financial: Revenue / Profit",
+      "answer_components": {},
+      "evidence_locator": "ตารางมิติเชิงกลยุทธ์ / วัตถุประสงค์ / ดัชนีชี้วัดผลงาน; แถวแรก",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP25",
+      "document": "BKI",
+      "excerpt_page": 33,
+      "source_pdf_page": 211,
+      "page_role": "comprehensive_income_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "ปี 2568 กำไรสำหรับปีในงบการเงินที่แสดงเงินลงทุนตามวิธีส่วนได้เสียเท่าไร (บาท)?",
+      "reference_answer": "3,121,261,540 บาท",
+      "answer_components": {
+        "value": "3121261540",
+        "unit": "บาท",
+        "year_be": 2568,
+        "scope": "งบการเงินที่แสดงเงินลงทุนตามวิธีส่วนได้เสีย",
+        "row": "กำไรสำหรับปี",
+        "column": "2568"
+      },
+      "evidence_locator": "งบกำไรขาดทุนเบ็ดเสร็จ; แถวกำไรสำหรับปี; คอลัมน์งบการเงินที่แสดงเงินลงทุนตามวิธีส่วนได้เสีย 2568",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP26",
+      "document": "BKI",
+      "excerpt_page": 42,
+      "source_pdf_page": 270,
+      "page_role": "contract_runoff_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "ปี 2568 กำไรจากการให้บริการตามสัญญาประกันต่อที่ถือไว้ซึ่งคาดว่าจะรับรู้ภายใน 1 ปีมีเท่าไร (พันบาท)?",
+      "reference_answer": "311,379 พันบาท",
+      "answer_components": {
+        "value": "311379",
+        "unit": "พันบาท",
+        "year_be": 2568,
+        "row": "ภายใน 1 ปี",
+        "column": "31 ธันวาคม 2568"
+      },
+      "evidence_locator": "หมายเหตุ 7.2.5; แถวภายใน 1 ปี; คอลัมน์ 31 ธันวาคม 2568",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP27",
+      "document": "KBANK",
+      "excerpt_page": 5,
+      "source_pdf_page": 12,
+      "page_role": "two_up_revenue_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "ปี 2568 รายได้ดอกเบี้ยของธนาคารและบริษัทย่อยเท่าไร (ล้านบาท)?",
+      "reference_answer": "173,625 ล้านบาท",
+      "answer_components": {
+        "value": "173625",
+        "unit": "ล้านบาท",
+        "year_be": 2568,
+        "scope": "ธนาคารและบริษัทย่อย",
+        "row": "รายได้ดอกเบี้ย",
+        "column": "ปี 2568 / จำนวน"
+      },
+      "evidence_locator": "หน้าซ้ายของหน้าคู่; โครงสร้างรายได้ธนาคารและบริษัทย่อย; แถวรายได้ดอกเบี้ย; คอลัมน์ปี 2568 จำนวน",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP28",
+      "document": "KBANK",
+      "excerpt_page": 8,
+      "source_pdf_page": 26,
+      "page_role": "two_up_risk_narrative",
+      "answer_kind": "short_text",
+      "question_th": "ธนาคารแบ่งความเสี่ยงจากการเปลี่ยนแปลงสภาพภูมิอากาศเป็นสองประเภทใด?",
+      "reference_answer": "Transition Risk และ Physical Risk",
+      "answer_components": {},
+      "evidence_locator": "หน้าซ้ายของหน้าคู่; ตารางความเสี่ยง; ย่อหน้าบน",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP29",
+      "document": "KBANK",
+      "excerpt_page": 20,
+      "source_pdf_page": 72,
+      "page_role": "two_up_governance_narrative",
+      "answer_kind": "short_text",
+      "question_th": "ธนาคารกล่าวว่าแนวปฏิบัติการควบคุมภายในสอดคล้องกับกรอบขององค์กรใด?",
+      "reference_answer": "COSO (Committee of Sponsoring Organizations of the Treadway Commission)",
+      "answer_components": {},
+      "evidence_locator": "หน้าซ้ายของหน้าคู่; หัวข้อ 9.1; ย่อหน้าแรก",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP30",
+      "document": "KBANK",
+      "excerpt_page": 24,
+      "source_pdf_page": 86,
+      "page_role": "rotated_two_up_equity_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "งบการเงินรวม ณ 31 ธันวาคม 2568 รวมส่วนของเจ้าของเท่าไร (พันบาท)?",
+      "reference_answer": "673,768,088 พันบาท",
+      "answer_components": {
+        "value": "673768088",
+        "unit": "พันบาท",
+        "date": "2568-12-31",
+        "scope": "งบการเงินรวม",
+        "row": "ยอดคงเหลือ ณ วันที่ 31 ธันวาคม 2568",
+        "column": "รวมส่วนของเจ้าของ"
+      },
+      "evidence_locator": "ตารางหมุน 90 องศาหน้าซ้าย; แถว 31 ธันวาคม 2568; คอลัมน์รวมส่วนของเจ้าของขวาสุด",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP31",
+      "document": "KBANK",
+      "excerpt_page": 30,
+      "source_pdf_page": 105,
+      "page_role": "two_up_currency_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "งบการเงินรวมปี 2567 ยอดสินทรัพย์รวมตามตารางสกุลเงินเท่าไร (ล้านบาท)?",
+      "reference_answer": "514,324 ล้านบาท",
+      "answer_components": {
+        "value": "514324",
+        "unit": "ล้านบาท",
+        "year_be": 2567,
+        "scope": "งบการเงินรวม",
+        "row": "สินทรัพย์ / รวม",
+        "column": "รวม"
+      },
+      "evidence_locator": "หน้าซ้ายของหน้าคู่; งบการเงินรวม 2567; แถวสินทรัพย์ รวม; คอลัมน์รวม",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP32",
+      "document": "KBANK",
+      "excerpt_page": 36,
+      "source_pdf_page": 130,
+      "page_role": "rotated_two_up_fixed_assets_table",
+      "answer_kind": "numeric_cell",
+      "question_th": "ตารางสินทรัพย์ถาวรในงบการเงินรวมปี 2567 แสดงราคาตามบัญชีรวม ณ ยอดสิ้นปีเท่าไร (ล้านบาท)?",
+      "reference_answer": "59,431 ล้านบาท",
+      "answer_components": {
+        "value": "59431",
+        "unit": "ล้านบาท",
+        "year_be": 2567,
+        "scope": "งบการเงินรวม",
+        "row": "รวม",
+        "column": "ราคาตามบัญชี / ยอดสิ้นปี"
+      },
+      "evidence_locator": "ตารางหมุน 90 องศาหน้าซ้าย; แถวรวมล่างสุด; คอลัมน์ราคาตามบัญชี ยอดสิ้นปี",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP33",
+      "document": "KBANK",
+      "excerpt_page": 46,
+      "source_pdf_page": 169,
+      "page_role": "dense_two_up_director_matrix",
+      "answer_kind": "table_cell_text",
+      "question_th": "ณ 31 ธันวาคม 2568 นางกอบกาญจน์ วัฒนวรางกูรมีตำแหน่งใดในธนาคารกสิกรไทย?",
+      "reference_answer": "ประธานกรรมการ",
+      "answer_components": {
+        "row": "นางกอบกาญจน์ วัฒนวรางกูร",
+        "column": "ธนาคารกสิกรไทย / ตำแหน่ง"
+      },
+      "evidence_locator": "หน้าซ้ายของหน้าคู่; ตารางเอกสารแนบ 2; แถวแรกชื่อบุคคล; คอลัมน์ธนาคารกสิกรไทย",
+      "label_status": "visually_checked_single_reviewer"
+    },
+    {
+      "id": "RP34",
+      "document": "KBANK",
+      "excerpt_page": 49,
+      "source_pdf_page": 173,
+      "page_role": "two_up_audit_narrative",
+      "answer_kind": "short_text",
+      "question_th": "กรอบการกำกับดูแลบริษัทย่อยที่กล่าวถึงในหน้าการตรวจสอบชื่อภาษาอังกฤษว่าอะไร?",
+      "reference_answer": "Subsidiary Governance Framework",
+      "answer_components": {},
+      "evidence_locator": "หน้าซ้ายของหน้าคู่; ย่อหน้าต้นหน้าในหัวข้อความเสี่ยงและการตรวจสอบ",
+      "label_status": "visually_checked_single_reviewer"
+    }
+  ]
+}

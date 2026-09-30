@@ -173,7 +173,7 @@ async function renderDashboard(container) {
                         <span class="badge badge-info">1</span> Web Scraping / Upload
                     </div>
                     <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-                        <span class="badge badge-primary">2</span> Typhoon OCR (Layout + Tables)
+                        <span class="badge badge-primary">2</span> Document OCR (selected processing mode)
                     </div>
                     <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
                         <span class="badge badge-success">3</span> Thai Text Cleaning (PyThaiNLP)

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "purpose": "Untouched Thai-language final retrieval and answer test; questions and method frozen before predictions",
+  "created_utc": "2026-09-27",
+  "page_numbering": "1-based physical PDF pages, including two-page printed spreads in Thai Union",
+  "label_review": "One reviewer visually checked the value, label, year, and unit on the rendered original PDF. Independent second review remains pending.",
+  "limitations": [
+    "Twenty selected numeric questions from two Thai annual reports are not a population accuracy estimate.",
+    "Several questions share a page, so question-level outcomes are correlated.",
+    "The selectable PDF text benchmark isolates search and answering; it does not measure OCR accuracy.",
+    "The final reports were not used to choose Thai tokenization or tune the application."
+  ],
+  "documents": [
+    {
+      "code": "SCBX",
+      "source_file": "scbx_annual_report_2567_th.pdf",
+      "excerpt_file": "scbx_annual_report_2567_th.pdf",
+      "source_sha256": "c9f3b1fd6951f696023ae87111797bfefd2dfb49cbdf36e164260d673903a10d",
+      "source_page_count": 351,
+      "download_url": "https://hub.optiwise.io/storage/151/annual-report/2024/scbx-annual-report-2024-th.pdf"
+    },
+    {
+      "code": "TU",
+      "source_file": "thai_union_one_report_2567_th.pdf",
+      "excerpt_file": "thai_union_one_report_2567_th.pdf",
+      "source_sha256": "61eba982038eb8382a2c78412738fc2562ff2f3ee83d0ffb29d6afc585a3dbd1",
+      "source_page_count": 217,
+      "download_url": "https://tu.listedcompany.com/misc/ar/20250306-tu-or2024-th.pdf"
+    }
+  ],
+  "items": [
+    {"id":"TF01","document":"SCBX","source_pdf_page":9,"excerpt_page":9,"page_role":"infographic","question_th":"ในปี 2567 SCBX มีรายได้จากการดำเนินงานเท่าไร หน่วยพันล้านบาท?","reference_answer":"172.4 พันล้านบาท","answer_components":{"value":"172.4","year_be":2567,"unit":"พันล้านบาท"},"required_evidence":[{"document":"SCBX","source_pdf_page":9}],"language":"th"},
+    {"id":"TF02","document":"SCBX","source_pdf_page":9,"excerpt_page":9,"page_role":"infographic","question_th":"ข้อมูลสำคัญปี 2567 ของ SCBX ระบุสัดส่วนสินเชื่อด้อยคุณภาพต่อเงินให้สินเชื่อรวมเท่าไร?","reference_answer":"3.37%","answer_components":{"value":"3.37","year_be":2567,"unit":"%"},"required_evidence":[{"document":"SCBX","source_pdf_page":9}],"language":"th"},
+    {"id":"TF03","document":"SCBX","source_pdf_page":19,"excerpt_page":19,"page_role":"financial_table","question_th":"ณ สิ้นปี 2567 SCBX มีสินทรัพย์รวมตามงบการเงินรวมเท่าไร หน่วยพันล้านบาท?","reference_answer":"3,487 พันล้านบาท","answer_components":{"value":"3487","year_be":2567,"unit":"พันล้านบาท"},"required_evidence":[{"document":"SCBX","source_pdf_page":19}],"language":"th"},
+    {"id":"TF04","document":"SCBX","source_pdf_page":19,"excerpt_page":19,"page_role":"financial_table","question_th":"ณ สิ้นปี 2567 เงินรับฝากของ SCBX ในตารางฐานะการเงินรวมเท่าไร หน่วยพันล้านบาท?","reference_answer":"2,474 พันล้านบาท","answer_components":{"value":"2474","year_be":2567,"unit":"พันล้านบาท"},"required_evidence":[{"document":"SCBX","source_pdf_page":19}],"language":"th"},
+    {"id":"TF05","document":"SCBX","source_pdf_page":19,"excerpt_page":19,"page_role":"financial_table","question_th":"ปี 2566 ไม่ใช่ปี 2567 SCBX มีรวมรายได้จากการดำเนินงานตามงบรวมเท่าไร หน่วยพันล้านบาท?","reference_answer":"171.1 พันล้านบาท","answer_components":{"value":"171.1","year_be":2566,"unit":"พันล้านบาท"},"required_evidence":[{"document":"SCBX","source_pdf_page":19}],"language":"th"},
+    {"id":"TF06","document":"SCBX","source_pdf_page":19,"excerpt_page":19,"page_role":"financial_table","question_th":"กำไรสุทธิส่วนที่เป็นของบริษัท SCBX ในปี 2567 ตามตารางผลประกอบการรวมคือเท่าไร หน่วยพันล้านบาท?","reference_answer":"43.9 พันล้านบาท","answer_components":{"value":"43.9","year_be":2567,"unit":"พันล้านบาท"},"required_evidence":[{"document":"SCBX","source_pdf_page":19}],"language":"th"},
+    {"id":"TF07","document":"SCBX","source_pdf_page":19,"excerpt_page":19,"page_role":"financial_table","question_th":"ส่วนต่างอัตราดอกเบี้ยสุทธิ NIM ของ SCBX ปี 2567 ในตารางอัตราส่วนทางการเงินเป็นกี่เปอร์เซ็นต์?","reference_answer":"3.8%","answer_components":{"value":"3.8","year_be":2567,"unit":"%"},"required_evidence":[{"document":"SCBX","source_pdf_page":19}],"language":"th"},
+    {"id":"TF08","document":"SCBX","source_pdf_page":20,"excerpt_page":20,"page_role":"financial_table","question_th":"กำไรสุทธิต่อหุ้นของ SCBX ปี 2567 เท่ากับกี่บาท?","reference_answer":"13.05 บาท","answer_components":{"value":"13.05","year_be":2567,"unit":"บาท"},"required_evidence":[{"document":"SCBX","source_pdf_page":20}],"language":"th"},
+    {"id":"TF09","document":"SCBX","source_pdf_page":20,"excerpt_page":20,"page_role":"financial_table","question_th":"เงินปันผลต่อหุ้นของ SCBX สำหรับผลประกอบการปี 2567 ตามตารางข้อมูลหลักทรัพย์เท่าไร?","reference_answer":"10.44 บาท","answer_components":{"value":"10.44","year_be":2567,"unit":"บาท"},"required_evidence":[{"document":"SCBX","source_pdf_page":20}],"language":"th"},
+    {"id":"TF10","document":"SCBX","source_pdf_page":33,"excerpt_page":33,"page_role":"business_table","question_th":"ในปี 2567 ธุรกิจ Gen 2 ของ SCBX คิดเป็นสัดส่วนรายได้รวมกี่เปอร์เซ็นต์?","reference_answer":"16%","answer_components":{"value":"16","year_be":2567,"unit":"%"},"required_evidence":[{"document":"SCBX","source_pdf_page":33}],"language":"th"},
+    {"id":"TF11","document":"TU","source_pdf_page":18,"excerpt_page":18,"page_role":"financial_infographic","question_th":"ไทยยูเนี่ยนมีรายได้จากการขายปี 2567 เท่าไร หน่วยพันล้านบาท?","reference_answer":"138.4 พันล้านบาท","answer_components":{"value":"138.4","year_be":2567,"unit":"พันล้านบาท"},"required_evidence":[{"document":"TU","source_pdf_page":18}],"language":"th"},
+    {"id":"TF12","document":"TU","source_pdf_page":18,"excerpt_page":18,"page_role":"financial_infographic","question_th":"กำไรก่อนหักดอกเบี้ย ภาษี ค่าเสื่อมราคา และค่าตัดจำหน่ายของไทยยูเนี่ยนในปี 2567 เท่าไร หน่วยพันล้านบาท?","reference_answer":"13.4 พันล้านบาท","answer_components":{"value":"13.4","year_be":2567,"unit":"พันล้านบาท"},"required_evidence":[{"document":"TU","source_pdf_page":18}],"language":"th"},
+    {"id":"TF13","document":"TU","source_pdf_page":18,"excerpt_page":18,"page_role":"financial_infographic","question_th":"หนี้สินรวมของไทยยูเนี่ยนปี 2567 มีมูลค่าเท่าไร หน่วยพันล้านบาท?","reference_answer":"98.6 พันล้านบาท","answer_components":{"value":"98.6","year_be":2567,"unit":"พันล้านบาท"},"required_evidence":[{"document":"TU","source_pdf_page":18}],"language":"th"},
+    {"id":"TF14","document":"TU","source_pdf_page":18,"excerpt_page":18,"page_role":"financial_infographic","question_th":"กำไรสุทธิส่วนที่เป็นของผู้เป็นเจ้าของบริษัทใหญ่ของไทยยูเนี่ยนปี 2567 เท่าไร หน่วยพันล้านบาท?","reference_answer":"5.0 พันล้านบาท","answer_components":{"value":"5.0","year_be":2567,"unit":"พันล้านบาท"},"required_evidence":[{"document":"TU","source_pdf_page":18}],"language":"th"},
+    {"id":"TF15","document":"TU","source_pdf_page":18,"excerpt_page":18,"page_role":"financial_infographic","question_th":"เงินปันผลต่อหุ้นของไทยยูเนี่ยนในปี 2567 เท่ากับกี่บาท?","reference_answer":"0.66 บาท","answer_components":{"value":"0.66","year_be":2567,"unit":"บาท"},"required_evidence":[{"document":"TU","source_pdf_page":18}],"language":"th"},
+    {"id":"TF16","document":"TU","source_pdf_page":21,"excerpt_page":21,"page_role":"narrative","question_th":"ในรายงานปี 2567 ไทยยูเนี่ยนระบุคะแนนรวมจากดัชนีความยั่งยืนดาวโจนส์ DJSI กี่คะแนน?","reference_answer":"85 คะแนน จากเต็ม 100 คะแนน","answer_components":{"value":"85","total":"100","year_be":2567,"unit":"คะแนน"},"required_evidence":[{"document":"TU","source_pdf_page":21}],"language":"th"},
+    {"id":"TF17","document":"TU","source_pdf_page":21,"excerpt_page":21,"page_role":"narrative","question_th":"ปี 2567 ไทยยูเนี่ยนระบุว่าได้รับคัดเลือกเข้า FTSE4Good Emerging Index ติดต่อกันเป็นปีที่เท่าไร?","reference_answer":"ปีที่ 9","answer_components":{"value":"9","year_be":2567,"unit":"ปี"},"required_evidence":[{"document":"TU","source_pdf_page":21}],"language":"th"},
+    {"id":"TF18","document":"TU","source_pdf_page":40,"excerpt_page":40,"page_role":"narrative","question_th":"ตามส่วนภาพรวมการแข่งขันในรายงานไทยยูเนี่ยน ปี 2567 ตลาดซื้อขายปลาทูน่าช่วงครึ่งแรกเติบโตร้อยละเท่าไรเทียบกับปีก่อน?","reference_answer":"12%","answer_components":{"value":"12","year_be":2567,"unit":"%"},"required_evidence":[{"document":"TU","source_pdf_page":40}],"language":"th"},
+    {"id":"TF19","document":"TU","source_pdf_page":65,"excerpt_page":65,"page_role":"financial_table","question_th":"ระยะเวลาเก็บหนี้เฉลี่ยของไทยยูเนี่ยนในปี 2567 เท่ากับกี่วัน?","reference_answer":"36 วัน","answer_components":{"value":"36","year_be":2567,"unit":"วัน"},"required_evidence":[{"document":"TU","source_pdf_page":65}],"language":"th"},
+    {"id":"TF20","document":"TU","source_pdf_page":65,"excerpt_page":65,"page_role":"financial_table","question_th":"ระยะเวลาขายสินค้าเฉลี่ยของไทยยูเนี่ยนในปี 2567 เท่ากับกี่วัน?","reference_answer":"152 วัน","answer_components":{"value":"152","year_be":2567,"unit":"วัน"},"required_evidence":[{"document":"TU","source_pdf_page":65}],"language":"th"}
+  ]
+}

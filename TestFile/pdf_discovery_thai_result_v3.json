@@ -1,0 +1,1905 @@
+{
+  "settings": {
+    "run_utc": "2026-09-27T05:50:46.050416+00:00",
+    "manifest": "TestFile\\pdf_discovery_thai_sites_v3.json",
+    "browser_fallback": true,
+    "limits": {
+      "max_pages": 10,
+      "max_depth": 2,
+      "max_sitemaps": 1,
+      "max_pdfs": 20,
+      "max_seconds": 90.0,
+      "request_delay": 0.3,
+      "timeout": 8,
+      "max_html_bytes": 2000000,
+      "max_sitemap_bytes": 3000000
+    }
+  },
+  "known_found": 8,
+  "total_sites": 11,
+  "sites": [
+    {
+      "site": {
+        "name": "Bank of Thailand TH",
+        "report": "รายงานประจำปี ธปท. 2567",
+        "seed_url": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+        "expected_url_regex": "AnnualReport_2567\\.pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2567/AnnualReport_2567.pdf",
+        "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+        "anchor_text": "ดาวน์โหลดรายงานประจำปี PDF",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 8.8,
+      "discovery": {
+        "seed_url": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+        "pdfs": [
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2567/AnnualReport_2567.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+            "anchor_text": "ดาวน์โหลดรายงานประจำปี PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2567/bot-annual-report-2024-bot-at-a-glance.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+            "anchor_text": "อ่านต่อ",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2567/bot-annual-report-2024-economic-review.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+            "anchor_text": "อ่านต่อ",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2567/bot-annual-report-2024-chapter1.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2567/bot-annual-report-2024-chapter2.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2567/bot-annual-report-2024-chapter3.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2567/bot-annual-report-2024-chapter4.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/our-roles/financial-markets/foreign-exchange-regulations/foreign-exchange-business/money-changer/listauthorized.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+            "anchor_text": "เช็กข้อมูลผู้ประกอบธุรกิจการซื้อและขายธนบัตรต่างประเทศ ตรวจสอบข้อมูลของนิติบุคคลที่ได้รับอนุญาตให้ประกอบธุรกิจการซื้อและขายธนบัตรต่างประเทศ ที่ไม่ใช่ธนาคารพาณิชย์และสถาบันการเงินเฉพาะกิจ",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2568/AnnualReport_2568.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report.html",
+            "anchor_text": "ดาวน์โหลดฉบับ PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2565.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report.html",
+            "anchor_text": "รายงานประจำปี 2565",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2021.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2020.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2562.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2561.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2560.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2559.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2558.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2557.pdf",
+            "discovery_page": "https://www.bot.or.th/th/research-and-publications/reports/annual-report.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2541.pdf",
+            "discovery_page": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2541.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2542.pdf",
+            "discovery_page": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2542.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+          "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2542.pdf",
+          "https://www.bot.or.th/th/research-and-publications/reports/annual-report.html",
+          "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/AnnualReport_2541.pdf"
+        ],
+        "sitemaps_checked": [],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.googletagmanager.com/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 404 unavailable"
+          },
+          {
+            "url": "https://www.googletagmanager.com/ns.html?id=GTM-T8DVWL2",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bot.or.th/th/satang-story/download.html",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "รายงานประจำปีธนาคารแห่งประเทศไทย 2567 1 ข่าวและสื่อประชาสัมพันธ์ กลับ ข่าวและสื่อประชาสัมพันธ์ ค้นหาข่าวสาร สุนทรพจน์ สื่อประชาสัมพันธ์ รวมถึงกำหนดการกิจกรรมต่าง ๆ ล่าสุดของ ธปท. ข่าว ธปท. ข่าวสารล่าสุดจาก ธปท. สุนทรพจน์ สุนทรพจน์ของผู้ว่าการ รองผู้ว่าการ และผู้บริหารใน ธปท. งานและกิจกรรม งานและกิจกรรมที่ ธปท. จัดขึ้นเพื่อสร้างความสัมพันธ์อันดีกับกลุ่มผู้มีส่วนเกี่ยวข้อง วันหยุดของสถาบันการเงิน วันหยุดตามประเพณีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ อินโฟกราฟิก ค้นหาสื่อประชาสัมพันธ์ อินโฟกราฟฟิกให้ความรู้เกี่ยวกับการดำเนินงานด้านต่าง ๆ ของ ธปท. คลิปวิดีโอเกี่ยวกับเศรษฐกิจการเงิน รวมคลิปวิดีโอเกี่ยวกับเศรษฐกิจการเงินและการดำเนินงานด้านต่าง ๆ ของ ธปท. ที่น่าสนใจ จัดซื้อจัดจ้าง ข้อมูลเกี่ยวกับการจัดซื้อจัดจ้างของ ธปท. ตาม พ.ร.บ. จัดซื้อจัดจ้างและการบริหาร พัสดุภาครัฐ พ.ศ. 2560 กลับ ข่าวและสื่อประชาสัมพันธ์ ค้นหาข่าวสาร สุนทรพจน์ สื่อประชาสัมพันธ์ รวมถึงกำหนดการกิจกรรมต่าง ๆ ล่าสุดของ ธปท. คำถามพบบ่อย Quick Links ทำความรู้จัก \"แอปแบงก์ชาติ\" บทบาทหน้าที่ ธปท. Back บทบาทหน้าที่ ธปท. ค้นหาข้อมูลเกี่ยวกับการทำหน้าที่ของ ธปท. ในการดูแลเสถียรภาพของระบบเศรษฐกิจการเงินไทย ทั้งในช่วงที่ภาวะเศรษฐกิจไทยปกติและในช่วงวิกฤต นโยบายการเงิน รักษาระดับราคาไม่ให้เปลี่ยนแปลงรวดเร็วจนเกินไป เพื่อดูแลให้ระบบเศรษฐกิจการเงินเติบโตได้อย่างยั่งยืนต่อเนื่อง เป้าหมายนโยบายการเงิน การประชุมคณะกรรมการนโยบายการเงิน (กนง.) เอกสารเผยแพร่ กนง. การดำเนินนโยบายการเงิน เกี่ยวกับนโยบายการเงิน เสถียรภาพระบบการเงิน ระบบการเงินที่สามารถให้บริการทางการเงินได้อย่างราบรื่นและทนทานต่อแรงกดดันจากปัจจัยไม่คาดฝันต่าง ๆ ได้ดี ความสำคัญของเสถียรภาพระบบการเงิน บทบาทธนาคารกลางในการดูแลเสถียรภาพระบบการเงิน การประเมินความเสี่ยงต่อเสถียรภาพระบบการเงินของ ธปท. นโยบายดูแลความเสี่ยงต่อเสถียรภาพระบบการเงิน การกำกับระบบสถาบันการเงิน กำกับดูแลให้ผู้ให้บริการทางการเงินสามารถทำหน้าที่ตัวกลาง ในการระดมเงินทุนและจัดสรรทรัพยากรทางเศรษฐกิจไปสู่ภาคเศรษฐกิจต่าง ๆ ได้อย่างมีประสิทธิภาพ สถาบันการเงินและผู้ให้บริการทางการเงินของไทย การกําหนดนโยบายสถาบันการเงินและผู้ให้บริการทางการเงิน แผนพัฒนาระบบสถาบันการเงิน การกำกับตรวจสอบสถาบันการเงิน การกำกับดูแลสถาบันการเงินเฉพาะกิจ การกำกับดูแลธุรกิจเช่าซื้อลีสซิ่ง การให้ความช่วยเหลือสภาพคล่องแก่สถาบันการเงิน ตลาดการเงิน ดูแลรักษาระดับอัตราดอกเบี้ย​ระยะสั้นในตลาดเงินให้สอดคล้องกับอัตราดอกเบี้ยนโยบาย โครงสร้างตลาดการเงินไทย ตลาดอัตราแลกเปลี่ยน ตลาดเงินและตลาดพันธบัตร การพัฒนาและมาตรฐานตลาดการเงิน หลักเกณฑ์การแลกเปลี่ยนเงิน การบริหารเงินสำรอง ระบบการชำระเงิน กำกับดูแลและสนับสนุนให้ระบบการชำระเงินในประเทศ​​ดำเนินไปอย่างมี ประสิทธิภาพ มั่นคงและปลอดภัย เพื่อช่วยสนับสนุนการทำธุรกรรมการค้าและการเงินให้เป็นไปอย่างรวดเร็วและคล่องตัว นโยบายและทิศทางการพัฒนาระบบการชำระเงิน เกี่ยวกับระบบการชำระเงิน ระบบบาทเนต การกำกับดูแลระบบการชำระเงิน การกำกับตาม พ.ร.บ. ระบบการชำระเงิน พ.ศ. 2560 การกำกับดูแลความเสี่ยงด้านเทคโนโลยีสารสนเทศ ธนบัตร บริหารจัดการให้ระบบเศรษฐกิจมีธนบัตรสภาพดีหมุนเวียนใช้อย่างเพียงพอ ตอบสนองต่อความต้องการของประชาชนทั้งในแง่ของปริมาณ ชนิดราคาและคุณภาพ ที่ยากต่อการปลอมแปลง วิธีการสังเกตธนบัตร ธนบัตรชำรุด ธนบัตรหมุนเวียนที่ใช้ในปัจจุบัน นิทรรศการกิจการธนบัตร รู้จักงานด้านธนบัตร ธนบัตรปลอม การขอใช้ภาพธนบัตรในสื่อโฆษณา การใช้ธนบัตรอย่างถูกวิธี ความร่วมมือระหว่างประเทศ สนับสนุนการดูแลเสถียรภาพเศรษฐกิจการเงินไทยและภูมิภาค รวมถึงเสริมสร้างบทบาทของ ธปท. ให้เป็นที่ยอมรับในระดับสากล สมาชิกองค์กรระหว่างประเทศ กรอบความร่วมมือระหว่างประเทศ เศรษฐกิจการเงินในกลุ่มประเทศ CLMV ความร่วมมือทางวิชาการของ ธปท. มาตรการพิเศษ ดูแลให้ระบบเศรษฐกิจการเงินยังคงดำเนินต่อไปได้ ในช่วงที่ประสบภาวะวิกฤต  โดยเป็นการดำเนินงานนอกเหนือจากหน้าที่หลักของ ธปท. วิกฤตโควิด 19 วิกฤตต้มยำกุ้ง Back บทบาทหน้าที่ ธปท. ค้นหาข้อมูลเกี่ยวกับการทำหน้าที่ของ ธปท. ในการดูแลเสถียรภาพของระบบเศรษฐกิจการเงินไทย ทั้งในช่วงที่ภาวะเศรษฐกิจไทยปกติและในช่วงวิกฤต การแก้หนี้ยั่งยืน Quick Links มาตรการเกี่ยวกับภัยทางการเงิน มาตรการทางการเงินเพื่อช่วยเหลือฟื้นฟูผู้ประกอบธุรกิจ การประชุมคณะกรรมการนโยบายการเงิน อัตราดอกเบี้ยนโยบาย กฎหมายและประกาศ กลับ กฎหมายและประกาศ ค้นหากฎหมาย ประกาศ ระเบียบ และหนังสือเวียนที่ ธปท. ใช้ในการดำเนินงานตามบทบาทหน้าที่ รวมถึงกฎหมายที่ ธปท. เข้าไปมีส่วนร่วมในการผลักดันให้สามารถดำเนินการได้ตามวัตถุประสงค์ของกฎหมายดังกล่าว ประกาศ/ ระเบียบ/ หนังสือเวียน ประกาศ ระเบียบ และคำสั่ง ที่ออกโดย ธปท. สารบัญประกาศ สำหรับสถาบันการเงินและผู้ให้บริการทางการเงิน รวมประกาศและแนวนโยบาย ธปท. ซึ่งออกตาม พ.ร.บ.ธุรกิจสถาบันการเงิน พ.ศ. 2551 และกฎหมายอื่นที่เกี่ยวข้อง สารบัญประกาศ สำหรับสถาบันการเงินเฉพาะกิจ รวมประกาศและแนวนโยบายสําหรับสถาบันการเงินเฉพาะกิจที่ใช้บ่อย กฎหมายในความรับผิดชอบของ ธปท./ กฎหมายที่ ธปท. มีส่วนร่วม กฎหมายที่กำหนดบทบาท ธปท. และที่ ธปท. เข้าไปมีส่วนร่วม การเปิดรับฟังความคิดเห็น การรับฟังความคิดเห็นของกลุ่มผู้มีส่วนเกี่ยวข้อง การวิเคราะห์ผลกระทบและการประเมินผลสัมฤทธิ์ของกฎหมายและกฎเกณฑ์ การวิเคราะห์ผลกระทบรวมทั้งประเมินผลสัมฤทธิ์ของกฎเกณฑ์ สรุปผลการปรับเป็นพินัยประจำปี สรุปผลการปรับเป็นพินัยตามกฎหมายของ ธปท. กลับ กฎหมายและประกาศ ค้นหากฎหมาย ประกาศ ระเบียบ และหนังสือเวียนที่ ธปท. ใช้ในการดำเนินงานตามบทบาทหน้าที่ รวมถึงกฎหมายที่ ธปท. เข้าไปมีส่วนร่วมในการผลักดันให้สามารถดำเนินการได้ตามวัตถุประสงค์ของกฎหมายดังกล่าว สารบัญประกาศ สำหรับสถาบันการเงินและผู้ให้บริการทางการเงิน Quick Li",
+        "checked_at": "2026-09-27T05:49:47.607777+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "TPAC TH",
+        "report": "รายงานประจำปี 2567 (56-1 One Report)",
+        "seed_url": "https://tpacpackaging.com/th/investor-relations/",
+        "expected_url_regex": "TPAC_One-Report_2024_TH\\.pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://tpacpackaging.com/wp-content/uploads/2025/03/TPAC_One-Report_2024_TH.pdf",
+        "discovery_page": "https://tpacpackaging.com/wp-content/uploads/2025/03/TPAC_One-Report_2024_TH.pdf",
+        "anchor_text": "direct PDF",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 11.6,
+      "discovery": {
+        "seed_url": "https://tpacpackaging.com/th/investor-relations/",
+        "pdfs": [
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2026/04/E_ONE_REPORT_TPACT.pdf",
+            "discovery_page": "https://tpacpackaging.com/th/investor-relations/",
+            "anchor_text": "รายงานประจำปี 2568",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2022/09/One-Report_TH_final_compressed-1.pdf",
+            "discovery_page": "https://tpacpackaging.com/th/investor-relations/",
+            "anchor_text": "รายงานประจำปี 2564 (56-1 One report) File size: 5 MB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2022/09/2563-Annual-Report-TH.pdf",
+            "discovery_page": "https://tpacpackaging.com/th/investor-relations/",
+            "anchor_text": "รายงานประจำปี 2563 File size: 22 MB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2022/09/2562-Annual-Report-TH.pdf",
+            "discovery_page": "https://tpacpackaging.com/th/investor-relations/",
+            "anchor_text": "รายงานประจำปี 2562 File size: 10 MB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2022/09/2561-Annual-Report-TH.pdf",
+            "discovery_page": "https://tpacpackaging.com/th/investor-relations/",
+            "anchor_text": "รายงานประจำปี 2561 File size: 4 MB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2022/09/2560-Annual-Report-TH.pdf",
+            "discovery_page": "https://tpacpackaging.com/th/investor-relations/",
+            "anchor_text": "รายงานประจำปี 2560 File size: 3 MB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2021/06/2018-FY-MDA-TH.pdf",
+            "discovery_page": "https://tpacpackaging.com/th/investor-relations/",
+            "anchor_text": "บทวิเคราะห์และคำอธิบายของฝ่ายจัดการ ประจำปี 2561 File size: 497 KB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2021/06/2018-Q3-MDA-TH.pdf",
+            "discovery_page": "https://tpacpackaging.com/th/investor-relations/",
+            "anchor_text": "บทวิเคราะห์และคำอธิบายของฝ่ายจัดการ ไตรมาส 3/2561 File size: 477 KB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2021/06/2018-Q2-MDA-TH.pdf",
+            "discovery_page": "https://tpacpackaging.com/th/investor-relations/",
+            "anchor_text": "บทวิเคราะห์และคำอธิบายของฝ่ายจัดการ ไตรมาส 2/2561 File size: 2 MB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2021/06/2018-Q1-MDA-TH.pdf",
+            "discovery_page": "https://tpacpackaging.com/th/investor-relations/",
+            "anchor_text": "บทวิเคราะห์และคำอธิบายของฝ่ายจัดการ ไตรมาส 1/2561 File size: 2 MB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2023/01/One-Report_TH_final_compressed.pdf",
+            "discovery_page": "https://tpacpackaging.com/wp-content/uploads/2023/01/One-Report_TH_final_compressed.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2023/03/One-Report-TPAC-TH_2022_compressed.pdf",
+            "discovery_page": "https://tpacpackaging.com/wp-content/uploads/2023/03/One-Report-TPAC-TH_2022_compressed.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2024/03/ANNUAL-REPORT-TH-2023.pdf",
+            "discovery_page": "https://tpacpackaging.com/wp-content/uploads/2024/03/ANNUAL-REPORT-TH-2023.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2025/03/TPAC_One-Report_2024_TH.pdf",
+            "discovery_page": "https://tpacpackaging.com/wp-content/uploads/2025/03/TPAC_One-Report_2024_TH.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://tpacpackaging.com/wp-content/uploads/2024/03/ANNUAL-REPORT-TH-2023.pdf",
+          "https://tpacpackaging.com/wp-content/uploads/2023/01/One-Report_TH_final_compressed.pdf",
+          "https://tpacpackaging.com/wp-content/uploads/2025/03/TPAC_One-Report_2024_TH.pdf",
+          "https://tpacpackaging.com/th/investor-relations/",
+          "https://tpacpackaging.com/wp-content/uploads/2026/04/E_ONE_REPORT_TPACT.pdf",
+          "https://tpacpackaging.com/wp-content/uploads/2022/09/2563-Annual-Report-TH.pdf",
+          "https://tpacpackaging.com/wp-content/uploads/2023/03/One-Report-TPAC-TH_2022_compressed.pdf",
+          "https://tpacpackaging.com/wp-content/uploads/2021/05/2018-FY-TH.zip",
+          "https://tpacpackaging.com/wp-content/uploads/2021/05/2018-Q3-TH.zip",
+          "https://tpacpackaging.com/wp-content/uploads/2022/09/2562-Annual-Report-TH.pdf"
+        ],
+        "sitemaps_checked": [
+          "https://tpacpackaging.com/sitemap_index.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2021/05/2018-FY-TH.zip",
+            "stage": "page",
+            "reason": "Non-HTML page: application/zip"
+          },
+          {
+            "url": "https://tpacpackaging.com/wp-content/uploads/2021/05/2018-Q3-TH.zip",
+            "stage": "page",
+            "reason": "Non-HTML page: application/zip"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "TPAC เกี่ยวกับบริษัท ภาพรวมบริษัท ภาพรวมธุรกิจ กลุ่มลูกค้า วิสัยทัศน์ พันธกิจ และค่านิยม ประวัติความเป็นมาของบริษัท สารจากประธานเจ้าหน้าที่บริหารกลุ่มบริษัทฯ โครงสร้างองค์กร คณะกรรมการและผู้บริหาร การกำกับดูแลกิจการ ขั้นตอนการผลิต และเทคโนโลยี กระบวนการฉีดขึ้นรูป กระบวนการเป่าขึ้นรูป กระบวนการขึ้นรูปพลาสติก PET กระบวนการพิมพ์ฉลากในบรรจุภัณฑ์ คอมบิ คัพ ขั้นตอนการผลิตรอง ศูนย์ออกแบบ ร่วมงานกับเรา นักลงทุนสัมพันธ์ ภาพรวมทางการเงิน ข้อมูลทางการเงิน ข้อมูลผู้ถือหุ้น ข่าวแจ้งสื่อมวลชน เอกสารนำเสนอ และเว็บแคสต์ ข้อมูลนักวิเคราะห์ ข้อมูลสำหรับดาวน์โหลด ข้อมูลติดต่อนักลงทุนสัมพันธ์ ติดต่อเรา EN TH ภาพรวม ภาพรวมทางการเงิน ราคาหลักทรัพย์ ข้อมูลทางการเงิน ข้อมูลผู้ถือหุ้น ข่าวแจ้งสื่อมวลชน เอกสารนำเสนอ และเว็บแคสต์ ข้อมูลนักวิเคราะห์ ข้อมูลสำหรับดาวน์โหลด ข้อมูลติดต่อนักลงทุนสัมพันธ์ นักลงทุนสัมพันธ์ ภาพรวม SET : TPAC Last Done 9.35 Change(%) -0.53 Volume (Shares) 96901 Last Updated: 25 Sep 2026 16:35:50 Factsheet 2026Q2 รายงานประจำปี 2568 KEY FIGURES 6.82 พันล้านบาท ยอดขาย สำหรับปี 2568 77% อาหารและเครื่องดื่ม 15% เวชภัณฑ์ และของใช้ส่วนบุคคล 8% ของใช้ในครัวเรือน และอุตสาหกรรม 6.82 พันล้านบาท ยอดขาย สำหรับปี 2568 48% ประเทศอินเดีย 28% ประเทศไทย 12% ประเทศสหรัฐอาหรับ เอมิเรตส์ 12% ประเทศมาเลเซีย 0% ประเทศฟิลิปปินส์ 7.33 พันล้านบาท Total Asset ณ วันสิ้นสุดปี 2568 2.68 พันล้านบาท Market Capitalisation ณ วันสิ้นสุดปี 2568 ภาพรวมทางการเงิน ราคาหลักทรัพย์ SET : TPAC THB 9.35 Change -0.05 %Change -0.53 Volume (Shares) 96901 Value (THB '000) 897609.2 Day's Range 9.2-9.5 Open 9.3 Prior 9.4 52 weeks' range Last Updated : 25 Sep 2026 16:35:50 ข้อมูลทางการเงิน Factsheet งบการเงิน บทวิเคราะห์ฝ่ายจัดการ รายงานประจำปี SD Report Factsheet TPAC Factsheet FILE PDF: 660 KB งบการเงิน เลือกปี 2569 2568 2567 2566 2565 2564 2563 2562 2561 2560 2559 2558 งบการเงินไตรมาส 2/2569 งบการเงินไตรมาส 1/2569 รายงาน และงบการเงินรวมปี 2568 งบการเงินไตรมาส 4/2568 งบการเงินไตรมาส 3/2568 งบการเงินไตรมาส 2/2568 งบการเงินไตรมาส 1/2568 รายงาน และงบการเงินรวมปี 2567 File size: 25 MB งบการเงินไตรมาส 4/2567 File size: 564 KB งบการเงินไตรมาส 3/2567 File size: 341 KB งบการเงินไตรมาส 2/2567 File size: 332 KB งบการเงินไตรมาส 1/2567 File size: 276 KB รายงาน และงบการเงินรวมปี 2566 File size: 25.8 MB งบการเงินไตรมาส 4/2566 File size: 478 KB งบการเงินไตรมาส 3/2566 File size: 279 KB รายงานการสอบทาน และข้อมูลทางการเงินระหว่างกาลไตรมาส 3/2566 File size: 5 MB งบการเงินไตรมาส 2/2566 File size: 279 KB รายงานการสอบทาน และข้อมูลทางการเงินระหว่างกาลไตรมาส 2/2566 File size: 9 MB งบการเงินไตรมาส 1/2566 File size: 260 KB รายงานการสอบทาน และข้อมูลทางการเงินระหว่างกาลไตรมาส 1/2566 File size: 7 MB รายงาน และงบการเงินรวมปี 2565 File size: 17 MB งบการเงินปี 2565 File size: 463 KB รายงานการสอบทาน และข้อมูลทางการเงินระหว่างกาลไตรมาส 3/2565 File size: 6 MB งบการเงินไตรมาส 3/2565 File size: 292 KB รายงานการสอบทาน และข้อมูลทางการเงินระหว่างกาลไตรมาส 2/2565 File size: 3 MB งบการเงินไตรมาส 2/2565 File size: 288 KB รายงานการสอบทาน และข้อมูลทางการเงินระหว่างกาลไตรมาส 1/2565 File size: 2 MB งบการเงินไตรมาส 1/2565 File size: 260 KB รายงานประจำปี 2564 (56-1 One report) File size: 5 MB รายงาน และงบการเงินรวมปี 2564 File size: 9 MB งบการเงินปี 2564 File size: 311 KB รายงานการสอบทาน และข้อมูลทางการเงินระหว่างกาลไตรมาส 3/2564 File size: 4 MB งบการเงินไตรมาส 3/2564 File size: 311 KB รายงานการสอบทาน และข้อมูลทางการเงินระหว่างกาลไตรมาส 2/2564 File size: 3 MB งบการเงินไตรมาส 2/2564 File size: 307 KB รายงานการสอบทาน และข้อมูลทางการเงินระหว่างกาลไตรมาส 1/2564 File size: 2 MB งบการเงินไตรมาส 1/2564 File size: 135 KB รายงานประจำปี 2563 File size: 22 MB รายงาน และงบการเงินรวมปี 2563 File size: 5 MB งบการเงินปี 2563 File size: 366 KB งบการเงินไตรมาส 3/2563 File size: 158 KB งบการเงินไตรมาส 2/2563 File size: 145 KB งบการเงินไตรมาส 1/2563 File size: 139 KB รายงานประจำปี 2562 File size: 10 MB งบการเงินปี 2562 File size: 332 KB งบการเงินไตรมาส 3/2562 File size: 175 KB งบการเงินไตรมาส 2/2562 File size: 188 KB งบการเงินไตรมาส 1/2562 File size: 160 KB รายงานประจำปี 2561 File size: 4 MB งบการเงินปี 2561 File size: 262 KB งบการเงินไตรมาส 3/2561 File size: 121 KB งบการเงินไตรมาส 2/2561 File size: 151 KB งบการเงินไตรมาส 1/2561 File size: 129 KB รายงานประจำปี 2560 File size: 3 MB งบการเงินปี 2560 File size: 185 KB งบการเงินไตรมาส 3/2560 File size: 115 KB งบการเงินไตรมาส 2/2560 File size: 71 KB งบการเงินไตรมาส 1/2560 File size: 62 KB งบการเงินปี 2559 File size: 124 KB งบการเงินไตรมาส 3/2559 File size: 79 KB งบการเงินไตรมาส 2/2559 File size: 73 KB งบการเงินไตรมาส 1/2559 File size: 68 KB งบการเงินปี 2558 File size: 108 KB งบการเงิน ไตรมาส 3/2558 File size: 75 KB งบการเงิน ไตรมาส 2/2558 File size: 68 KB งบการเงิน ไตรมาส 1/2558 File size: 61 KB MD&A เลือกปี 2569 2568 2567 2566 2565 2564 2563 2562 2561 บทวเคราะห์และคำอธิบายของฝ่ายจัดการ ไตรมาส2/2569 บทวเคราะห์และคำอธิบายของฝ่ายจัดการ ไตรมาส1/2569 บทวเคราะห์และคำอธิบายของฝ่ายจัดการ ไตรมาส4/2568 บทวเคราะห์และคำอธิบายของฝ่ายจัดการ ไตรมาส3/2568 บทวเคราะห์และคำอธิบายของฝ่ายจัดการ ไตรมาส2/2568 บทวเคราะห์และคำอธิบายของฝ่ายจัดการ ไตรมาส1/2568 บทวเคราะห์และคำอธิบายของฝ่ายจัดการ ไตรมาส4/25",
+        "checked_at": "2026-09-27T05:49:50.414563+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "CP Axtra TH",
+        "report": "แบบแสดงรายการข้อมูลประจำปี 2567",
+        "seed_url": "https://www.cpaxtra.com/th/investor-relations/document/annual-reports",
+        "expected_url_regex": "cpaxt-or-2024-th\\.pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://hub.optiwise.io/storage/116/annual-report/2024/cpaxt-or-2024-th.pdf",
+        "discovery_page": "https://www.cpaxtra.com/th/document/viewer/flipbook/138150/56-1-one-report-2024",
+        "anchor_text": "embedded PDF",
+        "status": "verified_pdf",
+        "content_type": "application/pdf",
+        "via_viewer": "https://hub.optiwise.io/th/documents/155383/flipbook"
+      },
+      "reason": "found",
+      "seconds": 8.69,
+      "discovery": {
+        "seed_url": "https://www.cpaxtra.com/th/investor-relations/document/annual-reports",
+        "pdfs": [
+          {
+            "url": "https://www.cpaxtra.com/storage/document/annual-reports/2023/cpaxt-or-2023-th-attachment.pdf",
+            "discovery_page": "https://www.cpaxtra.com/th/investor-relations/document/annual-reports",
+            "anchor_text": "ดูเอกสาร",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.cpaxtra.com/storage/document/annual-reports/2022/makro-or-2022-th-attachment.pdf",
+            "discovery_page": "https://www.cpaxtra.com/th/investor-relations/document/annual-reports",
+            "anchor_text": "ดูเอกสาร",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.cpaxtra.com/storage/document/annual-reports/2021/makro-or-2021-th-attachment.pdf",
+            "discovery_page": "https://www.cpaxtra.com/th/investor-relations/document/annual-reports",
+            "anchor_text": "ดูเอกสาร",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://hub.optiwise.io/storage/116/annual-report/2025/cpaxt-or-2025-th.pdf",
+            "discovery_page": "https://www.cpaxtra.com/th/document/viewer/187632/56-1-one-report-2025",
+            "anchor_text": "embedded PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://hub.optiwise.io/th/documents/210585/cpaxt-or-2025-th.pdf"
+          },
+          {
+            "url": "https://hub.optiwise.io/storage/116/annual-report/2024/cpaxt-or-2024-th.pdf",
+            "discovery_page": "https://www.cpaxtra.com/th/document/viewer/flipbook/138150/56-1-one-report-2024",
+            "anchor_text": "embedded PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://hub.optiwise.io/th/documents/155383/flipbook"
+          },
+          {
+            "url": "https://hub.optiwise.io/storage/116/annual-report/2023/cpaxt-or-2023-th.pdf",
+            "discovery_page": "https://www.cpaxtra.com/th/document/viewer/flipbook/95334/56-1-one-report-2023",
+            "anchor_text": "embedded PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://hub.optiwise.io/th/documents/104183/flipbook"
+          },
+          {
+            "url": "https://hub.optiwise.io/storage/116/annual-report/2022/makro-ar-2022-th.pdf",
+            "discovery_page": "https://www.cpaxtra.com/th/document/viewer/flipbook/70713/56-1-one-report-2022",
+            "anchor_text": "embedded PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://hub.optiwise.io/th/documents/76135/flipbook"
+          }
+        ],
+        "visited_pages": [
+          "https://www.cpaxtra.com/th/investor-relations/document/annual-reports",
+          "https://www.cpaxtra.com/th/document/viewer/flipbook/187632/56-1-one-report-2025",
+          "https://www.cpaxtra.com/th/document/viewer/flipbook/138150/56-1-one-report-2024",
+          "https://www.cpaxtra.com/th/document/viewer/95334/56-1-one-report-2023",
+          "https://www.cpaxtra.com/th/document/viewer/flipbook/95334/56-1-one-report-2023",
+          "https://www.cpaxtra.com/th/document/viewer/flipbook/70713/56-1-one-report-2022",
+          "https://www.cpaxtra.com/th/document/viewer/138150/56-1-one-report-2024",
+          "https://www.cpaxtra.com/th/document/viewer/187632/56-1-one-report-2025",
+          "https://www.cpaxtra.com/th/document/viewer/70713/56-1-one-report-2022",
+          "https://www.cpaxtra.com/th/document/viewer/flipbook/271/56-1-one-report-2023-attachment"
+        ],
+        "sitemaps_checked": [
+          "https://www.cpaxtra.com/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "รายงานประจำปี | CP Axtra ร้านค้าของเรา TH EN เกี่ยวกับเรา เกี่ยวกับ CP AXTRA เพื่อเพิ่มขีดความสามารถในการแข่งขัน ตลอดจนการสร้างความแข็งแกร่งให้แก่องค์กรในระยะยาว การนำเทคโนโลยีดิจิทัลมาปรับใช้เพื่อเพิ่มประสิทธิภาพในการทำงาน เพิ่มความสะดวกสบาย ตลอดจนสร้างมูลค่าเพิ่มให้แก่ลูกค้าและคู่ค้า โดยผนึกกำลังกันระหว่าง B2B และ B2C ภาพรวมบริษัท รางวัล ข่าวสาร บุคคลากรของเรา การเปลี่ยนแปลงด้านดิจิทัล เสียงตอบรับ รูปแบบร้านค้า ติดต่อเรา คณะกรรมการบริษัท และคณะอนุกรรมการ ธุรกิจของเรา ธุรกิจของเรา กว่า 30 ปี บริษัทฯ มุ่งมั่นในการพัฒนาธุรกิจ สินค้าและบริการให้สอดคล้องกับความต้องการของลูกค้า ภาพรวมธุรกิจ กลุ่มธุรกิจค้าส่ง กลุ่มธุรกิจค้าปลีก รูปแบบร้านค้า นักลงทุน นักลงทุนสัมพันธ์ ยินดีต้อนรับผู้ถือหุ้นและนักลงทุนทุกท่าน โดยท่าน สามารถหาข้อมูลต่างๆ และช่องทางติดต่อเรา หน้าหลักนักลงทุนสัมพันธ์ ภาพรวม ผลการดำเนินงานและรายงาน ข้อมูลสำคัญทางการเงิน งบการเงิน และคำอธิบายและการวิเคราะห์ของฝ่ายจัดการ รายงานประจำปี เอกสารนำเสนอและเว็บแคสต์ เอกสารเพื่อนักลงทุน ข้อมูลสำหรับผู้ถือหุ้น รายชื่อผู้ถือหุ้นรายใหญ่ การประชุมผู้ถือหุ้น นโยบายและการจ่ายเงินปันผล ข้อมูลหลักทรัพย์ ราคาหลักทรัพย์ ข้อมูลนักวิเคราะห์ Fact Sheet ข้อมูลสำหรับผู้ถือหุ้นกู้ ข่าวสารและกิจกรรม ข่าวแจ้งตลาดหลักทรัพย์ ปฏิทินนักลงทุน จดหมายข่าวนักลงทุน ติดต่อนักลงทุนสัมพันธ์ ติดต่อนักลงทุนสัมพันธ์ สมัครรับข่าวสาร คำถามที่พบบ่อย แบบแสดงรายการข้อมูลประจำปี 2568 (แบบ 56-1 One Report) การพัฒนาอย่างยั่งยืน การกำกับดูแลกิจการ การกำกับดูแลกิจการ บริษัทฯ ส่งเสริมและสนับสนุนการพัฒนาประสิทธิภาพในการดำเนินงานด้านการกำกับดูแลกิจการ เพื่อบรรลุเป้าหมายในการเติบโตอย่างยั่งยืน ได้รับความเชื่อมั่นจากผู้ลงทุน สามารถสร้างคุณค่าและประโยชน์ให้แก่ผู้มีส่วนได้เสียในระยะยาว และนำไปสู่การเป็นที่ยอมรับในระดับสากล โครงสร้างการกำกับดูแลกิจการ นโยบายและเอกสารสำคัญของบริษัท คณะกรรมการ คณะกรรมการชุดย่อย และผู้บริหาร การแจ้งเบาะแสการทุจริต กิจกรรมเพื่อสังคม กิจกรรมเพื่อสังคม มุ่งเป็นที่หนึ่งในการเป็นคู่คิดธุรกิจสำหรับผู้ประกอบการ ส่งมอบผลิตภัณฑ์คุณภาพชั้นเลิศและปลอดภัยในราคายุติธรรม เพื่อสนับสนุนให้ลูกค้าสามารถรักษาขีดความสามารถในการแข่งขันและสร้างผลกำไรจากการดำเนินธุรกิจ ตลอดจนส่งเสริมคุณภาพชีวิตของผู้มีส่วนได้เสียโดยไม่บั่นทอนโอกาสในการเข้าถึงทรัพยากรของคนรุ่นต่อไปในอนาคต กลยุทธ์การดำเนินกิจกรรมเพื่อสังคม สร้างงาน สร้างอาชีพ เคียงข้างสังคม มิตรแท้โชห่วย แพลตฟอร์มแห่งโอกาส Chef’s Club by makro กิจกรรมเพื่อสังคม แพลตฟอร์มแห่งโอกาส เสนอขายสินค้ากับเรา รายงานประจำปี แบบแสดงรายการข้อมูลประจำปี 2568 (แบบ 56-1 One Report) ดู E-book ดูเอกสาร ข้อมูลย้อนหลัง แบบแสดงรายการข้อมูลประจำปี 2567 (แบบ 56-1 One Report) ดู E-book ดูเอกสาร แบบแสดงรายการข้อมูลประจำปี 2566 (แบบ 56-1 One Report) ดู E-book ดูเอกสาร เอกสารแนบ ดู E-book ดูเอกสาร แบบแสดงรายการข้อมูลประจำปี 2565 (แบบ 56-1 One Report) ดู E-book ดูเอกสาร เอกสารแนบ ดู E-book ดูเอกสาร แบบแสดงรายการข้อมูลประจำปี 2564 (แบบ 56-1 One Report) ดู E-book ดูเอกสาร เอกสารแนบ ดู E-book ดูเอกสาร รายงานประจำปี 2563 ดู E-book ดูเอกสาร แบบฟอร์ม 56-1 ประจำปี 2563 ดูเอกสาร รายงานประจำปี 2562 ดู E-book ดูเอกสาร แบบฟอร์ม 56-1 ประจำปี 2562 ดูเอกสาร รายงานประจำปี 2561 ดู E-book ดูเอกสาร แบบฟอร์ม 56-1 ประจำปี 2561 ดูเอกสาร รายงานประจำปี 2560 ดู E-book ดูเอกสาร แบบฟอร์ม 56-1 ประจำปี 2560 ดูเอกสาร รายงานประจำปี 2559 ดู E-book ดูเอกสาร แบบฟอร์ม 56-1 ประจำปี 2559 ดูเอกสาร รายงานประจำปี 2558 ดู E-book ดูเอกสาร แบบฟอร์ม 56-1 ประจำปี 2558 ดูเอกสาร รายงานประจำปี 2557 ดู E-book ดูเอกสาร แบบฟอร์ม 56-1 ประจำปี 2557 ดูเอกสาร รายงานประจำปี 2556 ดู E-book ดูเอกสาร แบบฟอร์ม 56-1 ประจำปี 2556 ดูเอกสาร รายงานประจำปี 2555 ดู E-book ดูเอกสาร แบบฟอร์ม 56-1 ประจำปี 2555 ดูเอกสาร รายงานประจำปี 2554 ดู E-book ดูเอกสาร รายงานประจำปี 2553 ดู E-book ดูเอกสาร รายงานประจำปี 2552 ดู E-book ดูเอกสาร รายงานประจำปี 2551 ดู E-book ดูเอกสาร รายงานประจำปี 2550 ดู E-book ดูเอกสาร รายงานประจำปี 2549 ดู E-book ดูเอกสาร รายงานประจำปี 2548 ดู E-book ดูเอกสาร รายงานประจำปี 2547 ดู E-book ดูเอกสาร รายงานประจำปี 2546 ดู E-book ดูเอกสาร นโยบายการคุ้มครองข้อมูลส่วนบุคคล ประกาศความเป็นส่วนตัวสำหรับลูกค้า ประกาศความเป็นส่วนตัวสำหรับนักลงทุน ประกาศความเป็นส่วนตัวสำหรับซัพพลายเออร์ ช่องทางการเปลี่ยนแปลงความยินยอม การขอใช้สิทธิของเจ้าของข้อมูลส่วนบุคคล นโยบายความเป็นส่วนตัวสำหรับกล้องวงจรปิด นโยบายการใช้คุกกี้ แผนผังเว็บไซต์ การตั้งค่าคุกกี้ บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน) 1468 ถนนพัฒนาการ แขวงพัฒนาการ เขตสวนหลวง กรุงเทพฯ 10250 ศูนย์บริการลูกค้า 1432 © สงวนลิขสิทธิ์ พ.ศ. 2569 บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)",
+        "checked_at": "2026-09-27T05:49:47.497877+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "Central Pattana TH",
+        "report": "รายงานประจำปี 2567 (56-1 One Report)",
+        "seed_url": "https://investor.centralpattana.co.th/th/resource-center",
+        "expected_url_regex": "cpn-or2024-th\\.pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://hub.optiwise.io/storage/183/annual-report/2024/cpn-or2024-th.pdf",
+        "discovery_page": "https://investor.centralpattana.co.th/th/document/viewer/161866/annual-report-2024-56-1-one-report",
+        "anchor_text": "viewer PDF",
+        "status": "verified_pdf",
+        "content_type": "application/pdf",
+        "via_viewer": "https://hub.optiwise.io/th/documents/182183/cpn-or2024-th.pdf"
+      },
+      "reason": "found",
+      "seconds": 17.0,
+      "discovery": {
+        "seed_url": "https://investor.centralpattana.co.th/th/resource-center",
+        "pdfs": [
+          {
+            "url": "https://hub.optiwise.io/storage/183/annual-report/2025/cpn-or2025-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/viewer/188279/annual-report-2025-56-1-one-report",
+            "anchor_text": "viewer PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://hub.optiwise.io/th/documents/211630/cpn-or2025-th.pdf"
+          },
+          {
+            "url": "https://hub.optiwise.io/storage/183/annual-report/2024/cpn-or2024-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/viewer/161866/annual-report-2024-56-1-one-report",
+            "anchor_text": "viewer PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://hub.optiwise.io/th/documents/182183/cpn-or2024-th.pdf"
+          },
+          {
+            "url": "https://investor.centralpattana.co.th/storage/document/annual-reports/2024/cpn-one-report2024-financial-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/annual-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://investor.centralpattana.co.th/storage/document/annual-reports/2024/cpn-one-report2024-enc01-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/annual-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://investor.centralpattana.co.th/storage/document/annual-reports/2024/cpn-one-report2024-enc02-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/annual-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://investor.centralpattana.co.th/storage/document/annual-reports/2024/cpn-one-report2024-enc03-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/annual-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://investor.centralpattana.co.th/storage/document/annual-reports/2024/cpn-one-report2024-enc04-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/annual-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://investor.centralpattana.co.th/storage/document/annual-reports/2024/cpn-one-report2024-enc05-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/annual-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://investor.centralpattana.co.th/storage/document/annual-reports/2024/cpn-one-report2024-enc05-1-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/annual-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://investor.centralpattana.co.th/storage/document/annual-reports/2024/cpn-one-report2024-enc05-2-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/annual-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://investor.centralpattana.co.th/storage/document/annual-reports/2024/cpn-one-report2024-enc05-3-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/annual-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://investor.centralpattana.co.th/storage/document/annual-reports/2024/cpn-one-report2024-enc05-4-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/annual-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://hub.optiwise.io/storage/183/annual-report/2023/cpn-or2023-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/viewer/161865/annual-report-2023-56-1-one-report",
+            "anchor_text": "viewer PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://hub.optiwise.io/th/documents/182182/cpn-or2023-th.pdf"
+          },
+          {
+            "url": "https://hub.optiwise.io/storage/183/annual-report/2022/cpn-or2022-th.pdf",
+            "discovery_page": "https://investor.centralpattana.co.th/th/document/viewer/161864/annual-report-2022-56-1-one-report",
+            "anchor_text": "viewer PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://hub.optiwise.io/th/documents/182181/cpn-or2022-th.pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://investor.centralpattana.co.th/th/document/annual-reports",
+          "https://investor.centralpattana.co.th/th/document/viewer/flipbook/188279/annual-report-2025-56-1-one-report",
+          "https://investor.centralpattana.co.th/th/document/viewer/188279/annual-report-2025-56-1-one-report",
+          "https://investor.centralpattana.co.th/th/document/viewer/161866/annual-report-2024-56-1-one-report",
+          "https://investor.centralpattana.co.th/th/document/viewer/flipbook/161866/annual-report-2024-56-1-one-report",
+          "https://investor.centralpattana.co.th/th/document/viewer/161865/annual-report-2023-56-1-one-report",
+          "https://investor.centralpattana.co.th/th/document/viewer/161864/annual-report-2022-56-1-one-report",
+          "https://investor.centralpattana.co.th/th/resource-center",
+          "https://investor.centralpattana.co.th/th/document/viewer/flipbook/161865/annual-report-2023-56-1-one-report",
+          "https://investor.centralpattana.co.th/th/document/viewer/flipbook/161864/annual-report-2022-56-1-one-report"
+        ],
+        "sitemaps_checked": [
+          "https://investor.centralpattana.co.th/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://optiwise.infoquest.io/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 404 unavailable"
+          },
+          {
+            "url": "https://hub.optiwise.io/th/documents/229138/download",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://hub.optiwise.io/th/documents/229139/download",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://hub.optiwise.io/th/documents/229140/download",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://hub.optiwise.io/th/documents/220201/download",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://hub.optiwise.io/th/documents/220202/download",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://hub.optiwise.io/th/documents/220203/download",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://hub.optiwise.io/th/documents/207423/download",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://hub.optiwise.io/th/documents/207424/download",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://hub.optiwise.io/th/documents/207425/download",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://hub.optiwise.io/th/documents/194591/download",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "เอกสารเพื่อนักลงทุน | Central Pattana TH EN ไปที่หน้าหลัก TH EN ผลการดำเนินงานและรายงาน ผลการดำเนินงานที่สำคัญ รายงานประจำรายไตรมาส เอกสารนำเสนอนักลงทุนและกิจกรรม แบบฟอร์ม 56-1 One Report เอกสารเพื่อนักลงทุน ข้อมูลผู้ถือหุ้น ผู้ถือหุ้นรายใหญ่และโครงสร้างผู้ถือหุ้น การประชุมผู้ถือหุ้น ข้อมูลการจ่ายเงินปันผล บมจ. สยามฟิวเจอร์ดีเวลอปเมนท์ สิทธิของผู้ถือหุ้น ข้อมูลเงินกู้ยืม วิเคราะห์เงินกู้ยืม รายละเอียดเงินกู้ยืม รายงานทริส เรทติ้ง Sustainable Finance ข้อมูลราคาหลักทรัพย์ ราคาหลักทรัพย์ เครื่องคำนวณการลงทุน รายนามนักวิเคราะห์ ประกาศทางการ ข่าวแจ้งตลาดหลักทรัพย์ Factsheet สอบถามข้อมูล ติดต่อนักลงทุนสัมพันธ์ สมัครรับข่าวสาร ลงทะเบียนเข้าร่วมกิจกรรม IR คำถามที่พบบ่อย หน้าหลัก ผลการดำเนินงานและรายงาน ผลการดำเนินงานที่สำคัญ รายงานประจำรายไตรมาส เอกสารนำเสนอนักลงทุนและกิจกรรม แบบฟอร์ม 56-1 One Report เอกสารเพื่อนักลงทุน ข้อมูลผู้ถือหุ้น ผู้ถือหุ้นรายใหญ่และโครงสร้างผู้ถือหุ้น การประชุมผู้ถือหุ้น ข้อมูลการจ่ายเงินปันผล บมจ. สยามฟิวเจอร์ดีเวลอปเมนท์ สิทธิของผู้ถือหุ้น ข้อมูลเงินกู้ยืม วิเคราะห์เงินกู้ยืม รายละเอียดเงินกู้ยืม รายงานทริส เรทติ้ง Sustainable Finance ข้อมูลราคาหลักทรัพย์ ราคาหลักทรัพย์ เครื่องคำนวณการลงทุน รายนามนักวิเคราะห์ ประกาศทางการ ข่าวแจ้งตลาดหลักทรัพย์ Factsheet สอบถามข้อมูล ติดต่อนักลงทุนสัมพันธ์ สมัครรับข่าวสาร ลงทะเบียนเข้าร่วมกิจกรรม IR คำถามที่พบบ่อย เอกสารเพื่อนักลงทุน หน้าหลัก ผลการดำเนินงานและรายงาน เอกสารเพื่อนักลงทุน งบการเงิน ไตรมาสที่ 2/2569 ดาวน์โหลด ไตรมาสที่ 1/2569 ดาวน์โหลด คำอธิบายและการวิเคราะห์ของฝ่ายจัดการ ไตรมาสที่ 2/2569 ดาวน์โหลด ไตรมาสที่ 1/2569 ดาวน์โหลด เอกสารนำเสนอ งานแถลงผลการดำเนินงานประจำไตรมาสที่ 2 (Opportunity Day) ดาวน์โหลด 2Q26 Corporate Presentation ดาวน์โหลด งานแถลงผลการดำเนินงานประจำไตรมาสที่ 1 (Opportunity Day) ดาวน์โหลด 1Q26 Corporate Presentation ดาวน์โหลด เว็บแคสต์ งานแถลงผลการดำเนินงานประจำไตรมาสที่ 2 (Opportunity Day) ดูเว็บแคสต์ งานแถลงผลการดำเนินงานประจำไตรมาสที่ 1 (Opportunity Day) ดูเว็บแคสต์ การประชุมสามัญผู้ถือหุ้น ประจำปี 2569 ดูเว็บแคสต์ รายงานประจำปี 2568 (56-1 One Report) ดาวน์โหลด งบการเงิน ประจำปี 2568 ดาวน์โหลด ไตรมาสที่ 3/2568 ดาวน์โหลด ไตรมาสที่ 2/2568 ดาวน์โหลด ไตรมาสที่ 1/2568 ดาวน์โหลด คำอธิบายและการวิเคราะห์ของฝ่ายจัดการ ประจำปี 2568 ดาวน์โหลด ไตรมาสที่ 3/2568 ดาวน์โหลด ไตรมาสที่ 2/2568 ดาวน์โหลด ไตรมาสที่ 1/2568 ดาวน์โหลด เอกสารนำเสนอ 4Q25 Corporate Presentation ดาวน์โหลด เอกสารนำเสนอนักลงทุน ไตรมาสที่ 4/2568 ดาวน์โหลด เอกสารนำเสนอนักลงทุน ไตรมาสที่ 3/2568 ดาวน์โหลด งานแถลงผลการดำเนินงานประจำไตรมาสที่ 3 (Opportunity Day) ดาวน์โหลด เอกสารนำเสนอนักลงทุน ไตรมาสที่ 2/2568 ดาวน์โหลด งานแถลงผลการดำเนินงานประจำไตรมาสที่ 2 (Opportunity Day) ดาวน์โหลด งานแถลงผลการดำเนินงานประจำไตรมาสที่ 1 (Opportunity Day) ดาวน์โหลด เอกสารนำเสนอนักลงทุน ไตรมาสที่ 1/2568 ดาวน์โหลด เว็บแคสต์ 4Q25 Corporate Presentation ดูเว็บแคสต์ งานแถลงผลการดำเนินงานประจำไตรมาสที่ 3 (Opportunity Day) ดูเว็บแคสต์ Opportunity Day for second quarter performance ดูเว็บแคสต์ งานแถลงผลการดำเนินงานประจำไตรมาสที่ 1 (Opportunity Day) ดูเว็บแคสต์ การประชุมสามัญผู้ถือหุ้น ประจำปี 2568 ดูเว็บแคสต์ รายงานประจำปี 2567 (56-1 One Report) ดาวน์โหลด งบการเงิน ประจำปี 2567 ดาวน์โหลด ไตรมาสที่ 3/2567 ดาวน์โหลด ไตรมาสที่ 2/2567 ดาวน์โหลด ไตรมาสที่ 1/2567 ดาวน์โหลด คำอธิบายและการวิเคราะห์ของฝ่ายจัดการ ประจำปี 2567 ดาวน์โหลด ไตรมาสที่ 3/2567 ดาวน์โหลด ไตรมาสที่ 2/2567 ดาวน์โหลด ไตรมาสที่ 1/2567 ดาวน์โหลด เอกสารนำเสนอ งานแถลงผลการดำเนินงานประจำปีก่อน (Opportunity Day) ดาวน์โหลด เอกสารนำเสนอนักลงทุน ไตรมาสที่ 4/2567 ดาวน์โหลด งานแถลงผลการดำเนินงานประจำไตรมาสที่ 3 (Opportunity Day) ดาวน์โหลด เอกสารนำเสนอนักลงทุน ไตรมาสที่ 3/2567 ดาวน์โหลด งานแถลงผลการดำเนินงานประจำไตรมาสที่ 2 (Opportunity Day) ดาวน์โหลด เอกสารนำเสนอนักลงทุน ไตรมาสที่ 2/2567 ดาวน์โหลด งานแถลงผลการดำเนินงานประจำไตรมาสที่ 1 (Opportunity Day) ดาวน์โหลด เอกสารนำเสนอนักลงทุน ไตรมาสที่ 1/2567 ดาวน์โหลด \"Citi's 2024 Thailand Investor Conference\" ณ กรุงเทพฯ ดาวน์โหลด \"2024 ASEAN Conference\" ณ ประทศสิงคโปร์ ดาวน์โหลด เว็บแคสต์ งานแถลงผลการดำเนินงานประจำปีก่อน (Opportunity Day) ดูเว็บแคสต์ งานแถลงผลการดำเนินงานประจำไตรมาสที่ 3 (Opportunity Day) ดูเว็บแคสต์ งานแถลงผลการดำเนินงานประจำไตรมาสที่ 2 (Opportunity Day) ดูเว็บแคสต์ งานแถลงผลการดำเนินงานประจำไตรมาสที่ 1 (Opportunity Day) ดูเว็บแคสต์ การประชุมสามัญผู้ถือหุ้น ประจำปี 2567 ดูเว็บแคสต์ IR Website Design by ฝ่ายนักลงทุนสัมพันธ์ บริษัท เซ็นทรัลพัฒนา จำกัด (มหาชน) ชั้น 32 อาคารเซ็นทรัลเวิลด์ ออฟฟิศเศส เลขที่ 999/9 ถนนพระราม 1 แขวงปทุมวัน เขตปทุมวัน กรุงเทพฯ 10330 ประเทศไทย เบอร์ติดต่อ: +66(0) 2 667 5555 , ต่อ 1614 และ 1632 อีเมล: ir@centralpattana.co.th ติดต่อนักลงทุนสัมพันธ์ สมัครรับข่าวสาร CPNREIT CPNCG ข้อกำหนดและเงื่อนไข นโยบายความเป็นส่วนตัว นโยบายคุกกี้ แผนผังเว็บไซต์ ข้อกำหนดและเงื่อนไข นโยบายความเป็นส่วนตัว นโยบายคุกกี้ แผนผังเว็บไซต์ © สงวนลิขสิทธิ์ พ.ศ. 2569 บริษัท เซ็นทรัลพัฒนา จำกัด (มหาชน) งบการเงิน ไตรมาสที่ 2/2569 รายงานผู้สอบบัญชี ดูออนไลน์ ดาวน์โหลด งบการเงิน ดูออนไลน์ ดาวน์โหลด หมายเหตุประกอบงบการเงิน ดูออนไลน์ ดาวน์โหลด งบการเงิน ไตรมาสที่ 1/2569 รายงานผู้สอบบัญชี ดูออนไลน์ ดาวน์โหลด งบการเงิน ดูออนไลน์ ดาวน์โหลด หมายเหตุประกอบงบการเงิน ดูออนไลน์ ดาวน์โหลด งบการเงิน ประจำปี 256",
+        "checked_at": "2026-09-27T05:50:04.495975+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "Thanachart Capital TH",
+        "report": "แบบ 56-1 One Report 2567",
+        "seed_url": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+        "expected_url_regex": "20250304-tcap-or2024-th\\.pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://tcap.listedcompany.com/misc/one-report/20250304-tcap-or2024-th.pdf",
+        "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+        "anchor_text": "ดาวน์โหลด",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 11.21,
+      "discovery": {
+        "seed_url": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+        "pdfs": [
+          {
+            "url": "https://tcap.listedcompany.com/misc/one-report/20260305-tcap-or2025-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tcap.listedcompany.com/misc/one-report/20260305-tcap-or2025-attachement01-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tcap.listedcompany.com/misc/one-report/20250304-tcap-or2024-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tcap.listedcompany.com/misc/one-report/20250304-tcap-or2024-attachement01-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tcap.listedcompany.com/misc/one-report/20230315-tcap-or2022-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tcap.listedcompany.com/misc/one-report/20230315-tcap-or2022-attachement01-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tcap.listedcompany.com/misc/one-report/20240307-tcap-or2023-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tcap.listedcompany.com/misc/one-report/20240307-tcap-or2023-attachement01-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tcap.listedcompany.com/misc/one-report/20220324-tcap-or2021-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://tcap.listedcompany.com/misc/one-report/20220324-tcap-or2021-attachement01-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.thanachart.co.th/storage/documents/corporate-documents/20230517-tcap-aoa-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/about-us/corporate-documents",
+            "anchor_text": "ข้อบังคับ",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.thanachart.co.th/storage/documents/corporate-documents/20231004-tcap-memorandum-2023-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/about-us/corporate-documents",
+            "anchor_text": "หนังสือบริคณห์สนธิ",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.thanachart.co.th/storage/updates/press-releases/2026/08/20260811-tcap-news1-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/ir-home",
+            "anchor_text": "11 ส.ค. 2569 TCAP กำไร Q2/2569 โต 24% Q-Q แตะ 2.64 พันล้านบาท หนุนครึ่งปีแรกกำไรเพิ่ม 26% Y-Y เดินหน้าซื้อหุ้นคืนวงเงิน 7.5 พันล้านบาท สร้างมูลค่าเพิ่มให้ผู้ถือหุ้น อ่านเพิ่มเติม",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.thanachart.co.th/storage/updates/press-releases/2026/05/20260513-tcap-news1-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/ir-home",
+            "anchor_text": "13 พ.ค. 2569 TCAP Q1/2569 กำไรโต 24% Y-Y รับแรงหนุนธุรกิจประกัน–บริษัทร่วม แม้เศรษฐกิจผันผวน อ่านเพิ่มเติม",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://core.shareinvestor.app/storage/downloads/tcap/mdna/0083NWS100820261859290850T.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/ir-home",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.thanachart.co.th/storage/downloads/factsheet/2026/20260825-tcap-factsheet-2q26.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/ir-home",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://core.shareinvestor.app/storage/downloads/tcap/mdna/0083NWS110520262101586540T.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/financial-statements-mdna",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.thanachart.co.th/storage/downloads/company-snapshot/2026/20260811-tcap-company-snapshot-3m26-th.pdf",
+            "discovery_page": "https://www.thanachart.co.th/th/investor-relations/downloads/company-snapshot",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.thanachart.co.th/th/investor-relations/results-and-reports/financial-highlights",
+          "https://www.thanachart.co.th/th/investor-relations/downloads/company-snapshot",
+          "https://www.thanachart.co.th/th/investor-relations/results-and-reports/download-center",
+          "https://www.thanachart.co.th/th/investor-relations/ir-home",
+          "https://www.thanachart.co.th/en/investor-relations/information-inquiry/qa-at-annual-general-meeting",
+          "https://www.thanachart.co.th/th/investor-relations/downloads/download-center",
+          "https://www.thanachart.co.th/th/investor-relations/information-inquiry/qa-at-annual-general-meeting",
+          "https://www.thanachart.co.th/th/about-us/corporate-documents",
+          "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+          "https://www.thanachart.co.th/th/investor-relations/downloads/financial-statements-mdna"
+        ],
+        "sitemaps_checked": [
+          "https://www.thanachart.co.th/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.googletagmanager.com/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 404 unavailable"
+          },
+          {
+            "url": "https://www.googletagmanager.com/ns.html?id=GTM-NLJ98MW",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.thanachart.co.th/th/investor-relations/downloads/download-center",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.thanachart.co.th/en/investor-relations/downloads/download-center",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.thanachart.co.th/th/investor-relations/results-and-reports/download-center",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.thanachart.co.th/en/investor-relations/results-and-reports/download-center",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "แบบ 56-1 One Report / รายงานประจำปี | Thanachart Capital Public Company Limited (TCAP) เกี่ยวกับเรา ข้อมูลบริษัท วิสัยทัศน์และพันธกิจ สารจากคณะกรรมการบริษัท เอกสารบริษัท โครงสร้างกลุ่มธนชาต โครงสร้างกลุ่ม โครงสร้างบริษัท คณะกรรมการบริษัท คณะกรรมการชุดย่อย คณะกรรมการตรวจสอบ คณะกรรมการสรรหา กำหนดค่าตอบแทน และบรรษัทภิบาล คณะกรรมการกำกับความเสี่ยง คณะกรรมการบริหาร ผู้บริหารของบริษัท ผู้บริหารกลุ่มธนชาต รางวัลและเกียรติยศ บริษัท ทุนธนชาต จำกัด (มหาชน) บริษัท ราชธานีลิสซิ่ง จำกัด (มหาชน) บริษัท ธนชาตประกันภัย จำกัด (มหาชน) ธนชาต 40 ปี กลุ่มธนชาต กลุ่มธนชาต บริษัท ทุนธนชาต จำกัด (มหาชน) บริษัท ราชธานีลิสซิ่ง จำกัด (มหาชน) บริษัท ธนชาตประกันภัย จำกัด (มหาชน) บริษัท ธนชาต พลัส จำกัด บริษัท ที ไลฟ์ ประกันชีวิต จำกัด (มหาชน) บริษัทหลักทรัพย์ ธนชาต เวลธ์ จำกัด บริษัท ที โบรคเกอร์ จำกัด บริษัท ที เน็คซ์ จำกัด บริษัทร่วม ธนาคารทหารไทยธนชาต จำกัด (มหาชน) บริษัท เอ็ม บี เค จำกัด (มหาชน) บริษัท พี อาร์ จี คอร์ปอเรชั่น จำกัด (มหาชน) นักลงทุนสัมพันธ์ หน้าหลักนักลงทุนสัมพันธ์ ข้อมูลทางการเงิน ข้อมูลสำคัญทางการเงิน งบการเงิน และการวิเคราะห์และคำอธิบายของฝ่ายจัดการ Factsheet Company Snapshot แบบ 56-1 One Report / รายงานประจำปี ดาวน์โหลดเอกสาร วิดีโอและเอกสารนำเสนอ ข้อมูลสำหรับผู้ถือหุ้น ผู้ถือหุ้นรายใหญ่ แปลงหุ้นบุริมสิทธิเป็นหุ้นสามัญ การประชุมผู้ถือหุ้น ขอแบบหนังสือมอบฉันทะ ข้อมูลปันผล การจ่ายปันผล ข้อมูลราคาหลักทรัพย์ ราคาหลักทรัพย์ ราคาหลักทรัพย์ย้อนหลัง เครื่องคำนวณการลงทุน ห้องข่าว ข่าวแจ้งตลาดหลักทรัพย์ฯ ข่าวแจ้งสื่อมวลชน ข่าวจากสื่อสิ่งพิมพ์ออนไลน์ ข้อมูลหุ้นกู้ ข้อมูลหุ้นกู้ การจัดอันดับเครดิต สอบถามข้อมูล อีเมลรับข่าวสาร ติดต่อนักลงทุนสัมพันธ์ ติดต่อนักวิเคราะห์ คำถามที่พบบ่อย คำถาม-คำตอบการประชุมนักวิเคราะห์ คำถาม-คำตอบ การประชุมสามัญผู้ถือหุ้น People Power ภาพรวม โอกาส ประโยชน์ ความยั่งยืน EN TH หน้าหลัก เกี่ยวกับเรา ข้อมูลบริษัท วิสัยทัศน์และพันธกิจ สารจากคณะกรรมการบริษัท เอกสารบริษัท โครงสร้างกลุ่มธนชาต โครงสร้างกลุ่ม โครงสร้างบริษัท คณะกรรมการบริษัท คณะกรรมการชุดย่อย คณะกรรมการตรวจสอบ คณะกรรมการสรรหา กำหนดค่าตอบแทน และบรรษัทภิบาล คณะกรรมการกำกับความเสี่ยง คณะกรรมการบริหาร ผู้บริหารของบริษัท ผู้บริหารกลุ่มธนชาต รางวัลและเกียรติยศ บริษัท ทุนธนชาต จำกัด (มหาชน) บริษัท ราชธานีลิสซิ่ง จำกัด (มหาชน) บริษัท ธนชาตประกันภัย จำกัด (มหาชน) ธนชาต 40 ปี กลุ่มธนชาต กลุ่มธนชาต บริษัท ทุนธนชาต จำกัด (มหาชน) บริษัท ราชธานีลิสซิ่ง จำกัด (มหาชน) บริษัท ธนชาตประกันภัย จำกัด (มหาชน) บริษัท ธนชาต พลัส จำกัด บริษัท ที ไลฟ์ ประกันชีวิต จำกัด (มหาชน) บริษัทหลักทรัพย์ ธนชาต เวลธ์ จำกัด บริษัท ที โบรคเกอร์ จำกัด บริษัท ที เน็คซ์ จำกัด บริษัทร่วม ธนาคารทหารไทยธนชาต จำกัด (มหาชน) บริษัท เอ็ม บี เค จำกัด (มหาชน) บริษัท พี อาร์ จี คอร์ปอเรชั่น จำกัด (มหาชน) นักลงทุนสัมพันธ์ หน้าหลักนักลงทุนสัมพันธ์ ข้อมูลทางการเงิน ข้อมูลสำคัญทางการเงิน งบการเงิน และการวิเคราะห์และคำอธิบายของฝ่ายจัดการ Factsheet Company Snapshot แบบ 56-1 One Report / รายงานประจำปี ดาวน์โหลดเอกสาร วิดีโอและเอกสารนำเสนอ ข้อมูลสำหรับผู้ถือหุ้น ผู้ถือหุ้นรายใหญ่ แปลงหุ้นบุริมสิทธิเป็นหุ้นสามัญ การประชุมผู้ถือหุ้น ขอแบบหนังสือมอบฉันทะ ข้อมูลปันผล การจ่ายปันผล ข้อมูลราคาหลักทรัพย์ ราคาหลักทรัพย์ ราคาหลักทรัพย์ย้อนหลัง เครื่องคำนวณการลงทุน ห้องข่าว ข่าวแจ้งตลาดหลักทรัพย์ฯ ข่าวแจ้งสื่อมวลชน ข่าวจากสื่อสิ่งพิมพ์ออนไลน์ ข้อมูลหุ้นกู้ ข้อมูลหุ้นกู้ การจัดอันดับเครดิต สอบถามข้อมูล อีเมลรับข่าวสาร ติดต่อนักลงทุนสัมพันธ์ ติดต่อนักวิเคราะห์ คำถามที่พบบ่อย คำถาม-คำตอบการประชุมนักวิเคราะห์ คำถาม-คำตอบ การประชุมสามัญผู้ถือหุ้น การกำกับดูแลกิจการ นโยบายการกำกับดูแลกิจการและการต่อต้านการทุจริต บทบาทหน้าที่และความรับผิดชอบ นโยบายการบริหารความเสี่ยง แจ้งเบาะแสการทุจริตคอร์รัปชั่น การคุ้มครองข้อมูลส่วนบุคคล Innovation in Action People Power ภาพรวม โอกาส ประโยชน์ ความยั่งยืน ข่าวและกิจกรรม ข่าวสารบริษัท วิดีโอ และโฆษณาทางโทรทัศน์ ติดต่อเรา ข้อมูลสำคัญทางการเงิน งบการเงิน และการวิเคราะห์และคำอธิบายของฝ่ายจัดการ Factsheet Company Snapshot แบบ 56-1 One Report / รายงานประจำปี ดาวน์โหลดเอกสาร แบบ 56-1 One Report / รายงานประจำปี 2568 Published Date: 24 มี.ค. 2569 View Flipbook ดาวน์โหลด เอกสารแนบ ดาวน์โหลด Form 56-1 One Report แบบ 56-1 One Report / รายงานประจำปี 2568 Published Date: 24 มี.ค. 2569 View Flipbook ดาวน์โหลด เอกสารแนบ ดาวน์โหลด แบบ 56-1 One Report / รายงานประจำปี 2567 Published Date: 11 มี.ค. 2568 View Flipbook ดาวน์โหลด เอกสารแนบ ดาวน์โหลด แบบ 56-1 One Report / รายงานประจำปี 2565 Published Date: View Flipbook ดาวน์โหลด เอกสารแนบ ดาวน์โหลด แบบ 56-1 One Report / รายงานประจำปี 2566 Published Date: 13 มี.ค. 2567 View Flipbook ดาวน์โหลด เอกสารแนบ ดาวน์โหลด แบบ 56-1 One Report / รายงานประจำปี 2564 Published Date: View Flipbook ดาวน์โหลด เอกสารแนบ ดาวน์โหลด รายงานประจำปี รายงานประจำปี 2563 View Flipbook ดาวน์โหลด Form 56-1 ดาวน์โหลด รายงานประจำปี 2562 View Flipbook ดาวน์โหลด Form 56-1 ดาวน์โหลด รายงานประจำปี 2561 View Flipbook ดาวน์โหลด Form 56-1 ดาวน์โหลด รายงานประจำปี 2560 View Flipbook ดาวน์โหลด Form 56-1 ดาวน์โหลด รายงานประจำปี 2559 View Flipbook ดาวน์โหลด Form 56-1 ดาวน์โหลด รายงานประจำปี 2558 View Flipbook ดาวน์โหลด Form 56-1 ดาวน์โหลด รายงานประจำปี 2557 View Flipbook ดาวน์โหลด Form 56-1 ดาวน์โหลด รายงานประจำปี 2556 View Flipbook ดาวน์โหลด Form 56-1 ดาวน์โหลด รายงานประจำปี 2555 View Flipbook ดาว",
+        "checked_at": "2026-09-27T05:49:58.814944+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "PTT TH",
+        "report": "แบบ 56-1 One Report 2567",
+        "seed_url": "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024",
+        "expected_url_regex": "ptt-one-report-2024-th\\.pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://ptt.listedcompany.com/misc/one-report/20260316-ptt-one-report-2024-th.pdf",
+        "discovery_page": "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024",
+        "anchor_text": "ดาวน์โหลด",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 17.87,
+      "discovery": {
+        "seed_url": "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024",
+        "pdfs": [
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260316-ptt-one-report-2024-th.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260324-ptt-financial-report-2024-th.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260324-ptt-supplementary-2024-th.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/ptt-one-report-2025-th.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/downloads/yearly-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260324-ptt-financial-report-2025-th.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/downloads/yearly-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260324-ptt-supplementary-2025-th.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/downloads/yearly-reports",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260316-ptt-one-report-2023-th.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/ir-home",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260324-ptt-supplementary-2023-th.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/ir-home",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://core.shareinvestor.app/storage/downloads/ptt/mdna/0646NWS130820261754454070T.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/ir-home",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://core.shareinvestor.app/storage/downloads/ptt/mdna/0646NWS140520261819566910T.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/ir-home",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://core.shareinvestor.app/storage/downloads/ptt/mdna/0646NWS190220261820230970T.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/ir-home",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/presentations/20260902-ptt-investor-update-202609.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/ir-home",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/presentations/20260804-ptt-investor-update-202608.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/ir-home",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/presentations/20260702-ptt-investor-update-202607.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/ir-home",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/PRESN/20260821-ptt-am-2q2026.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/ir-home",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/PRESN/20260702-ptt-group-day-in-singapore.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/ir-home",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://investor.pttplc.com/th/calendar",
+          "https://investor.pttplc.com/th/download/285.ics",
+          "https://investor.pttplc.com/th/downloads/yearly-reports",
+          "https://investor.pttplc.com/th/download/281.ics",
+          "https://investor.pttplc.com/th/download/286.ics",
+          "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024",
+          "https://investor.pttplc.com/th/financial-information/financial-highlights/financial-highlight",
+          "https://investor.pttplc.com/th/ir-home",
+          "https://investor.pttplc.com/th/information-request/ir-contact",
+          "https://investor.pttplc.com/th/newsroom/set-announcements"
+        ],
+        "sitemaps_checked": [
+          "https://investor.pttplc.com/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://investor.pttplc.com/th/download/281.ics",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://investor.pttplc.com/th/download/286.ics",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://investor.pttplc.com/th/download/285.ics",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://investor.pttplc.com/th/download/285.ics",
+            "stage": "page",
+            "reason": "Non-HTML page: text/calendar; charset=utf-8"
+          },
+          {
+            "url": "https://investor.pttplc.com/th/download/286.ics",
+            "stage": "page",
+            "reason": "Non-HTML page: text/calendar; charset=utf-8"
+          },
+          {
+            "url": "https://investor.pttplc.com/th/download/281.ics",
+            "stage": "page",
+            "reason": "Non-HTML page: text/calendar; charset=utf-8"
+          },
+          {
+            "url": "https://d32r1sh890xpii.cloudfront.net/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 403 unavailable"
+          },
+          {
+            "url": "https://d32r1sh890xpii.cloudfront.net/widgets/brent/brentchart.html",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "รายงานประจำปี และ56-1 One report | บริษัท ปตท. จำกัด (มหาชน) (PTT) ไปที่เว็บไซต์หลัก EN เมนู นักลงทุนสัมพันธ์ กิจกรรมที่จะเกิดขึ้น ข่าวเเจ้งตลาดหลักทรัพย์ฯ ติดต่อนักลงทุนสัมพันธ์ ไปที่เว็บไซต์หลัก หน้าหลักนักลงทุนสัมพันธ์ ข้อมูลทางการเงิน ข้อมูลสำคัญทางการเงิน งบการเงิน และคำอธิบายและการวิเคราะห์ของฝ่ายจัดการ Factsheet ข้อมูลราคาหลักทรัพย์ ราคาหลักทรัพย์ ราคาหลักทรัพย์ย้อนหลัง เครื่องคำนวณการลงทุน รายงานที่สำคัญ รายงานประจำปี และ56-1 One report แบบฟอร์ม 69-1 ข้อมูลสำหรับผู้ถือหุ้นสามัญ โครงสร้างผู้ถือหุ้น การประชุมผู้ถือหุ้น นโยบายและการจ่ายเงินปันผล จดหมายข่าวนักลงทุน (Bizway) ดาวน์โหลดเอกสารนักลงทุน ห้องข่าว ข่าวแจ้งสื่อมวลชน ข่าวแจ้งตลาดหลักทรัพย์ ปฏิทินกิจกรรม เอกสารนำเสนอและเว็บแคสต์ ข้อมูลนักวิเคราะห์ รายชื่อนักวิเคราะห์ บทวิเคราะห์หลักทรัพย์ สอบถามข้อมูล อีเมลรับข่าวสาร ติดต่อนักลงทุนสัมพันธ์ ข้อมูลสำหรับผู้ถือหุ้นกู้ และกิจกรรมเพื่อผู้ถือหุ้นกู้ PTT Debenture club Homepage ข้อมูลสำหรับผู้ถือหุ้นกู้ฯ กิจกรรมเพื่อผู้ถือหุ้นกู้ฯ จรรยาบรรณสำหรับนักลงทุนสัมพันธ์ 2568 2567 2566 2565 2564 2563 2562 2561 2560 2559 2558 2557 2556 2555 2554 2553 2552 2551 2550 2549 2548 2547 2546 2545 2544 ดูออนไลน์ ดาวน์โหลด แบบ 56-1 One Report 2567 ดาวน์โหลด แบบ 56-1 One Report (รายงานทางการเงิน) 2567 ดูออนไลน์ ดาวน์โหลด รายละเอียดเพิ่มเติมสำหรับ 56-1 One Report 2567 แบบสำรวจความคิดเห็นของผู้อ่านต่อแบบแสดงรายการข้อมูลประจำปี/ รายงานประจำปี 2568 (แบบ 56-1 One Report) แบบสอบถามก่อนการดาวน์โหลด 1. ท่านเป็นผู้อ่านรายงานความยั่งยืนในกลุ่มใด * ผู้ถือหุ้น/ นักลงทุน สื่อมวลชน Customer หน่วยงานราชการ/ หน่วยงานภาครัฐ คู่ค้า พนักงาน นักเรียน/ นักศึกษา/ สถาบันการศึกษา/ นักวิชาการ ชุมชนใกล้สถานประกอบการ Other 2. ท่านอ่านรายงานประจำปี 2565 (แบบ 56-1 One Report) โดยมีวัตถุประสงค์เพื่ออะไร * (เลือกได้มากกว่าหนึ่ง) รู้จัก ปตท. การศึกษา/ การวิจัย ประกอบการตัดสินใจลงทุน เตรียมจัดทำรายงานความยั่งยืนของบริษัท Other 3. โปรดระบุอีเมล * 4. โปรดระบุประเทศ * ไทย เซนต์บาร์เตเลมี กรีซ กรีนแลนด์ กัมพูชา กัวเดลุฟ กัวเตมาลา กาตาร์ กาบอง กายอานา กินี กินีบิสเซา เกรเนดา เกาหลีใต้ เกาหลีเหนือ เกาะกวม เกาะคริสต์มาส เกาะโคโคส [คีลิง] เกาะจาเมกา เกาะเซนต์มาร์ติน เกาะนอกรีตของสหรัฐฯ เกาะนอร์ฟอล์ก เกาะบูเว็ต เกาะมอลตา เกาะแมน เกาะเฮิร์ดและหมู่เกาะแมคโดนัลด์ เกิร์นซีย์ เกิร์นซีย์ แกมเบีย คอโมโรส คอสตาริกา\\n คาซัคสถาน คิริบาส คิวบา คีร์กีสถาน คูราเซา คูเวต เคนย่า เคปเวิร์ด แคนาดา แคเมอรูน โคโซโว โครเอเชีย โคลอมเบีย จอร์เจีย จอร์แดน จิบูตี จีน ชาด ชิลี ซานมาริโน ซามัว ซาอุดิอาราเบีย ซาฮาร่าตะวันตก ซีเรีย ซูดาน ซูดานใต้ ซูรินาเม เซเชลส์ เซนต์คิตส์และเนวิส เซนต์ปิแอร์และมีเกอลง เซนต์มาร์ติน เซนต์ลูเซีย เซนต์วินเซนต์และเกรนาดีนส์ เซนต์เฮเลนา เซเนกัล เซอร์เบีย เซาตูเมและปรินซิปี เซียร์ราลีโอน แซมเบีย โซมาเลีย ไซปรัส ญี่ปุ่น ดินแดนทางตอนใต้ของฝรั่งเศส เดนมาร์ก โดมินิกา ตรินิแดดและโตเบโก ตองกา ติมอร์ตะวันออก ตุรกี ตูนิเซีย ตูวาลู เติร์กเมนิสถาน โตเกเลา โตโก ไต้หวัน ทวิปแอนตาร์กติกา ทาจิกิสถาน แทนซาเนีย นสไตน์ นอร์เวย์ นามิเบีย นาอูรู นิการากัว นิวแคลิโดเนีย นิวเจอร์ซีย์ นิวซีแลนด์ นีอูเอ เนเธอร์แลนด์ เนปาล ไนจีเรีย ไนเธอร์ บราซิล บรูไน บอตสวานา บอสเนียและเฮอร์เซโกวีนา บังคลาเทศ บัลแกเรีย บาร์เบโดส บาห์เรน บาฮามาส บุรุนดี บูร์กินาฟาโซ เบนิน เบลเยียม เบลารุส เบลีซ เบอร์มิวดา โบแนร์ โบลิเวีย ประเทศซิมบับเว ประเทศไลบีเรีย ประเทศไอซ์แลนด์ ปากีสถาน ปานามา ปาปัวนิวกินี ปารากวัย ปาเลสไตน์ ปาเลา เปรู เปอร์โตริโก โปรตุเกส โปแลนด์ ฝรั่งเศส พม่า ฟิจิ ฟินแลนด์ ฟิลิปปินส์ เฟรนช์เกียนา เฟรนช์โปลินีเซีย ภูฏาน มองโกเลีย มอนต์เซอร์รัต มอนเตเนโก มอริเชียส มอริเตเนีย มอลโดวา มัลดีฟส์ มาเก๊า มาซิโดเนีย มาดากัสการ์ มายอต มาร์ตินีก มาลาวี มาลี มาเลเซีย เม็กซิโก เมืองวาติกัน โมซัมบิก โมนาโก โมร็อกโก ไมโครนีเซีย ยิบรอลตา ยูกันดา ยูเครน เยเมน เยอรมันนี รวันดา รัสเซีย เรอูนียง โรมาเนีย ลักเซมเบิร์ก ลัตเวีย ลาว ลิธัวเนีย ลิบยา เลโซโท เลบานอน วานูอาตู วาลลิสและฟุตูนา เวเนซุเอลา เวียดนาม ศรีลังกา สเปน สฟาลบาร์และยานไมเอน สโลวะเกีย สโลวีเนีย สวาซิแลนด์ สวิสเซอร์แลนด์ สวีเดน สหรัฐอเมริกา สหรัฐอาหรับเอมิเรตส์ สาธารณรัฐคองโก สาธารณรัฐเช็ก สาธารณรัฐโดมินิกัน สาธารณรัฐประชาธิปไตยคองโก สาธารณรัฐเอธิโอเปีย สาธารณรัฐแอฟริกากลาง สิงคโปร์ หมู่เกาะคุก หมู่เกาะเคย์เเมน หมู่เกาะเซาท์จอร์เจียและหมู่เกาะเซาท์แซนด์วิช หมู่เกาะโซโลมอน หมู่เกาะเติกส์และหมู่เกาะเคคอส หมู่เกาะนอร์เทิร์นมาเรียนา หมู่เกาะบริติชเวอร์จิน หมู่เกาะบริติชเวอร์จิน หมู่เกาะพิตแคร์น หมู่เกาะฟอล์คแลนด์ หมู่เกาะแฟโร หมู่เกาะมาร์แชลล์ หมู่เกาะเวอร์จินของสหรัฐอเมริกา อเมริกันซามัว ออสเตรเลีย ออสเตรีย อังกฤษ (สหราชอาณาจักร) อันดอร์รา อัฟกานิสถาน อาเซอร์ไบจาน อาร์เจนตินา อาร์เมเนีย อารูบา อิเควทอเรียลกินี อิตาลี อินเดีย อินโดนีเซีย อิรัก อิสราเอล อิหร่าน อียิปต์ อุซเบกิสถาน อุรุกวัย เอกวาดอร์ เอริเทรี เอลซัลวาดอร์ เอสโตเนีย แองกวิลลา แองโกลา แอนติกาและบาร์บูดา แอฟริกาใต้ แอลจีเรีย แอลเบเนีย โอมาน โอลันด์ ไอร์แลนด์ ไอวอรี่โคสต์ ฮ่องกง ฮอนดูรัส ฮังการี เฮติ ในการดาวน์โหลด รายงานประจำปี 2565 (แบบ 56-1 One Report) ผ่านเว็บไซต์ ปตท. จะมีการเก็บรวมรวบข้อมูลส่วนบุคคลของท่านเพื่อเพื่อสอบถามความคิดเห็น และนำมาวิเคราะห์เพื่อการพัฒนารายงาน ของ ปตท. ให้ตอบสนองความสนใจของกลุ่มผู้อ่าน และวัตถุประสงค์อื่น ๆ ตามที่ ปตท. ได้แจ้งไว้ในแบบแจ้งเกี่ยวกับข้อมูลส่วนบุคคลหรือ Privacy Notice ของ ปตท. ซึ่งท่านสามารถศึกษารายละเอียดเพิ่มเติมได้ที่นี่ คลิก ปตท. จะจัดส่งแบบสำรวจความค",
+        "checked_at": "2026-09-27T05:50:08.285180+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "AIS TH",
+        "report": "รายงานประจำปี 2567 บทที่ 1 (Thai chapter PDF)",
+        "seed_url": "https://investor.ais.co.th/th/document/annual-reports",
+        "expected_url_regex": "advanc-ar2024-01-th[.]pdf"
+      },
+      "known_found": false,
+      "matched_pdf": null,
+      "reason": "expected_report_not_found",
+      "seconds": 21.24,
+      "discovery": {
+        "seed_url": "https://investor.ais.co.th/th/document/annual-reports",
+        "pdfs": [
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2025/advanc-ar2025-01-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/annual-reports",
+            "anchor_text": "Flipbook",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2025/advanc-ar2025-01-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2025/advanc-ar2025-02-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/annual-reports",
+            "anchor_text": "Flipbook",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2025/advanc-ar2025-02-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2025/advanc-ar2025-03-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/annual-reports",
+            "anchor_text": "Flipbook",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2025/advanc-ar2025-03-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2025/advanc-ar2025-04-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/annual-reports",
+            "anchor_text": "Flipbook",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2025/advanc-ar2025-04-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2025/advanc-ar2025-05-1-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/annual-reports",
+            "anchor_text": "Flipbook",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2025/advanc-ar2025-05-1-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2016/advanc-ar2016-05-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-05-th.pdf",
+            "anchor_text": "alternate",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/en/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-05-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2016/advanc-ar2016-04-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-04-th.pdf",
+            "anchor_text": "alternate",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/en/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-04-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2016/advanc-ar2016-03-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-03-th.pdf",
+            "anchor_text": "alternate",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/en/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-03-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2016/advanc-ar2016-02-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-02-th.pdf",
+            "anchor_text": "alternate",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/en/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-02-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2016/advanc-ar2016-01-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-01-th.pdf",
+            "anchor_text": "alternate",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/en/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-01-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2017/advanc-ar2017-05-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-05-th.pdf",
+            "anchor_text": "alternate",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/en/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-05-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2017/advanc-ar2017-04-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-04-th.pdf",
+            "anchor_text": "alternate",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/en/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-04-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2017/advanc-ar2017-03-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-03-th.pdf",
+            "anchor_text": "alternate",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/en/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-03-th.pdf"
+          },
+          {
+            "url": "https://investor.ais.co.th/storage/document/annual-reports/2017/advanc-ar2017-02-th.pdf",
+            "discovery_page": "https://investor.ais.co.th/th/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-02-th.pdf",
+            "anchor_text": "alternate",
+            "status": "verified_pdf",
+            "content_type": "application/pdf",
+            "via_viewer": "https://investor.ais.co.th/en/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-02-th.pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://investor.ais.co.th/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-04-th.pdf",
+          "https://investor.ais.co.th/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-04-th.pdf",
+          "https://investor.ais.co.th/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-03-th.pdf",
+          "https://investor.ais.co.th/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-02-th.pdf",
+          "https://investor.ais.co.th/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-05-th.pdf",
+          "https://investor.ais.co.th/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-01-th.pdf",
+          "https://investor.ais.co.th/th/document/annual-reports",
+          "https://investor.ais.co.th/document/viewer/flipbook/storage/document/annual-reports/2016/advanc-ar2016-05-th.pdf",
+          "https://investor.ais.co.th/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-02-th.pdf",
+          "https://investor.ais.co.th/document/viewer/flipbook/storage/document/annual-reports/2017/advanc-ar2017-03-th.pdf"
+        ],
+        "sitemaps_checked": [
+          "https://investor.ais.co.th/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "รายงานประจำปี | Advanced Info Service ไปยังเว็บไซต์หลักบริษัท TH EN หน้าหลัก ข้อมูลบริษัท ข้อมูลบริษัท เกี่ยวกับเอไอเอส ธุรกิจของเอไอเอส ผลการดำเนินงานและรายงาน ผลการดำเนินงานและรายงาน ข้อมูลสำคัญทางการเงิน รายงานประจำรายไตรมาส รายงานประจำปี เอกสารนำเสนอและเว็บแคสต์ เอกสารเพื่อนักลงทุน ข้อมูลหลักทรัพย์ ข้อมูลหลักทรัพย์ ข้อมูลราคาหลักทรัพย์ ราคาหลักทรัพย์ เครื่องคำนวณการลงทุน การเปลี่ยนแปลงทุนและการซื้อกิจการ รายชื่อนักวิเคราะห์ ข้อมูลสำหรับผู้ถือหุ้น ข้อมูลสำหรับผู้ถือหุ้น โครงสร้างผู้ถือหุ้น การประชุมผู้ถือหุ้น นโยบายและการจ่ายเงินปันผล การกำกับดูแลกิจการที่ดี การกำกับดูแลกิจการที่ดี โครงสร้างการกำกับดูแลกิจการ คณะกรรมการและคณะผู้บริหาร คณะกรรมการบริษัท คณะกรรมการบริหาร คณะกรรมการตรวจสอบและกำกับความเสี่ยง คณะกรรมการสรรหาและกำหนดค่าตอบแทน คณะกรรมการพัฒนาสู่ความยั่งยืน คณะผู้บริหาร การสรรหาและกำหนดค่าตอบแทนกรรมการและผู้บริหาร นโยบายบรรษัทภิบาล การต่อต้านการให้สินบนและคอร์รัปชั่น การสนับสนุนการกำหนดนโยบายภาครัฐ การพัฒนาอย่างยั่งยืน การพัฒนาอย่างยั่งยืน ภาพรวมการพัฒนาอย่างยั่งยืน รายงานด้านความยั่งยืน การเงินเพื่อความยั่งยืน ข่าวสารและกิจกรรม ข่าวสารและกิจกรรม ข่าวแจ้งตลาดหลักทรัพย์ ปฏิทินกิจกรรม ข่าวแจ้งสื่อมวลชน จดหมายข่าวนักลงทุน สอบถามข้อมูล สอบถามข้อมูล ติดต่อนักลงทุนสัมพันธ์ สมัครรับข่าวสาร ไปยังเว็บไซต์หลักบริษัท รายงานประจำปี หน้าหลัก ผลการดำเนินงานและรายงาน รายงานประจำปี รายงานประจำปี 2568 Flipbook ดาวน์โหลด เอกสารแนบ Digital Report รายงานประจำปี  2567 Flipbook ดาวน์โหลด เอกสารแนบ รายงานประจำปี  2566 Flipbook ดาวน์โหลด เอกสารแนบ รายงานประจำปี 2565 Flipbook ดาวน์โหลด เอกสารแนบ รายงานประจำปี 2564 Flipbook ดาวน์โหลด เอกสารแนบ รายงานประจำปี 2563 Flipbook ดาวน์โหลด เอกสารแนบ รายงานประจำปี 2562 Flipbook ดาวน์โหลด เอกสารแนบ แบบฟอร์ม 56-1 ปี 2562 ดาวน์โหลด รายงานประจำปี 2561 Flipbook ดาวน์โหลด เอกสารแนบ แบบฟอร์ม 56-1 ปี 2561 ดาวน์โหลด รายงานประจำปี 2560 Flipbook ดาวน์โหลด เอกสารแนบ แบบฟอร์ม 56-1 ปี 2560 ดาวน์โหลด รายงานประจำปี 2559 Flipbook ดาวน์โหลด เอกสารแนบ แบบฟอร์ม 56-1 ปี 2559 ดาวน์โหลด รายงานประจำปี 2558 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2558 ดาวน์โหลด รายงานประจำปี 2557 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2557 ดาวน์โหลด รายงานประจำปี 2556 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2556 ดาวน์โหลด รายงานประจำปี 2555 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2555 ดาวน์โหลด รายงานประจำปี 2554 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2554 ดาวน์โหลด รายงานประจำปี 2553 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2553 ดาวน์โหลด รายงานประจำปี 2552 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2552 ดาวน์โหลด รายงานประจำปี 2551 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2551 ดาวน์โหลด รายงานประจำปี 2550 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2550 ดาวน์โหลด รายงานประจำปี 2549 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2549 ดาวน์โหลด รายงานประจำปี 2548 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2548 ดาวน์โหลด รายงานประจำปี 2547 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2547 ดาวน์โหลด รายงานประจำปี 2546 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2546 ดาวน์โหลด รายงานประจำปี 2545 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2545 ดาวน์โหลด รายงานประจำปี 2544 Flipbook ดาวน์โหลด แบบฟอร์ม 56-1 ปี 2544 ดาวน์โหลด รายงานประจำปี 2543 Flipbook ดาวน์โหลด รายงานประจำปี 2542 Flipbook ดาวน์โหลด รายงานประจำปี 2541 Flipbook ดาวน์โหลด รายงานประจำปี 2540 Flipbook ดาวน์โหลด รายงานประจำปี 2539 Flipbook ดาวน์โหลด ดูทั้งหมด ติดต่อเรา เลขที่ 414 อาคาร เอไอเอส 1 ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400 อีเมล: investor@ais.co.th เบอร์ติดต่อ: 02-029-5000 ต่อ 3 ข้อมูลบริษัท เกี่ยวกับเอไอเอส ธุรกิจของเอไอเอส ผลการดำเนินงานและรายงาน ข้อมูลสำคัญทางการเงิน รายงานประจำรายไตรมาส รายงานประจำปี เอกสารนำเสนอและเว็บแคสต์ เอกสารเพื่อนักลงทุน ข่าวสารและกิจกรรม ข่าวแจ้งตลาดหลักทรัพย์ ปฏิทินกิจกรรม ข่าวแจ้งสื่อมวลชน จดหมายข่าวนักลงทุน © สงวนลิขสิทธิ์ พ.ศ. 2569 บริษัท แอดวานซ์ อินโฟร์ เซอร์วิส จำกัด (มหาชน) ข้อกำหนดและกฎหมาย ประกาศการคุ้มครองข้อมูลส่วนบุคคล นโยบายคุกกี้ แผนผังเว็บไซต์ เอกสารแนบ: รายงานประจำปี 2568 เอกสารแนบ 1: ประวัติคณะกรรมการและผู้บริหาร Flipbook ดาวน์โหลด เอกสารแนบ 2: รายละเอียดเกี่ยวกับกรรมการของบริษัทย่อย Flipbook ดาวน์โหลด เอกสารแนบ 3: รายละเอียดเกี่ยวกับเลขานุการบริษัท หัวหน้างานกำกับดูแลการปฏิบัติงานของบริษัท (CapitalMarket Compliance) และ ผู้ที่ได้รับมอบหมายให้รับผิดชอบโดยตรงในการควบคุมดูแลการทำบัญชี Flipbook ดาวน์โหลด เอกสารแนบ 4: ทรัพย์สินที่ใช้ในการประกอบธุรกิจ Flipbook ดาวน์โหลด เอกสารแนบ 5.1: นโยบายการกํากับดูแลกิจการ Flipbook ดาวน์โหลด เอกสารแนบ 5.2: ประมวลจรรยาบรรณธุรกิจ Flipbook ดาวน์โหลด เอกสารแนบ 6: รายงานคณะกรรมการตรวจสอบ Flipbook ดาวน์โหลด เอกสารแนบ 7: รายงานการถือครองหลักทรัพย์ของกรรมการและผู้บริหารในบริษัทและบริษัทย่อย ประจำปี2568 Flipbook ดาวน์โหลด เอกสารแนบ: รายงานประจำปี  2567 เอกสารแนบ ดาวน์โหลด ภาพรวมในการลงทุน Flipbook ดาวน์โหลด ธุรกิจของเรา Flipbook ดาวน์โหลด ความยั่งยืน Flipbook ดาวน์โหลด การกำกับดูแลกิจการที่ดี Flipbook ดาวน์โหลด รายงานทางการเงิน Flipbook ดาวน์โหลด ข้อมูลทั่วไปและข้อมูลสำคัญอื่น Flipbook ดาวน์โหลด เอกสารแนบ: รายงานประจำปี  2566 เอกสารแนบ 1 : รายละเอียดเกี่ยวกับกรรมการของบริษัทย่อย ดาวน์โหลด เอกสารแนบ 2 : นโยบายและแนวปฏิบัติการกำกับดูแลกิจการ และจรรยาบรรณธุรกิจ ดาวน์โหลด ภาพรวมในการลงทุน Flipbook ดาวน์โหลด ธุรกิจของเรา Flipbook ดาวน์โหลด ความยั่งยืน Flipbook ดาวน์",
+        "checked_at": "2026-09-27T05:50:20.056126+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "Stock Exchange of Thailand TH",
+        "report": "รายงานประจำปี 2567",
+        "seed_url": "https://www.set.or.th/th/about/overview/report/annual-report",
+        "expected_url_regex": "SET_Annual_Report_2024_TH\\.pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://media.set.or.th/set/Documents/2025/Apr/SET_Annual_Report_2024_TH.pdf",
+        "discovery_page": "https://www.set.or.th/th/about/overview/report/annual-report",
+        "anchor_text": "PDF",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 7.45,
+      "discovery": {
+        "seed_url": "https://www.set.or.th/th/about/overview/report/annual-report",
+        "pdfs": [
+          {
+            "url": "https://media.set.or.th/set/Documents/2026/Apr/SET_Annual_Report_2025_TH.pdf",
+            "discovery_page": "https://www.set.or.th/th/about/overview/report/annual-report",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://media.set.or.th/set/Documents/2025/Apr/SET_Annual_Report_2024_TH.pdf",
+            "discovery_page": "https://www.set.or.th/th/about/overview/report/annual-report",
+            "anchor_text": "PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://media.set.or.th/set/Documents/2024/Apr/SET_Annual_Report_2023_TH.pdf",
+            "discovery_page": "https://www.set.or.th/th/about/overview/report/annual-report",
+            "anchor_text": "PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://media.set.or.th/set/Documents/2023/Apr/SET_Annual_Report_2022_TH.pdf",
+            "discovery_page": "https://www.set.or.th/th/about/overview/report/annual-report",
+            "anchor_text": "PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://media.set.or.th/set/Documents/2022/May/SET_OneReport_2564_TH.pdf",
+            "discovery_page": "https://www.set.or.th/th/about/overview/report/annual-report",
+            "anchor_text": "PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://media.set.or.th/set/Documents/2022/Jan/annual_report_2563_thai_full.pdf",
+            "discovery_page": "https://www.set.or.th/th/about/overview/report/annual-report",
+            "anchor_text": "PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://media.set.or.th/set/Documents/2022/Jan/annual_report_2562_thai_full_v2.pdf",
+            "discovery_page": "https://www.set.or.th/th/about/overview/report/annual-report",
+            "anchor_text": "PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://media.set.or.th/set/Documents/2022/Jan/annual_report_2561_thai_full.pdf",
+            "discovery_page": "https://www.set.or.th/th/about/overview/report/annual-report",
+            "anchor_text": "PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://media.set.or.th/set/Documents/2022/Jan/annual_report_2560_thai_full.pdf",
+            "discovery_page": "https://www.set.or.th/th/about/overview/report/annual-report",
+            "anchor_text": "PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://media.set.or.th/set/Documents/2022/Jan/annual_report_2559_thai_full.pdf",
+            "discovery_page": "https://www.set.or.th/th/about/overview/report/annual-report",
+            "anchor_text": "PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.set.or.th/th/about/overview/report/annual-report",
+          "https://www.set.or.th/annualreport/th/2025/index.html",
+          "https://www.set.or.th/annualreport/th/2020/index.html",
+          "https://www.set.or.th/annualreport/th/2018/index.html",
+          "https://www.set.or.th/annualreport/th/2024/index.html",
+          "https://www.set.or.th/annualreport/th/2021/index.html",
+          "https://www.set.or.th/annualreport/th/2022/index.html",
+          "https://www.set.or.th/annualreport/th/2019/index.html",
+          "https://www.set.or.th/annualreport/th/2023/index.html",
+          "https://www.set.or.th/annualreport/th/2017/index.html"
+        ],
+        "sitemaps_checked": [
+          "https://www.set.or.th/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.googletagmanager.com/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 404 unavailable"
+          },
+          {
+            "url": "https://www.googletagmanager.com/ns.html?id=GTM-T2H3PK9",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://media.set.or.th/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 404 unavailable"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "รายงานประจำปี - ตลาดหลักทรัพย์แห่งประเทศไทย ค้นหาชื่อย่อ / Factsheet ข้อมูลการซื้อขาย ภาพรวมข้อมูลการซื้อขาย ดูภาพรวม ผลิตภัณฑ์ หุ้น ETF DR DW Bond TFEX ดัชนี SET Index FTSE SET Index FTSE ASEAN Index ดัชนีผลตอบแทนรวม (TRI) ปฏิทินหลักทรัพย์ ข้อมูลและสถิติ สรุปภาพรวมตลาด ราคาหลักทรัพย์ สิบอันดับหลักทรัพย์ สรุปมูลค่าการซื้อขายตามกลุ่มนักลงทุน สรุปมูลค่าการซื้อขาย 5 วันทำการล่าสุด ข้อมูล NVDR ธุรกรรมขายชอร์ต Program Trading Value สถิติสำคัญตลาดหลักทรัพย์ ข่าวและการแจ้งเตือน ข่าวหลักทรัพย์ Market Alerts หลักทรัพย์ที่หยุดพักการซื้อขายชั่วคราว หลักทรัพย์ที่ Trigger Auto Pause/Dynamic Price Band หลักทรัพย์ที่ซื้อด้วย Cash Balance เครื่องหมายที่เกี่ยวข้องกับการซื้อขาย ความเห็นผู้สอบบัญชี หลักทรัพย์เตรียมเข้า IPO การนำเสนอข้อมูลของบริษัทจดทะเบียน Earnings Call (OPPDAY) Digital Roadshow C-Sign Public Presentation รายชื่อบริษัทจดทะเบียน/หลักทรัพย์ ข้อมูลรายบริษัท/หลักทรัพย์ ดาวน์โหลดรายชื่อบจ.ในตลาดหลักทรัพย์ ดาวน์โหลดรายชื่อบจ.ที่เข้าข่ายอาจถูกเพิกถอน รายชื่อหลักทรัพย์ที่ขายชอร์ตได้ รายชื่อหลักทรัพย์กรณีต่างๆ รายชื่อหลักทรัพย์ Thai ESG รายชื่อหลักทรัพย์โครงการ JUMP+ ข้อมูลที่เกี่ยวข้อง วิธีการซื้อขาย รายชื่อบริษัทสมาชิก ภาษี การคุ้มครองผู้ลงทุน บริการผู้ลงทุน รายชื่อบริษัท/หลักทรัพย์ ผู้ออกหลักทรัพย์ ภาพรวมผู้ออกหลักทรัพย์ ดูภาพรวม การออกตราสารทุน การเข้าจดทะเบียน การจดทะเบียนหุ้นสามัญ การจดทะเบียน REIT การจดทะเบียน IFF การจดทะเบียน IFT บริการสำหรับบริษัทเข้าจดทะเบียน Case Study - การเข้าจดทะเบียน ข้อมูล IPO หลักทรัพย์เตรียม IPO หลักทรัพย์ IPO ล่าสุด First Trading Day IPO Performance ค้นหาหลักทรัพย์จดทะเบียน การเป็นบริษัทจดทะเบียน เกณฑ์เกี่ยวกับบริษัทจดทะเบียน (Simplified Regulations) การออกเครื่องมือทางการเงิน การพัฒนาเพื่อความยั่งยืน บริการสำหรับบริษัทจดทะเบียน คู่มือการเป็นบริษัทจดทะเบียน (Listed Company Journey) รายชื่อบริษัทจดทะเบียน/หลักทรัพย์ ข้อมูลรายบริษัท/หลักทรัพย์ ดาวน์โหลดรายชื่อบจ.ในตลาดหลักทรัพย์ ดาวน์โหลดรายชื่อบจ.ที่เข้าข่ายอาจถูกเพิกถอน รายชื่อหลักทรัพย์ที่ขายชอร์ตได้ รายชื่อหลักทรัพย์กรณีต่างๆ ห้องเรียนบริษัทจดทะเบียน การออกตราสารอื่น ETF DR DW Thailand Focus SET Awards โครงการ JUMP+ Earnings Call (OPPDAY) กฎเกณฑ์และการกำกับ ภาพรวมเกณฑ์และการกำกับ ดูภาพรวม เกณฑ์และการกำกับ เกณฑ์บริษัทผู้ออกหลักทรัพย์ เกณฑ์บริษัทสมาชิก เกณฑ์การซื้อขาย เกณฑ์สำนักหักบัญชี เกณฑ์ศูนย์รับฝากหลักทรัพย์ เกณฑ์นายทะเบียนหลักทรัพย์ เกณฑ์ตลาดสัญญาซื้อขายล่วงหน้า ค้นหาเกณฑ์ กฎเกณฑ์ หนังสือเวียน แบบฟอร์ม/คู่มือ เกณฑ์ที่ถูกยกเลิก Market Alert การบังคับใช้ การรับฟังความคิดเห็น ค่าสถิติงานกำกับ กฎเกณฑ์ใหม่ บริการ ภาพรวมบริการ ดูภาพรวม บริการเชื่อมต่อและข้อมูล บริการเชื่อมต่อ บริการข้อมูลหลักทรัพย์ บริการซื้อขาย บริการ Front Office และ Internet Trading บริการ Derivatives Back Office บริการ Fund Integrated Service บริการหลังการซื้อขาย บริการสำนักหักบัญชี บริการรับฝากหลักทรัพย์ บริการนายทะเบียนหลักทรัพย์ บริการสำหรับนักลงทุน บริการเทคโนโลยีและโครงสร้างพื้นฐาน FundConnext Onboarding e-Stamp Duty Payment Platform บริการสำหรับสมาชิก การรับสมาชิก การต่อเชื่อมระบบส่งคำสั่งซื้อขาย บริการสำหรับบริษัทจดทะเบียน บริการสำหรับนักลงทุนสถาบัน Direct Market Access (DMA) Algorithmic Trading บริการอื่นๆ แอป wiset (วิเศษ) ข้อมูลกองทุนลดหย่อนภาษี บริษัทผู้พัฒนาระบบ (ISV) ความรู้และวิจัย ภาพรวมความรู้ ดูภาพรวม ความรู้ วางแผนเรื่องเงิน มือใหม่เริ่มลงทุน เส้นทางวิชาชีพตลาดทุน Startup & SME ผู้ประกอบการเพื่อสังคม ความรู้บริษัทจดทะเบียน สถาบันวิทยาการตลาดทุน ห้องสมุดมารวย INVESTORY พิพิธภัณฑ์เรียนรู้การลงทุน SET e-Learning SET Book SET ESG Academy SET Fin Quizz ภาพรวมวิจัย (SET Research) ดูภาพรวม วิจัย ภาวะตลาดหลักทรัพย์ บทความและงานวิจัย ฐานข้อมูลตลาดทุน กิจกรรม ทุนวิจัย ค้นหาวิจัย รายงานการวิเคราะห์อุตสาหกรรม สรุปภาวะตลาดหลักทรัพย์ เกี่ยวกับ ตลท. ภาพรวมเกี่ยวกับ ตลท. ดูภาพรวม ภาพรวมองค์กร ความเป็นมาและบทบาท วิสัยทัศน์และพันธกิจ คณะกรรมการ โครงสร้างองค์กรและคณะผู้บริหาร การกำกับดูแลกิจการที่ดี รายงานประจำปีและงบการเงิน แจ้งเบาะแส / ร้องเรียน / เสนอแนะ ร่วมงานกับเรา กลุ่ม ตลท. บริษัทและโครงสร้างการถือหุ้น TFEX TCH TSD settrade Thai NVDR TDX DAP FiNNET LiVE ติดต่อเรา ตลาดหลักทรัพย์กับความยั่งยืน ภาพรวม การกำกับดูแลความยั่งยืน การพัฒนาความยั่งยืนตลาดทุน การสร้างโอกาสร่วมกับพนักงาน การขับเคลื่อนสังคมอย่างยั่งยืน การรับมือการเปลี่ยนแปลงสภาพภูมิอากาศ ปฏิทิน & กิจกรรม ปฏิทินวันหยุด ปฏิทินกิจกรรม Media Center จับปลอมหลอกลงทุน หน้าหลัก เกี่ยวกับ ตลท. ภาพรวมองค์กร รายงานประจำปีและงบการเงิน ... รายงานประจำปี รายงานประจำปีและงบการเงิน รายงานประจำปี ความเป็นมา วิสัยทัศน์และพันธกิจ คณะกรรมการ โครงสร้างองค์กรและคณะผู้บริหาร การกำกับดูแลกิจการที่ดี รายงานประจำปีและงบการเงิน การกำกับดูแลกิจการ การบริหารความเสี่ยงองค์กร รายงานประจำปี รายงานความยั่งยืน งบการเงินประจำปี รายงานประจำปี 2568 เผยแพร่ 23 เม.ย. 2569 รายงานประจำปี 2568 เผยแพร่ 23 เม.ย. 2569 รายงานประจำปี 2567 เผยแพร่ 23 เม.ย. 2568 E-book PDF รายงานประจำปี 2566 เผยแพร่ 24 เม.ย. 2567 E-book PDF รายงานประจำปี 2565 เผยแพร่ 28 เม.ย. 2566 E-book PDF รายงานประจำปี 2564 เผยแพร่ 27 เม.ย. 2565 E-book PDF รายงานประจำปี 2563 เผยแพร่ 30 เม.ย. 2564 E-book PDF รายงานประจำปี 2562 เผยแพร่ 28 เม.ย. 2563 E-book PDF รายงานประจำปี 2561 เผยแพร่ 24 เม.ย. 2562 E-book PDF รายงานประจำปี 2560 เผยแพร่ 19 เม.ย. 2561 E-book PDF รายงานประจำปี 2559",
+        "checked_at": "2026-09-27T05:50:11.946750+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "Thai SEC TH",
+        "report": "รายงานประจำปี 2567",
+        "seed_url": "https://www.sec.or.th/TH/Pages/AboutUs/AnnualReports.aspx",
+        "expected_url_regex": "ann2567\\.pdf"
+      },
+      "known_found": false,
+      "matched_pdf": null,
+      "reason": "site_http_403",
+      "seconds": 22.02,
+      "discovery": {
+        "seed_url": "https://www.sec.or.th/TH/Pages/AboutUs/AnnualReports.aspx",
+        "pdfs": [],
+        "visited_pages": [
+          "https://www.sec.or.th/TH/Pages/AboutUs/AnnualReports.aspx",
+          "https://www.sec.or.th/TH/Pages/LawandRegulations/AuditorAccountsT.aspx",
+          "https://www.sec.or.th/TH/Pages/AboutUs/Report.aspx",
+          "https://www.sec.or.th/TH/Pages/LawandRegulations/RIA.aspx",
+          "https://www.sec.or.th/en/Pages/AboutUs/AnnualReports.aspx",
+          "https://www.sec.or.th/TH/Pages/MonthlyReport-CapitalMarket.aspx",
+          "https://www.sec.or.th/TH/Pages/MarketData/MarketStatistic.aspx",
+          "https://www.sec.or.th/TH/Pages/Sustainability_Award_for_the_Disabilities.aspx",
+          "https://www.sec.or.th/TH/_layouts/15/Authenticate.aspx?Source=%2FTH%2FPages%2FAboutUs%2FAnnualReports%2Easpx",
+          "https://www.sec.or.th/TH/Pages/DAMonthlyReport.aspx"
+        ],
+        "sitemaps_checked": [
+          "https://www.sec.or.th/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.sec.or.th/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 403 unavailable"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Pages/AboutUs/AnnualReports.aspx",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/sitemap.xml",
+            "stage": "sitemap",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/AboutUs/sec-budget-press0509.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/ActandRoyalEnactment/Act/act-sea2535-codified.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/ActandRoyalEnactment/Act/act-derivatives2546-codified.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/ActandRoyalEnactment/RoyalEnactment/enactment-digitalasset2561.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/ActandRoyalEnactment/Act/act-pvd2530-codified.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/ActandRoyalEnactment/RoyalEnactment/enactment-specialjuristicperson2540-codified.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/LawsandRegulations/SECRulebook.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/rehab-QA.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Pages/MarketData/MarketStatistic.aspx",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/AnnualReport/ann2568.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/AnnualReport/ann2567.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2566.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2565.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2564.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2563.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2562.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2561.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2560.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2559.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2558.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2557.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2556.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2555.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/sustain_report2555.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2554.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2553.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2552.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2551.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2550.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2549.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2548.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2547.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2546.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/SEC-decade-TH.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2545.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2544.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2543.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2542.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2541.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2540.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2539.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2538.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Documents/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/ann2535-2537.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Pages/MarketData/MarketStatistic.aspx",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/en/Pages/AboutUs/AnnualReports.aspx",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Pages/AboutUs/Report.aspx",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Pages/LawandRegulations/AuditorAccountsT.aspx",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Pages/LawandRegulations/RIA.aspx",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Pages/DAMonthlyReport.aspx",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Pages/MonthlyReport-CapitalMarket.aspx",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.sec.or.th/TH/Pages/Sustainability_Award_for_the_Disabilities.aspx",
+            "stage": "page",
+            "reason": "HTTP 403"
+          }
+        ],
+        "browser_fallback_used": true,
+        "budget_exhausted": false,
+        "page_text": "",
+        "checked_at": "2026-09-27T05:50:30.308050+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "Bangkok Bank TH",
+        "report": "แบบ 56-1 One Report ปี 2567",
+        "seed_url": "https://www.bangkokbank.com/th-TH/Investor-Relations/Financial-Information",
+        "expected_url_regex": "56-1_onereport2024_th\\.pdf"
+      },
+      "known_found": false,
+      "matched_pdf": null,
+      "reason": "robots_disallow",
+      "seconds": 8.29,
+      "discovery": {
+        "seed_url": "https://www.bangkokbank.com/th-TH/Investor-Relations/Financial-Information",
+        "pdfs": [],
+        "visited_pages": [],
+        "sitemaps_checked": [],
+        "blocked": [
+          {
+            "url": "https://www.bangkokbank.com/th-TH/Investor-Relations/Financial-Information",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://www.bangkokbank.com/sitemap.xml",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://www.bangkokbank.com/th-TH/Investor-Relations/Financial-Information",
+            "reason": "robots_disallow"
+          }
+        ],
+        "failures": [
+          {
+            "url": "https://www.bangkokbank.com/robots.txt",
+            "stage": "robots",
+            "reason": "The read operation timed out"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "",
+        "checked_at": "2026-09-27T05:50:20.236124+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "SCB TH",
+        "report": "รายงานประจำปี 2567",
+        "seed_url": "https://www.scb.co.th/th/shareholders/financial-information",
+        "expected_url_regex": "2024-annual-report-th\\.pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.scb.co.th/getmedia/a77949b3-c276-4411-83d1-2b2cc2a9e62c/2024-annual-report-th.pdf",
+        "discovery_page": "https://www.scb.co.th/th/shareholders/financial-information",
+        "anchor_text": "รายงานประจำปี 2567",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 25.99,
+      "discovery": {
+        "seed_url": "https://www.scb.co.th/th/shareholders/financial-information",
+        "pdfs": [
+          {
+            "url": "https://www.scb.co.th/getmedia/4b50501f-2ee9-4947-96d8-2637dac5d809/annual-report-th-2025.pdf",
+            "discovery_page": "https://www.scb.co.th/th/shareholders/financial-information",
+            "anchor_text": "รายงานประจำปี 2568",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/getmedia/a77949b3-c276-4411-83d1-2b2cc2a9e62c/2024-annual-report-th.pdf",
+            "discovery_page": "https://www.scb.co.th/th/shareholders/financial-information",
+            "anchor_text": "รายงานประจำปี 2567",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/financial-information/th/2566/annual-report/2023-annual-report-th.pdf",
+            "discovery_page": "https://www.scb.co.th/th/shareholders/financial-information",
+            "anchor_text": "รายงานประจำปี 2566",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/financial-information/th/2565/annual-report/2022-annual-report-th.pdf",
+            "discovery_page": "https://www.scb.co.th/th/shareholders/financial-information",
+            "anchor_text": "รายงานประจำปี 2565",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/financial-information/th/2564/annual-report/2021-annual-report_th_final.pdf",
+            "discovery_page": "https://www.scb.co.th/th/shareholders/financial-information",
+            "anchor_text": "รายงานประจำปี 2564",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/financial-information/th/2564/annual-report/attachment-1-th.pdf",
+            "discovery_page": "https://www.scb.co.th/th/shareholders/financial-information",
+            "anchor_text": "เอกสารแนบ 1 รายละเอียดเกี่ยวกับกรรมการ ผู้บริหารระดับสูง ผู้บริหารสายงานบัญชีและการเงิน และเลขานุการบริษัท",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/financial-information/th/2564/annual-report/attachment-2-th.pdf",
+            "discovery_page": "https://www.scb.co.th/th/shareholders/financial-information",
+            "anchor_text": "เอกสารแนบ 2 รายละเอียดเกี่ยวกับกรรมการของบริษัทย่อย",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/financial-information/th/2564/annual-report/attachment-3-th.pdf",
+            "discovery_page": "https://www.scb.co.th/th/shareholders/financial-information",
+            "anchor_text": "เอกสารแนบ 3 รายละเอียดเกี่ยวกับหัวหน้างานตรวจสอบภายใน และหัวหน้างานกำกับดูแลการปฏิบัติงานของบริษัท",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/financial-information/th/2564/annual-report/attachment-4-th.pdf",
+            "discovery_page": "https://www.scb.co.th/th/shareholders/financial-information",
+            "anchor_text": "เอกสารแนบ 4 นโยบายและแนวปฏิบัติการกำกับดูแลกิจการ และจรรยาบรรณธุรกิจ",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/financial-information/th/2564/annual-report/attachment-5-th.pdf",
+            "discovery_page": "https://www.scb.co.th/th/shareholders/financial-information",
+            "anchor_text": "เอกสารแนบ 5 รายงานคณะกรรมการตรวจสอบ",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2010.pdf",
+            "discovery_page": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2010.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2011.pdf",
+            "discovery_page": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2011.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2012.pdf",
+            "discovery_page": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2012.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2013.pdf",
+            "discovery_page": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2013.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2014.pdf",
+            "discovery_page": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2014.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2015.pdf",
+            "discovery_page": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2015.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2016.pdf",
+            "discovery_page": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2016.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2017.pdf",
+            "discovery_page": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2017.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2018.pdf",
+            "discovery_page": "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2018.pdf",
+            "anchor_text": "direct PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2014.pdf",
+          "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2015.pdf",
+          "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2013.pdf",
+          "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2018.pdf",
+          "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2017.pdf",
+          "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2012.pdf",
+          "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2011.pdf",
+          "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2010.pdf",
+          "https://www.scb.co.th/content/media/investor-relations/documents/annual-reports/th/annual-report-th-2016.pdf",
+          "https://www.scb.co.th/th/shareholders/financial-information"
+        ],
+        "sitemaps_checked": [
+          "https://www.scb.co.th/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.googletagmanager.com/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 404 unavailable"
+          },
+          {
+            "url": "https://www.googletagmanager.com/ns.html?id=GTM-P8TD7HG",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.scb.co.th/th/personal-banking/digital-banking/scb-connect/how-to-use/download-now",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.scb.co.th/th/privatebanking/exclusive-download/e-newsletter21",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.scb.co.th/th/privatebanking/exclusive-download/house-view",
+            "stage": "pdf_probe",
+            "reason": "The read operation timed out"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "ข้อมูลสำคัญทางการเงิน ลูกค้าบุคคล ลูกค้า SME ลูกค้าธุรกิจขนาดใหญ่ ลูกค้า Wealth PRIVATE BANKING SCB FIRST SCB PRIME สำหรับผู้ถือหุ้น เกี่ยวกับเรา SCB Global Network Cambodia China Myanmar Vietnam Singapore Laos ข้อมูลสำคัญทางการเงิน ข้อมูลหุ้นธนาคาร บริการผู้ถือหุ้น ไทย EN เข้าสู่ระบบ SCB EASY App InnovestX ลูกค้าบุคคล EN หน้าหลักลูกค้าบุคคล สินเชื่อ บัตร การลงทุน เงินฝาก การชำระเงิน ประกัน บริการอื่นๆ ดิจิทัลแบงก์กิ้ง SCB Cybersecurity นโยบายการแบ่งปันข้อมูลภายในกลุ่ม SCBX Stories & Tips คำถามที่พบบ่อย แก้ เกม กล โกง ลูกค้า SME EN หน้าหลักลูกค้า SME ลูกค้าธุรกิจขนาดใหญ่ EN หน้าหลักลูกค้าธุรกิจขนาดใหญ่ สินเชื่อธุรกิจ วาณิชธนกิจ ธุรกิจตลาดทุน บริหารเงินเพื่อธุรกิจ ธุรกรรมตลาดเงิน ธุรกิจหลักทรัพย์ ดิจิทัลแบงก์กิ้ง การค้าต่างประเทศ สำนักงานต่างประเทศ Why SCB ลูกค้า Wealth EN หน้าหลักลูกค้า Wealth PRIVATE BANKING SCB FIRST SCB PRIME ลูกค้าบุคคล ลูกค้า SME ลูกค้าธุรกิจขนาดใหญ่ ลูกค้า Wealth สำหรับผู้ถือหุ้น สำหรับผู้ถือหุ้น EN หน้าหลักสำหรับผู้ถือหุ้น ข้อมูลสำคัญทางการเงิน ข้อมูลหุ้นธนาคาร บริการผู้ถือหุ้น คำถามที่พบบ่อยสำหรับนักลงทุน เกี่ยวกับเรา เกี่ยวกับเรา EN หน้าหลักเกี่ยวกับเรา กิจกรรมเพื่อสังคม รางวัลและการจัดอันดับ ความยั่งยืน ข่าวสารจากเรา การกำกับดูแลกิจการ บริษัทในกลุ่ม เอสซีบี เอกซ์ ข้อมูลคุณภาพการให้บริการ Vulnerability Exposure Policy EN SCB Global Network SCB Global Network EN Cambodia China Myanmar Vietnam Singapore Laos ลูกค้าบุคคล EN สินเชื่อทั้งหมด ฉันต้องการ สินเชื่อบ้าน สินเชื่อรถยนต์ สินเชื่อบุคคล สินเชื่อเพื่อคนทำธุรกิจ ลิงก์ที่เกี่ยวข้อง โปรโมชันสินเชื่อ อัตราดอกเบี้ยและค่าธรรมเนียม เอกสารข้อมูลสำคัญของผลิตภัณฑ์ ตรวจสอบสถานะการสมัครสินเชื่อ ฉันมองหา บ้านมือสองทรัพย์ธนาคาร ขอหนังสือรับรองดอกเบี้ยเงินกู้ แจ้งความประสงค์ขอรับโฉนดคืน การให้ความยินยอมดอกเบี้ยเงินกู้ยืม แจ้งความประสงค์ขอใช้บริการ โครงการลดภาระหนี้ของลูกค้าที่มีกับธนาคารและ CardX โครงการปิดหนี้ไว ไปต่อได้ บัตรทั้งหมด ฉันต้องการ บัตรเติมเงิน บัตรเดบิต บัตรเครดิต บัตรของขวัญ ลิงก์ที่เกี่ยวข้อง โปรโมชันบัตรเติมเงิน โปรโมชันบัตรเดบิต โปรโมชันบัตรเครดิต อัตราดอกเบี้ยและค่าธรรมเนียม เอกสารข้อมูลสำคัญของผลิตภัณฑ์ ฉันมองหา CardX Rewards บริการด้านบัตรเครดิต ตรวจสอบสถานะการสมัครบัตรเครดิต การลงทุนทั้งหมด ฉันต้องการ กองทุนรวม หุ้นกู้ พันธบัตร ลงทุนบนแอป SCB EASY ตราสารทุน SCB Gold Marketplace ลิงก์ที่เกี่ยวข้อง SCB CIO House View กองทุนรวมออกใหม่ โปรโมชันการลงทุน ศัพท์การลงทุน เงื่อนไขผลิตภัณฑ์และบริการ เงินฝากทั้งหมด ฉันต้องการ บัญชีเงินฝากออมทรัพย์ บัญชีเงินฝากเดินสะพัด บัญชีเงินฝากประจำ บัญชีเงินฝากแบบผูกพัน บัญชีเงินฝากเงินตราต่างประเทศ บัญชีเงินฝากแบบไม่มีสมุดคู่ฝาก บัญชีเงินเดือนพนักงาน ลิงก์ที่เกี่ยวข้อง โปรโมชันเงินฝาก เงื่อนไขผลิตภัณฑ์และบริการ อัตราดอกเบี้ยและค่าธรรมเนียม เอกสารข้อมูลสำคัญของผลิตภัณฑ์ เอกสารเปรียบเทียบผลิตภัณฑ์ ความคุ้มครองเงินฝาก ฉันมองหา ดอกเบี้ยสูง ออมเพื่อเป้าหมาย เงินฝากพร้อมความคุ้มครอง ระบบจองคิวเข้ารับบริการที่สาขา ประกาศผลิตภัณฑ์เงินฝาก การชำระเงินทั้งหมด บริการสำหรับลูกค้า บริการหักบัญชีอัตโนมัติ บริการด้านการชำระเงิน บริการเติมเงิน บริการชำระเงินด้วย QR Code ลิงก์ที่เกี่ยวข้อง โปรโมชันการชำระเงิน อัตราดอกเบี้ยและค่าธรรมเนียม บริการสำหรับร้านค้า บริการร้านค้าบัตร บริการรับชำระเงินด้วย QR Code แอปพลิเคชันแม่มณี SCB Payment Gateway บริการรับชำระเงินสำหรับลูกค้าต่างประเทศ แม่มณีชวนชิม มณี รับทรัพย์ บริการรับเงินโอนผ่าน Messenger ด้วย SCB EASY App ประกันทั้งหมด ฉันต้องการ ประกันสุขภาพ ประกันสะสมทรัพย์ ประกันชีวิตควบการลงทุน ลิงก์ที่เกี่ยวข้อง โปรโมชันประกัน ตรวจสอบใบอนุญาตผู้ขาย Unit Link ตรวจสอบใบอนุญาตผู้ขายประกันภัย บริการเคลมออนไลน์ ฉันมองหา บริการพิเศษ FWD Utmost (สำหรับลูกค้าประกันชีวิตควบการลงทุน) บริการพิเศษ FWD MyWell (สำหรับลูกค้าประกันชีวิต) บริการอื่นๆ ทั้งหมด ฉันต้องการ Business Solution การโอนเงินภายในประเทศ การโอนเงินต่างประเทศ แลกเปลี่ยนเงินตราระหว่างประเทศ บริการตัวแทนธนาคาร SCB Service บริการยืนยันตัวตนสำหรับเปิดบัญชีบน SCB EASY บริการยืนยันตัวตนรูปแบบดิจิตัล (NDID) บน SCB EASY ลิงก์ที่เกี่ยวข้อง โปรโมชันบริการอื่น ๆ อัตราดอกเบี้ยและค่าธรรมเนียม เอกสารข้อมูลสำคัญของผลิตภัณฑ์ ตรวจสอบสถานะเงินโอนต่างประเทศ ฉันมองหา บริการพบแพทย์ออนไลน์ ระบบจองคิวเข้ารับบริการที่สาขา ดิจิทัลแบงก์กิ้งทั้งหมด ช่องทาง Digital Banking SCB EASY App SCB Connect SCB Planet Plus App SCB PromptPay ลิงก์ที่เกี่ยวข้อง โปรโมชันแอป SCB EASY อัตราดอกเบี้ยและค่าธรรมเนียม SCB e-Donation ผลิตภัณฑ์ Digital Banking Digital Investment Digital Insurance SCB Gold Marketplace Digital Services บริการทางการเงินทำได้เองผ่านแอป SCB EASY ลูกค้า SME EN ลูกค้าธุรกิจขนาดใหญ่ EN บริการสินเชื่อธุรกิจทั้งหมด บริการ เงินเบิกเกินบัญชี ตั๋วสัญญาใช้เงิน การรับซื้อลดตั๋วเงิน เงินกู้ระยะยาว หนังสือค้ำประกัน เลตเตอร์ออฟเครดิตเพื่อการค้ำประกัน การรับรองและอาวัลตั๋วเงิน ผลิตภัณฑ์ทางการเงินเพื่อความยั่งยืน โซลูชั่น Supply Chain Financing Solution รวมลิงก์ SCB Digital LG อัตราดอกเบี้ยและค่าธรรมเนียม อัตราแลกเปลี่ยนเงินตราต่างประเทศ บริการวาณิชธนกิจทั้งหมด บริการ บริการที่ปรึกษาทางการเงิน การควบรวมกิจการ บริการจัดจำหน่ายตราสารหนี้ รวมลิงก์ อัตราดอกเบี้ยและค่าธรรมเนียม อัตราแลกเปลี่ยนเงินตราต่างประเทศ บริการธุรกิจตลาดทุนทั้งหมด บริการ สินเชื่อในธุรกรรมที่มีโครงสร้างซับซ้อน สินเชื่อโครงการขนาดใหญ่ รวมลิงก์ อัตราดอกเบี้ยและค่าธรรมเนียม อัตราแลกเปลี่ยนเงินต",
+        "checked_at": "2026-09-27T05:50:46.049271+00:00"
+      }
+    }
+  ]
+}

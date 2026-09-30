@@ -1,0 +1,33 @@
+{
+  "pdf": "AnnualSynnex2025_THA.pdf",
+  "sha256": "aa0f6d0cfe13b0038d40e46926021937771e596ddb1cfac3751bd4791c75b9b1",
+  "total_pdf_pages": 278,
+  "sampled_pages": [
+    {
+      "page": 140,
+      "seconds": 83.79,
+      "status": "ok",
+      "regions": 1,
+      "tables": 1,
+      "text_chars": 1551
+    },
+    {
+      "page": 250,
+      "seconds": 39.65,
+      "status": "ok",
+      "regions": 1,
+      "tables": 0,
+      "text_chars": 889
+    }
+  ],
+  "peak_parent_mb": 83.5,
+  "peak_worker_mb": 4738.4,
+  "peak_combined_mb": 4821.9,
+  "observed_child_pids": [
+    15940,
+    18748,
+    21060
+  ],
+  "provider": "local Docling, full-page EasyOCR Thai/English, TableFormer accurate, CPU",
+  "limitation": "Page sample only; does not measure full-report OCR completion or memory drift."
+}

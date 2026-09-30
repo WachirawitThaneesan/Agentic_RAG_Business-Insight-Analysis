@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "purpose": "Conservative AI PDF recheck after the provisional v2 adjudication",
+  "base_reference_sha256": "35a203b6e9c6cc26fd2cd4d95ac590efb5e5ae5dd14808bf2709fcbc440f9276",
+  "review_status": "AI visual PDF audit of all 20 original labels; no independent human sign-off",
+  "default_rule": "Exact signed value, year, explicit unit, and original required PDF page unless a listed alternative or rounding rule applies",
+  "rejected_candidates": {
+    "TF06": {
+      "document": "SCBX",
+      "source_pdf_page": 111,
+      "reason": "Page 111 reports consolidated net profit of 43.9 billion baht but does not explicitly identify the amount as profit attributable to SCBX; the question asks for that specific row on page 19. Treat page 111 as corroboration only, not a complete alternate citation."
+    }
+  },
+  "changes": {
+    "TF08": {
+      "alternate_evidence": [{"document": "SCBX", "source_pdf_page": 252}],
+      "reason": "Note 41 explicitly labels consolidated 2567 basic earnings per share as 13.05 baht"
+    },
+    "TF09": {
+      "alternate_evidence": [{"document": "SCBX", "source_pdf_page": 252}],
+      "reason": "Note 42 explicitly states a proposed 10.44 baht per-share dividend for 2567 operations, matching the page 20 table and its footnote"
+    },
+    "TF14": {
+      "alternate_evidence": [{"document": "TU", "source_pdf_page": 194}],
+      "rounding_decimals": 1,
+      "rounding_mode": "ROUND_HALF_UP",
+      "reason": "The 2567 consolidated column shows 4,984,894 thousand baht profit attributable to parent owners from continuing operations and a dash for discontinued operations; 4.984894 billion rounds to the page 18 display of 5.0 billion at one decimal"
+    }
+  }
+}

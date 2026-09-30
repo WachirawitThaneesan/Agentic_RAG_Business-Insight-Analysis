@@ -16,14 +16,11 @@ from urllib.parse import urlparse
 from sqlalchemy import select
 
 from backend.database import AsyncSessionLocal
-from backend.models import Document, DocumentPage, Chunk, StructuredData
+from backend.models import Document, Chunk
 from backend.config import get_settings
 from backend.services.chunker import chunk_document
-from backend.services.embedding import get_embedding
-from backend.services.ocr_artifacts import build_raw_ocr_chunk_payloads
-from backend.services.ocr import ocr_service
-from backend.services.table_utils import build_table_chunk_payloads, normalize_ocr_tables, safe_table_name
 from backend.services.thai_cleaner import clean_thai_text
+from backend.services.pdf_discovery import CrawlLimits, discover_public_pdfs, download_public_pdfs
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
@@ -35,66 +32,13 @@ OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "..", "scr
 OUTPUT_DIR = os.path.abspath(OUTPUT_DIR)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Path to the worker script
-PW_WORKER = os.path.join(os.path.dirname(__file__), "pw_worker.py")
+# Run as a module so absolute backend imports work on Windows too.
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 PYTHON_EXE = sys.executable
-IMAGE_MIME_MAP = {
-    "png": "image/png",
-    "jpg": "image/jpeg",
-    "jpeg": "image/jpeg",
-}
-
-
 def _safe_folder_name(name: str, max_len: int = 40) -> str:
     name = re.sub(r'[\\/*?"<>|:]', '', name or '')
     name = re.sub(r'\s+', '_', name).strip('_')
     return name[:max_len] or "site"
-
-
-def _progress_message(page_num: int, page_count: int) -> str:
-    return f"Processing page {page_num}/{page_count}"
-
-
-def _summarize_page_error(error: str) -> str:
-    message = str(error or "").strip()
-    compact = re.sub(r"\s+", " ", message)
-
-    if "StringDataRightTruncationError" in compact and "character varying(500)" in compact:
-        return "DB insert failed: table_name too long for structured_data.table_name"
-    if "Request timed out" in compact or "Error code: 408" in compact:
-        return "Typhoon OCR timeout (408)"
-    if "500 Internal Server Error" in compact:
-        return "Upstream service returned 500"
-    return compact[:220]
-
-
-def _warning_message(errors: list[str]) -> str:
-    failed_pages = []
-    reason_parts = []
-    for error in errors:
-        match = re.search(r"page\s+(\d+)", str(error), flags=re.IGNORECASE)
-        if match:
-            page = match.group(1)
-            failed_pages.append(page)
-            reason = re.sub(r"^page\s+\d+\s*:\s*", "", str(error), flags=re.IGNORECASE)
-            reason_parts.append(f"{page}={_summarize_page_error(reason)}")
-
-    failed_part = f"Failed pages: {', '.join(failed_pages)}" if failed_pages else ""
-    reason_part = f"Failed page reasons: {'; '.join(reason_parts)}" if reason_parts else ""
-    return "Page processing warnings: " + " | ".join(part for part in [failed_part, reason_part] if part)
-
-
-async def _mark_pdf_page_failed(db, doc_id: int, page_num: int, stage: str, exc: Exception) -> Document:
-    await db.rollback()
-    page = (await db.execute(select(DocumentPage).where(
-        DocumentPage.document_id == doc_id, DocumentPage.page_number == page_num,
-    ))).scalar_one()
-    page.status = "failed"
-    page.error_stage = stage
-    page.error_message = f"{type(exc).__name__}: {str(exc).strip()}" if str(exc).strip() else type(exc).__name__
-    doc = (await db.execute(select(Document).where(Document.id == doc_id))).scalar_one()
-    await db.commit()
-    return doc
 
 
 def _run_pw_worker(command: str, args: dict, timeout_sec: int = 300) -> Any:
@@ -103,8 +47,10 @@ def _run_pw_worker(command: str, args: dict, timeout_sec: int = 300) -> Any:
     env = os.environ.copy()
     env["PYTHONIOENCODING"] = "utf-8"
     env["PYTHONLEGACYWINDOWSSTDIO"] = "0"
+    env["PYTHONPATH"] = REPO_ROOT + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
 
-    cmd = [PYTHON_EXE, "-u", PW_WORKER, command, json.dumps(args, ensure_ascii=False)]
+    cmd = [PYTHON_EXE, "-u", "-m", "backend.services.pw_worker",
+           command, json.dumps(args, ensure_ascii=False)]
 
     try:
         proc = subprocess.Popen(
@@ -112,14 +58,15 @@ def _run_pw_worker(command: str, args: dict, timeout_sec: int = 300) -> Any:
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             env=env,
+            cwd=REPO_ROOT,
         )
         stdout_bytes, stderr_bytes = proc.communicate(timeout=timeout_sec)
     except subprocess.TimeoutExpired:
         proc.kill()
-        print(f"⚠️ pw_worker timed out ({timeout_sec}s)")
+        logger.warning("pw_worker timed out (%ss)", timeout_sec)
         return None
     except Exception as e:
-        print(f"⚠️ pw_worker failed to start: {e}")
+        logger.warning("pw_worker failed to start: %s", e)
         return None
 
     # Decode output safely
@@ -127,8 +74,7 @@ def _run_pw_worker(command: str, args: dict, timeout_sec: int = 300) -> Any:
     stderr = stderr_bytes.decode("utf-8", errors="replace") if stderr_bytes else ""
 
     if proc.returncode != 0:
-        print(f"⚠️ pw_worker [{command}] exit code {proc.returncode}")
-        print(f"   stderr: {stderr[-500:]}")
+        logger.warning("pw_worker [%s] exit code %s: %s", command, proc.returncode, stderr[-500:])
         return None
 
     marker = "__PW_RESULT__"
@@ -137,13 +83,11 @@ def _run_pw_worker(command: str, args: dict, timeout_sec: int = 300) -> Any:
         try:
             return json.loads(json_str)
         except json.JSONDecodeError as e:
-            print(f"⚠️ JSON parse error: {e}")
-            print(f"   json_str: {json_str[:300]}")
+            logger.warning("pw_worker JSON parse error: %s; %s", e, json_str[:300])
             return None
     else:
-        print(f"⚠️ No result marker in worker output")
-        print(f"   stdout: {stdout[:300]}")
-        print(f"   stderr: {stderr[:300]}")
+        logger.warning("pw_worker result marker missing; stdout=%s stderr=%s",
+                       stdout[:300], stderr[:300])
         return None
 
 
@@ -162,31 +106,6 @@ def _extract_text_for_ingestion(result: Dict[str, Any]) -> str:
         except Exception:
             pass
     return page_text
-
-
-async def _store_structured_tables(
-    db,
-    document_id: int,
-    table_prefix: str,
-    tables: List[Dict[str, Any]],
-) -> None:
-    for i, table in enumerate(tables):
-        headers = table.get("headers", [])
-        rows = table.get("rows", [])
-        for j, row in enumerate(rows):
-            row_dict = dict(zip(headers, row)) if headers else {"data": row}
-            db.add(
-                StructuredData(
-                    document_id=document_id,
-                    table_name=safe_table_name(
-                        str(table.get("table_name") or table.get("title") or f"{table_prefix}_table_{i}"),
-                        f"{table_prefix}_table_{i}",
-                    ),
-                    headers=headers,
-                    row_data=row_dict,
-                    row_index=j,
-                )
-            )
 
 
 async def _store_chunks(db, document_id: int, cleaned_text: str, generate_summaries: bool = True, start_index: int = 0) -> int:
@@ -210,66 +129,6 @@ async def _store_chunks(db, document_id: int, cleaned_text: str, generate_summar
             )
         )
     return len(chunk_results)
-
-
-def _append_document_raw_text(document: Document, text: str) -> None:
-    addition = (text or "").strip()
-    if not addition:
-        return
-
-    existing = str(document.__dict__.get("raw_text") or "").strip()
-    combined = f"{existing}\n\n{addition}".strip() if existing else addition
-    document.raw_text = combined[:settings.DOCUMENT_RAW_TEXT_LIMIT_CHARS]
-
-
-async def _store_prebuilt_chunks(
-    db,
-    document_id: int,
-    chunk_payloads: List[Dict[str, Any]],
-    start_index: int = 0,
-) -> int:
-    created = 0
-
-    for offset, payload in enumerate(chunk_payloads):
-        chunk_text = (payload.get("text") or "").strip()
-        if not chunk_text:
-            continue
-
-        source_kind = (payload.get("metadata") or {}).get("source_kind", "")
-        if source_kind.startswith("raw_ocr") and len(chunk_text) > settings.RAW_OCR_ARTIFACT_EMBED_MAX_CHARS:
-            embedding = None
-        else:
-            try:
-                embedding = await get_embedding(chunk_text)
-            except Exception as exc:
-                if source_kind.startswith("raw_ocr"):
-                    logger.warning("Raw OCR artifact embedding failed: %s", exc)
-                    embedding = None
-                else:
-                    raise
-        metadata = {
-            "source_kind": "table_csv",
-            "table_name": payload.get("table_name"),
-            "table_title": payload.get("title"),
-            "headers": payload.get("headers", []),
-            "row_start": payload.get("row_start"),
-            "row_end": payload.get("row_end"),
-        }
-        metadata.update(payload.get("metadata", {}))
-        db.add(
-            Chunk(
-                document_id=document_id,
-                chunk_index=start_index + offset,
-                chunk_text=chunk_text,
-                summary=payload.get("summary", ""),
-                token_count=len(chunk_text.split()),
-                embedding=embedding,
-                metadata_=metadata,
-            )
-        )
-        created += 1
-
-    return created
 
 
 async def _ingest_web_text_document(url: str, page_text: str) -> Dict[str, Any]:
@@ -309,220 +168,69 @@ async def _ingest_web_text_document(url: str, page_text: str) -> Dict[str, Any]:
 
 
 async def _ingest_scraped_file(filepath: str, source_url: str = "") -> Dict[str, Any]:
-    if not filepath or not os.path.exists(filepath):
+    """Register a downloaded file through the upload ingestion path."""
+    from pathlib import Path
+    import shutil
+    from backend.services.document_jobs import prepare_pdf_job, saved_upload_path
+    from backend.routes.documents import _process_saved_document
+
+    source = Path(filepath)
+    if not source.is_file():
         return {"error": f"File not found: {filepath}", "source_kind": "scraped_file"}
 
-    ext = filepath.rsplit(".", 1)[-1].lower() if "." in filepath else ""
-    if ext not in ("pdf", "png", "jpg", "jpeg"):
+    ext = source.suffix.lower().lstrip(".")
+    if ext not in {"pdf", "png", "jpg", "jpeg"}:
         return {"error": f"Unsupported scraped file type: {ext}", "source_kind": "scraped_file"}
+    size = source.stat().st_size
+    if not size or size > settings.MAX_UPLOAD_BYTES:
+        return {"error": "Scraped file is empty or exceeds configured size limit",
+                "source_kind": "scraped_file", "filepath": filepath}
 
-    filename = os.path.basename(filepath)
-
+    filename = source.name[:500]
+    doc_id = None
     try:
         async with AsyncSessionLocal() as db:
-            doc = Document(
-                filename=filename,
-                doc_type=ext,
-                source_url=source_url or None,
-                status="processing",
-            )
+            doc = Document(filename=filename, doc_type=ext,
+                           source_url=(source_url or None), status="pending")
             db.add(doc)
             await db.commit()
             await db.refresh(doc)
             doc_id = doc.id
-
-            chunks_created = 0
-            total_text_blocks = 0
-            total_tables = 0
-            stored_raw_pages = 0
-            batch_errors = []
+            saved_path = saved_upload_path(doc_id, ext)
+            await asyncio.to_thread(shutil.copyfile, source, saved_path)
 
             if ext == "pdf":
-                page_count = ocr_service.get_pdf_page_count(filepath)
-                use_large_file_mode = page_count >= settings.PDF_LARGE_FILE_PAGE_THRESHOLD
-                db.add_all(
-                    DocumentPage(document_id=doc_id, page_number=page_num, status="pending")
-                    for page_num in range(1, page_count + 1)
-                )
-                await db.commit()
+                page_count = await prepare_pdf_job(db, doc, saved_path)
+                return {
+                    "document_id": doc_id, "filename": filename, "doc_type": ext,
+                    "status": "pending", "queued": True, "page_count": page_count,
+                    "chunks_created": 0, "tables_extracted": 0,
+                    "source_kind": "scraped_file", "filepath": filepath,
+                }
 
-                for page_num in range(1, page_count + 1):
-                    raw_page_budget = None
-                    if settings.PDF_RAW_OCR_PAGE_ARTIFACT_LIMIT >= 0:
-                        raw_page_budget = max(settings.PDF_RAW_OCR_PAGE_ARTIFACT_LIMIT - stored_raw_pages, 0)
-
-                    try:
-                        doc.error_message = _progress_message(page_num, page_count)
-                        page = (await db.execute(select(DocumentPage).where(
-                            DocumentPage.document_id == doc_id, DocumentPage.page_number == page_num,
-                        ))).scalar_one()
-                        page.status = "processing"
-                        await db.commit()
-                        ocr_result = await ocr_service.extract_from_pdf_path(
-                            filepath,
-                            filename=filename,
-                            pages=[page_num],
-                        )
-                    except Exception as page_error:
-                        batch_errors.append(f"page {page_num}: {type(page_error).__name__}: {page_error}")
-                        doc = await _mark_pdf_page_failed(db, doc_id, page_num, "ocr", page_error)
-                        continue
-
-                    markdown = str((ocr_result.get("raw_pages") or [{}])[0].get("markdown") or "")
-                    try:
-                        if raw_page_budget != 0:
-                            db.add(Chunk(
-                                document_id=doc_id,
-                                chunk_index=chunks_created,
-                                chunk_text=f"RAW_OCR_PAGE: {filename} page {page_num}\n{markdown}",
-                                summary="",
-                                token_count=len(markdown.split()),
-                                embedding=None,
-                                metadata_={"source_kind": "raw_ocr_page", "page": page_num, "markdown": markdown},
-                            ))
-                            chunks_created += 1
-                            stored_raw_pages += 1
-                        page.status = "ocr_complete" if markdown.strip() else "empty"
-                        await db.commit()
-                    except Exception as page_error:
-                        if raw_page_budget != 0:
-                            chunks_created -= 1
-                            stored_raw_pages -= 1
-                        batch_errors.append(f"page {page_num}: {type(page_error).__name__}: {page_error}")
-                        doc = await _mark_pdf_page_failed(db, doc_id, page_num, "raw_storage", page_error)
-                        continue
-
-                    if not markdown.strip():
-                        continue
-
-                    start_index = chunks_created
-                    try:
-                        text_blocks = ocr_result.get("text_blocks", [])
-                        tables = normalize_ocr_tables(filename, ocr_result.get("tables", []))
-                        raw_ocr_chunk_payloads = build_raw_ocr_chunk_payloads(
-                            filename,
-                            ocr_result,
-                            max_pages=0,
-                        )
-                        cleaned_text = clean_thai_text("\n\n".join(text_blocks))
-                        table_chunk_payloads = build_table_chunk_payloads(filename, tables)
-                        table_csv_text = "\n\n".join(
-                            f"[TABLE] {table.get('table_name')}\n{table.get('csv_text')}"
-                            for table in tables
-                            if table.get("csv_text")
-                        ).strip()
-                        _append_document_raw_text(
-                            doc,
-                            "\n\n".join(part for part in [cleaned_text, table_csv_text] if part).strip(),
-                        )
-
-                        await _store_structured_tables(db, doc_id, filename, tables)
-                        chunks_created += await _store_chunks(
-                            db,
-                            doc_id,
-                            cleaned_text,
-                            generate_summaries=False,
-                            start_index=chunks_created,
-                        )
-                        chunks_created += await _store_prebuilt_chunks(
-                            db,
-                            doc_id,
-                            table_chunk_payloads,
-                            start_index=chunks_created,
-                        )
-                        chunks_created += await _store_prebuilt_chunks(
-                            db,
-                            doc_id,
-                            raw_ocr_chunk_payloads,
-                            start_index=chunks_created,
-                        )
-                        page.status = "indexed"
-                        await db.commit()
-                        total_text_blocks += len(text_blocks)
-                        total_tables += len(tables)
-                    except Exception as page_error:
-                        batch_errors.append(f"page {page_num}: {type(page_error).__name__}: {page_error}")
-                        doc = await _mark_pdf_page_failed(db, doc_id, page_num, "indexing", page_error)
-                        chunks_created = start_index
-
-                all_pages = (await db.execute(select(DocumentPage).where(DocumentPage.document_id == doc_id))).scalars().all()
-                if not any(page.status in {"indexed", "empty"} for page in all_pages):
-                    raise RuntimeError("; ".join(batch_errors) or "No PDF pages could be processed")
-            else:
-                with open(filepath, "rb") as f:
-                    file_bytes = f.read()
-                ocr_result = await ocr_service.extract_from_image(
-                    file_bytes,
-                    IMAGE_MIME_MAP.get(ext, "image/png"),
-                    filename=filename,
-                )
-                text_blocks = ocr_result.get("text_blocks", [])
-                tables = normalize_ocr_tables(filename, ocr_result.get("tables", []))
-                raw_ocr_chunk_payloads = build_raw_ocr_chunk_payloads(filename, ocr_result)
-                cleaned_text = clean_thai_text("\n\n".join(text_blocks))
-                table_chunk_payloads = build_table_chunk_payloads(filename, tables)
-                table_csv_text = "\n\n".join(
-                    f"[TABLE] {table.get('table_name')}\n{table.get('csv_text')}"
-                    for table in tables
-                    if table.get("csv_text")
-                ).strip()
-                _append_document_raw_text(
-                    doc,
-                    "\n\n".join(part for part in [cleaned_text, table_csv_text] if part).strip(),
-                )
-
-                await _store_structured_tables(db, doc_id, filename, tables)
-                chunks_created += await _store_chunks(db, doc_id, cleaned_text, start_index=chunks_created)
-                chunks_created += await _store_prebuilt_chunks(
-                    db,
-                    doc_id,
-                    table_chunk_payloads,
-                    start_index=chunks_created,
-                )
-                chunks_created += await _store_prebuilt_chunks(
-                    db,
-                    doc_id,
-                    raw_ocr_chunk_payloads,
-                    start_index=chunks_created,
-                )
-                total_text_blocks = len(text_blocks)
-                total_tables = len(tables)
-
-            empty_page_numbers = [page.page_number for page in all_pages if page.status == "empty"] if ext == "pdf" else []
-            doc.status = "partial" if batch_errors or empty_page_numbers else "completed"
-            details = []
-            if batch_errors:
-                details.append(_warning_message(batch_errors))
-            if empty_page_numbers:
-                details.append(f"OCR returned no text on pages: {', '.join(map(str, empty_page_numbers))}")
-            doc.error_message = " | ".join(details) or None
-            await db.commit()
-
+            result = await _process_saved_document(doc, str(saved_path), ext, db)
             return {
-                "document_id": doc.id,
-                "filename": filename,
-                "doc_type": ext,
-                "status": doc.status,
-                "chunks_created": chunks_created,
-                "tables_extracted": total_tables,
-                "text_blocks": total_text_blocks,
-                "source_kind": "scraped_file",
-                "filepath": filepath,
+                "document_id": doc_id, "filename": filename, "doc_type": ext,
+                "status": result["status"], "chunks_created": result["chunks_created"],
+                "tables_extracted": result["tables_extracted"],
+                "source_kind": "scraped_file", "filepath": filepath,
             }
-    except Exception as e:
-        if "doc_id" in locals():
+    except Exception as exc:
+        logger.exception("Failed to register scraped file %s", filepath)
+        if doc_id is not None:
             try:
                 async with AsyncSessionLocal() as failure_db:
-                    failed_doc = (await failure_db.execute(select(Document).where(Document.id == doc_id))).scalar_one_or_none()
+                    failed_doc = (await failure_db.execute(
+                        select(Document).where(Document.id == doc_id)
+                    )).scalar_one_or_none()
                     if failed_doc:
                         failed_doc.status = "failed"
-                        failed_doc.error_message = str(e) or type(e).__name__
+                        failed_doc.error_message = str(exc) or type(exc).__name__
                         await failure_db.commit()
             except Exception:
-                pass
-        print(f"⚠️ Failed to OCR/ingest scraped file {filepath}: {e}")
-        return {"error": str(e), "source_kind": "scraped_file", "filepath": filepath}
-
+                logger.exception("Could not mark scraped document %s failed", doc_id)
+        return {"error": str(exc), "document_id": doc_id,
+                "source_kind": "scraped_file", "filepath": filepath}
 
 async def _ingest_scraped_result(url: str, result: Dict[str, Any]) -> Dict[str, Any]:
     ingested_docs = []
@@ -536,11 +244,16 @@ async def _ingest_scraped_result(url: str, result: Dict[str, Any]) -> Dict[str, 
         elif web_doc:
             ingested_docs.append(web_doc)
 
+    file_details = {item.get("path"): item for item in result.get("file_details", []) if item.get("path")}
     for filepath in result.get("files", []):
-        file_doc = await _ingest_scraped_file(filepath, source_url=url)
+        detail = file_details.get(filepath, {})
+        file_doc = await _ingest_scraped_file(filepath, source_url=detail.get("download_url") or url)
         if file_doc.get("error"):
             errors.append(file_doc["error"])
         else:
+            file_doc.update({key: detail.get(key) for key in
+                             ("download_url", "discovery_page", "downloaded_at", "sha256")
+                             if detail.get(key)})
             ingested_docs.append(file_doc)
 
     if ingested_docs:
@@ -580,16 +293,18 @@ async def _ingest_scraped_result_with_progress(url: str, result: Dict[str, Any])
             }
 
     files = result.get("files", [])
+    file_details = {item.get("path"): item for item in result.get("file_details", []) if item.get("path")}
     for file_index, filepath in enumerate(files, 1):
         filename = os.path.basename(filepath)
         ext = filepath.rsplit(".", 1)[-1].lower() if "." in filepath else ""
         file_kind = "PDF" if ext == "pdf" else "รูปภาพ"
         yield {
-            "status": "ocr",
-            "message": f"📄 [{file_index}/{len(files)}] กำลัง OCR {file_kind} '{filename}'..."
+            "status": "processing",
+            "message": f"📄 [{file_index}/{len(files)}] กำลังบันทึก {file_kind} '{filename}'..."
         }
 
-        file_doc = await _ingest_scraped_file(filepath, source_url=url)
+        detail = file_details.get(filepath, {})
+        file_doc = await _ingest_scraped_file(filepath, source_url=detail.get("download_url") or url)
         if file_doc.get("error"):
             errors.append(file_doc["error"])
             yield {
@@ -597,13 +312,23 @@ async def _ingest_scraped_result_with_progress(url: str, result: Dict[str, Any])
                 "message": f"⚠️ OCR/นำเข้าไฟล์ '{filename}' ไม่สำเร็จ: {file_doc['error']}"
             }
         else:
+            file_doc.update({key: detail.get(key) for key in
+                             ("download_url", "discovery_page", "downloaded_at", "sha256")
+                             if detail.get(key)})
             ingested_docs.append(file_doc)
-            yield {
-                "status": "processing",
-                "message": (
+            if file_doc.get("queued"):
+                message = (
+                    f"📋 จัดคิว OCR '{filename}' แล้ว ({file_doc.get('page_count', 0)} หน้า); "
+                    "ตรวจสถานะและหน้าที่ล้มเหลวใน Documents"
+                )
+            else:
+                message = (
                     f"✅ นำเข้าไฟล์ '{filename}' เสร็จแล้ว "
                     f"({file_doc.get('chunks_created', 0)} chunks, {file_doc.get('tables_extracted', 0)} tables)"
                 )
+            yield {
+                "status": "processing",
+                "message": message,
             }
 
     if ingested_docs:
@@ -618,8 +343,8 @@ async def _ingest_scraped_result_with_progress(url: str, result: Dict[str, Any])
     yield {
         "status": "processing",
         "message": (
-            f"🧠 สรุปการนำเข้าเสร็จแล้ว: {len(ingested_docs)} เอกสาร, "
-            f"{result.get('rag_chunks_created', 0)} chunks"
+            f"🧠 ลงทะเบียน {len(ingested_docs)} เอกสาร; "
+            f"PDF ที่จัดคิว {sum(bool(doc.get('queued')) for doc in ingested_docs)} ไฟล์กำลังประมวลผลเบื้องหลัง"
         )
     }
 
@@ -638,30 +363,73 @@ async def fetch_google_search_results(keyword: str, max_results: int = 3) -> Lis
     return result if isinstance(result, list) else []
 
 
+def _browser_report_links(url: str) -> list[dict]:
+    result = _run_pw_worker("extract_links", {"url": url}, timeout_sec=55)
+    if not isinstance(result, dict) or not result.get("success"):
+        raise RuntimeError((result or {}).get("error", "Browser link extraction failed")
+                           if isinstance(result, dict) else "Browser link extraction failed")
+    return result.get("links", [])
+
+
+async def discover_url(
+    url: str, *, max_pages: int = 20, max_depth: int = 2,
+    max_pdfs: int = 20, max_seconds: float = 90,
+    browser_fallback: bool = True,
+) -> Dict[str, Any]:
+    """Find verified public PDF links without downloading or ingesting them."""
+    if settings.OFFLINE_MODE:
+        raise RuntimeError("Public website discovery is disabled in OFFLINE_MODE")
+    limits = CrawlLimits(max_pages=max(1, min(max_pages, 100)),
+                         max_depth=max(0, min(max_depth, 4)),
+                         max_pdfs=max(1, min(max_pdfs, 100)),
+                         max_seconds=max(5, min(max_seconds, 300)))
+    return await asyncio.to_thread(
+        discover_public_pdfs, url, limits,
+        _browser_report_links if browser_fallback else None,
+    )
+
+
 async def scrape_url(
     url: str,
     download_pdfs: bool = True,
-    download_images: bool = True,
+    download_images: bool = False,
     max_files: int = 20,
     save_folder: str = "",
 ) -> Dict[str, Any]:
-    """Scrape a URL via Playwright subprocess."""
-    result = await asyncio.to_thread(
-        _run_pw_worker,
-        "scrape_url",
-        {"url": url, "max_files": max_files, "save_folder": save_folder},
-    )
-    if result is None:
-        return {
-            "success": False,
-            "error": "Playwright worker failed — check terminal for details",
-            "files": [],
-            "images": [],
-            "page_text": "",
-            "links_found": [],
-            "url": url,
-        }
+    """Collect report PDFs with HTTP first; use Playwright for requested images."""
+    if settings.OFFLINE_MODE:
+        raise RuntimeError("Public website collection is disabled in OFFLINE_MODE")
+    max_files = max(0, min(max_files, 100))
+    if download_images:
+        result = await asyncio.to_thread(
+            _run_pw_worker, "scrape_url",
+            {"url": url, "max_files": max_files if download_pdfs else 0,
+             "save_folder": save_folder},
+        )
+        if not isinstance(result, dict):
+            return {"success": False, "error": "Playwright worker failed", "files": [],
+                    "images": [], "page_text": "", "links_found": [], "url": url}
+        return await _ingest_scraped_result(url, result)
 
+    discovery = await discover_url(url, max_pdfs=max_files, browser_fallback=True)
+    folder = save_folder or os.path.join(
+        OUTPUT_DIR, f"{_safe_folder_name(urlparse(url).netloc)}_{time.strftime('%Y%m%d_%H%M%S')}",
+    )
+    download = (
+        await asyncio.to_thread(download_public_pdfs, discovery, folder,
+                                max_files, settings.MAX_UPLOAD_BYTES)
+        if download_pdfs else {"files": [], "file_details": [], "manifest_path": ""}
+    )
+    result = {
+        "success": bool(discovery["visited_pages"] or discovery["pdfs"]),
+        "url": url, "folder": folder, "page_text": discovery.get("page_text", ""),
+        "files": download["files"], "file_details": download["file_details"],
+        "images": [], "links_found": discovery["pdfs"], "discovery": discovery,
+        "manifest_path": download["manifest_path"],
+        "files_downloaded": sum(item["status"] == "downloaded" for item in download["file_details"]),
+        "files_duplicate": sum(item["status"] == "duplicate" for item in download["file_details"]),
+        "files_failed": sum(item["status"] == "failed" for item in download["file_details"]),
+    }
     return await _ingest_scraped_result(url, result)
 
 
@@ -670,71 +438,38 @@ async def scrape_by_keyword(
     max_sites: int = 3,
     max_files_per_site: int = 10,
 ):
-    """Search Google for keyword, follow top N links, and scrape them (Async Generator)."""
+    """Use the browser for search, then crawl each result with plain HTTP first."""
     yield {"status": "searching", "message": f"🔍 กำลังค้นหา keyword '{keyword}' ใน Google..."}
-    yield {"status": "scraping", "message": f"🧭 ใช้ browser session เดียวค้นหาและดึงข้อมูลสูงสุด {max_sites} เว็บ..."}
-
-    worker_result = await asyncio.to_thread(
-        _run_pw_worker,
-        "scrape_by_keyword",
-        {
-            "keyword": keyword,
-            "max_sites": max_sites,
-            "max_files_per_site": max_files_per_site,
-        },
-        max(300, 180 * max_sites),
-    )
-
-    if not isinstance(worker_result, dict):
-        yield {
-            "status": "done",
-            "result": {
-                "keyword": keyword,
-                "output_folder": "",
-                "urls_scraped": 0,
-                "urls": [],
-                "total_files": 0,
-                "total_images": 0,
-                "files": [],
-                "results": [{"success": False, "error": "Playwright worker failed — check terminal for details"}],
-            }
-        }
-        return
-
-    results = worker_result.get("results", [])
-    urls = worker_result.get("urls", [])
-
+    found = await fetch_google_search_results(keyword, max_results=max(1, min(max_sites, 10)))
+    urls = [item.get("url", "") for item in found if item.get("url")]
     if not urls:
-        yield {
-            "status": "done",
-            "result": {
-                "keyword": keyword,
-                "output_folder": worker_result.get("output_folder", ""),
-                "urls_scraped": 0,
-                "urls": [],
-                "total_files": 0,
-                "total_images": 0,
-                "files": [],
-                "results": [{"success": False, "error": "ไม่พบผลลัพธ์จาก Google หรือเกิดข้อผิดพลาดในการค้นหา"}],
-            }
-        }
+        yield {"status": "done", "result": {
+            "keyword": keyword, "urls_scraped": 0, "urls": [], "total_files": 0,
+            "total_images": 0, "files": [], "results": [
+                {"success": False, "error": "ไม่พบผลลัพธ์จาก Google หรือเกิดข้อผิดพลาดในการค้นหา"}],
+        }}
         return
 
     yield {"status": "found", "message": f"🌐 พบ {len(urls)} เว็บไซต์ กำลังนำเข้าข้อมูลสู่ระบบ..."}
+    results = []
+    for idx, source_url in enumerate(urls, 1):
+        domain = _safe_folder_name(urlparse(source_url).netloc)
+        yield {"status": "scraping", "message": f"🧭 [เว็บ {idx}/{len(urls)}] ค้นหา PDF จาก {domain}..."}
+        try:
+            result = await scrape_url(source_url, max_files=max_files_per_site,
+                                      download_images=False)
+        except Exception as exc:
+            result = {"success": False, "url": source_url, "files": [], "images": [],
+                      "error": str(exc)}
+        results.append(result)
+        yield {"status": "processing", "message": (
+            f"[เว็บ {idx}/{len(urls)}] พบ PDF ที่ดาวน์โหลดได้ {len(result.get('files', []))} ไฟล์"
+        )}
 
-    for idx, result in enumerate(results, 1):
-        source_url = result.get("source_url") or result.get("url") or ""
-        domain = _safe_folder_name(urlparse(source_url).netloc) if source_url else f"site_{idx}"
-        yield {"status": "ingesting", "message": f"🧠 [เว็บ {idx}/{len(results)}] เริ่มนำเข้าข้อมูลจาก {domain} สู่ระบบ RAG..."}
-        async for progress in _ingest_scraped_result_with_progress(source_url, result):
-            yield {
-                "status": progress.get("status", "processing"),
-                "message": f"[เว็บ {idx}/{len(results)}] {progress.get('message', '')}"
-            }
-
-    worker_result["results"] = results
-    worker_result["total_files"] = sum(len(r.get("files", [])) for r in results)
-    worker_result["total_images"] = sum(len(r.get("images", [])) for r in results)
-    worker_result["files"] = [path for r in results for path in r.get("files", [])]
-
-    yield {"status": "done", "result": worker_result}
+    yield {"status": "done", "result": {
+        "keyword": keyword, "urls_scraped": len(urls), "urls": urls,
+        "total_files": sum(len(r.get("files", [])) for r in results),
+        "total_images": 0,
+        "files": [path for r in results for path in r.get("files", [])],
+        "results": results,
+    }}

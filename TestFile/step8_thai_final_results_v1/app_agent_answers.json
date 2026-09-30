@@ -1,0 +1,362 @@
+[
+  {
+    "id": "TF01",
+    "answer": "ไม่พอ ค่าจาก OCR ยังไม่ได้ตรวจด้วยตากับ PDF",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 53
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 47
+      }
+    ]
+  },
+  {
+    "id": "TF02",
+    "answer": "3.4",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 200
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 95
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 220
+      }
+    ]
+  },
+  {
+    "id": "TF03",
+    "answer": "40,676 ล้านบาท",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 202
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 89
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 164
+      }
+    ]
+  },
+  {
+    "id": "TF04",
+    "answer": "30,765,832 พันล้านบาท",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 171
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 53
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 235
+      }
+    ]
+  },
+  {
+    "id": "TF05",
+    "answer": "ไม่พอ ข้อมูลในหลักฐานไม่เพียงพอที่จะตอบคำถามได้",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 30
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 230
+      }
+    ]
+  },
+  {
+    "id": "TF06",
+    "answer": "43.9 พันล้านบาท",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 56
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 217
+      }
+    ]
+  },
+  {
+    "id": "TF07",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 110
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 204
+      }
+    ]
+  },
+  {
+    "id": "TF08",
+    "answer": "43.9 พันล้านบาท",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 110
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 28
+      }
+    ]
+  },
+  {
+    "id": "TF09",
+    "answer": "เงินปันผลต่อหุ้นของ SCBX สำหรับผลประกอบการปี 2567 คือ 8.44 บาท",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 252
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 113
+      }
+    ]
+  },
+  {
+    "id": "TF10",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 33
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 33
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 53
+      }
+    ]
+  },
+  {
+    "id": "TF11",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 179
+      }
+    ]
+  },
+  {
+    "id": "TF12",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 243
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 179
+      }
+    ]
+  },
+  {
+    "id": "TF13",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 154
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 243
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 155
+      }
+    ]
+  },
+  {
+    "id": "TF14",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 122
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 100
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      }
+    ]
+  },
+  {
+    "id": "TF15",
+    "answer": "เงินปันผลต่อหุ้นของไทยยูเนี่ยนในปี 2567 เท่ากับ 0.35 บาท",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 199
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 10
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 165
+      }
+    ]
+  },
+  {
+    "id": "TF16",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 83
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      }
+    ]
+  },
+  {
+    "id": "TF17",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 33
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      }
+    ]
+  },
+  {
+    "id": "TF18",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 40
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 24
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 17
+      }
+    ]
+  },
+  {
+    "id": "TF19",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 38
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 146
+      }
+    ]
+  },
+  {
+    "id": "TF20",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 63
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 75
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      }
+    ]
+  }
+]

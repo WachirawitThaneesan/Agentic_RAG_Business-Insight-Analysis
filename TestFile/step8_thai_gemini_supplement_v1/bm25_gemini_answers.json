@@ -1,0 +1,422 @@
+[
+  {
+    "id": "TF01",
+    "answer": "172.4 พันล้านบาท",
+    "citations": [
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 218
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 199
+      }
+    ]
+  },
+  {
+    "id": "TF02",
+    "answer": "3.37%",
+    "citations": [
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 220
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 201
+      }
+    ]
+  },
+  {
+    "id": "TF03",
+    "answer": "ไม่พบข้อมูลดังกล่าว",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 173
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 218
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 172
+      }
+    ]
+  },
+  {
+    "id": "TF04",
+    "answer": "ไม่พบข้อมูล",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 142
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 173
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 172
+      }
+    ]
+  },
+  {
+    "id": "TF05",
+    "answer": "ไม่พบข้อมูลที่ระบุในเอกสาร",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 199
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 187
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 234
+      }
+    ]
+  },
+  {
+    "id": "TF06",
+    "answer": "ไม่พบข้อมูล",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 172
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 218
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 164
+      }
+    ]
+  },
+  {
+    "id": "TF07",
+    "answer": "ไม่พบข้อมูลดังกล่าวในเอกสารที่ให้มา",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 144
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 153
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 209
+      }
+    ]
+  },
+  {
+    "id": "TF08",
+    "answer": "13.05 บาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 122
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 252
+      }
+    ]
+  },
+  {
+    "id": "TF09",
+    "answer": "9.84 บาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 172
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 246
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 192
+      }
+    ]
+  },
+  {
+    "id": "TF10",
+    "answer": "ร้อยละ 16",
+    "citations": [
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 249
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 249
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 33
+      }
+    ]
+  },
+  {
+    "id": "TF11",
+    "answer": "19,613.166 พันล้านบาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 152
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 199
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 178
+      }
+    ]
+  },
+  {
+    "id": "TF12",
+    "answer": "ไม่พบข้อมูล",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 187
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 177
+      }
+    ]
+  },
+  {
+    "id": "TF13",
+    "answer": "89,983,100 พันบาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 154
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 155
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 147
+      }
+    ]
+  },
+  {
+    "id": "TF14",
+    "answer": "4,984,894 พันบาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 182
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 189
+      }
+    ]
+  },
+  {
+    "id": "TF15",
+    "answer": "0.31 บาท",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 192
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 122
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      }
+    ]
+  },
+  {
+    "id": "TF16",
+    "answer": "85 คะแนน",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 5
+      }
+    ]
+  },
+  {
+    "id": "TF17",
+    "answer": "ปีที่ 9 ติดต่อกัน",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      }
+    ]
+  },
+  {
+    "id": "TF18",
+    "answer": "ไม่พบข้อมูลดังกล่าวในเอกสารที่ให้มา",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 140
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 167
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 182
+      }
+    ]
+  },
+  {
+    "id": "TF19",
+    "answer": "5 ถึง 120 วัน",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 130
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 153
+      }
+    ]
+  },
+  {
+    "id": "TF20",
+    "answer": "ไม่เพียงพอ",
+    "citations": [
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      },
+      {
+        "document": "SCBX",
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 213
+      },
+      {
+        "document": "TU",
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 140
+      }
+    ]
+  }
+]

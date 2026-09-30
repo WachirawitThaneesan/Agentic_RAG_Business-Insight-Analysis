@@ -37,4 +37,10 @@ async def init_db():
     async with engine.begin() as conn:
         await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
         await conn.run_sync(Base.metadata.create_all)
+        # create_all does not add columns to existing installations.
+        await conn.execute(text("ALTER TABLE structured_data ADD COLUMN IF NOT EXISTS source_page INTEGER"))
+        await conn.execute(text("ALTER TABLE structured_data ADD COLUMN IF NOT EXISTS unit VARCHAR(100)"))
+        await conn.execute(text("ALTER TABLE structured_data ADD COLUMN IF NOT EXISTS source_provider VARCHAR(40)"))
+        await conn.execute(text("ALTER TABLE structured_data ADD COLUMN IF NOT EXISTS quality_status VARCHAR(40)"))
+        await conn.execute(text("CREATE INDEX IF NOT EXISTS ix_structured_data_source_page ON structured_data (document_id, source_page)"))
     print("[OK] Database initialized with pgvector extension")

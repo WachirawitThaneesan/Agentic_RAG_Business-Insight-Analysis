@@ -1,0 +1,23 @@
+{
+  "documents": [
+    {
+      "code": "WBG",
+      "source_file": "wbg_annual_report_2025.pdf",
+      "excerpt_file": "wbg_annual_report_2025.pdf",
+      "source_sha256": "086cd283370ec74912281638c34200c3a2e0cd4fc81c49732cf1cc1f2b9ea2e6",
+      "source_page_count": 67,
+      "download_url": "https://openknowledge.worldbank.org/server/api/core/bitstreams/371444b7-36f9-464d-a30f-5b5c34d984fd/content"
+    },
+    {
+      "code": "NVIDIA",
+      "source_file": "nvidia_annual_review_2024.pdf",
+      "excerpt_file": "nvidia_annual_review_2024.pdf",
+      "source_sha256": "b5751f4bb240eeb63d119211d6cc495e1d623897f1f2af1887e387bad1404c84",
+      "source_page_count": 174,
+      "download_url": "https://s201.q4cdn.com/141608511/files/doc_financials/2024/ar/2024-annual-report-insert-web-IR-update.pdf"
+    }
+  ],
+  "chunks": 651,
+  "chunk_chars": 1800,
+  "overlap_chars": 180
+}

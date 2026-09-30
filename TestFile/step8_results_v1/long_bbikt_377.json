@@ -1,0 +1,20 @@
+{
+  "pdf": "2025_105466_E_ONE_REPORT_BBIKT.pdf",
+  "sha256": "a503530fa33a7bf15eca45078eda245c24e177cdaaea61111ee1daa27fd39692",
+  "bytes": 27494462,
+  "pages": 377,
+  "interrupted_page": 190,
+  "indexed_before_restart": 189,
+  "processed_before_restart": 189,
+  "indexed_after_restart": 377,
+  "empty_pages": [],
+  "semantic_chunks": 569,
+  "raw_page_chunks": 377,
+  "attempts_interrupted_page": 2,
+  "attempts_other_pages": "once",
+  "seconds_before_restart": 22.32,
+  "seconds_after_restart": 18.98,
+  "peak_process_working_set_mb": 319.6,
+  "ocr_mode": "deterministic text-backed stub from real PDF pages",
+  "embedding_mode": "fixed 1024-dimensional vectors; no model calls"
+}

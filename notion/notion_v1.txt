@@ -1,4 +1,4 @@
-PROJECT UPDATE — 24 September 2026
+PROJECT UPDATE V1 — 24 September 2026
 Agentic RAG Business Insight Analysis | OCR reliability checkpoint
 
 Short version
@@ -54,7 +54,7 @@ Current workflow (copy this block into a Notion code block)
                        audit only      structured search
                                        + DuckDB warehouse
 
-What the 20-page diagnostic actually found
+What the initial 20-page diagnostic found (before the follow-up retry)
 - Four report excerpts; 20 visually labeled pages; nine numeric anchors
   checked at readable resolution.
 - Table-present/table-absent decision: 18/20 correct. Two rotated/two-up bank

@@ -1,17 +1,13 @@
-"""Celery background tasks for document processing and scraping."""
+"""Celery tasks that do not open the API-owned DuckDB warehouse."""
 
-import os
+import asyncio
+
 from celery import Celery
+
 from backend.config import get_settings
 
 settings = get_settings()
-
-celery_app = Celery(
-    "financial_agent",
-    broker=settings.REDIS_URL,
-    backend=settings.REDIS_URL,
-)
-
+celery_app = Celery("financial_agent", broker=settings.REDIS_URL, backend=settings.REDIS_URL)
 celery_app.conf.update(
     task_serializer="json",
     accept_content=["json"],
@@ -24,191 +20,42 @@ celery_app.conf.update(
 
 @celery_app.task(bind=True, name="process_document")
 def process_document_task(self, document_id: int, filepath: str):
-    """Background task: OCR → clean → chunk → embed → store.
-
-    Used for large documents or batch processing.
-    """
-    import asyncio
-    from sqlalchemy import create_engine
-    from sqlalchemy.orm import Session
-
-    # For Celery tasks, we use synchronous operations
-    self.update_state(state="PROCESSING", meta={"step": "Starting OCR..."})
-
-    # Since Celery runs sync, we use asyncio.run for async functions
-    async def _process():
-        from backend.database import AsyncSessionLocal
-        from backend.models import Document, Chunk, StructuredData
-        from backend.services.embedding import get_embedding
-        from backend.services.ocr import ocr_service
-        from backend.services.table_utils import build_table_chunk_payloads, normalize_ocr_tables
-        from backend.services.thai_cleaner import clean_thai_text
-        from backend.services.chunker import chunk_document
-
-        async with AsyncSessionLocal() as db:
-            from sqlalchemy import select
-            result = await db.execute(select(Document).where(Document.id == document_id))
-            doc = result.scalar_one_or_none()
-
-            if not doc:
-                return {"error": "Document not found"}
-
-            doc.status = "processing"
-            await db.commit()
-
-            try:
-                with open(filepath, "rb") as f:
-                    file_bytes = f.read()
-
-                ext = filepath.rsplit(".", 1)[-1].lower()
-
-                if ext == "pdf":
-                    ocr_result = await ocr_service.extract_from_pdf(file_bytes)
-                else:
-                    ocr_result = await ocr_service.extract_from_image(file_bytes)
-
-                text_blocks = ocr_result.get("text_blocks", [])
-                tables = normalize_ocr_tables(doc.filename, ocr_result.get("tables", []))
-
-                raw_text = "\n\n".join(text_blocks)
-                cleaned_text = clean_thai_text(raw_text)
-                table_chunk_payloads = build_table_chunk_payloads(doc.filename, tables)
-                table_csv_text = "\n\n".join(
-                    f"[TABLE] {table.get('table_name')}\n{table.get('csv_text')}"
-                    for table in tables
-                    if table.get("csv_text")
-                ).strip()
-                doc.raw_text = "\n\n".join(part for part in [cleaned_text, table_csv_text] if part).strip()
-
-                for i, table in enumerate(tables):
-                    headers = table.get("headers", [])
-                    rows = table.get("rows", [])
-                    tbl_name = table.get("table_name") or f"{doc.filename}_table_{i}"
-                    for j, row in enumerate(rows):
-                        row_dict = dict(zip(headers, row)) if headers else {"data": row}
-                        sd = StructuredData(
-                            document_id=doc.id,
-                            table_name=tbl_name,
-                            headers=headers,
-                            row_data=row_dict,
-                            row_index=j,
-                        )
-                        db.add(sd)
-
-                    # Sync to DuckDB warehouse
-                    try:
-                        from backend.services.duckdb_warehouse import (
-                            load_document_dim,
-                            load_table_into_warehouse,
-                        )
-                        load_document_dim(doc.id, doc.filename, doc.doc_type or "pdf")
-                        load_table_into_warehouse(
-                            doc.id, tbl_name, headers, rows,
-                            title=table.get("title", ""),
-                        )
-                    except Exception as ddb_exc:
-                        print(f"WARNING: DuckDB sync failed for table {tbl_name}: {ddb_exc}")
-
-                if cleaned_text.strip():
-                    chunk_results = await chunk_document(cleaned_text)
-                    for cr in chunk_results:
-                        chunk = Chunk(
-                            document_id=doc.id,
-                            chunk_index=cr.chunk_index,
-                            chunk_text=cr.text,
-                            summary=cr.summary,
-                            token_count=cr.token_count,
-                            embedding=cr.embedding,
-                            metadata_={"start_char": cr.start_char, "end_char": cr.end_char},
-                        )
-                        db.add(chunk)
-                else:
-                    chunk_results = []
-
-                for offset, payload in enumerate(table_chunk_payloads):
-                    chunk_text = (payload.get("text") or "").strip()
-                    if not chunk_text:
-                        continue
-
-                    embedding = await get_embedding(chunk_text)
-                    db.add(
-                        Chunk(
-                            document_id=doc.id,
-                            chunk_index=len(chunk_results) + offset,
-                            chunk_text=chunk_text,
-                            summary="",
-                            token_count=len(chunk_text.split()),
-                            embedding=embedding,
-                            metadata_={
-                                "source_kind": "table_csv",
-                                "table_name": payload.get("table_name"),
-                                "table_title": payload.get("title"),
-                                "headers": payload.get("headers", []),
-                                "row_start": payload.get("row_start"),
-                                "row_end": payload.get("row_end"),
-                            },
-                        )
-                    )
-
-                doc.status = "completed"
-                await db.commit()
-                return {"status": "completed", "chunks": len(chunk_results) + len(table_chunk_payloads)}
-
-            except Exception as e:
-                doc.status = "failed"
-                doc.error_message = str(e)
-                await db.commit()
-                return {"status": "failed", "error": str(e)}
-
-    return asyncio.run(_process())
+    """Reject the retired worker path so it cannot bypass PDF quality checks."""
+    raise RuntimeError(
+        "process_document is retired. Upload PDFs through /api/documents/upload; "
+        "the API-owned resumable job keeps DuckDB writes in one process."
+    )
 
 
 @celery_app.task(bind=True, name="scrape_and_process")
-def scrape_and_process_task(self, keyword: str, target_urls: list = None):
-    """Background task: scrape → download → process each file."""
-    import asyncio
+def scrape_and_process_task(self, keyword: str, target_urls: list | None = None):
+    """Scrape only; do not enqueue a fake document_id=0 for processing."""
+    from backend.services.scraper import scrape_by_keyword
 
-    async def _scrape():
-        from backend.services.scraper import scrape_by_keyword
-
-        self.update_state(state="SCRAPING", meta={"step": f"Scraping for: {keyword}"})
-        result = await scrape_by_keyword(keyword, target_urls)
-
-        files = result.get("files", [])
-        for i, filepath in enumerate(files):
-            self.update_state(
-                state="PROCESSING",
-                meta={"step": f"Processing file {i+1}/{len(files)}"}
-            )
-            # Trigger document processing for each file
-            process_document_task.delay(document_id=0, filepath=filepath)
-
-        return result
-
-    return asyncio.run(_scrape())
+    self.update_state(state="SCRAPING", meta={"step": f"Scraping for: {keyword}"})
+    result = asyncio.run(scrape_by_keyword(keyword, target_urls))
+    return {
+        "status": "scraped_only",
+        "result": result,
+        "warning": "Files are not indexed by this legacy Celery task; upload them through the document API.",
+    }
 
 
 @celery_app.task(bind=True, name="build_graph")
 def build_graph_task(self, doc_id: int, text: str):
-    """Background task: build a Hyper-Extract Knowledge Abstract for a document.
-
-    Called automatically after document ingestion completes.
-    Safe to fail — errors are logged but do not affect document status.
-    """
+    """Build a knowledge graph after successful ingestion; failure is isolated."""
     self.update_state(state="PROCESSING", meta={"step": f"Building knowledge graph for doc_id={doc_id}..."})
     try:
         from backend.services.graph_service import build_knowledge_graph
         result = build_knowledge_graph(doc_id=doc_id, text=text)
         if result.get("success"):
             print(
-                f"[graph_task] doc_id={doc_id} — "
-                f"{result.get('entities', 0)} entities, "
-                f"{result.get('relations', 0)} relations"
+                f"[graph_task] doc_id={doc_id} - "
+                f"{result.get('entities', 0)} entities, {result.get('relations', 0)} relations"
             )
         else:
-            print(f"[graph_task] doc_id={doc_id} — build failed: {result.get('error')}")
+            print(f"[graph_task] doc_id={doc_id} - build failed: {result.get('error')}")
         return result
     except Exception as exc:
         print(f"[graph_task] Unexpected error for doc_id={doc_id}: {exc}")
         return {"success": False, "error": str(exc)}
-

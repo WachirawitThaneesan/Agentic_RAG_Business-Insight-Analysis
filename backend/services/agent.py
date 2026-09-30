@@ -16,11 +16,12 @@ from typing import Any, Dict, List, Optional
 
 import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
 
 from backend.config import get_settings, ollama_extra_fields
 from backend.services.llm import generate as llm_generate
 from backend.services.tools import ALL_TOOLS
-from backend.services.answer_verifier import verify_answer
+from backend.services.answer_verifier import verify_answer, _focus_violation
 from backend.services.query_router import route_query
 
 settings = get_settings()
@@ -48,6 +49,7 @@ SYSTEM_PROMPT = """\
   - ความเชื่อมโยงระหว่าง 2 บริษัทหรือบุคคล
 - ถ้าคำถามเป็นแนวผสม (Hybrid) ให้ใช้ multi_hop เพื่อดึงข้อมูลทั้งสองมารวมกัน
 - ตอบเป็นภาษาไทยเสมอ
+- เมื่อใช้ค่าจาก OCR ให้ระบุว่าเป็นค่าที่ถอดจากเอกสารและยังไม่ได้ตรวจยืนยันด้วยตาจาก PDF; อย่าเรียกค่าดังกล่าวว่าได้รับการยืนยันแล้ว ถ้าไม่มีหลักฐานหน้าเอกสาร ให้บอกว่าหน้าอ้างอิงยังไม่ทราบ
 - **คำถามเกี่ยวกับรูปภาพตอบได้** เพราะระบบ OCR ได้อ่านและถอดคำบรรยายภาพ (`<figure>...</figure>`)
   เก็บไว้เป็นข้อความในเอกสารแล้ว ถ้าถามถึงสิ่งที่อยู่ในภาพ ให้ค้นด้วย vector_search
   แล้วอ่านคำบรรยายภาพนั้น ห้ามปฏิเสธว่า "วิเคราะห์รูปภาพไม่ได้" ถ้ายังไม่ได้ค้นดูก่อน
@@ -123,6 +125,14 @@ def _has_real_data(observation: str) -> bool:
     if not obs:
         return False
     return not any(obs.startswith(m) or obs == m for m in _NO_DATA_MARKERS)
+
+
+def _is_non_answer(answer: str) -> bool:
+    text = (answer or "").strip()
+    return any(marker in text for marker in (
+        "ไม่พบข้อมูล", "ไม่มีข้อมูล", "ไม่ปรากฏข้อมูล", "ไม่สามารถหาข้อมูล",
+        "ไม่พบหลักฐาน", "หลักฐานไม่พอ", "หลักฐานไม่เพียงพอ",
+    ))
 
 
 def _parse_action(text: str) -> Optional[Dict[str, str]]:
@@ -232,26 +242,38 @@ def _extract_sources(tool_name: str, data: Dict[str, Any]) -> List[Dict[str, Any
     """Extract source metadata from tool result data."""
     sources = []
     if tool_name == "sql_query":
-        sources.append({
-            "type": "sql",
-            "sql": data.get("sql", ""),
-            "row_count": data.get("row_count", 0),
-        })
+        for item in data.get("evidence", []):
+            sources.append({"type": "sql", "sql": data.get("sql", ""), **item})
+        if not sources:
+            sources.append({
+                "type": "sql", "sql": data.get("sql", ""),
+                "row_count": data.get("row_count", 0),
+                "evidence_status": "page_unresolved",
+            })
     elif tool_name == "vector_search":
         for chunk in data.get("chunks", []):
             sources.append({
                 "type": "vector",
                 "filename": chunk.get("filename"),
+                "document_id": chunk.get("document_id"),
+                "page": chunk.get("page"),
+                "table_name": chunk.get("table_name"),
+                "quality_status": chunk.get("quality_status"),
+                "excerpt": (chunk.get("text") or "")[:2500],
+                "evidence_status": chunk.get("evidence_status") or "source_not_verified",
                 "chunk_index": chunk.get("chunk_index"),
                 "similarity": chunk.get("similarity"),
                 "source_kind": chunk.get("source_kind"),
             })
     elif tool_name == "multi_hop":
         for sr in data.get("sub_results", []):
+            if sr.get("data"):
+                sources.extend(_extract_sources(sr.get("tool", ""), sr["data"]))
+    elif tool_name == "graph_search":
+        for item in data.get("results", []):
             sources.append({
-                "type": "multi_hop",
-                "sub_question": sr.get("question"),
-                "tool": sr.get("tool"),
+                "type": "graph", "document_id": item.get("doc_id"),
+                "page": None, "evidence_status": "page_unresolved",
             })
     elif tool_name == "tavily_search":
         for r in data.get("results", []):
@@ -263,9 +285,211 @@ def _extract_sources(tool_name: str, data: Dict[str, Any]) -> List[Dict[str, Any
     return sources
 
 
+async def _available_tools(session: AsyncSession, web_requested: bool = False) -> set[str]:
+    """Expose only tools backed by currently indexed data or configured services."""
+    available: set[str] = set()
+    try:
+        from backend.models import Chunk, DocumentPage
+        from backend.services.rag import (
+            _indexed_page_filter, _indexed_page_join, _searchable_chunk_filter,
+        )
+        searchable = (select(Chunk.id)
+                      .outerjoin(DocumentPage, _indexed_page_join())
+                      .where(Chunk.embedding.is_not(None), _searchable_chunk_filter(),
+                             _indexed_page_filter()).limit(1))
+        if (await session.execute(searchable)).first():
+            available.add("vector_search")
+    except Exception as exc:
+        logger.debug("Vector index availability check failed: %s", exc)
+    try:
+        from backend.services.duckdb_warehouse import warehouse_capabilities
+        caps = warehouse_capabilities()
+        if caps["year_cells"] or caps["lookup_cells"]:
+            available.add("sql_query")
+    except Exception as exc:
+        logger.debug("Warehouse availability check failed: %s", exc)
+    if {"sql_query", "vector_search"} <= available:
+        available.add("multi_hop")
+    if not settings.OFFLINE_MODE:
+        try:
+            from backend.services.graph_service import list_all_graphs
+            if any(graph.get("status") == "ready" for graph in list_all_graphs()):
+                available.add("graph_search")
+        except Exception as exc:
+            logger.debug("Graph availability check failed: %s", exc)
+        if web_requested and settings.TAVILY_API_KEY:
+            available.add("tavily_search")
+    return available
+
+
+_ANSWER_NUMBER = re.compile(r"\(?-?\d[\d,]*(?:\.\d+)?\)?")
+_ANSWER_UNIT = re.compile(r"ล้านบาท|พันบาท|เมกะวัตต์|เปอร์เซ็นต์|บาท|หุ้น|คัน|%")
+
+
+def _numbers(text: str) -> set[float]:
+    values = set()
+    for token in _ANSWER_NUMBER.findall(text or ""):
+        negative = token.startswith("(") and token.endswith(")")
+        try:
+            number = float(token.strip("()").replace(",", ""))
+            values.add(-number if negative else number)
+        except ValueError:
+            continue
+    return values
+
+
+def _grounded_answer(answer: str, question: str, sources: List[Dict[str, Any]]) -> str:
+    """Refuse an unsupported number, including an opposite sign or changed scale."""
+    if _focus_violation(question, answer):
+        return "หลักฐานยังไม่เพียงพอสำหรับเลือกค่าที่ตรงกับคำถามเพียงค่าเดียว"
+    located = [source for source in sources
+               if source.get("page") is not None or source.get("url")]
+    if not located:
+        return "ไม่พบหลักฐานพร้อมหน้าเอกสารที่เพียงพอสำหรับคำตอบนี้"
+    exact_cells = [source for source in located
+                   if source.get("type") == "sql" and source.get("row_label")
+                   and str(source["row_label"]) in question]
+    if exact_cells:
+        # A value from a different, similarly named SQL row cannot override a
+        # cell whose complete measure label appears in the user's question.
+        located = exact_cells
+    allowed = {number for number in _numbers(question)
+               if number.is_integer() and (2000 <= number <= 2099 or 2500 <= number <= 2599)}
+    for source in located:
+        allowed.update(_numbers(str(source.get("value") or "")))
+        allowed.update(_numbers(str(source.get("excerpt") or "")))
+        allowed.update(_numbers(str(source.get("column") or "")))
+    cited_pages = {float(page) for page in re.findall(
+        r"(?:PDF\s*)?(?:page|หน้า(?:เอกสาร)?(?:ที่)?)\s*(\d+)", answer,
+        flags=re.IGNORECASE)}
+    allowed.update(cited_pages & {float(source["page"]) for source in located
+                                  if source.get("page") is not None})
+    if re.search(r"เปลี่ยน|ต่าง|เพิ่ม|ลด|เทียบ", question):
+        # A derived difference is defensible only across two cells of the
+        # same stored measure, document, table and unit in different years.
+        for i, left in enumerate(located):
+            for right in located[i + 1:]:
+                identity = ("document_id", "table_name", "row_label", "unit")
+                if not all(left.get(key) == right.get(key) for key in identity):
+                    continue
+                if not left.get("column") or left.get("column") == right.get("column"):
+                    continue
+                lhs, rhs = _numbers(str(left.get("value") or "")), _numbers(str(right.get("value") or ""))
+                if len(lhs) == len(rhs) == 1:
+                    difference = next(iter(lhs)) - next(iter(rhs))
+                    allowed.update((difference, -difference, abs(difference)))
+    if not _numbers(answer) <= allowed:
+        return "ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในคำตอบ"
+    stated_units = set(_ANSWER_UNIT.findall(answer))
+    if stated_units:
+        cell_units = {str(source["unit"]).strip() for source in located if source.get("unit")}
+        if cell_units:
+            normalized_units = {"%" if unit == "เปอร์เซ็นต์" else unit for unit in stated_units}
+            if not normalized_units <= cell_units:
+                return "หน่วยในคำตอบไม่ตรงกับหน่วยของหลักฐานในหน้าเอกสาร"
+    if _numbers(answer) and any(source.get("evidence_status") == "ocr_extracted_unverified"
+                                for source in located) and "OCR" not in answer and "ยังไม่ตรวจ" not in answer:
+        answer += " (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)"
+    return answer
+
+
+def _prompt_with_available_tools(available: set[str]) -> str:
+    before, _, rest = SYSTEM_PROMPT.partition("Tools ที่ใช้ได้:")
+    _, _, after = rest.partition("ขั้นตอนการตอบ (ReAct):")
+    if "sql_query" not in available:
+        before = re.sub(r"- \*\*ให้ใช้ sql_query\*\*.*?(?=- \*\*ให้ใช้ vector_search)",
+                        "", before, flags=re.DOTALL)
+    if "vector_search" not in available:
+        before = re.sub(r"- \*\*ให้ใช้ vector_search เสมอ\*\*.*?(?=- \*\*ให้ใช้ graph_search)",
+                        "", before, flags=re.DOTALL)
+    if "graph_search" not in available:
+        before = re.sub(r"- \*\*ให้ใช้ graph_search\*\*.*?(?=- ถ้าคำถามเป็นแนวผสม)",
+                        "", before, flags=re.DOTALL)
+    if "multi_hop" not in available:
+        before = re.sub(r"^- ถ้าคำถามเป็นแนวผสม.*\n", "", before, flags=re.MULTILINE)
+    descriptions = "\n".join(
+        f"- {name}: {ALL_TOOLS[name].description}" for name in sorted(available)
+    )
+    return (before + "Tools ที่ใช้ได้จริงสำหรับคำถามนี้:\n" + descriptions
+            + "\nห้ามเรียกเครื่องมืออื่นนอกเหนือจากรายการนี้\n\nขั้นตอนการตอบ (ReAct):" + after)
+
+
+async def _answer_from_observations(question: str, observations: List[str],
+                                    sources: List[Dict[str, Any]]) -> str:
+    if not observations or not any(source.get("page") is not None or source.get("url")
+                                   for source in sources):
+        return "ไม่พบหลักฐานเพียงพอในเอกสารที่ประมวลผลแล้ว"
+    prompt = (
+        "ตอบคำถามจากหลักฐานต่อไปนี้เท่านั้น เลือกแถว ปี และหน่วยให้ตรงกับคำถาม "
+        "คำนวณผลต่างได้เฉพาะค่าจากแถวและหน่วยเดียวกันสองปี ห้ามแปลงหน่วยเอง แสดงหน้า PDF ที่ใช้ "
+        "หากไม่แน่ใจ ให้ตอบว่าหลักฐานไม่พอ ค่าจาก OCR ยังไม่ผ่านการตรวจเทียบ PDF ด้วยตา\n\n"
+        f"คำถาม: {question}\n\nหลักฐาน:\n{' '.join(observations)[:10000]}\n\nคำตอบ:"
+    )
+    answer = (await llm_generate(prompt, temperature=0.0, max_tokens=350)).strip()
+    critique = _focus_violation(question, answer)
+    if critique:
+        answer = (await llm_generate(
+            prompt + "\nตรวจคำตอบ: " + critique,
+            temperature=0.0, max_tokens=350)).strip()
+    return _grounded_answer(answer, question, sources)
+
+
 # ---------------------------------------------------------------------------
 # Public API — main agent entry point
 # ---------------------------------------------------------------------------
+
+async def _offline_query(question: str, session: AsyncSession) -> Dict[str, Any]:
+    """Local-only retrieval and generation without hosted tool planning."""
+    route = route_query(question)
+    available = await _available_tools(session)
+    tool_name = ("sql_query" if route.suggested_tool == "sql_query" and "sql_query" in available
+                 else "vector_search" if "vector_search" in available
+                 else "sql_query" if "sql_query" in available else "")
+    trace: List[Dict[str, Any]] = []
+    sql_info = None
+    if not tool_name:
+        return {"answer": "ยังไม่มีข้อมูลเอกสารที่ค้นหาได้", "method": "offline",
+                "sources": [], "sql_info": None, "reasoning_trace": trace}
+
+    async def run(name: str):
+        tool = ALL_TOOLS[name]
+        result = (
+            await tool.execute(question, session=session, top_k=3)
+            if name == "vector_search" else await tool.execute(question)
+        )
+        has_data = bool(result.data.get("chunks")) if name == "vector_search" else result.data.get("row_count", 0) > 0
+        trace.append({"action": name, "action_input": question,
+                      "observation": (result.summary or result.error or "")[:500],
+                      "success": result.success and has_data})
+        return result, has_data
+
+    result, has_data = await run(tool_name)
+    if not has_data and tool_name == "sql_query" and "vector_search" in available:
+        tool_name = "vector_search"
+        result, has_data = await run(tool_name)
+    if not has_data:
+        return {"answer": "ไม่พบหลักฐานเพียงพอในเอกสารที่ประมวลผลแล้ว", "method": "offline",
+                "sources": [], "sql_info": None, "reasoning_trace": trace}
+
+    sources = _extract_sources(tool_name, result.data)
+    if tool_name == "sql_query":
+        sql_info = result.data
+    if not any(source.get("page") is not None for source in sources):
+        return {"answer": "ไม่พบหลักฐานพร้อมหน้าเอกสารที่เพียงพอสำหรับคำตอบนี้",
+                "method": "offline", "sources": sources, "sql_info": sql_info,
+                "reasoning_trace": trace}
+    prompt = (
+        "ตอบคำถามจากหลักฐานด้านล่างเท่านั้น ตอบเป็นภาษาเดียวกับคำถาม "
+        "ห้ามเติมตัวเลขหรือข้อเท็จจริงที่ไม่มีในหลักฐาน ถ้าหลักฐานไม่พอให้บอกว่าไม่พอ "
+        "ค่าจาก OCR ยังไม่ได้ตรวจด้วยตากับ PDF.\n\n"
+        f"คำถาม: {question}\n\nหลักฐาน:\n{result.summary[:10000]}\n\nคำตอบสั้นๆ:"
+    )
+    answer = (await llm_generate(prompt, temperature=0.0, max_tokens=350)).strip()
+    if not answer:
+        answer = "โมเดลท้องถิ่นไม่สามารถสร้างคำตอบได้ในขณะนี้"
+    answer = _grounded_answer(answer, question, sources)
+    return {"answer": answer, "method": _infer_method(trace), "sources": sources,
+            "sql_info": sql_info, "reasoning_trace": trace}
 
 async def agent_query(
     question: str,
@@ -279,6 +503,8 @@ async def agent_query(
         ``{"answer": str, "method": str, "sources": list, "sql_info": dict|None,
            "reasoning_trace": list}``
     """
+    if settings.OFFLINE_MODE:
+        return await _offline_query(question, session)
     # ------------------------------------------------------------------
     # Fast-path: try direct structured answer before invoking the LLM.
     # ------------------------------------------------------------------
@@ -288,7 +514,7 @@ async def agent_query(
         if direct:
             logger.info("Fast-path direct answer for: %s", question[:80])
             return {
-                "answer": direct["answer"],
+                "answer": _grounded_answer(direct["answer"], question, direct.get("sources", [])),
                 "method": direct.get("method", "direct_structured_fact"),
                 "sources": direct.get("sources", []),
                 "sql_info": direct.get("sql_info"),
@@ -305,8 +531,13 @@ async def agent_query(
     # Deterministic tool routing hint (biases the first tool choice)
     # ------------------------------------------------------------------
     route = route_query(question)
+    web_requested = route.scores.get("tavily_search", 0) > 0
+    available_tools = await _available_tools(session, web_requested=web_requested)
+    if not available_tools:
+        return {"answer": "ยังไม่มีข้อมูลเอกสารที่ค้นหาได้", "method": "agent",
+                "sources": [], "sql_info": None, "reasoning_trace": []}
     routing_hint = ""
-    if route.suggested_tool and route.confidence in ("medium", "high"):
+    if route.suggested_tool in available_tools and route.confidence in ("medium", "high"):
         logger.info(
             "Router suggests '%s' (confidence=%s, scores=%s)",
             route.suggested_tool, route.confidence, route.scores,
@@ -321,9 +552,10 @@ async def agent_query(
     # ------------------------------------------------------------------
     # Build initial prompt
     # ------------------------------------------------------------------
-    conversation = f"{SYSTEM_PROMPT}\n{routing_hint}\nQuestion: {question}\n"
+    conversation = f"{_prompt_with_available_tools(available_tools)}\n{routing_hint}\nQuestion: {question}\n"
 
-    max_iterations = getattr(settings, "AGENT_MAX_ITERATIONS", 5)
+    max_iterations = min(3, getattr(settings, "AGENT_MAX_ITERATIONS", 5))
+    max_tool_calls = 2
     reasoning_trace: List[Dict[str, Any]] = []
     sources: List[Dict[str, Any]] = []
     sql_info: Optional[Dict[str, Any]] = None
@@ -333,11 +565,29 @@ async def agent_query(
     # This corpus is entirely internal (annual report + docs). Only allow web
     # search when the question itself carries an explicit web/news signal;
     # otherwise the agent escapes to Tavily and hallucinates external results.
-    web_requested = route.scores.get("tavily_search", 0) > 0
+    web_requested = "tavily_search" in available_tools
 
     self_correction_on = getattr(settings, "AGENT_SELF_CORRECTION", True)
     verify_retries_left = getattr(settings, "AGENT_VERIFY_MAX_RETRIES", 1)
     _INTERNAL_TOOLS = {"sql_query", "vector_search", "multi_hop", "graph_search"}
+
+    async def sweep_before_refusal(answer: str) -> str:
+        """One evidence sweep within the existing two-call budget, then redraft."""
+        if (not _is_non_answer(answer) or "vector_search" not in available_tools
+                or len(attempted_calls) >= max_tool_calls
+                or any(name == "vector_search" for name, _ in attempted_calls)):
+            return answer
+        attempted_calls.add(("vector_search", question.strip()))
+        fb = await _execute_tool("vector_search", question, session)
+        found = bool(fb.get("success")) and _has_real_data(fb.get("observation", ""))
+        reasoning_trace.append({"action": "vector_search", "action_input": question,
+                                "observation": fb.get("observation", "")[:500],
+                                "success": found, "reason": "draft_refused"})
+        if not found:
+            return answer
+        full_observations.append("[vector_search] " + fb["observation"])
+        sources.extend(_extract_sources("vector_search", fb.get("data") or {}))
+        return await _answer_from_observations(question, full_observations, sources)
 
     # ------------------------------------------------------------------
     # Forced first action: when the router is highly confident, run the
@@ -348,7 +598,7 @@ async def agent_query(
     if (
         route.suggested_tool
         and route.confidence == "high"
-        and route.suggested_tool in ALL_TOOLS
+        and route.suggested_tool in available_tools
     ):
         forced = route.suggested_tool
         logger.info("Forcing first tool (high-confidence route): %s", forced)
@@ -382,15 +632,12 @@ async def agent_query(
         # the answer sits in a chunk at rank 1. Rather than tune those keywords —
         # brittle, and it risks the many questions routed correctly — sweep the
         # document index before the agent is allowed to conclude "not found".
-        if not internal_tool_succeeded and forced != "vector_search":
+        if not internal_tool_succeeded and forced != "vector_search" and "vector_search" in available_tools:
             logger.info("Forced tool '%s' found nothing; falling back to vector_search", forced)
             fb = await _execute_tool("vector_search", question, session)
             fb_obs = fb["observation"]
             fb_found = bool(fb.get("success")) and _has_real_data(fb_obs)
-            if fb.get("success"):
-                # Register only a completed call: a transient error must not
-                # lock the agent out of deliberately retrying this search.
-                attempted_calls.add(("vector_search", question.strip()))
+            attempted_calls.add(("vector_search", question.strip()))
             if fb_found:
                 internal_tool_succeeded = True
                 full_observations.append(f"[vector_search] {fb_obs}")
@@ -405,6 +652,18 @@ async def agent_query(
                 f'Action: {{"tool": "vector_search", "query": "{question}"}}\n'
                 f"Observation: {fb_obs}\n"
             )
+
+        if internal_tool_succeeded and sources:
+            answer = await _answer_from_observations(question, full_observations, sources)
+            answer = await sweep_before_refusal(answer)
+            return {"answer": answer, "method": _infer_method(reasoning_trace),
+                    "sources": sources, "sql_info": sql_info,
+                    "reasoning_trace": reasoning_trace}
+
+    if len(attempted_calls) >= max_tool_calls and not sources:
+        return {"answer": "ไม่พบหลักฐานเพียงพอในเอกสารที่ประมวลผลแล้ว",
+                "method": _infer_method(reasoning_trace), "sources": [],
+                "sql_info": sql_info, "reasoning_trace": reasoning_trace}
 
     llm_output = ""
     for iteration in range(max_iterations):
@@ -421,6 +680,17 @@ async def agent_query(
             tool_name = action["tool"]
             query = action["query"]
             logger.info("ReAct action: %s(%s)", tool_name, query[:80])
+
+            if tool_name not in available_tools:
+                conversation += (f"{llm_output}\nObservation: เครื่องมือ {tool_name} "
+                                 "ไม่มีข้อมูลหรือไม่ได้ตั้งค่า ห้ามเรียกอีก ให้ใช้หลักฐานที่มี\n")
+                continue
+
+            if len(attempted_calls) >= max_tool_calls:
+                answer = await _answer_from_observations(question, full_observations, sources)
+                return {"answer": answer, "method": _infer_method(reasoning_trace),
+                        "sources": sources, "sql_info": sql_info,
+                        "reasoning_trace": reasoning_trace}
 
             # Guard: this corpus is internal-only. Block web search entirely
             # unless the question explicitly asked for web/news info — escaping
@@ -494,22 +764,20 @@ async def agent_query(
             if (
                 tool_name in _INTERNAL_TOOLS
                 and tool_name != "vector_search"
+                and "vector_search" in available_tools
                 and not internal_tool_succeeded  # a safety net for the found-
                 # nothing-anywhere case, like its forced-path twin — not a tax
                 # on every empty exploratory call after data is already in hand
                 and not _has_real_data(obs)
                 and ("vector_search", query.strip()) not in attempted_calls
+                and len(attempted_calls) < max_tool_calls
             ):
                 logger.info("'%s' returned no data; sweeping vector_search", tool_name)
                 fb = await _execute_tool("vector_search", query, session)
                 fb_obs = fb["observation"]
                 fb_found = bool(fb.get("success")) and _has_real_data(fb_obs)
-                if fb.get("success"):
-                    # Register only a completed call — recording it up front let
-                    # a transient embedding error permanently block the agent's
-                    # own vector_search retry, with a nudge falsely claiming it
-                    # had "already got this result".
-                    attempted_calls.add(("vector_search", query.strip()))
+                # Failed attempts consume the same bounded tool budget.
+                attempted_calls.add(("vector_search", query.strip()))
                 if fb_found:
                     internal_tool_succeeded = True
                     full_observations.append(f"[vector_search] {fb_obs}")
@@ -538,6 +806,8 @@ async def agent_query(
         if final_answer:
             logger.info("ReAct final answer at iteration %d", iteration + 1)
 
+            final_answer = await sweep_before_refusal(final_answer)
+
             # --- Self-correction: verify the draft is grounded & on-topic ---
             if self_correction_on and verify_retries_left > 0:
                 verification = await verify_answer(
@@ -564,7 +834,7 @@ async def agent_query(
                     continue
 
             return {
-                "answer": final_answer,
+                "answer": _grounded_answer(final_answer, question, sources),
                 "method": _infer_method(reasoning_trace),
                 "sources": sources,
                 "sql_info": sql_info,
@@ -592,7 +862,7 @@ async def agent_query(
             parts = answer.split("Thought:")
             answer = parts[-1].strip()
         return {
-            "answer": answer,
+            "answer": _grounded_answer(answer, question, sources),
             "method": _infer_method(reasoning_trace),
             "sources": sources,
             "sql_info": sql_info,
@@ -604,7 +874,7 @@ async def agent_query(
     answer = final_answer or llm_output or "ขออภัย ระบบไม่สามารถหาคำตอบได้ในขณะนี้"
 
     return {
-        "answer": answer,
+        "answer": _grounded_answer(answer, question, sources),
         "method": _infer_method(reasoning_trace),
         "sources": sources,
         "sql_info": sql_info,

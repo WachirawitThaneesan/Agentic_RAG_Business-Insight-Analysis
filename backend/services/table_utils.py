@@ -646,6 +646,8 @@ def normalize_ocr_table(table: Dict[str, Any], default_name: str) -> Dict[str, A
         "title": title,
         "table_name": table_name,
         "page": table.get("page"),
+        **{key: table[key] for key in ("region", "crop_box", "rotation", "source_provider", "unit",
+                                     "partial_extraction", "ambiguous_row_count") if key in table},
         "headers": headers,
         "rows": rows,
         "csv_text": csv_text,
@@ -679,6 +681,8 @@ def _merge_header_fragment_tables(tables: List[Dict[str, Any]]) -> List[Dict[str
 
 def _should_merge_header_fragment(fragment: Dict[str, Any], body: Dict[str, Any]) -> bool:
     if fragment.get("page") is not None and body.get("page") is not None and fragment["page"] != body["page"]:
+        return False
+    if fragment.get("region") != body.get("region"):
         return False
     fragment_headers = fragment.get("headers") or []
     fragment_rows = fragment.get("rows") or []
@@ -726,6 +730,7 @@ def _merge_header_fragment_pair(fragment: Dict[str, Any], body: Dict[str, Any]) 
         "title": body.get("title") or fragment.get("title") or body.get("table_name") or fragment.get("table_name"),
         "table_name": body.get("table_name") or fragment.get("table_name"),
         "page": body.get("page") if body.get("page") is not None else fragment.get("page"),
+        **{key: body[key] for key in ("region", "crop_box", "rotation") if key in body},
         "headers": headers,
         "rows": merged_rows,
         "csv_text": table_to_csv(headers, merged_rows) if merged_rows else "",
@@ -767,6 +772,8 @@ def _combine_sections_into_single_table(
             "title": combined_title,
             "table_name": combined_table_name,
             "page": table.get("page"),
+            **{key: table[key] for key in ("region", "crop_box", "rotation", "source_provider", "unit",
+                                         "partial_extraction", "ambiguous_row_count") if key in table},
             "headers": first_headers,
             "rows": combined_rows,
             "csv_text": table_to_csv(first_headers, combined_rows),
@@ -850,6 +857,8 @@ def split_normalized_table_into_sections(table: Dict[str, Any]) -> List[Dict[str
                 "title": title,
                 "table_name": section_table_name,
                 "page": table.get("page"),
+                **{key: table[key] for key in ("region", "crop_box", "rotation", "source_provider", "unit",
+                                             "partial_extraction", "ambiguous_row_count") if key in table},
                 "headers": section_headers,
                 "rows": normalized_rows,
                 "csv_text": table_to_csv(section_headers, normalized_rows),
@@ -872,11 +881,12 @@ def normalize_ocr_tables(table_prefix: str, tables: List[Dict[str, Any]]) -> Lis
     normalized: List[Dict[str, Any]] = []
     for index, table in enumerate(tables):
         page = table.get("page")
-        default_name = f"{table_prefix}_page_{page}_table_{index}" if page is not None else f"{table_prefix}_table_{index}"
+        # Put physical-page identity first so a long title cannot truncate it.
+        default_name = f"page_{page}_table_{index}_{table_prefix}" if page is not None else f"{table_prefix}_table_{index}"
         table_with_name = dict(table)
         if not table_with_name.get("table_name"):
             title = str(table_with_name.get("title") or table_prefix)
-            table_with_name["table_name"] = f"{title}_{default_name}"
+            table_with_name["table_name"] = f"{default_name}_{title}"
         normalized_table = normalize_ocr_table(table_with_name, default_name)
         normalized.extend(split_normalized_table_into_sections(normalized_table))
     return _merge_header_fragment_tables(normalized)
@@ -911,6 +921,7 @@ def build_table_chunk_payloads(
     table_prefix: str,
     tables: List[Dict[str, Any]],
     max_rows_per_chunk: int = 25,
+    max_chars_per_chunk: int = 2400,
 ) -> List[Dict[str, Any]]:
     payloads: List[Dict[str, Any]] = []
 
@@ -923,27 +934,48 @@ def build_table_chunk_payloads(
         table_name = table.get("table_name") or f"{table_prefix}_table_{index}"
         title = table.get("title") or table_name
 
-        for row_start in range(0, len(rows), max_rows_per_chunk):
-            row_end = min(row_start + max_rows_per_chunk, len(rows))
-            batch_rows = rows[row_start:row_end]
+        prefix = (
+            f"TABLE_NAME: {table_name}\n"
+            f"TABLE_TITLE: {title}\n"
+            f"COLUMNS: {', '.join(headers)}\n"
+            "CSV:\n"
+        )
+
+        def add_batch(row_start: int, batch_rows: List[List[str]]) -> None:
+            row_end = row_start + len(batch_rows)
             csv_text = table_to_csv(headers, batch_rows)
-            text = (
-                f"TABLE_NAME: {table_name}\n"
-                f"TABLE_TITLE: {title}\n"
-                f"COLUMNS: {', '.join(headers)}\n"
-                "CSV:\n"
-                f"{csv_text}"
-            )
+            text = prefix + csv_text
             payloads.append(
                 {
                     "table_name": table_name,
                     "title": title,
                     "headers": headers,
+                    "source_provider": table.get("source_provider"),
+                    "unit": table.get("unit"),
+                    "quality_status": table.get("quality_status", "unverified"),
+                    "partial_extraction": bool(table.get("partial_extraction")),
+                    "ambiguous_row_count": int(table.get("ambiguous_row_count") or 0),
                     "row_start": row_start,
                     "row_end": row_end - 1,
                     "csv_text": csv_text,
                     "text": text,
                 }
             )
+
+        row_start = 0
+        batch_rows: List[List[str]] = []
+        for row_index, row in enumerate(rows):
+            candidate = [*batch_rows, row]
+            if batch_rows and (
+                len(candidate) > max_rows_per_chunk
+                or len(prefix) + len(table_to_csv(headers, candidate)) > max_chars_per_chunk
+            ):
+                add_batch(row_start, batch_rows)
+                row_start = row_index
+                batch_rows = [row]
+            else:
+                batch_rows = candidate
+        if batch_rows:
+            add_batch(row_start, batch_rows)
 
     return payloads

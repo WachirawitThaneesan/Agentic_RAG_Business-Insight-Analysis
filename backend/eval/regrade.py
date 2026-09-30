@@ -31,14 +31,22 @@ def main():
     with open(out, "w", encoding="utf-8") as f:
         for r in rows:
             item = golden.get(r["id"])
-            # keep llm_judge verdicts as-is (would re-call Typhoon)
-            if item and r.get("grader_type") != "llm_judge":
+            # Old low-confidence semantic verdicts came from keyword overlap
+            # when the judge failed. They cannot be treated as measured passes.
+            if r.get("grader_type") == "llm_judge" and r.get("confidence") == "low":
+                if r.get("passed"):
+                    changed += 1
+                r["passed"] = False
+                r["scored"] = False
+            # Keep actual semantic-judge verdicts (would re-call Typhoon).
+            elif item and r.get("grader_type") != "llm_judge":
                 v = grade(item, r.get("answer", ""))
                 if v["passed"] != r["passed"]:
                     changed += 1
                 r["passed"] = v["passed"]
                 r["grader_type"] = v["grader_type"]
                 r["confidence"] = v["confidence"]
+                r["scored"] = v.get("scored", True)
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
     print(f"Re-graded {len(rows)} rows ({changed} verdicts changed) -> {out}\n")

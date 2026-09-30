@@ -146,6 +146,11 @@ async def _main(args: argparse.Namespace) -> None:
     gold = json.loads(GOLD.read_text(encoding="utf-8"))
     pages = gold["pages"]
     selected = pages[:args.max_pages] if args.max_pages else pages
+    if args.only_page:
+        wanted = set(args.only_page)
+        selected = [page for page in selected if f"{page['excerpt_file']}:{page['excerpt_page']}" in wanted]
+        if len(selected) != len(wanted):
+            raise ValueError("One or more --only-page values do not match labeled excerpt pages")
     ocr_service.page_timeout_seconds = args.page_timeout
     RESULTS.mkdir(parents=True, exist_ok=True)
     scores = []
@@ -153,7 +158,7 @@ async def _main(args: argparse.Namespace) -> None:
         path = _result_path(page)
         if path.is_file():
             stored = json.loads(path.read_text(encoding="utf-8"))
-            if stored.get("ocr_error") and args.retry_errors and not args.score_only:
+            if _score_page(page, stored).get("ocr_error") and args.retry_errors and not args.score_only:
                 stored = None
         elif args.score_only:
             continue
@@ -166,8 +171,11 @@ async def _main(args: argparse.Namespace) -> None:
             except Exception as exc:
                 error = f"{type(exc).__name__}: {exc}"
                 print(f"  OCR failed: {error}", flush=True)
+                pdf = ROOT / "TestFile" / page["excerpt_file"]
                 stored = {"schema_version": 1, "excerpt_file": page["excerpt_file"],
                           "excerpt_page": page["excerpt_page"], "ocr_error": error,
+                          "input_sha256": hashlib.sha256(pdf.read_bytes()).hexdigest() if pdf.is_file() else None,
+                          "ocr_model": ocr_service.model, "render_dpi": ocr_service.render_dpi,
                           "created_utc": datetime.now(timezone.utc).isoformat()}
             path.write_text(json.dumps(stored, ensure_ascii=False, indent=2), encoding="utf-8")
         scores.append(_score_page(page, stored))
@@ -180,4 +188,5 @@ if __name__ == "__main__":
     parser.add_argument("--score-only", action="store_true", help="Do not make Typhoon OCR calls")
     parser.add_argument("--page-timeout", type=float, default=120.0, help="Wall-clock seconds per page for this benchmark (default: 120)")
     parser.add_argument("--retry-errors", action="store_true", help="Retry previously failed pages")
+    parser.add_argument("--only-page", action="append", help="Only this labeled excerpt_file:page; may be repeated")
     asyncio.run(_main(parser.parse_args()))

@@ -6,12 +6,16 @@ import json
 import re
 import httpx
 from typing import List, Dict, Any, Optional
-from sqlalchemy import text as sql_text, select, or_
+from sqlalchemy import text as sql_text, select, or_, and_, case
 from sqlalchemy.ext.asyncio import AsyncSession
 from backend.config import get_settings
 from backend.services.embedding import get_embedding
 from backend.services.table_utils import rebuild_structured_tables
-from backend.models import Chunk, Document, StructuredData
+from backend.services.retrieval_rank import (
+    bm25_rank, matched_document_aliases, normalize_search_text,
+    unique_pages, without_document_aliases,
+)
+from backend.models import Chunk, Document, DocumentPage, StructuredData
 
 settings = get_settings()
 HTTP_LIMITS = httpx.Limits(max_connections=4, max_keepalive_connections=2)
@@ -27,7 +31,7 @@ def _rows_to_csv(headers: List[str], rows: List[Dict[str, Any]]) -> str:
 
 
 def _normalize_lookup_text(text: str) -> str:
-    value = str(text or "")
+    value = normalize_search_text(str(text or ""))
     value = value.replace(" ", "")
     value = re.sub(r"[\n\r\t,:;(){}\[\]\"'`“”‘’%\-_/]", "", value)
     return value.strip().lower()
@@ -62,7 +66,7 @@ def _thai_tokenize(text: str) -> List[str]:
     """
     try:
         from pythainlp.tokenize import word_tokenize
-        return word_tokenize(text, engine="newmm", keep_whitespace=False)
+        return word_tokenize(normalize_search_text(text), engine="newmm", keep_whitespace=False)
     except Exception:
         return re.findall(r"[A-Za-z]{2,}|\d{4}|[ก-๙]{2,}", text)
 
@@ -489,146 +493,129 @@ async def _try_direct_table_lookup(question: str, session: AsyncSession) -> Opti
     }
 
 
+_ANSWER_SOURCE_KINDS = {None, "semantic", "table_csv"}
+
+
+def _is_answer_source(chunk: Chunk) -> bool:
+    """Never offer OCR audit or quality-warning artifacts as answer evidence."""
+    return (chunk.metadata_ or {}).get("source_kind") in _ANSWER_SOURCE_KINDS
+
+
+def _searchable_chunk_filter():
+    kind = Chunk.metadata_["source_kind"].as_string()
+    return or_(kind.is_(None), kind.in_(["semantic", "table_csv"]))
+
+
+def _indexed_page_join():
+    return and_(
+        DocumentPage.document_id == Chunk.document_id,
+        DocumentPage.page_number == Chunk.metadata_["page"].as_integer(),
+    )
+
+
+def _indexed_page_filter():
+    return or_(DocumentPage.id.is_(None), DocumentPage.status == "indexed")
+
+
 async def vector_search(
     query: str,
     session: AsyncSession,
     top_k: int = 5,
 ) -> List[Dict[str, Any]]:
-    """Search chunks by semantic similarity using pgvector cosine distance."""
+    """Find page evidence with scoped Thai keywords and semantic fallback.
+
+    A named issuer may restrict the corpus. A mentioned year never excludes a
+    report: a current annual report can contain prior-year comparison columns.
+    Numeric questions prioritize lexical evidence; qualitative questions use
+    page-level reciprocal-rank fusion.
+    """
+    if top_k < 1:
+        return []
+    documents = (await session.execute(select(Document.id, Document.filename))).all()
+    document_scope, issuer_aliases = matched_document_aliases(query, documents)
+    ranking_query = without_document_aliases(query, issuer_aliases)
     query_embedding = await get_embedding(query)
-    keyword_terms = _extract_keyword_terms(query)
-    normalized_query = _normalize_lookup_text(query)
+    keyword_terms = _extract_keyword_terms(ranking_query)
+    lexical_query = " ".join(keyword_terms) or ranking_query
 
     semantic_stmt = (
         select(Chunk, Document.filename, Chunk.embedding.cosine_distance(query_embedding).label("distance"))
         .join(Document, Document.id == Chunk.document_id)
-        .where(Chunk.embedding.is_not(None))
+        .outerjoin(DocumentPage, _indexed_page_join())
+        .where(Chunk.embedding.is_not(None), _searchable_chunk_filter(), _indexed_page_filter())
         .order_by(Chunk.embedding.cosine_distance(query_embedding))
-        .limit(max(top_k * 3, 15))
+        .limit(max(top_k * 10, 50))
     )
+    if document_scope:
+        semantic_stmt = semantic_stmt.where(Chunk.document_id.in_(document_scope))
     semantic_result = await session.execute(semantic_stmt)
     semantic_rows = semantic_result.all()
 
-    merged: List[Dict[str, Any]] = []
-    seen_chunk_ids = set()
-
-    def add_result(item: Dict[str, Any]) -> None:
-        chunk_id = item["chunk_id"]
-        if chunk_id in seen_chunk_ids:
-            return
-        seen_chunk_ids.add(chunk_id)
-        merged.append(item)
-
+    semantic_hits: List[Dict[str, Any]] = []
     for chunk, filename, distance in semantic_rows:
-        source_kind = ((chunk.metadata_ or {}).get("source_kind") if hasattr(chunk, "metadata_") else None) or "semantic"
-        similarity = 1.0 - float(distance)
-        if source_kind == "raw_ocr_page":
-            similarity -= 0.08
-        elif source_kind == "raw_ocr_table":
-            similarity -= 0.03
-        add_result(
-            {
-                "chunk_id": chunk.id,
-                "text": chunk.chunk_text,
-                "summary": chunk.summary,
-                "chunk_index": chunk.chunk_index,
-                "document_id": chunk.document_id,
-                "filename": filename,
-                "similarity": similarity,
-                "retrieval_method": "semantic",
-                "source_kind": source_kind,
-            }
-        )
+        if not _is_answer_source(chunk):
+            continue
+        meta = chunk.metadata_ or {}
+        semantic_hits.append({
+            "chunk_id": chunk.id, "text": chunk.chunk_text,
+            "summary": chunk.summary, "chunk_index": chunk.chunk_index,
+            "document_id": chunk.document_id, "filename": filename,
+            "page": meta.get("page"), "similarity": 1.0 - float(distance),
+            "retrieval_method": "semantic", "source_kind": meta.get("source_kind") or "semantic",
+            "table_name": meta.get("table_name"), "quality_status": meta.get("quality_status"),
+            "evidence_status": "ocr_extracted_unverified" if meta.get("page") else "source_not_verified",
+        })
 
+    keyword_hits: List[Dict[str, Any]] = []
     if keyword_terms:
-        acronym_terms = [term for term in keyword_terms if _is_acronym_term(term)]
-        non_year_terms = [term for term in keyword_terms if not _is_year_term(term)]
-        keyword_clauses = [Chunk.chunk_text.ilike(f"%{term}%") for term in keyword_terms]
         keyword_stmt = (
             select(Chunk, Document.filename)
             .join(Document, Document.id == Chunk.document_id)
-            .where(or_(*keyword_clauses))
-            .limit(200)
+            .outerjoin(DocumentPage, _indexed_page_join())
+            .where(_searchable_chunk_filter(), _indexed_page_filter())
         )
-        keyword_result = await session.execute(keyword_stmt)
-        keyword_rows = keyword_result.all()
-
-        scored_keyword_hits = []
+        if document_scope:
+            keyword_stmt = keyword_stmt.where(
+                Chunk.document_id.in_(document_scope)).order_by(Chunk.id)
+        else:
+            # New chunks carry normalized text for candidate generation. Raw
+            # matching remains available for chunks indexed before this change.
+            clauses = []
+            match_score = None
+            for term in sorted(keyword_terms, key=len, reverse=True)[:8]:
+                raw_match = Chunk.chunk_text.ilike(f"%{term}%")
+                normalized_match = Chunk.metadata_["search_text"].as_string().ilike(f"%{term}%")
+                clauses.extend((raw_match, normalized_match))
+                term_score = case((or_(raw_match, normalized_match), 1), else_=0)
+                match_score = term_score if match_score is None else match_score + term_score
+            keyword_stmt = keyword_stmt.where(or_(*clauses)).order_by(
+                match_score.desc(), Chunk.id).limit(5000)
+        keyword_rows = (await session.execute(keyword_stmt)).all()
+        candidates = []
         for chunk, filename in keyword_rows:
-            text = chunk.chunk_text or ""
-            text_lower = text.lower()
-            normalized_text = _normalize_lookup_text(text)
-            source_kind = ((chunk.metadata_ or {}).get("source_kind") if hasattr(chunk, "metadata_") else None) or "semantic"
-
-            score = 0
-            matched_non_year_terms = 0
-            matched_acronym_terms = 0
-            for term in keyword_terms:
-                term_lower = term.lower()
-                if term_lower in text_lower:
-                    if _is_year_term(term):
-                        score += 4
-                    else:
-                        score += max(8, len(term) * 4)
-                        matched_non_year_terms += 1
-                        if _is_acronym_term(term):
-                            matched_acronym_terms += 1
-                if _normalize_lookup_text(term) and _normalize_lookup_text(term) in normalized_text:
-                    if _is_year_term(term):
-                        score += 3
-                    else:
-                        score += max(8, len(term) * 3)
-                        matched_non_year_terms += 1
-                        if _is_acronym_term(term):
-                            matched_acronym_terms += 1
-
-            if normalized_query and normalized_query[:60] and normalized_query[:60] in normalized_text:
-                score += 40
-
-            if "ssf" in [term.lower() for term in keyword_terms] and "ssf" in text_lower:
-                score += 120
-
-            for year in _extract_years(query):
-                if year in text:
-                    score += 10
-
-            if acronym_terms and matched_acronym_terms == 0:
+            if not _is_answer_source(chunk):
                 continue
+            meta = chunk.metadata_ or {}
+            candidates.append({
+                "chunk_id": chunk.id, "text": chunk.chunk_text,
+                "search_text": meta.get("search_text") or chunk.chunk_text,
+                "summary": chunk.summary, "chunk_index": chunk.chunk_index,
+                "document_id": chunk.document_id, "filename": filename,
+                "page": meta.get("page"), "source_kind": meta.get("source_kind") or "semantic",
+                "table_name": meta.get("table_name"), "quality_status": meta.get("quality_status"),
+                "evidence_status": "ocr_extracted_unverified" if meta.get("page") else "source_not_verified",
+            })
+        for hit in bm25_rank(lexical_query, candidates):
+            hit.pop("search_text", None)
+            hit["retrieval_method"] = "keyword"
+            hit["similarity"] = min(0.999, hit.pop("keyword_score") / 50.0)
+            keyword_hits.append(hit)
 
-            if non_year_terms and matched_non_year_terms == 0:
-                continue
-
-            if source_kind == "raw_ocr_page":
-                score -= 20
-            elif source_kind == "raw_ocr_table":
-                score -= 8
-
-            if score <= 0:
-                continue
-
-            scored_keyword_hits.append(
-                (
-                    score,
-                    {
-                        "chunk_id": chunk.id,
-                        "text": chunk.chunk_text,
-                        "summary": chunk.summary,
-                        "chunk_index": chunk.chunk_index,
-                        "document_id": chunk.document_id,
-                        "filename": filename,
-                        "similarity": min(0.999, score / 200.0),
-                        "retrieval_method": "keyword",
-                        "source_kind": source_kind,
-                    },
-                )
-            )
-
-        scored_keyword_hits.sort(key=lambda item: item[0], reverse=True)
-        keyword_ranking = [hit for _, hit in scored_keyword_hits]
-
-        return _reciprocal_rank_fusion(merged, keyword_ranking, top_k)
-
-    return merged[:top_k]
+    # The diagnostic Thai numeric set strongly favours exact lexical evidence.
+    # Use the semantic arm after distinct keyword pages for numeric questions.
+    if re.search(r"เท่าไร|เท่าไหร่|กี่|ร้อยละ|เปอร์เซ็นต์|%|จำนวน|มูลค่า|อัตรา|รายได้|กำไร|หนี้สิน|สินทรัพย์|เงินปันผล|คะแนน", query):
+        return unique_pages([*keyword_hits, *semantic_hits])[:top_k]
+    return _reciprocal_rank_fusion(semantic_hits, keyword_hits, top_k)
 
 
 # Rank at which a result's fusion contribution is roughly halved. The standard
@@ -642,26 +629,21 @@ def _reciprocal_rank_fusion(
     keyword: List[Dict[str, Any]],
     top_k: int,
 ) -> List[Dict[str, Any]]:
-    """Blend the semantic and keyword rankings by reciprocal rank.
-
-    Concatenating the lists instead — keyword first, semantic with whatever
-    slots remain — silently discards the semantic half: keyword search returns
-    up to 200 candidates, so it fills every slot and the vector ranking never
-    contributes. Measured on this corpus, chunks sitting at semantic rank 1 were
-    absent from the top 40 of the concatenated list. Reciprocal rank fusion lets
-    a result that either retriever ranks highly surface, and rewards the ones
-    both agree on.
-    """
+    """Blend distinct PDF pages by reciprocal rank for qualitative questions."""
     fused: Dict[Any, Dict[str, Any]] = {}
     for ranking, method in ((semantic, "semantic"), (keyword, "keyword")):
-        for rank, item in enumerate(ranking):
-            cid = item["chunk_id"]
-            entry = fused.get(cid)
+        for rank, item in enumerate(unique_pages(ranking)):
+            key = ((item.get("document_id"), item.get("page"))
+                   if item.get("document_id") is not None and item.get("page") is not None
+                   else ("chunk", item["chunk_id"]))
+            entry = fused.get(key)
             if entry is None:
                 entry = {"item": dict(item), "score": 0.0, "methods": set()}
-                fused[cid] = entry
+                fused[key] = entry
             entry["score"] += 1.0 / (_RRF_K + rank + 1)
             entry["methods"].add(method)
+            if method == "keyword":
+                entry["item"] = dict(item)
 
     ordered = sorted(fused.values(), key=lambda e: e["score"], reverse=True)
 
@@ -755,27 +737,16 @@ async def generate_sql_from_query(question: str, session: AsyncSession) -> str:
     )
 
     try:
-        async with httpx.AsyncClient(timeout=60.0, limits=HTTP_LIMITS) as client:
-            response = await client.post(
-                f"{settings.OLLAMA_HOST}/api/generate",
-                json={
-                    "model": settings.OLLAMA_LLM_MODEL,
-                    "prompt": prompt,
-                    "stream": False,
-                    "options": {"temperature": 0.1, "num_predict": 500}
-                }
-            )
-            response.raise_for_status()
-            sql = response.json().get("response", "").strip()
+        from backend.services.llm import generate as llm_generate
 
-            # Clean up the SQL (remove markdown fences if present)
-            if sql.startswith("```"):
-                sql = sql.split("```")[1]
-                if sql.startswith("sql"):
-                    sql = sql[3:]
-                sql = sql.strip()
-
-            return sql
+        sql = (await llm_generate(prompt, temperature=0.1, max_tokens=500)).strip()
+        # Clean up the SQL (remove markdown fences if present)
+        if sql.startswith("```"):
+            sql = sql.split("```")[1]
+            if sql.startswith("sql"):
+                sql = sql[3:]
+            sql = sql.strip()
+        return sql
     except Exception as e:
         print(f"WARNING: SQL generation failed: {e}")
         return ""

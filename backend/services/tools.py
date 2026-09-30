@@ -19,8 +19,11 @@ from typing import Any, Dict, List, Optional
 import httpx
 
 from backend.config import get_settings, ollama_extra_fields
-from backend.services.duckdb_warehouse import execute_sql, get_schema_description
+from backend.services.duckdb_warehouse import (
+    execute_sql, get_schema_description, resolve_result_evidence, warehouse_capabilities,
+)
 from backend.services.llm import generate as llm_generate
+from backend.services.retrieval_rank import normalize_search_text
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
@@ -30,7 +33,52 @@ HTTP_LIMITS = httpx.Limits(max_connections=4, max_keepalive_connections=2)
 _SELECT_START_RE = re.compile(r"\b(SELECT|WITH)\b", re.IGNORECASE)
 
 
-def _focus_excerpt(text: str, terms: List[str], budget: int, head: int = 400) -> str:
+# Cap per-term occurrences so a stop-word-ish token on a long page cannot make
+# the window search quadratic in the page length.
+_MAX_TERM_HITS = 40
+
+# Shorter verbatim spans than this match generic Thai prose and anchor nothing.
+_MIN_SPAN = 10
+
+
+def _question_spans(question: str, text: str, limit: int = 5) -> List[str]:
+    """Longest verbatim substrings of *question* that occur in *text*.
+
+    The same signal ``SQLTool._exact_label_rows`` uses on table rows: a phrase
+    the question spells out and the page repeats verbatim points at the answer
+    far more reliably than the frequency of its individual words. Whitespace is
+    never normalised — in this corpus "รวมในประเทศและ ต่างประเทศ" and
+    "รวมในประเทศและต่างประเทศ" are different things.
+    """
+    q = str(question or "")
+    if not q or not text:
+        return []
+    found: List[str] = []
+    for start in range(len(q)):
+        lo, hi, best = _MIN_SPAN, len(q) - start, None
+        while lo <= hi:                       # longest span that still occurs
+            mid = (lo + hi) // 2
+            if q[start:start + mid] in text:
+                best, lo = mid, mid + 1
+            else:
+                hi = mid - 1
+        if best:
+            found.append(q[start:start + best])
+    found.sort(key=len, reverse=True)
+    keep: List[str] = []
+    for span in found:
+        if not any(span in k for k in keep):  # drop spans inside a longer one
+            keep.append(span)
+    return keep[:limit]
+
+
+def _focus_excerpt(
+    text: str,
+    terms: List[str],
+    budget: int,
+    head: int = 400,
+    question: str = "",
+) -> str:
     """Excerpt that keeps the region where the query terms actually appear.
 
     Corpus chunks are whole OCR pages (3-5k chars) and the answer to a specific
@@ -43,17 +91,66 @@ def _focus_excerpt(text: str, terms: List[str], budget: int, head: int = 400) ->
     text = text or ""
     if len(text) <= budget:
         return text
-    low = text.lower()
-    positions = sorted({p for p in (low.find(t.lower()) for t in terms if t) if p >= 0})
-    if not positions:
+    raw_low = text.lower()
+    low = normalize_search_text(raw_low)
+    # Search normalized Thai glyphs, but return the original evidence verbatim.
+    raw_positions = list(range(len(low)))
+    if low != raw_low:
+        from difflib import SequenceMatcher
+        for tag, i, j, a, b in SequenceMatcher(None, low, raw_low, autojunk=False).get_opcodes():
+            if tag == "equal":
+                raw_positions[i:j] = range(a, b)
+            elif i < j:
+                raw_positions[i:j] = [a] * (j - i)
+    # Every occurrence, not just the first. A page repeats its query terms, so
+    # scoring on first hits alone pinned the window near the top of the chunk
+    # and the answer further down was dropped (measured on ids 439/498/507).
+    hits: List[tuple] = []
+    for idx, term in enumerate(dict.fromkeys(t.lower() for t in terms if t)):
+        if not term:
+            continue
+        needle, at, found = normalize_search_text(term.lower()), 0, 0
+        if not needle:
+            continue
+        while found < _MAX_TERM_HITS:
+            p = low.find(needle, at)
+            if p < 0:
+                break
+            hits.append((raw_positions[p], idx))
+            at, found = p + max(1, len(needle)), found + 1
+    anchors: List[int] = []
+    for span in _question_spans(question, text):
+        at = 0
+        for _ in range(_MAX_TERM_HITS):
+            p = text.find(span, at)
+            if p < 0:
+                break
+            anchors.append(p)
+            at = p + max(1, len(span))
+    if not hits and not anchors:
         return text[:budget]
+    hits.sort()
     win = max(budget - head, 200)
-    best_start, best_cov = positions[0], -1
-    for p in positions:
-        cov = sum(1 for q in positions if p <= q < p + win)
-        if cov > best_cov:
-            best_cov, best_start = cov, p
-    start = best_start
+    # Rank a window by the verbatim question spans it covers first, then by how
+    # many *distinct* query terms — so a window is not won by one common word
+    # repeating; total hits only breaks ties.
+    candidates = sorted({p for p, _ in hits} | set(anchors)) or [0]
+    best_start, best_key = candidates[0], (-1, -1, -1)
+    for p in candidates:
+        covered = sum(1 for a in anchors if p <= a < p + win)
+        seen, total = set(), 0
+        for q, term_idx in hits:
+            if q < p:
+                continue
+            if q >= p + win:
+                break
+            seen.add(term_idx)
+            total += 1
+        key = (covered, len(seen), total)
+        if key > best_key:
+            best_key, best_start = key, p
+    # Keep the row label immediately before a matched year/value too.
+    start = max(0, best_start - 80)
     if start + win > len(text):
         start = max(0, len(text) - win)
     if start <= head:
@@ -117,6 +214,11 @@ class SQLTool:
     async def execute(self, question: str) -> ToolResult:
         """Generate SQL via LLM, execute on DuckDB, return results."""
 
+        capabilities = warehouse_capabilities()
+        if not (capabilities["year_cells"] or capabilities["lookup_cells"]):
+            return ToolResult(tool_name=self.name, success=False,
+                              error="No structured table cells are available yet")
+
         schema_desc = get_schema_description()
         sql = await self._generate_sql(question, schema_desc)
 
@@ -166,11 +268,20 @@ class SQLTool:
                 data={"sql": sql},
             )
 
+        evidence = resolve_result_evidence(result.get("rows", []))
         summary = self._format_results(result, question)
+        if evidence:
+            pages = []
+            for item in evidence[:5]:
+                location = f"{item['filename']} PDF page {item['page'] or 'unknown'}"
+                if location not in pages:
+                    pages.append(location)
+            summary += "\nSources: " + "; ".join(pages)
+        summary += "\nOCR-extracted values are not visually verified against the PDF."
         return ToolResult(
             tool_name=self.name,
             success=True,
-            data={"sql": sql, **result},
+            data={"sql": sql, **result, "evidence": evidence},
             summary=summary,
         )
 
@@ -209,39 +320,50 @@ class SQLTool:
             "14. LIKE often matches a NEAR-MISS line item as well as the one asked for (e.g. 'เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า' vs 'เงินสดจ่ายสำหรับหนี้สินภายใต้สัญญาเช่า' — different rows, different values). Rank the exact wording first: `ORDER BY (row_label = '<metric exactly as asked>') DESC, length(row_label) ASC`. Keep LIMIT high enough (>=6) on year-over-year queries that BOTH years of the right row survive.\n"
             "15. SECTION IN PARENTHESES → RANK it, never filter on it. One statement page is split into SECTIONS and `table_name` carries the section after an em-dash, e.g. '[p435] สินทรัพย์ทางการเงิน… — ยอดคงเหลือ' vs '… — รวมมูลค่า ยุติธรรม' vs '… — ระดับ 2'. The SAME row_label exists in every section with DIFFERENT values, so row_label alone picks one at random. When the question carries a trailing '(…)', put it in the ORDER BY: `ORDER BY (table_name LIKE '%<parenthesised text verbatim>%') DESC, length(row_label) ASC` and raise LIMIT to 6. Copy the text EXACTLY, keeping every space (Thai table names contain deliberate spaces; a respaced pattern matches nothing). NEVER write `AND table_name LIKE …` in the WHERE clause of a fact_financial_metrics query: the parenthesis is often part of the metric name itself ('กำไรสุทธิ (ส่วนที่เป็นของธนาคาร)', 'ค่าใช้จ่ายต่อรายได้ (%)') and a WHERE on it returns 0 rows, losing the answer completely. Ranking costs nothing when the guess is wrong.\n"
             "16. For fact_financial_metrics ALWAYS put `table_name` in the SELECT list. Without it the answer step cannot tell which section a value came from and will quote the wrong one.\n\n"
+            "17. For document-specific factual rows, include document_id and table_name in SELECT. Keep row_label, metric_year/col_name, and raw_value/col_value visible so the source PDF page and cell can be traced. Aggregates without row identity have no page citation.\n\n"
             "EXAMPLES:\n\n"
             "Q: จำนวนหุ้นสามัญที่ธนาคารถือใน บริษัทหลักทรัพย์จัดการกองทุน มีกี่หุ้น?\n"
-            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%บริษัทหลักทรัพย์จัดการกองทุน%' AND col_name LIKE '%จำนวนหุ้น%';\n\n"
+            "SQL: SELECT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%บริษัทหลักทรัพย์จัดการกองทุน%' AND col_name LIKE '%จำนวนหุ้น%';\n\n"
             "Q: ธนาคารถือหุ้นใน บริษัท ยู เอ็ม ซี เม็ททอล จำกัด คิดเป็นร้อยละเท่าไร?\n"
-            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%ยู เอ็ม ซี เม็ททอล%' AND (col_name LIKE '%ถือหุ้น%' OR col_name LIKE '%ร้อยละ%' OR col_name LIKE '%สัดส่วน%');\n\n"
+            "SQL: SELECT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%ยู เอ็ม ซี เม็ททอล%' AND (col_name LIKE '%ถือหุ้น%' OR col_name LIKE '%ร้อยละ%' OR col_name LIKE '%สัดส่วน%');\n\n"
             "Q: บริษัท บัตรกรุงศรีอยุธยา จำกัด ประกอบธุรกิจประเภทใด?\n"
-            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%บัตรกรุงศรีอยุธยา%' AND col_name LIKE '%ธุรกิจ%';\n\n"
+            "SQL: SELECT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%บัตรกรุงศรีอยุธยา%' AND col_name LIKE '%ธุรกิจ%';\n\n"
             "Q: บริษัทที่ทำธุรกิจ บัตรเครดิตและสินเชื่อส่วนบุคคล มีกี่บริษัท บริษัทใดบ้าง และบริษัทใดมีหุ้นเยอะสุด?\n"
-            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND col_name LIKE '%จำนวนหุ้น%' AND row_label IN (SELECT row_label FROM dim_table_rows WHERE col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%') ORDER BY col_value_num DESC;\n\n"
+            "SQL: SELECT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND col_name LIKE '%จำนวนหุ้น%' AND row_label IN (SELECT row_label FROM dim_table_rows WHERE col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%') ORDER BY col_value_num DESC;\n\n"
             "Q: บริษัทที่บจก. (ธนาคาร) ถือหุ้นไม่ถึง 100% มีอะไรบ้าง?\n"
-            "SQL: SELECT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND (col_name LIKE '%สัดส่วน%' OR col_name LIKE '%ร้อยละ%') AND col_value_num < 100 ORDER BY row_index;\n\n"
+            "SQL: SELECT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND (col_name LIKE '%สัดส่วน%' OR col_name LIKE '%ร้อยละ%') AND col_value_num < 100 ORDER BY row_index;\n\n"
             "Q: การลงทุนของธนาคารในบริษัทอื่น มีบริษัทอะไรบ้าง 2 อันดับแรก?\n"
-            "SQL: SELECT DISTINCT row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND row_index < 2 ORDER BY row_index, col_name;\n\n"
+            "SQL: SELECT DISTINCT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND row_index < 2 ORDER BY row_index, col_name;\n\n"
             "Q: สินทรัพย์รวมปี 2567 เท่าไร?\n"
-            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
+            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
             "Q: เงินสด ปี 2567 มีค่าเท่ากับเท่าไร?\n"
-            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%เงินสด%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
+            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%เงินสด%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
             "Q: กำไรสุทธิ ปี 2567 เปลี่ยนแปลงจากปี 2566 เท่าไร?\n"
-            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year IN ('2567','2566') ORDER BY (row_label = 'กำไรสุทธิ') DESC, length(row_label) ASC, metric_year DESC LIMIT 6;\n\n"
+            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year IN ('2567','2566') ORDER BY (row_label = 'กำไรสุทธิ') DESC, length(row_label) ASC, metric_year DESC LIMIT 6;\n\n"
             "Q: เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า ปี 2567 มีค่าเท่ากับเท่าไร?\n"
-            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สัญญาเช่า%' AND metric_year = '2567' ORDER BY (row_label = 'เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า') DESC, length(row_label) ASC LIMIT 3;\n\n"
+            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สัญญาเช่า%' AND metric_year = '2567' ORDER BY (row_label = 'เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า') DESC, length(row_label) ASC LIMIT 3;\n\n"
             "Q: สินทรัพย์อนุพันธ์ - เพื่อป้องกันความเสี่ยง แบบพลวัต (ยอดคงเหลือ) ปี 2567 มีค่าเท่ากับเท่าไร?\n"
-            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%แบบพลวัต%' AND metric_year = '2567' ORDER BY (table_name LIKE '%ยอดคงเหลือ%') DESC, length(row_label) ASC LIMIT 6;\n\n"
+            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%แบบพลวัต%' AND metric_year = '2567' ORDER BY (table_name LIKE '%ยอดคงเหลือ%') DESC, length(row_label) ASC LIMIT 6;\n\n"
             "Q: กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2563 มีค่าเท่ากับเท่าไร?  -- the parenthesis here is part of the METRIC name, not a section; ranking on it is harmless, a WHERE on it would return nothing\n"
-            "SQL: SELECT table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year = '2563' ORDER BY (table_name LIKE '%ส่วนที่เป็นของธนาคาร%') DESC, length(row_label) ASC LIMIT 6;\n\n"
+            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year = '2563' ORDER BY (table_name LIKE '%ส่วนที่เป็นของธนาคาร%') DESC, length(row_label) ASC LIMIT 6;\n\n"
             f"Q: {question}\n"
             "SQL:"
         )
 
+        if not warehouse_capabilities()["wide_view"]:
+            prompt += ("\nIMPORTANT: v_table_rows_wide DOES NOT EXIST in this warehouse. "
+                       "Never reference it. Use dim_table_rows and self-joins/subqueries "
+                       "for multi-attribute rows.\n")
+
 
         try:
             sql = await llm_generate(prompt, temperature=0.1, max_tokens=500)
-            return _clean_sql(sql)
+            cleaned = _clean_sql(sql)
+            if not warehouse_capabilities()["wide_view"] and re.search(
+                r"\bv_table_rows_wide\b", cleaned, re.IGNORECASE
+            ):
+                return ""
+            return cleaned
         except Exception as exc:
             logger.warning("SQL generation failed: %s", exc)
             return ""
@@ -361,15 +483,22 @@ class VectorSearchTool:
         summary_parts = []
         chunks_data = []
         for r in results:
-            text = _focus_excerpt(r.get("text") or "", focus_terms, budget)
+            text = _focus_excerpt(r.get("text") or "", focus_terms, budget, question=query)
             source = r.get("source_kind", "semantic")
             sim = r.get("similarity", 0)
             summary_parts.append(
-                f"[{r.get('filename', '?')}, chunk {r.get('chunk_index', '?')}, "
-                f"source={source}, sim={sim:.2f}]\n{text}"
+                f"[{r.get('filename', '?')}, PDF page {r.get('page') or 'unknown'}, "
+                f"chunk {r.get('chunk_index', '?')}, source={source}, sim={sim:.2f}; "
+                "OCR evidence is not visually verified]\n"
+                f"{text}"
             )
             chunks_data.append({
+                "document_id": r.get("document_id"),
                 "filename": r.get("filename"),
+                "page": r.get("page"),
+                "table_name": r.get("table_name"),
+                "quality_status": r.get("quality_status"),
+                "evidence_status": r.get("evidence_status"),
                 "chunk_index": r.get("chunk_index"),
                 "similarity": sim,
                 "source_kind": source,
@@ -419,9 +548,16 @@ class MultiHopTool:
 
         # Step 2: Answer each sub-question
         sub_results: List[Dict[str, Any]] = []
+        seen: set[tuple[str, str]] = set()
         for sq in sub_questions:
-            sq_text = sq.get("question", "")
+            sq_text = str(sq.get("question") or "").strip()
             sq_tool = sq.get("tool", "sql_query")
+            if not sq_text or sq_tool not in {"sql_query", "vector_search"}:
+                continue
+            key = (sq_tool, re.sub(r"\s+", "", sq_text).casefold())
+            if key in seen:
+                continue
+            seen.add(key)
 
             if sq_tool == "vector_search":
                 result = await self._vector_tool.execute(sq_text, session=session)
@@ -433,7 +569,14 @@ class MultiHopTool:
                 "tool": sq_tool,
                 "success": result.success,
                 "summary": result.summary,
+                "data": result.data,
             })
+            if len(sub_results) >= 2:
+                break
+
+        if not sub_results:
+            return ToolResult(tool_name=self.name, success=False,
+                              error="No usable sub-question was produced")
 
         # Step 3: Synthesise
         combined_context = "\n\n".join(
@@ -451,7 +594,7 @@ class MultiHopTool:
     async def _decompose(self, question: str) -> List[Dict[str, str]]:
         prompt = (
             "You are a Thai financial data analyst. "
-            "Break the following complex question into 2-3 simpler sub-questions.\n"
+            "Break the following complex question into at most 2 simpler sub-questions.\n"
             "For each sub-question, specify which tool to use:\n"
             "- 'sql_query' for numbers, statistics, comparisons\n"
             "- 'vector_search' for concepts, explanations, policies\n\n"
@@ -490,6 +633,9 @@ class WebSearchTool:
     )
 
     async def execute(self, query: str, session: Any = None) -> ToolResult:
+        if settings.OFFLINE_MODE:
+            return ToolResult(tool_name=self.name, success=False,
+                              error="Web search is disabled in OFFLINE_MODE")
         if not settings.TAVILY_API_KEY:
             return ToolResult(
                 tool_name=self.name,

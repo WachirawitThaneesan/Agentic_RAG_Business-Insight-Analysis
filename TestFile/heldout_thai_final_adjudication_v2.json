@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "purpose": "Post-run, provisional evidence and rounding adjudication for a separately versioned rescore",
+  "base_reference_sha256": "35a203b6e9c6cc26fd2cd4d95ac590efb5e5ae5dd14808bf2709fcbc440f9276",
+  "review_status": "one-reader PDF inspection; independent human second review pending",
+  "default_rule": "Exact signed value, year, and explicit unit; original required PDF page; no rounding or alternate page unless listed below",
+  "changes": {
+    "TF06": {
+      "alternate_evidence": [{"document": "SCBX", "source_pdf_page": 111}],
+      "reason": "SCBX PDF page 111 reports 2567 net profit of 43.9 billion baht in its performance narrative"
+    },
+    "TF08": {
+      "alternate_evidence": [{"document": "SCBX", "source_pdf_page": 252}],
+      "reason": "SCBX PDF page 252 note 41 gives consolidated 2567 basic earnings per share of 13.05 baht"
+    },
+    "TF09": {
+      "alternate_evidence": [{"document": "SCBX", "source_pdf_page": 252}],
+      "reason": "SCBX PDF page 252 note 42 states a 10.44 baht per-share dividend for 2567 operations"
+    },
+    "TF14": {
+      "alternate_evidence": [{"document": "TU", "source_pdf_page": 194}],
+      "rounding_decimals": 1,
+      "rounding_mode": "ROUND_HALF_UP",
+      "reason": "Thai Union PDF page 194 shows 4,984,894 thousand baht consolidated parent profit for 2567 and no discontinued-operation amount; the page 18 infographic displays this as 5.0 billion baht to one decimal place"
+    }
+  }
+}

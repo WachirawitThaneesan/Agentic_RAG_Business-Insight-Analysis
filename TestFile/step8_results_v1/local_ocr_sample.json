@@ -1,0 +1,26 @@
+[
+  {
+    "page": 40,
+    "seconds": 88.76,
+    "raw_regions": 1,
+    "tables": 3,
+    "text_chars": 413,
+    "errors": []
+  },
+  {
+    "page": 140,
+    "seconds": 60.16,
+    "raw_regions": 1,
+    "tables": 1,
+    "text_chars": 1551,
+    "errors": []
+  },
+  {
+    "page": 250,
+    "seconds": 38.55,
+    "raw_regions": 1,
+    "tables": 0,
+    "text_chars": 889,
+    "errors": []
+  }
+]

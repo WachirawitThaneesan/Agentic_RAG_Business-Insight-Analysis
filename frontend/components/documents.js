@@ -5,6 +5,7 @@
 
 let documentListRefreshTimer = null;
 let uploadListPollingTimer = null;
+let ocrViewerState = { docId: null, page: 1, total: 0 };
 
 function renderDocuments(container) {
     container.innerHTML = `
@@ -58,7 +59,7 @@ function renderDocuments(container) {
         <div class="card" id="doc-table-viewer-card" style="margin-top:24px;display:none">
             <div class="card-header">
                 <div>
-                    <div class="card-title">Structured Tables</div>
+                    <div class="card-title">OCR Page Viewer</div>
                     <div class="card-subtitle" id="doc-table-viewer-subtitle">เลือกเอกสารเพื่อดูตารางที่ extract ได้</div>
                 </div>
                 <button class="btn btn-secondary btn-sm" onclick="closeDocTablesViewer()">Close</button>
@@ -100,7 +101,7 @@ async function uploadFiles(files) {
     progress.style.display = 'block';
 
     for (let i = 0; i < files.length; i++) {
-        statusText.textContent = `Processing ${files[i].name} (${i + 1}/${files.length})...`;
+        statusText.textContent = `Uploading ${files[i].name} (${i + 1}/${files.length})...`;
 
         if (uploadListPollingTimer) {
             clearInterval(uploadListPollingTimer);
@@ -112,11 +113,9 @@ async function uploadFiles(files) {
 
         try {
             const result = await api.upload('/documents/upload', files[i]);
-            const modeLabel = result.large_file_mode ? ' • batch mode' : '';
-            showToast(
-                `${files[i].name}: ${result.chunks_created} chunks, ${result.tables_extracted} tables${modeLabel}`,
-                'success'
-            );
+            showToast(result.queued
+                ? `${files[i].name}: queued ${result.page_count} pages; processing continues in background`
+                : `${files[i].name}: ${result.chunks_created} chunks, ${result.tables_extracted} tables`, 'success');
         } catch (e) {
             showToast(`Failed to process ${files[i].name}: ${e.message}`, 'error');
         } finally {
@@ -139,7 +138,7 @@ async function loadDocumentList() {
         const data = await api.get('/documents');
         const docs = data.documents || [];
         countLabel.textContent = `${docs.length} documents`;
-        const hasProcessingDocs = docs.some((doc) => doc.status === 'processing');
+        const hasProcessingDocs = docs.some((doc) => ['pending', 'processing'].includes(doc.status));
 
         if (documentListRefreshTimer) {
             clearTimeout(documentListRefreshTimer);
@@ -182,7 +181,7 @@ async function loadDocumentList() {
                 <tbody>
                     ${docs.map(doc => `
                         <tr>
-                            <td style="font-weight:500">${doc.filename}</td>
+                            <td style="font-weight:500">${escapeDocHtml(doc.filename)}</td>
                             <td><span class="badge badge-primary">${doc.doc_type?.toUpperCase() || '—'}</span></td>
                             <td>
                                 <span class="badge ${doc.status === 'completed' ? 'badge-success' : doc.status === 'failed' ? 'badge-danger' : 'badge-warning'}">
@@ -201,7 +200,7 @@ async function loadDocumentList() {
                             </td>
                             <td style="display:flex;gap:6px">
                                 <button class="btn btn-secondary btn-sm" onclick="viewDocChunks(${doc.id})">Chunks</button>
-                                <button class="btn btn-secondary btn-sm" onclick="viewDocTables(${doc.id})">Tables</button>
+                                <button class="btn btn-secondary btn-sm" onclick="viewPaginatedOcr(${doc.id})">OCR pages</button>
                                 <button class="btn btn-danger btn-sm" onclick="deleteDoc(${doc.id})">Delete</button>
                             </td>
                         </tr>
@@ -222,6 +221,75 @@ function viewDocChunks(docId) {
     window.location.hash = `visualizer`;
     // Store selected doc ID for visualizer
     sessionStorage.setItem('selectedDocId', docId);
+}
+
+function renderOcrTable(table, label) {
+    const headers = table.headers || [];
+    const rows = table.rows || [];
+    return `<details style="margin-bottom:12px" open>
+        <summary>${escapeDocHtml(label)}: ${escapeDocHtml(table.title || table.table_name || 'table')} (${rows.length} rows)</summary>
+        <div style="overflow:auto;max-height:440px;margin-top:8px">
+            <table class="data-table"><thead><tr>${headers.map(h => `<th>${escapeDocHtml(h)}</th>`).join('')}</tr></thead>
+            <tbody>${rows.slice(0, 200).map(row => `<tr>${row.map(cell => `<td>${escapeDocHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table>
+        </div>${rows.length > 200 ? '<div style="font-size:0.76rem">Showing first 200 rows on this page.</div>' : ''}
+    </details>`;
+}
+
+async function viewPaginatedOcr(docId, requestedPage = 1) {
+    const card = document.getElementById('doc-table-viewer-card');
+    const subtitle = document.getElementById('doc-table-viewer-subtitle');
+    const content = document.getElementById('doc-table-viewer-content');
+    card.style.display = 'block';
+    subtitle.textContent = 'Loading one page...';
+    content.innerHTML = '<div class="loader" style="padding:24px"><span class="loader-spinner"></span>Loading OCR page...</div>';
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try {
+        const requested = Math.max(1, Math.floor(Number(requestedPage) || 1));
+        const skip = Math.floor((requested - 1) / 25) * 25;
+        const listing = await api.get(`/documents/${docId}/pages?skip=${skip}&limit=25`);
+        if (!listing.total) {
+            await viewDocTables(docId); // legacy documents or images have no PDF-page checkpoints
+            return;
+        }
+        const page = Math.min(requested, listing.total);
+        const detail = await api.get(`/documents/${docId}/pages/${page}`);
+        ocrViewerState = { docId, page, total: listing.total };
+        subtitle.textContent = `${listing.filename} • physical PDF page ${page}/${listing.total} • ${detail.status}`;
+        const pageButtons = listing.pages.map(item => `<button class="btn btn-secondary btn-sm" style="${item.page === page ? 'border-color:var(--accent-primary-light)' : ''}" onclick="viewPaginatedOcr(${docId},${item.page})">${item.page}: ${escapeDocHtml(item.status)}</button>`).join('');
+        const raw = (detail.raw_ocr_pages || []).map(part => `<details open style="margin-bottom:10px"><summary>${escapeDocHtml(part.region || 'full')} region • rotation ${escapeDocHtml(part.rotation ?? 0)}°</summary><pre style="white-space:pre-wrap;overflow:auto;max-height:500px">${escapeDocHtml(part.markdown || '')}</pre></details>`).join('');
+        const parsed = (detail.raw_ocr_tables || []).map(table => renderOcrTable(table, 'OCR parsed')).join('');
+        const stored = (detail.structured_tables || []).map(table => renderOcrTable(table, 'Stored')).join('');
+        const unresolved = (detail.quality_reports || []).flatMap(report =>
+            (report.row_reports || []).filter(row => row.status === 'unresolved').map(row =>
+                `${report.table_name || 'table'} row ${row.row_index + 1}: ${(row.reasons || []).join(', ')}`));
+        const qualityNotice = (detail.quality_reports || []).length
+            ? `Quality checks: ${unresolved.length} unresolved rows. Other rows may still be unverified.`
+            : 'No row-quality report stored for this page. Older uploads were not revalidated; stored values may be wrong.';
+        content.innerHTML = `
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+                <button class="btn btn-secondary btn-sm" onclick="viewPaginatedOcr(${docId},${Math.max(1, page - 1)})" ${page === 1 ? 'disabled' : ''}>Previous</button>
+                <input id="ocr-page-number" type="number" min="1" max="${listing.total}" value="${page}" style="width:90px;padding:6px">
+                <button class="btn btn-secondary btn-sm" onclick="viewPaginatedOcr(${docId},document.getElementById('ocr-page-number').value)">Go</button>
+                <button class="btn btn-secondary btn-sm" onclick="viewPaginatedOcr(${docId},${Math.min(listing.total, page + 1)})" ${page === listing.total ? 'disabled' : ''}>Next</button>
+                <span style="font-size:0.78rem;color:var(--text-muted)">Only this page is loaded. ${escapeDocHtml(detail.error_stage || '')} ${escapeDocHtml(detail.error_message || '')}</span>
+            </div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px">${pageButtons}</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px">
+                <section class="card" style="padding:14px"><h3>Original PDF page</h3><img src="${detail.image_url}" alt="Original PDF page ${page}" loading="lazy" style="width:100%;height:auto"></section>
+                <section class="card" style="padding:14px"><h3>Raw OCR</h3>${raw || '<p>No raw OCR stored for this page.</p>'}</section>
+                <section class="card" style="padding:14px"><h3>Parsed OCR tables</h3>${parsed || '<p>No table detected.</p>'}</section>
+                <section class="card" style="padding:14px"><h3>Final stored data</h3>${stored || '<p>No structured rows stored.</p>'}</section>
+            </div>
+            <details style="margin-top:14px" open><summary>${escapeDocHtml(qualityNotice)}</summary>
+                ${(detail.quality_reports || []).length
+                    ? (unresolved.slice(0, 30).map(item => `<div style="font-size:0.78rem">${escapeDocHtml(item)}</div>`).join('') || '<div>No unresolved rows reported; other rows may still be unverified.</div>')
+                    : '<div>Re-upload this PDF to apply the current quality checks.</div>'}
+                ${unresolved.length > 30 ? '<div>Showing first 30 unresolved rows.</div>' : ''}
+            </details>`;
+    } catch (error) {
+        subtitle.textContent = 'OCR page unavailable';
+        content.innerHTML = `<p style="color:var(--accent-danger)">${escapeDocHtml(error.message)}</p>`;
+    }
 }
 
 async function viewDocTables(docId) {

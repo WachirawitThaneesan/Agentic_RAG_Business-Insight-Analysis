@@ -1,0 +1,906 @@
+[
+  {
+    "id": "TF01",
+    "answer": "ในปี 2567 SCBX มีรายได้จากการดำเนินงาน 198.244 พันล้านบาท",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      }
+    ]
+  },
+  {
+    "id": "TF02",
+    "answer": "สัดส่วนสินเชื่อด้อยคุณภาพต่อเงินให้สินเชื่อรวมของ SCBX ในปี 2567 เท่ากับ 3.4% (ค่าที่ถอดจากเอกสารและยังไม่ได้ตรวจยืนยันด้วยตาจาก PDF)",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 200
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 95
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 220
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 31
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 182
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 74
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 201
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 75
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 205
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 76
+      }
+    ]
+  },
+  {
+    "id": "TF03",
+    "answer": "ณ สิ้นปี 2567 SCBX มีสินทรัพย์รวมตามงบการเงินรวมเท่ากับ 3,486.54 พันล้านบาท",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 202
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 89
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 164
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 95
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 206
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 28
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 230
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 30
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 232
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 30
+      }
+    ]
+  },
+  {
+    "id": "TF04",
+    "answer": "ณ สิ้นปี 2567 เงินรับฝากของ SCBX ในตารางฐานะการเงินรวมเท่ากับ 2,473.626 พันล้านบาท",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 164
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 8
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 250
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 29
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 202
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 29
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 171
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 47
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 235
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 53
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      }
+    ]
+  },
+  {
+    "id": "TF05",
+    "answer": "ไม่พบข้อมูลรวมรายได้จากการดำเนินงานของ SCBX ในปี 2566 ในเอกสารที่ให้มา",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 47
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 30
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 230
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 39
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 219
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 28
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 110
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 33
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 225
+      }
+    ]
+  },
+  {
+    "id": "TF06",
+    "answer": "กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ของบริษัท SCBX ในปี 2567 ตามตารางผลประกอบการรวมคือ 49,604 หน่วยพันล้านบาท",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      }
+    ]
+  },
+  {
+    "id": "TF07",
+    "answer": "ไม่พบข้อมูลส่วนต่างอัตราดอกเบี้ยสุทธิ (NIM) ของ SCBX ปี 2567 ในตารางอัตราส่วนทางการเงินที่ระบุเป็นตัวเลขเปอร์เซ็นต์โดยตรง มีเพียงข้อมูลว่าส่วนต่างอัตราดอกเบี้ยสุทธิเพิ่มขึ้นร้อยละ 0.12 จากปีก่อนหน้าในปี 2567 และเป้าหมายสำหรับปี 2568 อยู่ที่ร้อยละ 3.6-3.8",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 32
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 110
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 204
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 8
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 205
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 113
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 217
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 95
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 192
+      }
+    ]
+  },
+  {
+    "id": "TF08",
+    "answer": "กำไรสุทธิต่อหุ้นของ SCBX ในปี 2567 เท่ากับ 13.10 บาทต่อหุ้น (งบการเงินรวม) และ 7.00 บาทต่อหุ้น (งบการเงินเฉพาะธนาคาร)",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 110
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 28
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 206
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 30
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 234
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 30
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 251
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 31
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 243
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      }
+    ]
+  },
+  {
+    "id": "TF09",
+    "answer": "เงินปันผลต่อหุ้นของ SCBX สำหรับผลประกอบการปี 2567 ตามตารางข้อมูลหลักทรัพย์คือ 10.44 บาท",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 47
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 110
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 252
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 113
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 56
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 246
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 86
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 206
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 95
+      }
+    ]
+  },
+  {
+    "id": "TF10",
+    "answer": "ในปี 2567 ธุรกิจ Gen 2 ของ SCBX คิดเป็นสัดส่วนร้อยละ 16 ของรายได้รวม",
+    "citations": [
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 33
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 33
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 53
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 56
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 32
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 47
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 31
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 57
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      }
+    ]
+  },
+  {
+    "id": "TF11",
+    "answer": "ไม่พบข้อมูลรายได้จากการขายของไทยยูเนี่ยนปี 2567 ในเอกสารที่ให้มา",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 179
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 110
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 179
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 30
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 125
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 88
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 165
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 106
+      }
+    ]
+  },
+  {
+    "id": "TF12",
+    "answer": "ไม่พบข้อมูลกำไรก่อนหักดอกเบี้ย ภาษี ค่าเสื่อมราคา และค่าตัดจำหน่าย (EBITDA) ของไทยยูเนี่ยนในปี 2567 ในเอกสารที่ค้นหาได้",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 243
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 179
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 180
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 106
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 179
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 111
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 123
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 109
+      }
+    ]
+  },
+  {
+    "id": "TF13",
+    "answer": "หนี้สินรวมของไทยยูเนี่ยนปี 2567 มีมูลค่า 94,199,042 พันบาท หรือ 94.199042 พันล้านบาท (ค่าที่ถอดจากเอกสารและยังไม่ได้ตรวจยืนยันด้วยตาจาก PDF; หน้าอ้างอิง: thai_union_one_report_2567_th.pdf, PDF page 154).",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 154
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 243
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 155
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 95
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 155
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 154
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 96
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 100
+      }
+    ]
+  },
+  {
+    "id": "TF14",
+    "answer": "กำไรสุทธิส่วนที่เป็นของผู้เป็นเจ้าของบริษัทใหญ่ของไทยยูเนี่ยนปี 2567 เท่ากับ 4,984,894 พันบาท หรือประมาณ 4.98 พันล้านบาท (ค่าที่ถอดจากเอกสารและยังไม่ได้ตรวจยืนยันด้วยตาจาก PDF)",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 122
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 100
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 96
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 179
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 67
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 243
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 27
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 122
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 27
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 67
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 124
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 100
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 174
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 22
+      }
+    ]
+  },
+  {
+    "id": "TF15",
+    "answer": "เงินปันผลต่อหุ้นของไทยยูเนี่ยนในปี 2567 เท่ากับ 0.66 บาท ซึ่งมาจากเงินปันผลระหว่างกาล 0.31 บาท และเงินปันผลส่วนที่เหลือ 0.35 บาท",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 199
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 10
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 165
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 31
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 122
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 36
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 192
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 38
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 46
+      }
+    ]
+  },
+  {
+    "id": "TF16",
+    "answer": "ในรายงานปี 2567 ไทยยูเนี่ยนได้รับการจัดอันดับเป็นที่หนึ่งในอุตสาหกรรมผลิตภัณฑ์อาหารของโลกจากดัชนีความยั่งยืนดาวโจนส์ DJSI เป็นครั้งที่ 4 แต่ไม่พบข้อมูลคะแนนรวมที่ระบุเป็นตัวเลข.",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 83
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 176
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 37
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 125
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 146
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 63
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 121
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 44
+      }
+    ]
+  },
+  {
+    "id": "TF17",
+    "answer": "ไม่พบข้อมูลที่ระบุว่าปี 2567 ไทยยูเนี่ยนได้รับคัดเลือกเข้า FTSE4Good Emerging Index ติดต่อกันเป็นปีที่เท่าไร",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 33
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 21
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 42
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 167
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 12
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 20
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 63
+      }
+    ]
+  },
+  {
+    "id": "TF18",
+    "answer": "ตลาดซื้อขายปลาทูน่าช่วงครึ่งแรกของปี 2567 เติบโตขึ้นร้อยละ 12 เมื่อเทียบกับปีที่ผ่านมา",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 40
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 24
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 17
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 39
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 40
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 112
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 63
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 33
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 6
+      }
+    ]
+  },
+  {
+    "id": "TF19",
+    "answer": "ไม่พบข้อมูลระยะเวลาเก็บหนี้เฉลี่ยของไทยยูเนี่ยนในปี 2567 ที่ระบุเป็นจำนวนวันอย่างชัดเจนในเอกสารที่ค้นหาได้ มีเพียงข้อมูลว่าลูกหนี้การค้าโดยส่วนใหญ่มีระยะเวลาสินเชื่อ 5 ถึง 120 วัน",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 38
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 146
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 75
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 155
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 124
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 154
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 79
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 155
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 10
+      }
+    ]
+  },
+  {
+    "id": "TF20",
+    "answer": "ไม่พบข้อมูลระยะเวลาขายสินค้าเฉลี่ยของไทยยูเนี่ยนในปี 2567 ที่ระบุเป็นจำนวนวันอย่างชัดเจนในเอกสารที่ค้นหาได้ มีเพียงข้อมูลว่าลูกหนี้การค้าโดยส่วนใหญ่มีระยะเวลาสินเชื่อ 5 ถึง 120 วันในปี 2567.",
+    "citations": [
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 63
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 75
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 38
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 179
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 76
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 165
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 124
+      },
+      {
+        "filename": "thai_union_one_report_2567_th.pdf",
+        "source_pdf_page": 199
+      },
+      {
+        "filename": "scbx_annual_report_2567_th.pdf",
+        "source_pdf_page": 79
+      }
+    ]
+  }
+]

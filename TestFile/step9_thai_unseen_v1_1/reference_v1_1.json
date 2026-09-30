@@ -1,0 +1,698 @@
+{
+  "schema_version": 1,
+  "purpose": "First untouched Thai retrieval test after the SCBX/TU development comparison",
+  "page_numbering": "1-based physical PDF pages",
+  "label_review": "One AI reviewer checked source PDF text and selected rendered pages. No independent human sign-off.",
+  "evidence_rule": "Physical PDF page; only pre-run verified alternate pages count.",
+  "limitations": [
+    "Twenty selected questions from two issuers are not a population accuracy estimate.",
+    "Selectable PDF text isolates retrieval and does not measure OCR or answer quality."
+  ],
+  "documents": [
+    {
+      "code": "CPAXT",
+      "source_file": "cpaxtra_2567_th.pdf",
+      "source_sha256": "9f288ca9b2f89015bda0ea8acff0b03faa951e4ebc83ee8b6514a78ac0126e16",
+      "source_page_count": 400,
+      "download_url": "https://hub.optiwise.io/storage/116/annual-report/2024/cpaxt-or-2024-th.pdf",
+      "excerpt_file": "cpaxtra_2567_th.pdf"
+    },
+    {
+      "code": "EGCO",
+      "source_file": "egco_2567_th.pdf",
+      "source_sha256": "0e77f575844c8e00cc2ca398b4fac4b982baf2dc3e3611d7b1d57aabc001be1b",
+      "source_page_count": 432,
+      "download_url": "https://hub.optiwise.io/storage/53/annual-report/2024/egco-or2024-th.pdf",
+      "excerpt_file": "egco_2567_th.pdf"
+    }
+  ],
+  "items": [
+    {
+      "id": "U01",
+      "document": "CPAXT",
+      "source_pdf_page": 12,
+      "page_role": "revenue_table",
+      "question_th": "รายได้จากการดำเนินงานรวมปี 2567 ของซีพี แอ็กซ์ตร้าในตารางโครงสร้างรายได้ เท่ากับกี่พันบาท?",
+      "reference_answer": "512,041,888 พันบาท",
+      "answer_components": {
+        "value": "512041888",
+        "unit": "พันบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "CPAXT",
+          "source_pdf_page": 12
+        }
+      ],
+      "evidence_token": "512,041,888.00",
+      "evidence_options": [
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 12
+          }
+        ],
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 13
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U02",
+      "document": "CPAXT",
+      "source_pdf_page": 18,
+      "page_role": "operations_prose",
+      "question_th": "รายงานปี 2567 ของซีพี แอ็กซ์ตร้าระบุว่ามีรถบรรทุกส่งสินค้า Last-mile ประมาณกี่คัน?",
+      "reference_answer": "ประมาณ 2,800 คัน",
+      "answer_components": {
+        "value": "2800",
+        "unit": "คัน"
+      },
+      "required_evidence": [
+        {
+          "document": "CPAXT",
+          "source_pdf_page": 18
+        }
+      ],
+      "evidence_token": "2,800",
+      "evidence_options": [
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 18
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U03",
+      "document": "CPAXT",
+      "source_pdf_page": 33,
+      "page_role": "research_table",
+      "question_th": "ค่าใช้จ่ายวิจัยและพัฒนาของซีพี แอ็กซ์ตร้าในปี 2567 เป็นกี่ล้านบาท?",
+      "reference_answer": "1,451 ล้านบาท",
+      "answer_components": {
+        "value": "1451",
+        "unit": "ล้านบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "CPAXT",
+          "source_pdf_page": 33
+        }
+      ],
+      "evidence_token": "1,451.00",
+      "evidence_options": [
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 33
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U04",
+      "document": "CPAXT",
+      "source_pdf_page": 47,
+      "page_role": "shareholder_table",
+      "question_th": "ณ 1 ตุลาคม 2567 ซีพี ออลล์ถือหุ้นในซีพี แอ็กซ์ตร้าคิดเป็นกี่เปอร์เซ็นต์?",
+      "reference_answer": "34.91%",
+      "answer_components": {
+        "value": "34.91",
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "CPAXT",
+          "source_pdf_page": 47
+        }
+      ],
+      "evidence_token": "34.91",
+      "evidence_options": [
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 47
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U05",
+      "document": "CPAXT",
+      "source_pdf_page": 80,
+      "page_role": "energy_prose",
+      "question_th": "ซีพี แอ็กซ์ตร้ารายงานปริมาณพลังงานหมุนเวียนรวมเท่าไรในปี 2567 หน่วยกิโลวัตต์ชั่วโมงต่อปี?",
+      "reference_answer": "285,050,053.21 กิโลวัตต์ชั่วโมงต่อปี",
+      "answer_components": {
+        "value": "285050053.21",
+        "unit": "กิโลวัตต์ชั่วโมงต่อปี"
+      },
+      "required_evidence": [
+        {
+          "document": "CPAXT",
+          "source_pdf_page": 80
+        }
+      ],
+      "evidence_token": "285,050,053.21",
+      "evidence_options": [
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 80
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U06",
+      "document": "CPAXT",
+      "source_pdf_page": 110,
+      "page_role": "customer_prose",
+      "question_th": "ผลสำรวจความพึงพอใจของลูกค้าซีพี แอ็กซ์ตร้าในปี 2567 ได้กี่เปอร์เซ็นต์?",
+      "reference_answer": "82.25%",
+      "answer_components": {
+        "value": "82.25",
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "CPAXT",
+          "source_pdf_page": 110
+        }
+      ],
+      "evidence_token": "82.25",
+      "evidence_options": [
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 110
+          }
+        ],
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 109
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U07",
+      "document": "CPAXT",
+      "source_pdf_page": 118,
+      "page_role": "management_prose",
+      "question_th": "ปี 2567 ซีพี แอ็กซ์ตร้าเปิดสาขาใหม่ในประเทศและต่างประเทศรวมกี่สาขา?",
+      "reference_answer": "120 สาขา",
+      "answer_components": {
+        "value": "120",
+        "unit": "สาขา"
+      },
+      "required_evidence": [
+        {
+          "document": "CPAXT",
+          "source_pdf_page": 118
+        }
+      ],
+      "evidence_token": "120",
+      "evidence_options": [
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 118
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U08",
+      "document": "CPAXT",
+      "source_pdf_page": 119,
+      "page_role": "management_prose",
+      "question_th": "ปี 2567 อัตรากำไรขั้นต้นของซีพี แอ็กซ์ตร้าจากการให้เช่าและบริการศูนย์การค้าเป็นกี่เปอร์เซ็นต์?",
+      "reference_answer": "55.2%",
+      "answer_components": {
+        "value": "55.2",
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "CPAXT",
+          "source_pdf_page": 119
+        }
+      ],
+      "evidence_token": "55.2",
+      "evidence_options": [
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 119
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U09",
+      "document": "CPAXT",
+      "source_pdf_page": 120,
+      "page_role": "management_prose",
+      "question_th": "ปี 2567 กลุ่มธุรกิจค้าส่งของซีพี แอ็กซ์ตร้ามีกำไรขั้นต้นจากการขายกี่ล้านบาท?",
+      "reference_answer": "31,168 ล้านบาท",
+      "answer_components": {
+        "value": "31168",
+        "unit": "ล้านบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "CPAXT",
+          "source_pdf_page": 120
+        }
+      ],
+      "evidence_token": "31,168",
+      "evidence_options": [
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 120
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U10",
+      "document": "CPAXT",
+      "source_pdf_page": 127,
+      "page_role": "capital_prose",
+      "question_th": "ปี 2567 ซีพี แอ็กซ์ตร้าและบริษัทย่อยจ่ายเงินเพื่อซื้ออสังหาริมทรัพย์และสินทรัพย์ถาวรตามส่วนรายจ่ายฝ่ายทุนกี่ล้านบาท?",
+      "reference_answer": "17,123 ล้านบาท",
+      "answer_components": {
+        "value": "17123",
+        "unit": "ล้านบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "CPAXT",
+          "source_pdf_page": 127
+        }
+      ],
+      "evidence_token": "17,123",
+      "evidence_options": [
+        [
+          {
+            "document": "CPAXT",
+            "source_pdf_page": 127
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U11",
+      "document": "EGCO",
+      "source_pdf_page": 30,
+      "page_role": "business_prose",
+      "question_th": "กลุ่มเอ็กโกแบ่งธุรกิจผลิตไฟฟ้าตามประเภทการลงทุนเป็นกี่ประเภท?",
+      "reference_answer": "4 ประเภท",
+      "answer_components": {
+        "value": "4",
+        "unit": "ประเภท"
+      },
+      "required_evidence": [
+        {
+          "document": "EGCO",
+          "source_pdf_page": 30
+        }
+      ],
+      "evidence_token": "4",
+      "evidence_options": [
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 30
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U12",
+      "document": "EGCO",
+      "source_pdf_page": 40,
+      "page_role": "plant_prose",
+      "question_th": "โรงไฟฟ้าขนอมหน่วยที่ 4 ในรายงานเอ็กโกมีกำลังผลิตติดตั้งกี่เมกะวัตต์?",
+      "reference_answer": "970 เมกะวัตต์",
+      "answer_components": {
+        "value": "970",
+        "unit": "เมกะวัตต์"
+      },
+      "required_evidence": [
+        {
+          "document": "EGCO",
+          "source_pdf_page": 40
+        }
+      ],
+      "evidence_token": "970",
+      "evidence_options": [
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 40
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U13",
+      "document": "EGCO",
+      "source_pdf_page": 45,
+      "page_role": "plant_prose",
+      "question_th": "เอ็กโกถือหุ้นในบริษัทไซยะบุรี เพาเวอร์กี่เปอร์เซ็นต์ตามรายงานปี 2567?",
+      "reference_answer": "12.50%",
+      "answer_components": {
+        "value": "12.50",
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "EGCO",
+          "source_pdf_page": 45
+        }
+      ],
+      "evidence_token": "12.50",
+      "evidence_options": [
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 45
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 24
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 52
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 311
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 312
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 406
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U14",
+      "document": "EGCO",
+      "source_pdf_page": 50,
+      "page_role": "revenue_table",
+      "question_th": "ปี 2567 รายได้ค่าพลังงานไฟฟ้าของโรงไฟฟ้าเคซอนคิดเป็นกี่เปอร์เซ็นต์ในตารางโครงสร้างรายได้เอ็กโก?",
+      "reference_answer": "25.33%",
+      "answer_components": {
+        "value": "25.33",
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "EGCO",
+          "source_pdf_page": 50
+        }
+      ],
+      "evidence_token": "25.33%",
+      "evidence_options": [
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 50
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U15",
+      "document": "EGCO",
+      "source_pdf_page": 86,
+      "page_role": "plant_prose",
+      "question_th": "เอ็กโกระบุความพร้อมผลิตไฟฟ้าของโรงไฟฟ้า IPP และ SPP ว่ามากกว่ากี่เปอร์เซ็นต์?",
+      "reference_answer": "มากกว่า 90%",
+      "answer_components": {
+        "value": "90",
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "EGCO",
+          "source_pdf_page": 86
+        }
+      ],
+      "evidence_token": "90",
+      "evidence_options": [
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 86
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U16",
+      "document": "EGCO",
+      "source_pdf_page": 90,
+      "page_role": "climate_infographic",
+      "question_th": "กลุ่มเอ็กโกวางแผนบรรลุการปล่อยก๊าซเรือนกระจกสุทธิเป็นศูนย์ในปี พ.ศ. ใด?",
+      "reference_answer": "ปี 2593",
+      "answer_components": {
+        "value": "2593",
+        "unit": "ปี"
+      },
+      "required_evidence": [
+        {
+          "document": "EGCO",
+          "source_pdf_page": 90
+        }
+      ],
+      "evidence_token": "2593",
+      "evidence_options": [
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 90
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 15
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 20
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 65
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 74
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 75
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 89
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 199
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 219
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 354
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U17",
+      "document": "EGCO",
+      "source_pdf_page": 243,
+      "page_role": "balance_sheet",
+      "question_th": "ณ สิ้นปี 2567 สินทรัพย์รวมในงบการเงินรวมของเอ็กโกเป็นกี่พันบาท?",
+      "reference_answer": "241,062,655 พันบาท",
+      "answer_components": {
+        "value": "241062655",
+        "unit": "พันบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "EGCO",
+          "source_pdf_page": 243
+        }
+      ],
+      "evidence_token": "241,062,655",
+      "evidence_options": [
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 243
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U18",
+      "document": "EGCO",
+      "source_pdf_page": 244,
+      "page_role": "balance_sheet",
+      "question_th": "ณ สิ้นปี 2567 หนี้สินรวมในงบการเงินรวมของเอ็กโกเป็นกี่พันบาท?",
+      "reference_answer": "136,422,456 พันบาท",
+      "answer_components": {
+        "value": "136422456",
+        "unit": "พันบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "EGCO",
+          "source_pdf_page": 244
+        }
+      ],
+      "evidence_token": "136,422,456",
+      "evidence_options": [
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 244
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U19",
+      "document": "EGCO",
+      "source_pdf_page": 246,
+      "page_role": "income_statement",
+      "question_th": "ปี 2567 กำไรส่วนที่เป็นของผู้ถือหุ้นบริษัทใหญ่ตามงบการเงินรวมของเอ็กโกเป็นกี่พันบาท?",
+      "reference_answer": "5,411,474 พันบาท",
+      "answer_components": {
+        "value": "5411474",
+        "unit": "พันบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "EGCO",
+          "source_pdf_page": 246
+        }
+      ],
+      "evidence_token": "5,411,474",
+      "evidence_options": [
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 246
+          }
+        ],
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 340
+          }
+        ]
+      ],
+      "language": "th"
+    },
+    {
+      "id": "U20",
+      "document": "EGCO",
+      "source_pdf_page": 250,
+      "page_role": "cash_flow_statement",
+      "question_th": "ปี 2567 ค่าเสื่อมราคาและค่าตัดจำหน่ายที่ปรับปรุงในงบกระแสเงินสดรวมของเอ็กโกเป็นกี่พันบาท?",
+      "reference_answer": "3,121,062 พันบาท",
+      "answer_components": {
+        "value": "3121062",
+        "unit": "พันบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "EGCO",
+          "source_pdf_page": 250
+        }
+      ],
+      "evidence_token": "3,121,062",
+      "evidence_options": [
+        [
+          {
+            "document": "EGCO",
+            "source_pdf_page": 250
+          }
+        ]
+      ],
+      "language": "th"
+    }
+  ],
+  "metadata_correction": {
+    "reason": "The frozen scorer requires excerpt_file for filename mapping; it was absent from v1.",
+    "old_reference_sha256": "6fdeb0bba04685d6779685b84577472d82d99db71d0819bc36cb6630518c861d",
+    "change": "Added excerpt_file equal to source_file for each document; no question or evidence labels changed."
+  }
+}

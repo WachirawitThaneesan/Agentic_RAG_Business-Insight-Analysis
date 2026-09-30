@@ -1,0 +1,811 @@
+{
+  "n_documents": 2,
+  "n_pages": 394,
+  "n_chunks": 696,
+  "n_questions": 20,
+  "n_answers": 0,
+  "corpus_mode": "selectable PDF text, no OCR",
+  "embedding_model": "bge-m3",
+  "answer_model": "gemma3:4b",
+  "retrieval": {
+    "bm25": {
+      "layer": "search",
+      "k": 5,
+      "n_questions": 20,
+      "n_missing_predictions": 0,
+      "n_unlocatable_results_top_k": 0,
+      "hit_at_k": 0.1,
+      "recall_at_k": 0.1,
+      "ndcg_at_k": 0.05654648767857288,
+      "details": [
+        {
+          "id": "TH01",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH02",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH03",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH04",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.5,
+          "first_relevant_rank": 3,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH05",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH06",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH07",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH08",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH09",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH10",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH11",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH12",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH13",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH14",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH15",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH16",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.6309297535714575,
+          "first_relevant_rank": 2,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH17",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH18",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH19",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH20",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        }
+      ]
+    },
+    "dense": {
+      "layer": "search",
+      "k": 5,
+      "n_questions": 20,
+      "n_missing_predictions": 0,
+      "n_unlocatable_results_top_k": 0,
+      "hit_at_k": 0.5,
+      "recall_at_k": 0.5,
+      "ndcg_at_k": 0.36270711884305795,
+      "details": [
+        {
+          "id": "TH01",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH02",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH03",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.43067655807339306,
+          "first_relevant_rank": 4,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH04",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.6309297535714575,
+          "first_relevant_rank": 2,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH05",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.6309297535714575,
+          "first_relevant_rank": 2,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH06",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH07",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.5,
+          "first_relevant_rank": 3,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH08",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH09",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.43067655807339306,
+          "first_relevant_rank": 4,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH10",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH11",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH12",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH13",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH14",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH15",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.6309297535714575,
+          "first_relevant_rank": 2,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH16",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH17",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH18",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH19",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH20",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        }
+      ]
+    },
+    "app_hybrid": {
+      "layer": "search",
+      "k": 5,
+      "n_questions": 20,
+      "n_missing_predictions": 0,
+      "n_unlocatable_results_top_k": 0,
+      "hit_at_k": 0.4,
+      "recall_at_k": 0.4,
+      "ndcg_at_k": 0.3380929753571458,
+      "details": [
+        {
+          "id": "TH01",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH02",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.6309297535714575,
+          "first_relevant_rank": 2,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH03",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH04",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.5,
+          "first_relevant_rank": 3,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH05",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH06",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH07",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH08",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH09",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH10",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH11",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH12",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH13",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH14",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH15",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 0.6309297535714575,
+          "first_relevant_rank": 2,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH16",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH17",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH18",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH19",
+          "hit_at_k": true,
+          "recall_at_k": 1.0,
+          "ndcg_at_k": 1.0,
+          "first_relevant_rank": 1,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        },
+        {
+          "id": "TH20",
+          "hit_at_k": false,
+          "recall_at_k": 0.0,
+          "ndcg_at_k": 0.0,
+          "first_relevant_rank": null,
+          "unlocatable_top_k": 0,
+          "missing_prediction": false
+        }
+      ]
+    }
+  },
+  "answers": {},
+  "timings": [
+    {
+      "id": "TH01",
+      "retrieval_seconds": 2.07,
+      "app_methods": [
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "TH02",
+      "retrieval_seconds": 1.21,
+      "app_methods": [
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "TH03",
+      "retrieval_seconds": 1.23,
+      "app_methods": [
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "TH04",
+      "retrieval_seconds": 1.2,
+      "app_methods": [
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "TH05",
+      "retrieval_seconds": 1.25,
+      "app_methods": [
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "TH06",
+      "retrieval_seconds": 1.22,
+      "app_methods": [
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "TH07",
+      "retrieval_seconds": 1.05,
+      "app_methods": [
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "TH08",
+      "retrieval_seconds": 1.34,
+      "app_methods": [
+        "semantic",
+        "keyword",
+        "semantic",
+        "keyword",
+        "semantic"
+      ]
+    },
+    {
+      "id": "TH09",
+      "retrieval_seconds": 1.23,
+      "app_methods": [
+        "semantic",
+        "keyword",
+        "semantic",
+        "keyword",
+        "semantic"
+      ]
+    },
+    {
+      "id": "TH10",
+      "retrieval_seconds": 1.21,
+      "app_methods": [
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "TH11",
+      "retrieval_seconds": 1.24,
+      "app_methods": [
+        "hybrid",
+        "semantic",
+        "keyword",
+        "semantic",
+        "keyword"
+      ]
+    },
+    {
+      "id": "TH12",
+      "retrieval_seconds": 1.26,
+      "app_methods": [
+        "hybrid",
+        "semantic",
+        "semantic",
+        "keyword",
+        "semantic"
+      ]
+    },
+    {
+      "id": "TH13",
+      "retrieval_seconds": 1.21,
+      "app_methods": [
+        "hybrid",
+        "hybrid",
+        "semantic",
+        "keyword",
+        "semantic"
+      ]
+    },
+    {
+      "id": "TH14",
+      "retrieval_seconds": 1.26,
+      "app_methods": [
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "TH15",
+      "retrieval_seconds": 1.32,
+      "app_methods": [
+        "semantic",
+        "semantic",
+        "semantic",
+        "semantic",
+        "semantic"
+      ]
+    },
+    {
+      "id": "TH16",
+      "retrieval_seconds": 1.31,
+      "app_methods": [
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "TH17",
+      "retrieval_seconds": 1.24,
+      "app_methods": [
+        "semantic",
+        "semantic",
+        "semantic",
+        "semantic",
+        "semantic"
+      ]
+    },
+    {
+      "id": "TH18",
+      "retrieval_seconds": 1.24,
+      "app_methods": [
+        "semantic",
+        "semantic",
+        "semantic",
+        "semantic",
+        "semantic"
+      ]
+    },
+    {
+      "id": "TH19",
+      "retrieval_seconds": 1.22,
+      "app_methods": [
+        "semantic",
+        "semantic",
+        "semantic",
+        "semantic",
+        "semantic"
+      ]
+    },
+    {
+      "id": "TH20",
+      "retrieval_seconds": 1.26,
+      "app_methods": [
+        "hybrid",
+        "semantic",
+        "semantic",
+        "keyword",
+        "semantic"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,362 @@
+[
+  {
+    "id": "TH01",
+    "answer": "2.25%",
+    "citations": [
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 14
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 33
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 22
+      }
+    ]
+  },
+  {
+    "id": "TH02",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 57
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 17
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 35
+      }
+    ]
+  },
+  {
+    "id": "TH03",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 12
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 36
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 36
+      }
+    ]
+  },
+  {
+    "id": "TH04",
+    "answer": "ในปี 2567 ธุรกรรม Cross-border QR payment มีจำนวน 869,000 รายการ มููลค่่าธุุรกรรมรวม 5,800 ล้้านบาท เพิ่่ħมขึ้้Ĩนประมาณ 23% จากปีีก่่อน",
+    "citations": [
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 110
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 110
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 18
+      }
+    ]
+  },
+  {
+    "id": "TH05",
+    "answer": "2.5%",
+    "citations": [
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 23
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 19
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 44
+      }
+    ]
+  },
+  {
+    "id": "TH06",
+    "answer": "การลงทุนภาคเอกชนของไทยในปี 2567 เปลี่ยนแปลง -0.0%",
+    "citations": [
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 23
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 19
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 44
+      }
+    ]
+  },
+  {
+    "id": "TH07",
+    "answer": "35.5 ล้านคน",
+    "citations": [
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 44
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 121
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 20
+      }
+    ]
+  },
+  {
+    "id": "TH08",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 158
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 145
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 193
+      }
+    ]
+  },
+  {
+    "id": "TH09",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 56
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 23
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 33
+      }
+    ]
+  },
+  {
+    "id": "TH10",
+    "answer": "80% ของประชากรและธุรกิจในประเทศอยู่นอกกรุงเทพฯ และปริมณฑล",
+    "citations": [
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 53
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 52
+      },
+      {
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 21
+      }
+    ]
+  },
+  {
+    "id": "TH11",
+    "answer": "ไม่พอ ค่าจาก OCR ยังไม่ได้ตรวจด้วยตากับ PDF",
+    "citations": [
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 8
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 57
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 6
+      }
+    ]
+  },
+  {
+    "id": "TH12",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 8
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 57
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 59
+      }
+    ]
+  },
+  {
+    "id": "TH13",
+    "answer": "1,143 ล้านบาท",
+    "citations": [
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 8
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 65
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 9
+      }
+    ]
+  },
+  {
+    "id": "TH14",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 24
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 14
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 9
+      }
+    ]
+  },
+  {
+    "id": "TH15",
+    "answer": "7214 ล้านบาท",
+    "citations": [
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 57
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 59
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      }
+    ]
+  },
+  {
+    "id": "TH16",
+    "answer": "0.  22 บาท",
+    "citations": [
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 59
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 57
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 8
+      }
+    ]
+  },
+  {
+    "id": "TH17",
+    "answer": "7214 ล้านบาท",
+    "citations": [
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 57
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 65
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      }
+    ]
+  },
+  {
+    "id": "TH18",
+    "answer": "7,214 ล้านบาท",
+    "citations": [
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 57
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 65
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      }
+    ]
+  },
+  {
+    "id": "TH19",
+    "answer": "(527) ล้านบาท",
+    "citations": [
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 65
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 57
+      }
+    ]
+  },
+  {
+    "id": "TH20",
+    "answer": "ไม่พอ",
+    "citations": [
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 65
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 15
+      },
+      {
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 57
+      }
+    ]
+  }
+]

@@ -1,0 +1,451 @@
+{
+  "schema_version": 1,
+  "purpose": "Held-out retrieval and answer pilot; new public reports were not in development OCR corpus",
+  "created_utc": "2026-09-27",
+  "page_numbering": "1-based physical PDF pages",
+  "label_review": "One reviewer checked cited facts against rendered original PDF pages; owner or second reviewer should verify before thesis submission.",
+  "limitations": [
+    "20 selected questions from two reports are a pilot, not a statistically representative accuracy estimate.",
+    "Source PDFs contain selectable text; text-backed retrieval tests do not measure OCR accuracy.",
+    "Some questions share pages, so question-level uncertainty is correlated."
+  ],
+  "documents": [
+    {
+      "code": "WBG",
+      "source_file": "wbg_annual_report_2025.pdf",
+      "excerpt_file": "wbg_annual_report_2025.pdf",
+      "source_sha256": "086cd283370ec74912281638c34200c3a2e0cd4fc81c49732cf1cc1f2b9ea2e6",
+      "source_page_count": 67,
+      "download_url": "https://openknowledge.worldbank.org/server/api/core/bitstreams/371444b7-36f9-464d-a30f-5b5c34d984fd/content"
+    },
+    {
+      "code": "NVIDIA",
+      "source_file": "nvidia_annual_review_2024.pdf",
+      "excerpt_file": "nvidia_annual_review_2024.pdf",
+      "source_sha256": "b5751f4bb240eeb63d119211d6cc495e1d623897f1f2af1887e387bad1404c84",
+      "source_page_count": 174,
+      "download_url": "https://s201.q4cdn.com/141608511/files/doc_financials/2024/ar/2024-annual-report-insert-web-IR-update.pdf"
+    }
+  ],
+  "items": [
+    {
+      "id": "H01",
+      "document": "WBG",
+      "source_pdf_page": 5,
+      "excerpt_page": 5,
+      "page_role": "narrative",
+      "question_th": "By 2030, how many people in Africa does Mission 300 aim to connect to electricity?",
+      "reference_answer": "300 million people",
+      "answer_components": {
+        "value": "300",
+        "year_be": 2030,
+        "unit": "million people"
+      },
+      "required_evidence": [
+        {
+          "document": "WBG",
+          "source_pdf_page": 5
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H02",
+      "document": "WBG",
+      "source_pdf_page": 5,
+      "excerpt_page": 5,
+      "page_role": "narrative",
+      "question_th": "What annual agribusiness commitment does the World Bank Group aim to reach by 2030?",
+      "reference_answer": "9 USD billion per year",
+      "answer_components": {
+        "value": "9",
+        "year_be": 2030,
+        "unit": "USD billion"
+      },
+      "required_evidence": [
+        {
+          "document": "WBG",
+          "source_pdf_page": 5
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H03",
+      "document": "WBG",
+      "source_pdf_page": 8,
+      "excerpt_page": 8,
+      "page_role": "scorecard_table",
+      "question_th": "ปีงบประมาณ 2025 ผู้ได้รับประโยชน์จากโครงการคุ้มครองทางสังคมที่ทำได้จริงมีกี่ล้านคน?",
+      "reference_answer": "244 million people",
+      "answer_components": {
+        "value": "244",
+        "year_be": 2025,
+        "unit": "million people"
+      },
+      "required_evidence": [
+        {
+          "document": "WBG",
+          "source_pdf_page": 8
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "H04",
+      "document": "WBG",
+      "source_pdf_page": 8,
+      "excerpt_page": 8,
+      "page_role": "scorecard_table",
+      "question_th": "What was the FY2025 expected number of students supported with better education?",
+      "reference_answer": "406 million people",
+      "answer_components": {
+        "value": "406",
+        "year_be": 2025,
+        "unit": "million people"
+      },
+      "required_evidence": [
+        {
+          "document": "WBG",
+          "source_pdf_page": 8
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H05",
+      "document": "WBG",
+      "source_pdf_page": 9,
+      "excerpt_page": 9,
+      "page_role": "financial_summary",
+      "question_th": "ปีงบประมาณ 2025 ยอดรวมเงินกู้ เงินให้เปล่า เงินลงทุนหุ้น และการค้ำประกันทั่วโลกของ World Bank Group เท่าไร?",
+      "reference_answer": "118.5 USD billion",
+      "answer_components": {
+        "value": "118.5",
+        "year_be": 2025,
+        "unit": "USD billion"
+      },
+      "required_evidence": [
+        {
+          "document": "WBG",
+          "source_pdf_page": 9
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "H06",
+      "document": "WBG",
+      "source_pdf_page": 9,
+      "excerpt_page": 9,
+      "page_role": "financial_table",
+      "question_th": "In Table 1, what were World Bank Group disbursements in 2025, in millions of US dollars?",
+      "reference_answer": "86,928 USD million",
+      "answer_components": {
+        "value": "86928",
+        "year_be": 2025,
+        "unit": "USD million"
+      },
+      "required_evidence": [
+        {
+          "document": "WBG",
+          "source_pdf_page": 9
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H07",
+      "document": "WBG",
+      "source_pdf_page": 11,
+      "excerpt_page": 11,
+      "page_role": "regional_narrative",
+      "question_th": "How much did the World Bank approve for operations in Sub-Saharan Africa in FY2025?",
+      "reference_answer": "26.2 USD billion",
+      "answer_components": {
+        "value": "26.2",
+        "year_be": 2025,
+        "unit": "USD billion"
+      },
+      "required_evidence": [
+        {
+          "document": "WBG",
+          "source_pdf_page": 11
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H08",
+      "document": "WBG",
+      "source_pdf_page": 50,
+      "excerpt_page": 50,
+      "page_role": "narrative",
+      "question_th": "How many Country Partnership Frameworks did the World Bank Group deliver in FY2025?",
+      "reference_answer": "19",
+      "answer_components": {
+        "value": "19",
+        "year_be": 2025
+      },
+      "required_evidence": [
+        {
+          "document": "WBG",
+          "source_pdf_page": 50
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H09",
+      "document": "WBG",
+      "source_pdf_page": 54,
+      "excerpt_page": 54,
+      "page_role": "financial_table",
+      "question_th": "ตาราง 12 ปีงบประมาณ 2025 เงินผูกพันของ IDA ด้าน Digital Transformation เท่าไร (ล้านดอลลาร์สหรัฐ)?",
+      "reference_answer": "2,332 USD million",
+      "answer_components": {
+        "value": "2332",
+        "year_be": 2025,
+        "unit": "USD million"
+      },
+      "required_evidence": [
+        {
+          "document": "WBG",
+          "source_pdf_page": 54
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "H10",
+      "document": "WBG",
+      "source_pdf_page": 60,
+      "excerpt_page": 60,
+      "page_role": "narrative",
+      "question_th": "How many US billions in guarantees did the World Bank Group Guarantee Platform issue in its first fiscal year 2025?",
+      "reference_answer": "12.3 USD billion",
+      "answer_components": {
+        "value": "12.3",
+        "year_be": 2025,
+        "unit": "USD billion"
+      },
+      "required_evidence": [
+        {
+          "document": "WBG",
+          "source_pdf_page": 60
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H11",
+      "document": "NVIDIA",
+      "source_pdf_page": 20,
+      "excerpt_page": 20,
+      "page_role": "summary_chart",
+      "question_th": "What was NVIDIA Data Center market-platform revenue in fiscal 2024?",
+      "reference_answer": "47.5 USD billion",
+      "answer_components": {
+        "value": "47.5",
+        "year_be": 2024,
+        "unit": "USD billion"
+      },
+      "required_evidence": [
+        {
+          "document": "NVIDIA",
+          "source_pdf_page": 20
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H12",
+      "document": "NVIDIA",
+      "source_pdf_page": 20,
+      "excerpt_page": 20,
+      "page_role": "summary_chart",
+      "question_th": "By what percentage did NVIDIA revenue increase year over year in fiscal 2024?",
+      "reference_answer": "126%",
+      "answer_components": {
+        "value": "126",
+        "year_be": 2024,
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "NVIDIA",
+          "source_pdf_page": 20
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H13",
+      "document": "NVIDIA",
+      "source_pdf_page": 77,
+      "excerpt_page": 77,
+      "page_role": "compensation_narrative",
+      "question_th": "What was NVIDIA median employee total compensation for fiscal 2024?",
+      "reference_answer": "266,939 USD",
+      "answer_components": {
+        "value": "266939",
+        "year_be": 2024,
+        "unit": "USD"
+      },
+      "required_evidence": [
+        {
+          "document": "NVIDIA",
+          "source_pdf_page": 77
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H14",
+      "document": "NVIDIA",
+      "source_pdf_page": 123,
+      "excerpt_page": 123,
+      "page_role": "financial_table",
+      "question_th": "รายได้ของ NVIDIA ปีงบประมาณ 2024 เท่าไร (ล้านดอลลาร์สหรัฐ)?",
+      "reference_answer": "60,922 USD million",
+      "answer_components": {
+        "value": "60922",
+        "year_be": 2024,
+        "unit": "USD million"
+      },
+      "required_evidence": [
+        {
+          "document": "NVIDIA",
+          "source_pdf_page": 123
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "H15",
+      "document": "NVIDIA",
+      "source_pdf_page": 123,
+      "excerpt_page": 123,
+      "page_role": "financial_table",
+      "question_th": "What was NVIDIA fiscal 2023 revenue in millions of US dollars?",
+      "reference_answer": "26,974 USD million",
+      "answer_components": {
+        "value": "26974",
+        "year_be": 2023,
+        "unit": "USD million"
+      },
+      "required_evidence": [
+        {
+          "document": "NVIDIA",
+          "source_pdf_page": 123
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H16",
+      "document": "NVIDIA",
+      "source_pdf_page": 123,
+      "excerpt_page": 123,
+      "page_role": "financial_table",
+      "question_th": "What was NVIDIA fiscal 2024 net income in millions of US dollars?",
+      "reference_answer": "29,760 USD million",
+      "answer_components": {
+        "value": "29760",
+        "year_be": 2024,
+        "unit": "USD million"
+      },
+      "required_evidence": [
+        {
+          "document": "NVIDIA",
+          "source_pdf_page": 123
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H17",
+      "document": "NVIDIA",
+      "source_pdf_page": 123,
+      "excerpt_page": 123,
+      "page_role": "financial_table",
+      "question_th": "What was NVIDIA gross margin in fiscal 2024?",
+      "reference_answer": "72.7%",
+      "answer_components": {
+        "value": "72.7",
+        "year_be": 2024,
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "NVIDIA",
+          "source_pdf_page": 123
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H18",
+      "document": "NVIDIA",
+      "source_pdf_page": 128,
+      "excerpt_page": 128,
+      "page_role": "financial_table",
+      "question_th": "รายได้ดอกเบี้ยของ NVIDIA ปีงบประมาณ 2024 เท่าไร (ล้านดอลลาร์สหรัฐ)?",
+      "reference_answer": "866 USD million",
+      "answer_components": {
+        "value": "866",
+        "year_be": 2024,
+        "unit": "USD million"
+      },
+      "required_evidence": [
+        {
+          "document": "NVIDIA",
+          "source_pdf_page": 128
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "H19",
+      "document": "NVIDIA",
+      "source_pdf_page": 137,
+      "excerpt_page": 137,
+      "page_role": "financial_statement",
+      "question_th": "What was NVIDIA research and development expense for fiscal 2024, in millions of US dollars?",
+      "reference_answer": "8,675 USD million",
+      "answer_components": {
+        "value": "8675",
+        "year_be": 2024,
+        "unit": "USD million"
+      },
+      "required_evidence": [
+        {
+          "document": "NVIDIA",
+          "source_pdf_page": 137
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "H20",
+      "document": "NVIDIA",
+      "source_pdf_page": 137,
+      "excerpt_page": 137,
+      "page_role": "financial_statement",
+      "question_th": "What was NVIDIA cost of revenue for fiscal 2024, in millions of US dollars?",
+      "reference_answer": "16,621 USD million",
+      "answer_components": {
+        "value": "16621",
+        "year_be": 2024,
+        "unit": "USD million"
+      },
+      "required_evidence": [
+        {
+          "document": "NVIDIA",
+          "source_pdf_page": 137
+        }
+      ],
+      "language": "en"
+    }
+  ]
+}

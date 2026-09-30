@@ -1,0 +1,23 @@
+{
+  "documents": [
+    {
+      "code": "SCBX",
+      "source_file": "scbx_annual_report_2567_th.pdf",
+      "excerpt_file": "scbx_annual_report_2567_th.pdf",
+      "source_sha256": "c9f3b1fd6951f696023ae87111797bfefd2dfb49cbdf36e164260d673903a10d",
+      "source_page_count": 351,
+      "download_url": "https://hub.optiwise.io/storage/151/annual-report/2024/scbx-annual-report-2024-th.pdf"
+    },
+    {
+      "code": "TU",
+      "source_file": "thai_union_one_report_2567_th.pdf",
+      "excerpt_file": "thai_union_one_report_2567_th.pdf",
+      "source_sha256": "61eba982038eb8382a2c78412738fc2562ff2f3ee83d0ffb29d6afc585a3dbd1",
+      "source_page_count": 217,
+      "download_url": "https://tu.listedcompany.com/misc/ar/20250306-tu-or2024-th.pdf"
+    }
+  ],
+  "chunks": 1460,
+  "chunk_chars": 1800,
+  "overlap_chars": 180
+}

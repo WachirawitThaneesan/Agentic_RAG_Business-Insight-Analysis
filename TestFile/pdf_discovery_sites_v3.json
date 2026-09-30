@@ -1,0 +1,151 @@
+{
+  "description": "Audited 20-publisher PDF discovery sample, with official PDF link labels and observed filename corrections.",
+  "selected_utc": "2026-09-27",
+  "sites": [
+    {
+      "name": "BIS",
+      "report": "Annual Report 2023/24",
+      "seed_url": "https://www.bis.org/about/areport/areport2024.htm",
+      "expected_url_regex": "annual-report-2024\\.pdf"
+    },
+    {
+      "name": "ADB",
+      "report": "ADB Annual Report 2024 main report",
+      "seed_url": "https://www.adb.org/documents/adb-annual-report-2024",
+      "expected_url_regex": "adb.*annual.*2024|fls250100",
+      "expected_anchor_regex": "Main Report"
+    },
+    {
+      "name": "Bank of Thailand",
+      "report": "Annual Report 2024",
+      "seed_url": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+      "expected_url_regex": "annualreport.*2024",
+      "expected_anchor_regex": "Annual Report 2024"
+    },
+    {
+      "name": "World Bank",
+      "report": "World Bank Group Annual Report 2025",
+      "seed_url": "https://www.worldbank.org/en/about/annual-report/world-bank-group-downloads",
+      "expected_url_regex": "annual.report.2025|2025.*annual|wbg.*2025",
+      "expected_anchor_regex": "^English \\(PDF\\)$"
+    },
+    {
+      "name": "UNICEF",
+      "report": "UNICEF Annual Report 2024 English",
+      "seed_url": "https://www.unicef.org/reports/unicef-annual-report/2024",
+      "expected_url_regex": "unicef.*annual.*2024|annual.*2024",
+      "expected_anchor_regex": "English.*pdf"
+    },
+    {
+      "name": "UNDP Thailand",
+      "report": "UNDP Thailand Annual Report 2024",
+      "seed_url": "https://www.undp.org/thailand/publications/annual-report-2024",
+      "expected_url_regex": "thailand.*annual.*2024|2024.*annual.*thailand",
+      "expected_anchor_regex": "UNDP Thailand Annual Report 2024"
+    },
+    {
+      "name": "WHO",
+      "report": "TDR Annual Report 2024",
+      "seed_url": "https://www.who.int/publications/b/78941",
+      "expected_url_regex": "010930|tdr.*2024",
+      "expected_anchor_regex": "Download PDF"
+    },
+    {
+      "name": "IMF",
+      "report": "IMF Annual Report 2024",
+      "seed_url": "https://www.elibrary.imf.org/abstract/book/9798400279300/9798400279300.xml",
+      "expected_url_regex": "9798400279300",
+      "expected_anchor_regex": "Download PDF"
+    },
+    {
+      "name": "ECB",
+      "report": "ECB Annual Report 2024",
+      "seed_url": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+      "expected_url_regex": "ar2024.*\\.pdf"
+    },
+    {
+      "name": "UNHCR",
+      "report": "Global Report 2024",
+      "seed_url": "https://www.unhcr.org/media/global-report-2024",
+      "expected_url_regex": "global-report-2024\\.pdf"
+    },
+    {
+      "name": "OECD",
+      "report": "Global Forum Annual Report 2024",
+      "seed_url": "https://www.oecd.org/en/networks/global-forum-tax-transparency/resources/publications-and-documents-archive.html",
+      "expected_url_regex": "global-forum-annual-report-2024\\.pdf",
+      "expected_anchor_regex": "2024 Global Forum annual report"
+    },
+    {
+      "name": "UNESCO",
+      "report": "Global Education Monitoring Report 2024/5",
+      "seed_url": "https://www.unesco.org/reports/gem-report/en/2024",
+      "expected_url_regex": "391406|gem.*2024|2024.*gem",
+      "expected_anchor_regex": "Download report"
+    },
+    {
+      "name": "ILO",
+      "report": "World Employment and Social Outlook: Trends 2024",
+      "seed_url": "https://www.ilo.org/publications/flagship-reports/world-employment-and-social-outlook-trends-2024",
+      "expected_url_regex": "wcms_908142\\.pdf",
+      "expected_anchor_regex": "^PDF 2\\.73 MB$"
+    },
+    {
+      "name": "WTO",
+      "report": "WTO Annual Report 2024",
+      "seed_url": "https://www.wto.org/english/res_e/publications_e/anrep24_e.htm",
+      "expected_url_regex": "anrep24.*\\.pdf",
+      "expected_anchor_regex": "Download pdf"
+    },
+    {
+      "name": "WFP",
+      "report": "Annual Performance Report 2024 English",
+      "seed_url": "https://www.wfp.org/publications/annual-performance-report",
+      "expected_url_regex": "WFP-0000165535|annual.*performance.*2024",
+      "expected_anchor_regex": "2024 Annual Performance Report - English"
+    },
+    {
+      "name": "EBRD",
+      "report": "Annual Review 2024",
+      "seed_url": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+      "expected_url_regex": "annual.review.2024|2024.*annual.review",
+      "expected_anchor_regex": "Annual Review 2024"
+    },
+    {
+      "name": "EIB",
+      "report": "EIB Group Activity Report 2024",
+      "seed_url": "https://www.eib.org/en/publications/online/all/activity-report-2024",
+      "expected_url_regex": "activity.report.2024|2024.*activity.report",
+      "expected_anchor_regex": "Download report"
+    },
+    {
+      "name": "PTT",
+      "report": "Form 56-1 One Report 2024",
+      "seed_url": "https://investor.pttplc.com/en/downloads/yearly-reports?year=2024",
+      "expected_url_regex": "2024.*(?:one.report|56.1)|(?:one.report|56.1).*2024",
+      "expected_anchor_regex": "One Report.*2024"
+    },
+    {
+      "name": "NVIDIA",
+      "report": "NVIDIA 2024 Annual Report",
+      "seed_url": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+      "expected_url_regex": "/2024/ar/2024-annual-report-insert-web-IR-update\\.pdf",
+      "expected_anchor_regex": "2024\\s+Annual Report"
+    },
+    {
+      "name": "Unilever",
+      "report": "Annual Report and Accounts 2024",
+      "seed_url": "https://www.unilever.com/investors/annual-report-and-accounts/",
+      "expected_url_regex": "unilever-annual-report-and-accounts-2024\\.pdf",
+      "expected_anchor_regex": "Annual Report and Accounts 2024"
+    }
+  ],
+  "corrections_from_v1": [
+    "Replaced Microsoft with NVIDIA: the Microsoft 2024 download center links a DOCX, while NVIDIA lists a 2024 Annual Report PDF.",
+    "World Bank: identify its English (PDF) anchor because its PDF URL is an opaque bitstream ID.",
+    "ILO: use the flagship full-report page and its full-report PDF, rather than the executive-summary page."
+  ],
+  "corrections_from_v2": [
+    "NVIDIA: its official 2024 PDF currently uses 2024-annual-report-insert-web-IR-update.pdf; the public page is accessible to Playwright but returns HTTP 403 to plain HTTP in this environment."
+  ]
+}

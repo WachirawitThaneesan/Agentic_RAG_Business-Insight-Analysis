@@ -1,0 +1,422 @@
+[
+  {
+    "id": "H01",
+    "answer": "300 million",
+    "citations": [
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 12
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 32
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 5
+      }
+    ]
+  },
+  {
+    "id": "H02",
+    "answer": "$9 billion annually.",
+    "citations": [
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 7
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 38
+      }
+    ]
+  },
+  {
+    "id": "H03",
+    "answer": "The text does not state the number of million people who benefited from the social protection program in 2025.",
+    "citations": [
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 30
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 52
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 54
+      }
+    ]
+  },
+  {
+    "id": "H04",
+    "answer": "406M",
+    "citations": [
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 8
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 56
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 51
+      }
+    ]
+  },
+  {
+    "id": "H05",
+    "answer": "$7.7 billion.",
+    "citations": [
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 50
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 42
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 13
+      }
+    ]
+  },
+  {
+    "id": "H06",
+    "answer": "$86,928",
+    "citations": [
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 9
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 52
+      }
+    ]
+  },
+  {
+    "id": "H07",
+    "answer": "$26.2 billion",
+    "citations": [
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 11
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 10
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 9
+      }
+    ]
+  },
+  {
+    "id": "H08",
+    "answer": "The text does not state the number of Country Partnership Frameworks delivered in FY2025.",
+    "citations": [
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 35
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 49
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 28
+      }
+    ]
+  },
+  {
+    "id": "H09",
+    "answer": "2,332",
+    "citations": [
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 54
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 12
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 53
+      }
+    ]
+  },
+  {
+    "id": "H10",
+    "answer": "$12.3 billion",
+    "citations": [
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 62
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 60
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 22
+      }
+    ]
+  },
+  {
+    "id": "H11",
+    "answer": "$47.5 billion",
+    "citations": [
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 123
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 123
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 93
+      }
+    ]
+  },
+  {
+    "id": "H12",
+    "answer": "126%",
+    "citations": [
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 123
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 127
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 126
+      }
+    ]
+  },
+  {
+    "id": "H13",
+    "answer": "$266,939",
+    "citations": [
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 77
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 76
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 62
+      }
+    ]
+  },
+  {
+    "id": "H14",
+    "answer": "$47.5 billion",
+    "citations": [
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 123
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 174
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 173
+      }
+    ]
+  },
+  {
+    "id": "H15",
+    "answer": "$60,922 million",
+    "citations": [
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 157
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 166
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 123
+      }
+    ]
+  },
+  {
+    "id": "H16",
+    "answer": "$29,760",
+    "citations": [
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 123
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 128
+      },
+      {
+        "document": "WBG",
+        "filename": "wbg_annual_report_2025.pdf",
+        "source_pdf_page": 62
+      }
+    ]
+  },
+  {
+    "id": "H17",
+    "answer": "73.8%",
+    "citations": [
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 123
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 63
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 70
+      }
+    ]
+  },
+  {
+    "id": "H18",
+    "answer": "$47.5 billion",
+    "citations": [
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 123
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 174
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 173
+      }
+    ]
+  },
+  {
+    "id": "H19",
+    "answer": "$2,532 million",
+    "citations": [
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 151
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 126
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 148
+      }
+    ]
+  },
+  {
+    "id": "H20",
+    "answer": "$27.3 million",
+    "citations": [
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 166
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 127
+      },
+      {
+        "document": "NVIDIA",
+        "filename": "nvidia_annual_review_2024.pdf",
+        "source_pdf_page": 126
+      }
+    ]
+  }
+]

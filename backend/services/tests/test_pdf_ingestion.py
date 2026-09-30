@@ -51,6 +51,20 @@ def test_same_title_on_different_pages_has_distinct_table_names():
     assert first[0]["table_name"] != second[0]["table_name"]
     assert "page_1_table_0" in first[0]["table_name"]
     assert "page_2_table_0" in second[0]["table_name"]
+    assert first[0]["table_name"].startswith("page_1_table_0")
+
+
+def test_split_regions_keep_physical_page_and_crop_metadata():
+    service = TyphoonOCRService()
+    result = service._parse_markdown_pages([
+        {"page": 7, "region": "left", "crop_box": [0.18, 0, 0.55, 1], "rotation": 270,
+         "markdown": "<table><tr><th>Item</th><th>2025</th></tr><tr><td>Revenue</td><td>10</td></tr></table>"},
+        {"page": 7, "region": "right", "crop_box": [0.55, 0, 1, 1], "rotation": 270,
+         "markdown": "<table><tr><th>Item</th><th>2025</th></tr><tr><td>Revenue</td><td>20</td></tr></table>"},
+    ])
+    assert [item["page"] for item in result["raw_pages"]] == [7, 7]
+    assert [item["region"] for item in result["raw_pages"]] == ["left", "right"]
+    assert [table["region"] for table in result["tables"]] == ["left", "right"]
 
 
 def test_multiple_header_rows_preserve_wide_table():
@@ -85,7 +99,9 @@ def test_pdf_page_has_wall_clock_deadline():
         await asyncio.sleep(1)
         return "never returned"
 
-    with patch.object(service, "_render_pdf_page_to_png", return_value=b"png"), patch.object(service, "_ocr_png_bytes_async", side_effect=stall):
+    with patch("backend.services.ocr.settings.PDF_TABLE_OCR_PROVIDER", "typhoon"), \
+         patch.object(service, "_render_pdf_page_to_png", return_value=b"png"), \
+         patch.object(service, "_ocr_png_bytes_async", side_effect=stall):
         try:
             asyncio.run(service.extract_from_pdf_path("dummy.pdf", pages=[1]))
         except TimeoutError:
@@ -103,6 +119,17 @@ def test_prompt_echo_is_not_treated_as_document_text():
         assert "echoed the instruction prompt" in str(exc)
     else:
         raise AssertionError("prompt echo was accepted as OCR text")
+
+
+def test_repeated_slash_generation_loop_is_not_stored_as_ocr_text():
+    service = TyphoonOCRService()
+    try:
+        service._validate_markdown("<table><tr><td>Person</td><td>Chair</td></tr>" + " /" * 250)
+    except RuntimeError as exc:
+        assert "degenerate repeated slash sequence" in str(exc)
+    else:
+        raise AssertionError("repeated slash loop was accepted as OCR text")
+    assert service._validate_markdown("A / B / C") == "A / B / C"
 
 
 def test_financial_tables_load_as_facts_without_overwriting(monkeypatch):

@@ -119,7 +119,7 @@ async def semantic_split(
 
 
 async def generate_chunk_summary(chunk_text: str) -> str:
-    """Use Ollama LLM to generate a brief summary for a chunk."""
+    """Use the configured generation provider for a brief chunk summary."""
     prompt = (
         "สรุปข้อความต่อไปนี้ให้สั้นกระชับใน 1-2 ประโยค เป็นภาษาไทย:\n\n"
         f"{chunk_text[:1500]}\n\n"
@@ -127,18 +127,9 @@ async def generate_chunk_summary(chunk_text: str) -> str:
     )
 
     try:
-        async with httpx.AsyncClient(timeout=60.0, limits=HTTP_LIMITS) as client:
-            response = await client.post(
-                f"{settings.OLLAMA_HOST}/api/generate",
-                json={
-                    "model": settings.OLLAMA_LLM_MODEL,
-                    "prompt": prompt,
-                    "stream": False,
-                    "options": {"temperature": 0.3, "num_predict": 150}
-                }
-            )
-            response.raise_for_status()
-            return response.json().get("response", "").strip()
+        from backend.services.llm import generate as llm_generate
+
+        return await llm_generate(prompt, temperature=0.3, max_tokens=150)
     except Exception as e:
         logger.warning("LLM summary generation failed: %s", e)
         return ""

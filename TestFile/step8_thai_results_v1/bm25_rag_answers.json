@@ -1,0 +1,422 @@
+[
+  {
+    "id": "TH01",
+    "answer": "สิ้นปี 2567 ธนาคารแห่งประเทศไทยปรับลดอัตราดอกเบี้ยนโยบายมาอยู่ที่ 0.25%",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 196
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 161
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 195
+      }
+    ]
+  },
+  {
+    "id": "TH02",
+    "answer": "The minimum repayment rate of credit cards held by the Bank of Thailand as of December 31, 2067 was not stated in the provided documents.",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 154
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 198
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 125
+      }
+    ]
+  },
+  {
+    "id": "TH03",
+    "answer": "The number of mobile payment users in 2567 according to the Bank of Thailand report is not stated in the provided PDF passages.",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 141
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 23
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 145
+      }
+    ]
+  },
+  {
+    "id": "TH04",
+    "answer": "ในปี 2567 ธุรกรรม Cross-border QR payment ระหว่างไทยและ สปป. ลาว มีจำนวน 1.5 แสนธุรกรรม รวม 285 ล้้านบาท",
+    "citations": [
+      {
+        "document": "BOT",
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 110
+      },
+      {
+        "document": "BOT",
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 110
+      },
+      {
+        "document": "BOT",
+        "filename": "bot_annual_report_2567_th.pdf",
+        "source_pdf_page": 18
+      }
+    ]
+  },
+  {
+    "id": "TH05",
+    "answer": "The evidence does not state the percentage growth in private consumption in Thailand in 2567.",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 35
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 83
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 83
+      }
+    ]
+  },
+  {
+    "id": "TH06",
+    "answer": "The provided passages do not state the percentage change in private investment in Thailand in 2567.",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 37
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 69
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 37
+      }
+    ]
+  },
+  {
+    "id": "TH07",
+    "answer": "The provided PDF passages do not contain the number of foreign tourists in 2567.",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 105
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 94
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 79
+      }
+    ]
+  },
+  {
+    "id": "TH08",
+    "answer": "The provided PDF passages do not contain the value of Thailand’s foreign exchange reserves at the end of 2567 in US dollars.",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 161
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 170
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 178
+      }
+    ]
+  },
+  {
+    "id": "TH09",
+    "answer": "The provided PDF passages do not contain information about the baht’s percentage change in 2567.",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 146
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 139
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 194
+      }
+    ]
+  },
+  {
+    "id": "TH10",
+    "answer": "180 ล้านบาท",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 129
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 144
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 170
+      }
+    ]
+  },
+  {
+    "id": "TH11",
+    "answer": "ยอดขายของ TPAC ปี 2567 ในกราฟความสามารถในการทำกำไรเป็น 7,214 ล้านบาท",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 57
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 161
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 163
+      }
+    ]
+  },
+  {
+    "id": "TH12",
+    "answer": "83 ล้านบาท",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 170
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 61
+      }
+    ]
+  },
+  {
+    "id": "TH13",
+    "answer": "1,143 ล้านบาท",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 65
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 162
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 164
+      }
+    ]
+  },
+  {
+    "id": "TH14",
+    "answer": "47,528",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 196
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 11
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 36
+      }
+    ]
+  },
+  {
+    "id": "TH15",
+    "answer": "269 ล้านบาท",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 60
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 59
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 175
+      }
+    ]
+  },
+  {
+    "id": "TH16",
+    "answer": "0.  22 บาท",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 59
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 59
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 57
+      }
+    ]
+  },
+  {
+    "id": "TH17",
+    "answer": "363.0 ล้านบาท",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 163
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 175
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 169
+      }
+    ]
+  },
+  {
+    "id": "TH18",
+    "answer": "363.0 ล้านบาท",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 163
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 175
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 169
+      }
+    ]
+  },
+  {
+    "id": "TH19",
+    "answer": "(527)",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 65
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 69
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 164
+      }
+    ]
+  },
+  {
+    "id": "TH20",
+    "answer": "23.9 ล้านบาท",
+    "citations": [
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 186
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 161
+      },
+      {
+        "document": "TPAC",
+        "filename": "tpac_one_report_2567_th.pdf",
+        "source_pdf_page": 169
+      }
+    ]
+  }
+]

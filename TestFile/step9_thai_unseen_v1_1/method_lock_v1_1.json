@@ -1,0 +1,26 @@
+{
+  "frozen_utc": "2026-09-27T22:32:54.186520+00:00",
+  "scope": "Version 1.1: metadata-only compatibility correction from reference v1",
+  "method": {
+    "corpus": "all selectable PDF text, 1800-character page windows, 180 overlap",
+    "methods": [
+      "PyThaiNLP newmm BM25",
+      "bge-m3 dense",
+      "current app vector_search"
+    ],
+    "k": 5,
+    "page_rule": "physical PDF page, pre-run evidence options",
+    "answer_limit": 0
+  },
+  "sha256": {
+    "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\work\\step9_thai_unseen\\reference_v1.json": "6fdeb0bba04685d6779685b84577472d82d99db71d0819bc36cb6630518c861d",
+    "C:\\Users\\nonga\\OneDrive\\Desktop\\Project_2\\Agentic_RAG_Business-Insight-Analysis\\scripts\\benchmark_heldout.py": "f4385951e5cf462d3ee305907beb7792d663584f99ba2599f5127ba2a2aee0ca",
+    "C:\\Users\\nonga\\OneDrive\\Desktop\\Project_2\\Agentic_RAG_Business-Insight-Analysis\\backend\\services\\rag.py": "9483013e85e50a2f1bdb9a045fe907dde1a45140fb93ce446c72360bfbe2930d",
+    "C:\\Users\\nonga\\OneDrive\\Desktop\\Project_2\\Agentic_RAG_Business-Insight-Analysis\\backend\\services\\retrieval_rank.py": "65f288c53d94c5db8de7526f57f41c5ee4eefe4214536b6bf53bf995a32380ed",
+    "C:\\Users\\nonga\\OneDrive\\Desktop\\Project_2\\Agentic_RAG_Business-Insight-Analysis\\backend\\eval\\score_layers.py": "de2a3e31d6d4f451803c7f8a8579f3edc728fdcae87153a0e618fb13323f9c78",
+    "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\work\\step9_thai_unseen\\cpaxtra_2567_th.pdf": "9f288ca9b2f89015bda0ea8acff0b03faa951e4ebc83ee8b6514a78ac0126e16",
+    "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\work\\step9_thai_unseen\\egco_2567_th.pdf": "0e77f575844c8e00cc2ca398b4fac4b982baf2dc3e3611d7b1d57aabc001be1b",
+    "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\work\\step9_thai_unseen\\reference_v1_1.json": "769966bdcf56da726c9e7951077253528b24cef4ff53b9b3ebe7aa2d62000c31"
+  },
+  "parent_method_lock_sha256": "96a98a34b754be9a5e969023ab3e414bc504a4806971d963295340a046913a6f"
+}

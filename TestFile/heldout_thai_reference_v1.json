@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "purpose": "Thai-language held-out retrieval and answer evaluation on newly collected public reports",
+  "created_utc": "2026-09-27",
+  "page_numbering": "1-based physical PDF pages",
+  "label_review": "One reviewer checked each value and its row, column, unit and year against rendered original PDF pages; owner or second reviewer should verify before thesis submission.",
+  "limitations": [
+    "Twenty selected questions from two Thai reports are a pilot, not a population accuracy estimate.",
+    "Source PDFs have selectable but noisy Thai text; text-backed retrieval does not measure OCR accuracy.",
+    "Several questions share a page, so question-level errors are correlated.",
+    "The benchmark includes chart and table facts; retrieval page hits alone do not prove correct cell interpretation."
+  ],
+  "documents": [
+    {
+      "code": "BOT",
+      "source_file": "bot_annual_report_2567_th.pdf",
+      "excerpt_file": "bot_annual_report_2567_th.pdf",
+      "source_sha256": "e0dd9a3aea8852f4b18f43f0e6c21581d0df46a49b501136f8840bdfee29dd8f",
+      "source_page_count": 174,
+      "download_url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2567/AnnualReport_2567.pdf"
+    },
+    {
+      "code": "TPAC",
+      "source_file": "tpac_one_report_2567_th.pdf",
+      "excerpt_file": "tpac_one_report_2567_th.pdf",
+      "source_sha256": "2867b2183ebed0001b4c6ed6513cc9128cefa18613fb3a92d9dbdcc09b8d79a5",
+      "source_page_count": 220,
+      "download_url": "https://tpacpackaging.com/wp-content/uploads/2025/03/TPAC_One-Report_2024_TH.pdf"
+    }
+  ],
+  "items": [
+    {
+      "id": "TH01",
+      "document": "BOT",
+      "source_pdf_page": 17,
+      "excerpt_page": 17,
+      "page_role": "infographic",
+      "question_th": "สิ้นปี 2567 ธนาคารแห่งประเทศไทยปรับลดอัตราดอกเบี้ยนโยบายมาอยู่ที่เท่าไร?",
+      "reference_answer": "2.25%",
+      "answer_components": {
+        "value": "2.25",
+        "year_be": 2567,
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "BOT",
+          "source_pdf_page": 17
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH02",
+      "document": "BOT",
+      "source_pdf_page": 17,
+      "excerpt_page": 17,
+      "page_role": "infographic",
+      "question_th": "ในปี 2567 อัตราผ่อนชำระขั้นต่ำของบัตรเครดิตที่ ธปท. คงไว้คือเท่าไร?",
+      "reference_answer": "8%",
+      "answer_components": {
+        "value": "8",
+        "year_be": 2567,
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "BOT",
+          "source_pdf_page": 17
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH03",
+      "document": "BOT",
+      "source_pdf_page": 18,
+      "excerpt_page": 18,
+      "page_role": "infographic",
+      "question_th": "ณ ปี 2567 จำนวนผู้ใช้พร้อมเพย์ตามรายงาน ธปท. มีเท่าไร?",
+      "reference_answer": "87.5 ล้านหมายเลข",
+      "answer_components": {
+        "value": "87.5",
+        "year_be": 2567,
+        "unit": "ล้านหมายเลข"
+      },
+      "required_evidence": [
+        {
+          "document": "BOT",
+          "source_pdf_page": 18
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH04",
+      "document": "BOT",
+      "source_pdf_page": 18,
+      "excerpt_page": 18,
+      "page_role": "infographic",
+      "question_th": "ในปี 2567 ธุรกรรม Cross-border QR payment มีจำนวนเท่าไร?",
+      "reference_answer": "3.2 ล้านรายการ",
+      "answer_components": {
+        "value": "3.2",
+        "year_be": 2567,
+        "unit": "ล้านรายการ"
+      },
+      "required_evidence": [
+        {
+          "document": "BOT",
+          "source_pdf_page": 18
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH05",
+      "document": "BOT",
+      "source_pdf_page": 23,
+      "excerpt_page": 23,
+      "page_role": "infographic",
+      "question_th": "การบริโภคภาคเอกชนของไทยในปี 2567 ขยายตัวกี่เปอร์เซ็นต์?",
+      "reference_answer": "4.4%",
+      "answer_components": {
+        "value": "4.4",
+        "year_be": 2567,
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "BOT",
+          "source_pdf_page": 23
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH06",
+      "document": "BOT",
+      "source_pdf_page": 23,
+      "excerpt_page": 23,
+      "page_role": "infographic",
+      "question_th": "การลงทุนภาคเอกชนของไทยในปี 2567 เปลี่ยนแปลงกี่เปอร์เซ็นต์?",
+      "reference_answer": "-1.6%",
+      "answer_components": {
+        "value": "-1.6",
+        "year_be": 2567,
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "BOT",
+          "source_pdf_page": 23
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH07",
+      "document": "BOT",
+      "source_pdf_page": 23,
+      "excerpt_page": 23,
+      "page_role": "infographic",
+      "question_th": "ปี 2567 นักท่องเที่ยวต่างชาติมีจำนวนกี่ล้านคน?",
+      "reference_answer": "35.5 ล้านคน",
+      "answer_components": {
+        "value": "35.5",
+        "year_be": 2567,
+        "unit": "ล้านคน"
+      },
+      "required_evidence": [
+        {
+          "document": "BOT",
+          "source_pdf_page": 23
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH08",
+      "document": "BOT",
+      "source_pdf_page": 48,
+      "excerpt_page": 48,
+      "page_role": "narrative",
+      "question_th": "ณ สิ้นปี 2567 เงินสำรองระหว่างประเทศของไทยมีมูลค่าเท่าไรในหน่วยพันล้านดอลลาร์สหรัฐ?",
+      "reference_answer": "262 พันล้านดอลลาร์สหรัฐ",
+      "answer_components": {
+        "value": "262",
+        "year_be": 2567,
+        "unit": "พันล้านดอลลาร์สหรัฐ"
+      },
+      "required_evidence": [
+        {
+          "document": "BOT",
+          "source_pdf_page": 48
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH09",
+      "document": "BOT",
+      "source_pdf_page": 48,
+      "excerpt_page": 48,
+      "page_role": "narrative",
+      "question_th": "ในปี 2567 ดัชนีค่าเงินบาทแข็งค่าขึ้นกี่เปอร์เซ็นต์?",
+      "reference_answer": "0.8%",
+      "answer_components": {
+        "value": "0.8",
+        "year_be": 2567,
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "BOT",
+          "source_pdf_page": 48
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH10",
+      "document": "BOT",
+      "source_pdf_page": 53,
+      "excerpt_page": 53,
+      "page_role": "narrative",
+      "question_th": "รายงาน ธปท. ระบุว่าประชากรและธุรกิจราวกี่เปอร์เซ็นต์ของประเทศอยู่นอกกรุงเทพฯ และปริมณฑล?",
+      "reference_answer": "80%",
+      "answer_components": {
+        "value": "80",
+        "year_be": 2567,
+        "unit": "%"
+      },
+      "required_evidence": [
+        {
+          "document": "BOT",
+          "source_pdf_page": 53
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH11",
+      "document": "TPAC",
+      "source_pdf_page": 10,
+      "excerpt_page": 10,
+      "page_role": "chart",
+      "question_th": "ยอดขายของ TPAC ปี 2567 ในกราฟความสามารถในการทำกำไรเป็นเท่าไร (ล้านบาท)?",
+      "reference_answer": "7,214 ล้านบาท",
+      "answer_components": {
+        "value": "7214",
+        "year_be": 2567,
+        "unit": "ล้านบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "TPAC",
+          "source_pdf_page": 10
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH12",
+      "document": "TPAC",
+      "source_pdf_page": 10,
+      "excerpt_page": 10,
+      "page_role": "chart",
+      "question_th": "กำไรสุทธิจากการดำเนินงานปกติของ TPAC ปี 2567 ในกราฟเป็นเท่าไร (ล้านบาท)?",
+      "reference_answer": "471 ล้านบาท",
+      "answer_components": {
+        "value": "471",
+        "year_be": 2567,
+        "unit": "ล้านบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "TPAC",
+          "source_pdf_page": 10
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH13",
+      "document": "TPAC",
+      "source_pdf_page": 11,
+      "excerpt_page": 11,
+      "page_role": "chart",
+      "question_th": "ปี 2567 TPAC มีกระแสเงินสดจากการดำเนินงานเท่าไร (ล้านบาท)?",
+      "reference_answer": "1,143 ล้านบาท",
+      "answer_components": {
+        "value": "1143",
+        "year_be": 2567,
+        "unit": "ล้านบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "TPAC",
+          "source_pdf_page": 11
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH14",
+      "document": "TPAC",
+      "source_pdf_page": 11,
+      "excerpt_page": 11,
+      "page_role": "chart",
+      "question_th": "จำนวนการซื้อเม็ดพลาสติกของ TPAC ในปี 2567 เท่ากับกี่ตัน?",
+      "reference_answer": "81,228 ตัน",
+      "answer_components": {
+        "value": "81228",
+        "year_be": 2567,
+        "unit": "ตัน"
+      },
+      "required_evidence": [
+        {
+          "document": "TPAC",
+          "source_pdf_page": 11
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH15",
+      "document": "TPAC",
+      "source_pdf_page": 59,
+      "excerpt_page": 59,
+      "page_role": "financial_table",
+      "question_th": "สำหรับปีสิ้นสุด 31 ธันวาคม 2567 TPAC มีกำไรก่อนดอกเบี้ย ภาษี และค่าเสื่อมราคาจากการดำเนินงานปกติเท่าไร (ล้านบาท)?",
+      "reference_answer": "1,274 ล้านบาท",
+      "answer_components": {
+        "value": "1274",
+        "year_be": 2567,
+        "unit": "ล้านบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "TPAC",
+          "source_pdf_page": 59
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH16",
+      "document": "TPAC",
+      "source_pdf_page": 59,
+      "excerpt_page": 59,
+      "page_role": "financial_table",
+      "question_th": "ในไตรมาส 4/2567 TPAC มีกำไรต่อหุ้นจากการดำเนินงานปกติเท่าไร (บาท)?",
+      "reference_answer": "0.22 บาท",
+      "answer_components": {
+        "value": "0.22",
+        "year_be": 2567,
+        "unit": "บาท"
+      },
+      "required_evidence": [
+        {
+          "document": "TPAC",
+          "source_pdf_page": 59
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH17",
+      "document": "TPAC",
+      "source_pdf_page": 60,
+      "excerpt_page": 60,
+      "page_role": "financial_table",
+      "question_th": "สำหรับปีสิ้นสุด 31 ธันวาคม 2567 งบการเงินรวมของ TPAC มีกำไรขั้นต้นเท่าไร (ล้านบาท)?",
+      "reference_answer": "1,621 ล้านบาท",
+      "answer_components": {
+        "value": "1621",
+        "year_be": 2567,
+        "unit": "ล้านบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "TPAC",
+          "source_pdf_page": 60
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH18",
+      "document": "TPAC",
+      "source_pdf_page": 61,
+      "excerpt_page": 61,
+      "page_role": "financial_table",
+      "question_th": "สำหรับปีสิ้นสุด 31 ธันวาคม 2567 งบการเงินรวมของ TPAC มีกำไรสุทธิเท่าไร (ล้านบาท)?",
+      "reference_answer": "469 ล้านบาท",
+      "answer_components": {
+        "value": "469",
+        "year_be": 2567,
+        "unit": "ล้านบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "TPAC",
+          "source_pdf_page": 61
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH19",
+      "document": "TPAC",
+      "source_pdf_page": 65,
+      "excerpt_page": 65,
+      "page_role": "financial_table",
+      "question_th": "ปี 2567 เงินสดสุทธิที่ TPAC ใช้ไปในกิจกรรมลงทุนเท่าไร (ล้านบาท; ระบุเป็นค่าติดลบ)?",
+      "reference_answer": "-984 ล้านบาท",
+      "answer_components": {
+        "value": "-984",
+        "year_be": 2567,
+        "unit": "ล้านบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "TPAC",
+          "source_pdf_page": 65
+        }
+      ],
+      "language": "th"
+    },
+    {
+      "id": "TH20",
+      "document": "TPAC",
+      "source_pdf_page": 67,
+      "excerpt_page": 67,
+      "page_role": "financial_table",
+      "question_th": "ณ 31 ธันวาคม 2567 TPAC มีสินค้าคงเหลือเท่าไร (ล้านบาท)?",
+      "reference_answer": "645 ล้านบาท",
+      "answer_components": {
+        "value": "645",
+        "year_be": 2567,
+        "unit": "ล้านบาท"
+      },
+      "required_evidence": [
+        {
+          "document": "TPAC",
+          "source_pdf_page": 67
+        }
+      ],
+      "language": "th"
+    }
+  ]
+}

@@ -1,8 +1,10 @@
 # Intelligent Financial Data Agent (Agentic RAG)
 
 A FastAPI-based **Agentic Retrieval-Augmented Generation (RAG)** system for extracting,
-processing, and analyzing **Thai financial documents**. It combines a local LLM
-(via Ollama), deterministic SQL over a DuckDB warehouse, semantic search over
+processing, and analyzing **Thai financial documents**. Its configured online path
+uses Gemini for generation and tool selection, Typhoon for prose OCR, and Gemini
+for table extraction. Private offline mode uses local OCR and Ollama models.
+It combines deterministic SQL over a DuckDB warehouse, semantic search over
 PostgreSQL/pgvector, and a knowledge graph — routed by a tool-using agent with an
 answer self-correction step.
 
@@ -13,7 +15,8 @@ answer self-correction step.
 ### 1. Agentic RAG — ReAct loop with deterministic routing
 - **ReAct agent** ([`backend/services/agent.py`](backend/services/agent.py)) — a plain
   LLM ReAct loop (Thought → Action → Observation → Final Answer) that calls tools via
-  direct Ollama API calls. *(Note: this is a hand-rolled ReAct loop, not LangGraph.)*
+  the configured generation provider. The online template selects Vertex Gemini;
+  offline mode selects Ollama. This is a hand-rolled ReAct loop, not LangGraph.
 - **Deterministic query router** ([`backend/services/query_router.py`](backend/services/query_router.py))
   — classifies each question by keyword signals and picks the right tool up front. On a
   high-confidence match it **forces the first tool call** rather than trusting the LLM to
@@ -21,8 +24,10 @@ answer self-correction step.
 - **Answer self-correction** ([`backend/services/answer_verifier.py`](backend/services/answer_verifier.py))
   — after the agent drafts a `Final Answer`, a second LLM pass checks that every fact is
   **grounded** in the tool observations and that the answer is **on-topic**; if not, the
-  agent regenerates once with the critique. Fails *open* so a flaky judge never blocks a
-  valid answer. Toggle via `AGENT_SELF_CORRECTION`.
+  agent can regenerate once with the critique. A final deterministic grounding
+  guard checks supporting source locations and numeric evidence. Available tools
+  are filtered against indexed data, and searches have a bounded call budget.
+  Toggle the optional LLM review via `AGENT_SELF_CORRECTION`.
   *(Distinct from [`self_correction.py`](backend/services/self_correction.py), which
   validates OCR **table** structure — see feature 4.)*
 
@@ -46,12 +51,24 @@ answer self-correction step.
     company/attribute, so cross-attribute questions avoid correlated sub-queries.
 
 ### 4. Data Ingestion & OCR
-- **Typhoon OCR** converts PDF pages to images and extracts Thai text + tables.
-- PDF uploads record each physical PDF page in `document_pages`. Raw OCR is saved
+- **Typhoon OCR** reads normal Thai text; when configured, **Gemini** extracts tables.
+- Landscape two-up pages are split at a detected gutter; sideways bank tables
+  are rotated using PDF text *direction* only (never embedded-text values).
+  Crop/rotation metadata remains attached to the physical PDF page. A failed
+  region makes the page fail rather than fabricating a table.
+- Uploaded and scraped PDFs use the same saved-file queue and record each physical
+  PDF page in `document_pages`. Scraped PDF registration returns `pending`; OCR
+  continues in the background and the Documents view shows page failures.
+  Raw OCR is saved
   before embedding/table indexing, so a later failure is reported as `partial`
   with its page number and stage instead of silently losing the OCR. The document
   API exposes `page_statuses` and `raw_ocr_pages` for inspection. Page numbers
   refer to the PDF's page order; printed page numbers are not required.
+- Raw OCR and quality-warning artifacts are for inspection and are excluded from
+  answer retrieval. Table values that fail internal checks are excluded from
+  structured search and DuckDB. Answer sources link to the physical PDF page;
+  OCR values remain unverified against the original image until reviewed.
+  SQL aggregates and legacy graph results can have unresolved page attribution.
 - PDF ingestion skips optional Ollama chunk summaries; OCR, embeddings, and
   structured tables still run, without a summary outage blocking a page.
 - Malformed multi-row financial HTML headers are normalized into year and change
@@ -66,14 +83,26 @@ answer self-correction step.
   Knowledge Abstract per document and exposes it via the `graph_search` tool and the
   `/api/graphs` routes.
 
-### 6. Web Scraping with Anti-Bot Solvers
-- Playwright scraper ([`backend/services/pw_worker.py`](backend/services/pw_worker.py))
-  with a Cloudflare/Turnstile solver and a reCAPTCHA audio-transcription fallback
-  (requires FFmpeg on PATH).
+### 6. Public PDF Discovery
+- The bounded [PDF crawler](backend/services/pdf_discovery.py) follows report links
+  and sitemaps, checks robots.txt, verifies PDF bytes, and downloads reports with
+  source URLs and SHA-256 hashes. For PDF-only collection, Playwright renders a
+  page only when plain HTTP finds no PDF; keyword search also uses Playwright.
+  Requests for images still use the legacy browser worker. The crawler does not
+  try to bypass sites that deny access.
+- See [discovery measurements and limits](docs/pdf-discovery.md). Public collection
+  requires internet access and is disabled in offline mode.
 
 ### 7. Background Processing & Evaluation
-- **Celery + Redis** ([`backend/tasks.py`](backend/tasks.py)) for OCR, scraping, and
-  knowledge-graph builds.
+- PDF uploads are streamed to unique saved files, return a document ID quickly,
+  and run in a single API-owned background queue. PostgreSQL page checkpoints
+  let pending/interrupted jobs resume after API restart. The API owns DuckDB;
+  a second Celery process must not write the same DuckDB file.
+- The OCR viewer loads a 25-page status window and one selected page's PDF
+  image, raw OCR, parsed tables, final stored rows, and quality reasons.
+- **Celery + Redis** ([`backend/tasks.py`](backend/tasks.py)) remain for
+  knowledge-graph builds and scraping. The old Celery `process_document` task
+  is retired because it bypassed the page-level quality gate.
 - **Ragas evaluation** ([`backend/services/evaluation.py`](backend/services/evaluation.py)) —
   a live eval loop that runs the real agent over a golden set and scores it, tracking
   results over time for before/after comparison (see [Evaluation](#evaluation)).
@@ -84,9 +113,9 @@ answer self-correction step.
 - **Python** 3.10+
 - **PostgreSQL** with the `pgvector` extension
 - **Redis** (Celery broker)
-- **Ollama** (e.g. `qwen2.5:14b` + `nomic-embed-text`)
+- **Ollama** for local embeddings and optional offline answer generation
 - **DuckDB** (in-process, via pip)
-- **FFmpeg** on PATH (for the reCAPTCHA audio solver)
+- **FFmpeg** on PATH only for the legacy browser challenge helper
 
 ## Setup
 
@@ -111,13 +140,15 @@ python -m playwright install chromium
 
 ## Running
 
+For private processing without cloud calls, see [offline mode](docs/offline-mode.md).
+
 ### API server
 ```bash
 python -m backend.main
 ```
 API at `http://localhost:8000` (docs at `/docs`). The frontend SPA, if built, is served at `/`.
 
-### Celery worker (for async OCR / scraping / graph builds)
+### Celery worker (for scraping / graph builds; PDF OCR runs in the API)
 ```bash
 celery -A backend.tasks worker --loglevel=info -P solo
 ```
@@ -131,8 +162,23 @@ python -m backend.services.evaluation --live --label baseline
 - Golden questions + ground truths: [`backend/eval/golden_set.json`](backend/eval/golden_set.json)
 - Per-run scores and a cumulative history (with deltas vs the previous run) are written to
   `backend/eval/results/` (git-ignored).
-- The Ragas judge defaults to Typhoon cloud; embeddings use the same local Nomic model as
-  ingestion.
+- The Ragas judge uses Typhoon cloud; embeddings use the configured local
+  `EMBED_MODEL`, shared with ingestion. Saved Thai retrieval experiments use
+  `bge-m3`; the environment template retains the original Nomic default.
+
+For the detailed October 2026 update, verified software tests, saved retrieval
+comparisons, local OCR measurements, and remaining work, see
+[the auto1 update](docs/auto1-update-2026-10-01.md).
+
+For the separate OCR diagnostic, run `python scripts/score_ocr_cells.py --split all`.
+The 16 currently labeled table cells are a small exact-row/column test:
+13/16 pass the cached OCR check, while the three bank-page-46 position cells
+remain OCR failures. This is not whole-report accuracy. Four chart facts are
+labeled but category/value extraction remains unresolved.
+
+For held-out retrieval and answer results, long-document recovery, and the
+offline presentation path, see [Step 8 thesis evaluation](docs/thesis-evaluation.md)
+and the [demo runbook](docs/thesis-demo.md).
 
 ---
 
@@ -143,7 +189,7 @@ backend/
   config.py                Settings (loaded from .env)
   database.py              Async SQLAlchemy engine/session
   models.py                ORM models
-  tasks.py                 Celery tasks (OCR, scraping, graph build)
+  tasks.py                 Celery tasks (scraping, graph build; legacy OCR retired)
   routes/                  API endpoints (documents, scrape, query, chunks, warehouse, graph)
   services/
     agent.py               ReAct agent loop

@@ -1,0 +1,2515 @@
+{
+  "settings": {
+    "run_utc": "2026-09-26T18:16:55.017420+00:00",
+    "manifest": "TestFile\\pdf_discovery_sites_v3.json",
+    "browser_fallback": true,
+    "limits": {
+      "max_pages": 5,
+      "max_depth": 2,
+      "max_sitemaps": 1,
+      "max_pdfs": 8,
+      "max_seconds": 85.0,
+      "request_delay": 0.3,
+      "timeout": 8,
+      "max_html_bytes": 2000000,
+      "max_sitemap_bytes": 3000000
+    }
+  },
+  "known_found": 14,
+  "total_sites": 20,
+  "sites": [
+    {
+      "site": {
+        "name": "BIS",
+        "report": "Annual Report 2023/24",
+        "seed_url": "https://www.bis.org/about/areport/areport2024.htm",
+        "expected_url_regex": "annual-report-2024\\.pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.bis.org/publications/annual-report-2024.pdf",
+        "discovery_page": "https://www.bis.org/publications/annual-report-2024",
+        "anchor_text": "PDF (260 Pages)",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 35.3,
+      "discovery": {
+        "seed_url": "https://www.bis.org/about/areport/areport2024.htm",
+        "pdfs": [
+          {
+            "url": "https://www.bis.org/publications/annual-report-2024.pdf",
+            "discovery_page": "https://www.bis.org/publications/annual-report-2024",
+            "anchor_text": "PDF (260 Pages)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.bis.org/about/areport/areport2024.htm",
+          "https://www.bis.org/pages/download-central-bankers-speeches/speeches-1997.zip",
+          "https://www.bis.org/publications/annual-report-2024.pdf",
+          "https://www.bis.org/speeches/central-bank/download",
+          "https://www.bis.org/pages/download-central-bankers-speeches/speeches-1996.zip"
+        ],
+        "sitemaps_checked": [
+          "https://www.bis.org/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.bis.org/speeches/central-bank/download",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2026.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2025.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2024.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2023.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2022.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2021.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2020.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2019.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2018.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2017.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2016.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2015.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2014.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2013.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2012.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2011.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2010.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2009.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2008.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2007.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2006.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2005.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2004.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2003.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2002.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2001.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-2000.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-1999.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-1998.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-1997.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-1996.zip",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-1996.zip",
+            "stage": "page",
+            "reason": "Non-HTML page: application/zip"
+          },
+          {
+            "url": "https://www.bis.org/pages/download-central-bankers-speeches/speeches-1997.zip",
+            "stage": "page",
+            "reason": "Non-HTML page: application/zip"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "Annual Report 2023/24 Skip to main content Search Close search About Research & publications Committees Speeches Statistics Media & events About the BIS The BIS supports central banks' pursuit of monetary and financial stability through international cooperation. Careers at the BIS Governance & organisation Banking services Annual Report Annual General Meeting The Basel Process History Campus development project Legal information Financial Stability Institute Innovation Hub Cyber Resilience Coordination Centre Representative offices Office for the Americas Office for Asia and the Pacific Research & publications BIS research focuses on policy issues of core interest to the central bank and financial supervisory community. BIS authors Our authors publish economic analysis and research on monetary and financial stability issues. All publications Key reports Annual Economic Report Quarterly Review FSI publications BIS Bulletins BIS Papers BIS Working Papers BIS Open Tech Central Bank research hub About the Committees The BIS hosts committees engaged in standard setting & the pursuit of financial stability through the Basel Process. Basel Committee on Banking Supervision Committee on the Global Financial System Committee on Payments and Market Infrastructures Markets Committee Central Bank Governance Group Irving Fisher Committee Speeches The BIS publishes select speeches delivered by its senior management, focusing on topics that align with the organisation's mission. All speeches Management speeches Central bankers' speeches Speeches by speaker Pablo Hernández de Cos Andréa M Maechler Fernando Restoy Tao Zhang Alexandre Tombini Data Portal Access our statistics in the BIS Data Portal Overview Effects of financial regulations Media centre Contact the Media team Media releases All media releases Videos Media centre Photo gallery Podcasts Events All events Search Submit search Search Close search About Research & publications Committees Speeches Statistics Media & events Back About the BIS The BIS supports central banks' pursuit of monetary and financial stability through international cooperation. Governance & organisation Banking services Annual Report Annual General Meeting The Basel Process History Campus development project Legal information Financial Stability Institute Innovation Hub Cyber Resilience Coordination Centre Representative offices Office for the Americas Office for Asia and the Pacific Careers at the BIS Back Research & publications BIS research focuses on policy issues of core interest to the central bank and financial supervisory community. All publications Key reports Annual Economic Report Quarterly Review BIS Bulletins BIS Papers BIS Working Papers FSI publications BIS Open Tech Central Bank research hub BIS authors Our authors publish economic analysis and research on monetary and financial stability issues. Back About the Committees The BIS hosts committees engaged in standard setting & the pursuit of financial stability through the Basel Process. Basel Committee on Banking Supervision Committee on the Global Financial System Committee on Payments and Market Infrastructures Markets Committee Central Bank Governance Group Irving Fisher Committee Back Speeches The BIS publishes select speeches delivered by its senior management, focusing on topics that align with the organisation's mission. All speeches Speeches by speaker Pablo Hernández de Cos Andréa M Maechler Fernando Restoy Tao Zhang Alexandre Tombini Management speeches Central bankers' speeches Back Data Portal Access our statistics in the BIS Data Portal Overview Effects of financial regulations Back Media centre Contact the Media team Media releases All media releases Videos Media centre Photo gallery Podcasts Events All events Back Governance & organisation Overview Members Governance & oversight Values & culture Ethics & conduct, risk management & internal audit Financial information Back Banking services Overview Our customers Banking products & services Key reports Back History Overview Timelines BIS 90 Years exhibition BIS Historical Archive Back Campus development project Overview Architectural competition Exhibition Back Legal information Overview Administrative Tribunal Fraudulent schemes Hague Arbitral Tribunal Information for suppliers Shares withdrawal Back Financial Stability Institute About the FSI Policy work Capacity development Outreach programme Publications Speeches Events Back Innovation Hub About the Innovation Hub Projects Collaboration Innovation Network Publications News Back Office for the Americas About the Americas Office Consultative Council for the Americas Activities Visiting economists Publications News Back Office for Asia and the Pacific About the Asia Office Asian Consultative Council Activities Secondment programme Publications News Back Basel Committee on Banking Supervision About the BCBS Standards & guidelines Implementation Data & analysis Publications News Back Committee on the Global Financi",
+        "checked_at": "2026-09-26T18:15:02.140727+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "ADB",
+        "report": "ADB Annual Report 2024 main report",
+        "seed_url": "https://www.adb.org/documents/adb-annual-report-2024",
+        "expected_url_regex": "adb.*annual.*2024|fls250100",
+        "expected_anchor_regex": "Main Report"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.adb.org/sites/default/files/institutional-document/1044381/adb-annual-report-2024.pdf",
+        "discovery_page": "https://www.adb.org/documents/adb-annual-report-2024",
+        "anchor_text": "",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 21.61,
+      "discovery": {
+        "seed_url": "https://www.adb.org/documents/adb-annual-report-2024",
+        "pdfs": [
+          {
+            "url": "https://www.adb.org/sites/default/files/institutional-document/1044381/adb-annual-report-2024.pdf",
+            "discovery_page": "https://www.adb.org/documents/adb-annual-report-2024",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.adb.org/sites/default/files/institutional-document/1044381/adb-financial-report-2024.pdf",
+            "discovery_page": "https://www.adb.org/documents/adb-annual-report-2024",
+            "anchor_text": "Financial Report  ( 6.11 MB )",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.adb.org/sites/default/files/institutional-document/1044381/adb-financial-report-2024.pdf",
+          "https://www.adb.org/where-we-work",
+          "https://www.adb.org/documents/adb-annual-report-2024",
+          "https://www.adb.org/sites/default/files/institutional-document/1044381/adb-annual-report-2024.pdf",
+          "https://www.adb.org/what-we-do"
+        ],
+        "sitemaps_checked": [
+          "https://www.adb.org/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://data.adb.org/media/13636/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13471/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13641/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13476/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13646/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13481/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13651/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13486/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13656/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13491/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13661/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13496/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13666/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13501/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13671/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13506/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13676/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13511/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13681/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13516/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13686/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13521/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13691/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13526/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13696/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13531/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13701/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13536/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13706/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13541/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13711/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13546/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13716/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13556/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13721/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13561/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13726/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13566/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13731/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13571/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13736/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13576/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13741/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13581/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13746/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13586/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13751/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13591/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13756/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13596/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13761/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13601/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13766/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13606/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13771/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13611/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13776/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13616/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13781/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13621/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13786/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://data.adb.org/media/13626/download",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "ADB Annual Report 2024 | Asian Development Bank Skip to main content News and Events ADB Institute Contact English 日本語 中文 Solving Complex Challenges Together for 60 Years WHO  WE  ARE About ADB, how we’re organized, results and transparency WHAT  WE  DO Projects, publications, products and services, and development knowledge WHERE  WE  WORK Countries with operations and subregional programs, country planning documents WORK  WITH  US Careers, business opportunities, and investor relations News and Events ADB Institute Contact 日本語 中文 ADB is a leading multilateral development bank supporting sustainable, inclusive, and resilient growth across Asia and the Pacific. Working with its members and partners, ADB provides quality development solutions to solve the region’s complex challenges. Founded in 1966, ADB is owned by 69 members—50 from the region. About ADB Overview Members History Annual Reports Policies and Strategies Partners Organization Board of Governors Board of Directors President Management Departments and Country Offices Accountability Access to Information Accountability Mechanism Anticorruption and Integrity Development Effectiveness Environmental and Social Requirements Independent Evaluation Administrative Tribunal Ethics and Conduct Ombudsperson Strategy 2030 Annual Meetings ADB supports projects in developing member countries that create economic and development impact, delivered through both public and private sector operations, advisory services, and knowledge support. About ADB Projects Projects & Tenders Project Results and Case Studies Products and Services Public Sector Financing Private Sector Financing Financing Partnerships Funds and Resources Knowledge Economic Forecasts Publications and Documents Data and Statistics Asia Pacific Tax Hub ADB and Civil Society Development Asia ADB Blogs ADB Data Library Topics Agriculture and Food Security Climate Change Digital Technology Disaster Risk Management Education Energy Environment Finance Sector Fragility and Vulnerability Gender Equality Governance Health Markets Development and Public-Private Partnerships Regional Cooperation Social Development Sustainable Development Goals Transport Urban Development Water Learn about ADB activities in member countries and regional offices. Get information on country economic data and analysis, development assistance, and regional initiatives. Central and West Asia East Asia South Asia Southeast Asia The Pacific ADB Central and West Asia Operations Afghanistan Armenia Azerbaijan Georgia Kazakhstan [ Русский ] Kyrgyz Republic Pakistan Tajikistan Türkiye Turkmenistan Uzbekistan ADB East Asia Operations Mongolia People's Republic of China [ 中文 ] ADB South Asia Operations Bangladesh Bhutan India Maldives Nepal Sri Lanka ADB Southeast Asia Operations Cambodia Indonesia [ Bahasa Indonesia ] Lao People's Democratic Republic Myanmar Philippines Thailand Timor-Leste Viet Nam [ Tiếng Việt ] ADB Pacific Operations Cook Islands Federated States of Micronesia Fiji Kiribati Marshall Islands Naoero Niue Palau Papua New Guinea Samoa Solomon Islands Tonga Tuvalu Vanuatu Full list of countries with operations Regional Offices European Representative Office Japanese Representative Office [ 日本語 ] North America Representative Office Liaison Offices Pacific Liaison and Coordination Office Pacific Subregional Office Singapore Office Subregional Programs Brunei, Indonesia, Malaysia, Philippines East ASEAN Growth Area (BIMP-EAGA) Central Asia Regional Economic Cooperation (CAREC) Program Greater Mekong Subregion (GMS) Program Indonesia, Malaysia, Thailand Growth Triangle (IMT-GT) South Asia Subregional Economic Cooperation (SASEC) With employees from more than 60 countries, ADB is a place of real diversity. Work with us to find fulfillment in sharing your knowledge and skills, and be a part of our vision in achieving a prosperous, inclusive, resilient, and sustainable Asia and the Pacific. Careers and Scholarships Careers Careers Opportunities Young Professionals Program Visiting Fellow Program Internship Program Scholarship Program For Investors Investor Relations [ 日本語 ] ADB Green and Blue Bonds ADB Theme Bonds Information on Working with ADB for... Consultants Contractors and Suppliers Governments Executing and Implementing Agencies Development Institutions Private Sector Partners Civil Society/Non-government Organizations Procurement and Outreach Project Procurement Institutional Procurement Business Opportunities Outreach Projects & Tenders Breadcrumb ADB Annual Report 2024 Translate Bahasa Indonesia 日本語 Русский 简体中文 ADB Annual Report 2024 Institutional Document | April 2025 SHARE THIS PAGE This Annual Report presents a comprehensive account of ADB's operational, institutional, and financial highlights in 2024. Download (Free : 2 available) Main Report  ( 6.77 MB ) Financial Report  ( 6.11 MB ) Citable URL http://dx.doi.org/10.22617/FLS250100 Highlights View highlights and key data from the ADB Annual Report 2024 The repor",
+        "checked_at": "2026-09-26T18:14:48.453114+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "Bank of Thailand",
+        "report": "Annual Report 2024",
+        "seed_url": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+        "expected_url_regex": "annualreport.*2024",
+        "expected_anchor_regex": "Annual Report 2024"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.bot.or.th/content/dam/bot/documents/en/research-and-publications/reports/annual-report/AnnualReport_2024Eng.pdf",
+        "discovery_page": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+        "anchor_text": "Annual Report 2024",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 3.34,
+      "discovery": {
+        "seed_url": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+        "pdfs": [
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/en/laws-and-rules/laws-and-regulations/legal-department/1-bot-act/1.1%20LAW01_BOTAct.pdf",
+            "discovery_page": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+            "anchor_text": "Bank of Thailand Act",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/en/laws-and-rules/laws-and-regulations/legal-department/2-currency-act/2.1%20LAW02_CurrencyAct.pdf",
+            "discovery_page": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+            "anchor_text": "Currency Act",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/en/research-and-publications/reports/annual-report/AnnualReport_2025Eng.pdf",
+            "discovery_page": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+            "anchor_text": "Download PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/en/research-and-publications/reports/financial-reports/annual-report/Statement_2025_EN.pdf",
+            "discovery_page": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+            "anchor_text": "Auditor's Report and Financial Statements",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/en/research-and-publications/reports/annual-report/AnnualReport_2024Eng.pdf",
+            "discovery_page": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+            "anchor_text": "Annual Report 2024",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/en/research-and-publications/reports/annual-report/AnnualReport_2023Eng.pdf",
+            "discovery_page": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+            "anchor_text": "Annual Report 2023",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/en/research-and-publications/reports/annual-report/AnnualReport2022.pdf",
+            "discovery_page": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+            "anchor_text": "Annual Report 2022",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bot.or.th/content/dam/bot/documents/en/research-and-publications/reports/annual-report/AnnualReport2020_En.pdf",
+            "discovery_page": "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.bot.or.th/en/research-and-publications/reports/annual-report.html"
+        ],
+        "sitemaps_checked": [],
+        "blocked": [],
+        "failures": [],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "The Bank of Thailand Annual Report 1 News & Media Back News & Media Search for latest updates on BOT's news, speeches, and activities News Latest news from the BOT Speeches Latest Speeches of Governor, Deputy Governors and BOT Executive Activities and Events Events/Activities held by the BOT to strengthen relationships with stakeholders Financial Institutions Holiday List of holidays for financial institutions and specialized financial institutions Back News and Media Search for latest updates on BOT's news, speeches, and activities Our Roles Back Our Roles Information on the BOT's roles & responsibilities in preserving financial and economic stability, both during the normal and crisis periods Monetary Policy Maintaining the price levels not to fluctuate too quickly in order to support the nation's sustainable economic development Monetary Policy Target Monetary Policy Committee Meeting Monetary Policy Publications Monetary Policy Operation About Monetary Policy Financial Stability A financial system that is capable of providing smooth financial services and is resilient against unexpected shocks Importance of Financial Stability Central Bank's Role in Financial Stability Financial Stability Risk Assessment Macro-prudential Policy Financial Institutions Supervising and monitoring financial institutions to ensure that they can perform the role of financial intermediary effectively Thailand Financial Institutions and Financial Service Providers Financial Institutions and Financial Service Providers Policy Financial Sector Master Plan Financial Institutions Supervision Specialized Financial Institutions Supervision Resolving financial institution Problems Financial Markets Maintaining the level of short-term interest rate to be in line with policy interest rate Thai Financial Market Structure Foreign Exchange Market Money Market and Fixed Income Financial Market Development and Standards Foreign Exchange Regulations Reserve Management Payment Systems Promoting safe, efficient and smooth operation of the country's payment system which supports the high level of trade and financial transactions Payment system Policy and Roadmaps Overview Payment System Supervision Payment System Operation Banknotes Producing high-quality banknote that is difficult to counterfeit, circulate good-quality banknotes, focus on sufficiency in all situations with the whole system's efficiency and environment Banknote Security Features Damaged Banknotes Current Banknotes in Circulation Banknote Production and Management Exhibition About Banknote Management Group Counterfeit Banknote Banknote Reproduction Guidelines Banknotes Handling International Coorperation Supporting the maintenance of the nation's and regional economic stability, as well as promoting the role of BOT in the international arena International Organizations International Cooperation Framework CLMV in Brief Technical Coopoeration Special Measures Providing special assistance apart from the BOT's responsibility to support the continuity of economic activities during the time of crisis The COVID-19 Pandemic Lessons Learnt from the Asian Financial Crisis Back Our Roles Information on the BOT's roles & responsibilities in preserving financial and economic stability, both during the normal and crisis periods The COVID-19 Pandemic Quick Links Monetary Policy Committee Meeting Policy Interest Rate Macro-prudential Policy Laws & Announcements Back Laws & Announcements Access laws, notifications and circulars Notifications and Circulars Notifications and circulars that were issued by the BOT to regulate the operations of financial service providers Laws and Rules in BOT's Responsibility Laws that govern the BOT's operations, as well as other laws that the BOT in cooperation with other agencies enforce on related institutions Public Hearing Listening to the opinions of all stakeholders comprehensively will help ensure that the laws and regulations issued by the Bank of Thailand do not impose unnecessary burdens on businesses and the public, while still achieving the objectives of the legislation and regulations. Back Laws & Announcements Access laws, notifications and circulars Laws and Regulations Quick Links Bank of Thailand Act Currency Act Thai Economy Back Thai Economy Find information and analyses on financial, economics, and financial markets issues Economic Conditions The overall economic and monetary conditions in Thailand Economic Outlook The latest forecast of Thai economic growth and inflation Economic Publications Various reports for monitoring economic and financial conditions Back Thai Economy Find information and analyses on financial, economics, and financial markets issues Thai Economy Business Sentiment Index (BSI) Quick Links Business Outlook Report (BLP) Credit Conditions Report Research & Publications Back Research & Publications Researches, articles, and other publications from the BOT Research Payment Research Articles Reports Reports on the BOT's operati",
+        "checked_at": "2026-09-26T18:14:30.186932+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "World Bank",
+        "report": "World Bank Group Annual Report 2025",
+        "seed_url": "https://www.worldbank.org/en/about/annual-report/world-bank-group-downloads",
+        "expected_url_regex": "annual.report.2025|2025.*annual|wbg.*2025",
+        "expected_anchor_regex": "^English \\(PDF\\)$"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://openknowledge.worldbank.org/server/api/core/bitstreams/371444b7-36f9-464d-a30f-5b5c34d984fd/content",
+        "discovery_page": "https://www.worldbank.org/en/about/annual-report/world-bank-group-downloads",
+        "anchor_text": "English (PDF)",
+        "status": "verified_pdf",
+        "content_type": "application/pdf;charset=UTF-8"
+      },
+      "reason": "found",
+      "seconds": 92.77,
+      "discovery": {
+        "seed_url": "https://www.worldbank.org/en/about/annual-report/world-bank-group-downloads",
+        "pdfs": [
+          {
+            "url": "https://openknowledge.worldbank.org/server/api/core/bitstreams/371444b7-36f9-464d-a30f-5b5c34d984fd/content",
+            "discovery_page": "https://www.worldbank.org/en/about/annual-report/world-bank-group-downloads",
+            "anchor_text": "English (PDF)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          },
+          {
+            "url": "https://openknowledge.worldbank.org/server/api/core/bitstreams/8f0a032b-3b5f-4d5a-83b8-8e87d67c81b8/content",
+            "discovery_page": "https://www.worldbank.org/en/about/annual-report/world-bank-group-downloads",
+            "anchor_text": "باللغة العربية",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          },
+          {
+            "url": "https://openknowledge.worldbank.org/server/api/core/bitstreams/df01022d-a003-4448-b57d-ddf03f5c3e6f/content",
+            "discovery_page": "https://www.worldbank.org/en/about/annual-report/world-bank-group-downloads",
+            "anchor_text": "中文版",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          },
+          {
+            "url": "https://openknowledge.worldbank.org/server/api/core/bitstreams/f5b3c5bb-adaf-4e1f-bc4b-bb5384b52509/content",
+            "discovery_page": "https://www.worldbank.org/en/about/annual-report/world-bank-group-downloads",
+            "anchor_text": "en español",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          }
+        ],
+        "visited_pages": [
+          "https://www.worldbank.org/en/about/annual-report/world-bank-group-downloads"
+        ],
+        "sitemaps_checked": [],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://openknowledge.worldbank.org/bitstreams/81cc0008-ac1a-4276-9476-57350db6db9f/download",
+            "stage": "pdf_probe",
+            "reason": "Crawl time budget exhausted"
+          },
+          {
+            "url": "https://openknowledge.worldbank.org/bitstreams/6c54d5e6-9733-4fb5-b0fa-0e37339c1b94/download",
+            "stage": "pdf_probe",
+            "reason": "Crawl time budget exhausted"
+          },
+          {
+            "url": "https://openknowledge.worldbank.org/bitstreams/3d92cc9b-426d-49d6-a11d-e28e3dff3674/download",
+            "stage": "pdf_probe",
+            "reason": "Crawl time budget exhausted"
+          },
+          {
+            "url": "https://openknowledge.worldbank.org/bitstreams/af1e5a39-e9c0-4e94-92bc-0f0360950b6e/download",
+            "stage": "pdf_probe",
+            "reason": "Crawl time budget exhausted"
+          },
+          {
+            "url": "https://openknowledge.worldbank.org/bitstreams/78cbe24a-bc92-4a43-9872-cfd1b190ad1d/download",
+            "stage": "pdf_probe",
+            "reason": "Crawl time budget exhausted"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": true,
+        "page_text": "World Bank Group Downloads Annual Report 2025 WBG Annual Report 2025 Annual Report Home Leadership Perspectives Creating Jobs, Growing Economies Strategic Priorities Driving Accountability and Impact Financial Summary Results by Region Results by Theme One World Bank Group World Bank IFC MIGA ICSID Download the World Bank Group Annual Report Email Print Tweet Share Share LinkedIn Digg 人人网 Stumble Upon Delicious 新浪微博 The World Bank Group produces an annual report for the World Bank (IBRD/IDA), IFC, MIGA, and ICSID. Please see below for download links. The World Bank Group (WBG) image DOWNLOAD THE WORLD BANK GROUP ANNUAL REPORT 2025 World Bank Group Annual Report English (PDF) باللغة العربية | 中文版 | en español | en français | на русском языке | 日本語 (PDF) Additional Resources World Bank Appendixes | World Bank Corporate Responsibility Review | International Finance Corporation (IFC) Additional Resources | Multilateral Investment Guarantee Agency (MIGA) Resources Financial Statements Financial Statements French (PDF) | Spanish (PDF) About Data Research and Publications Learning News Projects and Operations Countries Topics follow us newsletter SUBSCRIBE HERE This Site in: English Español Français عربي Русский 中文 View All » Legal Privacy Notice Site Accessibility Access to Information Jobs Contact SCAM ALERTS File a Complaint IBRD IDA IFC MIGA ICSID © The World Bank Group, All Rights Reserved.",
+        "checked_at": "2026-09-26T18:16:02.955963+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "UNICEF",
+        "report": "UNICEF Annual Report 2024 English",
+        "seed_url": "https://www.unicef.org/reports/unicef-annual-report/2024",
+        "expected_url_regex": "unicef.*annual.*2024|annual.*2024",
+        "expected_anchor_regex": "English.*pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.unicef.org/media/172241/file/unicef-annual-report-2024-en.pdf",
+        "discovery_page": "https://www.unicef.org/reports/unicef-annual-report/2024",
+        "anchor_text": "English (pdf, 12 MB)",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 7.77,
+      "discovery": {
+        "seed_url": "https://www.unicef.org/reports/unicef-annual-report/2024",
+        "pdfs": [
+          {
+            "url": "https://www.unicef.org/media/172241/file/unicef-annual-report-2024-en.pdf",
+            "discovery_page": "https://www.unicef.org/reports/unicef-annual-report/2024",
+            "anchor_text": "English (pdf, 12 MB)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.unicef.org/media/172246/file/unicef-annual-report-2024-fr.pdf",
+            "discovery_page": "https://www.unicef.org/reports/unicef-annual-report/2024",
+            "anchor_text": "French (pdf, 13 MB)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.unicef.org/media/172251/file/unicef-annual-report-2024-es.pdf",
+            "discovery_page": "https://www.unicef.org/reports/unicef-annual-report/2024",
+            "anchor_text": "Spanish (pdf, 14 MB)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.unicef.org/media/172256/file/unicef-annual-report-2024-ar.pdf",
+            "discovery_page": "https://www.unicef.org/reports/unicef-annual-report/2024",
+            "anchor_text": "Arabic (pdf, 13 MB)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.unicef.org/media/172251/file/unicef-annual-report-2024-es.pdf",
+          "https://www.unicef.org/media/172246/file/unicef-annual-report-2024-fr.pdf",
+          "https://www.unicef.org/media/172256/file/unicef-annual-report-2024-ar.pdf",
+          "https://www.unicef.org/reports/unicef-annual-report/2024",
+          "https://www.unicef.org/media/172241/file/unicef-annual-report-2024-en.pdf"
+        ],
+        "sitemaps_checked": [
+          "https://www.unicef.org/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.unicef.org/reports/unicef-annual-report/2024",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "UNICEF Annual Report 2024 | UNICEF Skip to main content Toggle navigation Current language: English Click to select different language Current language: English Français Español العربية 中文 Press centre Donate Who we are Back Who we are About UNICEF About UNICEF Who we are Where we work History Results Strategic Plan Transparency and accountability Work with us Our people Our people Executive leadership Executive Board Staff Child rights and global goals Child rights and global goals Core Commitments for Children What we do Back What we do Focus areas Focus areas Child protection Child rights Children with disabilities Climate change and environment Early childhood development Economic and social policy Education Gender equality Health Humanitarian emergencies Immunization Migrant and refugee children Nutrition Social and behaviour change Water, sanitation and hygiene How we do it How we do it Partnerships Innovation Supply and logistics Young people Humanitarian appeals Evaluation Research and reports Back Research and reports Research and knowledge Research and knowledge Strategy and Evidence – Innocenti Knowledge and technical resources Publications Publications State of the World’s Children Annual Report Publications by topic Data Data Data by topic and country Multiple Indicator Cluster Surveys (MICS) Stories Back Stories Stories and explainers Stories and explainers Stories of impact Issue explainers Photography Emergencies spotlight Emergencies spotlight All emergencies Afghanistan Democratic Republic of Congo Gaza Strip Haiti Rohingya refugees Sudan Syria Ukraine Yemen Voices Voices UNICEF Blog Data Blog U-Report Take action Back Take action Get involved Get involved Donate Partner with us Subscribe Volunteer Work with us Advocate for children Advocate for children Action on the climate crisis Adolescent girls' rights Children under attack Child rights Fix my food Vaccines work Spotlight Spotlight Humanitarian Action for Children Staying and delivering for children World Children's Day Communities Communities UNICEF Parenting Search area has closed. Search area has opened. Search Close Search form Search Clear search input Search for result Hide filters Show filters Clear search input Search for result Max Clear search input Search for result UNICEF/UNI725194/Iyakaremye UNICEF Annual Report 2024 Staying and delivering for children Annual report English Français Español العربية It was a difficult time to be a child in 2024. With deepening violent conflict, climate shocks and poverty, children faced skyrocketing needs while the resources to respond continued to shrink. But as this year’s Annual Report shows, across more than 190 countries and territories, UNICEF was there, saving and uplifting the lives of millions of children – even in the hardest-to-reach places. Together with our partners, we delivered clean water and sanitation, protection and psychosocial support, health, nutrition, and immunization services, and education and skills development. The world in 2025 continues to be one of significant political shifts and volatility, economic uncertainty and deepening humanitarian crises. To succeed, UNICEF must be at its best. But announced and anticipated funding cuts are limiting UNICEF’s ability to reach millions of children in dire need. These new cuts are creating a global funding crisis that will put the lives of millions of additional children at risk. In today’s world, everything is interconnected, and aid cuts anywhere threaten security and economic prosperity everywhere. Explore UNICEF’s achievements in 2024 Evolving together | Top 10 achievements | For every child | Voices of UNICEF youth advocates | Financials Download Report Evolving together As needs continue to outpace funding, we must always be the best stewards for the precious resources entrusted to us. We are constantly evaluating our operations and resources to become more agile, efficient and responsive to diverse situations. For example, we have enhanced our data and analytics capabilities, capitalizing on new tools to capture the rapidly evolving situation of children and enable the timely delivery of information to decision makers, and invested in digital solutions to better reach underserved children. We have streamlined our operations while deepening local partnerships and strengthening resilient national systems. What’s at risk Every dollar invested in humanitarian and development aid creates long-term benefits and a more stable and secure world. Aid ensures infectious diseases do not spread across borders and mitigates the risks of instability and violence. Millions of children are alive today because of the global commitment to proven interventions such as vaccines, nutrition and access to safe water and basic sanitation. With our partners, we have made historic progress. Since 2000, global under-5 mortality has dropped by 50 per cent. Millions more have been protected with improved health and brighter futures. Without t",
+        "checked_at": "2026-09-26T18:14:56.219897+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "UNDP Thailand",
+        "report": "UNDP Thailand Annual Report 2024",
+        "seed_url": "https://www.undp.org/thailand/publications/annual-report-2024",
+        "expected_url_regex": "thailand.*annual.*2024|2024.*annual.*thailand",
+        "expected_anchor_regex": "UNDP Thailand Annual Report 2024"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.undp.org/sites/g/files/zskgke326/files/2025-05/undp_annual_report_thailand_2024_en.pdf",
+        "discovery_page": "https://www.undp.org/thailand/publications/annual-report-2024",
+        "anchor_text": "UNDP Thailand Annual Report 2024 pdf (160.2  MB)",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 3.19,
+      "discovery": {
+        "seed_url": "https://www.undp.org/thailand/publications/annual-report-2024",
+        "pdfs": [
+          {
+            "url": "https://www.undp.org/sites/g/files/zskgke326/files/2025-05/undp_annual_report_thailand_2024_en.pdf",
+            "discovery_page": "https://www.undp.org/thailand/publications/annual-report-2024",
+            "anchor_text": "UNDP Thailand Annual Report 2024 pdf (160.2  MB)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.undp.org/thailand/publications",
+          "https://www.undp.org/tag/thailand?type=publications",
+          "https://www.undp.org/tag/annual-report-0?type=publications",
+          "https://www.undp.org/sites/g/files/zskgke326/files/2025-05/undp_annual_report_thailand_2024_en.pdf",
+          "https://www.undp.org/thailand/publications/annual-report-2024"
+        ],
+        "sitemaps_checked": [
+          "https://www.undp.org/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "UNDP Thailand Annual Report 2024 | United Nations Development Programme Skip to main content Thailand Global Search Nav toggle Who we are What we do Our Impact Get involved Locations UNDP Thailand Annual Report 2024 pdf (160.2  MB) Home Thailand Publications UNDP Thailand Annual Report 2024 UNDP Thailand Annual Report 2024 UNDP Thailand Annual Report 2024 pdf (160.2MB) Download UNDP Thailand Annual Report 2024 April 29, 2025 In 2024, Thailand reached major sustainable development milestones, including Southeast Asia’s first equal marriage law and Asia’s first sovereign Sustainability Linked Bond. UNDP supported inclusive progress by localizing the SDGs, advancing climate and biodiversity action, reducing disaster risks, and promoting responsible business practices. Working with government, civil society, and the private sector, UNDP helped shape policies through initiatives like the Thailand Policy Lab and focused on sustainable finance and public-private partnerships. This report highlights results across five portfolios: climate, nature and energy; sustainable financing; SDG localization; social inclusion; and agents of change —all achieved together in 2024. Document Type Annual Report Regions and Countries Thailand Thailand - Donor country Related Publications View More Search all UNDP United Nations Development Programme Who we are About us Funding and Delivery Legal Framework Our Partners Our Team What we do Gender Equality Sustainable Development Goals Our Projects Our Impact News Centre Publications Blogs Stories Get involved Careers Procurement Contact us Stakeholder Response Mechanism Report Fraud, Abuse, Misconduct Scam Alert Submit social or environmental complaint Terms of Use facebook x-twitter instagram linkedin youtube tiktok © United Nations Development Programme",
+        "checked_at": "2026-09-26T18:14:59.409777+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "WHO",
+        "report": "TDR Annual Report 2024",
+        "seed_url": "https://www.who.int/publications/b/78941",
+        "expected_url_regex": "010930|tdr.*2024",
+        "expected_anchor_regex": "Download PDF"
+      },
+      "known_found": false,
+      "matched_pdf": null,
+      "reason": "robots_unavailable",
+      "seconds": 14.04,
+      "discovery": {
+        "seed_url": "https://www.who.int/publications/b/78941",
+        "pdfs": [
+          {
+            "url": "https://cdn.who.int/media/docs/default-source/documents/ddi/gpw-14-results-framework_technical-paper_.pdf?sfvrsn=9c690d8c_3",
+            "discovery_page": "https://www.who.int/data/",
+            "anchor_text": "Technical paper WHO Results Framework: Delivering a measurable impact in countries",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://cdn.who.int/media/docs/default-source/documents/ddi/752-summary-report_240305_edited.pdf?sfvrsn=aed71fc8_1",
+            "discovery_page": "https://www.who.int/data/",
+            "anchor_text": "Summary WHO Results Framework: Delivering a measurable impact in countries",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://cdn.who.int/media/docs/default-source/documents/ddi/infocus/240607-ddi-in-focus-2024_cap_title.pdf?sfvrsn=bd02a689_3&download=true",
+            "discovery_page": "https://www.who.int/data/",
+            "anchor_text": "DDI IN FOCUS 2024",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://cdn.who.int/media/docs/default-source/gho-documents/world-health-statistic-reports/2020/en_whs_2020_annex2ec20093b-3550-4795-826a-c2dceb8a1e12.pdf?sfvrsn=da6bd241_3",
+            "discovery_page": "https://www.who.int/data/gho/publications/world-health-statistics",
+            "anchor_text": "Country, WHO region and global statistics [xls]",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.who.int/mega-menu/data/reports",
+          "https://www.who.int/mega-menu/health-topics/resources/publications",
+          "https://www.who.int/publications/b/78941",
+          "https://www.who.int/mega-menu/data/reports/world-health-statistics",
+          "https://www.who.int/mega-menu/emergencies/news/situation-reports"
+        ],
+        "sitemaps_checked": [
+          "http://www.who.int/sitemaps/sitemapindex.xml"
+        ],
+        "blocked": [
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/0ac33524-5270-48cf-b31a-cd06ac4de6c4/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/bb95c68c-ad9d-436e-8969-6eab55d927ca/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/8e145157-c651-44d8-8456-e8a766390116/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/bitstream/handle/10665/380225/9789240105485-eng.pdf?sequence=1",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/45189137-2f10-48e1-ae43-91b0d8ddd120/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/c992fbdc-11ef-43db-a478-7e7a195403ae/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/74b12494-f213-4b5b-9533-18442147e1fb/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/eaa4a7b3-2dd2-4e0a-984e-fc4f8c5553fd/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/2cace9cd-cd8f-4b68-9d57-657dc5558f32/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/4339a2a8-d8bc-4f73-8570-204b08c9264f/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/e833fd38-1f77-4272-909e-db45a5e83852/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/cf0f0674-1fc2-4c53-9e1a-9086599ab367/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/8aea53eb-41d5-4a64-9a64-b8ff18cefd47/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/ef910283-ae02-4733-a128-251afb5ecc31/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/d5bba424-e2b4-47b1-946e-54f142271fa2/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/f55ec2b2-0063-4c9b-b480-cace4a2054ff/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/855ddd63-083d-4357-bb56-6ab7691f1ca1/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/e128b255-51b7-4cc6-95ea-990a7f9465c0/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/20ca6d6d-605f-4127-b05f-3b5fe7ee6c8d/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/51bf70a6-3472-4cec-b5f1-d193dbbe1fc4/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/1d71f39c-8806-4640-bbb3-56fec2241284/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/95468f57-df57-4db3-bd38-88c8e1541bfd/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/39b3f644-924f-43b8-90d2-a3717b9f444a/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/2b70c5be-70cc-45c2-90f1-344228b4d2e2/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/102184d4-5236-4189-b8ce-be1b37e1cce0/content",
+            "reason": "robots_disallow"
+          },
+          {
+            "url": "https://iris.who.int/server/api/core/bitstreams/4cde5d0f-90bc-47fc-a275-5d13034521ce/content",
+            "reason": "robots_disallow"
+          }
+        ],
+        "failures": [
+          {
+            "url": "https://iris.who.int/robots.txt",
+            "stage": "robots",
+            "reason": "timed out"
+          },
+          {
+            "url": "https://cdn.who.int/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 403 unavailable"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "TDR annual report 2024 Skip to main content Global Regions WHO Regional websites Africa Americas South-East Asia Europe Eastern Mediterranean Western Pacific When autocomplete results are available use up and down arrows to review and enter to select. Select language Select language English العربية 中文 Français Русский Español Português Home Health Topics All topics A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Resources Fact sheets Facts in pictures Multimedia Podcasts Publications Questions and answers Tools and toolkits Popular Dengue Endometriosis Excessive heat Herpes Mental disorders Mpox Countries All countries A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Regions Africa Americas Europe Eastern Mediterranean South-East Asia Western Pacific WHO in countries Data by country Country presence Country cooperation strategies Country office profiles Strengthening country offices Newsroom Newsroom News releases Statements Campaigns Events Feature stories Speeches Commentaries Photo library Headlines Emergencies In focus Cholera Ebola disease Israel and the occupied Palestinian territory Middle East Sudan Ukraine Latest Disease Outbreak News Situation reports Rapid risk assessments Weekly Epidemiological Record WHO in emergencies Surveillance Alert and response Operations Research Funding Partners Health emergency appeals International Health Regulations Independent Oversight and Advisory Committee Data Data at WHO Data hub Global Health Estimates Health inequality Global Health Observatory Dashboards Triple Billion Progress Health Inequality Monitor Delivery for impact COVID-19 dashboard Data collection Classifications SCORE Surveys Civil registration and vital statistics Routine health information systems Harmonized health facility assessment GIS centre for health Reports World Health Statistics UHC global monitoring report About WHO About WHO Partnerships Committees and advisory groups Collaborating centres Technical teams Organizational structure Who we are Our work Activities Initiatives General Programme of Work WHO Academy Funding Investment in WHO WHO Foundation Accountability External audit Financial statements Internal audit and investigations Programme Budget Results reports Governance Governing bodies World Health Assembly Executive Board Member States Portal Home / Publications / b / TDR annual report 2024 Digital publications This page and linked pages display WHO publications in various digital formats, over and above what is available on Publications . This publication page will eventually replace Publications . If you are unable to find a publication through the search function on this page, please try the search bar by clicking on the magnifying glass at the top right of the site. Return to main publications page Regions Africa Americas Eastern Mediterranean Europe South-East Asia Western Pacific Policies Cybersecurity Ethics Information disclosure Permissions and licensing Preventing sexual exploitation Terms of use About us Careers Frequently asked questions Library Procurement Publications Contact us Newsletters Report misconduct Privacy policy © 2026 WHO",
+        "checked_at": "2026-09-26T18:15:13.448256+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "IMF",
+        "report": "IMF Annual Report 2024",
+        "seed_url": "https://www.elibrary.imf.org/abstract/book/9798400279300/9798400279300.xml",
+        "expected_url_regex": "9798400279300",
+        "expected_anchor_regex": "Download PDF"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.elibrary.imf.org/supplemental/book/9798400279300/9798400279300.xml/ARIEA2024001-S001_SOURCE_PDF.pdf?t:state:client=Tc2QSlxf5Km+Jrtd60Y9qxp0iyo=:H4sIAAAAAAAAAH2TsU8UQRTG34EnkCMoFwiViYl2JnuViYkVchAvnHgJxMLu7e67vdHZmfXN7B3XGG2ksLDRzsLCkn/F0sLOaK2ViQmVM3sIHGQodrI7+8t73/vmm8NfUB9dAYA1w7CtOYuwwGRAkcWCjOXx3UgoS6xQRoZ4KBIy0YYUpGyP2Ahj3duWIJnuWs2YUScv5O1tGn/7s/Zu7ufRwQzMdqGR6LzQyqGd1EKz+wyH2JKostauZaGy+11Y6PsiO5jTC3gJtS7MF67ayfd+YeFOolVfZCVjLMm9+9YeinU6dnrdpu4fbxsLy2agR23qYyntluYcrYWVsxVaG8csw7IXFHlB0QOtJaH6cpNfff149HsGak+hPkRZ0n4BxmsBv8xaWPIN9oSV1MWYpN+t+2VuilpNtJRYGNrR6hEK91hnZwBe9CV73kXV1xVT/b5au0jtlrH1vU8qLU0x1zyzqcqcGK3QKtCwwtYTd6im47wxAWylwoYopDdu4maIXahmYBeUADDvgY6JQ5qqg9tMhcuTQLk3LkKFGpWq0g40m4ANzdNaLpMjzWlI9mJSMrs0tKmwg4n1U7nouKxkxM0fnz7/fX1wz+Wi8z8XDNdPuZ0yj4nfHH640Xj//e0MgIsNQO3ihOtsRSJpwl+ah7TfFep5SHjDXQGh0NKeTkKnnOP+Q8LU3bQz4/n1ltMG5/KKqsc6YxcJMaS2MIXE8WUnMLE3JK+a9bGSQlGvjNtO5+WxMKFYrFapJxZknmjpgn3u1v0DrGHjs8oEAAA=",
+        "discovery_page": "https://www.elibrary.imf.org/abstract/book/9798400279300/9798400279300.xml",
+        "anchor_text": "IMF Annual Report 2024 Combined Appendices",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 16.87,
+      "discovery": {
+        "seed_url": "https://www.elibrary.imf.org/abstract/book/9798400279300/9798400279300.xml",
+        "pdfs": [
+          {
+            "url": "https://www.elibrary.imf.org/supplemental/book/9798400279300/9798400279300.xml/ARIEA2024001-S001_SOURCE_PDF.pdf?t:state:client=Tc2QSlxf5Km+Jrtd60Y9qxp0iyo=:H4sIAAAAAAAAAH2TsU8UQRTG34EnkCMoFwiViYl2JnuViYkVchAvnHgJxMLu7e67vdHZmfXN7B3XGG2ksLDRzsLCkn/F0sLOaK2ViQmVM3sIHGQodrI7+8t73/vmm8NfUB9dAYA1w7CtOYuwwGRAkcWCjOXx3UgoS6xQRoZ4KBIy0YYUpGyP2Ahj3duWIJnuWs2YUScv5O1tGn/7s/Zu7ufRwQzMdqGR6LzQyqGd1EKz+wyH2JKostauZaGy+11Y6PsiO5jTC3gJtS7MF67ayfd+YeFOolVfZCVjLMm9+9YeinU6dnrdpu4fbxsLy2agR23qYyntluYcrYWVsxVaG8csw7IXFHlB0QOtJaH6cpNfff149HsGak+hPkRZ0n4BxmsBv8xaWPIN9oSV1MWYpN+t+2VuilpNtJRYGNrR6hEK91hnZwBe9CV73kXV1xVT/b5au0jtlrH1vU8qLU0x1zyzqcqcGK3QKtCwwtYTd6im47wxAWylwoYopDdu4maIXahmYBeUADDvgY6JQ5qqg9tMhcuTQLk3LkKFGpWq0g40m4ANzdNaLpMjzWlI9mJSMrs0tKmwg4n1U7nouKxkxM0fnz7/fX1wz+Wi8z8XDNdPuZ0yj4nfHH640Xj//e0MgIsNQO3ihOtsRSJpwl+ah7TfFep5SHjDXQGh0NKeTkKnnOP+Q8LU3bQz4/n1ltMG5/KKqsc6YxcJMaS2MIXE8WUnMLE3JK+a9bGSQlGvjNtO5+WxMKFYrFapJxZknmjpgn3u1v0DrGHjs8oEAAA=",
+            "discovery_page": "https://www.elibrary.imf.org/abstract/book/9798400279300/9798400279300.xml",
+            "anchor_text": "IMF Annual Report 2024 Combined Appendices",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.elibrary.imf.org/supplemental/book/9798400279300/9798400279300.xml/ARIEA2024001-S002_SOURCE_PDF.pdf?t:state:client=Tc2QSlxf5Km+Jrtd60Y9qxp0iyo=:H4sIAAAAAAAAAH2TsU8UQRTG34EnkCMoFwiViYl2JnuViYkVchAvnHgJxMLu7e67vdHZmfXN7B3XGG2ksLDRzsLCkn/F0sLOaK2ViQmVM3sIHGQodrI7+8t73/vmm8NfUB9dAYA1w7CtOYuwwGRAkcWCjOXx3UgoS6xQRoZ4KBIy0YYUpGyP2Ahj3duWIJnuWs2YUScv5O1tGn/7s/Zu7ufRwQzMdqGR6LzQyqGd1EKz+wyH2JKostauZaGy+11Y6PsiO5jTC3gJtS7MF67ayfd+YeFOolVfZCVjLMm9+9YeinU6dnrdpu4fbxsLy2agR23qYyntluYcrYWVsxVaG8csw7IXFHlB0QOtJaH6cpNfff149HsGak+hPkRZ0n4BxmsBv8xaWPIN9oSV1MWYpN+t+2VuilpNtJRYGNrR6hEK91hnZwBe9CV73kXV1xVT/b5au0jtlrH1vU8qLU0x1zyzqcqcGK3QKtCwwtYTd6im47wxAWylwoYopDdu4maIXahmYBeUADDvgY6JQ5qqg9tMhcuTQLk3LkKFGpWq0g40m4ANzdNaLpMjzWlI9mJSMrs0tKmwg4n1U7nouKxkxM0fnz7/fX1wz+Wi8z8XDNdPuZ0yj4nfHH640Xj//e0MgIsNQO3ihOtsRSJpwl+ah7TfFep5SHjDXQGh0NKeTkKnnOP+Q8LU3bQz4/n1ltMG5/KKqsc6YxcJMaS2MIXE8WUnMLE3JK+a9bGSQlGvjNtO5+WxMKFYrFapJxZknmjpgn3u1v0DrGHjs8oEAAA=",
+            "discovery_page": "https://www.elibrary.imf.org/abstract/book/9798400279300/9798400279300.xml",
+            "anchor_text": "IMF Annual Report 2024 Combined Web Tables",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.elibrary.imf.org/supplemental/book/9798400279300/9798400279300.xml/ARIEA2024001-S003_SOURCE_PDF.pdf?t:state:client=Tc2QSlxf5Km+Jrtd60Y9qxp0iyo=:H4sIAAAAAAAAAH2TsU8UQRTG34EnkCMoFwiViYl2JnuViYkVchAvnHgJxMLu7e67vdHZmfXN7B3XGG2ksLDRzsLCkn/F0sLOaK2ViQmVM3sIHGQodrI7+8t73/vmm8NfUB9dAYA1w7CtOYuwwGRAkcWCjOXx3UgoS6xQRoZ4KBIy0YYUpGyP2Ahj3duWIJnuWs2YUScv5O1tGn/7s/Zu7ufRwQzMdqGR6LzQyqGd1EKz+wyH2JKostauZaGy+11Y6PsiO5jTC3gJtS7MF67ayfd+YeFOolVfZCVjLMm9+9YeinU6dnrdpu4fbxsLy2agR23qYyntluYcrYWVsxVaG8csw7IXFHlB0QOtJaH6cpNfff149HsGak+hPkRZ0n4BxmsBv8xaWPIN9oSV1MWYpN+t+2VuilpNtJRYGNrR6hEK91hnZwBe9CV73kXV1xVT/b5au0jtlrH1vU8qLU0x1zyzqcqcGK3QKtCwwtYTd6im47wxAWylwoYopDdu4maIXahmYBeUADDvgY6JQ5qqg9tMhcuTQLk3LkKFGpWq0g40m4ANzdNaLpMjzWlI9mJSMrs0tKmwg4n1U7nouKxkxM0fnz7/fX1wz+Wi8z8XDNdPuZ0yj4nfHH640Xj//e0MgIsNQO3ihOtsRSJpwl+ah7TfFep5SHjDXQGh0NKeTkKnnOP+Q8LU3bQz4/n1ltMG5/KKqsc6YxcJMaS2MIXE8WUnMLE3JK+a9bGSQlGvjNtO5+WxMKFYrFapJxZknmjpgn3u1v0DrGHjs8oEAAA=",
+            "discovery_page": "https://www.elibrary.imf.org/abstract/book/9798400279300/9798400279300.xml",
+            "anchor_text": "IMF Annual Report 2024 Financial Statements; October 2024",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.elibrary.imf.org/supplemental/book/9798400279300/9798400279300.xml/ARIEA2024001-S003_SOURCE_PDF.pdf?t:state:client=Tc2QSlxf5Km+Jrtd60Y9qxp0iyo=:H4sIAAAAAAAAAH2TsU8UQRTG34EnkCMoFwiViYl2JnuViYkVchAvnHgJxMLu7e67vdHZmfXN7B3XGG2ksLDRzsLCkn/F0sLOaK2ViQmVM3sIHGQodrI7+8t73/vmm8NfUB9dAYA1w7CtOYuwwGRAkcWCjOXx3UgoS6xQRoZ4KBIy0YYUpGyP2Ahj3duWIJnuWs2YUScv5O1tGn/7s/Zu7ufRwQzMdqGR6LzQyqGd1EKz+wyH2JKostauZaGy+11Y6PsiO5jTC3gJtS7MF67ayfd+YeFOolVfZCVjLMm9+9YeinU6dnrdpu4fbxsLy2agR23qYyntluYcrYWVsxVaG8csw7IXFHlB0QOtJaH6cpNfff149HsGak+hPkRZ0n4BxmsBv8xaWPIN9oSV1MWYpN+t+2VuilpNtJRYGNrR6hEK91hnZwBe9CV73kXV1xVT/b5au0jtlrH1vU8qLU0x1zyzqcqcGK3QKtCwwtYTd6im47wxAWylwoYopDdu4maIXahmYBeUADDvgY6JQ5qqg9tMhcuTQLk3LkKFGpWq0g40m4ANzdNaLpMjzWlI9mJSMrs0tKmwg4n1U7nouKxkxM0fnz7/fX1wz+Wi8z8XDNdPuZ0yj4nfHH640Xj//e0MgIsNQO3ihOtsRSJpwl+ah7TfFep5SHjDXQGh0NKeTkKnnOP+Q8LU3bQz4/n1ltMG5/KKqsc6YxcJMaS2MIXE8WUnMLE3JK+a9bGSQlGvjNtO5+WxMKFYrFapJxZknmjpgn3u1v0DrGHjs8oEAAA=",
+          "https://www.elibrary.imf.org/supplemental/book/9798400279300/9798400279300.xml/ARIEA2024001-S002_SOURCE_PDF.pdf?t:state:client=Tc2QSlxf5Km+Jrtd60Y9qxp0iyo=:H4sIAAAAAAAAAH2TsU8UQRTG34EnkCMoFwiViYl2JnuViYkVchAvnHgJxMLu7e67vdHZmfXN7B3XGG2ksLDRzsLCkn/F0sLOaK2ViQmVM3sIHGQodrI7+8t73/vmm8NfUB9dAYA1w7CtOYuwwGRAkcWCjOXx3UgoS6xQRoZ4KBIy0YYUpGyP2Ahj3duWIJnuWs2YUScv5O1tGn/7s/Zu7ufRwQzMdqGR6LzQyqGd1EKz+wyH2JKostauZaGy+11Y6PsiO5jTC3gJtS7MF67ayfd+YeFOolVfZCVjLMm9+9YeinU6dnrdpu4fbxsLy2agR23qYyntluYcrYWVsxVaG8csw7IXFHlB0QOtJaH6cpNfff149HsGak+hPkRZ0n4BxmsBv8xaWPIN9oSV1MWYpN+t+2VuilpNtJRYGNrR6hEK91hnZwBe9CV73kXV1xVT/b5au0jtlrH1vU8qLU0x1zyzqcqcGK3QKtCwwtYTd6im47wxAWylwoYopDdu4maIXahmYBeUADDvgY6JQ5qqg9tMhcuTQLk3LkKFGpWq0g40m4ANzdNaLpMjzWlI9mJSMrs0tKmwg4n1U7nouKxkxM0fnz7/fX1wz+Wi8z8XDNdPuZ0yj4nfHH640Xj//e0MgIsNQO3ihOtsRSJpwl+ah7TfFep5SHjDXQGh0NKeTkKnnOP+Q8LU3bQz4/n1ltMG5/KKqsc6YxcJMaS2MIXE8WUnMLE3JK+a9bGSQlGvjNtO5+WxMKFYrFapJxZknmjpgn3u1v0DrGHjs8oEAAA=",
+          "https://www.elibrary.imf.org/abstract/book/9798400279300/9798400279300.xml",
+          "https://www.elibrary.imf.org/supplemental/book/9798400279300/9798400279300.xml/ARIEA2024001-S001_SOURCE_PDF.pdf?t:state:client=Tc2QSlxf5Km+Jrtd60Y9qxp0iyo=:H4sIAAAAAAAAAH2TsU8UQRTG34EnkCMoFwiViYl2JnuViYkVchAvnHgJxMLu7e67vdHZmfXN7B3XGG2ksLDRzsLCkn/F0sLOaK2ViQmVM3sIHGQodrI7+8t73/vmm8NfUB9dAYA1w7CtOYuwwGRAkcWCjOXx3UgoS6xQRoZ4KBIy0YYUpGyP2Ahj3duWIJnuWs2YUScv5O1tGn/7s/Zu7ufRwQzMdqGR6LzQyqGd1EKz+wyH2JKostauZaGy+11Y6PsiO5jTC3gJtS7MF67ayfd+YeFOolVfZCVjLMm9+9YeinU6dnrdpu4fbxsLy2agR23qYyntluYcrYWVsxVaG8csw7IXFHlB0QOtJaH6cpNfff149HsGak+hPkRZ0n4BxmsBv8xaWPIN9oSV1MWYpN+t+2VuilpNtJRYGNrR6hEK91hnZwBe9CV73kXV1xVT/b5au0jtlrH1vU8qLU0x1zyzqcqcGK3QKtCwwtYTd6im47wxAWylwoYopDdu4maIXahmYBeUADDvgY6JQ5qqg9tMhcuTQLk3LkKFGpWq0g40m4ANzdNaLpMjzWlI9mJSMrs0tKmwg4n1U7nouKxkxM0fnz7/fX1wz+Wi8z8XDNdPuZ0yj4nfHH640Xj//e0MgIsNQO3ihOtsRSJpwl+ah7TfFep5SHjDXQGh0NKeTkKnnOP+Q8LU3bQz4/n1ltMG5/KKqsc6YxcJMaS2MIXE8WUnMLE3JK+a9bGSQlGvjNtO5+WxMKFYrFapJxZknmjpgn3u1v0DrGHjs8oEAAA=",
+          "https://www.elibrary.imf.org/downloadepub/book/9798400279300/9798400279300.xml"
+        ],
+        "sitemaps_checked": [
+          "https://www.elibrary.imf.org/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.elibrary.imf.org/abstract/book/9798400279300/9798400279300.xml",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.elibrary.imf.org/downloadpdf/display/book/9798400279300/9798400279300.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 202"
+          },
+          {
+            "url": "https://www.elibrary.imf.org/downloadepub/book/9798400279300/9798400279300.xml",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.elibrary.imf.org/downloadepub/book/9798400279300/9798400279300.xml",
+            "stage": "page",
+            "reason": "Response exceeds 2000000 byte crawl limit"
+          }
+        ],
+        "browser_fallback_used": true,
+        "budget_exhausted": false,
+        "page_text": "",
+        "checked_at": "2026-09-26T18:15:19.015223+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "ECB",
+        "report": "ECB Annual Report 2024",
+        "seed_url": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+        "expected_url_regex": "ar2024.*\\.pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.ecb.europa.eu/pub/pdf/annrep/ecb.ar2024~8402d8191f.en.pdf",
+        "discovery_page": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+        "anchor_text": "",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 67.43,
+      "discovery": {
+        "seed_url": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+        "pdfs": [
+          {
+            "url": "https://www.ecb.europa.eu/pub/pdf/annrep/ecb.ar2024~8402d8191f.en.pdf",
+            "discovery_page": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+            "anchor_text": "",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.ecb.europa.eu/press/govcstatement/pdf/ecb.govcstatement202412~b1f786e5f1.en.pdf",
+            "discovery_page": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+            "anchor_text": "ECB enhanced its framework for assessing capital buffers of other systemically important institutions (O-SIIs)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.bankingsectoralignmentreport202401~49c6513e71.en.pdf",
+            "discovery_page": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+            "anchor_text": "forward-looking tools to assess the alignment of banks’ financing with EU climate objectives",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bankingsupervision.europa.eu/framework/priorities/pdf/ssm.supervisory_priorities202412~6f69ad032f.en.pdf",
+            "discovery_page": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+            "anchor_text": "supervisory priorities for 2025-27",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisory_guides202402_internalmodels.en.pdf",
+            "discovery_page": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+            "anchor_text": "Guide to internal models",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bankingsupervision.europa.eu/framework/legal-framework/public-consultations/pdf/ssm.pubcon202407_draftguide.en.pdf",
+            "discovery_page": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+            "anchor_text": "Draft guide on governance and risk culture",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bankingsupervision.europa.eu/framework/legal-framework/public-consultations/pdf/ssm.pubcon240603_draftguide.en.pdf",
+            "discovery_page": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+            "anchor_text": "Guide on outsourcing cloud services to cloud service providers",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.IFRS9novelrisks_202407~5e0eb30b5c.en.pdf",
+            "discovery_page": "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html",
+            "anchor_text": "IFRS 9 provisioning overlays",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.ecb.europa.eu/press/annual-reports-financial-statements/annual/html/ecb.ar2024~8402d8191f.en.html"
+        ],
+        "sitemaps_checked": [],
+        "blocked": [],
+        "failures": [],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "Annual Report 2024 Skip to: Skip to navigation Skip to content Skip to footer EN Български Čeština Dansk Deutsch Eλληνικά English Español Eesti keel Suomi Français Gaeilge Hrvatski Magyar Italiano Lietuvių Latviešu Malti Nederlands Polski Português Română Slovenčina Slovenščina Svenska Menu Monetary policy & markets Monetary policy & markets Our monetary policy strategy, the tools we use and the impact they have Overview of monetary policy and markets Quick links What is monetary policy? Strategy review Asset purchase programmes Latest monetary policy press conference 10 September 2026 Introduction Benefits of price stability Scope of monetary policy Transmission mechanism Decisions, statements & accounts Monetary policy strategy Strategy review Medium-term orientation Two per cent inflation target Economic, monetary and financial analysis Economic analysis Monetary and financial analysis Monetary policy operations Open market operations TLTROs Asset purchase programmes Securities lending Pandemic emergency purchase programme Standing facilities Minimum reserves Two-tier system Euro central bank liquidity lines Swap lines EUREP Chronology of Eurosystem liquidity lines Emergency liquidity assistance (ELA) Liquidity analysis Collateral Eligibility criteria and assessment Marketable assets Non-marketable assets List of eligible marketable assets User guide Collateral management Eligible SSSs Eligible links Eligible triparty agents Risk mitigation ECAF Risk control Haircut categories Valuation Loan-level requirements Contacts Structure of the euro area economy Economic policy Fiscal policies External trade Effective exchange rates Financial structure Financial markets Financial intermediaries Economic diversity Labour market Market contact groups Bond market (BMCG) Money market (MMCG) Debt Issuance Market Contact Group (DIMCG) ECB Operations managers group (ECB OMG) Foreign exchange (FXCG) Institutional Investor Dialogue (IID) Monetary Analysis Contact Group (MACG) Payments & financial stability Payments & financial stability Insights into our work on financial stability and payments and market infrastructures Overview of payments and financial stability Quick links Digital euro Payments news & events Market contact groups TARGET professional use documents and links Latest Financial Stability Review 5 June 2025 Payments TARGET Services Shared features T2 Facts and figures Governance T2S Governance Facts and figures Pricing TIPS Cross-border payments Governance Facts and figures Onboarding ECMS Governance Pontes Governance TARGET professional use documents & links Shared features documents & links T2 documents & links T2S documents & links TIPS documents & links ECMS documents & links Pontes documents & links Tokenisation and DLT Appia Exploratory work Retail payments Retail payments strategy ECB as a catalyst SEPA Instant payments Market contact groups Collateral management harmonisation SCoRE Implementation FAQ AMI-SeCo Cyber resilience Financial market infrastructures TIBER-EU Euro Cyber Resilience Board Oversight Payment systems TARGET2-Securities Electronic payments Securities settlement systems and central counterparties Critical service providers Correspondent and custodian banks SecuRe Pay forum Reserve management services Key aspects Range of services Cash professionals Cash handling Authentication devices Recirculation of banknotes Common detector interface specifications Banknote manufacturer accreditation Financial stability Introduction to financial stability Macroprudential Measures Financial stability contact groups Statistics Statistics Access to all ECB statistics and background information Overview of ECB statistics Quick links Key figures ECB Data Portal Statistical releases PRESS RELEASE - ECB launches pilot project for research access to confidential statistical data 13 March 2025 Frequently accessed Euro exchange rates Key ECB interest rates Euro short-term rate (€STR) Interest rate benchmarks Working group on euro risk-free rates Inflation Euro area yield curves All statistics & background All key statistics All data services Data reporting & standards Governance and quality framework Co-operation and standards Banks’ data reporting DPM Alliance IReF JBRC BIRD AnaCredit AnaCredit Q&A Public consultations Banking industry dialogue on ESCB statistics and integrated reporting SDMX – statistical data exchange model INEXDA - granular data network The euro The euro All you need to know about our common currency Overview of the euro Quick links Cash professionals Banknote and coins\n                statistics Euro exchange\n                rates Redesign process of our future banknotes Digital euro What it is Digital euro and privacy How it works Why we need it Innovation platform Pilot Timeline and progress In-depth information Governance and stakeholder engagement Technical documents and research Scheme rulebook Frequently asked questions Cash The Eurosystem cash strategy The role of cash Issuanc",
+        "checked_at": "2026-09-26T18:16:20.880393+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "UNHCR",
+        "report": "Global Report 2024",
+        "seed_url": "https://www.unhcr.org/media/global-report-2024",
+        "expected_url_regex": "global-report-2024\\.pdf"
+      },
+      "known_found": false,
+      "matched_pdf": null,
+      "reason": "site_http_403",
+      "seconds": 7.89,
+      "discovery": {
+        "seed_url": "https://www.unhcr.org/media/global-report-2024",
+        "pdfs": [],
+        "visited_pages": [
+          "https://www.unhcr.org/sites/default/files/2025-07/global-report-2024.pdf",
+          "https://www.unhcr.org/media/global-report-2024",
+          "https://www.unhcr.org/about-unhcr/sustainable-development-goals",
+          "https://www.unhcr.org/publications/global-report",
+          "https://www.unhcr.org/publications/global-appeal"
+        ],
+        "sitemaps_checked": [
+          "https://www.unhcr.org/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.unhcr.org/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 403 unavailable"
+          },
+          {
+            "url": "https://www.unhcr.org/media/global-report-2024",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unhcr.org/sitemap.xml",
+            "stage": "sitemap",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unhcr.org/sites/default/files/2025-07/global-report-2024.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unhcr.org/sites/default/files/2025-07/global-report-2024.pdf",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unhcr.org/about-unhcr/sustainable-development-goals",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unhcr.org/publications/global-appeal",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unhcr.org/publications/global-report",
+            "stage": "page",
+            "reason": "HTTP 403"
+          }
+        ],
+        "browser_fallback_used": true,
+        "budget_exhausted": false,
+        "page_text": "",
+        "checked_at": "2026-09-26T18:15:26.907372+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "OECD",
+        "report": "Global Forum Annual Report 2024",
+        "seed_url": "https://www.oecd.org/en/networks/global-forum-tax-transparency/resources/publications-and-documents-archive.html",
+        "expected_url_regex": "global-forum-annual-report-2024\\.pdf",
+        "expected_anchor_regex": "2024 Global Forum annual report"
+      },
+      "known_found": false,
+      "matched_pdf": null,
+      "reason": "site_http_403",
+      "seconds": 8.53,
+      "discovery": {
+        "seed_url": "https://www.oecd.org/en/networks/global-forum-tax-transparency/resources/publications-and-documents-archive.html",
+        "pdfs": [],
+        "visited_pages": [
+          "https://www.oecd.org/en/networks/global-forum-tax-transparency/resources/publications-and-documents-archive.html",
+          "https://www.oecd.org/en/topics/finance-for-sustainable-development.html",
+          "https://www.oecd.org/en/topics/sustainable-development-goals-sdgs.html",
+          "https://www.oecd.org/en/topics/sustainable-mining-for-development.html",
+          "https://www.oecd.org/en/topics/agriculture-and-sustainability.html"
+        ],
+        "sitemaps_checked": [
+          "https://www.oecd.org/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.oecd.org/en/networks/global-forum-tax-transparency/resources/publications-and-documents-archive.html",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.oecd.org/sitemap.xml",
+            "stage": "sitemap",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.oecd.org/en/topics/agriculture-and-sustainability.html",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.oecd.org/en/topics/sustainable-mining-for-development.html",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.oecd.org/en/topics/finance-for-sustainable-development.html",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.oecd.org/en/topics/sustainable-development-goals-sdgs.html",
+            "stage": "page",
+            "reason": "HTTP 403"
+          }
+        ],
+        "browser_fallback_used": true,
+        "budget_exhausted": false,
+        "page_text": "",
+        "checked_at": "2026-09-26T18:15:35.435885+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "UNESCO",
+        "report": "Global Education Monitoring Report 2024/5",
+        "seed_url": "https://www.unesco.org/reports/gem-report/en/2024",
+        "expected_url_regex": "391406|gem.*2024|2024.*gem",
+        "expected_anchor_regex": "Download report"
+      },
+      "known_found": false,
+      "matched_pdf": null,
+      "reason": "site_http_403",
+      "seconds": 12.15,
+      "discovery": {
+        "seed_url": "https://www.unesco.org/reports/gem-report/en/2024",
+        "pdfs": [],
+        "visited_pages": [
+          "https://www.unesco.org/reports/gem-report/en",
+          "https://www.unesco.org/reports/gem-report/en/2024",
+          "https://www.unesco.org/en/legal-affairs/financial-regulations",
+          "https://www.unesco.org/reports/reshaping-creativity/2022/en",
+          "https://www.unesco.org/gem-report/en"
+        ],
+        "sitemaps_checked": [
+          "https://www.unesco.org/sitemap.xml"
+        ],
+        "blocked": [
+          {
+            "url": "https://unesdoc.unesco.org/ark:/48223/pf0000391406_eng",
+            "reason": "robots_disallow"
+          }
+        ],
+        "failures": [
+          {
+            "url": "https://www.unesco.org/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 403 unavailable"
+          },
+          {
+            "url": "https://www.unesco.org/reports/gem-report/en/2024",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unesco.org/sitemap.xml",
+            "stage": "sitemap",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unesco.org/reports/gem-report/en",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unesco.org/en/legal-affairs/financial-regulations",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unesco.org/gem-report/en",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unesco.org/reports/reshaping-creativity/2022/en",
+            "stage": "page",
+            "reason": "HTTP 403"
+          }
+        ],
+        "browser_fallback_used": true,
+        "budget_exhausted": false,
+        "page_text": "",
+        "checked_at": "2026-09-26T18:15:47.583695+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "ILO",
+        "report": "World Employment and Social Outlook: Trends 2024",
+        "seed_url": "https://www.ilo.org/publications/flagship-reports/world-employment-and-social-outlook-trends-2024",
+        "expected_url_regex": "wcms_908142\\.pdf",
+        "expected_anchor_regex": "^PDF 2\\.73 MB$"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.ilo.org/sites/default/files/wcmsp5/groups/public/%40dgreports/%40inst/documents/publication/wcms_908142.pdf",
+        "discovery_page": "https://www.ilo.org/publications/flagship-reports/world-employment-and-social-outlook-trends-2024",
+        "anchor_text": "PDF 2.73 MB",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 5.28,
+      "discovery": {
+        "seed_url": "https://www.ilo.org/publications/flagship-reports/world-employment-and-social-outlook-trends-2024",
+        "pdfs": [
+          {
+            "url": "https://www.ilo.org/sites/default/files/wcmsp5/groups/public/%40dgreports/%40inst/documents/publication/wcms_908142.pdf",
+            "discovery_page": "https://www.ilo.org/publications/flagship-reports/world-employment-and-social-outlook-trends-2024",
+            "anchor_text": "PDF 2.73 MB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.ilo.org/sites/default/files/2024-05/WESO24_Trends_ES_UA_V1_BookmarkOK.pdf",
+            "discovery_page": "https://www.ilo.org/es/publications/flagship-reports/perspectivas-sociales-y-del-empleo-en-el-mundo-tendencias-2024?4afa040f_page=2&595b0f15_page=2&dbe437e9_page=2&source=himalayas.app",
+            "anchor_text": "PDF 3.55 MB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.ilo.org/sites/default/files/2024-05/WESO24_Trends_FR_UA_V1_BookmarkOK.pdf",
+            "discovery_page": "https://www.ilo.org/fr/publications/flagship-reports/emploi-et-questions-sociales-dans-le-monde-tendances-2024?4afa040f_page=2&595b0f15_page=2&dbe437e9_page=2&source=himalayas.app",
+            "anchor_text": "PDF 3.71 MB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.ilo.org/sites/default/files/2025-07/Perspetivas-Sociais-e-de-Emprego-no-Mundo-tend%C3%AAncias-2024.pdf",
+            "discovery_page": "https://www.ilo.org/pt-pt/publications/flagship-reports/perspetivas-sociais-e-de-emprego-no-mundo-tendencias-2024?4afa040f_page=2&595b0f15_page=2&dbe437e9_page=2&source=himalayas.app",
+            "anchor_text": "PDF 2.76 MB",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.ilo.org/fr/publications/flagship-reports/emploi-et-questions-sociales-dans-le-monde-tendances-2024?4afa040f_page=2&595b0f15_page=2&dbe437e9_page=2&source=himalayas.app",
+          "https://www.ilo.org/publications/flagship-reports/world-employment-and-social-outlook-trends-2024",
+          "https://www.ilo.org/es/publications/flagship-reports/perspectivas-sociales-y-del-empleo-en-el-mundo-tendencias-2024?4afa040f_page=2&595b0f15_page=2&dbe437e9_page=2&source=himalayas.app",
+          "https://www.ilo.org/pt-pt/publications/flagship-reports/perspetivas-sociais-e-de-emprego-no-mundo-tendencias-2024?4afa040f_page=2&595b0f15_page=2&dbe437e9_page=2&source=himalayas.app",
+          "https://www.ilo.org/sites/default/files/wcmsp5/groups/public/%40dgreports/%40inst/documents/publication/wcms_908142.pdf"
+        ],
+        "sitemaps_checked": [
+          "https://www.ilo.org/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "World Employment and Social Outlook: Trends 2024 | International Labour Organization Skip to main content English español français Português tiếng Việt Advancing social justice, promoting decent work ILO is a specialized agency of the United Nations Menu Search Search English Main menu Close English español français Português tiếng Việt Primary navigation About Topics Countries Research Data Standards Partnerships More Search Main menu Close More Secondary navigation Newsroom Meetings and events International Labour Conference Governing Body Industries and sectors ILO Director-General Bureau for employers' activities Bureau for workers' activities ILOSTAT ILO Live ILO Reform Photos Contact us Search Search Research and Publications Flagship report World Employment and Social Outlook: Trends 2024 Labour markets have shown surprising resilience despite deteriorating economic conditions, but recovery from the pandemic remains uneven as new vulnerabilities and multiple crises are eroding prospects for greater social justice. Facebook X Linkedin Publication details Date 10 January 2024 Files for download PDF 2.73 MB Content also available in: español français Português tiếng Việt The report reveals a complex global employment scenario. It forecasts a slight increase in global unemployment in 2024, signalling emerging labour market challenges. The report highlights disparities between high and low-income countries, noting higher unemployment and poverty rates in lower-income nations. It also points out that a significant portion of the global workforce remains in informal employment. Key concerns include worsening income inequality and the impact of inflation on real incomes, especially in G20 countries. The report underscores the need for policy interventions focused on social justice to ensure a fair and sustainable global economic recovery. How to order a print copy Additional details Author(s) ILO References DOI: https://doi.org/10.54394/HQAE1085 ISBN Print: 9789220400418 ISBN Web PDF: 9789220400425 Related content World Employment and Social Outlook: Trends 2024 Executive Summary World Employment and Social Outlook: Trends 2024 Publication | 10 January 2024 Global unemployment rate set to increase in 2024 while growing social inequalities raise concerns, says ILO report WESO Trends 2024 Global unemployment rate set to increase in 2024 while growing social inequalities raise concerns, says ILO report News | 10 January 2024 World Employment and Social Outlook: May 2024 Update WESO Trends - May 2024 update World Employment and Social Outlook: May 2024 Update Publication | 29 May 2024 Advancing social justice, promoting decent work ILO is a specialized agency of the United Nations International Labour Organization 4 route des Morillons CH-1211 Geneva 22 Switzerland Contacts and Integrity hotline Follow us on Instagram Facebook Linkedin Youtube Flickr Tiktok Bluesky Subscribe to our global newsletter © 1996-2026 International Labour Organization (ILO) Rights and permissions Disclaimer Privacy policy Accessibility Statement Fraud alert ILO Integrity Hotline Back to top",
+        "checked_at": "2026-09-26T18:15:52.859834+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "WTO",
+        "report": "WTO Annual Report 2024",
+        "seed_url": "https://www.wto.org/english/res_e/publications_e/anrep24_e.htm",
+        "expected_url_regex": "anrep24.*\\.pdf",
+        "expected_anchor_regex": "Download pdf"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.wto.org/english/res_e/booksp_e/anrep_e/ar24_e.pdf",
+        "discovery_page": "https://www.wto.org/english/res_e/publications_e/anrep24_e.htm",
+        "anchor_text": "Download pdf",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 10.58,
+      "discovery": {
+        "seed_url": "https://www.wto.org/english/res_e/publications_e/anrep24_e.htm",
+        "pdfs": [
+          {
+            "url": "https://www.wto.org/english/res_e/booksp_e/anrep_e/ar24_e.pdf",
+            "discovery_page": "https://www.wto.org/english/res_e/publications_e/anrep24_e.htm",
+            "anchor_text": "Download pdf",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.wto.org/english/res_e/booksp_e/anrep_e/ar24_chap1_e.pdf",
+            "discovery_page": "https://www.wto.org/english/res_e/publications_e/anrep24_e.htm",
+            "anchor_text": "Overview",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.wto.org/english/res_e/booksp_e/anrep_e/ar24_chap2_e.pdf",
+            "discovery_page": "https://www.wto.org/english/res_e/publications_e/anrep24_e.htm",
+            "anchor_text": "What we stand for",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.wto.org/english/res_e/booksp_e/anrep_e/ar24_chap3_e.pdf",
+            "discovery_page": "https://www.wto.org/english/res_e/publications_e/anrep24_e.htm",
+            "anchor_text": "What we do",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.wto.org/english/res_e/booksp_e/anrep_e/ar24_chap4_e.pdf",
+            "discovery_page": "https://www.wto.org/english/res_e/publications_e/anrep24_e.htm",
+            "anchor_text": "Who we are",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.wto.org/spanish/res_s/booksp_s/anrep_s/ar24_s.pdf",
+            "discovery_page": "https://www.wto.org/spanish/res_s/publications_s/anrep24_s.htm",
+            "anchor_text": "Descargar la PDF",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.wto.org/spanish/res_s/booksp_s/anrep_s/ar24_chap1_s.pdf",
+            "discovery_page": "https://www.wto.org/spanish/res_s/publications_s/anrep24_s.htm",
+            "anchor_text": "Panorama general",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.wto.org/spanish/res_s/booksp_s/anrep_s/ar24_chap2_s.pdf",
+            "discovery_page": "https://www.wto.org/spanish/res_s/publications_s/anrep24_s.htm",
+            "anchor_text": "Lo que propugnamos",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.wto.org/english/res_e/publications_e/anrep24_e.htm",
+          "https://www.wto.org/spanish/res_s/publications_s/anrep24_s.htm",
+          "https://www.wto.org/english/res_e/booksp_e/anrep_e/ar24_e.pdf",
+          "http://www.wto.org/english/res_e/res_e.htm"
+        ],
+        "sitemaps_checked": [],
+        "blocked": [],
+        "failures": [],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "WTO | WTO Annual Report 2024 WORLD TRADE ORGANIZATION Home | About WTO | News & events | Trade topics | WTO membership | Documents & resources | External relations Contact us | Site map | A-Z | Search español français home documents, data and resources publications key publications wto annual report 2024 key publications WTO Annual Report 2024 The WTO has published its  2024 Annual Report, providing a comprehensive account of the organization’s  activities in 2023 and the early part of 2024. The Report looks back at key  events over the past year, such as the 13th Ministerial Conference, and  describes the WTO's work in addressing the challenges and opportunities facing  world trade. The Report opens with a message from Director-General Ngozi  Okonjo-Iweala, who says: “The future of trade is services, digital, green  — and it must be inclusive. This Annual Report describes how, over the course  of 2023 and through to our 13th Ministerial Conference in Abu Dhabi in February  2024, the WTO and its members moved forward on all these fronts, helping build  the enabling environment for trade's evolution in the years ahead.” A summary of the past year at the start of the report is  followed by more detailed accounts of the WTO's various areas of activity and  an overview of how the WTO is structured. Download full publication Download pdf Download  by chapter Overview What we stand for What we do Who we are Order printed copy Order Published in 2024 Share Download full publication Download Order printed copy Order See news item News item Problems viewing this page? If so, please contact [email protected] giving details of the operating system and web browser you are using.",
+        "checked_at": "2026-09-26T18:16:03.444439+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "WFP",
+        "report": "Annual Performance Report 2024 English",
+        "seed_url": "https://www.wfp.org/publications/annual-performance-report",
+        "expected_url_regex": "WFP-0000165535|annual.*performance.*2024",
+        "expected_anchor_regex": "2024 Annual Performance Report - English"
+      },
+      "known_found": false,
+      "matched_pdf": null,
+      "reason": "pdf_http_403",
+      "seconds": 41.87,
+      "discovery": {
+        "seed_url": "https://www.wfp.org/publications/annual-performance-report",
+        "pdfs": [],
+        "visited_pages": [
+          "https://www.wfp.org/publications",
+          "https://www.wfp.org/publications/annual-performance-report",
+          "https://www.wfp.org/annual-country-reports-2025",
+          "https://www.wfp.org/publications?f%5B0%5D=publication_type%3A2149",
+          "https://www.wfp.org/publications?f%5B0%5D=publication_type%3A2146"
+        ],
+        "sitemaps_checked": [
+          "https://www.wfp.org/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://docs.wfp.org/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 403 unavailable"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000174488/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000174491/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000174493/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000174489/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000174490/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000174492/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000174566/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000167222/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000159843/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000159738/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000159737/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000159741/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000159740/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000159739/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000159845/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://analytics.wfp.org/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 404 unavailable"
+          },
+          {
+            "url": "https://analytics.wfp.org/t/Public/views/APRdashboard2023External/P1_Global_overview?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000150485/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://analytics.wfp.org/t/Public/views/APR2022/APR2022?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000140791/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000140792/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000140793/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000140794/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000140795/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000140796/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://analytics.wfp.org/t/Public/views/APR2021/APR2021?%3Adisplay_count=n&%3Aembed=y",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000127445/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000128973/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000128975/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000129079/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000128710/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000129135/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://analytics.wfp.org/t/Public/views/APR2020Ext/APRdashboard?%3AshowAppBanner=false&%3Aorigin=viz_share_link&%3Adisplay_count=n&%3AshowVizHome=n&%3AisGuestRedirectFromVizportal=y&%3Aembed=y",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://www.wfp.org/publications",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172812/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172823/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172814/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172813/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172815/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172854/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172855/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172754/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172853/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172820/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172871/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172860/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172880/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172857/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172889/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172838/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172861/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172858/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172862/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172839/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172859/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172856/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172821/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172822/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172824/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172825/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172892/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172890/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172826/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172828/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172827/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://docs.wfp.org/api/documents/WFP-0000172829/download/",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.wfp.org/publications?f%5B0%5D=publication_type%3A2146",
+            "stage": "page",
+            "reason": "HTTP 202"
+          },
+          {
+            "url": "https://www.wfp.org/publications?f%5B0%5D=publication_type%3A2149",
+            "stage": "page",
+            "reason": "HTTP 202"
+          },
+          {
+            "url": "https://www.wfp.org/publications/annual-performance-report",
+            "stage": "browser",
+            "reason": "BrowserType.launch_persistent_context: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> C:\\Users\\nonga\\AppData\\Local\\ms-playwright\\chromium-1243\\chrome-win64\\chrome.exe --dis"
+          }
+        ],
+        "browser_fallback_used": true,
+        "budget_exhausted": false,
+        "page_text": "Annual Performance Report | World Food Programme Skip to main content Donate Menu Media & resources Back Media & resources Read more Media centre News releases Multimedia content Videos for the media Media contacts Resources & data Stories Publications Hunger map Annual Country Reports Evaluations library Food security analysis English Back Languages Français Español العربية 简体中文 Deutsch 日本語 한국어 Who we are Back Who we are We bring life-saving relief in emergencies and use food assistance to build peace, stability and prosperity for people recovering from conflict, disasters and the impact of weather extremes. Read more About Who we are History Governance and leadership Funding and donors Transparency and accountability Ethical culture Independent evaluation Internal audit and investigations Performance management and accountability Partnerships Our partners Our work Back Our work We span a broad range of activities, bringing life-saving assistance in emergencies and supporting sustainable and resilient livelihoods to achieve a world with zero hunger. Read more About hunger Ending hunger Conflict and hunger A global food crisis WFP and the SDGs Saving lives Emergency Preparedness and Response Food assistance Humanitarian support and services Supply chain Changing lives Cash and market support Climate and resilience Ending malnutrition Food systems Gender equality School meals Smallholder farmers support Supporting governments Country capacity strengthening Social protection South-South cooperation Innovation and digital transformation Innovation and technology Where we work Back Where we work We work in over 120 countries and territories, combining emergency assistance with long-term development while adapting our activities to the context and challenges of each location and its people. Read more Countries Afghanistan Algeria Armenia Bangladesh Benin Bhutan Bolivia Burkina Faso Burundi Cambodia Cameroon The Caribbean Central African Republic Chad China Colombia Congo Cuba Côte d'Ivoire Democratic Republic of the Congo Djibouti Dominican Republic DPR Korea Ecuador Egypt El Salvador Eswatini Ethiopia Gambia Ghana Guatemala Guinea Guinea-Bissau Haiti Honduras India Indonesia Iran Iraq Jordan Kenya Kyrgyz Republic Laos Lebanon Lesotho Liberia Libya Madagascar Malawi Mali Mauritania Mozambique Myanmar Namibia Nepal Nicaragua Niger Nigeria The Pacific Pakistan Palestine Peru Philippines Republic of Angola Rwanda Sao Tome and Principe Senegal Sierra Leone Somalia South Sudan Sri Lanka Sudan Syria Tajikistan Tanzania Timor-Leste Togo Türkiye Uganda Ukraine Venezuela Yemen Zambia Zimbabwe Emergencies Afghanistan Central Sahel Democratic Republic of the Congo Haiti Lebanon Mali Middle East crisis Myanmar Northeastern Nigeria Palestine Somalia South Sudan Sudan Ukraine Yemen Get involved Back Get involved There is a variety of ways in which people can support WFP’s mission to eliminate hunger, from making a donation to bringing your expertise to our work on the frontlines. Read more Individual supporters Donate Support us Play Freerice ShareTheMeal app Companies and start-ups Apply for the Innovation Challenge Partners Governments Non-governmental organizations Private sector UN agencies and international institutions Clusters and multistakeholder partnerships Academia and think tanks Goodwill ambassadors, advocates and high-level supporters Donate Home Publications 24 June 2026 Annual Performance Report Annual reports Achievements and history The Annual Performance Report (APR) provides results on the World Food Programme's (WFP) global performance, describing who we assist, how we assist them, how funds are being used and what results have been achieved. The APR is the main annual accountability report, approved by WFP's Executive Board. The Annual Performance Report Snapshot complements the report and provides key figures of the year in an interactive and visual way. It provides an overview of WFP’s programme performance at the global, regional and country level. Data are disaggregated by strategic results, strategic outcomes and outcome indicators, as well as by the sex and age of beneficiaries. Download \"Annual Performance Report 2025\" PDF | 2.47 MB English Arabic Chinese French Spanish Russian Download \"Annual Performance Report 2025: Snapshot\" PDF | 670.43 KB English Document File 2024 Annual Performance Report - English PDF | 2.98 MB Download 2024 Annual Performance Report - Arabic Web page View 2024 Annual Performance Report - French Web page View 2024 Annual Performance Report - Spanish Web page View 2023 Annual Performance Report - English PDF | 1.57 MB Download 2023 Annual Performance Report - French PDF | 3.15 MB Download 2023 Annual Performance Report - Spanish PDF | 2.9 MB Download 2023 Annual Performance Report - Arabic PDF | 1.9 MB Download 2023 Annual Performance Report - Russian PDF | 2.33 MB Download 2023 Annual Performance Report - Chinese PDF | 3.04 MB Download 2023 Report snapshot PDF | 163.68 KB",
+        "checked_at": "2026-09-26T18:16:44.825321+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "EBRD",
+        "report": "Annual Review 2024",
+        "seed_url": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+        "expected_url_regex": "annual.review.2024|2024.*annual.review",
+        "expected_anchor_regex": "Annual Review 2024"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.ebrd.com/content/dam/ebrd_dxp/assets/pdfs/communications-department/annual-review/annual-review-2024/ebrd-annual-review-2024-english.pdf",
+        "discovery_page": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+        "anchor_text": "Download",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 4.56,
+      "discovery": {
+        "seed_url": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+        "pdfs": [
+          {
+            "url": "https://www.ebrd.com/content/dam/ebrd_dxp/assets/pdfs/communications-department/annual-review/annual-review-2024/ebrd-annual-review-2024-english.pdf",
+            "discovery_page": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+            "anchor_text": "Download",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.ebrd.com/content/dam/ebrd_dxp/assets/pdfs/communications-department/annual-review/annual-review-2024/ebrd-annnual-review-2024-french.pdf",
+            "discovery_page": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+            "anchor_text": "Download",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.ebrd.com/content/dam/ebrd_dxp/assets/pdfs/communications-department/annual-review/annual-review-2024/ebrd-annual-review-2024-german.pdf",
+            "discovery_page": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+            "anchor_text": "Download",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.ebrd.com/content/dam/ebrd_dxp/assets/pdfs/communications-department/annual-review/annual-review-2024/ebrd-annual-review-2024-russian.pdf",
+            "discovery_page": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+            "anchor_text": "Download",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.ebrd.com/content/dam/ebrd_dxp/assets/pdfs/communications-department/annual-review/annual-review-2023/ebrd-annual-review-2023-english.pdf",
+            "discovery_page": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+            "anchor_text": "Download",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.ebrd.com/content/dam/ebrd_dxp/assets/pdfs/communications-department/annual-review/annual-review-2023/ebrd-annual-review-2023-french.pdf",
+            "discovery_page": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+            "anchor_text": "Download",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.ebrd.com/content/dam/ebrd_dxp/assets/pdfs/communications-department/annual-review/annual-review-2023/ebrd-annual-review-2023-german.pdf",
+            "discovery_page": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+            "anchor_text": "Download",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://www.ebrd.com/content/dam/ebrd_dxp/assets/pdfs/communications-department/annual-review/annual-review-2023/ebrd-annual-review-2023-russian.pdf",
+            "discovery_page": "https://www.ebrd.com/home/news-and-events/publications/annual-review.html",
+            "anchor_text": "Download",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://www.ebrd.com/home/news-and-events/publications/annual-review.html"
+        ],
+        "sitemaps_checked": [],
+        "blocked": [],
+        "failures": [],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "Annual Review Back Who we are Overview: about the EBRD Who we are Overview: about the EBRD Our story Learn about the EBRD's journey to investing more than €220 billion in over 7,800 projects. Our background and history Our organisation Our values Strategies, governance and compliance Project accountability Back Story of the EBRD Basic documents establishing the Bank Back Governance and leadership Shareholders Annual Meetings and Business Forums Staff Headquarters Back Overview Transition Environmental and social sustainability Additionality Multiparty democracy and pluralism Transparency Integrity and compliance Back All strategies and policies Evaluation Sanctions system Office of the Chief Compliance Officer Client due diligence Risk Management Back Independent Project Accountability Mechanism Back What we do Overview: how the EBRD operates What we do Overview: how the EBRD operates How we deliver systemic impact Across three continents, the EBRD supports the transition to successful market economies. Where we work Products and services Sectors we work in Our projects Focus areas and initiatives Economic research Back Economies we invest in Back Overview Project financing Equity Support for startups and MSMEs Corporate sector advisory Partnering for impact Mobilisation Policy and business advice Legal reform Back Overview Energy Equity funds Financial institutions Food and agribusiness Manufacturing and services Municipal infrastructure Natural resources Real estate Telecommunications, media and technology Transport Back Project finder Business development Project complaints Back Overview The war on Ukraine Chornobyl Economic governance Green Human capital and equality of opportunity Digitalisation Infrastructure Development of capital and financial markets Nuclear safety Back Office of the Chief Economist Transition Report Back Work with us Overview: how you can work with the EBRD Work with us Overview: how you can work with the EBRD What we offer for businesses We draw on three decades of regional knowledge and financial expertise to tailor our products and approaches to each client's needs. Businesses Investors Donors Researchers Civil Society Alumni Nominee Directors Trade finance Careers Back Overview Project finance Business development Support for startups and MSMEs Project procurement opportunities Corporate procurement opportunities Back Corporate and investor information Treasury Back Donor Partnerships Back Economic data Back Overview Back Overview Back Overview Back Trade Facilitation Programme Back Overview Internships International Professionals' Programme Skip to Content Skip to Footer News and events Corporate and investor information Theme Toggle Light Eng English French (Français) German (Deutsch) Russian (Русский) Who we are What we do Work with us Search You are logged in as Edit Account Delete Account Log out Eng English French (Français) German (Deutsch) Russian (Русский) News and events Corporate and investor information Toogle Theme Light Who we are What we do Work with us Search Search Other ways to explore content EBRD projects News stories Contacts Home News and events Publications Annual Review Annual Review Annual Review 2025 The EBRD became a bigger and more effective development bank in 2025, setting new records for the volume and impact of its work. Total investment reached an all-time high of €16.8 billion, with three-quarters of this in the private sector. The Bank remained Ukraine’s largest institutional investor, deploying a record €2.9 billion during the year. It also supported projects advancing the green transition, digital transition and equality of opportunity across three continents. In an historic step, the EBRD began operations in sub-Saharan Africa and welcomed six new countries of operation. View Recent reports Publication Annual Review 2024 In 2024, the EBRD again delivered an outstanding level of support to the people and economies it serves. The Bank exceeded previous records, posting a 26 per cent increase in annual investment and project numbers and its highest-ever levels of disbursement and total financial mobilisation. The EBRD's unique combination of policy support and finance continued to help transform economies for the better, be it promoting national energy strategies that deliver clean, reliable power or providing tangible support for human capital development. View Publication Annual Review 2023 The Annual Review 2023 highlights historic decisions that will strengthen and expand the EBRD’s reach and boost its long-term impact. Our shareholders approved both a €4 billion capital increase to continue our vital work in Ukraine, and expansion into sub-Saharan Africa and Iraq. The EBRD continues to respond to crises, reaching a record of €6.5 billion of financing in our Green Economy Transition approach, and providing support for Türkiye and Morocco in the aftermath of terrible earthquakes. The Bank’s transformation agenda continues to deliver a mode",
+        "checked_at": "2026-09-26T18:16:07.999467+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "EIB",
+        "report": "EIB Group Activity Report 2024",
+        "seed_url": "https://www.eib.org/en/publications/online/all/activity-report-2024",
+        "expected_url_regex": "activity.report.2024|2024.*activity.report",
+        "expected_anchor_regex": "Download report"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://www.eib.org/files/publications/20240269_eib_group_activity_report_2024_en.pdf",
+        "discovery_page": "https://www.eib.org/en/publications/20240269-eib-group-activity-report-2024",
+        "anchor_text": "English (EN)",
+        "status": "verified_pdf",
+        "content_type": "application/pdf;charset=UTF-8"
+      },
+      "reason": "found",
+      "seconds": 9.04,
+      "discovery": {
+        "seed_url": "https://www.eib.org/en/publications/online/all/activity-report-2024",
+        "pdfs": [
+          {
+            "url": "https://www.eib.org/files/publications/20240269_eib_group_activity_report_2024_en.pdf",
+            "discovery_page": "https://www.eib.org/en/publications/20240269-eib-group-activity-report-2024",
+            "anchor_text": "English (EN)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          },
+          {
+            "url": "https://www.eib.org/files/publications/20240269_10032025_eib_group_activity_report_2024_fr.pdf",
+            "discovery_page": "https://www.eib.org/en/publications/20240269-eib-group-activity-report-2024",
+            "anchor_text": "français (FR)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          },
+          {
+            "url": "https://www.eib.org/files/publications/20240269_10032025_eib_group_activity_report_2024_de.pdf",
+            "discovery_page": "https://www.eib.org/en/publications/20240269-eib-group-activity-report-2024",
+            "anchor_text": "Deutsch (DE)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          },
+          {
+            "url": "https://www.eib.org/files/publications/20240269_12032025_eib_group_activity_report_2024_bg.pdf",
+            "discovery_page": "https://www.eib.org/en/publications/20240269-eib-group-activity-report-2024",
+            "anchor_text": "български (BG)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          },
+          {
+            "url": "https://www.eib.org/files/publications/20240269_eib_group_activity_report_2024_cs.pdf",
+            "discovery_page": "https://www.eib.org/en/publications/20240269-eib-group-activity-report-2024",
+            "anchor_text": "čeština (CS)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          },
+          {
+            "url": "https://www.eib.org/files/publications/20240269_260325_eib_group_activity_report_2024_da.pdf",
+            "discovery_page": "https://www.eib.org/en/publications/20240269-eib-group-activity-report-2024",
+            "anchor_text": "dansk (DA)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          },
+          {
+            "url": "https://www.eib.org/files/publications/20240269_260325_eib_group_activity_report_2024_el.pdf",
+            "discovery_page": "https://www.eib.org/en/publications/20240269-eib-group-activity-report-2024",
+            "anchor_text": "ελληνικά (EL)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          },
+          {
+            "url": "https://www.eib.org/files/publications/20240269_12032025_eib_group_activity_report_2024_es.pdf",
+            "discovery_page": "https://www.eib.org/en/publications/20240269-eib-group-activity-report-2024",
+            "anchor_text": "español (ES)",
+            "status": "verified_pdf",
+            "content_type": "application/pdf;charset=UTF-8"
+          }
+        ],
+        "visited_pages": [
+          "https://www.eib.org/en/publications/20240269-eib-group-activity-report-2024",
+          "https://www.eib.org/en/publications/online/all/activity-report-2024"
+        ],
+        "sitemaps_checked": [],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.eib.org/en/publications/20240269-eib-group-activity-report-2024",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "European Investment Bank Group Activity Report 2024 Search EN FR DE menu en EIB GROUP CLIENT PORTAL Close EIB GROUP CLIENT PORTAL Search Search Who we are back Overview EIB Global Climate bank EIB Group at a glance back Overview Tackling global challenges together Partners Part of the EU family Our priorities Our results back Overview EIB Group impact: Boosting GDP and jobs Governance and structure back Overview Shareholders Statutory bodies Control and evaluation Organisation structure Corporate responsibility back Overview Providing finance Borrowing Human rights and the EIB Our internal commitment Managing our environment EIB Group and the Sustainable Development Goals Transparency, accountability and access to information back Overview Transparency and access to information EIB Group Complaints Mechanism Project procurement complaints Investigating fraud and misconduct Evaluation Compliance Public consultations European Investment Fund EIB Institute What we offer back Overview Loans back Overview Loans for the public sector Framework loans for the public sector Loans for the private sector Intermediated loans for SMEs, mid-caps and other priorities Microfinance Equity back Overview Venture debt Equity co-investment Investment funds European Tech Champions Initiative European Tech Champions Initiative 2.0 Guarantees back Overview Credit enhancement for project finance Guarantees in support of SMEs, mid-caps and other objectives Advisory services Mandates and partnerships back Overview InvestEU RRF and financial instruments Shared management funds NDICI – Global Europe Donor partnerships All mandates and partnerships European Guarantee Fund EFSI and its legacy EU Blending facilities EU Trade and Competitiveness Programme in Egypt, Jordan, Morocco and Tunisia One-stop shop back Housing Security and defence TechEU Our work back Overview Our projects back All projects Projects to be financed Financed projects Our priorities back Overview Climate and environment Innovation, digital and human capital Security and defence Regional development and cohesion Agriculture and bioeconomy Social infrastructure EIB Global Capital Markets Union Our regions of activity back Overview European Union Enlargement countries Western Balkans Eastern Neighbourhood Southern Neighbourhood Sub-Saharan Africa Latin America and the Caribbean Asia and Pacific Central Asia EFTA countries Global investment map Project cycle Evaluation Media centre back Overview Newsroom back Overview All releases Press contacts Stories and podcasts back Overview Podcasts All cartoons Video library Events Newsletter Public register EIB surveys back Overview EIB climate survey EIB Group picture library back Overview Infographics Our logo Publications and research back Overview Publications back Find a publication Our research back Overview Economic analysis Surveys and data Assessing EIB impact Economics Economic conferences and research networks EIB open data Open learning Work with us back Overview How to receive EIB support Careers back Overview Teams at the EIB Diversity, Equity and Inclusion Salary and benefits Our recruitment process Investor relations back Overview Our funding Climate and Sustainability Awareness Bonds Recent issues Outstanding issues Investor relations news Investor relations publications Investor relations newsletter Retail investors – Frequently Asked Questions (FAQ) Civil society and stakeholder engagement Procurement EIB Contacts Easy-to-read back The EIB at a glance The EIB and development The EIB and climate action The EIB and SMEs The EIB and Ukraine Results Top 5 search results See all results Advanced search Top searches Most visited pages Home Who we are What we offer Our work Media centre Publications and research Work with us Publications and research Publications Our research EIB open data Open learning Publications European Investment Bank Group Activity Report 2024 PRIORITIES FOR PROSPERITY: People and businesses expect Europe to support investments for the future. Investments that improve lives. Investments that reinforce security and offer new opportunities. In 2024, the EIB Group did just that. Print Share Download report Read more Report Overview 2024 Highlights Lending, impact and borrowing data on the EIB Group’s work within the EU and around the globe Our core strategic priorities From climate action to capital markets union, here's how we boost growth, prosperity, and technological and social progress in our member states, across the whole European Union and around the world. Group Operational Plan What the EIB Group aims to achieve in 2025 Governance How the Bank is managed 2024 Highlights Lending and impact The EIB in your country The EIB in your world Where the money comes from Climate action “By supporting Europe’s most promising cleantech ventures, we aim to drive our energy transition forward, foster economic resilience and secure Europe’s position in the global clean economy.” Irene Gálvez Verdú, head",
+        "checked_at": "2026-09-26T18:16:17.038887+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "PTT",
+        "report": "Form 56-1 One Report 2024",
+        "seed_url": "https://investor.pttplc.com/en/downloads/yearly-reports?year=2024",
+        "expected_url_regex": "2024.*(?:one.report|56.1)|(?:one.report|56.1).*2024",
+        "expected_anchor_regex": "One Report.*2024"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://ptt.listedcompany.com/misc/one-report/20260316-ptt-one-report-2024-en.pdf",
+        "discovery_page": "https://investor.pttplc.com/en/downloads/yearly-reports?year=2024",
+        "anchor_text": "Download",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 8.22,
+      "discovery": {
+        "seed_url": "https://investor.pttplc.com/en/downloads/yearly-reports?year=2024",
+        "pdfs": [
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260316-ptt-one-report-2024-en.pdf",
+            "discovery_page": "https://investor.pttplc.com/en/downloads/yearly-reports?year=2024",
+            "anchor_text": "Download",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260324-ptt-financial-report-2024-en.pdf",
+            "discovery_page": "https://investor.pttplc.com/en/downloads/yearly-reports?year=2024",
+            "anchor_text": "Download",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260324-ptt-supplementary-2024-en.pdf",
+            "discovery_page": "https://investor.pttplc.com/en/downloads/yearly-reports?year=2024",
+            "anchor_text": "Download",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260316-ptt-one-report-2024-th.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260324-ptt-financial-report-2024-th.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://ptt.listedcompany.com/misc/one-report/20260324-ptt-supplementary-2024-th.pdf",
+            "discovery_page": "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024",
+            "anchor_text": "ดาวน์โหลด",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://investor.pttplc.com/en/calendar",
+          "https://investor.pttplc.com/en/downloads/yearly-reports?year=2024",
+          "https://investor.pttplc.com/en/download/285.ics",
+          "https://investor.pttplc.com/en/download/286.ics",
+          "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024"
+        ],
+        "sitemaps_checked": [
+          "https://investor.pttplc.com/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://investor.pttplc.com/en/download/281.ics",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://investor.pttplc.com/en/download/286.ics",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://investor.pttplc.com/en/download/285.ics",
+            "stage": "pdf_probe",
+            "reason": "Response is not a PDF"
+          },
+          {
+            "url": "https://investor.pttplc.com/en/download/285.ics",
+            "stage": "page",
+            "reason": "Non-HTML page: text/calendar; charset=utf-8"
+          },
+          {
+            "url": "https://investor.pttplc.com/en/download/286.ics",
+            "stage": "page",
+            "reason": "Non-HTML page: text/calendar; charset=utf-8"
+          }
+        ],
+        "browser_fallback_used": false,
+        "budget_exhausted": false,
+        "page_text": "Annual report / Form 56-1 One Report | PTT Public Company Limited (PTT) Go to Corporate Website TH Menu Investor Relations Upcoming Events SET Notification IR Contact Go to Corporate Website IR Home Financial Information Financial Highlights Financial Statements & MD&A Factsheet Stock Information Stock Quote Historical Price Investment Calculator Regulator Filing Annual report / Form 56-1 One Report Form 69-1 Shareholder Information Major Shareholders Shareholders' Meeting Dividend Policy & Payment Investor Newsletter Investor Kits Newsroom Press Releases SET Announcements IR Calendar Presentation & Webcast Analyst Coverage Analyst Contact Analyst Researches Information Request Email Alerts IR Contact PTT Debenture Club PTT Debenture club Homepage Debenture Holders Information PTT Debenture Club Activities Code of Conduct for Investor Relations Officers (IRO) 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 View Online Download Form 56-1 One Report 2024 Download Form 56-1 One Report (Financial Report) 2024 View Online Download Supplementary for 56-1 One Report 2024 Reader Feedback Survey: “2025 Annual Registration Statement/ Annual Report (56-1 One Report)” Questionnaire before downloading 1. Please indicate the stakeholder group applicable to you * Shareholder/Investor Media Customer Governmental Agency/ Public Sector Suppliers Employees School Students/ University Students/ Academic Institution/ Researchers Communities in the vicinity of operation sites Other 2. What is your purpose in reading Annual Report 2022 (Form 56-1 One Report)? * (เลือกได้มากกว่าหนึ่ง) To understand PTT better For studies/ researches To support investment decisions To prepare my own corporate sustainability report Other 3. Please Specify your E-mail * 4. Please Specify your Country * Thailand Aland Afghanistan Albania Algeria American Samoa Andorra Angola Anguilla Antarctica Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bonaire Bosnia and Herzegovina Botswana Bouvet Island Brazil British Indian Ocean Territory British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Cocos [Keeling] Islands Colombia Comoros Cook Islands Costa Rica Croatia Cuba Curacao Cyprus Czech Republic Democratic Republic of the Congo Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia French Southern Territories Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Heard Island and McDonald Islands Honduras Hong Kong Hungary Iceland India Indonesia Iran Iraq Ireland Isle of Man Israel Italy Ivory Coast Jamaica Japan Jersey Jordan Kazakhstan Kenya Kiribati Kosovo Kuwait Kyrgyzstan Laos Latvia Lebanon Lesotho Liberia Libya Liechtenstein Lithuania Luxembourg Macao Macedonia Madagascar Malawi Malaysia Maldives Mali Malta Marshall Islands Martinique Mauritania Mauritius Mayotte Mexico Micronesia Moldova Monaco Mongolia Montenegro Montserrat Morocco Mozambique Myanmar [Burma] Namibia Nauru Nepal Netherlands New Caledonia New Zealand Nicaragua Niger Nigeria Niue Norfolk Island North Korea Northern Mariana Islands Norway Oman Pakistan Palau Palestine Panama Papua New Guinea Paraguay Peru Philippines Pitcairn Islands Poland Portugal Puerto Rico Qatar R?union Republic of the Congo Romania Russia Rwanda São Tomé e Príncipe Saint Barthélemy Saint Helena Saint Kitts and Nevis Saint Lucia Saint Martin Saint Pierre and Miquelon Saint Vincent and the Grenadines Samoa San Marino Saudi Arabia Senegal Serbia Seychelles Sierra Leone Singapore Sint Maarten Slovakia Slovenia Solomon Islands Somalia South Africa South Georgia and the South Sandwich Islands South Korea South Sudan Spain Sri Lanka Sudan Suriname Svalbard and Jan Mayen Swaziland Sweden Switzerland Syria Taiwan Tajikistan Tanzania Togo Tokelau Tonga Trinidad and Tobago Tunisia Turkey Turkmenistan Turks and Caicos Islands Tuvalu U.S. Minor Outlying Islands U.S. Virgin Islands Uganda Ukraine United Arab Emirates United Kingdom United States Uruguay Uzbekistan Vanuatu Vatican City Venezuela Vietnam Wallis and Futuna Western Sahara Yemen Zambia Zimbabwe In order to download Annual Report 2022 (Form 56-1 One Report) through our website, PTT will collect your personal information for communication and sending survey form for inquiring feedback which shall be analyzed for the improvement of the reports of PTT, and other purposes stated in PTT’s Personal Data Privacy Notice. You can find more information here PTT would like to send reader feedback survey that will be used to improve content and",
+        "checked_at": "2026-09-26T18:16:25.258753+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "NVIDIA",
+        "report": "NVIDIA 2024 Annual Report",
+        "seed_url": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+        "expected_url_regex": "/2024/ar/2024-annual-report-insert-web-IR-update\\.pdf",
+        "expected_anchor_regex": "2024\\s+Annual Report"
+      },
+      "known_found": true,
+      "matched_pdf": {
+        "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2024/ar/2024-annual-report-insert-web-IR-update.pdf",
+        "discovery_page": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+        "anchor_text": "2024\n                                                    \n                                                    Annual Report\n                                                    PDF Format Download (ope",
+        "status": "verified_pdf",
+        "content_type": "application/pdf"
+      },
+      "reason": "found",
+      "seconds": 34.14,
+      "discovery": {
+        "seed_url": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+        "pdfs": [
+          {
+            "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2026/ar/2026-Annual-Report-Web.pdf",
+            "discovery_page": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+            "anchor_text": "2026\n                                                    \n                                                    Annual Report\n                                                    PDF Format Download (ope",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2025/annual/NVIDIA-2025-Annual-Report.pdf",
+            "discovery_page": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+            "anchor_text": "2025\n                                                    \n                                                    Annual Report\n                                                    PDF Format Download (ope",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2024/ar/2024-annual-report-insert-web-IR-update.pdf",
+            "discovery_page": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+            "anchor_text": "2024\n                                                    \n                                                    Annual Report\n                                                    PDF Format Download (ope",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2023/ar/2023-annual-report-insert-web-IR-update.pdf",
+            "discovery_page": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+            "anchor_text": "2023\n                                                    \n                                                    Annual Report\n                                                    PDF Format Download (ope",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2022/ar/2022-annual-report-insert-web-IR-update.pdf",
+            "discovery_page": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+            "anchor_text": "2022\n                                                    \n                                                    Annual Report\n                                                    PDF Format Download (ope",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2021/ar/2021-annual-report-insert-web-ir-update.pdf",
+            "discovery_page": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+            "anchor_text": "2021\n                                                    \n                                                    Annual Report\n                                                    PDF Format Download (ope",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2020/ar/2020-annual-report-insert-web-ir-update.pdf",
+            "discovery_page": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+            "anchor_text": "2020\n                                                    \n                                                    Annual Report\n                                                    PDF Format Download (ope",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          },
+          {
+            "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2019/ar/2019-annual-report-insert-web-ir-update.pdf",
+            "discovery_page": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+            "anchor_text": "2019\n                                                    \n                                                    Annual Report\n                                                    PDF Format Download (ope",
+            "status": "verified_pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "visited_pages": [
+          "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx"
+        ],
+        "sitemaps_checked": [
+          "https://investor.nvidia.com/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://investor.nvidia.com/sitemap.xml",
+            "stage": "sitemap",
+            "reason": "HTTP 404"
+          },
+          {
+            "url": "https://investor.nvidia.com/investor-resources/download-library/default.aspx",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://s201.q4cdn.com/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 403 unavailable"
+          }
+        ],
+        "browser_fallback_used": true,
+        "budget_exhausted": false,
+        "page_text": "",
+        "checked_at": "2026-09-26T18:16:55.016320+00:00"
+      }
+    },
+    {
+      "site": {
+        "name": "Unilever",
+        "report": "Annual Report and Accounts 2024",
+        "seed_url": "https://www.unilever.com/investors/annual-report-and-accounts/",
+        "expected_url_regex": "unilever-annual-report-and-accounts-2024\\.pdf",
+        "expected_anchor_regex": "Annual Report and Accounts 2024"
+      },
+      "known_found": false,
+      "matched_pdf": null,
+      "reason": "site_http_403",
+      "seconds": 8.18,
+      "discovery": {
+        "seed_url": "https://www.unilever.com/investors/annual-report-and-accounts/",
+        "pdfs": [],
+        "visited_pages": [
+          "https://www.unilever.com/files/unilever-directors-remuneration-report-2025.pdf",
+          "https://www.unilever.com/files/unilever-annual-report-on-form-20-f-2025.pdf",
+          "https://www.unilever.com/files/unilever-sustainability-statement.pdf",
+          "https://www.unilever.com/files/unilever-annual-report-and-accounts-2025.pdf",
+          "https://www.unilever.com/investors/annual-report-and-accounts/"
+        ],
+        "sitemaps_checked": [
+          "https://www.unilever.com/sitemap.xml"
+        ],
+        "blocked": [],
+        "failures": [
+          {
+            "url": "https://www.unilever.com/robots.txt",
+            "stage": "robots",
+            "reason": "robots.txt HTTP 403 unavailable"
+          },
+          {
+            "url": "https://www.unilever.com/investors/annual-report-and-accounts/",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unilever.com/sitemap.xml",
+            "stage": "sitemap",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unilever.com/files/unilever-annual-report-and-accounts-2025.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unilever.com/files/unilever-directors-remuneration-report-2025.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unilever.com/files/unilever-sustainability-statement.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unilever.com/files/unilever-annual-report-on-form-20-f-2025.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unilever.com/files/unilever-charts-2016-2025.pdf",
+            "stage": "pdf_probe",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unilever.com/files/unilever-annual-report-on-form-20-f-2025.pdf",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unilever.com/files/unilever-sustainability-statement.pdf",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unilever.com/files/unilever-directors-remuneration-report-2025.pdf",
+            "stage": "page",
+            "reason": "HTTP 403"
+          },
+          {
+            "url": "https://www.unilever.com/files/unilever-annual-report-and-accounts-2025.pdf",
+            "stage": "page",
+            "reason": "HTTP 403"
+          }
+        ],
+        "browser_fallback_used": true,
+        "budget_exhausted": false,
+        "page_text": "",
+        "checked_at": "2026-09-26T18:16:33.436494+00:00"
+      }
+    }
+  ]
+}

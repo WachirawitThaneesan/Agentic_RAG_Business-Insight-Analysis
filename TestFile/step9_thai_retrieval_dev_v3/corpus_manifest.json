@@ -1,0 +1,23 @@
+{
+  "documents": [
+    {
+      "code": "CPAXT",
+      "source_file": "cpaxtra_2567_th.pdf",
+      "source_sha256": "9f288ca9b2f89015bda0ea8acff0b03faa951e4ebc83ee8b6514a78ac0126e16",
+      "source_page_count": 400,
+      "download_url": "https://hub.optiwise.io/storage/116/annual-report/2024/cpaxt-or-2024-th.pdf",
+      "excerpt_file": "cpaxtra_2567_th.pdf"
+    },
+    {
+      "code": "EGCO",
+      "source_file": "egco_2567_th.pdf",
+      "source_sha256": "0e77f575844c8e00cc2ca398b4fac4b982baf2dc3e3611d7b1d57aabc001be1b",
+      "source_page_count": 432,
+      "download_url": "https://hub.optiwise.io/storage/53/annual-report/2024/egco-or2024-th.pdf",
+      "excerpt_file": "egco_2567_th.pdf"
+    }
+  ],
+  "chunks": 1225,
+  "chunk_chars": 1800,
+  "overlap_chars": 180
+}

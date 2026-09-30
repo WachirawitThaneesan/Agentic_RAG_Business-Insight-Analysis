@@ -54,8 +54,8 @@
     --radius-xl: 24px;
 
     /* Typography */
-    --font-sans: 'Inter', 'Noto Sans Thai', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Cascadia Code', monospace;
+    --font-sans: 'Segoe UI', 'Tahoma', 'Noto Sans Thai', sans-serif;
+    --font-mono: 'Cascadia Code', 'Consolas', monospace;
 
     /* Transitions */
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);

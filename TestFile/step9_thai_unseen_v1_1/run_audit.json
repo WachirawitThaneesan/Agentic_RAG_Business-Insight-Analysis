@@ -1,0 +1,48 @@
+{
+  "audited_utc": "2026-09-27T22:34:21.933678+00:00",
+  "reference_sha256": "769966bdcf56da726c9e7951077253528b24cef4ff53b9b3ebe7aa2d62000c31",
+  "method_lock_sha256": "b0e81bdef5e03e73287672c4faea9bd9e1f636e0d4667864e87d1d7af05f6836",
+  "metrics_sha256": "493656895d2327048191ac2a2064ddce0d38deae450804efdada4d4191cd2c1e",
+  "documents": [
+    {
+      "code": "CPAXT",
+      "pages": 400,
+      "selectable_text_pages": 255,
+      "sha256": "9f288ca9b2f89015bda0ea8acff0b03faa951e4ebc83ee8b6514a78ac0126e16",
+      "download_url": "https://hub.optiwise.io/storage/116/annual-report/2024/cpaxt-or-2024-th.pdf"
+    },
+    {
+      "code": "EGCO",
+      "pages": 432,
+      "selectable_text_pages": 416,
+      "sha256": "0e77f575844c8e00cc2ca398b4fac4b982baf2dc3e3611d7b1d57aabc001be1b",
+      "download_url": "https://hub.optiwise.io/storage/53/annual-report/2024/egco-or2024-th.pdf"
+    }
+  ],
+  "predictions": {
+    "bm25": {
+      "rows": 20,
+      "missing_ids": [],
+      "extra_ids": [],
+      "invalid_page_hits": [],
+      "sha256": "8a8f4d3f5bf841a93709e7efa81b33a4e8af0289a228f514896082604625737c",
+      "hit_at_5": 0.7
+    },
+    "dense": {
+      "rows": 20,
+      "missing_ids": [],
+      "extra_ids": [],
+      "invalid_page_hits": [],
+      "sha256": "6cab28eff3604416dde156dbe25703aeb63402a52d7626d9d5e8a53075194f64",
+      "hit_at_5": 0.5
+    },
+    "app_hybrid": {
+      "rows": 20,
+      "missing_ids": [],
+      "extra_ids": [],
+      "invalid_page_hits": [],
+      "sha256": "dd7eef55a7987b00a118dfd954b73bd63977f68803fda353ae7fc29ca9816da5",
+      "hit_at_5": 0.75
+    }
+  }
+}

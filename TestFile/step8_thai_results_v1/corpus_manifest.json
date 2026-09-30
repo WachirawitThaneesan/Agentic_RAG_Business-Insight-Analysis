@@ -1,0 +1,23 @@
+{
+  "documents": [
+    {
+      "code": "BOT",
+      "source_file": "bot_annual_report_2567_th.pdf",
+      "excerpt_file": "bot_annual_report_2567_th.pdf",
+      "source_sha256": "e0dd9a3aea8852f4b18f43f0e6c21581d0df46a49b501136f8840bdfee29dd8f",
+      "source_page_count": 174,
+      "download_url": "https://www.bot.or.th/content/dam/bot/documents/th/research-and-publications-pdf/reports/annual-report/annualreport2567/AnnualReport_2567.pdf"
+    },
+    {
+      "code": "TPAC",
+      "source_file": "tpac_one_report_2567_th.pdf",
+      "excerpt_file": "tpac_one_report_2567_th.pdf",
+      "source_sha256": "2867b2183ebed0001b4c6ed6513cc9128cefa18613fb3a92d9dbdcc09b8d79a5",
+      "source_page_count": 220,
+      "download_url": "https://tpacpackaging.com/wp-content/uploads/2025/03/TPAC_One-Report_2024_TH.pdf"
+    }
+  ],
+  "chunks": 696,
+  "chunk_chars": 1800,
+  "overlap_chars": 180
+}

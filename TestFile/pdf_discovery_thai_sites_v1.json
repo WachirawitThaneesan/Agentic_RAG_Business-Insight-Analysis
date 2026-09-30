@@ -1,0 +1,37 @@
+{
+  "description": "Thai-language annual-report discovery pilot; official publisher pages and predeclared 2024/2567 Thai PDF URL patterns.",
+  "selected_utc": "2026-09-27",
+  "language": "th",
+  "sites": [
+    {
+      "name": "Bank of Thailand TH",
+      "report": "รายงานประจำปี ธปท. 2567",
+      "seed_url": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+      "expected_url_regex": "AnnualReport_2567\\.pdf"
+    },
+    {
+      "name": "TPAC TH",
+      "report": "รายงานประจำปี 2567 (56-1 One Report)",
+      "seed_url": "https://tpacpackaging.com/th/investor-relations/",
+      "expected_url_regex": "TPAC_One-Report_2024_TH\\.pdf"
+    },
+    {
+      "name": "CP Axtra TH",
+      "report": "แบบแสดงรายการข้อมูลประจำปี 2567",
+      "seed_url": "https://www.cpaxtra.com/th/investor-relations/document/annual-reports",
+      "expected_url_regex": "cpaxt-or-2024-th\\.pdf"
+    },
+    {
+      "name": "Central Pattana TH",
+      "report": "รายงานประจำปี 2567 (56-1 One Report)",
+      "seed_url": "https://investor.centralpattana.co.th/th/resource-center",
+      "expected_url_regex": "cpn-or2024-th\\.pdf"
+    },
+    {
+      "name": "Thanachart Capital TH",
+      "report": "แบบ 56-1 One Report 2567",
+      "seed_url": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+      "expected_url_regex": "20250304-tcap-or2024-th\\.pdf"
+    }
+  ]
+}

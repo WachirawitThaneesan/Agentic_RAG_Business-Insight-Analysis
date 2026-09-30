@@ -14,8 +14,12 @@ Usage:
 """
 from __future__ import annotations
 
-import truststore  # noqa: E402  – use OS cert store (corporate proxy SSL)
-truststore.inject_into_ssl()
+try:
+    import truststore  # optional OS certificate store for live providers
+except ImportError:
+    pass
+else:
+    truststore.inject_into_ssl()
 
 import argparse
 import asyncio
@@ -87,6 +91,7 @@ async def run(golden_path: str, out_path: str, limit: int | None, timeout: float
                 "answer": answer,
                 "method": method,
                 "passed": verdict["passed"],
+                "scored": verdict.get("scored", True),
                 "grader_type": verdict["grader_type"],
                 "confidence": verdict["confidence"],
                 "seconds": round(dt, 1),
@@ -166,13 +171,17 @@ def summarize(out_path: str):
         logger.info("No results yet.")
         return
 
-    # cat -> {passed, total, timeout, error}
-    by_cat: dict = defaultdict(lambda: {"passed": 0, "total": 0, "timeout": 0, "error": 0})
+    # Unavailable semantic judgments are reported separately. They must not
+    # become either correct answers or measured failures.
+    by_cat: dict = defaultdict(lambda: {"passed": 0, "total": 0, "unscored": 0,
+                                        "timeout": 0, "error": 0})
     for r in rows:
         c = by_cat[r["category"]]
         c["total"] += 1
         if r["passed"]:
             c["passed"] += 1
+        if not r.get("scored", True):
+            c["unscored"] += 1
         if r.get("method") == "timeout":
             c["timeout"] += 1
         elif r.get("method") == "error":
@@ -181,72 +190,81 @@ def summarize(out_path: str):
     def _agg(key):
         return sum(c[key] for c in by_cat.values())
     total = _agg("total"); tp = _agg("passed")
-    tto = _agg("timeout"); ter = _agg("error")
+    tto = _agg("timeout"); ter = _agg("error"); tun = _agg("unscored")
 
     # "completed" = questions the agent actually finished (not cut off by the
     # per-question time budget / crash). Two views: strict (real-world, slowness
     # counts against you) and answer-quality (only among finished questions).
     def _line(name, d):
-        completed = d["total"] - d["timeout"] - d["error"]
-        strict = 100 * d["passed"] / d["total"] if d["total"] else 0
-        qual = 100 * d["passed"] / completed if completed else 0
-        lo, hi = _wilson(d["passed"], d["total"])
+        scored = d["total"] - d["unscored"]
+        completed = scored - d["timeout"] - d["error"]
+        strict = f"{100 * d['passed'] / scored:5.1f}%" if scored else "  N/A "
+        qual = f"{100 * d['passed'] / completed:.0f}%" if completed else "N/A"
+        lo, hi = _wilson(d["passed"], scored)
         extra = ""
         if d["timeout"] or d["error"]:
-            extra = f"  ⏱{d['timeout']} ✖{d['error']} (of-finished {qual:.0f}%)"
-        print(f"  {name:<20s} {d['passed']:>4d}/{d['total']:<4d} {strict:5.1f}%   "
+            extra = f"  ⏱{d['timeout']} ✖{d['error']} (of-finished {qual})"
+        if d["unscored"]:
+            extra += f"  unscored={d['unscored']}"
+        print(f"  {name:<20s} {d['passed']:>4d}/{scored:<4d} {strict}   "
               f"[{lo:5.1f} – {hi:5.1f}]{extra}")
 
     # A rate computed from a handful of questions is not a measurement: 2/2 is
     # consistent with a true accuracy anywhere above 34%. Report those paths as
     # smoke tests and keep them out of the headline number instead of letting
     # them read as "100%".
-    measured = {c: d for c, d in by_cat.items() if d["total"] >= _MIN_N_FOR_RATE}
-    smoke = {c: d for c, d in by_cat.items() if d["total"] < _MIN_N_FOR_RATE}
+    measured = {c: d for c, d in by_cat.items() if d["total"] - d["unscored"] >= _MIN_N_FOR_RATE}
+    smoke = {c: d for c, d in by_cat.items() if d["total"] - d["unscored"] < _MIN_N_FOR_RATE}
     m_pass = sum(d["passed"] for d in measured.values())
     m_total = sum(d["total"] for d in measured.values())
     m_to = sum(d["timeout"] for d in measured.values())
     m_err = sum(d["error"] for d in measured.values())
+    m_un = sum(d["unscored"] for d in measured.values())
 
     print("\n" + "=" * 74)
     print("  ACCURACY BY CATEGORY (tool / reasoning style)")
-    print("  strict = correct/total | [ ] = 95% confidence interval (Wilson)")
+    print("  strict = correct/scored total | [ ] = 95% confidence interval (Wilson)")
     print("=" * 74)
     for cat in sorted(measured):
         _line(cat, measured[cat])
     print("-" * 74)
     _line("OVERALL", {"passed": m_pass, "total": m_total,
-                      "timeout": m_to, "error": m_err})
+                      "timeout": m_to, "error": m_err, "unscored": m_un})
     print("=" * 74)
     if smoke:
         print(f"  smoke tests — n < {_MIN_N_FOR_RATE}, excluded from OVERALL "
               f"(too few questions for a rate):")
         for cat in sorted(smoke):
             d = smoke[cat]
-            print(f"    {cat:<20s} {d['passed']}/{d['total']} passed")
+            print(f"    {cat:<20s} {d['passed']}/{d['total'] - d['unscored']} scored; {d['unscored']} unscored")
         print("=" * 74)
 
-    completed_total = m_total - m_to - m_err
-    lo, hi = _wilson(m_pass, m_total)
+    scored_total = m_total - m_un
+    completed_total = scored_total - m_to - m_err
+    lo, hi = _wilson(m_pass, scored_total)
     summary = {
         "overall": {
-            "passed": m_pass, "total": m_total, "timeout": m_to, "error": m_err,
-            "accuracy_strict": round(m_pass / m_total, 4) if m_total else 0,
-            "accuracy_of_finished": round(m_pass / completed_total, 4) if completed_total else 0,
+            "passed": m_pass, "total": m_total, "scored_total": scored_total,
+            "unscored": m_un, "timeout": m_to, "error": m_err,
+            "accuracy_strict": round(m_pass / scored_total, 4) if scored_total else None,
+            "accuracy_of_finished": round(m_pass / completed_total, 4) if completed_total else None,
             "ci95": [round(lo, 2), round(hi, 2)],
             "excludes_smoke_tests": sorted(smoke),
         },
         "including_smoke_tests": {
-            "passed": tp, "total": total,
-            "accuracy_strict": round(tp / total, 4) if total else 0,
+            "passed": tp, "total": total, "scored_total": total - tun,
+            "unscored": tun,
+            "accuracy_strict": round(tp / (total - tun), 4) if total > tun else None,
         },
         "by_category": {
             c: {**d,
-                "accuracy_strict": round(d["passed"] / d["total"], 4) if d["total"] else 0,
-                "accuracy_of_finished": (round(d["passed"] / (d["total"] - d["timeout"] - d["error"]), 4)
-                                         if (d["total"] - d["timeout"] - d["error"]) else 0),
-                "ci95": [round(x, 2) for x in _wilson(d["passed"], d["total"])],
-                "smoke_test": d["total"] < _MIN_N_FOR_RATE}
+                "scored_total": d["total"] - d["unscored"],
+                "accuracy_strict": (round(d["passed"] / (d["total"] - d["unscored"]), 4)
+                                    if d["total"] > d["unscored"] else None),
+                "accuracy_of_finished": (round(d["passed"] / (d["total"] - d["unscored"] - d["timeout"] - d["error"]), 4)
+                                         if (d["total"] - d["unscored"] - d["timeout"] - d["error"]) else None),
+                "ci95": [round(x, 2) for x in _wilson(d["passed"], d["total"] - d["unscored"])],
+                "smoke_test": d["total"] - d["unscored"] < _MIN_N_FOR_RATE}
             for c, d in by_cat.items()
         },
     }

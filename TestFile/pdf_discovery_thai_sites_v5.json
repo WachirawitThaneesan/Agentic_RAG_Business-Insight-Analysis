@@ -1,0 +1,127 @@
+{
+  "description": "20 official Thai annual-report pages. Each target is a Thai PDF or a Thai annual-report chapter. New nine sites were selected before the v5 run.",
+  "selected_utc": "2026-09-27",
+  "language": "th",
+  "sites": [
+    {
+      "name": "Bank of Thailand TH",
+      "report": "รายงานประจำปี ธปท. 2567",
+      "seed_url": "https://www.bot.or.th/th/research-and-publications/reports/annual-report/report-2024.html",
+      "expected_url_regex": "AnnualReport_2567\\.pdf"
+    },
+    {
+      "name": "TPAC TH",
+      "report": "รายงานประจำปี 2567 (56-1 One Report)",
+      "seed_url": "https://tpacpackaging.com/th/investor-relations/",
+      "expected_url_regex": "TPAC_One-Report_2024_TH\\.pdf"
+    },
+    {
+      "name": "CP Axtra TH",
+      "report": "แบบแสดงรายการข้อมูลประจำปี 2567",
+      "seed_url": "https://www.cpaxtra.com/th/investor-relations/document/annual-reports",
+      "expected_url_regex": "cpaxt-or-2024-th\\.pdf"
+    },
+    {
+      "name": "Central Pattana TH",
+      "report": "รายงานประจำปี 2567 (56-1 One Report)",
+      "seed_url": "https://investor.centralpattana.co.th/th/resource-center",
+      "expected_url_regex": "cpn-or2024-th\\.pdf"
+    },
+    {
+      "name": "Thanachart Capital TH",
+      "report": "แบบ 56-1 One Report 2567",
+      "seed_url": "https://www.thanachart.co.th/th/investor-relations/downloads/yearly-report",
+      "expected_url_regex": "20250304-tcap-or2024-th\\.pdf"
+    },
+    {
+      "name": "PTT TH",
+      "report": "แบบ 56-1 One Report 2567",
+      "seed_url": "https://investor.pttplc.com/th/downloads/yearly-reports?year=2024",
+      "expected_url_regex": "ptt-one-report-2024-th\\.pdf"
+    },
+    {
+      "name": "AIS TH",
+      "report": "รายงานประจำปี 2567 (Thai chapter PDF, any chapter)",
+      "seed_url": "https://investor.ais.co.th/th/document/annual-reports",
+      "expected_url_regex": "advanc-ar2024-0[1-6]-th[.]pdf"
+    },
+    {
+      "name": "Stock Exchange of Thailand TH",
+      "report": "รายงานประจำปี 2567",
+      "seed_url": "https://www.set.or.th/th/about/overview/report/annual-report",
+      "expected_url_regex": "SET_Annual_Report_2024_TH\\.pdf"
+    },
+    {
+      "name": "Thai SEC TH",
+      "report": "รายงานประจำปี 2567",
+      "seed_url": "https://www.sec.or.th/TH/Pages/AboutUs/AnnualReports.aspx",
+      "expected_url_regex": "ann2567\\.pdf"
+    },
+    {
+      "name": "Bangkok Bank TH",
+      "report": "แบบ 56-1 One Report ปี 2567",
+      "seed_url": "https://www.bangkokbank.com/th-TH/Investor-Relations/Financial-Information",
+      "expected_url_regex": "56-1_onereport2024_th\\.pdf"
+    },
+    {
+      "name": "SCB TH",
+      "report": "รายงานประจำปี 2567",
+      "seed_url": "https://www.scb.co.th/th/shareholders/financial-information",
+      "expected_url_regex": "2024-annual-report-th\\.pdf"
+    },
+    {
+      "name": "EGCO TH",
+      "report": "2024/2567 Thai One Report",
+      "seed_url": "https://www.egco.com/th/investor-relations/document/annual-reports",
+      "expected_url_regex": "egco-or2024-th[.]pdf"
+    },
+    {
+      "name": "IRPC TH",
+      "report": "2024/2567 Thai One Report",
+      "seed_url": "https://irpc.co.th/news-media/publication/",
+      "expected_url_regex": "TH-IRPC-Annual-Report-25-mb_EditRon[.]pdf"
+    },
+    {
+      "name": "Gulf TH",
+      "report": "2024/2567 Thai One Report",
+      "seed_url": "https://investor.gulf.co.th/th/resource-center",
+      "expected_url_regex": "gulf-or2024-th[.]pdf"
+    },
+    {
+      "name": "BTS Group TH",
+      "report": "2024/25 Thai annual report",
+      "seed_url": "https://www.btsgroup.co.th/th/investor-relations/document/yearly-reports",
+      "expected_url_regex": "annual-report-2024-25"
+    },
+    {
+      "name": "PTTGC TH",
+      "report": "2024/2567 Thai One Report",
+      "seed_url": "https://www.pttgcgroup.com/th/investor-relations/document/annual-filings",
+      "expected_url_regex": "pttgc.*2024.*th[.]pdf"
+    },
+    {
+      "name": "Thai Union TH",
+      "report": "2024/2567 Thai One Report",
+      "seed_url": "https://investor.thaiunion.com/th/downloads/one-report",
+      "expected_url_regex": "20250306-tu-or2024-th[.]pdf"
+    },
+    {
+      "name": "SCGP TH",
+      "report": "2024/2567 Thai One Report",
+      "seed_url": "https://investor.scgpackaging.com/th/downloads/yearly-reports?year=2024",
+      "expected_url_regex": "ar2024-th/doc[.]pdf"
+    },
+    {
+      "name": "SCBX TH",
+      "report": "2024/2567 Thai annual report",
+      "seed_url": "https://investor.scbx.com/th/document/annual-reports",
+      "expected_url_regex": "scbx-annual-report-2024-th[.]pdf"
+    },
+    {
+      "name": "BKI Holdings TH",
+      "report": "2024/2567 Thai One Report",
+      "seed_url": "https://www.bkiholdings.com/investor/Published",
+      "expected_url_regex": "onereport2024_TH[.]pdf"
+    }
+  ]
+}

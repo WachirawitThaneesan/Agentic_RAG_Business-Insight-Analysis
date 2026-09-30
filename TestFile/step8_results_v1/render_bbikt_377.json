@@ -1,0 +1,80 @@
+{
+  "pdf": "2025_105466_E_ONE_REPORT_BBIKT.pdf",
+  "sha256": "a503530fa33a7bf15eca45078eda245c24e177cdaaea61111ee1daa27fd39692",
+  "pages": 377,
+  "dpi": 300,
+  "rasterized_pages": 377,
+  "failures": [],
+  "elapsed_seconds": 16.41,
+  "median_page_seconds": 0.033,
+  "p95_page_seconds": 0.08,
+  "max_bitmap_mb": 24.9,
+  "peak_process_working_set_mb": 271.3,
+  "working_set_samples": [
+    {
+      "page": 25,
+      "working_set_mb": 103.5
+    },
+    {
+      "page": 50,
+      "working_set_mb": 106.1
+    },
+    {
+      "page": 75,
+      "working_set_mb": 118.1
+    },
+    {
+      "page": 100,
+      "working_set_mb": 155.3
+    },
+    {
+      "page": 125,
+      "working_set_mb": 162.3
+    },
+    {
+      "page": 150,
+      "working_set_mb": 162.3
+    },
+    {
+      "page": 175,
+      "working_set_mb": 165.5
+    },
+    {
+      "page": 200,
+      "working_set_mb": 182.5
+    },
+    {
+      "page": 225,
+      "working_set_mb": 184.3
+    },
+    {
+      "page": 250,
+      "working_set_mb": 196.8
+    },
+    {
+      "page": 275,
+      "working_set_mb": 198.5
+    },
+    {
+      "page": 300,
+      "working_set_mb": 208.6
+    },
+    {
+      "page": 325,
+      "working_set_mb": 222.5
+    },
+    {
+      "page": 350,
+      "working_set_mb": 235.2
+    },
+    {
+      "page": 375,
+      "working_set_mb": 247.9
+    },
+    {
+      "page": 377,
+      "working_set_mb": 248.2
+    }
+  ],
+  "scope": "PDF rasterization only; excludes OCR, embeddings, databases, and LLMs"
+}

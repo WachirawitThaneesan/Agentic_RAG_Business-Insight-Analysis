@@ -22,6 +22,17 @@ class Settings(BaseSettings):
     EMBED_MODEL: str = "nomic-embed-text:latest"
     OLLAMA_LLM_MODEL: str = "llama3.1:8b"
 
+    # Opt-in private processing. These values select a separate local route;
+    # the existing Gemini/Typhoon route remains the normal online mode.
+    OFFLINE_MODE: bool = False
+    OFFLINE_LLM_MODEL: str = "gemma3:4b"
+    PRIVATE_DATA_DIR: str = ""
+    LOCAL_OCR_PYTHON: str = ""
+    LOCAL_OCR_MODELS_DIR: str = ""
+    LOCAL_OCR_EASYOCR_CACHE_DIR: str = ""
+    LOCAL_OCR_PAGE_TIMEOUT_SECONDS: float = 900.0
+    PDF_OCR_PROVIDER: str = "typhoon"
+
     # Text generation provider: "ollama" (local) or "gemini" (Vertex AI).
     # Embeddings stay on Ollama regardless — only generation switches.
     LLM_PROVIDER: str = "ollama"
@@ -60,6 +71,8 @@ class Settings(BaseSettings):
     PDF_QUALITY_REOCR_MAX_PAGES: int = 20
     TYPHOON_OCR_REQUEST_TIMEOUT: float = 180.0
     TYPHOON_OCR_SLEEP_SECONDS: float = 0.7
+    # When enabled, Typhoon supplies page prose and Gemini reads table cells.
+    PDF_TABLE_OCR_PROVIDER: str = "typhoon"
 
     # Table Extraction Pipeline
     TABLE_DETECTOR_BACKEND: str = "tatr"  # "opencv" or "tatr"
@@ -88,6 +101,7 @@ class Settings(BaseSettings):
     APP_HOST: str = "0.0.0.0"
     APP_PORT: int = 8000
     APP_RELOAD: bool = False
+    MAX_UPLOAD_BYTES: int = 250_000_000
     PDF_LARGE_FILE_PAGE_THRESHOLD: int = 80
     PDF_OCR_BATCH_SIZE: int = 20
     PDF_RAW_OCR_PAGE_ARTIFACT_LIMIT: int = -1
@@ -107,14 +121,55 @@ class Settings(BaseSettings):
             ).render_as_string(hide_password=False)
         return self
 
+    @model_validator(mode="after")
+    def configure_offline_mode(self) -> "Settings":
+        if not self.OFFLINE_MODE:
+            return self
+        from pathlib import Path
+        from urllib.parse import urlparse
+
+        def local_host(value: str) -> bool:
+            host = (urlparse(value).hostname or "").lower()
+            return host in {"localhost", "127.0.0.1", "::1"}
+
+        if not local_host(self.OLLAMA_HOST):
+            raise ValueError("OFFLINE_MODE requires a localhost OLLAMA_HOST")
+        for name in ("DATABASE_URL", "DATABASE_URL_SYNC"):
+            host = (make_url(getattr(self, name)).host or "").lower()
+            if host not in {"localhost", "127.0.0.1", "::1"}:
+                raise ValueError(f"OFFLINE_MODE requires a localhost {name}")
+
+        private_dir = Path(self.PRIVATE_DATA_DIR).expanduser() if self.PRIVATE_DATA_DIR else (
+            Path.home() / "AppData" / "Local" / "financial-rag-private"
+        )
+        private_dir = private_dir.resolve()
+        if any(part.lower().startswith("onedrive") for part in private_dir.parts):
+            raise ValueError("PRIVATE_DATA_DIR must be outside OneDrive in OFFLINE_MODE")
+        self.PRIVATE_DATA_DIR = str(private_dir)
+        self.DUCKDB_PATH = str(private_dir / "warehouse.duckdb")
+        self.LLM_PROVIDER = "ollama"
+        self.OLLAMA_LLM_MODEL = self.OFFLINE_LLM_MODEL
+        self.PDF_OCR_PROVIDER = "docling"
+        self.PDF_TABLE_OCR_PROVIDER = "docling"
+        self.PDF_QUALITY_REOCR_ENABLED = False
+        self.GRAPH_BUILD_ENABLED = False
+        self.TAVILY_API_KEY = ""
+        self.OPENAI_API_KEY = ""
+        self.APP_HOST = "127.0.0.1"
+        self.APP_RELOAD = False
+        return self
+
     # Hyper-Extract Knowledge Graph
     HYPEREXTRACT_LLM_URL: str = "http://localhost:11434/v1"
-    HYPEREXTRACT_LLM_MODEL: str = "qwen2.5:14b"
+    HYPEREXTRACT_LLM_MODEL: str = ""
     HYPEREXTRACT_EMBED_URL: str = "http://localhost:11434/v1"
     HYPEREXTRACT_EMBED_MODEL: str = "nomic-embed-text:latest"
     HYPEREXTRACT_KA_DIR: str = "backend/knowledge_graphs"
     HYPEREXTRACT_TEMPLATE: str = "finance/ownership_graph"
     HYPEREXTRACT_LANGUAGE: str = "en"
+    # Hyper-Extract currently uses an Ollama-only client. Keep it off when the
+    # application is configured to use Gemini for all generation.
+    GRAPH_BUILD_ENABLED: bool = False
 
     # External APIs
     TAVILY_API_KEY: str = ""

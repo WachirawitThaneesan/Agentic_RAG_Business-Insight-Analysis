@@ -7,6 +7,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
+from backend.config import get_settings
+
+if get_settings().OFFLINE_MODE:
+    from backend.services.offline_network import install_offline_network_guard
+
+    install_offline_network_guard()
+
 from backend.database import init_db
 from backend.routes.documents import router as documents_router
 from backend.routes.scraping import router as scraping_router
@@ -19,6 +26,10 @@ from backend.routes.graph import router as graph_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Initialize database and DuckDB warehouse on startup."""
+    settings = get_settings()
+    if settings.OFFLINE_MODE:
+        from backend.services.offline_runtime import prepare_offline_runtime
+        await prepare_offline_runtime()
     await init_db()
     # Initialise DuckDB warehouse (creates schema if needed)
     try:
@@ -27,7 +38,15 @@ async def lifespan(app: FastAPI):
         print("[OK] DuckDB warehouse initialised")
     except Exception as exc:
         print(f"[WARN] DuckDB init warning: {exc}")
+    from backend.services.document_jobs import resume_interrupted_pdf_jobs, stop_pdf_jobs
+    resumed = await resume_interrupted_pdf_jobs()
+    if resumed:
+        print(f"[OK] Resumed {resumed} interrupted PDF job(s)")
     yield
+    await stop_pdf_jobs()
+    if settings.OFFLINE_MODE:
+        from backend.services.ocr import ocr_service
+        ocr_service.close()
 
 
 app = FastAPI(
@@ -38,10 +57,14 @@ app = FastAPI(
 )
 
 # CORS
+_app_settings = get_settings()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=(
+        [f"http://127.0.0.1:{_app_settings.APP_PORT}", f"http://localhost:{_app_settings.APP_PORT}"]
+        if _app_settings.OFFLINE_MODE else ["*"]
+    ),
+    allow_credentials=not _app_settings.OFFLINE_MODE,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -57,7 +80,8 @@ app.include_router(graph_router, prefix="/api/graphs", tags=["Knowledge Graphs"]
 
 @app.get("/api/health")
 async def health_check():
-    return {"status": "ok", "service": "Financial Data Agent", "version": "2.0.0"}
+    return {"status": "ok", "service": "Financial Data Agent", "version": "2.0.0",
+            "privacy_mode": "offline" if get_settings().OFFLINE_MODE else "online"}
 
 
 # Serve frontend static files

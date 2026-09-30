@@ -15,11 +15,17 @@ from fastapi import APIRouter, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import Depends
 
+from backend.config import get_settings
 from backend.database import get_db
 from backend.models import Document
 from sqlalchemy import select
 
-router = APIRouter()
+def require_graph_mode() -> None:
+    if get_settings().OFFLINE_MODE:
+        raise HTTPException(status_code=403, detail="Knowledge graphs are disabled in offline mode")
+
+
+router = APIRouter(dependencies=[Depends(require_graph_mode)])
 logger = logging.getLogger(__name__)
 
 

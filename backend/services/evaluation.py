@@ -17,6 +17,7 @@ import asyncio
 import pandas as pd
 
 from backend.config import get_settings
+from backend.services.llm import active_model
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
@@ -25,6 +26,8 @@ async def run_evaluation(data: list[dict], output_csv: str = "ragas_evaluation_r
     """
     Run Ragas evaluation on a list of samples.
     """
+    if settings.OFFLINE_MODE:
+        raise RuntimeError("Cloud Ragas evaluation is disabled in OFFLINE_MODE")
     from datasets import Dataset
     from ragas import evaluate
     from ragas.metrics import (
@@ -124,7 +127,7 @@ def _append_history(scores: dict, n_samples: int, label: str,
     row = {
         "timestamp": datetime.now().isoformat(timespec="seconds"),
         "label": label,
-        "model": settings.OLLAMA_LLM_MODEL,
+        "model": active_model(),
         "n_samples": n_samples,
         **{k: round(v, 4) for k, v in scores.items()},
     }
@@ -211,7 +214,10 @@ async def save_qa_log(question: str, answer: str, contexts: list[str]):
         "ground_truth": ""  # Leave blank for users to fill in manually later
     }
     
-    log_file = "qa_history.json"
+    log_file = (
+        os.path.join(settings.PRIVATE_DATA_DIR, "qa_history.json")
+        if settings.OFFLINE_MODE else "qa_history.json"
+    )
     
     try:
         if os.path.exists(log_file):

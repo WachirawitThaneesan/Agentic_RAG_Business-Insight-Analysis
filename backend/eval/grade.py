@@ -3,15 +3,15 @@
 Each golden item has a ``grader`` block describing how to check the agent's
 answer without a human:
 
-  numeric        {value}                 – target number appears in the answer
+  numeric        {value, unit?, year?}   – signed value with verified unit/year
   all_of         {values:[...]}          – every value present (num or text)
   any_of         {values:[...]}          – at least one present (value may be a
                                            list → that whole sub-list required)
   text_contains  {value}                 – normalised substring match
   llm_judge      {reference}             – Typhoon/local LLM judges correctness
 
-Deterministic graders (everything except llm_judge) need no network and are
-high-confidence. ``llm_judge`` is used only for prose/semantic answers.
+Deterministic graders need no network. ``llm_judge`` is used only for prose;
+an unavailable judge is unscored rather than silently accepted by overlap.
 """
 from __future__ import annotations
 
@@ -20,48 +20,16 @@ import re
 from typing import Any, Dict, List, Optional
 
 from backend.config import get_settings
+from backend.eval.numeric import (
+    decimal_value, infer_unit, mentions_in, numeric_match, question_unit, single_year,
+    year_matches, years_in,
+)
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
 
-_NUM_RE = re.compile(r"\(?-?\d[\d,]*(?:\.\d+)?\)?")
-
-
-def _to_float(tok: str) -> Optional[float]:
-    tok = tok.strip()
-    neg = tok.startswith("(") and tok.endswith(")")
-    tok = tok.strip("()").replace(",", "").replace("%", "")
-    try:
-        val = float(tok)
-    except ValueError:
-        return None
-    return -val if neg else val
-
-
-def _numbers_in(text: str) -> List[float]:
-    out = []
-    for m in _NUM_RE.findall(text or ""):
-        v = _to_float(m)
-        if v is not None:
-            out.append(v)
-    return out
-
-
-# Thai financial values are reported in บาท / พันบาท / ล้านบาท, so the same value
-# legitimately appears scaled by 1e3 or 1e6 (e.g. "52,460 พันบาท" == "52,460,000 บาท").
-_SCALES = (1, 1e3, 1e6, 1e-3, 1e-6)
-
-
-def _numeric_match(target: float, answer: str) -> bool:
-    """True if *target* (or a unit-scaled equivalent) appears in the answer."""
-    nums = _numbers_in(answer)
-    for scale in _SCALES:
-        t = target * scale
-        tol = max(0.01, abs(t) * 0.005)
-        for v in nums:
-            if abs(v - t) <= tol or abs(abs(v) - abs(t)) <= tol:
-                return True
-    return False
+_NUMERIC_LITERAL = re.compile(r"^\(?[-−]?\d[\d,]*(?:\.\d+)?\)?$")
+_YEAR_LITERAL = re.compile(r"^(?:ปี\s*)?(?:25\d{2}|20\d{2})$")
 
 
 def _norm_text(s: str) -> str:
@@ -108,15 +76,24 @@ def _near_match(target: str, answer: str) -> bool:
     return SequenceMatcher(None, target, chunk).ratio() >= _NEAR_MATCH_RATIO
 
 
-def _value_present(value: Any, answer: str) -> bool:
+def _value_present(value: Any, answer: str, reference: str = "",
+                   expected_year: int | None = None) -> bool:
     if isinstance(value, (int, float)) and not isinstance(value, bool):
-        return _numeric_match(float(value), answer)
+        unit = infer_unit(reference, value)
+        return numeric_match(value, answer, expected_unit=unit,
+                             expected_year=expected_year or single_year(reference))
     if isinstance(value, list):
-        return all(_value_present(v, answer) for v in value)
-    # string: try numeric first (e.g. year "2567"), then text
-    fv = _to_float(str(value))
-    if fv is not None and _numeric_match(fv, answer):
-        return True
+        return all(_value_present(v, answer, reference, expected_year) for v in value)
+    # A year is a contextual label, never a unit-scaled financial value.
+    literal = str(value).strip()
+    if _YEAR_LITERAL.fullmatch(literal):
+        return year_matches(int(re.search(r"\d{4}", literal).group()), answer)
+    if _NUMERIC_LITERAL.fullmatch(literal):
+        number = decimal_value(literal.strip("()").replace("−", "-"))
+        if literal.startswith("(") or literal.startswith("-") or literal.startswith("−"):
+            number = -abs(number)
+        return numeric_match(number, answer, expected_unit=infer_unit(reference, number),
+                             expected_year=expected_year or single_year(reference))
     return _text_match(str(value), answer)
 
 
@@ -135,6 +112,8 @@ _JUDGE_PROMPT = """\
 - **ตัวเลขค่าเดียวกันที่เขียนคนละรูปแบบ ถือว่าตรงกัน** เช่น
   "ร้อยละ 60" = "60%" = "60 เปอร์เซ็นต์" | "103,934 ล้านบาท" = "103934 ล้านบาท"
   | "ปี 2567" = "ปี ค.ศ. 2024" — ให้ดูที่ค่า ไม่ใช่วิธีเขียน
+- เครื่องหมายบวก/ลบ ปี หน่วย และขนาดต้องตรงกัน การแปลง พันบาท/ล้านบาท/บาท
+  ทำได้เฉพาะเมื่อคำตอบระบุหน่วยที่รองรับการแปลงอย่างชัดเจน
 - **ห้ามตัดสินว่าผิดเพราะคำตอบ "มีมากกว่า" เฉลย** เฉลยเป็นเกณฑ์ขั้นต่ำ ไม่ใช่รายการที่ครบถ้วน
   ถ้าคำตอบครอบคลุมสาระของเฉลยครบแล้ว แต่เพิ่มประเด็น/หัวข้อ/รายละเอียดอื่นที่ไม่ขัดแย้งกัน
   ให้ถือว่า "ถูก" (correct=true) เสมอ
@@ -184,13 +163,13 @@ def _judge_typhoon(prompt: str) -> Optional[bool]:
     return None
 
 
-def _judge_keyword(truth: str, answer: str) -> bool:
-    """Last-resort fallback: token overlap between truth and answer."""
-    t_tokens = set(re.findall(r"[ก-๙A-Za-z0-9]{2,}", str(truth)))
-    a_tokens = set(re.findall(r"[ก-๙A-Za-z0-9]{2,}", str(answer)))
-    if not t_tokens:
-        return False
-    return len(t_tokens & a_tokens) / len(t_tokens) >= 0.5
+def _single_numeric_reference(truth: str) -> tuple | None:
+    """Guard LLM judgments when the reference has one explicit numeric fact."""
+    year_spans = {(start, end) for start, end, _ in years_in(truth)}
+    values = [m for m in mentions_in(truth) if (m.start, m.end) not in year_spans]
+    if len(values) != 1 or not values[0].unit:
+        return None
+    return values[0].value, values[0].unit
 
 
 # ---------------------------------------------------------------------------
@@ -198,24 +177,41 @@ def _judge_keyword(truth: str, answer: str) -> bool:
 # ---------------------------------------------------------------------------
 
 def grade(item: Dict[str, Any], answer: str) -> Dict[str, Any]:
-    """Return {passed: bool, grader_type: str, confidence: 'high'|'medium'}."""
+    """Return a verdict with ``scored=False`` when a judge is unavailable."""
     g = item.get("grader", {})
     gtype = g.get("type")
     answer = answer or ""
 
     if gtype == "numeric":
-        passed = _numeric_match(float(g["value"]), answer)
+        unit = (g.get("unit") or infer_unit(item.get("ground_truth", ""), g["value"])
+                or question_unit(item.get("question", "")))
+        year = g.get("year") or single_year(item.get("ground_truth", ""))
+        if year is None:
+            year = single_year(item.get("question", ""))
+        passed = numeric_match(g["value"], answer, expected_unit=unit,
+                               expected_year=year, tolerance=g.get("tolerance", 0))
         conf = "high"
     elif gtype == "text_contains":
         passed = _text_match(str(g["value"]), answer)
         conf = "high"
     elif gtype == "all_of":
-        passed = all(_value_present(v, answer) for v in g["values"])
+        year_labels = {int(re.search(r"\d{4}", str(v)).group()) for v in g["values"]
+                       if isinstance(v, str) and _YEAR_LITERAL.fullmatch(v.strip())}
+        year = next(iter(year_labels)) if len(year_labels) == 1 else None
+        passed = all(_value_present(v, answer, item.get("ground_truth", ""), year)
+                     for v in g["values"])
         conf = "high"
     elif gtype == "any_of":
-        passed = any(_value_present(v, answer) for v in g["values"])
+        passed = any(_value_present(v, answer, item.get("ground_truth", "")) for v in g["values"])
         conf = "high"
     elif gtype == "llm_judge":
+        if not answer.strip():
+            return {"passed": False, "grader_type": gtype, "confidence": "high", "scored": True}
+        constraint = _single_numeric_reference(item.get("ground_truth", ""))
+        if constraint and not numeric_match(constraint[0], answer,
+                                            expected_unit=constraint[1],
+                                            expected_year=single_year(item.get("ground_truth", ""))):
+            return {"passed": False, "grader_type": gtype, "confidence": "high", "scored": True}
         verdict = _judge_typhoon(_JUDGE_PROMPT.format(
             question=item.get("question", ""),
             truth=item.get("ground_truth", ""),
@@ -223,12 +219,11 @@ def grade(item: Dict[str, Any], answer: str) -> Dict[str, Any]:
             answer=answer[:1500],
         ))
         if verdict is None:
-            verdict = _judge_keyword(item.get("ground_truth", ""), answer)
-            conf = "low"
+            return {"passed": False, "grader_type": gtype, "confidence": "low", "scored": False}
         else:
             conf = "medium"
         passed = bool(verdict)
     else:
-        return {"passed": False, "grader_type": gtype or "unknown", "confidence": "low"}
+        return {"passed": False, "grader_type": gtype or "unknown", "confidence": "low", "scored": False}
 
-    return {"passed": bool(passed), "grader_type": gtype, "confidence": conf}
+    return {"passed": bool(passed), "grader_type": gtype, "confidence": conf, "scored": True}

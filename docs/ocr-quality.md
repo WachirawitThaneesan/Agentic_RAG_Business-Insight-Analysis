@@ -44,16 +44,22 @@ Known remaining risks for a thesis evaluation:
 
 1. An OCR error can be internally consistent, and a chart may have no table
    equivalent. Those values remain unverified, not automatically corrected.
-2. The current viewer/detail API still loads all OCR artifacts for a document;
-   page-level pagination is needed before using 500-1,000-page reports in the
-   browser.
-3. The upload endpoint processes PDF pages sequentially inside one HTTP
-   request. Individual pages now have a wall-clock OCR deadline, but a
-   background job with resumable pages is still needed for robust
-   production-scale uploads.
-4. The benchmark's numeric anchors are sparse; add manually checked row and
-   column labels, chart facts, and more document types before claiming a
-   numeric accuracy percentage.
-5. Rotated/two-up report pages need a dedicated split-and-rotate preprocessing
-   path. The current gate can detect a prompt echo but cannot recover a table
-   that Typhoon never transcribed.
+2. The page viewer now fetches a 25-page status window and one selected page's
+   data/image at a time. The legacy full-detail API still exists for older
+   consumers and should not be used for 500-1,000-page viewer requests.
+3. PDF uploads now run as API-owned background jobs with per-page checkpoints.
+   Pending/interrupted jobs resume after an API restart. A live five-page
+   PostgreSQL/DuckDB retry test passed with fake OCR. A separate 50-page test
+   simulated cancellation at page 27 and successful checkpoint resume; actual
+   OS process-crash recovery, multi-process coordination, and a full 500-page
+   load test still need end-to-end verification. Run only one API process with
+   this DuckDB design.
+4. Sixteen exact table cells and four chart facts now have row/column or category
+   labels. The 13/16 cached table score includes three OCR failures on bank
+   page 46 and is still a tiny selected set; chart category
+   extraction is not implemented, and more held-out reports are needed.
+5. Two-up/rotated pages are now split and rotated before Typhoon. The focused
+   live retry recovered bank excerpt page 24 after trimming its green sidebar:
+   two tables appeared and three visually labeled cells matched their exact
+   row/column/half. The rest of those tables remain unverified. Page 46 timed
+   out after 300 seconds and remains failed.

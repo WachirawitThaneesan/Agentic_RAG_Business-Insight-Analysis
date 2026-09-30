@@ -547,6 +547,23 @@ def scrape_url(url: str, max_files: int = 20, save_folder: str = "") -> Dict[str
             context.close()
 
 
+def extract_links(url: str) -> Dict[str, Any]:
+    """Render one public page for link discovery when plain HTML has no PDFs."""
+    with sync_playwright() as p:
+        context = _launch_persistent_context(p)
+        try:
+            page = _get_or_create_page(context)
+            page.goto(url, wait_until="domcontentloaded", timeout=30_000)
+            page.wait_for_timeout(1500)
+            links = page.eval_on_selector_all(
+                "a[href]",
+                "els => els.slice(0, 500).map(el => ({url: el.href, text: (el.textContent||'').trim().slice(0, 200)}))",
+            )
+            return {"success": True, "links": links}
+        finally:
+            context.close()
+
+
 def scrape_by_keyword(keyword: str, max_sites: int = 3, max_files_per_site: int = 10) -> Dict[str, Any]:
     safe_kw = safe_filename(keyword, 40)
     ts = time.strftime("%Y%m%d_%H%M%S")
@@ -684,6 +701,8 @@ if __name__ == "__main__":
                 max_files=args.get("max_files", 20),
                 save_folder=args.get("save_folder", ""),
             )
+        elif cmd == "extract_links":
+            result = extract_links(args["url"])
         elif cmd == "scrape_by_keyword":
             result = scrape_by_keyword(
                 args["keyword"],

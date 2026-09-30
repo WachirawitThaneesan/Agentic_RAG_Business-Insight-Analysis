@@ -1,0 +1,24 @@
+{
+  "pdf": "AnnualSynnex2025_THA.pdf",
+  "sha256": "aa0f6d0cfe13b0038d40e46926021937771e596ddb1cfac3751bd4791c75b9b1",
+  "bytes": 15051892,
+  "pages": 278,
+  "interrupted_page": 140,
+  "indexed_before_restart": 138,
+  "processed_before_restart": 139,
+  "indexed_after_restart": 275,
+  "empty_pages": [
+    2,
+    277,
+    278
+  ],
+  "semantic_chunks": 407,
+  "raw_page_chunks": 278,
+  "attempts_interrupted_page": 2,
+  "attempts_other_pages": "once",
+  "seconds_before_restart": 17.76,
+  "seconds_after_restart": 11.36,
+  "peak_process_working_set_mb": 252.5,
+  "ocr_mode": "deterministic text-backed stub from real PDF pages",
+  "embedding_mode": "fixed 1024-dimensional vectors; no model calls"
+}

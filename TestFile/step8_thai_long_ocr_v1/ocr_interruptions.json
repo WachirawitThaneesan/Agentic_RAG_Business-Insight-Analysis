@@ -1,0 +1,11 @@
+{
+  "events": [
+    {
+      "utc": "2026-09-27T11:55:48.987961+00:00",
+      "type": "deliberate_process_tree_stop",
+      "reason": "Isolate answer-model timing from OCR CPU contention",
+      "pages_checkpointed": 110,
+      "next_page": 111
+    }
+  ]
+}

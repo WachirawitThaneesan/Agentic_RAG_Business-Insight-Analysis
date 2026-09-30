@@ -1,0 +1,5 @@
+{
+  "parallel_workload_note": "The independent full-page Docling/EasyOCR job overlapped Thai final corpus embedding and initial answer questions; it was stopped after TF04 and before TF05 to isolate remaining answer timings. Per-question timings are preserved; aggregate elapsed time includes contention for TF01-TF04.",
+  "ocr_stop_utc": "2026-09-27T11:55:48.987961+00:00",
+  "ocr_pages_checkpointed_at_stop": 110
+}

@@ -52,6 +52,8 @@ def usage_cost(input_price_per_m: float, output_price_per_m: float) -> float:
 
 def _get_genai_client():
     """Lazily build the Vertex AI client, caching it for the process."""
+    if settings.OFFLINE_MODE:
+        raise RuntimeError("Vertex AI is disabled in OFFLINE_MODE")
     global _genai_client
     if _genai_client is not None:
         return _genai_client
@@ -75,7 +77,7 @@ def _get_genai_client():
 
 
 async def _generate_ollama(prompt: str, temperature: float, max_tokens: int) -> str:
-    async with httpx.AsyncClient(timeout=600.0, limits=HTTP_LIMITS) as client:
+    async with httpx.AsyncClient(timeout=600.0, limits=HTTP_LIMITS, trust_env=not settings.OFFLINE_MODE) as client:
         resp = await client.post(
             f"{settings.OLLAMA_HOST}/api/generate",
             json={

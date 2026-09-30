@@ -1,0 +1,21 @@
+{
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+  "logical_cpu": 12,
+  "ram_gb": 15.3,
+  "python": "3.12.0",
+  "packages": {
+    "PyMuPDF": "1.28.2",
+    "sqlalchemy": "2.0.54",
+    "pgvector": "0.5.0",
+    "asyncpg": "0.31.0",
+    "psutil": "7.2.2",
+    "numpy": "2.5.3",
+    "httpx": "0.28.1",
+    "pytest": "9.1.1"
+  },
+  "ollama_models": {
+    "gemma3:4b": "a2af6cc3eb7f",
+    "bge-m3:latest": "790764642607"
+  }
+}
