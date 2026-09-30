@@ -234,8 +234,8 @@ the changed chat, document and main frontend JavaScript files. Git diff checks
 passed with Windows CRLF treated as end-of-line rather than trailing whitespace.
 
 Remote verification using Git's OpenSSL TLS backend confirmed that
-\`origin/auto1\` still points to
-\`5883362f56c2d28581ce975405ffca00fddc8bf5\` at the time of the check.
+`origin/auto1` still points to
+`5883362f56c2d28581ce975405ffca00fddc8bf5` at the time of the initial check.
 The OpenSSL backend was selected for that invocation only, after Windows
 Schannel could not obtain credentials inside the sandbox; certificate checks
 were retained.
@@ -244,11 +244,17 @@ The Windows sandbox failure was resolved after the user backed up a malformed
 `deny_read_acl_state.json`; a sandboxed command then ran successfully.
 Git metadata writes remain subject to the task's sandbox permissions.
 
-Publication is pending: both fetch (creating \`.git/FETCH_HEAD\`) and staging
-(creating \`.git/index.lock\`) were denied, including after an explicit
-permission request for \`.git\`. No new commit or push is claimed here.
-The source updates and report remain in the working tree for publication
-through a Git session with the required metadata write access.
+The initial publication attempt was blocked: fetch (creating `.git/FETCH_HEAD`)
+and staging (creating `.git/index.lock`) were denied even after a folder-level
+permission request. The user staged the changes in an external PowerShell
+session; committing initially failed because no Git author was configured.
+
+After sandbox escalation approvals became available, the approved Git command
+created integration commit `3ae9846` with 216 changed files. The author is
+`66070026-Jakkrapat <66070026@kmitl.ac.th>`, supplied by the user and applied
+only to this commit invocation. The publication workflow uses a normal push
+to `origin/auto1` and checks the remote branch hash against local HEAD.
+This replaces the earlier blocked status; runtime sandbox protections remain.
 
 ## 10. Remaining work, in order
 
