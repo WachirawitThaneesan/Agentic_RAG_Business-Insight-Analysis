@@ -1188,7 +1188,8 @@ async def get_document_page_image(
         estimated_pixels = float(pdf_page.mediabox.width) * float(pdf_page.mediabox.height) * (dpi / 72.0) ** 2
     if estimated_pixels > 4_000_000:
         raise HTTPException(status_code=413, detail="Page is too large for the preview resolution")
-    png = await asyncio.to_thread(ocr_service._render_pdf_page_to_png, str(path), page_number, dpi)
+    from backend.services.pdf_render import render_pdf_page
+    png = await asyncio.to_thread(render_pdf_page, str(path), page_number, dpi)
     return Response(content=png, media_type="image/png", headers={"Cache-Control": "private, max-age=300"})
 
 

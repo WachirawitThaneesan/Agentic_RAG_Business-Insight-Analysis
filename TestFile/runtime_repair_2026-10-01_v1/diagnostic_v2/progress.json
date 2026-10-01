@@ -1,0 +1,2792 @@
+{
+  "completed": 15,
+  "predictions": {
+    "L01": {
+      "id": "L01",
+      "answer": "137,152 ล้านบาท ปี 2568 หน้า 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "137,152 ล้านบาท ปี 2568 หน้า 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  ) AND row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%' AND col_name LIKE '%2568%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2568",
+            "value": "137,152",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  ) AND row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%' AND col_name LIKE '%2568%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2568",
+            "value": "137,152",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  ) AND row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%' AND col_name LIKE '%2568%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2568",
+            "value": "137,152",
+            "unit": "ล้านบาท",
+            "row_index": 11,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  ) AND row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%' AND col_name LIKE '%2568%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2568",
+            "value": "137,152",
+            "unit": "ล้านบาท",
+            "row_index": 11,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  ) AND row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%' AND col_name LIKE '%2568%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2568",
+              "col_value": "137,152",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 4,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2568",
+              "col_value": "137,152",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 4,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2568",
+              "col_value": "137,152",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2568",
+              "col_value": "137,152",
+              "unit": "ล้านบาท"
+            }
+          ],
+          "row_count": 4,
+          "evidence": [
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2568",
+              "value": "137,152",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2568",
+              "value": "137,152",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2568",
+              "value": "137,152",
+              "unit": "ล้านบาท",
+              "row_index": 11,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2568",
+              "value": "137,152",
+              "unit": "ล้านบาท",
+              "row_index": 11,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยสุทธิปี 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "document_id=1, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=รายได้ดอกเบี้ยสุทธิ, col_name=ปี 2568, col_value=137,152, unit=ล้านบาท\ndocument_id=4, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=รายได้ดอกเบี้ยสุทธิ, col_name=ปี 2568, col_value=137,152, unit=ล้านบาท\ndocument_id=4, table_name=page_2_table_0_1testfile.pdf",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        }
+      ]
+    },
+    "L02": {
+      "id": "L02",
+      "answer": "49,585 ล้านบาท, ปี 2568, หน้า 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "49,585 ล้านบาท, ปี 2568, หน้า 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "vector",
+        "sources": [
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 1,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) หมายเหตุ : (1) กำไรต่อหุ้นขั้นพื้นฐาน = กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) หักยอดคะแนนของตราสารอื่นที่มีลักษณะคล้ายทุนทดันภัยภาษีเงินได้ หารด้วยจำนวนหุ้นสามัญถัวเฉลี่ยก่อนนำหนัก ผลการดำเนินงานสำหรับปี 2568 ธนาคารและบริษัทย่อยมีกำไรสุทธิส่วนที่เป็นของธนาคารจำนวน 49,585 ล้านบาท อยู่ในระดับใกล้เคียงกับปีก่อน โดยมีกำไรจากการดำเนินงานก่อนหักผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นและภาษีเงินได้จำนวน 109,951 ล้านบาท ลดลงจากปีก่อนจำนวน 4,043 ล้านบาท หรือร้อยละ 3. 55 เป็นผลจากรายได้ดอกเบี้ยสุทธิที่มีจำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลดอัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อชะลอตัวลง ส่งผลให้อัตราผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (Net Interest Margin: NIM) ลดลงมาอยู่ที่ระดับร้อยละ 3.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 2,
+            "similarity": 0.11872403866403512,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 1,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) หมายเหตุ : (1) กำไรต่อหุ้นขั้นพื้นฐาน = กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) หักยอดคะแนนของตราสารอื่นที่มีลักษณะคล้ายทุนทดันภัยภาษีเงินได้ หารด้วยจำนวนหุ้นสามัญถัวเฉลี่ยก่อนนำหนัก ผลการดำเนินงานสำหรับปี 2568 ธนาคารและบริษัทย่อยมีกำไรสุทธิส่วนที่เป็นของธนาคารจำนวน 49,585 ล้านบาท อยู่ในระดับใกล้เคียงกับปีก่อน โดยมีกำไรจากการดำเนินงานก่อนหักผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นและภาษีเงินได้จำนวน 109,951 ล้านบาท ลดลงจากปีก่อนจำนวน 4,043 ล้านบาท หรือร้อยละ 3. 55 เป็นผลจากรายได้ดอกเบี้ยสุทธิที่มีจำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลดอัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อชะลอตัวลง ส่งผลให้อัตราผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (Net Interest Margin: NIM) ลดลงมาอยู่ที่ระดับร้อยละ 3.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 2,
+            "similarity": 0.11872403866403512,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 2,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) ## รายได้ที่มิใช่ดอกเบี้ย ธนาคารและบริษัทย่อยมีรายได้ที่มิใช่ดอกเบี้ยสำหรับปี 2568 จำนวน 57,648 ล้านบาท เพิ่มขึ้นจำนวน 7,408 ล้านบาท หรือร้อยละ 14. 75 ส่วนใหญ่เกิดจากผลการดำเนินงานการบริการประกันภัย เพิ่มขึ้นจำนวน 2,171 ล้านบาท หรือร้อยละ 17. 59 และรายได้ค่าธรรมเนียมและบริการสุทธิ เพิ่มขึ้นจำนวน 1,955 ล้านบาท หรือร้อยละ 5. 85 ส่วนใหญ่เกิดจากค่าธรรมเนียมรับจากบริการด้านการบริหารความมั่งคั่งให้ลูกค้าผ่านการนำเสนอ ผลิตภัณฑ์ทางการเงินที่ครอบคลุมทั้งของธนาคาร บริษัทย่อย และพันธมิตร สอดคล้องกับภาวะตลาดที่เอื้อในการลงทุน และค่าธรรมเนียมรับจาก การให้บริการโอนเงินทั้งในประเทศและระหว่างประเทศ รวมถึงรายได้จากกำไรสุทธิจากเครื่องมือทางการเงินต่างๆ และรายได้จากการลงทุนที่เพิ่มขึ้น ด้วยนโยบายการกระจายความเสี่ยงการลงทุนและการสร้างผลตอบแทนอย่างเหมาะสมสอดคล้องกับภาวะตลาด",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 9,
+            "similarity": 0.05188217954173377,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 2,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) ## รายได้ที่มิใช่ดอกเบี้ย ธนาคารและบริษัทย่อยมีรายได้ที่มิใช่ดอกเบี้ยสำหรับปี 2568 จำนวน 57,648 ล้านบาท เพิ่มขึ้นจำนวน 7,408 ล้านบาท หรือร้อยละ 14. 75 ส่วนใหญ่เกิดจากผลการดำเนินงานการบริการประกันภัย เพิ่มขึ้นจำนวน 2,171 ล้านบาท หรือร้อยละ 17. 59 และรายได้ค่าธรรมเนียมและบริการสุทธิ เพิ่มขึ้นจำนวน 1,955 ล้านบาท หรือร้อยละ 5. 85 ส่วนใหญ่เกิดจากค่าธรรมเนียมรับจากบริการด้านการบริหารความมั่งคั่งให้ลูกค้าผ่านการนำเสนอ ผลิตภัณฑ์ทางการเงินที่ครอบคลุมทั้งของธนาคาร บริษัทย่อย และพันธมิตร สอดคล้องกับภาวะตลาดที่เอื้อในการลงทุน และค่าธรรมเนียมรับจาก การให้บริการโอนเงินทั้งในประเทศและระหว่างประเทศ รวมถึงรายได้จากกำไรสุทธิจากเครื่องมือทางการเงินต่างๆ และรายได้จากการลงทุนที่เพิ่มขึ้น ด้วยนโยบายการกระจายความเสี่ยงการลงทุนและการสร้างผลตอบแทนอย่างเหมาะสมสอดคล้องกับภาวะตลาด",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 9,
+            "similarity": 0.05188217954173377,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 4,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# 4. 2 ฐานะทางการเงิน ## โครงสร้างสินทรัพย์และหนี้สิน (หน่วย : ล้านบาท) ### สินทรัพย์ สินทรัพย์รวมของธนาคารและบริษัทย่อย ณ สิ้นปี 2568 มีจำนวน 4,558,818 ล้านบาท เพิ่มขึ้นจาก ณ สิ้นปี 2567 จำนวน 217,664 ล้านบาท หรือคิดเป็นร้อยละ 5. 01 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของเงินลงทุนสุทธิและรายการระหว่างธนาคารและตลาดเงินสุทธิ โดยมีรายละเอียดที่สำคัญ ดังนี้ * เงินลงทุนสุทธิ ณ สิ้นปี 2568 มีจำนวน 1,248,260 ล้านบาท เพิ่มขึ้นจาก ณ สิ้นปี 2567 จำนวน 187,640 ล้านบาท หรือร้อยละ 17.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 23,
+            "similarity": 0.02893731205584638,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 4,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# 4. 2 ฐานะทางการเงิน ## โครงสร้างสินทรัพย์และหนี้สิน (หน่วย : ล้านบาท) ### สินทรัพย์ สินทรัพย์รวมของธนาคารและบริษัทย่อย ณ สิ้นปี 2568 มีจำนวน 4,558,818 ล้านบาท เพิ่มขึ้นจาก ณ สิ้นปี 2567 จำนวน 217,664 ล้านบาท หรือคิดเป็นร้อยละ 5. 01 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของเงินลงทุนสุทธิและรายการระหว่างธนาคารและตลาดเงินสุทธิ โดยมีรายละเอียดที่สำคัญ ดังนี้ * เงินลงทุนสุทธิ ณ สิ้นปี 2568 มีจำนวน 1,248,260 ล้านบาท เพิ่มขึ้นจาก ณ สิ้นปี 2567 จำนวน 187,640 ล้านบาท หรือร้อยละ 17.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 23,
+            "similarity": 0.02893731205584638,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 5,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) ## 4. 3 เงินให้สินเชื่อและเงินรับฝาก ### เงินให้สินเชื่อ ณ วันที่ 31 ธันวาคม 2568 ธนาคารและบริษัทย่อยมียอดเงินให้สินเชื่อตามงบการเงินรวมของธนาคาร จำนวน 2,476,647 ล้านบาท ลดลงจำนวน 7,048 ล้านบาท หรือคิดเป็นร้อยละ 0. 28 จากยอดสินเชื่อจำนวน 2,483,695 ล้านบาท ณ วันที่ 31 ธันวาคม 2567",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 32,
+            "similarity": 0.027781086574072883,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 5,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) ## 4. 3 เงินให้สินเชื่อและเงินรับฝาก ### เงินให้สินเชื่อ ณ วันที่ 31 ธันวาคม 2568 ธนาคารและบริษัทย่อยมียอดเงินให้สินเชื่อตามงบการเงินรวมของธนาคาร จำนวน 2,476,647 ล้านบาท ลดลงจำนวน 7,048 ล้านบาท หรือคิดเป็นร้อยละ 0. 28 จากยอดสินเชื่อจำนวน 2,483,695 ล้านบาท ณ วันที่ 31 ธันวาคม 2567",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 32,
+            "similarity": 0.027781086574072883,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 3,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "45 และ 10. 54 ตามลำดับ (หน่วย : บาท) หมายเหตุ: (1) รวมเงินให้สินเชื่อมากลูกหนี้ และดอกเบี้ยค้างรับและรายได้ออกเบี้ยที่ยังไม่ถึงกำหนดชำระ ## เงินให้สินเชื่อสำหรับลูกหนี้ที่มีการเปลี่ยนแปลงเงื่อนไข ธนาคารและบริษัทย่อยมีการทำสัญญาที่มีการเปลี่ยนแปลงเงื่อนไขกับลูกหนี้ ซึ่งมียอดเงินให้สินเชื่อตามบัญชีก่อนการเปลี่ยนแปลงเงื่อนไขในปี 2568 จำนวน 26,196 ล้านบาท และมีผลขาดทุนจากการเปลี่ยนแปลงเงื่อนไขจำนวน 520 ล้านบาท ### ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น ธนาคารและบริษัทย่อยมีการตั้งสำรองผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นสำหรับปี 2568 จำนวน 40,312 ล้านบาท ลดลงจากปีก่อนจำนวน 6,939 ล้านบาท หรือร้อยละ 14. 69 แต่ยังคงเป็นการตั้งสำรองฯ ตามหลักความระมัดระวังอย่างต่อเนื่อง เพื่อให้สำรองฯ อยู่ในระดับที่เหมาะสม และเพียงพอรองรับความไม่แน่นอนของภาวะเศรษฐกิจ โดยอัตราส่วนผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นต่อเงินให้สินเชื่อเฉลี่ยสำหรับปี 2568 อยู่ที่ร้อยละ 1. 63 และอัตราส่วนค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นต่อเงินให้สินเชื่อต้อยคุณภาพ (Coverage Ratio) ณ วันที่ 31 ธันวาคม 2568 อยู่ที่ระดับร้อยละ 162.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 17,
+            "similarity": 0.024330862632701223,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 3,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "45 และ 10. 54 ตามลำดับ (หน่วย : บาท) หมายเหตุ: (1) รวมเงินให้สินเชื่อมากลูกหนี้ และดอกเบี้ยค้างรับและรายได้ออกเบี้ยที่ยังไม่ถึงกำหนดชำระ ## เงินให้สินเชื่อสำหรับลูกหนี้ที่มีการเปลี่ยนแปลงเงื่อนไข ธนาคารและบริษัทย่อยมีการทำสัญญาที่มีการเปลี่ยนแปลงเงื่อนไขกับลูกหนี้ ซึ่งมียอดเงินให้สินเชื่อตามบัญชีก่อนการเปลี่ยนแปลงเงื่อนไขในปี 2568 จำนวน 26,196 ล้านบาท และมีผลขาดทุนจากการเปลี่ยนแปลงเงื่อนไขจำนวน 520 ล้านบาท ### ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น ธนาคารและบริษัทย่อยมีการตั้งสำรองผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นสำหรับปี 2568 จำนวน 40,312 ล้านบาท ลดลงจากปีก่อนจำนวน 6,939 ล้านบาท หรือร้อยละ 14. 69 แต่ยังคงเป็นการตั้งสำรองฯ ตามหลักความระมัดระวังอย่างต่อเนื่อง เพื่อให้สำรองฯ อยู่ในระดับที่เหมาะสม และเพียงพอรองรับความไม่แน่นอนของภาวะเศรษฐกิจ โดยอัตราส่วนผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นต่อเงินให้สินเชื่อเฉลี่ยสำหรับปี 2568 อยู่ที่ร้อยละ 1. 63 และอัตราส่วนค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นต่อเงินให้สินเชื่อต้อยคุณภาพ (Coverage Ratio) ณ วันที่ 31 ธันวาคม 2568 อยู่ที่ระดับร้อยละ 162.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 17,
+            "similarity": 0.024330862632701223,
+            "source_kind": "semantic"
+          }
+        ],
+        "sql_info": null,
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf กำไรสุทธิส่วนที่เป็นของธนาคารปี 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "Error: ไม่พบข้อมูลตารางพร้อมหลักฐานหน้าเอกสารที่ตรงกับคำถาม",
+            "success": false
+          },
+          {
+            "action": "vector_search",
+            "action_input": "จากไฟล์ 1testfile.pdf กำไรสุทธิส่วนที่เป็นของธนาคารปี 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "[1testfile.pdf, PDF page 1, chunk 2, source=semantic, sim=0.12; OCR evidence is not visually verified]\n(หน่วย : ล้านบาท) หมายเหตุ : (1) กำไรต่อหุ้นขั้นพื้นฐาน = กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) หักยอดคะแนนของตราสารอื่นที่มีลักษณะคล้ายทุนทดันภัยภาษีเงินได้ หารด้วยจำนวนหุ้นสามัญถัวเฉลี่ยก่อนนำหนัก ผลการดำเนินงานสำหรับปี 2568 ธนาคารและบริษัทย่อยมีกำไรสุทธิส่วนที่เป็นของธนาคารจำนวน 49,585 ล้านบาท อยู่ในระดับใกล้เคียงกับปีก่อน โดยมีกำไรจากการดำเนินงานก่อนหักผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นและภาษ",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        }
+      ]
+    },
+    "L03": {
+      "id": "L03",
+      "answer": "-10,852 ล้านบาท, 1testfile.pdf หน้า 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "-10,852 ล้านบาท, 1testfile.pdf หน้า 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND table_name LIKE '%สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)%'\n  AND row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%'\n  AND col_name LIKE '%การเปลี่ยนแปลง เพิ่ม (ลด)%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+            "value": "(10,852)",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND table_name LIKE '%สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)%'\n  AND row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%'\n  AND col_name LIKE '%การเปลี่ยนแปลง เพิ่ม (ลด)%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+            "value": "(10,852)",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND table_name LIKE '%สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)%'\n  AND row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%'\n  AND col_name LIKE '%การเปลี่ยนแปลง เพิ่ม (ลด)%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 4,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "col_value": "(10,852)",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "col_value": "(10,852)",
+              "unit": "ล้านบาท"
+            }
+          ],
+          "row_count": 2,
+          "evidence": [
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "value": "(10,852)",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "value": "(10,852)",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf การเปลี่ยนแปลงรายได้ดอกเบี้ยสุทธิปี 2568 เทียบปี 2567 เป็นกี่ล้านบาท ให้แสดงเครื่องหมายลบเมื่อเป็นการลดลง?",
+            "observation": "document_id=4, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=รายได้ดอกเบี้ยสุทธิ, col_name=การเปลี่ยนแปลง เพิ่ม (ลด), col_value=(10,852), unit=ล้านบาท\ndocument_id=1, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=รายได้ดอกเบี้ยสุทธิ, col_name=การเปลี่ยนแปลง เพิ่ม (ลด), col_value=(10,852), unit=ล้านบาท\nSources: 1testfi",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        }
+      ]
+    },
+    "L04": {
+      "id": "L04",
+      "answer": "20.63 บาท, ปี 2568, หน้า 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "20.63 บาท, ปี 2568, หน้า 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  dtr.document_id,\n  dtr.table_name,\n  dtr.row_label,\n  dtr.col_name,\n  dtr.col_value,\n  dtr.unit\nFROM dim_table_rows AS dtr\nJOIN dim_documents AS dd\n  ON dtr.document_id = dd.document_id\nWHERE\n  dd.document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  ) AND dtr.row_label LIKE '%กำไรต่อหุ้นขั้นพื้นฐาน%' AND dtr.col_name LIKE '%ปี 2568%'\nORDER BY\n  dtr.row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+            "column": "ปี 2568",
+            "value": "20.63",
+            "unit": "บาท",
+            "row_index": 6,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  dtr.document_id,\n  dtr.table_name,\n  dtr.row_label,\n  dtr.col_name,\n  dtr.col_value,\n  dtr.unit\nFROM dim_table_rows AS dtr\nJOIN dim_documents AS dd\n  ON dtr.document_id = dd.document_id\nWHERE\n  dd.document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  ) AND dtr.row_label LIKE '%กำไรต่อหุ้นขั้นพื้นฐาน%' AND dtr.col_name LIKE '%ปี 2568%'\nORDER BY\n  dtr.row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+            "column": "ปี 2568",
+            "value": "20.63",
+            "unit": "บาท",
+            "row_index": 6,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  dtr.document_id,\n  dtr.table_name,\n  dtr.row_label,\n  dtr.col_name,\n  dtr.col_value,\n  dtr.unit\nFROM dim_table_rows AS dtr\nJOIN dim_documents AS dd\n  ON dtr.document_id = dd.document_id\nWHERE\n  dd.document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  ) AND dtr.row_label LIKE '%กำไรต่อหุ้นขั้นพื้นฐาน%' AND dtr.col_name LIKE '%ปี 2568%'\nORDER BY\n  dtr.row_index ASC\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 4,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+              "col_name": "ปี 2568",
+              "col_value": "20.63",
+              "unit": "บาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+              "col_name": "ปี 2568",
+              "col_value": "20.63",
+              "unit": "บาท"
+            }
+          ],
+          "row_count": 2,
+          "evidence": [
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+              "column": "ปี 2568",
+              "value": "20.63",
+              "unit": "บาท",
+              "row_index": 6,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+              "column": "ปี 2568",
+              "value": "20.63",
+              "unit": "บาท",
+              "row_index": 6,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf กำไรต่อหุ้นขั้นพื้นฐานปี 2568 เท่ากับกี่บาท?",
+            "observation": "document_id=4, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1), col_name=ปี 2568, col_value=20.63, unit=บาท\ndocument_id=1, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1), col_name=ปี 2568, col_value=20.63, unit=บาท\nSources: 1testfile.pdf PDF page 1\nExact ",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        }
+      ]
+    },
+    "L05": {
+      "id": "L05",
+      "answer": "3.23% ในปี 2568 (หน้า 2) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "3.23% ในปี 2568 (หน้า 2) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND row_label LIKE '%ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ%'\n  AND col_name LIKE '%ปี 2568%'\n  AND unit = '%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+            "column": "ปี 2568",
+            "value": "3.23",
+            "unit": "%",
+            "row_index": 14,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND row_label LIKE '%ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ%'\n  AND col_name LIKE '%ปี 2568%'\n  AND unit = '%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+            "column": "ปี 2568",
+            "value": "3.23",
+            "unit": "%",
+            "row_index": 14,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND row_label LIKE '%ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ%'\n  AND col_name LIKE '%ปี 2568%'\n  AND unit = '%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 4,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+              "col_name": "ปี 2568",
+              "col_value": "3.23",
+              "unit": "%"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+              "col_name": "ปี 2568",
+              "col_value": "3.23",
+              "unit": "%"
+            }
+          ],
+          "row_count": 2,
+          "evidence": [
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+              "column": "ปี 2568",
+              "value": "3.23",
+              "unit": "%",
+              "row_index": 14,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+              "column": "ปี 2568",
+              "value": "3.23",
+              "unit": "%",
+              "row_index": 14,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ NIM ปี 2568 เท่ากับกี่เปอร์เซ็นต์?",
+            "observation": "document_id=4, table_name=page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท), row_label=ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ), col_name=ปี 2568, col_value=3.23, unit=%\ndocument_id=1, table_name=page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท), row_label=ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ), col_name=ปี 2568, col_value=3.23, unit=%\nSources: 1testfile.pdf PDF page 2\nExact source cells (use these units): [{\"document_id\":",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        }
+      ]
+    },
+    "L06": {
+      "id": "L06",
+      "answer": "188,068 ล้านบาท ปี 2567 หน้า 2 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "188,068 ล้านบาท ปี 2567 หน้า 2 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  t2.document_id,\n  t2.table_name,\n  t2.row_label,\n  t2.col_name,\n  t2.col_value,\n  t2.unit\nFROM dim_documents AS t1\nINNER JOIN dim_table_rows AS t2\n  ON t1.document_id = t2.document_id\nWHERE\n  t1.filename = '1testfile.pdf' AND t2.row_label LIKE '%รายได้ดอกเบี้ย%' AND t2.col_name LIKE '%ปี 2567 (ปรับปรุงใหม่)%' AND t2.unit = 'ล้านบาท'\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2567 (ปรับปรุงใหม่)",
+            "value": "148,004",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  t2.document_id,\n  t2.table_name,\n  t2.row_label,\n  t2.col_name,\n  t2.col_value,\n  t2.unit\nFROM dim_documents AS t1\nINNER JOIN dim_table_rows AS t2\n  ON t1.document_id = t2.document_id\nWHERE\n  t1.filename = '1testfile.pdf' AND t2.row_label LIKE '%รายได้ดอกเบี้ย%' AND t2.col_name LIKE '%ปี 2567 (ปรับปรุงใหม่)%' AND t2.unit = 'ล้านบาท'\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ย",
+            "column": "ปี 2567 (ปรับปรุงใหม่)",
+            "value": "188,068",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  t2.document_id,\n  t2.table_name,\n  t2.row_label,\n  t2.col_name,\n  t2.col_value,\n  t2.unit\nFROM dim_documents AS t1\nINNER JOIN dim_table_rows AS t2\n  ON t1.document_id = t2.document_id\nWHERE\n  t1.filename = '1testfile.pdf' AND t2.row_label LIKE '%รายได้ดอกเบี้ย%' AND t2.col_name LIKE '%ปี 2567 (ปรับปรุงใหม่)%' AND t2.unit = 'ล้านบาท'\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2567 (ปรับปรุงใหม่)",
+            "value": "148,004",
+            "unit": "ล้านบาท",
+            "row_index": 11,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  t2.document_id,\n  t2.table_name,\n  t2.row_label,\n  t2.col_name,\n  t2.col_value,\n  t2.unit\nFROM dim_documents AS t1\nINNER JOIN dim_table_rows AS t2\n  ON t1.document_id = t2.document_id\nWHERE\n  t1.filename = '1testfile.pdf' AND t2.row_label LIKE '%รายได้ดอกเบี้ย%' AND t2.col_name LIKE '%ปี 2567 (ปรับปรุงใหม่)%' AND t2.unit = 'ล้านบาท'\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2567 (ปรับปรุงใหม่)",
+            "value": "148,004",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  t2.document_id,\n  t2.table_name,\n  t2.row_label,\n  t2.col_name,\n  t2.col_value,\n  t2.unit\nFROM dim_documents AS t1\nINNER JOIN dim_table_rows AS t2\n  ON t1.document_id = t2.document_id\nWHERE\n  t1.filename = '1testfile.pdf' AND t2.row_label LIKE '%รายได้ดอกเบี้ย%' AND t2.col_name LIKE '%ปี 2567 (ปรับปรุงใหม่)%' AND t2.unit = 'ล้านบาท'\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ย",
+            "column": "ปี 2567 (ปรับปรุงใหม่)",
+            "value": "188,068",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  t2.document_id,\n  t2.table_name,\n  t2.row_label,\n  t2.col_name,\n  t2.col_value,\n  t2.unit\nFROM dim_documents AS t1\nINNER JOIN dim_table_rows AS t2\n  ON t1.document_id = t2.document_id\nWHERE\n  t1.filename = '1testfile.pdf' AND t2.row_label LIKE '%รายได้ดอกเบี้ย%' AND t2.col_name LIKE '%ปี 2567 (ปรับปรุงใหม่)%' AND t2.unit = 'ล้านบาท'\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2567 (ปรับปรุงใหม่)",
+            "value": "148,004",
+            "unit": "ล้านบาท",
+            "row_index": 11,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  t2.document_id,\n  t2.table_name,\n  t2.row_label,\n  t2.col_name,\n  t2.col_value,\n  t2.unit\nFROM dim_documents AS t1\nINNER JOIN dim_table_rows AS t2\n  ON t1.document_id = t2.document_id\nWHERE\n  t1.filename = '1testfile.pdf' AND t2.row_label LIKE '%รายได้ดอกเบี้ย%' AND t2.col_name LIKE '%ปี 2567 (ปรับปรุงใหม่)%' AND t2.unit = 'ล้านบาท'\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 4,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2567 (ปรับปรุงใหม่)",
+              "col_value": "148,004",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 4,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ย",
+              "col_name": "ปี 2567 (ปรับปรุงใหม่)",
+              "col_value": "188,068",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 4,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2567 (ปรับปรุงใหม่)",
+              "col_value": "148,004",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2567 (ปรับปรุงใหม่)",
+              "col_value": "148,004",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ย",
+              "col_name": "ปี 2567 (ปรับปรุงใหม่)",
+              "col_value": "188,068",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2567 (ปรับปรุงใหม่)",
+              "col_value": "148,004",
+              "unit": "ล้านบาท"
+            }
+          ],
+          "row_count": 6,
+          "evidence": [
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2567 (ปรับปรุงใหม่)",
+              "value": "148,004",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ย",
+              "column": "ปี 2567 (ปรับปรุงใหม่)",
+              "value": "188,068",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2567 (ปรับปรุงใหม่)",
+              "value": "148,004",
+              "unit": "ล้านบาท",
+              "row_index": 11,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2567 (ปรับปรุงใหม่)",
+              "value": "148,004",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ย",
+              "column": "ปี 2567 (ปรับปรุงใหม่)",
+              "value": "188,068",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2567 (ปรับปรุงใหม่)",
+              "value": "148,004",
+              "unit": "ล้านบาท",
+              "row_index": 11,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยรวมปี 2567 ที่ปรับปรุงใหม่แล้ว เท่ากับกี่ล้านบาท?",
+            "observation": "(แถวที่มี <== คือแถวที่ row_label ตรงกับชื่อรายการในคำถามพอดี ให้ใช้แถวนั้นตอบ ห้ามหยิบแถวอื่นที่ชื่อใกล้เคียงหรือมีคำนำหน้าเพิ่ม)\ndocument_id=4, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=รายได้ดอกเบี้ยสุทธิ, col_name=ปี 2567 (ปรับปรุงใหม่), col_value=148,004, unit=ล้านบาท\ndocument_id=4, table_name=page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท), row_label=รายได้ดอกเบี้ย, co",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        }
+      ]
+    },
+    "L07": {
+      "id": "L07",
+      "answer": "หลักฐานไม่เพียงพอที่จะตอบคำถามนี้ เนื่องจากข้อมูลที่ให้มามีเพียง \"รายได้ดอกเบี้ยสุทธิ\" และ \"รายได้ดอกเบี้ยรับจากเงินให้สินเชื่อที่ลดลง\" แต่ไม่มีข้อมูล \"รายได้ดอกเบี้ยจากเงินให้สินเชื่อ\" โดยตรงสำหรับปี 2568 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "หลักฐานไม่เพียงพอที่จะตอบคำถามนี้ เนื่องจากข้อมูลที่ให้มามีเพียง \"รายได้ดอกเบี้ยสุทธิ\" และ \"รายได้ดอกเบี้ยรับจากเงินให้สินเชื่อที่ลดลง\" แต่ไม่มีข้อมูล \"รายได้ดอกเบี้ยจากเงินให้สินเชื่อ\" โดยตรงสำหรับปี 2568 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "vector",
+        "sources": [
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 2,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# รายได้ดอกเบี้ยสุทธิ ธนาคารและบริษัทย่อยมีรายได้ดอกเบี้ยสุทธิสำหรับปี 2568 จำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ส่วนใหญ่เกิดจากรายได้ดอกเบี้ยรับจากเงินให้สินเชื่อที่ลดลงจำนวน 16,524 ล้านบาท หรือ ร้อยละ 12. 03 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลด อัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อที่ชะลอตัว แม้ว่ารายได้ดอกเบี้ยรับจากเงินลงทุนและธุรกรรมเพื่อค้ำเพิ่มขึ้น จำนวน 3,902 ล้านบาท หรือ ร้อยละ 13. 27 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของปริมาณธุรกรรมเฉลี่ย ในขณะที่ค่าใช้จ่ายดอกเบี้ยจากเงินรับฝากลดลงจำนวน 2,274 ล้านบาท หรือร้อยละ 12. 21 ส่วนใหญ่เกิดจากอัตราดอกเบี้ยเฉลี่ยที่ลดลง และค่าใช้จ่ายดอกเบี้ยจากรายการระหว่างธนาคารและตลาดเงินลดลง จำนวน 899 ล้านบาท หรือร้อยละ 16. 26 ส่วนใหญ่เกิดจากการลดลงของอัตราดอกเบี้ยเฉลี่ย ในขณะที่ปริมาณธุรกรรมเฉลี่ยเพิ่มขึ้น",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 8,
+            "similarity": 0.10661538203039125,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 2,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# รายได้ดอกเบี้ยสุทธิ ธนาคารและบริษัทย่อยมีรายได้ดอกเบี้ยสุทธิสำหรับปี 2568 จำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ส่วนใหญ่เกิดจากรายได้ดอกเบี้ยรับจากเงินให้สินเชื่อที่ลดลงจำนวน 16,524 ล้านบาท หรือ ร้อยละ 12. 03 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลด อัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อที่ชะลอตัว แม้ว่ารายได้ดอกเบี้ยรับจากเงินลงทุนและธุรกรรมเพื่อค้ำเพิ่มขึ้น จำนวน 3,902 ล้านบาท หรือ ร้อยละ 13. 27 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของปริมาณธุรกรรมเฉลี่ย ในขณะที่ค่าใช้จ่ายดอกเบี้ยจากเงินรับฝากลดลงจำนวน 2,274 ล้านบาท หรือร้อยละ 12. 21 ส่วนใหญ่เกิดจากอัตราดอกเบี้ยเฉลี่ยที่ลดลง และค่าใช้จ่ายดอกเบี้ยจากรายการระหว่างธนาคารและตลาดเงินลดลง จำนวน 899 ล้านบาท หรือร้อยละ 16. 26 ส่วนใหญ่เกิดจากการลดลงของอัตราดอกเบี้ยเฉลี่ย ในขณะที่ปริมาณธุรกรรมเฉลี่ยเพิ่มขึ้น",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 8,
+            "similarity": 0.10661538203039125,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 5,
+            "table_name": "page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)\nTABLE_TITLE: แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย (หน่วย: ล้านบาท)\nCOLUMNS: ระยะเวลา, เงินรับฝาก 31 ธ.ค. 2568, เงินรับฝาก ร้อยละ 2568, เงินรับฝาก 31 ธ.ค. 2567, เงินรับฝาก ร้อยละ 2567, เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568, เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2568, เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2567 (ปรับปรุงใหม่), เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2567\nCSV:\nระยะเวลา,เงินรับฝาก 31 ธ.ค. 2568,เงินรับฝาก ร้อยละ 2568,เงินรับฝาก 31 ธ.ค. 2567,เงินรับฝาก ร้อยละ 2567,เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568,เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2568,เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2567 (ปรับปรุงใหม่),เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2567\n≤ 1 ปี,\"2,785,465\",97.72,\"2,654,777\",97.65,\"1,080,086\",43.28,\"1,135,088\",45.40\n> 1 - 5 ปี,\"64,922\",2.28,\"63,898\",2.35,\"548,725\",21.98,\"540,987\",21.63\n> 5 ปี,-,-,-,-,\"866,956\",34.74,\"824,280\",32.97\nรวม,\"2,850,387\",100.00,\"2,718,675\",100.00,\"2,495,767\",100.00,\"2,500,355\",100.00",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 33,
+            "similarity": 0.08905067313623913,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 5,
+            "table_name": "page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)\nTABLE_TITLE: แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย (หน่วย: ล้านบาท)\nCOLUMNS: ระยะเวลา, เงินรับฝาก 31 ธ.ค. 2568, เงินรับฝาก ร้อยละ 2568, เงินรับฝาก 31 ธ.ค. 2567, เงินรับฝาก ร้อยละ 2567, เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568, เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2568, เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2567 (ปรับปรุงใหม่), เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2567\nCSV:\nระยะเวลา,เงินรับฝาก 31 ธ.ค. 2568,เงินรับฝาก ร้อยละ 2568,เงินรับฝาก 31 ธ.ค. 2567,เงินรับฝาก ร้อยละ 2567,เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568,เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2568,เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2567 (ปรับปรุงใหม่),เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2567\n≤ 1 ปี,\"2,785,465\",97.72,\"2,654,777\",97.65,\"1,080,086\",43.28,\"1,135,088\",45.40\n> 1 - 5 ปี,\"64,922\",2.28,\"63,898\",2.35,\"548,725\",21.98,\"540,987\",21.63\n> 5 ปี,-,-,-,-,\"866,956\",34.74,\"824,280\",32.97\nรวม,\"2,850,387\",100.00,\"2,718,675\",100.00,\"2,495,767\",100.00,\"2,500,355\",100.00",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 33,
+            "similarity": 0.08905067313623913,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.08135859998728183,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.08135859998728183,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)\nTABLE_TITLE: สรุปผลการดำเนินงาน ปี 2568 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nรายได้ที่มิใช่ดอกเบี้ย,\"57,648\",\"50,240\",\"7,408\",14.75\nรวมรายได้จากการดำเนินงานสุทธิ,\"194,800\",\"198,244\",\"(3,444)\",(1.74)\nรวมค่าใช้จ่ายจากการดำเนินงานอื่นๆ,\"84,849\",\"84,250\",599,0.71\nผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,\"40,312\",\"47,251\",\"(6,939)\",(14.69)\nกำไรสุทธิ (ส่วนที่เป็นของธนาคาร),\"49,565\",\"49,604\",(39),(0.08)\nกำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1),20.63,20.63,-,-",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 4,
+            "similarity": 0.07519245489595472,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)\nTABLE_TITLE: สรุปผลการดำเนินงาน ปี 2568 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nรายได้ที่มิใช่ดอกเบี้ย,\"57,648\",\"50,240\",\"7,408\",14.75\nรวมรายได้จากการดำเนินงานสุทธิ,\"194,800\",\"198,244\",\"(3,444)\",(1.74)\nรวมค่าใช้จ่ายจากการดำเนินงานอื่นๆ,\"84,849\",\"84,250\",599,0.71\nผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,\"40,312\",\"47,251\",\"(6,939)\",(14.69)\nกำไรสุทธิ (ส่วนที่เป็นของธนาคาร),\"49,565\",\"49,604\",(39),(0.08)\nกำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1),20.63,20.63,-,-",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 4,
+            "similarity": 0.07519245489595472,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 4,
+            "table_name": "page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)\nTABLE_TITLE: โครงสร้างสินทรัพย์และหนี้สิน (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567 (ปรับปรุงใหม่)\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567 (ปรับปรุงใหม่)\nสินทรัพย์อื่น,5%,5%\nเงินสด,1%,1%\nรายการระหว่างธนาคารและตลาดเงินสุทธิ (สินทรัพย์),12%,12%\nเงินลงทุนสุทธิ,27%,24%\nเงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ,55%,58%\nหนี้สินอื่น,7%,8%\nหนี้สินจากสัญญาประกันภัย,13%,14%\nรายการระหว่างธนาคารและตลาดเงิน (หนี้สิน),5%,5%\nตราสารหนี้ที่ออกและเงินกู้ยืม,2%,2%\nเงินรับฝาก,73%,73%",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 25,
+            "similarity": 0.06539519855594995,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 4,
+            "table_name": "page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)\nTABLE_TITLE: โครงสร้างสินทรัพย์และหนี้สิน (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567 (ปรับปรุงใหม่)\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567 (ปรับปรุงใหม่)\nสินทรัพย์อื่น,5%,5%\nเงินสด,1%,1%\nรายการระหว่างธนาคารและตลาดเงินสุทธิ (สินทรัพย์),12%,12%\nเงินลงทุนสุทธิ,27%,24%\nเงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ,55%,58%\nหนี้สินอื่น,7%,8%\nหนี้สินจากสัญญาประกันภัย,13%,14%\nรายการระหว่างธนาคารและตลาดเงิน (หนี้สิน),5%,5%\nตราสารหนี้ที่ออกและเงินกู้ยืม,2%,2%\nเงินรับฝาก,73%,73%",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 25,
+            "similarity": 0.06539519855594995,
+            "source_kind": "table_csv"
+          }
+        ],
+        "sql_info": null,
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยจากเงินให้สินเชื่อปี 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "Error: ไม่พบข้อมูลตารางพร้อมหลักฐานหน้าเอกสารที่ตรงกับคำถาม",
+            "success": false
+          },
+          {
+            "action": "vector_search",
+            "action_input": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยจากเงินให้สินเชื่อปี 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "[1testfile.pdf, PDF page 2, chunk 8, source=semantic, sim=0.11; OCR evidence is not visually verified]\n# รายได้ดอกเบี้ยสุทธิ ธนาคารและบริษัทย่อยมีรายได้ดอกเบี้ยสุทธิสำหรับปี 2568 จำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ส่วนใหญ่เกิดจากรายได้ดอกเบี้ยรับจากเงินให้สินเชื่อที่ลดลงจำนวน 16,524 ล้านบาท หรือ ร้อยละ 12. 03 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลด อัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อที่ชะลอตัว แม้ว่ารายได้ดอกเบี้ยรับจากเงินลง",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        }
+      ]
+    },
+    "L08": {
+      "id": "L08",
+      "answer": "2,495,767 ล้านบาท, ปี 2568, หน้า 3 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "2,495,767 ล้านบาท, ปี 2568, หน้า 3 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "vector",
+        "sources": [
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 5,
+            "table_name": "page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)\nTABLE_TITLE: แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย (หน่วย: ล้านบาท)\nCOLUMNS: ระยะเวลา, เงินรับฝาก 31 ธ.ค. 2568, เงินรับฝาก ร้อยละ 2568, เงินรับฝาก 31 ธ.ค. 2567, เงินรับฝาก ร้อยละ 2567, เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568, เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2568, เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2567 (ปรับปรุงใหม่), เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2567\nCSV:\nระยะเวลา,เงินรับฝาก 31 ธ.ค. 2568,เงินรับฝาก ร้อยละ 2568,เงินรับฝาก 31 ธ.ค. 2567,เงินรับฝาก ร้อยละ 2567,เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568,เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2568,เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2567 (ปรับปรุงใหม่),เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2567\n≤ 1 ปี,\"2,785,465\",97.72,\"2,654,777\",97.65,\"1,080,086\",43.28,\"1,135,088\",45.40\n> 1 - 5 ปี,\"64,922\",2.28,\"63,898\",2.35,\"548,725\",21.98,\"540,987\",21.63\n> 5 ปี,-,-,-,-,\"866,956\",34.74,\"824,280\",32.97\nรวม,\"2,850,387\",100.00,\"2,718,675\",100.00,\"2,495,767\",100.00,\"2,500,355\",100.00",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 33,
+            "similarity": 0.2276889597675745,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 5,
+            "table_name": "page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)\nTABLE_TITLE: แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย (หน่วย: ล้านบาท)\nCOLUMNS: ระยะเวลา, เงินรับฝาก 31 ธ.ค. 2568, เงินรับฝาก ร้อยละ 2568, เงินรับฝาก 31 ธ.ค. 2567, เงินรับฝาก ร้อยละ 2567, เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568, เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2568, เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2567 (ปรับปรุงใหม่), เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2567\nCSV:\nระยะเวลา,เงินรับฝาก 31 ธ.ค. 2568,เงินรับฝาก ร้อยละ 2568,เงินรับฝาก 31 ธ.ค. 2567,เงินรับฝาก ร้อยละ 2567,เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568,เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2568,เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2567 (ปรับปรุงใหม่),เงินให้สินเชื่อและดอกเบี้ยค้างรับ ร้อยละ 2567\n≤ 1 ปี,\"2,785,465\",97.72,\"2,654,777\",97.65,\"1,080,086\",43.28,\"1,135,088\",45.40\n> 1 - 5 ปี,\"64,922\",2.28,\"63,898\",2.35,\"548,725\",21.98,\"540,987\",21.63\n> 5 ปี,-,-,-,-,\"866,956\",34.74,\"824,280\",32.97\nรวม,\"2,850,387\",100.00,\"2,718,675\",100.00,\"2,495,767\",100.00,\"2,500,355\",100.00",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 33,
+            "similarity": 0.2276889597675745,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.2002058050193462,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.2002058050193462,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 4,
+            "table_name": "page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)\nTABLE_TITLE: โครงสร้างสินทรัพย์และหนี้สิน (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567 (ปรับปรุงใหม่)\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567 (ปรับปรุงใหม่)\nสินทรัพย์อื่น,5%,5%\nเงินสด,1%,1%\nรายการระหว่างธนาคารและตลาดเงินสุทธิ (สินทรัพย์),12%,12%\nเงินลงทุนสุทธิ,27%,24%\nเงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ,55%,58%\nหนี้สินอื่น,7%,8%\nหนี้สินจากสัญญาประกันภัย,13%,14%\nรายการระหว่างธนาคารและตลาดเงิน (หนี้สิน),5%,5%\nตราสารหนี้ที่ออกและเงินกู้ยืม,2%,2%\nเงินรับฝาก,73%,73%",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 25,
+            "similarity": 0.1430146037594679,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 4,
+            "table_name": "page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)\nTABLE_TITLE: โครงสร้างสินทรัพย์และหนี้สิน (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567 (ปรับปรุงใหม่)\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567 (ปรับปรุงใหม่)\nสินทรัพย์อื่น,5%,5%\nเงินสด,1%,1%\nรายการระหว่างธนาคารและตลาดเงินสุทธิ (สินทรัพย์),12%,12%\nเงินลงทุนสุทธิ,27%,24%\nเงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ,55%,58%\nหนี้สินอื่น,7%,8%\nหนี้สินจากสัญญาประกันภัย,13%,14%\nรายการระหว่างธนาคารและตลาดเงิน (หนี้สิน),5%,5%\nตราสารหนี้ที่ออกและเงินกู้ยืม,2%,2%\nเงินรับฝาก,73%,73%",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 25,
+            "similarity": 0.1430146037594679,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 2,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# รายได้ดอกเบี้ยสุทธิ ธนาคารและบริษัทย่อยมีรายได้ดอกเบี้ยสุทธิสำหรับปี 2568 จำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ส่วนใหญ่เกิดจากรายได้ดอกเบี้ยรับจากเงินให้สินเชื่อที่ลดลงจำนวน 16,524 ล้านบาท หรือ ร้อยละ 12. 03 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลด อัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อที่ชะลอตัว แม้ว่ารายได้ดอกเบี้ยรับจากเงินลงทุนและธุรกรรมเพื่อค้ำเพิ่มขึ้น จำนวน 3,902 ล้านบาท หรือ ร้อยละ 13. 27 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของปริมาณธุรกรรมเฉลี่ย ในขณะที่ค่าใช้จ่ายดอกเบี้ยจากเงินรับฝากลดลงจำนวน 2,274 ล้านบาท หรือร้อยละ 12. 21 ส่วนใหญ่เกิดจากอัตราดอกเบี้ยเฉลี่ยที่ลดลง และค่าใช้จ่ายดอกเบี้ยจากรายการระหว่างธนาคารและตลาดเงินลดลง จำนวน 899 ล้านบาท หรือร้อยละ 16. 26 ส่วนใหญ่เกิดจากการลดลงของอัตราดอกเบี้ยเฉลี่ย ในขณะที่ปริมาณธุรกรรมเฉลี่ยเพิ่มขึ้น",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 8,
+            "similarity": 0.09860952326638933,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 2,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# รายได้ดอกเบี้ยสุทธิ ธนาคารและบริษัทย่อยมีรายได้ดอกเบี้ยสุทธิสำหรับปี 2568 จำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ส่วนใหญ่เกิดจากรายได้ดอกเบี้ยรับจากเงินให้สินเชื่อที่ลดลงจำนวน 16,524 ล้านบาท หรือ ร้อยละ 12. 03 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลด อัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อที่ชะลอตัว แม้ว่ารายได้ดอกเบี้ยรับจากเงินลงทุนและธุรกรรมเพื่อค้ำเพิ่มขึ้น จำนวน 3,902 ล้านบาท หรือ ร้อยละ 13. 27 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของปริมาณธุรกรรมเฉลี่ย ในขณะที่ค่าใช้จ่ายดอกเบี้ยจากเงินรับฝากลดลงจำนวน 2,274 ล้านบาท หรือร้อยละ 12. 21 ส่วนใหญ่เกิดจากอัตราดอกเบี้ยเฉลี่ยที่ลดลง และค่าใช้จ่ายดอกเบี้ยจากรายการระหว่างธนาคารและตลาดเงินลดลง จำนวน 899 ล้านบาท หรือร้อยละ 16. 26 ส่วนใหญ่เกิดจากการลดลงของอัตราดอกเบี้ยเฉลี่ย ในขณะที่ปริมาณธุรกรรมเฉลี่ยเพิ่มขึ้น",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 8,
+            "similarity": 0.09860952326638933,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)\nTABLE_TITLE: สรุปผลการดำเนินงาน ปี 2568 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nรายได้ที่มิใช่ดอกเบี้ย,\"57,648\",\"50,240\",\"7,408\",14.75\nรวมรายได้จากการดำเนินงานสุทธิ,\"194,800\",\"198,244\",\"(3,444)\",(1.74)\nรวมค่าใช้จ่ายจากการดำเนินงานอื่นๆ,\"84,849\",\"84,250\",599,0.71\nผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,\"40,312\",\"47,251\",\"(6,939)\",(14.69)\nกำไรสุทธิ (ส่วนที่เป็นของธนาคาร),\"49,565\",\"49,604\",(39),(0.08)\nกำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1),20.63,20.63,-,-",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 4,
+            "similarity": 0.07519245489595472,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)\nTABLE_TITLE: สรุปผลการดำเนินงาน ปี 2568 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nรายได้ที่มิใช่ดอกเบี้ย,\"57,648\",\"50,240\",\"7,408\",14.75\nรวมรายได้จากการดำเนินงานสุทธิ,\"194,800\",\"198,244\",\"(3,444)\",(1.74)\nรวมค่าใช้จ่ายจากการดำเนินงานอื่นๆ,\"84,849\",\"84,250\",599,0.71\nผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,\"40,312\",\"47,251\",\"(6,939)\",(14.69)\nกำไรสุทธิ (ส่วนที่เป็นของธนาคาร),\"49,565\",\"49,604\",(39),(0.08)\nกำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1),20.63,20.63,-,-",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 4,
+            "similarity": 0.07519245489595472,
+            "source_kind": "table_csv"
+          }
+        ],
+        "sql_info": null,
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf เงินให้สินเชื่อและดอกเบี้ยค้างรับรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "Error: ไม่พบข้อมูลตารางพร้อมหลักฐานหน้าเอกสารที่ตรงกับคำถาม",
+            "success": false
+          },
+          {
+            "action": "vector_search",
+            "action_input": "จากไฟล์ 1testfile.pdf เงินให้สินเชื่อและดอกเบี้ยค้างรับรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "[1testfile.pdf, PDF page 5, chunk 33, source=table_csv, sim=0.23; OCR evidence is not visually verified]\nTABLE_NAME: page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)\nTABLE_TITLE: แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย (หน่วย: ล้านบาท)\nCOLUMNS: ระยะเวลา, เงินรับฝาก 31 ธ.ค. 2568, เงินรับฝาก ร้อยละ 2568, เงินรับฝาก 31 ธ.ค. 2567, เงินรับฝาก ร้อยละ 2567",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        }
+      ]
+    },
+    "L09": {
+      "id": "L09",
+      "answer": "142,997 ล้านบาท ในปี 2568 (หน้า 3) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "142,997 ล้านบาท ในปี 2568 (หน้า 3) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "vector",
+        "sources": [
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.31794140487243394,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.31794140487243394,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)\nTABLE_TITLE: สรุปผลการดำเนินงาน ปี 2568 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nรายได้ที่มิใช่ดอกเบี้ย,\"57,648\",\"50,240\",\"7,408\",14.75\nรวมรายได้จากการดำเนินงานสุทธิ,\"194,800\",\"198,244\",\"(3,444)\",(1.74)\nรวมค่าใช้จ่ายจากการดำเนินงานอื่นๆ,\"84,849\",\"84,250\",599,0.71\nผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,\"40,312\",\"47,251\",\"(6,939)\",(14.69)\nกำไรสุทธิ (ส่วนที่เป็นของธนาคาร),\"49,565\",\"49,604\",(39),(0.08)\nกำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1),20.63,20.63,-,-",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 4,
+            "similarity": 0.1346524056621514,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)\nTABLE_TITLE: สรุปผลการดำเนินงาน ปี 2568 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nรายได้ที่มิใช่ดอกเบี้ย,\"57,648\",\"50,240\",\"7,408\",14.75\nรวมรายได้จากการดำเนินงานสุทธิ,\"194,800\",\"198,244\",\"(3,444)\",(1.74)\nรวมค่าใช้จ่ายจากการดำเนินงานอื่นๆ,\"84,849\",\"84,250\",599,0.71\nผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,\"40,312\",\"47,251\",\"(6,939)\",(14.69)\nกำไรสุทธิ (ส่วนที่เป็นของธนาคาร),\"49,565\",\"49,604\",(39),(0.08)\nกำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1),20.63,20.63,-,-",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 4,
+            "similarity": 0.1346524056621514,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 5,
+            "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)\nTABLE_TITLE: หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567, 31 ธ.ค. 2566\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567,31 ธ.ค. 2566\nการรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน,\"15,437\",\"16,728\",\"21,064\"\nภาระตามตั๋วแลกเงินค่าสินค้าเข้าที่ยังไม่ครบกำหนด,\"91,396\",\"45,096\",\"48,174\"\nเล็ตเตอร์ออฟเครดิต,\"15,751\",\"28,914\",\"25,054\"\nภาระผูกพันอื่น,\"705,406\",\"718,307\",\"729,551\"\nรวม,\"827,990\",\"809,045\",\"823,843\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 34,
+            "similarity": 0.1285090009161955,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 5,
+            "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)\nTABLE_TITLE: หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567, 31 ธ.ค. 2566\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567,31 ธ.ค. 2566\nการรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน,\"15,437\",\"16,728\",\"21,064\"\nภาระตามตั๋วแลกเงินค่าสินค้าเข้าที่ยังไม่ครบกำหนด,\"91,396\",\"45,096\",\"48,174\"\nเล็ตเตอร์ออฟเครดิต,\"15,751\",\"28,914\",\"25,054\"\nภาระผูกพันอื่น,\"705,406\",\"718,307\",\"729,551\"\nรวม,\"827,990\",\"809,045\",\"823,843\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 34,
+            "similarity": 0.1285090009161955,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 4,
+            "table_name": "page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)\nTABLE_TITLE: โครงสร้างสินทรัพย์และหนี้สิน (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567 (ปรับปรุงใหม่)\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567 (ปรับปรุงใหม่)\nสินทรัพย์อื่น,5%,5%\nเงินสด,1%,1%\nรายการระหว่างธนาคารและตลาดเงินสุทธิ (สินทรัพย์),12%,12%\nเงินลงทุนสุทธิ,27%,24%\nเงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ,55%,58%\nหนี้สินอื่น,7%,8%\nหนี้สินจากสัญญาประกันภัย,13%,14%\nรายการระหว่างธนาคารและตลาดเงิน (หนี้สิน),5%,5%\nตราสารหนี้ที่ออกและเงินกู้ยืม,2%,2%\nเงินรับฝาก,73%,73%",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 25,
+            "similarity": 0.050159264306613646,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 4,
+            "table_name": "page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)\nTABLE_TITLE: โครงสร้างสินทรัพย์และหนี้สิน (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567 (ปรับปรุงใหม่)\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567 (ปรับปรุงใหม่)\nสินทรัพย์อื่น,5%,5%\nเงินสด,1%,1%\nรายการระหว่างธนาคารและตลาดเงินสุทธิ (สินทรัพย์),12%,12%\nเงินลงทุนสุทธิ,27%,24%\nเงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ,55%,58%\nหนี้สินอื่น,7%,8%\nหนี้สินจากสัญญาประกันภัย,13%,14%\nรายการระหว่างธนาคารและตลาดเงิน (หนี้สิน),5%,5%\nตราสารหนี้ที่ออกและเงินกู้ยืม,2%,2%\nเงินรับฝาก,73%,73%",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 25,
+            "similarity": 0.050159264306613646,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 2,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# รายได้ดอกเบี้ยสุทธิ ธนาคารและบริษัทย่อยมีรายได้ดอกเบี้ยสุทธิสำหรับปี 2568 จำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ส่วนใหญ่เกิดจากรายได้ดอกเบี้ยรับจากเงินให้สินเชื่อที่ลดลงจำนวน 16,524 ล้านบาท หรือ ร้อยละ 12. 03 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลด อัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อที่ชะลอตัว แม้ว่ารายได้ดอกเบี้ยรับจากเงินลงทุนและธุรกรรมเพื่อค้ำเพิ่มขึ้น จำนวน 3,902 ล้านบาท หรือ ร้อยละ 13. 27 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของปริมาณธุรกรรมเฉลี่ย ในขณะที่ค่าใช้จ่ายดอกเบี้ยจากเงินรับฝากลดลงจำนวน 2,274 ล้านบาท หรือร้อยละ 12. 21 ส่วนใหญ่เกิดจากอัตราดอกเบี้ยเฉลี่ยที่ลดลง และค่าใช้จ่ายดอกเบี้ยจากรายการระหว่างธนาคารและตลาดเงินลดลง จำนวน 899 ล้านบาท หรือร้อยละ 16. 26 ส่วนใหญ่เกิดจากการลดลงของอัตราดอกเบี้ยเฉลี่ย ในขณะที่ปริมาณธุรกรรมเฉลี่ยเพิ่มขึ้น",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 8,
+            "similarity": 0.02452585023562151,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 2,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# รายได้ดอกเบี้ยสุทธิ ธนาคารและบริษัทย่อยมีรายได้ดอกเบี้ยสุทธิสำหรับปี 2568 จำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ส่วนใหญ่เกิดจากรายได้ดอกเบี้ยรับจากเงินให้สินเชื่อที่ลดลงจำนวน 16,524 ล้านบาท หรือ ร้อยละ 12. 03 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลด อัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อที่ชะลอตัว แม้ว่ารายได้ดอกเบี้ยรับจากเงินลงทุนและธุรกรรมเพื่อค้ำเพิ่มขึ้น จำนวน 3,902 ล้านบาท หรือ ร้อยละ 13. 27 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของปริมาณธุรกรรมเฉลี่ย ในขณะที่ค่าใช้จ่ายดอกเบี้ยจากเงินรับฝากลดลงจำนวน 2,274 ล้านบาท หรือร้อยละ 12. 21 ส่วนใหญ่เกิดจากอัตราดอกเบี้ยเฉลี่ยที่ลดลง และค่าใช้จ่ายดอกเบี้ยจากรายการระหว่างธนาคารและตลาดเงินลดลง จำนวน 899 ล้านบาท หรือร้อยละ 16. 26 ส่วนใหญ่เกิดจากการลดลงของอัตราดอกเบี้ยเฉลี่ย ในขณะที่ปริมาณธุรกรรมเฉลี่ยเพิ่มขึ้น",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 8,
+            "similarity": 0.02452585023562151,
+            "source_kind": "semantic"
+          }
+        ],
+        "sql_info": null,
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf ค่าเผื่อผลขาดทุนด้านเครดิตรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "Error: ไม่พบข้อมูลตารางพร้อมหลักฐานหน้าเอกสารที่ตรงกับคำถาม",
+            "success": false
+          },
+          {
+            "action": "vector_search",
+            "action_input": "จากไฟล์ 1testfile.pdf ค่าเผื่อผลขาดทุนด้านเครดิตรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "[1testfile.pdf, PDF page 3, chunk 19, source=table_csv, sim=0.32; OCR evidence is not visually verified]\nTABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCS",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        }
+      ]
+    },
+    "L10": {
+      "id": "L10",
+      "answer": "44,132 ล้านบาท ในปี 2567 (ปรับปรุงใหม่) หน้า 3 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "44,132 ล้านบาท ในปี 2567 (ปรับปรุงใหม่) หน้า 3 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "vector",
+        "sources": [
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.40373112788750193,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.40373112788750193,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 5,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) ## 4. 3 เงินให้สินเชื่อและเงินรับฝาก ### เงินให้สินเชื่อ ณ วันที่ 31 ธันวาคม 2568 ธนาคารและบริษัทย่อยมียอดเงินให้สินเชื่อตามงบการเงินรวมของธนาคาร จำนวน 2,476,647 ล้านบาท ลดลงจำนวน 7,048 ล้านบาท หรือคิดเป็นร้อยละ 0. 28 จากยอดสินเชื่อจำนวน 2,483,695 ล้านบาท ณ วันที่ 31 ธันวาคม 2567",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 32,
+            "similarity": 0.15315628876602155,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 5,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) ## 4. 3 เงินให้สินเชื่อและเงินรับฝาก ### เงินให้สินเชื่อ ณ วันที่ 31 ธันวาคม 2568 ธนาคารและบริษัทย่อยมียอดเงินให้สินเชื่อตามงบการเงินรวมของธนาคาร จำนวน 2,476,647 ล้านบาท ลดลงจำนวน 7,048 ล้านบาท หรือคิดเป็นร้อยละ 0. 28 จากยอดสินเชื่อจำนวน 2,483,695 ล้านบาท ณ วันที่ 31 ธันวาคม 2567",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 32,
+            "similarity": 0.15315628876602155,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 1,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) หมายเหตุ : (1) กำไรต่อหุ้นขั้นพื้นฐาน = กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) หักยอดคะแนนของตราสารอื่นที่มีลักษณะคล้ายทุนทดันภัยภาษีเงินได้ หารด้วยจำนวนหุ้นสามัญถัวเฉลี่ยก่อนนำหนัก ผลการดำเนินงานสำหรับปี 2568 ธนาคารและบริษัทย่อยมีกำไรสุทธิส่วนที่เป็นของธนาคารจำนวน 49,585 ล้านบาท อยู่ในระดับใกล้เคียงกับปีก่อน โดยมีกำไรจากการดำเนินงานก่อนหักผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นและภาษีเงินได้จำนวน 109,951 ล้านบาท ลดลงจากปีก่อนจำนวน 4,043 ล้านบาท หรือร้อยละ 3. 55 เป็นผลจากรายได้ดอกเบี้ยสุทธิที่มีจำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลดอัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อชะลอตัวลง ส่งผลให้อัตราผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (Net Interest Margin: NIM) ลดลงมาอยู่ที่ระดับร้อยละ 3.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 2,
+            "similarity": 0.13596768573222462,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 1,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) หมายเหตุ : (1) กำไรต่อหุ้นขั้นพื้นฐาน = กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) หักยอดคะแนนของตราสารอื่นที่มีลักษณะคล้ายทุนทดันภัยภาษีเงินได้ หารด้วยจำนวนหุ้นสามัญถัวเฉลี่ยก่อนนำหนัก ผลการดำเนินงานสำหรับปี 2568 ธนาคารและบริษัทย่อยมีกำไรสุทธิส่วนที่เป็นของธนาคารจำนวน 49,585 ล้านบาท อยู่ในระดับใกล้เคียงกับปีก่อน โดยมีกำไรจากการดำเนินงานก่อนหักผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นและภาษีเงินได้จำนวน 109,951 ล้านบาท ลดลงจากปีก่อนจำนวน 4,043 ล้านบาท หรือร้อยละ 3. 55 เป็นผลจากรายได้ดอกเบี้ยสุทธิที่มีจำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลดอัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อชะลอตัวลง ส่งผลให้อัตราผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (Net Interest Margin: NIM) ลดลงมาอยู่ที่ระดับร้อยละ 3.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 2,
+            "similarity": 0.13596768573222462,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 4,
+            "table_name": "page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)\nTABLE_TITLE: โครงสร้างสินทรัพย์และหนี้สิน (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567 (ปรับปรุงใหม่)\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567 (ปรับปรุงใหม่)\nสินทรัพย์อื่น,5%,5%\nเงินสด,1%,1%\nรายการระหว่างธนาคารและตลาดเงินสุทธิ (สินทรัพย์),12%,12%\nเงินลงทุนสุทธิ,27%,24%\nเงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ,55%,58%\nหนี้สินอื่น,7%,8%\nหนี้สินจากสัญญาประกันภัย,13%,14%\nรายการระหว่างธนาคารและตลาดเงิน (หนี้สิน),5%,5%\nตราสารหนี้ที่ออกและเงินกู้ยืม,2%,2%\nเงินรับฝาก,73%,73%",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 25,
+            "similarity": 0.09465704356974376,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 4,
+            "table_name": "page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)\nTABLE_TITLE: โครงสร้างสินทรัพย์และหนี้สิน (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567 (ปรับปรุงใหม่)\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567 (ปรับปรุงใหม่)\nสินทรัพย์อื่น,5%,5%\nเงินสด,1%,1%\nรายการระหว่างธนาคารและตลาดเงินสุทธิ (สินทรัพย์),12%,12%\nเงินลงทุนสุทธิ,27%,24%\nเงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ,55%,58%\nหนี้สินอื่น,7%,8%\nหนี้สินจากสัญญาประกันภัย,13%,14%\nรายการระหว่างธนาคารและตลาดเงิน (หนี้สิน),5%,5%\nตราสารหนี้ที่ออกและเงินกู้ยืม,2%,2%\nเงินรับฝาก,73%,73%",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 25,
+            "similarity": 0.09465704356974376,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "passed_checks",
+            "excerpt": "TABLE_NAME: page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ย,\"173,625\",\"188,068\",\"(14,443)\",(7.68)\nรายการระหว่างธนาคารและตลาดเงิน,\"11,457\",\"13,496\",\"(2,038)\",(15.10)\nเงินลงทุนและธุรกรรมเพื่อค้า,\"33,295\",\"29,393\",\"3,902\",13.27\nเงินให้สินเชื่อ,\"120,777\",\"137,301\",\"(16,524)\",(12.03)\nการให้เช่าซื้อและสัญญาเช่าการเงิน,\"8,096\",\"7,879\",217,2.76\nค่าใช้จ่ายดอกเบี้ย,\"36,473\",\"40,064\",\"(3,591)\",(8.96)\nเงินรับฝาก,\"16,350\",\"18,624\",\"(2,274)\",(12.21)\nรายการระหว่างธนาคารและตลาดเงิน,\"3,596\",\"4,295\",(699),(16.26)\nเงินนำส่งกองทุนเพื่อการฟื้นฟูและพัฒนาระบบสถาบันการเงิน และสถาบันคุ้มครองเงินฝาก,\"12,416\",\"12,302\",114,0.93\nตราสารหนี้ที่ออกและเงินกู้ยืม,\"4,053\",\"4,752\",(699),(14.71)\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nอัตราผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้ (ร้อยละ),4.08,4.58,,(0.50)\nต้นทุนทางการเงิน (ร้อยละ),1.19,1.34,,(0.15)\nผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ),3.23,3.60,,(0.37)",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 10,
+            "similarity": 0.06375658149391844,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "passed_checks",
+            "excerpt": "TABLE_NAME: page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ย,\"173,625\",\"188,068\",\"(14,443)\",(7.68)\nรายการระหว่างธนาคารและตลาดเงิน,\"11,457\",\"13,496\",\"(2,038)\",(15.10)\nเงินลงทุนและธุรกรรมเพื่อค้า,\"33,295\",\"29,393\",\"3,902\",13.27\nเงินให้สินเชื่อ,\"120,777\",\"137,301\",\"(16,524)\",(12.03)\nการให้เช่าซื้อและสัญญาเช่าการเงิน,\"8,096\",\"7,879\",217,2.76\nค่าใช้จ่ายดอกเบี้ย,\"36,473\",\"40,064\",\"(3,591)\",(8.96)\nเงินรับฝาก,\"16,350\",\"18,624\",\"(2,274)\",(12.21)\nรายการระหว่างธนาคารและตลาดเงิน,\"3,596\",\"4,295\",(699),(16.26)\nเงินนำส่งกองทุนเพื่อการฟื้นฟูและพัฒนาระบบสถาบันการเงิน และสถาบันคุ้มครองเงินฝาก,\"12,416\",\"12,302\",114,0.93\nตราสารหนี้ที่ออกและเงินกู้ยืม,\"4,053\",\"4,752\",(699),(14.71)\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nอัตราผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้ (ร้อยละ),4.08,4.58,,(0.50)\nต้นทุนทางการเงิน (ร้อยละ),1.19,1.34,,(0.15)\nผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ),3.23,3.60,,(0.37)",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 10,
+            "similarity": 0.06375658149391844,
+            "source_kind": "table_csv"
+          }
+        ],
+        "sql_info": null,
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf ค่าเผื่อผลขาดทุนด้านเครดิตของเงินให้สินเชื่อระดับที่ 3 ณ 31 ธันวาคม 2567 เท่ากับกี่ล้านบาท?",
+            "observation": "Error: ไม่พบข้อมูลตารางพร้อมหลักฐานหน้าเอกสารที่ตรงกับคำถาม",
+            "success": false
+          },
+          {
+            "action": "vector_search",
+            "action_input": "จากไฟล์ 1testfile.pdf ค่าเผื่อผลขาดทุนด้านเครดิตของเงินให้สินเชื่อระดับที่ 3 ณ 31 ธันวาคม 2567 เท่ากับกี่ล้านบาท?",
+            "observation": "[1testfile.pdf, PDF page 3, chunk 19, source=table_csv, sim=0.40; OCR evidence is not visually verified]\nTABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCS",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        }
+      ]
+    },
+    "L11": {
+      "id": "L11",
+      "answer": "4,558,818 ล้านบาท, ปี 2568, หน้า 4 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "4,558,818 ล้านบาท, ปี 2568, หน้า 4 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "vector",
+        "sources": [
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 4,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# 4. 2 ฐานะทางการเงิน ## โครงสร้างสินทรัพย์และหนี้สิน (หน่วย : ล้านบาท) ### สินทรัพย์ สินทรัพย์รวมของธนาคารและบริษัทย่อย ณ สิ้นปี 2568 มีจำนวน 4,558,818 ล้านบาท เพิ่มขึ้นจาก ณ สิ้นปี 2567 จำนวน 217,664 ล้านบาท หรือคิดเป็นร้อยละ 5. 01 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของเงินลงทุนสุทธิและรายการระหว่างธนาคารและตลาดเงินสุทธิ โดยมีรายละเอียดที่สำคัญ ดังนี้ * เงินลงทุนสุทธิ ณ สิ้นปี 2568 มีจำนวน 1,248,260 ล้านบาท เพิ่มขึ้นจาก ณ สิ้นปี 2567 จำนวน 187,640 ล้านบาท หรือร้อยละ 17.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 23,
+            "similarity": 0.18440627872255744,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 4,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# 4. 2 ฐานะทางการเงิน ## โครงสร้างสินทรัพย์และหนี้สิน (หน่วย : ล้านบาท) ### สินทรัพย์ สินทรัพย์รวมของธนาคารและบริษัทย่อย ณ สิ้นปี 2568 มีจำนวน 4,558,818 ล้านบาท เพิ่มขึ้นจาก ณ สิ้นปี 2567 จำนวน 217,664 ล้านบาท หรือคิดเป็นร้อยละ 5. 01 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของเงินลงทุนสุทธิและรายการระหว่างธนาคารและตลาดเงินสุทธิ โดยมีรายละเอียดที่สำคัญ ดังนี้ * เงินลงทุนสุทธิ ณ สิ้นปี 2568 มีจำนวน 1,248,260 ล้านบาท เพิ่มขึ้นจาก ณ สิ้นปี 2567 จำนวน 187,640 ล้านบาท หรือร้อยละ 17.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 23,
+            "similarity": 0.18440627872255744,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "passed_checks",
+            "excerpt": "TABLE_NAME: page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ย,\"173,625\",\"188,068\",\"(14,443)\",(7.68)\nรายการระหว่างธนาคารและตลาดเงิน,\"11,457\",\"13,496\",\"(2,038)\",(15.10)\nเงินลงทุนและธุรกรรมเพื่อค้า,\"33,295\",\"29,393\",\"3,902\",13.27\nเงินให้สินเชื่อ,\"120,777\",\"137,301\",\"(16,524)\",(12.03)\nการให้เช่าซื้อและสัญญาเช่าการเงิน,\"8,096\",\"7,879\",217,2.76\nค่าใช้จ่ายดอกเบี้ย,\"36,473\",\"40,064\",\"(3,591)\",(8.96)\nเงินรับฝาก,\"16,350\",\"18,624\",\"(2,274)\",(12.21)\nรายการระหว่างธนาคารและตลาดเงิน,\"3,596\",\"4,295\",(699),(16.26)\nเงินนำส่งกองทุนเพื่อการฟื้นฟูและพัฒนาระบบสถาบันการเงิน และสถาบันคุ้มครองเงินฝาก,\"12,416\",\"12,302\",114,0.93\nตราสารหนี้ที่ออกและเงินกู้ยืม,\"4,053\",\"4,752\",(699),(14.71)\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nอัตราผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้ (ร้อยละ),4.08,4.58,,(0.50)\nต้นทุนทางการเงิน (ร้อยละ),1.19,1.34,,(0.15)\nผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ),3.23,3.60,,(0.37)",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 10,
+            "similarity": 0.06294911719379535,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "passed_checks",
+            "excerpt": "TABLE_NAME: page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ย,\"173,625\",\"188,068\",\"(14,443)\",(7.68)\nรายการระหว่างธนาคารและตลาดเงิน,\"11,457\",\"13,496\",\"(2,038)\",(15.10)\nเงินลงทุนและธุรกรรมเพื่อค้า,\"33,295\",\"29,393\",\"3,902\",13.27\nเงินให้สินเชื่อ,\"120,777\",\"137,301\",\"(16,524)\",(12.03)\nการให้เช่าซื้อและสัญญาเช่าการเงิน,\"8,096\",\"7,879\",217,2.76\nค่าใช้จ่ายดอกเบี้ย,\"36,473\",\"40,064\",\"(3,591)\",(8.96)\nเงินรับฝาก,\"16,350\",\"18,624\",\"(2,274)\",(12.21)\nรายการระหว่างธนาคารและตลาดเงิน,\"3,596\",\"4,295\",(699),(16.26)\nเงินนำส่งกองทุนเพื่อการฟื้นฟูและพัฒนาระบบสถาบันการเงิน และสถาบันคุ้มครองเงินฝาก,\"12,416\",\"12,302\",114,0.93\nตราสารหนี้ที่ออกและเงินกู้ยืม,\"4,053\",\"4,752\",(699),(14.71)\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nอัตราผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้ (ร้อยละ),4.08,4.58,,(0.50)\nต้นทุนทางการเงิน (ร้อยละ),1.19,1.34,,(0.15)\nผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ),3.23,3.60,,(0.37)",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 10,
+            "similarity": 0.06294911719379535,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 5,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "ธนาคารและบริษัทย่อยมีแหล่งใช้ไปของเงินทุนที่สำคัญ ได้แก่ เงินให้สินเชื่อ ซึ่ง ณ วันที่ 31 ธันวาคม 2568 มีจำนวน 2,476,647 ล้านบาท ทำให้อัตราส่วนของเงินให้สินเชื่อด่อเงินรับฝากของธนาคารคิดเป็นร้อยละ 86. 89 สำหรับสภาพคล่องส่วนที่เหลือ ธนาคารนำไปลงทุนในสินทรัพย์ สภาพคล่องต่างๆ อันได้แก่ รายการระหว่างธนาคารและตลาดเงิน สินทรัพย์ทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกำไรหรือขาดทุน รวมทั้ง เงินลงทุนในหลักทรัพย์ **แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย**",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 29,
+            "similarity": 0.058029033055428544,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 5,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "ธนาคารและบริษัทย่อยมีแหล่งใช้ไปของเงินทุนที่สำคัญ ได้แก่ เงินให้สินเชื่อ ซึ่ง ณ วันที่ 31 ธันวาคม 2568 มีจำนวน 2,476,647 ล้านบาท ทำให้อัตราส่วนของเงินให้สินเชื่อด่อเงินรับฝากของธนาคารคิดเป็นร้อยละ 86. 89 สำหรับสภาพคล่องส่วนที่เหลือ ธนาคารนำไปลงทุนในสินทรัพย์ สภาพคล่องต่างๆ อันได้แก่ รายการระหว่างธนาคารและตลาดเงิน สินทรัพย์ทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกำไรหรือขาดทุน รวมทั้ง เงินลงทุนในหลักทรัพย์ **แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย**",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 29,
+            "similarity": 0.058029033055428544,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)\nTABLE_TITLE: สรุปผลการดำเนินงาน ปี 2568 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nรายได้ที่มิใช่ดอกเบี้ย,\"57,648\",\"50,240\",\"7,408\",14.75\nรวมรายได้จากการดำเนินงานสุทธิ,\"194,800\",\"198,244\",\"(3,444)\",(1.74)\nรวมค่าใช้จ่ายจากการดำเนินงานอื่นๆ,\"84,849\",\"84,250\",599,0.71\nผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,\"40,312\",\"47,251\",\"(6,939)\",(14.69)\nกำไรสุทธิ (ส่วนที่เป็นของธนาคาร),\"49,565\",\"49,604\",(39),(0.08)\nกำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1),20.63,20.63,-,-",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 4,
+            "similarity": 0.05598626251205701,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)\nTABLE_TITLE: สรุปผลการดำเนินงาน ปี 2568 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, ปี 2568, ปี 2567 (ปรับปรุงใหม่), การเปลี่ยนแปลง เพิ่ม (ลด), การเปลี่ยนแปลง ร้อยละ\nCSV:\nรายการ,ปี 2568,ปี 2567 (ปรับปรุงใหม่),การเปลี่ยนแปลง เพิ่ม (ลด),การเปลี่ยนแปลง ร้อยละ\nรายได้ดอกเบี้ยสุทธิ,\"137,152\",\"148,004\",\"(10,852)\",(7.33)\nรายได้ที่มิใช่ดอกเบี้ย,\"57,648\",\"50,240\",\"7,408\",14.75\nรวมรายได้จากการดำเนินงานสุทธิ,\"194,800\",\"198,244\",\"(3,444)\",(1.74)\nรวมค่าใช้จ่ายจากการดำเนินงานอื่นๆ,\"84,849\",\"84,250\",599,0.71\nผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,\"40,312\",\"47,251\",\"(6,939)\",(14.69)\nกำไรสุทธิ (ส่วนที่เป็นของธนาคาร),\"49,565\",\"49,604\",(39),(0.08)\nกำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1),20.63,20.63,-,-",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 4,
+            "similarity": 0.05598626251205701,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.038346556450660645,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.038346556450660645,
+            "source_kind": "table_csv"
+          }
+        ],
+        "sql_info": null,
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf สินทรัพย์รวม ณ สิ้นปี 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "Error: ไม่พบข้อมูลตารางพร้อมหลักฐานหน้าเอกสารที่ตรงกับคำถาม",
+            "success": false
+          },
+          {
+            "action": "vector_search",
+            "action_input": "จากไฟล์ 1testfile.pdf สินทรัพย์รวม ณ สิ้นปี 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "[1testfile.pdf, PDF page 4, chunk 23, source=semantic, sim=0.18; OCR evidence is not visually verified]\n# 4. 2 ฐานะทางการเงิน ## โครงสร้างสินทรัพย์และหนี้สิน (หน่วย : ล้านบาท) ### สินทรัพย์ สินทรัพย์รวมของธนาคารและบริษัทย่อย ณ สิ้นปี 2568 มีจำนวน 4,558,818 ล้านบาท เพิ่มขึ้นจาก ณ สิ้นปี 2567 จำนวน 217,664 ล้านบาท หรือคิดเป็นร้อยละ 5. 01 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของเงินลงทุนสุทธิและรายการระหว่างธนาคารและตลาดเงินสุทธิ โดยมีรายละเอียดที่สำคัญ ดังนี้ * เงินลงทุนสุทธิ ณ สิ้นปี 2568 มีจำนวน 1,248,260",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        }
+      ]
+    },
+    "L12": {
+      "id": "L12",
+      "answer": "2,850,387 ล้านบาท (ปี 2568, หน้า 5) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "2,850,387 ล้านบาท (ปี 2568, หน้า 5) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND row_label LIKE '%รวม%'\n  AND col_name LIKE '%เงินรับฝาก%31 ธ.ค. 2568%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 5,
+            "table_name": "page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)",
+            "row_label": "รวม",
+            "column": "เงินรับฝาก 31 ธ.ค. 2568",
+            "value": "2,850,387",
+            "unit": "ล้านบาท",
+            "row_index": 3,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND row_label LIKE '%รวม%'\n  AND col_name LIKE '%เงินรับฝาก%31 ธ.ค. 2568%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 5,
+            "table_name": "page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)",
+            "row_label": "รวม",
+            "column": "เงินรับฝาก 31 ธ.ค. 2568",
+            "value": "2,850,387",
+            "unit": "ล้านบาท",
+            "row_index": 3,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  document_id,\n  table_name,\n  row_label,\n  col_name,\n  col_value,\n  unit\nFROM dim_table_rows\nWHERE\n  document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND row_label LIKE '%รวม%'\n  AND col_name LIKE '%เงินรับฝาก%31 ธ.ค. 2568%'\nORDER BY\n  row_index ASC\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 4,
+              "table_name": "page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)",
+              "row_label": "รวม",
+              "col_name": "เงินรับฝาก 31 ธ.ค. 2568",
+              "col_value": "2,850,387",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)",
+              "row_label": "รวม",
+              "col_name": "เงินรับฝาก 31 ธ.ค. 2568",
+              "col_value": "2,850,387",
+              "unit": "ล้านบาท"
+            }
+          ],
+          "row_count": 2,
+          "evidence": [
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 5,
+              "table_name": "page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)",
+              "row_label": "รวม",
+              "column": "เงินรับฝาก 31 ธ.ค. 2568",
+              "value": "2,850,387",
+              "unit": "ล้านบาท",
+              "row_index": 3,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 5,
+              "table_name": "page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)",
+              "row_label": "รวม",
+              "column": "เงินรับฝาก 31 ธ.ค. 2568",
+              "value": "2,850,387",
+              "unit": "ล้านบาท",
+              "row_index": 3,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf เงินรับฝากรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "document_id=4, table_name=page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท), row_label=รวม, col_name=เงินรับฝาก 31 ธ.ค. 2568, col_value=2,850,387, unit=ล้านบาท\ndocument_id=1, table_name=page_5_table_0_1testfile.pdf_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท)_แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย_(หน่วย_ล้านบาท), row_l",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        }
+      ]
+    },
+    "L13": {
+      "id": "L13",
+      "answer": "ไม่พบข้อมูล \"เงินให้สินเชื่อและดอกเบี้ยค้างรับระยะเวลาเกิน 5 ปี\" ในหลักฐานที่ให้มา (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "ไม่พบข้อมูล \"เงินให้สินเชื่อและดอกเบี้ยค้างรับระยะเวลาเกิน 5 ปี\" ในหลักฐานที่ให้มา (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "vector",
+        "sources": [
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 5,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) หมายเหตุ: (1) รวมไว้เพื่อให้สินเชื่อแก่ลูกหนี้ และดอกเบี้ยค้างรับและรายได้ดอกเบี้ยที่ยังไม่ถึงกำหนดชำระ ณ วันที่ 31 ธันวาคม 2568 เงินรับฝากที่มีระยะเวลาไม่เกิน 1 ปี มีจำนวนมากกว่าเงินให้สินเชื่อที่มีระยะเวลาไม่เกิน 1 ปี ซึ่งถือว่าเป็นปกติของธุรกิจ ธนาคารพาณิชย์ทั่วไปในประเทศไทย ซึ่งจะมีการระดมทุนระยะสั้นเพื่อการปล่อยสินเชื่อหรือลงทุนในระยะยาวเป็นส่วนใหญ่ อย่างไรก็ตาม เงินรับฝาก ของธนาคารโดยส่วนใหญ่จะมีการต่ออายุอย่างต่อเนื่องเมื่อครบกำหนดตามสัญญา จึงมีแนวโน้มว่าเงินรับฝากดังกล่าวจะอยู่กับธนาคารเป็นเวลานานกว่า ระยะเวลาตามสัญญา ทำให้ธนาคารสามารถใช้เป็นแหล่งเงินสนับสนุนการให้สินเชื่อได้",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 30,
+            "similarity": 0.2984398194689546,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 5,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) หมายเหตุ: (1) รวมไว้เพื่อให้สินเชื่อแก่ลูกหนี้ และดอกเบี้ยค้างรับและรายได้ดอกเบี้ยที่ยังไม่ถึงกำหนดชำระ ณ วันที่ 31 ธันวาคม 2568 เงินรับฝากที่มีระยะเวลาไม่เกิน 1 ปี มีจำนวนมากกว่าเงินให้สินเชื่อที่มีระยะเวลาไม่เกิน 1 ปี ซึ่งถือว่าเป็นปกติของธุรกิจ ธนาคารพาณิชย์ทั่วไปในประเทศไทย ซึ่งจะมีการระดมทุนระยะสั้นเพื่อการปล่อยสินเชื่อหรือลงทุนในระยะยาวเป็นส่วนใหญ่ อย่างไรก็ตาม เงินรับฝาก ของธนาคารโดยส่วนใหญ่จะมีการต่ออายุอย่างต่อเนื่องเมื่อครบกำหนดตามสัญญา จึงมีแนวโน้มว่าเงินรับฝากดังกล่าวจะอยู่กับธนาคารเป็นเวลานานกว่า ระยะเวลาตามสัญญา ทำให้ธนาคารสามารถใช้เป็นแหล่งเงินสนับสนุนการให้สินเชื่อได้",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 30,
+            "similarity": 0.2984398194689546,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.18517443278934934,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)\nTABLE_TITLE: table0 (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น, 31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1), 31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nCSV:\nรายการ,31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น,31 ธ.ค. 2567 (ปรับปรุงใหม่) เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1),31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น\nระดับที่ 1 เงินให้สินเชื่อที่ไม่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"2,190,153\",\"42,527\",\"2,193,345\",\"37,862\"\nระดับที่ 2 เงินให้สินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต,\"213,664\",\"55,447\",\"215,701\",\"49,712\"\nระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต,\"91,950\",\"45,023\",\"91,309\",\"44,132\"\nรวม,\"2,495,767\",\"142,997\",\"2,500,355\",\"131,706\"",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 19,
+            "similarity": 0.18517443278934934,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 4,
+            "table_name": "page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)\nTABLE_TITLE: โครงสร้างสินทรัพย์และหนี้สิน (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567 (ปรับปรุงใหม่)\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567 (ปรับปรุงใหม่)\nสินทรัพย์อื่น,5%,5%\nเงินสด,1%,1%\nรายการระหว่างธนาคารและตลาดเงินสุทธิ (สินทรัพย์),12%,12%\nเงินลงทุนสุทธิ,27%,24%\nเงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ,55%,58%\nหนี้สินอื่น,7%,8%\nหนี้สินจากสัญญาประกันภัย,13%,14%\nรายการระหว่างธนาคารและตลาดเงิน (หนี้สิน),5%,5%\nตราสารหนี้ที่ออกและเงินกู้ยืม,2%,2%\nเงินรับฝาก,73%,73%",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 25,
+            "similarity": 0.1430146037594679,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 4,
+            "table_name": "page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)",
+            "quality_status": "unverified",
+            "excerpt": "TABLE_NAME: page_4_table_0_1testfile.pdf_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)_โครงสร้างสินทรัพย์และหนี้สิน_(หน่วย_ล้านบาท)\nTABLE_TITLE: โครงสร้างสินทรัพย์และหนี้สิน (หน่วย: ล้านบาท)\nCOLUMNS: รายการ, 31 ธ.ค. 2568, 31 ธ.ค. 2567 (ปรับปรุงใหม่)\nCSV:\nรายการ,31 ธ.ค. 2568,31 ธ.ค. 2567 (ปรับปรุงใหม่)\nสินทรัพย์อื่น,5%,5%\nเงินสด,1%,1%\nรายการระหว่างธนาคารและตลาดเงินสุทธิ (สินทรัพย์),12%,12%\nเงินลงทุนสุทธิ,27%,24%\nเงินให้สินเชื่อแก่ลูกหนี้และดอกเบี้ยค้างรับ,55%,58%\nหนี้สินอื่น,7%,8%\nหนี้สินจากสัญญาประกันภัย,13%,14%\nรายการระหว่างธนาคารและตลาดเงิน (หนี้สิน),5%,5%\nตราสารหนี้ที่ออกและเงินกู้ยืม,2%,2%\nเงินรับฝาก,73%,73%",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 25,
+            "similarity": 0.1430146037594679,
+            "source_kind": "table_csv"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 2,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# รายได้ดอกเบี้ยสุทธิ ธนาคารและบริษัทย่อยมีรายได้ดอกเบี้ยสุทธิสำหรับปี 2568 จำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ส่วนใหญ่เกิดจากรายได้ดอกเบี้ยรับจากเงินให้สินเชื่อที่ลดลงจำนวน 16,524 ล้านบาท หรือ ร้อยละ 12. 03 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลด อัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อที่ชะลอตัว แม้ว่ารายได้ดอกเบี้ยรับจากเงินลงทุนและธุรกรรมเพื่อค้ำเพิ่มขึ้น จำนวน 3,902 ล้านบาท หรือ ร้อยละ 13. 27 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของปริมาณธุรกรรมเฉลี่ย ในขณะที่ค่าใช้จ่ายดอกเบี้ยจากเงินรับฝากลดลงจำนวน 2,274 ล้านบาท หรือร้อยละ 12. 21 ส่วนใหญ่เกิดจากอัตราดอกเบี้ยเฉลี่ยที่ลดลง และค่าใช้จ่ายดอกเบี้ยจากรายการระหว่างธนาคารและตลาดเงินลดลง จำนวน 899 ล้านบาท หรือร้อยละ 16. 26 ส่วนใหญ่เกิดจากการลดลงของอัตราดอกเบี้ยเฉลี่ย ในขณะที่ปริมาณธุรกรรมเฉลี่ยเพิ่มขึ้น",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 8,
+            "similarity": 0.09860952326638933,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 2,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "# รายได้ดอกเบี้ยสุทธิ ธนาคารและบริษัทย่อยมีรายได้ดอกเบี้ยสุทธิสำหรับปี 2568 จำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ส่วนใหญ่เกิดจากรายได้ดอกเบี้ยรับจากเงินให้สินเชื่อที่ลดลงจำนวน 16,524 ล้านบาท หรือ ร้อยละ 12. 03 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลด อัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อที่ชะลอตัว แม้ว่ารายได้ดอกเบี้ยรับจากเงินลงทุนและธุรกรรมเพื่อค้ำเพิ่มขึ้น จำนวน 3,902 ล้านบาท หรือ ร้อยละ 13. 27 ส่วนใหญ่เกิดจากการเพิ่มขึ้นของปริมาณธุรกรรมเฉลี่ย ในขณะที่ค่าใช้จ่ายดอกเบี้ยจากเงินรับฝากลดลงจำนวน 2,274 ล้านบาท หรือร้อยละ 12. 21 ส่วนใหญ่เกิดจากอัตราดอกเบี้ยเฉลี่ยที่ลดลง และค่าใช้จ่ายดอกเบี้ยจากรายการระหว่างธนาคารและตลาดเงินลดลง จำนวน 899 ล้านบาท หรือร้อยละ 16. 26 ส่วนใหญ่เกิดจากการลดลงของอัตราดอกเบี้ยเฉลี่ย ในขณะที่ปริมาณธุรกรรมเฉลี่ยเพิ่มขึ้น",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 8,
+            "similarity": 0.09860952326638933,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 4,
+            "page": 1,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) หมายเหตุ : (1) กำไรต่อหุ้นขั้นพื้นฐาน = กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) หักยอดคะแนนของตราสารอื่นที่มีลักษณะคล้ายทุนทดันภัยภาษีเงินได้ หารด้วยจำนวนหุ้นสามัญถัวเฉลี่ยก่อนนำหนัก ผลการดำเนินงานสำหรับปี 2568 ธนาคารและบริษัทย่อยมีกำไรสุทธิส่วนที่เป็นของธนาคารจำนวน 49,585 ล้านบาท อยู่ในระดับใกล้เคียงกับปีก่อน โดยมีกำไรจากการดำเนินงานก่อนหักผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นและภาษีเงินได้จำนวน 109,951 ล้านบาท ลดลงจากปีก่อนจำนวน 4,043 ล้านบาท หรือร้อยละ 3. 55 เป็นผลจากรายได้ดอกเบี้ยสุทธิที่มีจำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลดอัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อชะลอตัวลง ส่งผลให้อัตราผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (Net Interest Margin: NIM) ลดลงมาอยู่ที่ระดับร้อยละ 3.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 2,
+            "similarity": 0.05037193743137393,
+            "source_kind": "semantic"
+          },
+          {
+            "type": "vector",
+            "filename": "1testfile.pdf",
+            "document_id": 1,
+            "page": 1,
+            "table_name": null,
+            "quality_status": null,
+            "excerpt": "(หน่วย : ล้านบาท) หมายเหตุ : (1) กำไรต่อหุ้นขั้นพื้นฐาน = กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) หักยอดคะแนนของตราสารอื่นที่มีลักษณะคล้ายทุนทดันภัยภาษีเงินได้ หารด้วยจำนวนหุ้นสามัญถัวเฉลี่ยก่อนนำหนัก ผลการดำเนินงานสำหรับปี 2568 ธนาคารและบริษัทย่อยมีกำไรสุทธิส่วนที่เป็นของธนาคารจำนวน 49,585 ล้านบาท อยู่ในระดับใกล้เคียงกับปีก่อน โดยมีกำไรจากการดำเนินงานก่อนหักผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นและภาษีเงินได้จำนวน 109,951 ล้านบาท ลดลงจากปีก่อนจำนวน 4,043 ล้านบาท หรือร้อยละ 3. 55 เป็นผลจากรายได้ดอกเบี้ยสุทธิที่มีจำนวน 137,152 ล้านบาท ลดลงจำนวน 10,852 ล้านบาท หรือร้อยละ 7. 33 ซึ่งสอดคล้องกับภาวะอัตราดอกเบี้ยและการปรับลดอัตราดอกเบี้ยเงินกู้ระหว่างปีเพื่อช่วยเหลือลูกค้า รวมทั้งเงินให้สินเชื่อชะลอตัวลง ส่งผลให้อัตราผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (Net Interest Margin: NIM) ลดลงมาอยู่ที่ระดับร้อยละ 3.",
+            "evidence_status": "ocr_extracted_unverified",
+            "chunk_index": 2,
+            "similarity": 0.05037193743137393,
+            "source_kind": "semantic"
+          }
+        ],
+        "sql_info": null,
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf เงินให้สินเชื่อและดอกเบี้ยค้างรับระยะเวลาเกิน 5 ปี ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "Error: ไม่พบข้อมูลตารางพร้อมหลักฐานหน้าเอกสารที่ตรงกับคำถาม",
+            "success": false
+          },
+          {
+            "action": "vector_search",
+            "action_input": "จากไฟล์ 1testfile.pdf เงินให้สินเชื่อและดอกเบี้ยค้างรับระยะเวลาเกิน 5 ปี ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "[1testfile.pdf, PDF page 5, chunk 30, source=semantic, sim=0.30; OCR evidence is not visually verified]\n(หน่วย : ล้านบาท) หมายเหตุ: (1) รวมไว้เพื่อให้สินเชื่อแก่ลูกหนี้ และดอกเบี้ยค้างรับและรายได้ดอกเบี้ยที่ยังไม่ถึงกำหนดชำระ ณ วันที่ 31 ธันวาคม 2568 เงินรับฝากที่มีระยะเวลาไม่เกิน 1 ปี มีจำนวนมากกว่าเงินให้สินเชื่อที่มีระยะเวลาไม่เกิน 1 ปี ซึ่งถือว่าเป็นปกติของธุรกิจ ธนาคารพาณิชย์ทั่วไปในประเทศไทย ซึ่งจะมีการระดมทุนระยะสั้นเพื่อการปล่อยสินเชื่อหรือลงทุนในระยะยาวเป็นส่วนใหญ่ อย่างไรก็ตาม เงินรับฝ",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        }
+      ]
+    },
+    "L14": {
+      "id": "L14",
+      "answer": "823,843 ล้านบาท ในปี 2566 (หน้า 5) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "823,843 ล้านบาท ในปี 2566 (หน้า 5) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  dtr.document_id,\n  dtr.table_name,\n  dtr.row_label,\n  dtr.col_name,\n  dtr.col_value,\n  dtr.unit\nFROM dim_table_rows AS dtr\nJOIN dim_documents AS dd\n  ON dtr.document_id = dd.document_id\nWHERE\n  dd.filename = '1testfile.pdf' AND dtr.table_name LIKE '%หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย%' AND dtr.row_label LIKE '%รวม%' AND dtr.col_name LIKE '%31 ธ.ค. 2566%'\nORDER BY\n  dtr.row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 5,
+            "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+            "row_label": "รวม",
+            "column": "31 ธ.ค. 2566",
+            "value": "823,843",
+            "unit": "ล้านบาท",
+            "row_index": 4,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  dtr.document_id,\n  dtr.table_name,\n  dtr.row_label,\n  dtr.col_name,\n  dtr.col_value,\n  dtr.unit\nFROM dim_table_rows AS dtr\nJOIN dim_documents AS dd\n  ON dtr.document_id = dd.document_id\nWHERE\n  dd.filename = '1testfile.pdf' AND dtr.table_name LIKE '%หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย%' AND dtr.row_label LIKE '%รวม%' AND dtr.col_name LIKE '%31 ธ.ค. 2566%'\nORDER BY\n  dtr.row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 5,
+            "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+            "row_label": "รวม",
+            "column": "31 ธ.ค. 2566",
+            "value": "823,843",
+            "unit": "ล้านบาท",
+            "row_index": 4,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  dtr.document_id,\n  dtr.table_name,\n  dtr.row_label,\n  dtr.col_name,\n  dtr.col_value,\n  dtr.unit\nFROM dim_table_rows AS dtr\nJOIN dim_documents AS dd\n  ON dtr.document_id = dd.document_id\nWHERE\n  dd.filename = '1testfile.pdf' AND dtr.table_name LIKE '%หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย%' AND dtr.row_label LIKE '%รวม%' AND dtr.col_name LIKE '%31 ธ.ค. 2566%'\nORDER BY\n  dtr.row_index ASC\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 4,
+              "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+              "row_label": "รวม",
+              "col_name": "31 ธ.ค. 2566",
+              "col_value": "823,843",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+              "row_label": "รวม",
+              "col_name": "31 ธ.ค. 2566",
+              "col_value": "823,843",
+              "unit": "ล้านบาท"
+            }
+          ],
+          "row_count": 2,
+          "evidence": [
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 5,
+              "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+              "row_label": "รวม",
+              "column": "31 ธ.ค. 2566",
+              "value": "823,843",
+              "unit": "ล้านบาท",
+              "row_index": 4,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 5,
+              "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+              "row_label": "รวม",
+              "column": "31 ธ.ค. 2566",
+              "value": "823,843",
+              "unit": "ล้านบาท",
+              "row_index": 4,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันรวม ณ 31 ธันวาคม 2566 เท่ากับกี่ล้านบาท?",
+            "observation": "document_id=4, table_name=page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท), row_label=รวม, col_name=31 ธ.ค. 2566, col_value=823,843, unit=ล้านบาท\ndocument_id=1, table_name=page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพัน",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        }
+      ]
+    },
+    "L15": {
+      "id": "L15",
+      "answer": "15,437 ล้านบาท ในปี 2568 (หน้า 5) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "15,437 ล้านบาท ในปี 2568 (หน้า 5) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  T1.document_id,\n  T1.table_name,\n  T1.row_label,\n  T1.col_name,\n  T1.col_value,\n  T1.unit\nFROM dim_table_rows AS T1\nINNER JOIN dim_documents AS T2\n  ON T1.document_id = T2.document_id\nWHERE\n  T2.filename = '1testfile.pdf' AND T1.row_label LIKE '%การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน%' AND T1.col_name LIKE '%31 ธ.ค. 2568%'\nORDER BY\n  T1.row_index\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 5,
+            "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+            "row_label": "การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน",
+            "column": "31 ธ.ค. 2568",
+            "value": "15,437",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  T1.document_id,\n  T1.table_name,\n  T1.row_label,\n  T1.col_name,\n  T1.col_value,\n  T1.unit\nFROM dim_table_rows AS T1\nINNER JOIN dim_documents AS T2\n  ON T1.document_id = T2.document_id\nWHERE\n  T2.filename = '1testfile.pdf' AND T1.row_label LIKE '%การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน%' AND T1.col_name LIKE '%31 ธ.ค. 2568%'\nORDER BY\n  T1.row_index\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 5,
+            "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+            "row_label": "การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน",
+            "column": "31 ธ.ค. 2568",
+            "value": "15,437",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  T1.document_id,\n  T1.table_name,\n  T1.row_label,\n  T1.col_name,\n  T1.col_value,\n  T1.unit\nFROM dim_table_rows AS T1\nINNER JOIN dim_documents AS T2\n  ON T1.document_id = T2.document_id\nWHERE\n  T2.filename = '1testfile.pdf' AND T1.row_label LIKE '%การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน%' AND T1.col_name LIKE '%31 ธ.ค. 2568%'\nORDER BY\n  T1.row_index\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 4,
+              "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+              "row_label": "การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน",
+              "col_name": "31 ธ.ค. 2568",
+              "col_value": "15,437",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+              "row_label": "การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน",
+              "col_name": "31 ธ.ค. 2568",
+              "col_value": "15,437",
+              "unit": "ล้านบาท"
+            }
+          ],
+          "row_count": 2,
+          "evidence": [
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 5,
+              "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+              "row_label": "การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน",
+              "column": "31 ธ.ค. 2568",
+              "value": "15,437",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 5,
+              "table_name": "page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)",
+              "row_label": "การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน",
+              "column": "31 ธ.ค. 2568",
+              "value": "15,437",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "document_id=4, table_name=page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท), row_label=การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน, col_name=31 ธ.ค. 2568, col_value=15,437, unit=ล้านบาท\ndocument_id=1, table_name=page_5_table_1_1testfile.pdf_หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย_(หน่วย_ล้านบาท)_",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 5
+        }
+      ]
+    }
+  },
+  "timings": [
+    {
+      "id": "L01",
+      "seconds": 8.243315100000473,
+      "usage": {
+        "calls": 3,
+        "input_tokens": 6052,
+        "output_tokens": 319,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L02",
+      "seconds": 11.591231999998854,
+      "usage": {
+        "calls": 3,
+        "input_tokens": 7844,
+        "output_tokens": 311,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L03",
+      "seconds": 2.0891128000002936,
+      "usage": {
+        "calls": 2,
+        "input_tokens": 3100,
+        "output_tokens": 179,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L04",
+      "seconds": 3.6827654000007897,
+      "usage": {
+        "calls": 3,
+        "input_tokens": 5649,
+        "output_tokens": 376,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L05",
+      "seconds": 2.2726319000030344,
+      "usage": {
+        "calls": 2,
+        "input_tokens": 3016,
+        "output_tokens": 160,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L06",
+      "seconds": 2.4400304000009783,
+      "usage": {
+        "calls": 2,
+        "input_tokens": 4169,
+        "output_tokens": 178,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L07",
+      "seconds": 85.803875900001,
+      "usage": {
+        "calls": 3,
+        "input_tokens": 9674,
+        "output_tokens": 423,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L08",
+      "seconds": 41.39385390000098,
+      "usage": {
+        "calls": 3,
+        "input_tokens": 9698,
+        "output_tokens": 338,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L09",
+      "seconds": 30.03233309999996,
+      "usage": {
+        "calls": 3,
+        "input_tokens": 9188,
+        "output_tokens": 395,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L10",
+      "seconds": 22.283850799998618,
+      "usage": {
+        "calls": 3,
+        "input_tokens": 9101,
+        "output_tokens": 397,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L11",
+      "seconds": 17.49356280000211,
+      "usage": {
+        "calls": 3,
+        "input_tokens": 9151,
+        "output_tokens": 320,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L12",
+      "seconds": 6.710875099997793,
+      "usage": {
+        "calls": 2,
+        "input_tokens": 3176,
+        "output_tokens": 158,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L13",
+      "seconds": 9.45534509999925,
+      "usage": {
+        "calls": 3,
+        "input_tokens": 8556,
+        "output_tokens": 316,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L14",
+      "seconds": 23.088267399998585,
+      "usage": {
+        "calls": 3,
+        "input_tokens": 5740,
+        "output_tokens": 398,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L15",
+      "seconds": 11.34299110000211,
+      "usage": {
+        "calls": 2,
+        "input_tokens": 3285,
+        "output_tokens": 193,
+        "thinking_tokens": 0
+      }
+    }
+  ]
+}

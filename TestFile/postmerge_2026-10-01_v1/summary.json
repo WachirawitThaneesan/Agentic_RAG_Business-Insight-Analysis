@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-01",
+  "score_version": 3,
+  "scenarios": {
+    "bm25_gemini": {
+      "questions": 20,
+      "strict_supported_correct": 13,
+      "citation_page_hits": 13,
+      "sdk_attempts": 20,
+      "successful_sdk_calls": 20,
+      "failed_sdk_calls": 0,
+      "seconds": 75.69,
+      "input_tokens": 40306,
+      "output_tokens": 184
+    },
+    "app_gemini": {
+      "questions": 20,
+      "strict_supported_correct": 15,
+      "citation_page_hits": 19,
+      "sdk_attempts": 91,
+      "successful_sdk_calls": 74,
+      "failed_sdk_calls": 17,
+      "seconds": 558.17,
+      "input_tokens": 418114,
+      "output_tokens": 21506
+    },
+    "legacy_before_answers": {
+      "questions": 15,
+      "strict_supported_correct": 0,
+      "citation_page_hits": 0,
+      "sdk_attempts": 35,
+      "successful_sdk_calls": 30,
+      "failed_sdk_calls": 5,
+      "seconds": 218.4920761000003,
+      "input_tokens": 127504,
+      "output_tokens": 3542,
+      "resources": {
+        "total_seconds": 219.62484919999952,
+        "runner_peak_rss_mib": 224.015625,
+        "ollama_peak_rss_mib": 79.75390625,
+        "runner_cpu_seconds": 12.0,
+        "gpu_peak_sampled_mib": 725.0,
+        "gpu_utilization_peak_sampled_percent": 32.0
+      },
+      "local_embedding_http_responses": 15
+    },
+    "legacy_after_answers": {
+      "questions": 15,
+      "strict_supported_correct": 9,
+      "citation_page_hits": 15,
+      "sdk_attempts": 53,
+      "successful_sdk_calls": 45,
+      "failed_sdk_calls": 8,
+      "seconds": 296.88151599999856,
+      "input_tokens": 192807,
+      "output_tokens": 5233,
+      "resources": {
+        "total_seconds": 298.00130529999933,
+        "runner_peak_rss_mib": 221.86328125,
+        "ollama_peak_rss_mib": 80.83203125,
+        "runner_cpu_seconds": 12.546875,
+        "gpu_peak_sampled_mib": 729.0,
+        "gpu_utilization_peak_sampled_percent": 31.0
+      },
+      "local_embedding_http_responses": 15
+    }
+  },
+  "main_comparison_resources": {
+    "total_seconds": 658.2053951000007,
+    "runner_peak_rss_mib": 370.97265625,
+    "ollama_peak_rss_mib": 3182.9296875,
+    "runner_cpu_seconds": 43.578125,
+    "gpu_peak_sampled_mib": null,
+    "gpu_utilization_peak_sampled_percent": null
+  },
+  "main_local_embedding_http_responses": 24,
+  "legacy_reingestion": {
+    "source_pages": 5,
+    "document_ids": [
+      1,
+      4
+    ],
+    "duplicate_source_extraction_reused": true,
+    "provider_calls": {
+      "typhoon": 6,
+      "gemini_table": 6
+    },
+    "resources": {
+      "total_seconds": 147.01883369999996,
+      "runner_peak_rss_mib": 353.390625,
+      "ollama_peak_rss_mib": 80.671875,
+      "runner_cpu_seconds": 17.875,
+      "gpu_peak_sampled_mib": 729.0,
+      "gpu_utilization_peak_sampled_percent": 73.0
+    },
+    "cached_rebuilds": [
+      "legacy_staging_v2",
+      "legacy_staging_v3"
+    ],
+    "additional_cloud_ocr_calls_for_rebuilds": 0,
+    "table_facts_before_context_fixes": 11,
+    "table_facts_after_context_fixes": 14,
+    "table_facts_total": 14,
+    "quarantined_rows_per_document": 1,
+    "unverified_rows_per_document": 24
+  },
+  "provenance": {
+    "chunks_before": 52,
+    "chunks_after": 78,
+    "missing_chunk_page_before": 34,
+    "missing_chunk_page_after": 0,
+    "structured_rows_before": 73,
+    "structured_rows_after": 88,
+    "missing_structured_before": {
+      "source_page": 73,
+      "unit": 73,
+      "source_provider": 73,
+      "quality_status": 73
+    },
+    "missing_structured_after": {
+      "source_page": 0,
+      "unit": 0,
+      "source_provider": 0,
+      "quality_status": 0
+    }
+  },
+  "limitations": [
+    "Development diagnostics, not unseen final test or project-wide accuracy.",
+    "Reference pages reviewed by AI, not certified by an independent human.",
+    "CPAXT/EGCO benchmark uses selectable text and an isolated empty warehouse; it does not measure OCR.",
+    "Legacy run uses the real database; two documents are duplicates of one five-page PDF.",
+    "SDK counts include application retries; invisible SDK/transport retries are not counted separately.",
+    "RSS is sampled at about one second; GPU is sampled every five samples except the initial main comparison.",
+    "CPU/RSS are runner and local Ollama; remote cloud compute and Docker VM memory are not included.",
+    "Warehouse migrated to lookup cells with full original column labels; fact_financial_metrics has zero rows because year headers are compound. No cell data was discarded."
+  ],
+  "working_tree": {
+    "backend/eval/numeric.py": "2bcba976a84aafa468e7cb4e8efa5962e24183dbbe7eedcbe7e4c54568b9ba2d",
+    "backend/eval/score_layers.py": "a57f0d9dcb0801473168f6bd1ba505de0cfc46b98ceb3c4571c7665309ff73eb",
+    "backend/services/duckdb_warehouse.py": "b757637d7e0d63f819694c7defbdbd8f82e42b55496ad1695c6b4aff46fa2340",
+    "backend/services/financial_quality.py": "9f4f7d99f6e7ea4221fd372ddf4968e820bef833723b8237e00e056a0c6d4e4b",
+    "backend/services/table_utils.py": "555a245b1c76d036cc073a6b675cd70c6bd14b97b05c042297e21d82c7e1e2b7",
+    "backend/services/gemini_tables.py": "7c1756be179fbd97bc2035a76a3ad7a53a9820272dbb45dd55aae6acb9d9d30c",
+    "backend/services/agent.py": "aa32754f3b4347858bf89d1c4492ca721a763551802a7874dbbaf048c783ff1a"
+  },
+  "software_tests": {
+    "passed": 189,
+    "skipped": 5,
+    "failures": 0,
+    "seconds": 5.058
+  },
+  "packages": {
+    "google-genai": "2.25.0",
+    "duckdb": "1.5.5",
+    "SQLAlchemy": "2.0.54",
+    "PyMuPDF": "1.28.2",
+    "numpy": "2.5.3",
+    "psutil": "7.2.2",
+    "pythainlp": "5.3.7"
+  }
+}

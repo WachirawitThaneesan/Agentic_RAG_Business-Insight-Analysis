@@ -1,0 +1,790 @@
+{
+  "completed": 5,
+  "predictions": {
+    "L01": {
+      "id": "L01",
+      "answer": "137,152 ล้านบาท ปี 2568 หน้า 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "137,152 ล้านบาท ปี 2568 หน้า 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  dt.document_id,\n  dt.table_name,\n  dt.row_label,\n  dt.col_name,\n  dt.col_value,\n  dt.unit\nFROM dim_table_rows AS dt\nWHERE\n  dt.document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND dt.row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%'\n  AND dt.col_name LIKE '%ปี 2568%'\n  AND dt.unit = 'ล้านบาท'\nORDER BY\n  dt.row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2568",
+            "value": "137,152",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  dt.document_id,\n  dt.table_name,\n  dt.row_label,\n  dt.col_name,\n  dt.col_value,\n  dt.unit\nFROM dim_table_rows AS dt\nWHERE\n  dt.document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND dt.row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%'\n  AND dt.col_name LIKE '%ปี 2568%'\n  AND dt.unit = 'ล้านบาท'\nORDER BY\n  dt.row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2568",
+            "value": "137,152",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  dt.document_id,\n  dt.table_name,\n  dt.row_label,\n  dt.col_name,\n  dt.col_value,\n  dt.unit\nFROM dim_table_rows AS dt\nWHERE\n  dt.document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND dt.row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%'\n  AND dt.col_name LIKE '%ปี 2568%'\n  AND dt.unit = 'ล้านบาท'\nORDER BY\n  dt.row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2568",
+            "value": "137,152",
+            "unit": "ล้านบาท",
+            "row_index": 11,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  dt.document_id,\n  dt.table_name,\n  dt.row_label,\n  dt.col_name,\n  dt.col_value,\n  dt.unit\nFROM dim_table_rows AS dt\nWHERE\n  dt.document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND dt.row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%'\n  AND dt.col_name LIKE '%ปี 2568%'\n  AND dt.unit = 'ล้านบาท'\nORDER BY\n  dt.row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "ปี 2568",
+            "value": "137,152",
+            "unit": "ล้านบาท",
+            "row_index": 11,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  dt.document_id,\n  dt.table_name,\n  dt.row_label,\n  dt.col_name,\n  dt.col_value,\n  dt.unit\nFROM dim_table_rows AS dt\nWHERE\n  dt.document_id IN (\n    SELECT\n      document_id\n    FROM dim_documents\n    WHERE\n      filename = '1testfile.pdf'\n  )\n  AND dt.row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%'\n  AND dt.col_name LIKE '%ปี 2568%'\n  AND dt.unit = 'ล้านบาท'\nORDER BY\n  dt.row_index ASC\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2568",
+              "col_value": "137,152",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 4,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2568",
+              "col_value": "137,152",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 4,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2568",
+              "col_value": "137,152",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "ปี 2568",
+              "col_value": "137,152",
+              "unit": "ล้านบาท"
+            }
+          ],
+          "row_count": 4,
+          "evidence": [
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2568",
+              "value": "137,152",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2568",
+              "value": "137,152",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2568",
+              "value": "137,152",
+              "unit": "ล้านบาท",
+              "row_index": 11,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "ปี 2568",
+              "value": "137,152",
+              "unit": "ล้านบาท",
+              "row_index": 11,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยสุทธิปี 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "document_id=1, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=รายได้ดอกเบี้ยสุทธิ, col_name=ปี 2568, col_value=137,152, unit=ล้านบาท\ndocument_id=4, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=รายได้ดอกเบี้ยสุทธิ, col_name=ปี 2568, col_value=137,152, unit=ล้านบาท\ndocument_id=4, table_name=page_2_table_0_1testfile.pdf",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        }
+      ]
+    },
+    "L02": {
+      "id": "L02",
+      "answer": "ไม่พบหลักฐานเพียงพอในเอกสารที่ประมวลผลแล้ว",
+      "full_result": {
+        "answer": "ไม่พบหลักฐานเพียงพอในเอกสารที่ประมวลผลแล้ว",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  dd.filename,\n  v.row_label,\n  v.\"ปี 2568\" AS \"กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2568\"\nFROM v_table_rows_wide AS v\nJOIN dim_documents AS dd\n  ON v.document_id = dd.document_id\nWHERE\n  dd.filename = '1testfile.pdf' AND v.row_label = 'กำไรสุทธิ (ส่วนที่เป็นของธนาคาร)'\nLIMIT 12;",
+            "row_count": 2,
+            "evidence_status": "page_unresolved"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  dd.filename,\n  v.row_label,\n  v.\"ปี 2568\" AS \"กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2568\"\nFROM v_table_rows_wide AS v\nJOIN dim_documents AS dd\n  ON v.document_id = dd.document_id\nWHERE\n  dd.filename = '1testfile.pdf' AND v.row_label = 'กำไรสุทธิ (ส่วนที่เป็นของธนาคาร)'\nLIMIT 12;",
+          "columns": [
+            "filename",
+            "row_label",
+            "กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2568"
+          ],
+          "rows": [
+            {
+              "filename": "1testfile.pdf",
+              "row_label": "กำไรสุทธิ (ส่วนที่เป็นของธนาคาร)",
+              "กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2568": "49,565"
+            },
+            {
+              "filename": "1testfile.pdf",
+              "row_label": "กำไรสุทธิ (ส่วนที่เป็นของธนาคาร)",
+              "กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2568": "49,565"
+            }
+          ],
+          "row_count": 2,
+          "evidence": []
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf กำไรสุทธิส่วนที่เป็นของธนาคารปี 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "filename=1testfile.pdf, row_label=กำไรสุทธิ (ส่วนที่เป็นของธนาคาร), กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2568=49,565\nfilename=1testfile.pdf, row_label=กำไรสุทธิ (ส่วนที่เป็นของธนาคาร), กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2568=49,565\nOCR-extracted values are not visually verified against the PDF.",
+            "success": true
+          },
+          {
+            "action": "vector_search",
+            "action_input": "จากไฟล์ 1testfile.pdf กำไรสุทธิส่วนที่เป็นของธนาคารปี 2568 เท่ากับกี่ล้านบาท?",
+            "observation": "Error executing tool vector_search: All connection attempts failed",
+            "success": false,
+            "reason": "draft_refused"
+          }
+        ]
+      },
+      "citations": []
+    },
+    "L03": {
+      "id": "L03",
+      "answer": "ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในคำตอบ",
+      "full_result": {
+        "answer": "ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในคำตอบ",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  T1.document_id,\n  T1.table_name,\n  T1.row_label,\n  T1.col_name,\n  T1.col_value,\n  T1.unit\nFROM dim_table_rows AS T1\nINNER JOIN dim_documents AS T2\n  ON T1.document_id = T2.document_id\nWHERE\n  T2.filename = '1testfile.pdf' AND T1.row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%' AND T1.col_name LIKE '%การเปลี่ยนแปลง เพิ่ม (ลด)%'\nORDER BY\n  T1.row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+            "value": "(10,852)",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  T1.document_id,\n  T1.table_name,\n  T1.row_label,\n  T1.col_name,\n  T1.col_value,\n  T1.unit\nFROM dim_table_rows AS T1\nINNER JOIN dim_documents AS T2\n  ON T1.document_id = T2.document_id\nWHERE\n  T2.filename = '1testfile.pdf' AND T1.row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%' AND T1.col_name LIKE '%การเปลี่ยนแปลง เพิ่ม (ลด)%'\nORDER BY\n  T1.row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+            "value": "(10,852)",
+            "unit": "ล้านบาท",
+            "row_index": 0,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  T1.document_id,\n  T1.table_name,\n  T1.row_label,\n  T1.col_name,\n  T1.col_value,\n  T1.unit\nFROM dim_table_rows AS T1\nINNER JOIN dim_documents AS T2\n  ON T1.document_id = T2.document_id\nWHERE\n  T2.filename = '1testfile.pdf' AND T1.row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%' AND T1.col_name LIKE '%การเปลี่ยนแปลง เพิ่ม (ลด)%'\nORDER BY\n  T1.row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+            "value": "(10,852)",
+            "unit": "ล้านบาท",
+            "row_index": 11,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  T1.document_id,\n  T1.table_name,\n  T1.row_label,\n  T1.col_name,\n  T1.col_value,\n  T1.unit\nFROM dim_table_rows AS T1\nINNER JOIN dim_documents AS T2\n  ON T1.document_id = T2.document_id\nWHERE\n  T2.filename = '1testfile.pdf' AND T1.row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%' AND T1.col_name LIKE '%การเปลี่ยนแปลง เพิ่ม (ลด)%'\nORDER BY\n  T1.row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "รายได้ดอกเบี้ยสุทธิ",
+            "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+            "value": "(10,852)",
+            "unit": "ล้านบาท",
+            "row_index": 11,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  T1.document_id,\n  T1.table_name,\n  T1.row_label,\n  T1.col_name,\n  T1.col_value,\n  T1.unit\nFROM dim_table_rows AS T1\nINNER JOIN dim_documents AS T2\n  ON T1.document_id = T2.document_id\nWHERE\n  T2.filename = '1testfile.pdf' AND T1.row_label LIKE '%รายได้ดอกเบี้ยสุทธิ%' AND T1.col_name LIKE '%การเปลี่ยนแปลง เพิ่ม (ลด)%'\nORDER BY\n  T1.row_index ASC\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "col_value": "(10,852)",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 4,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "col_value": "(10,852)",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 4,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "col_value": "(10,852)",
+              "unit": "ล้านบาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "col_name": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "col_value": "(10,852)",
+              "unit": "ล้านบาท"
+            }
+          ],
+          "row_count": 4,
+          "evidence": [
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "value": "(10,852)",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "value": "(10,852)",
+              "unit": "ล้านบาท",
+              "row_index": 0,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "value": "(10,852)",
+              "unit": "ล้านบาท",
+              "row_index": 11,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "รายได้ดอกเบี้ยสุทธิ",
+              "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+              "value": "(10,852)",
+              "unit": "ล้านบาท",
+              "row_index": 11,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf การเปลี่ยนแปลงรายได้ดอกเบี้ยสุทธิปี 2568 เทียบปี 2567 เป็นกี่ล้านบาท ให้แสดงเครื่องหมายลบเมื่อเป็นการลดลง?",
+            "observation": "document_id=1, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=รายได้ดอกเบี้ยสุทธิ, col_name=การเปลี่ยนแปลง เพิ่ม (ลด), col_value=(10,852), unit=ล้านบาท\ndocument_id=4, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=รายได้ดอกเบี้ยสุทธิ, col_name=การเปลี่ยนแปลง เพิ่ม (ลด), col_value=(10,852), unit=ล้านบาท\ndocument_id=4, t",
+            "success": true
+          },
+          {
+            "action": "vector_search",
+            "action_input": "จากไฟล์ 1testfile.pdf การเปลี่ยนแปลงรายได้ดอกเบี้ยสุทธิปี 2568 เทียบปี 2567 เป็นกี่ล้านบาท ให้แสดงเครื่องหมายลบเมื่อเป็นการลดลง?",
+            "observation": "Error executing tool vector_search: All connection attempts failed",
+            "success": false,
+            "reason": "draft_refused"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        }
+      ]
+    },
+    "L04": {
+      "id": "L04",
+      "answer": "20.63 บาท ปี 2568 (หน้า 1) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "20.63 บาท ปี 2568 (หน้า 1) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  t1.document_id,\n  t1.table_name,\n  t1.row_label,\n  t1.col_name,\n  t1.col_value,\n  t1.unit\nFROM dim_table_rows AS t1\nJOIN dim_documents AS t2\n  ON t1.document_id = t2.document_id\nWHERE\n  t2.filename = '1testfile.pdf' AND t1.row_label LIKE '%กำไรต่อหุ้นขั้นพื้นฐาน%' AND t1.col_name LIKE '%ปี 2568%'\nORDER BY\n  t1.row_index ASC\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+            "column": "ปี 2568",
+            "value": "20.63",
+            "unit": "บาท",
+            "row_index": 6,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  t1.document_id,\n  t1.table_name,\n  t1.row_label,\n  t1.col_name,\n  t1.col_value,\n  t1.unit\nFROM dim_table_rows AS t1\nJOIN dim_documents AS t2\n  ON t1.document_id = t2.document_id\nWHERE\n  t2.filename = '1testfile.pdf' AND t1.row_label LIKE '%กำไรต่อหุ้นขั้นพื้นฐาน%' AND t1.col_name LIKE '%ปี 2568%'\nORDER BY\n  t1.row_index ASC\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+            "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+            "column": "ปี 2568",
+            "value": "20.63",
+            "unit": "บาท",
+            "row_index": 6,
+            "source_provider": "gemini",
+            "quality_status": "unverified",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  t1.document_id,\n  t1.table_name,\n  t1.row_label,\n  t1.col_name,\n  t1.col_value,\n  t1.unit\nFROM dim_table_rows AS t1\nJOIN dim_documents AS t2\n  ON t1.document_id = t2.document_id\nWHERE\n  t2.filename = '1testfile.pdf' AND t1.row_label LIKE '%กำไรต่อหุ้นขั้นพื้นฐาน%' AND t1.col_name LIKE '%ปี 2568%'\nORDER BY\n  t1.row_index ASC\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 4,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+              "col_name": "ปี 2568",
+              "col_value": "20.63",
+              "unit": "บาท"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+              "col_name": "ปี 2568",
+              "col_value": "20.63",
+              "unit": "บาท"
+            }
+          ],
+          "row_count": 2,
+          "evidence": [
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+              "column": "ปี 2568",
+              "value": "20.63",
+              "unit": "บาท",
+              "row_index": 6,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 1,
+              "table_name": "page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)",
+              "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+              "column": "ปี 2568",
+              "value": "20.63",
+              "unit": "บาท",
+              "row_index": 6,
+              "source_provider": "gemini",
+              "quality_status": "unverified",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf กำไรต่อหุ้นขั้นพื้นฐานปี 2568 เท่ากับกี่บาท?",
+            "observation": "document_id=4, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1), col_name=ปี 2568, col_value=20.63, unit=บาท\ndocument_id=1, table_name=page_1_table_0_1testfile.pdf_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท)_สรุปผลการดำเนินงาน_ปี_2568_(หน่วย_ล้านบาท), row_label=กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1), col_name=ปี 2568, col_value=20.63, unit=บาท\nSources: 1testfile.pdf PDF page 1\nExact ",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 1
+        }
+      ]
+    },
+    "L05": {
+      "id": "L05",
+      "answer": "3.23% ในปี 2568 (หน้า 2) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+      "full_result": {
+        "answer": "3.23% ในปี 2568 (หน้า 2) (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+        "method": "sql",
+        "sources": [
+          {
+            "type": "sql",
+            "sql": "SELECT\n  dt.document_id,\n  dt.table_name,\n  dt.row_label,\n  dt.col_name,\n  dt.col_value,\n  dt.unit\nFROM dim_table_rows AS dt\nJOIN dim_documents AS dd\n  ON dt.document_id = dd.document_id\nWHERE\n  dd.filename = '1testfile.pdf' AND dt.row_label LIKE '%ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ%' AND dt.col_name LIKE '%ปี 2568%' AND dt.unit = '%'\nORDER BY\n  dt.row_index\nLIMIT 6;",
+            "document_id": 4,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+            "column": "ปี 2568",
+            "value": "3.23",
+            "unit": "%",
+            "row_index": 14,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          },
+          {
+            "type": "sql",
+            "sql": "SELECT\n  dt.document_id,\n  dt.table_name,\n  dt.row_label,\n  dt.col_name,\n  dt.col_value,\n  dt.unit\nFROM dim_table_rows AS dt\nJOIN dim_documents AS dd\n  ON dt.document_id = dd.document_id\nWHERE\n  dd.filename = '1testfile.pdf' AND dt.row_label LIKE '%ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ%' AND dt.col_name LIKE '%ปี 2568%' AND dt.unit = '%'\nORDER BY\n  dt.row_index\nLIMIT 6;",
+            "document_id": 1,
+            "filename": "1testfile.pdf",
+            "source_url": "",
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+            "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+            "column": "ปี 2568",
+            "value": "3.23",
+            "unit": "%",
+            "row_index": 14,
+            "source_provider": "gemini",
+            "quality_status": "passed_checks",
+            "evidence_status": "ocr_extracted_unverified"
+          }
+        ],
+        "sql_info": {
+          "sql": "SELECT\n  dt.document_id,\n  dt.table_name,\n  dt.row_label,\n  dt.col_name,\n  dt.col_value,\n  dt.unit\nFROM dim_table_rows AS dt\nJOIN dim_documents AS dd\n  ON dt.document_id = dd.document_id\nWHERE\n  dd.filename = '1testfile.pdf' AND dt.row_label LIKE '%ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ%' AND dt.col_name LIKE '%ปี 2568%' AND dt.unit = '%'\nORDER BY\n  dt.row_index\nLIMIT 6;",
+          "columns": [
+            "document_id",
+            "table_name",
+            "row_label",
+            "col_name",
+            "col_value",
+            "unit"
+          ],
+          "rows": [
+            {
+              "document_id": 4,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+              "col_name": "ปี 2568",
+              "col_value": "3.23",
+              "unit": "%"
+            },
+            {
+              "document_id": 1,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+              "col_name": "ปี 2568",
+              "col_value": "3.23",
+              "unit": "%"
+            }
+          ],
+          "row_count": 2,
+          "evidence": [
+            {
+              "document_id": 4,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+              "column": "ปี 2568",
+              "value": "3.23",
+              "unit": "%",
+              "row_index": 14,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            },
+            {
+              "document_id": 1,
+              "filename": "1testfile.pdf",
+              "source_url": "",
+              "page": 2,
+              "table_name": "page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท)",
+              "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+              "column": "ปี 2568",
+              "value": "3.23",
+              "unit": "%",
+              "row_index": 14,
+              "source_provider": "gemini",
+              "quality_status": "passed_checks",
+              "evidence_status": "ocr_extracted_unverified"
+            }
+          ]
+        },
+        "reasoning_trace": [
+          {
+            "action": "sql_query",
+            "action_input": "จากไฟล์ 1testfile.pdf ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ NIM ปี 2568 เท่ากับกี่เปอร์เซ็นต์?",
+            "observation": "document_id=4, table_name=page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท), row_label=ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ), col_name=ปี 2568, col_value=3.23, unit=%\ndocument_id=1, table_name=page_2_table_0_1testfile.pdf_table_0_(หน่วย_ล้านบาท)_table0_(หน่วย_ล้านบาท), row_label=ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ), col_name=ปี 2568, col_value=3.23, unit=%\nSources: 1testfile.pdf PDF page 2\nExact source cells (use these units): [{\"document_id\":",
+            "success": true
+          }
+        ]
+      },
+      "citations": [
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        },
+        {
+          "filename": "1testfile.pdf",
+          "source_pdf_page": 2
+        }
+      ]
+    }
+  },
+  "timings": [
+    {
+      "id": "L01",
+      "seconds": 7.568996199999674,
+      "usage": {
+        "calls": 2,
+        "input_tokens": 3534,
+        "output_tokens": 183,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L02",
+      "seconds": 4.216334400000051,
+      "usage": {
+        "calls": 1,
+        "input_tokens": 2237,
+        "output_tokens": 125,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L03",
+      "seconds": 5.684789399998408,
+      "usage": {
+        "calls": 2,
+        "input_tokens": 3554,
+        "output_tokens": 189,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L04",
+      "seconds": 5.582417599998735,
+      "usage": {
+        "calls": 2,
+        "input_tokens": 3066,
+        "output_tokens": 174,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L05",
+      "seconds": 2.65918359999705,
+      "usage": {
+        "calls": 2,
+        "input_tokens": 2991,
+        "output_tokens": 171,
+        "thinking_tokens": 0
+      }
+    }
+  ]
+}

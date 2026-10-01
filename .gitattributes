@@ -1,0 +1,3 @@
+# Preserve versioned experiment bytes so SHA-256 ledgers survive checkout.
+/TestFile/postmerge_2026-10-01_v1/** -text
+/TestFile/runtime_repair_2026-10-01_v1/** -text

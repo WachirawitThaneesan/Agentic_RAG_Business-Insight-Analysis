@@ -1,0 +1,785 @@
+{
+  "parser_verification": {
+    "positive_cases": 8,
+    "negative_cases": 9,
+    "passed": true
+  },
+  "purpose": "separate v2 parsing correction on unchanged saved answers; no new model calls",
+  "original_v1_unchanged": true,
+  "sets": {
+    "cpaxtra_egco": {
+      "bm25_gemini_answers.json": {
+        "layer": "answers",
+        "n_questions": 20,
+        "n_correct": 13,
+        "n_incorrect": 7,
+        "n_needs_review": 0,
+        "n_missing_predictions": 0,
+        "fact_accuracy_determined": 0.65,
+        "fact_accuracy_strict_lower_bound": 0.65,
+        "citation_page_hit_rate": 0.65,
+        "citation_page_recall": 0.65,
+        "citation_all_required_rate": 0.65,
+        "unsupported_abstention_rate": null,
+        "details": [
+          {
+            "id": "U01",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U02",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "wrong_or_unlocatable_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U03",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "wrong_or_unlocatable_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U04",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "wrong_or_unlocatable_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U05",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U06",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "wrong_or_unlocatable_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U07",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "wrong_or_unlocatable_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U08",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U09",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U10",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U11",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U12",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U13",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U14",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U15",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U16",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U17",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U18",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "wrong_or_unlocatable_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U19",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "wrong_or_unlocatable_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U20",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          }
+        ],
+        "n_strict_supported_correct": 13
+      },
+      "app_gemini_answers.json": {
+        "layer": "answers",
+        "n_questions": 20,
+        "n_correct": 15,
+        "n_incorrect": 5,
+        "n_needs_review": 0,
+        "n_missing_predictions": 0,
+        "fact_accuracy_determined": 0.75,
+        "fact_accuracy_strict_lower_bound": 0.75,
+        "citation_page_hit_rate": 0.95,
+        "citation_page_recall": 0.95,
+        "citation_all_required_rate": 0.95,
+        "unsupported_abstention_rate": null,
+        "details": [
+          {
+            "id": "U01",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U02",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U03",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U04",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U05",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U06",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U07",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U08",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U09",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U10",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U11",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U12",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U13",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U14",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U15",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U16",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U17",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U18",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "wrong_or_unlocatable_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U19",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "U20",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          }
+        ],
+        "n_strict_supported_correct": 15
+      }
+    },
+    "legacy_before_answers": {
+      "answers.json": {
+        "layer": "answers",
+        "n_questions": 15,
+        "n_correct": 0,
+        "n_incorrect": 15,
+        "n_needs_review": 0,
+        "n_missing_predictions": 0,
+        "fact_accuracy_determined": 0.0,
+        "fact_accuracy_strict_lower_bound": 0.0,
+        "citation_page_hit_rate": 0.0,
+        "citation_page_recall": 0.0,
+        "citation_all_required_rate": 0.0,
+        "unsupported_abstention_rate": null,
+        "details": [
+          {
+            "id": "L01",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L02",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L03",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L04",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L05",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L06",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L07",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L08",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L09",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L10",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L11",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L12",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L13",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L14",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          },
+          {
+            "id": "L15",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": false,
+            "citation_recall": 0.0,
+            "all_required_pages_cited": false,
+            "citation_status": "missing",
+            "missing_prediction": false
+          }
+        ],
+        "n_strict_supported_correct": 0
+      }
+    },
+    "legacy_after_answers": {
+      "answers.json": {
+        "layer": "answers",
+        "n_questions": 15,
+        "n_correct": 5,
+        "n_incorrect": 10,
+        "n_needs_review": 0,
+        "n_missing_predictions": 0,
+        "fact_accuracy_determined": 0.3333333333333333,
+        "fact_accuracy_strict_lower_bound": 0.3333333333333333,
+        "citation_page_hit_rate": 1.0,
+        "citation_page_recall": 1.0,
+        "citation_all_required_rate": 1.0,
+        "unsupported_abstention_rate": null,
+        "details": [
+          {
+            "id": "L01",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L02",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L03",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L04",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L05",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L06",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L07",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L08",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L09",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L10",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L11",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L12",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L13",
+            "fact_status": "incorrect",
+            "reason": "wrong_number_sign_year_unit_or_scale",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L14",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          },
+          {
+            "id": "L15",
+            "fact_status": "correct",
+            "reason": "numeric_fact",
+            "citation_hit": true,
+            "citation_recall": 1.0,
+            "all_required_pages_cited": true,
+            "citation_status": "correct_page",
+            "missing_prediction": false
+          }
+        ],
+        "n_strict_supported_correct": 5
+      }
+    }
+  }
+}

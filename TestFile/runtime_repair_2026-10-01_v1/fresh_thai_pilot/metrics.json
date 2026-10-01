@@ -1,0 +1,563 @@
+{
+  "purpose": "post-hoc supplemental normal-provider answer comparison",
+  "corpus_mode": "selectable PDF text, no OCR or DuckDB table extraction",
+  "n_documents": 2,
+  "n_pages": 768,
+  "n_chunks": 1969,
+  "n_answers": 16,
+  "bm25_tokenizer": "pythainlp-newmm",
+  "embedding_model": "bge-m3",
+  "answer_model": "gemini-2.5-flash",
+  "answers": {
+    "bm25_gemini": {
+      "layer": "answers",
+      "n_questions": 16,
+      "n_correct": 12,
+      "n_incorrect": 4,
+      "n_needs_review": 0,
+      "n_missing_predictions": 0,
+      "fact_accuracy_determined": 0.75,
+      "fact_accuracy_strict_lower_bound": 0.75,
+      "citation_page_hit_rate": 0.75,
+      "citation_page_recall": 0.75,
+      "citation_all_required_rate": 0.75,
+      "unsupported_abstention_rate": null,
+      "details": [
+        {
+          "id": "F01",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F02",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F03",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F04",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F05",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F06",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F07",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F08",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F09",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F10",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F11",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F12",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": false,
+          "citation_recall": 0.0,
+          "all_required_pages_cited": false,
+          "citation_status": "wrong_or_unlocatable_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F13",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F14",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F15",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F16",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        }
+      ],
+      "n_strict_supported_correct": 11
+    },
+    "app_gemini": {
+      "layer": "answers",
+      "n_questions": 16,
+      "n_correct": 10,
+      "n_incorrect": 6,
+      "n_needs_review": 0,
+      "n_missing_predictions": 0,
+      "fact_accuracy_determined": 0.625,
+      "fact_accuracy_strict_lower_bound": 0.625,
+      "citation_page_hit_rate": 1.0,
+      "citation_page_recall": 1.0,
+      "citation_all_required_rate": 1.0,
+      "unsupported_abstention_rate": null,
+      "details": [
+        {
+          "id": "F01",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F02",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F03",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F04",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F05",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F06",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F07",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F08",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F09",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F10",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F11",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F12",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F13",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F14",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F15",
+          "fact_status": "correct",
+          "reason": "numeric_fact",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        },
+        {
+          "id": "F16",
+          "fact_status": "incorrect",
+          "reason": "wrong_number_sign_year_unit_or_scale",
+          "citation_hit": true,
+          "citation_recall": 1.0,
+          "all_required_pages_cited": true,
+          "citation_status": "correct_page",
+          "missing_prediction": false
+        }
+      ],
+      "n_strict_supported_correct": 10
+    }
+  },
+  "usage": {
+    "calls": 32,
+    "input_tokens": 160341,
+    "output_tokens": 759,
+    "thinking_tokens": 0
+  },
+  "timings": [
+    {
+      "id": "F01",
+      "baseline_seconds": 3.34,
+      "agent_seconds": 3.36,
+      "usage_after": {
+        "calls": 2,
+        "input_tokens": 10150,
+        "output_tokens": 44,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F02",
+      "baseline_seconds": 0.68,
+      "agent_seconds": 3.43,
+      "usage_after": {
+        "calls": 4,
+        "input_tokens": 20097,
+        "output_tokens": 97,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F03",
+      "baseline_seconds": 0.63,
+      "agent_seconds": 3.37,
+      "usage_after": {
+        "calls": 6,
+        "input_tokens": 28253,
+        "output_tokens": 156,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F04",
+      "baseline_seconds": 0.7,
+      "agent_seconds": 3.26,
+      "usage_after": {
+        "calls": 8,
+        "input_tokens": 38697,
+        "output_tokens": 222,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F05",
+      "baseline_seconds": 1.01,
+      "agent_seconds": 2.77,
+      "usage_after": {
+        "calls": 10,
+        "input_tokens": 49538,
+        "output_tokens": 256,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F06",
+      "baseline_seconds": 0.65,
+      "agent_seconds": 38.46,
+      "usage_after": {
+        "calls": 12,
+        "input_tokens": 58517,
+        "output_tokens": 271,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F07",
+      "baseline_seconds": 7.24,
+      "agent_seconds": 8.98,
+      "usage_after": {
+        "calls": 14,
+        "input_tokens": 68026,
+        "output_tokens": 392,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F08",
+      "baseline_seconds": 4.02,
+      "agent_seconds": 7.28,
+      "usage_after": {
+        "calls": 16,
+        "input_tokens": 78112,
+        "output_tokens": 425,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F09",
+      "baseline_seconds": 4.53,
+      "agent_seconds": 5.75,
+      "usage_after": {
+        "calls": 18,
+        "input_tokens": 88753,
+        "output_tokens": 480,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F10",
+      "baseline_seconds": 3.31,
+      "agent_seconds": 4.92,
+      "usage_after": {
+        "calls": 20,
+        "input_tokens": 99265,
+        "output_tokens": 527,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F11",
+      "baseline_seconds": 2.34,
+      "agent_seconds": 3.86,
+      "usage_after": {
+        "calls": 22,
+        "input_tokens": 108662,
+        "output_tokens": 562,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F12",
+      "baseline_seconds": 1.8,
+      "agent_seconds": 3.35,
+      "usage_after": {
+        "calls": 24,
+        "input_tokens": 118331,
+        "output_tokens": 587,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F13",
+      "baseline_seconds": 0.6,
+      "agent_seconds": 2.85,
+      "usage_after": {
+        "calls": 26,
+        "input_tokens": 128398,
+        "output_tokens": 615,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F14",
+      "baseline_seconds": 0.66,
+      "agent_seconds": 2.21,
+      "usage_after": {
+        "calls": 28,
+        "input_tokens": 138446,
+        "output_tokens": 661,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F15",
+      "baseline_seconds": 0.77,
+      "agent_seconds": 41.71,
+      "usage_after": {
+        "calls": 30,
+        "input_tokens": 149243,
+        "output_tokens": 691,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "F16",
+      "baseline_seconds": 13.27,
+      "agent_seconds": 13.44,
+      "usage_after": {
+        "calls": 32,
+        "input_tokens": 160341,
+        "output_tokens": 759,
+        "thinking_tokens": 0
+      }
+    }
+  ],
+  "retrieval_page_hit_at_5": {
+    "bm25": 13,
+    "dense": 10,
+    "app_hybrid": 16
+  },
+  "label_review": "Original PDF images inspected before running answers; physical PDF pages, not printed page numbers",
+  "limitations": [
+    "16 single-fact questions concentrated on 3 physical PDF pages; not representative of full reports",
+    "AI visual review only; independent human review pending",
+    "Native selectable text: does not measure OCR or table extraction",
+    "Same fixed labels used for all arms; no tuning on pilot results"
+  ]
+}

@@ -13,6 +13,8 @@ import asyncio
 import json
 import os
 import time
+import hashlib
+import numpy as np
 from pathlib import Path
 
 from sqlalchemy.engine import make_url
@@ -28,7 +30,7 @@ def _save(path: Path, payload: object) -> None:
 
 
 async def _run(manifest: dict, chunks: list[dict], vectors, bm25: BM25,
-               output: Path, answer_limit: int) -> dict:
+               output: Path, answer_limit: int, meter=None, query_vectors=None) -> dict:
     from backend.config import get_settings
 
     settings = get_settings()
@@ -54,6 +56,7 @@ async def _run(manifest: dict, chunks: list[dict], vectors, bm25: BM25,
     from backend.services.llm import generate, usage
 
     predictions = {"bm25_gemini": {}, "app_gemini": {}}
+    retrieval = []
     timings = []
     try:
         await init_db()
@@ -80,6 +83,22 @@ async def _run(manifest: dict, chunks: list[dict], vectors, bm25: BM25,
         for index, question in enumerate(manifest["items"][:answer_limit], 1):
             query = question["question_th"]
             hits = [chunks[i] for i in bm25.rank(query, 10)]
+            if meter:
+                meter.phase.update(id=question['id'], arm='retrieval')
+            if query_vectors is not None:
+                from backend.services.rag import vector_search
+                qv = query_vectors[index-1]
+                similarity = vectors @ qv / np.maximum(np.linalg.norm(vectors,axis=1)*np.linalg.norm(qv),1e-12)
+                dense = [chunks[int(i)] for i in np.argsort(-similarity,kind='stable')[:5]]
+                async with AsyncSessionLocal() as db:
+                    app_hits = await vector_search(query,db,top_k=5)
+                arms = {'bm25': [_source(h) for h in hits[:5]], 'dense': [_source(h) for h in dense],
+                        'app_hybrid': [{'filename': h['filename'], 'source_pdf_page': h.get('page')} for h in app_hits]}
+                doc = next(d for d in manifest['documents'] if d['code']==question['document'])
+                target = (doc['source_file'],question['source_pdf_page'])
+                retrieval.append({'id':question['id'],'target':target,'arms':arms,
+                    'page_hit_at_5':{arm:any((h['filename'],h['source_pdf_page'])==target for h in rows[:5]) for arm,rows in arms.items()}})
+                _save(output/'retrieval.json',retrieval)
             evidence = "\n\n".join(
                 f"[{hit['filename']} PDF page {hit['source_pdf_page']}] {hit['text'][:1800]}"
                 for hit in hits[:3]
@@ -91,6 +110,8 @@ async def _run(manifest: dict, chunks: list[dict], vectors, bm25: BM25,
                 f"Question: {query}\n\nEvidence:\n{evidence}\n\nAnswer:"
             )
             started = time.perf_counter()
+            if meter:
+                meter.phase.update(id=question['id'], arm='bm25_gemini')
             try:
                 baseline_answer = await generate(prompt, temperature=0, max_tokens=180) if hits else "Insufficient evidence."
             except Exception as exc:
@@ -102,6 +123,8 @@ async def _run(manifest: dict, chunks: list[dict], vectors, bm25: BM25,
             }
 
             started = time.perf_counter()
+            if meter:
+                meter.phase.update(id=question['id'], arm='app_gemini')
             try:
                 async with AsyncSessionLocal() as db:
                     result = await agent_query(query, db)
@@ -110,6 +133,7 @@ async def _run(manifest: dict, chunks: list[dict], vectors, bm25: BM25,
             agent_seconds = round(time.perf_counter() - started, 2)
             predictions["app_gemini"][question["id"]] = {
                 "id": question["id"], "answer": result["answer"],
+                "full_result": result,
                 "citations": [{"filename": source.get("filename"),
                                "source_pdf_page": source.get("page")}
                               for source in result.get("sources", [])
@@ -135,6 +159,11 @@ async def _run(manifest: dict, chunks: list[dict], vectors, bm25: BM25,
                   "bm25_tokenizer": "pythainlp-newmm", "embedding_model": "bge-m3",
                   "answer_model": settings.GEMINI_MODEL, "answers": scores,
                   "usage": dict(usage), "timings": timings}
+        for arm, score in scores.items():
+            score['n_strict_supported_correct'] = sum(d['fact_status']=='correct' and d['all_required_pages_cited'] for d in score['details'])
+        result['retrieval_page_hit_at_5'] = {arm: sum(r['page_hit_at_5'][arm] for r in retrieval) for arm in ('bm25','dense','app_hybrid')}
+        result['label_review'] = manifest.get('label_review')
+        result['limitations'] = manifest.get('limitations', [])
         _save(output / "metrics.json", result)
         return result
     finally:
@@ -149,18 +178,35 @@ def main() -> None:
     parser.add_argument("--embedding-cache", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--answer-limit", type=int, default=20)
+    parser.add_argument("--measure", action='store_true', help='Record calls/resources and BM25/dense/app page Hit@5')
     args = parser.parse_args()
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
     if not 0 < args.answer_limit <= len(manifest["items"]):
         parser.error("answer-limit must be between one and question count")
     output = args.output.resolve()
-    output.mkdir(parents=True, exist_ok=True)
-    chunks = _corpus(manifest, args.corpus_dir)
-    vectors = _embed_texts([item["text"] for item in chunks], "bge-m3", args.embedding_cache)
-    bm25 = BM25([item["text"] for item in chunks], thai_words=True)
+    output.mkdir(parents=True, exist_ok=False)
     os.environ["OFFLINE_MODE"] = "false"
     os.environ["LLM_PROVIDER"] = "gemini"
-    result = asyncio.run(_run(manifest, chunks, vectors, bm25, output, args.answer_limit))
+    # Native-text experiment must not see production financial cells.
+    os.environ['DUCKDB_PATH'] = str(output/'isolated_warehouse.duckdb')
+    from backend.config import get_settings
+    get_settings.cache_clear()
+    from scripts.experiment_meter import ExperimentMeter
+    meter = ExperimentMeter(output) if args.measure else None
+    if meter: meter.start()
+    try:
+        _save(output/'reference_locked.json',manifest)
+        repo = Path(__file__).resolve().parents[1]
+        files = list((repo/'backend').rglob('*.py')) + list((repo/'scripts').glob('*.py'))
+        _save(output/'code_hashes.json',{str(p.relative_to(repo)):hashlib.sha256(p.read_bytes()).hexdigest() for p in files})
+        chunks = _corpus(manifest, args.corpus_dir)
+        args.embedding_cache.parent.mkdir(parents=True,exist_ok=True)
+        vectors = _embed_texts([item["text"] for item in chunks], "bge-m3", args.embedding_cache)
+        query_vectors = _embed_texts([q['question_th'] for q in manifest['items'][:args.answer_limit]], 'bge-m3', output/'query_vectors.npz') if args.measure else None
+        bm25 = BM25([item["text"] for item in chunks], thai_words=True)
+        result = asyncio.run(_run(manifest, chunks, vectors, bm25, output, args.answer_limit, meter, query_vectors))
+    finally:
+        if meter: meter.finish()
     print(json.dumps({"answers": result["n_answers"], "usage": result["usage"]}, indent=2))
 
 

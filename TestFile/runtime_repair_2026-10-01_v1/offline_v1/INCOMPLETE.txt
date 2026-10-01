@@ -1,0 +1,1 @@
+Interrupted run; running status in last snapshot is not completion.

@@ -1,0 +1,1 @@
+Incomplete run retained: Ollama was unavailable at startup; do not use for comparison.

@@ -1,0 +1,21 @@
+{
+  "git_head": "5396857af30141c959a7ce6269d70897e5032ae3",
+  "reference_sha256": "e9433bc96c238db145872a20fb8ec4cc7583f58341cab8e2a0944121ef5f39c2",
+  "config": {
+    "LLM_PROVIDER": "gemini",
+    "GEMINI_MODEL": "gemini-2.5-flash",
+    "EMBED_MODEL": "bge-m3",
+    "GEMINI_THINKING_BUDGET": 0,
+    "GEMINI_MAX_RETRIES": 8,
+    "VECTOR_TOP_K": 10,
+    "PDF_OCR_PROVIDER": "typhoon",
+    "PDF_TABLE_OCR_PROVIDER": "gemini",
+    "OFFLINE_MODE": false
+  },
+  "question_timeout_seconds": 300,
+  "purpose": "development diagnostic, not unseen accuracy",
+  "corpus_mode": "original selectable text; excludes OCR and table warehouse",
+  "strict_pass": "numeric sign, unit, justified scale, year context plus all required citation pages",
+  "label_review": "independent AI review only, no human certification",
+  "telemetry": "SDK attempts including retries; RSS sampled at 1 second; local Ollama separate; excludes Docker VM memory and remote model compute"
+}

@@ -1,0 +1,12 @@
+{
+  "document_ids": [
+    1,
+    4
+  ],
+  "source_sha256": "09dec6bb989d7c7cef04b8a8ba5dd246d12d89023ffff5fd8a220f86dac2116f",
+  "source_file": "1testfile.pdf",
+  "pages_per_document": 5,
+  "staged_status": "completed",
+  "same_extraction_reused_for_identical_uploads": true,
+  "baseline_preserved": true
+}

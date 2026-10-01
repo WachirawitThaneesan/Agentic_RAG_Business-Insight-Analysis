@@ -219,56 +219,50 @@ class SQLTool:
             return ToolResult(tool_name=self.name, success=False,
                               error="No structured table cells are available yet")
 
-        schema_desc = get_schema_description()
-        sql = await self._generate_sql(question, schema_desc)
+        from backend.services.duckdb_warehouse import exact_measure_cells
+        exact = exact_measure_cells(question)
+        if exact:
+            summary = self._format_results(exact, question)
+            summary += "\nExact source cells (use these units): " + json.dumps(exact['evidence'], ensure_ascii=False)
+            summary += "\nOCR-extracted values are not visually verified against the PDF."
+            return ToolResult(tool_name=self.name, success=True, data=exact, summary=summary)
 
-        if not sql:
-            return ToolResult(
-                tool_name=self.name,
-                success=False,
-                error="ไม่สามารถสร้าง SQL ได้",
-            )
+        # Compound headers require row AND column selection. Let the model
+        # select only existing candidate IDs; it cannot invent values or lose
+        # provenance by projecting away identity columns in generated SQL.
+        if not capabilities['year_cells'] and re.search(r'(?<!\d)(?:25|20)\d{2}(?!\d)', question):
+            return await self._select_year_cells(question)
 
-        result = execute_sql(sql)
-        if result.get("error"):
-            # Retry once with the error feedback
-            sql2 = await self._generate_sql(
-                question, schema_desc,
-                error_feedback=f"SQL error: {result['error']}\nFailed SQL: {sql}",
-            )
-            if sql2:
-                result = execute_sql(sql2)
-                sql = sql2
-
-        # Retry once on an EMPTY result too — a common failure is an over-narrow
-        # LIKE (or wrong year) that misses a row which actually exists.
-        elif result.get("row_count", 0) == 0:
-            sql2 = await self._generate_sql(
-                question, schema_desc,
-                error_feedback=(
-                    f"The previous query returned 0 rows but the data likely exists.\n"
-                    f"Previous SQL: {sql}\n"
-                    "Broaden it: DROP the `table_name LIKE` filter first if there is "
-                    "one (the parenthesised section may not be a real table section), "
-                    "then match only the core noun in the LIKE pattern (drop "
-                    "qualifiers), re-check the metric_year, and add "
-                    "`ORDER BY length(row_label) ASC` so the base metric surfaces."
-                ),
-            )
-            if sql2:
-                r2 = execute_sql(sql2)
-                if not r2.get("error") and r2.get("row_count", 0) > 0:
-                    result, sql = r2, sql2
-
-        if result.get("error"):
-            return ToolResult(
-                tool_name=self.name,
-                success=False,
-                error=result["error"],
-                data={"sql": sql},
-            )
-
-        evidence = resolve_result_evidence(result.get("rows", []))
+        schema_desc = get_schema_description(question)
+        feedback = ""
+        evidence = []
+        sql = ""
+        result = {}
+        # One original SELECT and at most one repair; missing identity is a
+        # failure just like invalid SQL. Never return an untraceable number.
+        for attempt in range(2):
+            sql = await self._generate_sql(question, schema_desc, error_feedback=feedback)
+            if not sql:
+                return ToolResult(tool_name=self.name, success=False, error="ไม่สามารถสร้าง SQL ได้")
+            result = execute_sql(sql)
+            if result.get("error"):
+                feedback = f"SQL error: {result['error']}\nFailed SQL: {sql}"
+            elif not result.get("row_count"):
+                feedback = (f"0 rows from: {sql}. Match stored row labels, not a guessed combined phrase. "
+                            "Relax descriptive qualifiers but KEEP the requested document, year, unit and measure. "
+                            "For a total, inspect the relevant table's row labeled รวม. Do not switch documents.")
+            else:
+                evidence = resolve_result_evidence(result.get("rows", []))
+                if evidence:
+                    break
+                feedback = (f"Rows from {sql} cannot be traced to a PDF cell. Return original "
+                            "document_id,table_name,row_label,col_name,col_value,unit from dim_table_rows "
+                            "or document_id,table_name,row_label,metric_year,raw_value,unit from fact_financial_metrics. "
+                            "Do not project aliases, aggregate or use the pivot view.")
+        if not evidence:
+            return ToolResult(tool_name=self.name, success=False,
+                              error=result.get("error") or "ไม่พบข้อมูลตารางพร้อมหลักฐานหน้าเอกสารที่ตรงกับคำถาม",
+                              data={"sql":sql, **result, "evidence":[]})
         summary = self._format_results(result, question)
         if evidence:
             pages = []
@@ -277,6 +271,7 @@ class SQLTool:
                 if location not in pages:
                     pages.append(location)
             summary += "\nSources: " + "; ".join(pages)
+            summary += "\nExact source cells (use these units): " + json.dumps(evidence, ensure_ascii=False)
         summary += "\nOCR-extracted values are not visually verified against the PDF."
         return ToolResult(
             tool_name=self.name,
@@ -285,76 +280,80 @@ class SQLTool:
             summary=summary,
         )
 
+    async def _select_year_cells(self, question: str) -> ToolResult:
+        from backend.services.duckdb_warehouse import candidate_year_cells
+        candidates=candidate_year_cells(question)
+        if not candidates:
+            return ToolResult(tool_name=self.name,success=False,error='ไม่พบเซลล์ตรงปีและหน่วยที่ถาม')
+        groups={}
+        for c in candidates:
+            key=c['table_name']
+            if key not in groups:
+                groups[key]={'table_id':len(groups),'name':key,'rows_in_order':c['table_rows_in_order']}
+        cells=[{'id':i,'table_id':groups[c['table_name']]['table_id'],
+                **{k:c[k] for k in ('filename','row_label','col_name','col_value','unit')}} for i,c in enumerate(candidates)]
+        prompt=(
+            'Select the original PDF table cells that directly answer the Thai question. Return JSON only: {"cell_ids":[...]} or {"cell_ids":[]} if unavailable.\n'
+            'A question may combine a section heading with a component row, or a financial measure in the COLUMN with a maturity/credit-stage ROW. '
+            'Use the most specific component asked for, never the parent total or a similarly named measure. '
+            'For maturity ranges interpret >, ≤ and Thai wording exactly. For total choose รวม within the right column group. '
+            'Match company, year, column measure, unit and statement context together. '
+            'Comparisons require both years of the same measure. Do not select irrelevant nearby cells.\n'
+            f'Question: {question}\nTables: {json.dumps(list(groups.values()),ensure_ascii=False)}\n'
+            f'Candidate cells: {json.dumps(cells,ensure_ascii=False)}\nJSON:')
+        raw=await llm_generate(prompt,temperature=0,max_tokens=180)
+        try:
+            match=re.search(r'\{.*\}',raw,re.DOTALL)
+            ids=json.loads(match.group() if match else raw).get('cell_ids',[])
+            # JSON models sometimes quote integer IDs. Accept only canonical
+            # nonnegative decimal strings, then apply the same bounds check.
+            if isinstance(ids, list):
+                ids = [int(i) if isinstance(i, str) and re.fullmatch(r'0|[1-9][0-9]{0,5}', i) else i
+                       for i in ids]
+            if not isinstance(ids,list) or len(ids)>12 or any(type(i) is not int or i<0 or i>=len(candidates) for i in ids):
+                raise ValueError('Invalid candidate IDs')
+        except (ValueError,TypeError,AttributeError):
+            return ToolResult(tool_name=self.name,success=False,error='ไม่สามารถเลือกเซลล์หลักฐานได้')
+        rows=[{k:v for k,v in candidates[i].items() if k!='table_rows_in_order'} for i in dict.fromkeys(ids)]
+        evidence=resolve_result_evidence(rows)
+        if not evidence:
+            return ToolResult(tool_name=self.name,success=False,error='ไม่พบเซลล์ที่ตอบคำถามพร้อมหน้าอ้างอิง')
+        data={'sql':'-- Parameterized stored-cell candidate selection','rows':rows,'row_count':len(rows),
+              'evidence':evidence,'selected_cell_ids':ids,'candidate_count':len(candidates)}
+        summary='Exact source cells (machine extracted, not visually verified): '+json.dumps(evidence,ensure_ascii=False)
+        return ToolResult(tool_name=self.name,success=True,data=data,summary=summary)
+
     async def _generate_sql(
         self,
         question: str,
         schema_desc: str,
         error_feedback: str = "",
     ) -> str:
+        caps = warehouse_capabilities()
         prompt = (
-            "You are a DuckDB SQL expert. Generate a DuckDB-compatible SELECT query "
-            "to answer the user's question.\n\n"
+            "Generate one DuckDB SELECT query, SQL only, using this actual schema/data.\n"
             f"{schema_desc}\n"
+            "Rules:\n"
+            "- document_id is INTEGER. Filter a named PDF via dim_documents.filename using a subquery or join. Never compare document_id to a filename.\n"
+            "- Choose a POPULATED cell table. dim_table_rows includes financial years inside compound col_name headers. Match year AND measure/group in col_name.\n"
+            "- Return document_id, table_name, row_label, metric_year, raw_value, unit for fact_financial_metrics; or document_id, table_name, row_label, col_name, col_value, unit for dim_table_rows. Preserve cell identity.\n"
+            "- Never join the two cell tables. Never invent tables or columns. No web/file functions.\n"
+            "- A cell's unit overrides the table title. EPS is baht; percentage columns and ratios use %. When asking for money exclude percentage columns.\n"
+            "- Select the exact measure, year, statement section and entity asked for. Use LIKE for Thai phrases and rank exact labels first; do not mix total and component rows.\n"
+            "- Questions combine section headings, row labels and column groups. Match those separately. A measure under a section need not repeat that section in its row_label. Use the STORED labels, not the entire question phrase.\n"
+            "- Parenthesized sections may be in table_name; rank matching sections ahead of other ones.\n"
+            "- For totals match row_label 'รวม' only in the relevant table/column group. For credit stages or maturity ranges select the precise row.\n"
+            "- For a comparison retrieve BOTH years from the SAME row and measure. Do not calculate in SQL: return source cells.\n"
+            "- Only sort numeric_value/col_value_num for highest/lowest; use row_index for first rows. Keep LIMIT 12 for comparisons, 6 otherwise.\n"
+            "- If the requested value is not in stored table cells, returning no rows is correct. Prose search can follow.\n"
+            f"Populated capabilities: {caps}\n"
+            f"Previous attempt feedback: {error_feedback}\nQuestion: {question}\nSQL:"
         )
-        if error_feedback:
-            prompt += f"\nPrevious attempt failed:\n{error_feedback}\nPlease fix the query.\n\n"
-
-        prompt += (
-            "CRITICAL RULES:\n"
-            "1. NEVER JOIN fact_financial_metrics with dim_table_rows. They are independent tables.\n"
-            "2. For listing companies, investments, or shareholdings → use dim_table_rows or the v_table_rows_wide view. For financial figures with years (สินทรัพย์, กำไร, ROA, etc.) → use fact_financial_metrics.\n"
-            "3. dim_table_rows: when the question names a SPECIFIC company/entity, filter by `row_label LIKE '%company name%'` + the attribute `col_name` and do NOT add a table_name filter — the same company appears in different tables, so a guessed table_name (e.g. '%ลงทุน%') will MISS it. Add `WHERE table_name LIKE '%keyword%'` ONLY when the question is about a whole table/section (e.g. 'บริษัทที่ลงทุน 2 อันดับแรก').\n"
-            "4. 'อันดับแรก' or 'แรก' = first by row_index ASC. 'มากที่สุด' or 'สูงสุด' = sort by the numeric column DESC.\n"
-            "5. For row_label and col_name, NEVER use strict '='. ALWAYS use LIKE '%keyword%' because data often has prefixes like '15. '.\n"
-            "6. Return ONLY the SQL query, no explanation.\n"
-            "7. For Thai text matching, ALWAYS break long sentences into keywords and join them with `AND` (e.g., `col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%'`). NEVER use `OR` for phrase chunking.\n"
-            "8. ALWAYS sort/compare numbers using the pre-parsed numeric columns, NEVER the text columns:\n"
-            "   - fact_financial_metrics → use `numeric_value` (NOT `raw_value`). e.g. `ORDER BY numeric_value DESC`.\n"
-            "   - dim_table_rows → use `col_value_num` (NOT `col_value`). e.g. `ORDER BY col_value_num DESC`.\n"
-            "   Sorting the text columns gives wrong (lexical) order AND can crash the database. Do NOT hand-write CAST(REPLACE(...)); never CAST to INT.\n"
-            "9. EAV RULE: when a question filters on one attribute and returns another (e.g. companies whose business is 'บัตรเครดิต', and their 'จำนวนหุ้น'), PREFER the wide view v_table_rows_wide and quote Thai attribute columns with double quotes. Fall back to a sub-query on dim_table_rows only if the needed column is absent from the view.\n"
-            "10. NEVER use aggregate functions like COUNT(), MAX() or DISTINCT if the query also asks for names/details (e.g. 'มีกี่บริษัท และบริษัทใดบ้าง'). Just SELECT the raw rows and let the Python Agent count them.\n"
-            "11. A short keyword in LIKE can match many line items (e.g. '%เงินสด%' matches 25 rows). The intended BASE metric is almost always the SHORTEST row_label, so add `ORDER BY length(row_label) ASC` and `LIMIT 3` for single-metric lookups. `length(...)` is numeric — safe to sort. Also match the FULL metric phrase, not a fragment (use '%รวมสินทรัพย์%', not '%สินทรัพย์%').\n"
-            "12. YEAR-OVER-YEAR: for 'เปลี่ยนแปลง/เทียบ/ต่างจาก ปี A กับ ปี B', fetch BOTH years in ONE query with `metric_year IN ('A','B')` (never one year only). Let the Python Agent compute the difference.\n"
-            "13. ALWAYS include `metric_year` in the SELECT list whenever you filter on it. The year must be visible in the result, not hidden in the WHERE clause — a downstream grounding check treats a year it cannot see in the output as invented and discards the answer.\n"
-            "14. LIKE often matches a NEAR-MISS line item as well as the one asked for (e.g. 'เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า' vs 'เงินสดจ่ายสำหรับหนี้สินภายใต้สัญญาเช่า' — different rows, different values). Rank the exact wording first: `ORDER BY (row_label = '<metric exactly as asked>') DESC, length(row_label) ASC`. Keep LIMIT high enough (>=6) on year-over-year queries that BOTH years of the right row survive.\n"
-            "15. SECTION IN PARENTHESES → RANK it, never filter on it. One statement page is split into SECTIONS and `table_name` carries the section after an em-dash, e.g. '[p435] สินทรัพย์ทางการเงิน… — ยอดคงเหลือ' vs '… — รวมมูลค่า ยุติธรรม' vs '… — ระดับ 2'. The SAME row_label exists in every section with DIFFERENT values, so row_label alone picks one at random. When the question carries a trailing '(…)', put it in the ORDER BY: `ORDER BY (table_name LIKE '%<parenthesised text verbatim>%') DESC, length(row_label) ASC` and raise LIMIT to 6. Copy the text EXACTLY, keeping every space (Thai table names contain deliberate spaces; a respaced pattern matches nothing). NEVER write `AND table_name LIKE …` in the WHERE clause of a fact_financial_metrics query: the parenthesis is often part of the metric name itself ('กำไรสุทธิ (ส่วนที่เป็นของธนาคาร)', 'ค่าใช้จ่ายต่อรายได้ (%)') and a WHERE on it returns 0 rows, losing the answer completely. Ranking costs nothing when the guess is wrong.\n"
-            "16. For fact_financial_metrics ALWAYS put `table_name` in the SELECT list. Without it the answer step cannot tell which section a value came from and will quote the wrong one.\n\n"
-            "17. For document-specific factual rows, include document_id and table_name in SELECT. Keep row_label, metric_year/col_name, and raw_value/col_value visible so the source PDF page and cell can be traced. Aggregates without row identity have no page citation.\n\n"
-            "EXAMPLES:\n\n"
-            "Q: จำนวนหุ้นสามัญที่ธนาคารถือใน บริษัทหลักทรัพย์จัดการกองทุน มีกี่หุ้น?\n"
-            "SQL: SELECT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%บริษัทหลักทรัพย์จัดการกองทุน%' AND col_name LIKE '%จำนวนหุ้น%';\n\n"
-            "Q: ธนาคารถือหุ้นใน บริษัท ยู เอ็ม ซี เม็ททอล จำกัด คิดเป็นร้อยละเท่าไร?\n"
-            "SQL: SELECT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%ยู เอ็ม ซี เม็ททอล%' AND (col_name LIKE '%ถือหุ้น%' OR col_name LIKE '%ร้อยละ%' OR col_name LIKE '%สัดส่วน%');\n\n"
-            "Q: บริษัท บัตรกรุงศรีอยุธยา จำกัด ประกอบธุรกิจประเภทใด?\n"
-            "SQL: SELECT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE row_label LIKE '%บัตรกรุงศรีอยุธยา%' AND col_name LIKE '%ธุรกิจ%';\n\n"
-            "Q: บริษัทที่ทำธุรกิจ บัตรเครดิตและสินเชื่อส่วนบุคคล มีกี่บริษัท บริษัทใดบ้าง และบริษัทใดมีหุ้นเยอะสุด?\n"
-            "SQL: SELECT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND col_name LIKE '%จำนวนหุ้น%' AND row_label IN (SELECT row_label FROM dim_table_rows WHERE col_value LIKE '%บัตรเครดิต%' AND col_value LIKE '%สินเชื่อ%') ORDER BY col_value_num DESC;\n\n"
-            "Q: บริษัทที่บจก. (ธนาคาร) ถือหุ้นไม่ถึง 100% มีอะไรบ้าง?\n"
-            "SQL: SELECT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND (col_name LIKE '%สัดส่วน%' OR col_name LIKE '%ร้อยละ%') AND col_value_num < 100 ORDER BY row_index;\n\n"
-            "Q: การลงทุนของธนาคารในบริษัทอื่น มีบริษัทอะไรบ้าง 2 อันดับแรก?\n"
-            "SQL: SELECT DISTINCT document_id, table_name, row_label, col_name, col_value FROM dim_table_rows WHERE table_name LIKE '%ลงทุน%' AND row_index < 2 ORDER BY row_index, col_name;\n\n"
-            "Q: สินทรัพย์รวมปี 2567 เท่าไร?\n"
-            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
-            "Q: เงินสด ปี 2567 มีค่าเท่ากับเท่าไร?\n"
-            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%เงินสด%' AND metric_year = '2567' ORDER BY length(row_label) ASC LIMIT 3;\n\n"
-            "Q: กำไรสุทธิ ปี 2567 เปลี่ยนแปลงจากปี 2566 เท่าไร?\n"
-            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year IN ('2567','2566') ORDER BY (row_label = 'กำไรสุทธิ') DESC, length(row_label) ASC, metric_year DESC LIMIT 6;\n\n"
-            "Q: เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า ปี 2567 มีค่าเท่ากับเท่าไร?\n"
-            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สัญญาเช่า%' AND metric_year = '2567' ORDER BY (row_label = 'เงินสดจ่ายชำระหนี้สินตามสัญญาเช่า') DESC, length(row_label) ASC LIMIT 3;\n\n"
-            "Q: สินทรัพย์อนุพันธ์ - เพื่อป้องกันความเสี่ยง แบบพลวัต (ยอดคงเหลือ) ปี 2567 มีค่าเท่ากับเท่าไร?\n"
-            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%แบบพลวัต%' AND metric_year = '2567' ORDER BY (table_name LIKE '%ยอดคงเหลือ%') DESC, length(row_label) ASC LIMIT 6;\n\n"
-            "Q: กำไรสุทธิ (ส่วนที่เป็นของธนาคาร) ปี 2563 มีค่าเท่ากับเท่าไร?  -- the parenthesis here is part of the METRIC name, not a section; ranking on it is harmless, a WHERE on it would return nothing\n"
-            "SQL: SELECT document_id, table_name, row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%กำไรสุทธิ%' AND metric_year = '2563' ORDER BY (table_name LIKE '%ส่วนที่เป็นของธนาคาร%') DESC, length(row_label) ASC LIMIT 6;\n\n"
-            f"Q: {question}\n"
-            "SQL:"
-        )
-
-        if not warehouse_capabilities()["wide_view"]:
-            prompt += ("\nIMPORTANT: v_table_rows_wide DOES NOT EXIST in this warehouse. "
-                       "Never reference it. Use dim_table_rows and self-joins/subqueries "
-                       "for multi-attribute rows.\n")
-
+        if not caps["year_cells"]:
+            prompt += "\nIMPORTANT: fact_financial_metrics is EMPTY. Use dim_table_rows for financial figures; the year is part of col_name."
+        prompt += "\nFor answers needing citations NEVER select from v_table_rows_wide: use original cell rows with document_id/table_name/row_label/col_name/col_value/unit intact."
+        if not caps["wide_view"]:
+            prompt += "\nIMPORTANT: v_table_rows_wide DOES NOT EXIST."
 
         try:
             sql = await llm_generate(prompt, temperature=0.1, max_tokens=500)

@@ -73,6 +73,8 @@ def _normalize_gemini_tables(data: dict[str, Any], page: int, region: dict) -> l
             headers.insert(0, "รายการ")
         elif len(headers) != value_width + 1:
             raise ValueError(f"Gemini table {index} header width differs from its rows")
+        from backend.services.table_utils import complete_column_context
+        headers = complete_column_context(headers)
         rows = []
         ambiguous_rows = 0
         for row in raw_rows:

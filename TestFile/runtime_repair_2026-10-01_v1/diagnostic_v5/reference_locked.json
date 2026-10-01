@@ -1,0 +1,268 @@
+{
+  "schema_version": 2,
+  "label_review": "AI visual review against original scanned PDF on 2026-10-01; no second human certification",
+  "purpose": "paired before/after legacy re-ingestion diagnostic, not unseen test",
+  "documents": [
+    {
+      "code": "LEGACY",
+      "source_file": "1testfile.pdf",
+      "excerpt_file": "1testfile.pdf",
+      "source_sha256": "09dec6bb989d7c7cef04b8a8ba5dd246d12d89023ffff5fd8a220f86dac2116f",
+      "source_page_count": 5
+    }
+  ],
+  "items": [
+    {
+      "id": "L01",
+      "document": "LEGACY",
+      "source_pdf_page": 1,
+      "question_th": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยสุทธิปี 2568 เท่ากับกี่ล้านบาท?",
+      "reference_answer": "137152 ล้านบาท",
+      "answer_components": {
+        "value": "137152",
+        "unit": "ล้านบาท",
+        "year_be": 2568
+      },
+      "expected_row": "รายได้ดอกเบี้ยสุทธิ",
+      "expected_column_context": "ปี 2568",
+      "source_kind": "table"
+    },
+    {
+      "id": "L02",
+      "document": "LEGACY",
+      "source_pdf_page": 1,
+      "question_th": "จากไฟล์ 1testfile.pdf กำไรสุทธิส่วนที่เป็นของธนาคารปี 2568 เท่ากับกี่ล้านบาท?",
+      "reference_answer": "49565 ล้านบาท",
+      "answer_components": {
+        "value": "49565",
+        "unit": "ล้านบาท",
+        "year_be": 2568
+      },
+      "expected_row": "กำไรสุทธิ",
+      "expected_column_context": "ปี 2568",
+      "source_kind": "table"
+    },
+    {
+      "id": "L03",
+      "document": "LEGACY",
+      "source_pdf_page": 1,
+      "question_th": "จากไฟล์ 1testfile.pdf การเปลี่ยนแปลงรายได้ดอกเบี้ยสุทธิปี 2568 เทียบปี 2567 เป็นกี่ล้านบาท ให้แสดงเครื่องหมายลบเมื่อเป็นการลดลง?",
+      "reference_answer": "-10852 ล้านบาท",
+      "answer_components": {
+        "value": "-10852",
+        "unit": "ล้านบาท",
+        "year_be": 2568,
+        "supporting_values": [
+          137152,
+          148004
+        ],
+        "comparison_years": [
+          2568,
+          2567
+        ]
+      },
+      "expected_row": "รายได้ดอกเบี้ยสุทธิ",
+      "expected_column_context": "เพิ่ม (ลด)",
+      "source_kind": "table",
+      "operand_evidence": [
+        {
+          "document": "LEGACY",
+          "source_pdf_page": 1,
+          "row_label": "รายได้ดอกเบี้ยสุทธิ",
+          "year_be": 2568,
+          "value": 137152,
+          "unit": "ล้านบาท"
+        },
+        {
+          "document": "LEGACY",
+          "source_pdf_page": 1,
+          "row_label": "รายได้ดอกเบี้ยสุทธิ",
+          "year_be": 2567,
+          "value": 148004,
+          "unit": "ล้านบาท"
+        }
+      ]
+    },
+    {
+      "id": "L04",
+      "document": "LEGACY",
+      "source_pdf_page": 1,
+      "question_th": "จากไฟล์ 1testfile.pdf กำไรต่อหุ้นขั้นพื้นฐานปี 2568 เท่ากับกี่บาท?",
+      "reference_answer": "20.63 บาท",
+      "answer_components": {
+        "value": "20.63",
+        "unit": "บาท",
+        "year_be": 2568
+      },
+      "expected_row": "กำไรต่อหุ้นขั้นพื้นฐาน",
+      "expected_column_context": "ปี 2568",
+      "source_kind": "table"
+    },
+    {
+      "id": "L05",
+      "document": "LEGACY",
+      "source_pdf_page": 2,
+      "question_th": "จากไฟล์ 1testfile.pdf ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ NIM ปี 2568 เท่ากับกี่เปอร์เซ็นต์?",
+      "reference_answer": "3.23 %",
+      "answer_components": {
+        "value": "3.23",
+        "unit": "%",
+        "year_be": 2568
+      },
+      "expected_row": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ",
+      "expected_column_context": "ปี 2568",
+      "source_kind": "table"
+    },
+    {
+      "id": "L06",
+      "document": "LEGACY",
+      "source_pdf_page": 2,
+      "question_th": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยรวมปี 2567 ที่ปรับปรุงใหม่แล้ว เท่ากับกี่ล้านบาท?",
+      "reference_answer": "188068 ล้านบาท",
+      "answer_components": {
+        "value": "188068",
+        "unit": "ล้านบาท",
+        "year_be": 2567
+      },
+      "expected_row": "รายได้ดอกเบี้ย",
+      "expected_column_context": "ปี 2567",
+      "source_kind": "table"
+    },
+    {
+      "id": "L07",
+      "document": "LEGACY",
+      "source_pdf_page": 2,
+      "question_th": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยจากเงินให้สินเชื่อปี 2568 เท่ากับกี่ล้านบาท?",
+      "reference_answer": "120777 ล้านบาท",
+      "answer_components": {
+        "value": "120777",
+        "unit": "ล้านบาท",
+        "year_be": 2568
+      },
+      "expected_row": "เงินให้สินเชื่อ",
+      "expected_column_context": "ปี 2568",
+      "source_kind": "table"
+    },
+    {
+      "id": "L08",
+      "document": "LEGACY",
+      "source_pdf_page": 3,
+      "question_th": "จากไฟล์ 1testfile.pdf เงินให้สินเชื่อและดอกเบี้ยค้างรับรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+      "reference_answer": "2495767 ล้านบาท",
+      "answer_components": {
+        "value": "2495767",
+        "unit": "ล้านบาท",
+        "year_be": 2568
+      },
+      "expected_row": "รวม",
+      "expected_column_context": "2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ",
+      "source_kind": "table"
+    },
+    {
+      "id": "L09",
+      "document": "LEGACY",
+      "source_pdf_page": 3,
+      "question_th": "จากไฟล์ 1testfile.pdf ค่าเผื่อผลขาดทุนด้านเครดิตรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+      "reference_answer": "142997 ล้านบาท",
+      "answer_components": {
+        "value": "142997",
+        "unit": "ล้านบาท",
+        "year_be": 2568
+      },
+      "expected_row": "รวม",
+      "expected_column_context": "2568 ค่าเผื่อผลขาดทุนด้านเครดิต",
+      "source_kind": "table"
+    },
+    {
+      "id": "L10",
+      "document": "LEGACY",
+      "source_pdf_page": 3,
+      "question_th": "จากไฟล์ 1testfile.pdf ค่าเผื่อผลขาดทุนด้านเครดิตของเงินให้สินเชื่อระดับที่ 3 ณ 31 ธันวาคม 2567 เท่ากับกี่ล้านบาท?",
+      "reference_answer": "44132 ล้านบาท",
+      "answer_components": {
+        "value": "44132",
+        "unit": "ล้านบาท",
+        "year_be": 2567
+      },
+      "expected_row": "ระดับที่ 3",
+      "expected_column_context": "2567 ค่าเผื่อผลขาดทุนด้านเครดิต",
+      "source_kind": "table"
+    },
+    {
+      "id": "L11",
+      "document": "LEGACY",
+      "source_pdf_page": 4,
+      "question_th": "จากไฟล์ 1testfile.pdf สินทรัพย์รวม ณ สิ้นปี 2568 เท่ากับกี่ล้านบาท?",
+      "reference_answer": "4558618 ล้านบาท",
+      "answer_components": {
+        "value": "4558618",
+        "unit": "ล้านบาท",
+        "year_be": 2568
+      },
+      "expected_row": "สินทรัพย์รวม",
+      "expected_column_context": null,
+      "source_kind": "prose"
+    },
+    {
+      "id": "L12",
+      "document": "LEGACY",
+      "source_pdf_page": 5,
+      "question_th": "จากไฟล์ 1testfile.pdf เงินรับฝากรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+      "reference_answer": "2850387 ล้านบาท",
+      "answer_components": {
+        "value": "2850387",
+        "unit": "ล้านบาท",
+        "year_be": 2568
+      },
+      "expected_row": "รวม",
+      "expected_column_context": "เงินรับฝาก 2568",
+      "source_kind": "table"
+    },
+    {
+      "id": "L13",
+      "document": "LEGACY",
+      "source_pdf_page": 5,
+      "question_th": "จากไฟล์ 1testfile.pdf เงินให้สินเชื่อและดอกเบี้ยค้างรับระยะเวลาเกิน 5 ปี ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+      "reference_answer": "866956 ล้านบาท",
+      "answer_components": {
+        "value": "866956",
+        "unit": "ล้านบาท",
+        "year_be": 2568
+      },
+      "expected_row": "> 5 ปี",
+      "expected_column_context": "เงินให้สินเชื่อและดอกเบี้ยค้างรับ 2568",
+      "source_kind": "table"
+    },
+    {
+      "id": "L14",
+      "document": "LEGACY",
+      "source_pdf_page": 5,
+      "question_th": "จากไฟล์ 1testfile.pdf หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันรวม ณ 31 ธันวาคม 2566 เท่ากับกี่ล้านบาท?",
+      "reference_answer": "823843 ล้านบาท",
+      "answer_components": {
+        "value": "823843",
+        "unit": "ล้านบาท",
+        "year_be": 2566
+      },
+      "expected_row": "รวม",
+      "expected_column_context": "2566",
+      "source_kind": "table"
+    },
+    {
+      "id": "L15",
+      "document": "LEGACY",
+      "source_pdf_page": 5,
+      "question_th": "จากไฟล์ 1testfile.pdf การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+      "reference_answer": "15437 ล้านบาท",
+      "answer_components": {
+        "value": "15437",
+        "unit": "ล้านบาท",
+        "year_be": 2568
+      },
+      "expected_row": "การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน",
+      "expected_column_context": "2568",
+      "source_kind": "table"
+    }
+  ],
+  "review_change": "Add source-checked operands and comparison years for L03; original reference values/pages unchanged."
+}

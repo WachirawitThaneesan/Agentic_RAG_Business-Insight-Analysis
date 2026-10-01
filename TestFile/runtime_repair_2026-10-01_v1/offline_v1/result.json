@@ -1,0 +1,90 @@
+{
+  "question": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยสุทธิปี 2568 เท่ากับกี่ล้านบาท?",
+  "expected_fragment": "137152",
+  "source_sha256": "09dec6bb989d7c7cef04b8a8ba5dd246d12d89023ffff5fd8a220f86dac2116f",
+  "scope": "real PDF, FastAPI TestClient upload/index/query/page-image; process-level outbound block, not OS firewall",
+  "status": "running",
+  "local_model_calls": [],
+  "health": {
+    "status": "ok",
+    "service": "Financial Data Agent",
+    "version": "2.0.0",
+    "privacy_mode": "offline"
+  },
+  "external_dns_blocked": true,
+  "external_tcp_blocked": true,
+  "scrape_status": 403,
+  "upload": {
+    "id": 1,
+    "filename": "1testfile.pdf",
+    "status": "pending",
+    "page_count": 5,
+    "queued": true
+  },
+  "upload_seconds": 7.8380985999974655,
+  "document": {
+    "id": 1,
+    "filename": "1testfile.pdf",
+    "source_url": null,
+    "doc_type": "pdf",
+    "status": "processing",
+    "raw_text": null,
+    "error_message": "Processing page 1/5",
+    "runtime_info": {
+      "progress_text": "Processing page 1/5",
+      "failed_pages": [],
+      "failed_page_reasons": {},
+      "page_count": 5,
+      "indexed_pages": 0,
+      "empty_pages": 0,
+      "status_detail": "Processing page 1/5"
+    },
+    "page_statuses": [
+      {
+        "page": 1,
+        "status": "processing",
+        "error_stage": null,
+        "error_message": null
+      },
+      {
+        "page": 2,
+        "status": "pending",
+        "error_stage": null,
+        "error_message": null
+      },
+      {
+        "page": 3,
+        "status": "pending",
+        "error_stage": null,
+        "error_message": null
+      },
+      {
+        "page": 4,
+        "status": "pending",
+        "error_stage": null,
+        "error_message": null
+      },
+      {
+        "page": 5,
+        "status": "pending",
+        "error_stage": null,
+        "error_message": null
+      }
+    ],
+    "created_at": "2026-10-01T03:59:42.113038",
+    "chunks": [],
+    "structured_data": [],
+    "structured_tables": [],
+    "raw_ocr_pages": [],
+    "raw_ocr_retry_pages": [],
+    "raw_ocr_tables": [],
+    "quality_reports": [],
+    "quality_summary": {
+      "unresolved_rows": 0,
+      "unverified_rows": 0,
+      "passed_check_rows": 0,
+      "meaning": "passed_checks means internally consistent, not visually verified against the PDF"
+    }
+  },
+  "processing_seconds": 30.193763899998885
+}

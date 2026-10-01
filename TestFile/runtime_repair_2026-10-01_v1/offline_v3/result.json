@@ -1,0 +1,2257 @@
+{
+  "question": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยสุทธิปี 2568 เท่ากับกี่ล้านบาท?",
+  "expected_fragment": "137152",
+  "source_sha256": "09dec6bb989d7c7cef04b8a8ba5dd246d12d89023ffff5fd8a220f86dac2116f",
+  "scope": "real PDF, FastAPI TestClient upload/index/query/page-image; process-level outbound block, not OS firewall",
+  "status": "failed_answer_or_citation",
+  "local_model_calls": [
+    {
+      "status": "success",
+      "seconds": 15.315502400000696
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "service": "Financial Data Agent",
+    "version": "2.0.0",
+    "privacy_mode": "offline"
+  },
+  "external_dns_blocked": true,
+  "external_tcp_blocked": true,
+  "scrape_status": 403,
+  "upload": {
+    "id": 1,
+    "filename": "1testfile.pdf",
+    "status": "pending",
+    "page_count": 5,
+    "queued": true
+  },
+  "upload_seconds": 7.956814699995448,
+  "document": {
+    "id": 1,
+    "filename": "1testfile.pdf",
+    "source_url": null,
+    "doc_type": "pdf",
+    "status": "completed",
+    "raw_text": ".\n\n[TABLE] page_1_table_0_1testfile.pdf_page_1_table_0\nรายการ,2537 (ปรับปรุงไทม่),กาะเปลียนเปลง\n\"137,152\",,\n\"84,049\",,\n\nรายได้ดอกเบี้ยสทธิ\nรายได้ที่มิไช่ดอกเบี้ย\n\n[TABLE] page_2_table_0_1testfile.pdf_page_2_table_0_page2table0\nรายการ,256&,2537,column_4,column_5\nอื่นว,,,ฎ,\n,,,,(7.3า)\n\n[TABLE] page_3_table_0_1testfile.pdf_page_3_table_0_page3table0\nรายการ,column_2,ค่าเมือ ทีฬาคว่า,\"ค้างรับ\"\"\"\nระทับที1,\"2.190,153\",,\nระทับที 2,,55.447,\"215,701\"\nระทับที3,,\"45,023\",\n,\"2495,737\",,\n\n4.2\nฐานะทางการเงน\nสินทรัพย์\n\n4.3\nเงินให้สินเชือและเงินรับฝาก\n\n[TABLE] page_5_table_0_1testfile.pdf_page_5_table_0\n97.72,97.35,45.40\n2.28,,",
+    "error_message": "Data quality: 9 unresolved table rows excluded from structured search and warehouse | Data quality: 9 table rows have no applicable numeric cross-check",
+    "runtime_info": {
+      "progress_text": "",
+      "failed_pages": [],
+      "failed_page_reasons": {},
+      "page_count": 5,
+      "indexed_pages": 5,
+      "empty_pages": 0,
+      "status_detail": "Data quality: 9 unresolved table rows excluded from structured search and warehouse | Data quality: 9 table rows have no applicable numeric cross-check"
+    },
+    "page_statuses": [
+      {
+        "page": 1,
+        "status": "indexed",
+        "error_stage": null,
+        "error_message": null
+      },
+      {
+        "page": 2,
+        "status": "indexed",
+        "error_stage": null,
+        "error_message": null
+      },
+      {
+        "page": 3,
+        "status": "indexed",
+        "error_stage": null,
+        "error_message": null
+      },
+      {
+        "page": 4,
+        "status": "indexed",
+        "error_stage": null,
+        "error_message": null
+      },
+      {
+        "page": 5,
+        "status": "indexed",
+        "error_stage": null,
+        "error_message": null
+      }
+    ],
+    "created_at": "2026-10-01T13:31:36.261631",
+    "chunks": [
+      {
+        "id": 1,
+        "chunk_index": 0,
+        "chunk_text": "RAW_OCR_PAGE: 1testfile.pdf page 1\n.\n\n|         |   2537 (ปรับปรุงไทม่) | กาะเปลียนเปลง   |\n|---------|-----------------------|-----------------|\n| 137,152 |                       |                 |\n|         |                50,240 |                 |\n|  84,049 |                       |                 |\n|         |                47,251 |                 |",
+        "summary": "",
+        "token_count": 29,
+        "metadata": {
+          "source_kind": "raw_ocr_page",
+          "page": 1,
+          "markdown": ".\n\n|         |   2537 (ปรับปรุงไทม่) | กาะเปลียนเปลง   |\n|---------|-----------------------|-----------------|\n| 137,152 |                       |                 |\n|         |                50,240 |                 |\n|  84,049 |                       |                 |\n|         |                47,251 |                 |",
+          "region": "full"
+        }
+      },
+      {
+        "id": 2,
+        "chunk_index": 1,
+        "chunk_text": ".",
+        "summary": "",
+        "token_count": 1,
+        "metadata": {
+          "start_char": 0,
+          "end_char": 1,
+          "page": 1,
+          "search_text": "."
+        }
+      },
+      {
+        "id": 3,
+        "chunk_index": 2,
+        "chunk_text": "TABLE_NAME: page_1_table_0_1testfile.pdf_page_1_table_0\nTABLE_TITLE: page1table0\nCOLUMNS: รายการ, 2537 (ปรับปรุงไทม่), กาะเปลียนเปลง\nCSV:\nรายการ,2537 (ปรับปรุงไทม่),กาะเปลียนเปลง\n\"137,152\",,\n\"84,049\",,",
+        "summary": "",
+        "token_count": 14,
+        "metadata": {
+          "source_kind": "table_csv",
+          "table_name": "page_1_table_0_1testfile.pdf_page_1_table_0",
+          "table_title": "page1table0",
+          "headers": [
+            "รายการ",
+            "2537 (ปรับปรุงไทม่)",
+            "กาะเปลียนเปลง"
+          ],
+          "source_provider": "docling_local",
+          "unit": null,
+          "partial_extraction": false,
+          "ambiguous_row_count": 0,
+          "row_start": 0,
+          "row_end": 1,
+          "page": 1,
+          "quality_status": "unverified",
+          "search_text": "TABLE_NAME: page_1_table_0_1testfile.pdf_page_1_table_0\nTABLE_TITLE: page1table0\nCOLUMNS: รายการ, 2537 (ปรับปรุงไทม่), กาะเปลียนเปลง\nCSV:\nรายการ,2537 (ปรับปรุงไทม่),กาะเปลียนเปลง\n\"137,152\",,\n\"84,049\",,"
+        }
+      },
+      {
+        "id": 4,
+        "chunk_index": 3,
+        "chunk_text": "RAW_OCR_TABLE: page_1_table_0\nRAW_PAGE: 1\nRAW_HEADERS: , 2537 (ปรับปรุงไทม่), กาะเปลียนเปลง\nRAW_CSV:\n,2537 (ปรับปรุงไทม่),กาะเปลียนเปลง\n\"137,152\",,\n,\"50,240\",\n\"84,049\",,\n,\"47,251\",",
+        "summary": "",
+        "token_count": 16,
+        "metadata": {
+          "source_kind": "raw_ocr_table",
+          "table_index": 0,
+          "page": 1,
+          "title": "page_1_table_0",
+          "headers": [
+            "",
+            "2537 (ปรับปรุงไทม่)",
+            "กาะเปลียนเปลง"
+          ],
+          "rows": [
+            [
+              "137,152",
+              "",
+              ""
+            ],
+            [
+              "",
+              "50,240",
+              ""
+            ],
+            [
+              "84,049",
+              "",
+              ""
+            ],
+            [
+              "",
+              "47,251",
+              ""
+            ]
+          ],
+          "csv_text": ",2537 (ปรับปรุงไทม่),กาะเปลียนเปลง\n\"137,152\",,\n,\"50,240\",\n\"84,049\",,\n,\"47,251\","
+        }
+      },
+      {
+        "id": 5,
+        "chunk_index": 4,
+        "chunk_text": "TABLE_QUALITY: page_1_table_0_1testfile.pdf_page_1_table_0 status=unresolved",
+        "summary": "",
+        "token_count": 0,
+        "metadata": {
+          "source_kind": "table_quality",
+          "page": 1,
+          "report": {
+            "page": 1,
+            "table_name": "page_1_table_0_1testfile.pdf_page_1_table_0",
+            "status": "unresolved",
+            "chart_like": false,
+            "row_reports": [
+              {
+                "row_index": 0,
+                "status": "unverified",
+                "reasons": [],
+                "problem_columns": [],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 2,
+                    "value": "",
+                    "status": "unverified"
+                  }
+                ]
+              },
+              {
+                "row_index": 1,
+                "status": "unresolved",
+                "reasons": [
+                  "numeric_row_without_label"
+                ],
+                "problem_columns": [
+                  1
+                ],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "50,240",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 2,
+                    "value": "",
+                    "status": "unresolved"
+                  }
+                ]
+              },
+              {
+                "row_index": 2,
+                "status": "unverified",
+                "reasons": [],
+                "problem_columns": [],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 2,
+                    "value": "",
+                    "status": "unverified"
+                  }
+                ]
+              },
+              {
+                "row_index": 3,
+                "status": "unresolved",
+                "reasons": [
+                  "numeric_row_without_label"
+                ],
+                "problem_columns": [
+                  1
+                ],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "47,251",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 2,
+                    "value": "",
+                    "status": "unresolved"
+                  }
+                ]
+              }
+            ],
+            "accepted_row_indices": [
+              0,
+              2
+            ],
+            "unresolved_rows": 2,
+            "passed_rows": 0,
+            "retry_changes": []
+          }
+        }
+      },
+      {
+        "id": 6,
+        "chunk_index": 5,
+        "chunk_text": "RAW_OCR_PAGE: 1testfile.pdf page 2\n## รายได้ดอกเบี้ยสทธิ\n\n|       | 256&   |   2537 |    |         |\n|-------|--------|--------|----|---------|\n|       | ร7     | 13,495 |    |         |\n|       | a.096  |        |    | 2.73    |\n|       | 23.473 |        |    |         |\n|       |        |  4,752 |    | [14.71) |\n| อื่นว |        |        | ฎ  |         |\n|       |        |        |    | (7.3า)  |\n|       |        |   4.58 |    | 0.50)   |\n|       |        |   3.30 |    |         |\n\n## รายได้ที่มิไช่ดอกเบี้ย",
+        "summary": "",
+        "token_count": 74,
+        "metadata": {
+          "source_kind": "raw_ocr_page",
+          "page": 2,
+          "markdown": "## รายได้ดอกเบี้ยสทธิ\n\n|       | 256&   |   2537 |    |         |\n|-------|--------|--------|----|---------|\n|       | ร7     | 13,495 |    |         |\n|       | a.096  |        |    | 2.73    |\n|       | 23.473 |        |    |         |\n|       |        |  4,752 |    | [14.71) |\n| อื่นว |        |        | ฎ  |         |\n|       |        |        |    | (7.3า)  |\n|       |        |   4.58 |    | 0.50)   |\n|       |        |   3.30 |    |         |\n\n## รายได้ที่มิไช่ดอกเบี้ย",
+          "region": "full"
+        }
+      },
+      {
+        "id": 7,
+        "chunk_index": 6,
+        "chunk_text": "รายได้ดอกเบี้ยสทธิ รายได้ที่มิไช่ดอกเบี้ย",
+        "summary": "",
+        "token_count": 2,
+        "metadata": {
+          "start_char": 0,
+          "end_char": 41,
+          "page": 2,
+          "search_text": "รายได้ดอกเบี้ยสทธิ รายได้ที่มิไช่ดอกเบี้ย"
+        }
+      },
+      {
+        "id": 8,
+        "chunk_index": 7,
+        "chunk_text": "TABLE_NAME: page_2_table_0_1testfile.pdf_page_2_table_0_page2table0\nTABLE_TITLE: page2table0\nCOLUMNS: รายการ, 256&, 2537, column_4, column_5\nCSV:\nรายการ,256&,2537,column_4,column_5\nอื่นว,,,ฎ,\n,,,,(7.3า)",
+        "summary": "",
+        "token_count": 14,
+        "metadata": {
+          "source_kind": "table_csv",
+          "table_name": "page_2_table_0_1testfile.pdf_page_2_table_0_page2table0",
+          "table_title": "page2table0",
+          "headers": [
+            "รายการ",
+            "256&",
+            "2537",
+            "column_4",
+            "column_5"
+          ],
+          "source_provider": "docling_local",
+          "unit": null,
+          "partial_extraction": false,
+          "ambiguous_row_count": 0,
+          "row_start": 0,
+          "row_end": 1,
+          "page": 2,
+          "quality_status": "unverified",
+          "search_text": "TABLE_NAME: page_2_table_0_1testfile.pdf_page_2_table_0_page2table0\nTABLE_TITLE: page2table0\nCOLUMNS: รายการ, 256&, 2537, column_4, column_5\nCSV:\nรายการ,256&,2537,column_4,column_5\nอื่นว,,,ฎ,\n,,,,(7.3า)"
+        }
+      },
+      {
+        "id": 9,
+        "chunk_index": 8,
+        "chunk_text": "RAW_OCR_TABLE: page_2_table_0\nRAW_PAGE: 2\nRAW_HEADERS: , 256&, 2537, , \nRAW_CSV:\n,256&,2537,,\n,ร7,\"13,495\",,\n,a.096,,,2.73\n,23.473,,,\n,,\"4,752\",,[14.71)\nอื่นว,,,ฎ,\n,,,,(7.3า)\n,,4.58,,0.50)\n,,3.30,,",
+        "summary": "",
+        "token_count": 19,
+        "metadata": {
+          "source_kind": "raw_ocr_table",
+          "table_index": 0,
+          "page": 2,
+          "title": "page_2_table_0",
+          "headers": [
+            "",
+            "256&",
+            "2537",
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "",
+              "ร7",
+              "13,495",
+              "",
+              ""
+            ],
+            [
+              "",
+              "a.096",
+              "",
+              "",
+              "2.73"
+            ],
+            [
+              "",
+              "23.473",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "4,752",
+              "",
+              "[14.71)"
+            ],
+            [
+              "อื่นว",
+              "",
+              "",
+              "ฎ",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "(7.3า)"
+            ],
+            [
+              "",
+              "",
+              "4.58",
+              "",
+              "0.50)"
+            ],
+            [
+              "",
+              "",
+              "3.30",
+              "",
+              ""
+            ]
+          ],
+          "csv_text": ",256&,2537,,\n,ร7,\"13,495\",,\n,a.096,,,2.73\n,23.473,,,\n,,\"4,752\",,[14.71)\nอื่นว,,,ฎ,\n,,,,(7.3า)\n,,4.58,,0.50)\n,,3.30,,"
+        }
+      },
+      {
+        "id": 10,
+        "chunk_index": 9,
+        "chunk_text": "TABLE_QUALITY: page_2_table_0_1testfile.pdf_page_2_table_0_page2table0 status=unresolved",
+        "summary": "",
+        "token_count": 0,
+        "metadata": {
+          "source_kind": "table_quality",
+          "page": 2,
+          "report": {
+            "page": 2,
+            "table_name": "page_2_table_0_1testfile.pdf_page_2_table_0_page2table0",
+            "status": "unresolved",
+            "chart_like": false,
+            "row_reports": [
+              {
+                "row_index": 0,
+                "status": "unresolved",
+                "reasons": [
+                  "numeric_row_without_label"
+                ],
+                "problem_columns": [
+                  2
+                ],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "ร7",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 2,
+                    "value": "13,495",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 3,
+                    "value": "",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 4,
+                    "value": "",
+                    "status": "unresolved"
+                  }
+                ]
+              },
+              {
+                "row_index": 1,
+                "status": "unresolved",
+                "reasons": [
+                  "numeric_row_without_label"
+                ],
+                "problem_columns": [
+                  4
+                ],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "a.096",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 2,
+                    "value": "",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 3,
+                    "value": "",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 4,
+                    "value": "2.73",
+                    "status": "unresolved"
+                  }
+                ]
+              },
+              {
+                "row_index": 2,
+                "status": "unresolved",
+                "reasons": [
+                  "numeric_row_without_label"
+                ],
+                "problem_columns": [
+                  1
+                ],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "23.473",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 2,
+                    "value": "",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 3,
+                    "value": "",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 4,
+                    "value": "",
+                    "status": "unresolved"
+                  }
+                ]
+              },
+              {
+                "row_index": 3,
+                "status": "unresolved",
+                "reasons": [
+                  "numeric_row_without_label"
+                ],
+                "problem_columns": [
+                  2
+                ],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 2,
+                    "value": "4,752",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 3,
+                    "value": "",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 4,
+                    "value": "[14.71)",
+                    "status": "unresolved"
+                  }
+                ]
+              },
+              {
+                "row_index": 4,
+                "status": "unverified",
+                "reasons": [],
+                "problem_columns": [],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 2,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 3,
+                    "value": "ฎ",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 4,
+                    "value": "",
+                    "status": "unverified"
+                  }
+                ]
+              },
+              {
+                "row_index": 5,
+                "status": "unverified",
+                "reasons": [],
+                "problem_columns": [],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 2,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 3,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 4,
+                    "value": "(7.3า)",
+                    "status": "unverified"
+                  }
+                ]
+              },
+              {
+                "row_index": 6,
+                "status": "unresolved",
+                "reasons": [
+                  "numeric_row_without_label"
+                ],
+                "problem_columns": [
+                  2
+                ],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 2,
+                    "value": "4.58",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 3,
+                    "value": "",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 4,
+                    "value": "0.50)",
+                    "status": "unresolved"
+                  }
+                ]
+              },
+              {
+                "row_index": 7,
+                "status": "unresolved",
+                "reasons": [
+                  "numeric_row_without_label"
+                ],
+                "problem_columns": [
+                  2
+                ],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 2,
+                    "value": "3.30",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 3,
+                    "value": "",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 4,
+                    "value": "",
+                    "status": "unresolved"
+                  }
+                ]
+              }
+            ],
+            "accepted_row_indices": [
+              4,
+              5
+            ],
+            "unresolved_rows": 6,
+            "passed_rows": 0,
+            "retry_changes": []
+          }
+        }
+      },
+      {
+        "id": 11,
+        "chunk_index": 10,
+        "chunk_text": "RAW_OCR_PAGE: 1testfile.pdf page 3\n|           |           |   ค่าเมือ ทีฬาคว่า |   ค้างรับ\" |\n|-----------|-----------|--------------------|------------|\n| ระทับที1  | 2.190,153 |                    |            |\n| ระทับที 2 |           |             55.447 |    215,701 |\n| ระทับที3  |           |             45,023 |            |\n|           | 2495,737  |                    |            |",
+        "summary": "",
+        "token_count": 38,
+        "metadata": {
+          "source_kind": "raw_ocr_page",
+          "page": 3,
+          "markdown": "|           |           |   ค่าเมือ ทีฬาคว่า |   ค้างรับ\" |\n|-----------|-----------|--------------------|------------|\n| ระทับที1  | 2.190,153 |                    |            |\n| ระทับที 2 |           |             55.447 |    215,701 |\n| ระทับที3  |           |             45,023 |            |\n|           | 2495,737  |                    |            |",
+          "region": "full"
+        }
+      },
+      {
+        "id": 12,
+        "chunk_index": 11,
+        "chunk_text": "TABLE_NAME: page_3_table_0_1testfile.pdf_page_3_table_0_page3table0\nTABLE_TITLE: page3table0\nCOLUMNS: รายการ, column_2, ค่าเมือ ทีฬาคว่า, ค้างรับ\"\nCSV:\nรายการ,column_2,ค่าเมือ ทีฬาคว่า,\"ค้างรับ\"\"\"\nระทับที1,\"2.190,153\",,\nระทับที 2,,55.447,\"215,701\"\nระทับที3,,\"45,023\",\n,\"2495,737\",,",
+        "summary": "",
+        "token_count": 18,
+        "metadata": {
+          "source_kind": "table_csv",
+          "table_name": "page_3_table_0_1testfile.pdf_page_3_table_0_page3table0",
+          "table_title": "page3table0",
+          "headers": [
+            "รายการ",
+            "column_2",
+            "ค่าเมือ ทีฬาคว่า",
+            "ค้างรับ\""
+          ],
+          "source_provider": "docling_local",
+          "unit": null,
+          "partial_extraction": false,
+          "ambiguous_row_count": 0,
+          "row_start": 0,
+          "row_end": 3,
+          "page": 3,
+          "quality_status": "unverified",
+          "search_text": "TABLE_NAME: page_3_table_0_1testfile.pdf_page_3_table_0_page3table0\nTABLE_TITLE: page3table0\nCOLUMNS: รายการ, column_2, ค่าเมือ ทีฬาคว่า, ค้างรับ\"\nCSV:\nรายการ,column_2,ค่าเมือ ทีฬาคว่า,\"ค้างรับ\"\"\"\nระทับที1,\"2.190,153\",,\nระทับที 2,,55.447,\"215,701\"\nระทับที3,,\"45,023\",\n,\"2495,737\",,"
+        }
+      },
+      {
+        "id": 13,
+        "chunk_index": 12,
+        "chunk_text": "RAW_OCR_TABLE: page_3_table_0\nRAW_PAGE: 3\nRAW_HEADERS: , , ค่าเมือ ทีฬาคว่า, ค้างรับ\"\nRAW_CSV:\n,,ค่าเมือ ทีฬาคว่า,\"ค้างรับ\"\"\"\nระทับที1,\"2.190,153\",,\nระทับที 2,,55.447,\"215,701\"\nระทับที3,,\"45,023\",\n,\"2495,737\",,",
+        "summary": "",
+        "token_count": 18,
+        "metadata": {
+          "source_kind": "raw_ocr_table",
+          "table_index": 0,
+          "page": 3,
+          "title": "page_3_table_0",
+          "headers": [
+            "",
+            "",
+            "ค่าเมือ ทีฬาคว่า",
+            "ค้างรับ\""
+          ],
+          "rows": [
+            [
+              "ระทับที1",
+              "2.190,153",
+              "",
+              ""
+            ],
+            [
+              "ระทับที 2",
+              "",
+              "55.447",
+              "215,701"
+            ],
+            [
+              "ระทับที3",
+              "",
+              "45,023",
+              ""
+            ],
+            [
+              "",
+              "2495,737",
+              "",
+              ""
+            ]
+          ],
+          "csv_text": ",,ค่าเมือ ทีฬาคว่า,\"ค้างรับ\"\"\"\nระทับที1,\"2.190,153\",,\nระทับที 2,,55.447,\"215,701\"\nระทับที3,,\"45,023\",\n,\"2495,737\",,"
+        }
+      },
+      {
+        "id": 14,
+        "chunk_index": 13,
+        "chunk_text": "TABLE_QUALITY: page_3_table_0_1testfile.pdf_page_3_table_0_page3table0 status=unverified",
+        "summary": "",
+        "token_count": 0,
+        "metadata": {
+          "source_kind": "table_quality",
+          "page": 3,
+          "report": {
+            "page": 3,
+            "table_name": "page_3_table_0_1testfile.pdf_page_3_table_0_page3table0",
+            "status": "unverified",
+            "chart_like": false,
+            "row_reports": [
+              {
+                "row_index": 0,
+                "status": "unverified",
+                "reasons": [],
+                "problem_columns": [],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "2.190,153",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 2,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 3,
+                    "value": "",
+                    "status": "unverified"
+                  }
+                ]
+              },
+              {
+                "row_index": 1,
+                "status": "unverified",
+                "reasons": [],
+                "problem_columns": [],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 2,
+                    "value": "55.447",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 3,
+                    "value": "215,701",
+                    "status": "unverified"
+                  }
+                ]
+              },
+              {
+                "row_index": 2,
+                "status": "unverified",
+                "reasons": [],
+                "problem_columns": [],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 2,
+                    "value": "45,023",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 3,
+                    "value": "",
+                    "status": "unverified"
+                  }
+                ]
+              },
+              {
+                "row_index": 3,
+                "status": "unverified",
+                "reasons": [],
+                "problem_columns": [],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "2495,737",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 2,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 3,
+                    "value": "",
+                    "status": "unverified"
+                  }
+                ]
+              }
+            ],
+            "accepted_row_indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "unresolved_rows": 0,
+            "passed_rows": 0,
+            "retry_changes": []
+          }
+        }
+      },
+      {
+        "id": 15,
+        "chunk_index": 14,
+        "chunk_text": "RAW_OCR_PAGE: 1testfile.pdf page 4\n<!-- image -->\n\n<!-- image -->\n\n## สินทรัพย์",
+        "summary": "",
+        "token_count": 8,
+        "metadata": {
+          "source_kind": "raw_ocr_page",
+          "page": 4,
+          "markdown": "<!-- image -->\n\n<!-- image -->\n\n## สินทรัพย์",
+          "region": "full"
+        }
+      },
+      {
+        "id": 16,
+        "chunk_index": 15,
+        "chunk_text": "4. 2 ฐานะทางการเงน สินทรัพย์",
+        "summary": "",
+        "token_count": 4,
+        "metadata": {
+          "start_char": 0,
+          "end_char": 28,
+          "page": 4,
+          "search_text": "4. 2 ฐานะทางการเงน สินทรัพย์"
+        }
+      },
+      {
+        "id": 17,
+        "chunk_index": 16,
+        "chunk_text": "RAW_OCR_PAGE: 1testfile.pdf page 5\n|   97.72 | 97.35   | 45.40   |\n|---------|---------|---------|\n|    2.28 |         |         |\n\n|    |   18,728 |        |\n|----|----------|--------|\n|    |   28,914 | 25.054 |\n| ม  |          |        |\n\n<!-- image -->",
+        "summary": "",
+        "token_count": 33,
+        "metadata": {
+          "source_kind": "raw_ocr_page",
+          "page": 5,
+          "markdown": "|   97.72 | 97.35   | 45.40   |\n|---------|---------|---------|\n|    2.28 |         |         |\n\n|    |   18,728 |        |\n|----|----------|--------|\n|    |   28,914 | 25.054 |\n| ม  |          |        |\n\n<!-- image -->",
+          "region": "full"
+        }
+      },
+      {
+        "id": 18,
+        "chunk_index": 17,
+        "chunk_text": "4. 3 เงินให้สินเชือและเงินรับฝาก",
+        "summary": "",
+        "token_count": 3,
+        "metadata": {
+          "start_char": 0,
+          "end_char": 32,
+          "page": 5,
+          "search_text": "4. 3 เงินให้สินเชือและเงินรับฝาก"
+        }
+      },
+      {
+        "id": 19,
+        "chunk_index": 18,
+        "chunk_text": "TABLE_NAME: page_5_table_0_1testfile.pdf_page_5_table_0\nTABLE_TITLE: page5table0\nCOLUMNS: 97.72, 97.35, 45.40\nCSV:\n97.72,97.35,45.40\n2.28,,",
+        "summary": "",
+        "token_count": 11,
+        "metadata": {
+          "source_kind": "table_csv",
+          "table_name": "page_5_table_0_1testfile.pdf_page_5_table_0",
+          "table_title": "page5table0",
+          "headers": [
+            "97.72",
+            "97.35",
+            "45.40"
+          ],
+          "source_provider": "docling_local",
+          "unit": null,
+          "partial_extraction": false,
+          "ambiguous_row_count": 0,
+          "row_start": 0,
+          "row_end": 0,
+          "page": 5,
+          "quality_status": "unverified",
+          "search_text": "TABLE_NAME: page_5_table_0_1testfile.pdf_page_5_table_0\nTABLE_TITLE: page5table0\nCOLUMNS: 97.72, 97.35, 45.40\nCSV:\n97.72,97.35,45.40\n2.28,,"
+        }
+      },
+      {
+        "id": 20,
+        "chunk_index": 19,
+        "chunk_text": "RAW_OCR_TABLE: page_5_table_0\nRAW_PAGE: 5\nRAW_HEADERS: 97.72, 97.35, 45.40\nRAW_CSV:\n97.72,97.35,45.40\n2.28,,",
+        "summary": "",
+        "token_count": 11,
+        "metadata": {
+          "source_kind": "raw_ocr_table",
+          "table_index": 0,
+          "page": 5,
+          "title": "page_5_table_0",
+          "headers": [
+            "97.72",
+            "97.35",
+            "45.40"
+          ],
+          "rows": [
+            [
+              "2.28",
+              "",
+              ""
+            ]
+          ],
+          "csv_text": "97.72,97.35,45.40\n2.28,,"
+        }
+      },
+      {
+        "id": 21,
+        "chunk_index": 20,
+        "chunk_text": "RAW_OCR_TABLE: page_5_table_1\nRAW_PAGE: 5\nRAW_HEADERS: , 18,728, \nRAW_CSV:\n,\"18,728\",\n,\"28,914\",25.054\nม,,",
+        "summary": "",
+        "token_count": 11,
+        "metadata": {
+          "source_kind": "raw_ocr_table",
+          "table_index": 1,
+          "page": 5,
+          "title": "page_5_table_1",
+          "headers": [
+            "",
+            "18,728",
+            ""
+          ],
+          "rows": [
+            [
+              "",
+              "28,914",
+              "25.054"
+            ],
+            [
+              "ม",
+              "",
+              ""
+            ]
+          ],
+          "csv_text": ",\"18,728\",\n,\"28,914\",25.054\nม,,"
+        }
+      },
+      {
+        "id": 22,
+        "chunk_index": 21,
+        "chunk_text": "TABLE_QUALITY: page_5_table_0_1testfile.pdf_page_5_table_0 status=unverified",
+        "summary": "",
+        "token_count": 0,
+        "metadata": {
+          "source_kind": "table_quality",
+          "page": 5,
+          "report": {
+            "page": 5,
+            "table_name": "page_5_table_0_1testfile.pdf_page_5_table_0",
+            "status": "unverified",
+            "chart_like": false,
+            "row_reports": [
+              {
+                "row_index": 0,
+                "status": "unverified",
+                "reasons": [],
+                "problem_columns": [],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "",
+                    "status": "unverified"
+                  },
+                  {
+                    "column": 2,
+                    "value": "",
+                    "status": "unverified"
+                  }
+                ]
+              }
+            ],
+            "accepted_row_indices": [
+              0
+            ],
+            "unresolved_rows": 0,
+            "passed_rows": 0,
+            "retry_changes": []
+          }
+        }
+      },
+      {
+        "id": 23,
+        "chunk_index": 22,
+        "chunk_text": "TABLE_QUALITY: page_5_table_1_1testfile.pdf_page_5_table_1_page5table1 status=unresolved",
+        "summary": "",
+        "token_count": 0,
+        "metadata": {
+          "source_kind": "table_quality",
+          "page": 5,
+          "report": {
+            "page": 5,
+            "table_name": "page_5_table_1_1testfile.pdf_page_5_table_1_page5table1",
+            "status": "unresolved",
+            "chart_like": false,
+            "row_reports": [
+              {
+                "row_index": 0,
+                "status": "unresolved",
+                "reasons": [
+                  "numeric_row_without_label"
+                ],
+                "problem_columns": [
+                  1,
+                  2
+                ],
+                "cells": [
+                  {
+                    "column": 1,
+                    "value": "28,914",
+                    "status": "unresolved"
+                  },
+                  {
+                    "column": 2,
+                    "value": "25.054",
+                    "status": "unresolved"
+                  }
+                ]
+              }
+            ],
+            "accepted_row_indices": [],
+            "unresolved_rows": 1,
+            "passed_rows": 0,
+            "retry_changes": []
+          }
+        }
+      }
+    ],
+    "structured_data": [
+      {
+        "id": 1,
+        "table_name": "page_1_table_0_1testfile.pdf_page_1_table_0",
+        "headers": [
+          "รายการ",
+          "2537 (ปรับปรุงไทม่)",
+          "กาะเปลียนเปลง"
+        ],
+        "row_data": {
+          "รายการ": "137,152",
+          "2537 (ปรับปรุงไทม่)": "",
+          "กาะเปลียนเปลง": ""
+        },
+        "row_index": 0,
+        "source_page": 1
+      },
+      {
+        "id": 2,
+        "table_name": "page_1_table_0_1testfile.pdf_page_1_table_0",
+        "headers": [
+          "รายการ",
+          "2537 (ปรับปรุงไทม่)",
+          "กาะเปลียนเปลง"
+        ],
+        "row_data": {
+          "รายการ": "84,049",
+          "2537 (ปรับปรุงไทม่)": "",
+          "กาะเปลียนเปลง": ""
+        },
+        "row_index": 2,
+        "source_page": 1
+      },
+      {
+        "id": 3,
+        "table_name": "page_2_table_0_1testfile.pdf_page_2_table_0_page2table0",
+        "headers": [
+          "รายการ",
+          "256&",
+          "2537",
+          "column_4",
+          "column_5"
+        ],
+        "row_data": {
+          "รายการ": "อื่นว",
+          "256&": "",
+          "2537": "",
+          "column_4": "ฎ",
+          "column_5": ""
+        },
+        "row_index": 4,
+        "source_page": 2
+      },
+      {
+        "id": 4,
+        "table_name": "page_2_table_0_1testfile.pdf_page_2_table_0_page2table0",
+        "headers": [
+          "รายการ",
+          "256&",
+          "2537",
+          "column_4",
+          "column_5"
+        ],
+        "row_data": {
+          "รายการ": "",
+          "256&": "",
+          "2537": "",
+          "column_4": "",
+          "column_5": "(7.3า)"
+        },
+        "row_index": 5,
+        "source_page": 2
+      },
+      {
+        "id": 5,
+        "table_name": "page_3_table_0_1testfile.pdf_page_3_table_0_page3table0",
+        "headers": [
+          "รายการ",
+          "column_2",
+          "ค่าเมือ ทีฬาคว่า",
+          "ค้างรับ\""
+        ],
+        "row_data": {
+          "รายการ": "ระทับที1",
+          "column_2": "2.190,153",
+          "ค่าเมือ ทีฬาคว่า": "",
+          "ค้างรับ\"": ""
+        },
+        "row_index": 0,
+        "source_page": 3
+      },
+      {
+        "id": 6,
+        "table_name": "page_3_table_0_1testfile.pdf_page_3_table_0_page3table0",
+        "headers": [
+          "รายการ",
+          "column_2",
+          "ค่าเมือ ทีฬาคว่า",
+          "ค้างรับ\""
+        ],
+        "row_data": {
+          "รายการ": "ระทับที 2",
+          "column_2": "",
+          "ค่าเมือ ทีฬาคว่า": "55.447",
+          "ค้างรับ\"": "215,701"
+        },
+        "row_index": 1,
+        "source_page": 3
+      },
+      {
+        "id": 7,
+        "table_name": "page_3_table_0_1testfile.pdf_page_3_table_0_page3table0",
+        "headers": [
+          "รายการ",
+          "column_2",
+          "ค่าเมือ ทีฬาคว่า",
+          "ค้างรับ\""
+        ],
+        "row_data": {
+          "รายการ": "ระทับที3",
+          "column_2": "",
+          "ค่าเมือ ทีฬาคว่า": "45,023",
+          "ค้างรับ\"": ""
+        },
+        "row_index": 2,
+        "source_page": 3
+      },
+      {
+        "id": 8,
+        "table_name": "page_3_table_0_1testfile.pdf_page_3_table_0_page3table0",
+        "headers": [
+          "รายการ",
+          "column_2",
+          "ค่าเมือ ทีฬาคว่า",
+          "ค้างรับ\""
+        ],
+        "row_data": {
+          "รายการ": "",
+          "column_2": "2495,737",
+          "ค่าเมือ ทีฬาคว่า": "",
+          "ค้างรับ\"": ""
+        },
+        "row_index": 3,
+        "source_page": 3
+      },
+      {
+        "id": 9,
+        "table_name": "page_5_table_0_1testfile.pdf_page_5_table_0",
+        "headers": [
+          "97.72",
+          "97.35",
+          "45.40"
+        ],
+        "row_data": {
+          "97.72": "2.28",
+          "97.35": "",
+          "45.40": ""
+        },
+        "row_index": 0,
+        "source_page": 5
+      }
+    ],
+    "structured_tables": [
+      {
+        "title": "page1table0",
+        "table_name": "page1table0",
+        "headers": [
+          "รายการ",
+          "2537 (ปรับปรุงไทม่)",
+          "กาะเปลียนเปลง"
+        ],
+        "rows": [
+          [
+            "137,152",
+            "",
+            ""
+          ],
+          [
+            "84,049",
+            "",
+            ""
+          ]
+        ],
+        "csv_text": ""
+      },
+      {
+        "title": "page2table0",
+        "table_name": "page2table0_page2table0",
+        "page": null,
+        "headers": [
+          "รายการ",
+          "256&",
+          "2537",
+          "column_4",
+          "column_5"
+        ],
+        "rows": [
+          [
+            "อื่นว",
+            "",
+            "",
+            "ฎ",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "(7.3า)"
+          ]
+        ],
+        "csv_text": "รายการ,256&,2537,column_4,column_5\nอื่นว,,,ฎ,\n,,,,(7.3า)"
+      },
+      {
+        "title": "page3table0",
+        "table_name": "page3table0_page3table0",
+        "page": null,
+        "headers": [
+          "รายการ",
+          "column_2",
+          "ค่าเมือ ทีฬาคว่า",
+          "ค้างรับ\""
+        ],
+        "rows": [
+          [
+            "ระทับที1",
+            "2.190,153",
+            "",
+            ""
+          ],
+          [
+            "ระทับที 2",
+            "",
+            "55.447",
+            "215,701"
+          ],
+          [
+            "ระทับที3",
+            "",
+            "45,023",
+            ""
+          ],
+          [
+            "",
+            "2495,737",
+            "",
+            ""
+          ]
+        ],
+        "csv_text": "รายการ,column_2,ค่าเมือ ทีฬาคว่า,\"ค้างรับ\"\"\"\nระทับที1,\"2.190,153\",,\nระทับที 2,,55.447,\"215,701\"\nระทับที3,,\"45,023\",\n,\"2495,737\",,"
+      },
+      {
+        "title": "page5table0",
+        "table_name": "page5table0",
+        "headers": [
+          "97.72",
+          "97.35",
+          "45.40"
+        ],
+        "rows": [
+          [
+            "2.28",
+            "",
+            ""
+          ]
+        ],
+        "csv_text": ""
+      }
+    ],
+    "raw_ocr_pages": [
+      {
+        "page": 1,
+        "markdown": ".\n\n|         |   2537 (ปรับปรุงไทม่) | กาะเปลียนเปลง   |\n|---------|-----------------------|-----------------|\n| 137,152 |                       |                 |\n|         |                50,240 |                 |\n|  84,049 |                       |                 |\n|         |                47,251 |                 |",
+        "chunk_index": 0
+      },
+      {
+        "page": 2,
+        "markdown": "## รายได้ดอกเบี้ยสทธิ\n\n|       | 256&   |   2537 |    |         |\n|-------|--------|--------|----|---------|\n|       | ร7     | 13,495 |    |         |\n|       | a.096  |        |    | 2.73    |\n|       | 23.473 |        |    |         |\n|       |        |  4,752 |    | [14.71) |\n| อื่นว |        |        | ฎ  |         |\n|       |        |        |    | (7.3า)  |\n|       |        |   4.58 |    | 0.50)   |\n|       |        |   3.30 |    |         |\n\n## รายได้ที่มิไช่ดอกเบี้ย",
+        "chunk_index": 5
+      },
+      {
+        "page": 3,
+        "markdown": "|           |           |   ค่าเมือ ทีฬาคว่า |   ค้างรับ\" |\n|-----------|-----------|--------------------|------------|\n| ระทับที1  | 2.190,153 |                    |            |\n| ระทับที 2 |           |             55.447 |    215,701 |\n| ระทับที3  |           |             45,023 |            |\n|           | 2495,737  |                    |            |",
+        "chunk_index": 10
+      },
+      {
+        "page": 4,
+        "markdown": "<!-- image -->\n\n<!-- image -->\n\n## สินทรัพย์",
+        "chunk_index": 14
+      },
+      {
+        "page": 5,
+        "markdown": "|   97.72 | 97.35   | 45.40   |\n|---------|---------|---------|\n|    2.28 |         |         |\n\n|    |   18,728 |        |\n|----|----------|--------|\n|    |   28,914 | 25.054 |\n| ม  |          |        |\n\n<!-- image -->",
+        "chunk_index": 16
+      }
+    ],
+    "raw_ocr_retry_pages": [],
+    "raw_ocr_tables": [
+      {
+        "table_index": 0,
+        "page": 1,
+        "title": "page_1_table_0",
+        "headers": [
+          "",
+          "2537 (ปรับปรุงไทม่)",
+          "กาะเปลียนเปลง"
+        ],
+        "rows": [
+          [
+            "137,152",
+            "",
+            ""
+          ],
+          [
+            "",
+            "50,240",
+            ""
+          ],
+          [
+            "84,049",
+            "",
+            ""
+          ],
+          [
+            "",
+            "47,251",
+            ""
+          ]
+        ],
+        "csv_text": ",2537 (ปรับปรุงไทม่),กาะเปลียนเปลง\n\"137,152\",,\n,\"50,240\",\n\"84,049\",,\n,\"47,251\",",
+        "chunk_index": 3
+      },
+      {
+        "table_index": 0,
+        "page": 2,
+        "title": "page_2_table_0",
+        "headers": [
+          "",
+          "256&",
+          "2537",
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "",
+            "ร7",
+            "13,495",
+            "",
+            ""
+          ],
+          [
+            "",
+            "a.096",
+            "",
+            "",
+            "2.73"
+          ],
+          [
+            "",
+            "23.473",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "4,752",
+            "",
+            "[14.71)"
+          ],
+          [
+            "อื่นว",
+            "",
+            "",
+            "ฎ",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "(7.3า)"
+          ],
+          [
+            "",
+            "",
+            "4.58",
+            "",
+            "0.50)"
+          ],
+          [
+            "",
+            "",
+            "3.30",
+            "",
+            ""
+          ]
+        ],
+        "csv_text": ",256&,2537,,\n,ร7,\"13,495\",,\n,a.096,,,2.73\n,23.473,,,\n,,\"4,752\",,[14.71)\nอื่นว,,,ฎ,\n,,,,(7.3า)\n,,4.58,,0.50)\n,,3.30,,",
+        "chunk_index": 8
+      },
+      {
+        "table_index": 0,
+        "page": 3,
+        "title": "page_3_table_0",
+        "headers": [
+          "",
+          "",
+          "ค่าเมือ ทีฬาคว่า",
+          "ค้างรับ\""
+        ],
+        "rows": [
+          [
+            "ระทับที1",
+            "2.190,153",
+            "",
+            ""
+          ],
+          [
+            "ระทับที 2",
+            "",
+            "55.447",
+            "215,701"
+          ],
+          [
+            "ระทับที3",
+            "",
+            "45,023",
+            ""
+          ],
+          [
+            "",
+            "2495,737",
+            "",
+            ""
+          ]
+        ],
+        "csv_text": ",,ค่าเมือ ทีฬาคว่า,\"ค้างรับ\"\"\"\nระทับที1,\"2.190,153\",,\nระทับที 2,,55.447,\"215,701\"\nระทับที3,,\"45,023\",\n,\"2495,737\",,",
+        "chunk_index": 12
+      },
+      {
+        "table_index": 0,
+        "page": 5,
+        "title": "page_5_table_0",
+        "headers": [
+          "97.72",
+          "97.35",
+          "45.40"
+        ],
+        "rows": [
+          [
+            "2.28",
+            "",
+            ""
+          ]
+        ],
+        "csv_text": "97.72,97.35,45.40\n2.28,,",
+        "chunk_index": 19
+      },
+      {
+        "table_index": 1,
+        "page": 5,
+        "title": "page_5_table_1",
+        "headers": [
+          "",
+          "18,728",
+          ""
+        ],
+        "rows": [
+          [
+            "",
+            "28,914",
+            "25.054"
+          ],
+          [
+            "ม",
+            "",
+            ""
+          ]
+        ],
+        "csv_text": ",\"18,728\",\n,\"28,914\",25.054\nม,,",
+        "chunk_index": 20
+      }
+    ],
+    "quality_reports": [
+      {
+        "page": 1,
+        "table_name": "page_1_table_0_1testfile.pdf_page_1_table_0",
+        "status": "unresolved",
+        "chart_like": false,
+        "row_reports": [
+          {
+            "row_index": 0,
+            "status": "unverified",
+            "reasons": [],
+            "problem_columns": [],
+            "cells": [
+              {
+                "column": 1,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 2,
+                "value": "",
+                "status": "unverified"
+              }
+            ]
+          },
+          {
+            "row_index": 1,
+            "status": "unresolved",
+            "reasons": [
+              "numeric_row_without_label"
+            ],
+            "problem_columns": [
+              1
+            ],
+            "cells": [
+              {
+                "column": 1,
+                "value": "50,240",
+                "status": "unresolved"
+              },
+              {
+                "column": 2,
+                "value": "",
+                "status": "unresolved"
+              }
+            ]
+          },
+          {
+            "row_index": 2,
+            "status": "unverified",
+            "reasons": [],
+            "problem_columns": [],
+            "cells": [
+              {
+                "column": 1,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 2,
+                "value": "",
+                "status": "unverified"
+              }
+            ]
+          },
+          {
+            "row_index": 3,
+            "status": "unresolved",
+            "reasons": [
+              "numeric_row_without_label"
+            ],
+            "problem_columns": [
+              1
+            ],
+            "cells": [
+              {
+                "column": 1,
+                "value": "47,251",
+                "status": "unresolved"
+              },
+              {
+                "column": 2,
+                "value": "",
+                "status": "unresolved"
+              }
+            ]
+          }
+        ],
+        "accepted_row_indices": [
+          0,
+          2
+        ],
+        "unresolved_rows": 2,
+        "passed_rows": 0,
+        "retry_changes": []
+      },
+      {
+        "page": 2,
+        "table_name": "page_2_table_0_1testfile.pdf_page_2_table_0_page2table0",
+        "status": "unresolved",
+        "chart_like": false,
+        "row_reports": [
+          {
+            "row_index": 0,
+            "status": "unresolved",
+            "reasons": [
+              "numeric_row_without_label"
+            ],
+            "problem_columns": [
+              2
+            ],
+            "cells": [
+              {
+                "column": 1,
+                "value": "ร7",
+                "status": "unresolved"
+              },
+              {
+                "column": 2,
+                "value": "13,495",
+                "status": "unresolved"
+              },
+              {
+                "column": 3,
+                "value": "",
+                "status": "unresolved"
+              },
+              {
+                "column": 4,
+                "value": "",
+                "status": "unresolved"
+              }
+            ]
+          },
+          {
+            "row_index": 1,
+            "status": "unresolved",
+            "reasons": [
+              "numeric_row_without_label"
+            ],
+            "problem_columns": [
+              4
+            ],
+            "cells": [
+              {
+                "column": 1,
+                "value": "a.096",
+                "status": "unresolved"
+              },
+              {
+                "column": 2,
+                "value": "",
+                "status": "unresolved"
+              },
+              {
+                "column": 3,
+                "value": "",
+                "status": "unresolved"
+              },
+              {
+                "column": 4,
+                "value": "2.73",
+                "status": "unresolved"
+              }
+            ]
+          },
+          {
+            "row_index": 2,
+            "status": "unresolved",
+            "reasons": [
+              "numeric_row_without_label"
+            ],
+            "problem_columns": [
+              1
+            ],
+            "cells": [
+              {
+                "column": 1,
+                "value": "23.473",
+                "status": "unresolved"
+              },
+              {
+                "column": 2,
+                "value": "",
+                "status": "unresolved"
+              },
+              {
+                "column": 3,
+                "value": "",
+                "status": "unresolved"
+              },
+              {
+                "column": 4,
+                "value": "",
+                "status": "unresolved"
+              }
+            ]
+          },
+          {
+            "row_index": 3,
+            "status": "unresolved",
+            "reasons": [
+              "numeric_row_without_label"
+            ],
+            "problem_columns": [
+              2
+            ],
+            "cells": [
+              {
+                "column": 1,
+                "value": "",
+                "status": "unresolved"
+              },
+              {
+                "column": 2,
+                "value": "4,752",
+                "status": "unresolved"
+              },
+              {
+                "column": 3,
+                "value": "",
+                "status": "unresolved"
+              },
+              {
+                "column": 4,
+                "value": "[14.71)",
+                "status": "unresolved"
+              }
+            ]
+          },
+          {
+            "row_index": 4,
+            "status": "unverified",
+            "reasons": [],
+            "problem_columns": [],
+            "cells": [
+              {
+                "column": 1,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 2,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 3,
+                "value": "ฎ",
+                "status": "unverified"
+              },
+              {
+                "column": 4,
+                "value": "",
+                "status": "unverified"
+              }
+            ]
+          },
+          {
+            "row_index": 5,
+            "status": "unverified",
+            "reasons": [],
+            "problem_columns": [],
+            "cells": [
+              {
+                "column": 1,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 2,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 3,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 4,
+                "value": "(7.3า)",
+                "status": "unverified"
+              }
+            ]
+          },
+          {
+            "row_index": 6,
+            "status": "unresolved",
+            "reasons": [
+              "numeric_row_without_label"
+            ],
+            "problem_columns": [
+              2
+            ],
+            "cells": [
+              {
+                "column": 1,
+                "value": "",
+                "status": "unresolved"
+              },
+              {
+                "column": 2,
+                "value": "4.58",
+                "status": "unresolved"
+              },
+              {
+                "column": 3,
+                "value": "",
+                "status": "unresolved"
+              },
+              {
+                "column": 4,
+                "value": "0.50)",
+                "status": "unresolved"
+              }
+            ]
+          },
+          {
+            "row_index": 7,
+            "status": "unresolved",
+            "reasons": [
+              "numeric_row_without_label"
+            ],
+            "problem_columns": [
+              2
+            ],
+            "cells": [
+              {
+                "column": 1,
+                "value": "",
+                "status": "unresolved"
+              },
+              {
+                "column": 2,
+                "value": "3.30",
+                "status": "unresolved"
+              },
+              {
+                "column": 3,
+                "value": "",
+                "status": "unresolved"
+              },
+              {
+                "column": 4,
+                "value": "",
+                "status": "unresolved"
+              }
+            ]
+          }
+        ],
+        "accepted_row_indices": [
+          4,
+          5
+        ],
+        "unresolved_rows": 6,
+        "passed_rows": 0,
+        "retry_changes": []
+      },
+      {
+        "page": 3,
+        "table_name": "page_3_table_0_1testfile.pdf_page_3_table_0_page3table0",
+        "status": "unverified",
+        "chart_like": false,
+        "row_reports": [
+          {
+            "row_index": 0,
+            "status": "unverified",
+            "reasons": [],
+            "problem_columns": [],
+            "cells": [
+              {
+                "column": 1,
+                "value": "2.190,153",
+                "status": "unverified"
+              },
+              {
+                "column": 2,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 3,
+                "value": "",
+                "status": "unverified"
+              }
+            ]
+          },
+          {
+            "row_index": 1,
+            "status": "unverified",
+            "reasons": [],
+            "problem_columns": [],
+            "cells": [
+              {
+                "column": 1,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 2,
+                "value": "55.447",
+                "status": "unverified"
+              },
+              {
+                "column": 3,
+                "value": "215,701",
+                "status": "unverified"
+              }
+            ]
+          },
+          {
+            "row_index": 2,
+            "status": "unverified",
+            "reasons": [],
+            "problem_columns": [],
+            "cells": [
+              {
+                "column": 1,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 2,
+                "value": "45,023",
+                "status": "unverified"
+              },
+              {
+                "column": 3,
+                "value": "",
+                "status": "unverified"
+              }
+            ]
+          },
+          {
+            "row_index": 3,
+            "status": "unverified",
+            "reasons": [],
+            "problem_columns": [],
+            "cells": [
+              {
+                "column": 1,
+                "value": "2495,737",
+                "status": "unverified"
+              },
+              {
+                "column": 2,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 3,
+                "value": "",
+                "status": "unverified"
+              }
+            ]
+          }
+        ],
+        "accepted_row_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "unresolved_rows": 0,
+        "passed_rows": 0,
+        "retry_changes": []
+      },
+      {
+        "page": 5,
+        "table_name": "page_5_table_0_1testfile.pdf_page_5_table_0",
+        "status": "unverified",
+        "chart_like": false,
+        "row_reports": [
+          {
+            "row_index": 0,
+            "status": "unverified",
+            "reasons": [],
+            "problem_columns": [],
+            "cells": [
+              {
+                "column": 1,
+                "value": "",
+                "status": "unverified"
+              },
+              {
+                "column": 2,
+                "value": "",
+                "status": "unverified"
+              }
+            ]
+          }
+        ],
+        "accepted_row_indices": [
+          0
+        ],
+        "unresolved_rows": 0,
+        "passed_rows": 0,
+        "retry_changes": []
+      },
+      {
+        "page": 5,
+        "table_name": "page_5_table_1_1testfile.pdf_page_5_table_1_page5table1",
+        "status": "unresolved",
+        "chart_like": false,
+        "row_reports": [
+          {
+            "row_index": 0,
+            "status": "unresolved",
+            "reasons": [
+              "numeric_row_without_label"
+            ],
+            "problem_columns": [
+              1,
+              2
+            ],
+            "cells": [
+              {
+                "column": 1,
+                "value": "28,914",
+                "status": "unresolved"
+              },
+              {
+                "column": 2,
+                "value": "25.054",
+                "status": "unresolved"
+              }
+            ]
+          }
+        ],
+        "accepted_row_indices": [],
+        "unresolved_rows": 1,
+        "passed_rows": 0,
+        "retry_changes": []
+      }
+    ],
+    "quality_summary": {
+      "unresolved_rows": 9,
+      "unverified_rows": 9,
+      "passed_check_rows": 0,
+      "meaning": "passed_checks means internally consistent, not visually verified against the PDF"
+    }
+  },
+  "processing_seconds": 567.3276853999996,
+  "answer": {
+    "answer": "ไม่พอ",
+    "method": "vector",
+    "sources": [
+      {
+        "type": "vector",
+        "filename": "1testfile.pdf",
+        "document_id": 1,
+        "page": 2,
+        "table_name": null,
+        "quality_status": null,
+        "excerpt": "รายได้ดอกเบี้ยสทธิ รายได้ที่มิไช่ดอกเบี้ย",
+        "evidence_status": "ocr_extracted_unverified",
+        "chunk_index": 6,
+        "similarity": 0.10244766257481483,
+        "source_kind": "semantic"
+      },
+      {
+        "type": "vector",
+        "filename": "1testfile.pdf",
+        "document_id": 1,
+        "page": 1,
+        "table_name": "page_1_table_0_1testfile.pdf_page_1_table_0",
+        "quality_status": "unverified",
+        "excerpt": "TABLE_NAME: page_1_table_0_1testfile.pdf_page_1_table_0\nTABLE_TITLE: page1table0\nCOLUMNS: รายการ, 2537 (ปรับปรุงไทม่), กาะเปลียนเปลง\nCSV:\nรายการ,2537 (ปรับปรุงไทม่),กาะเปลียนเปลง\n\"137,152\",,\n\"84,049\",,",
+        "evidence_status": "ocr_extracted_unverified",
+        "chunk_index": 2,
+        "similarity": 0.4899650302559633,
+        "source_kind": "table_csv"
+      },
+      {
+        "type": "vector",
+        "filename": "1testfile.pdf",
+        "document_id": 1,
+        "page": 3,
+        "table_name": "page_3_table_0_1testfile.pdf_page_3_table_0_page3table0",
+        "quality_status": "unverified",
+        "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_page_3_table_0_page3table0\nTABLE_TITLE: page3table0\nCOLUMNS: รายการ, column_2, ค่าเมือ ทีฬาคว่า, ค้างรับ\"\nCSV:\nรายการ,column_2,ค่าเมือ ทีฬาคว่า,\"ค้างรับ\"\"\"\nระทับที1,\"2.190,153\",,\nระทับที 2,,55.447,\"215,701\"\nระทับที3,,\"45,023\",\n,\"2495,737\",,",
+        "evidence_status": "ocr_extracted_unverified",
+        "chunk_index": 11,
+        "similarity": 0.48499359087591665,
+        "source_kind": "table_csv"
+      }
+    ],
+    "sql_info": null,
+    "reasoning_trace": [
+      {
+        "action": "sql_query",
+        "action_input": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยสุทธิปี 2568 เท่ากับกี่ล้านบาท?",
+        "observation": "ไม่พบเซลล์ตรงปีและหน่วยที่ถาม",
+        "success": false
+      },
+      {
+        "action": "vector_search",
+        "action_input": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยสุทธิปี 2568 เท่ากับกี่ล้านบาท?",
+        "observation": "[1testfile.pdf, PDF page 2, chunk 6, source=semantic, sim=0.10; OCR evidence is not visually verified]\nรายได้ดอกเบี้ยสทธิ รายได้ที่มิไช่ดอกเบี้ย\n\n[1testfile.pdf, PDF page 1, chunk 2, source=table_csv, sim=0.49; OCR evidence is not visually verified]\nTABLE_NAME: page_1_table_0_1testfile.pdf_page_1_table_0\nTABLE_TITLE: page1table0\nCOLUMNS: รายการ, 2537 (ปรับปรุงไทม่), กาะเปลียนเปลง\nCSV:\nรายการ,2537 (ปรับปรุงไทม่),กาะเปลียนเปลง\n\"137,152\",,\n\"84,049\",,\n\n[1testfile.pdf, PDF page 3, chunk 11, source=ta",
+        "success": true
+      }
+    ]
+  },
+  "answer_matches_reference": false,
+  "located_sources": [
+    {
+      "type": "vector",
+      "filename": "1testfile.pdf",
+      "document_id": 1,
+      "page": 2,
+      "table_name": null,
+      "quality_status": null,
+      "excerpt": "รายได้ดอกเบี้ยสทธิ รายได้ที่มิไช่ดอกเบี้ย",
+      "evidence_status": "ocr_extracted_unverified",
+      "chunk_index": 6,
+      "similarity": 0.10244766257481483,
+      "source_kind": "semantic"
+    },
+    {
+      "type": "vector",
+      "filename": "1testfile.pdf",
+      "document_id": 1,
+      "page": 1,
+      "table_name": "page_1_table_0_1testfile.pdf_page_1_table_0",
+      "quality_status": "unverified",
+      "excerpt": "TABLE_NAME: page_1_table_0_1testfile.pdf_page_1_table_0\nTABLE_TITLE: page1table0\nCOLUMNS: รายการ, 2537 (ปรับปรุงไทม่), กาะเปลียนเปลง\nCSV:\nรายการ,2537 (ปรับปรุงไทม่),กาะเปลียนเปลง\n\"137,152\",,\n\"84,049\",,",
+      "evidence_status": "ocr_extracted_unverified",
+      "chunk_index": 2,
+      "similarity": 0.4899650302559633,
+      "source_kind": "table_csv"
+    },
+    {
+      "type": "vector",
+      "filename": "1testfile.pdf",
+      "document_id": 1,
+      "page": 3,
+      "table_name": "page_3_table_0_1testfile.pdf_page_3_table_0_page3table0",
+      "quality_status": "unverified",
+      "excerpt": "TABLE_NAME: page_3_table_0_1testfile.pdf_page_3_table_0_page3table0\nTABLE_TITLE: page3table0\nCOLUMNS: รายการ, column_2, ค่าเมือ ทีฬาคว่า, ค้างรับ\"\nCSV:\nรายการ,column_2,ค่าเมือ ทีฬาคว่า,\"ค้างรับ\"\"\"\nระทับที1,\"2.190,153\",,\nระทับที 2,,55.447,\"215,701\"\nระทับที3,,\"45,023\",\n,\"2495,737\",,",
+      "evidence_status": "ocr_extracted_unverified",
+      "chunk_index": 11,
+      "similarity": 0.48499359087591665,
+      "source_kind": "table_csv"
+    }
+  ],
+  "page_image_status": 200,
+  "workflow_passed": false,
+  "total_seconds": 584.1955275,
+  "peak_app_workers_rss_mib": 4832.05859375,
+  "test_database_removed": true
+}

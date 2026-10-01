@@ -18,19 +18,25 @@ _NUMBER = re.compile(
     r"(?P<close>\))?(?![\dA-Za-z])"
 )
 _YEAR = re.compile(r"(?<!\d)(?:25\d{2}|20\d{2})(?!\d)")
-_PAGE_REFERENCE = re.compile(r"(?:หน้า|page|p\.)\s*\d+(?:\s*[-–]\s*\d+)?", re.IGNORECASE)
+_PAGE_REFERENCE = re.compile(
+    r"(?:หน้า(?:\s*(?:PDF|อ้างอิง))?|page|p\.)\s*:?\s*\d+(?:\s*(?:[-–]|และ|,)\s*\d+)*", re.IGNORECASE
+)
 _DATE = re.compile(r"(?<!\d)\d{1,2}[/-]\d{1,2}[/-](?:25\d{2}|20\d{2})(?!\d)")
 _THAI_DAY_MONTH = re.compile(
     r"(?<!\d)\d{1,2}\s+(?:มกราคม|กุมภาพันธ์|มีนาคม|เมษายน|พฤษภาคม|มิถุนายน|"
     r"กรกฎาคม|สิงหาคม|กันยายน|ตุลาคม|พฤศจิกายน|ธันวาคม|[ก-ฮ]{1,3}\.[ก-ฮ]\.)(?![ก-๙])"
 )
 _AGE_RANGE = re.compile(r"(?<!\d)\d{1,3}\s*[-–]\s*\d{1,3}\s*ปี")
-_GENERATION_LABEL = re.compile(r"(?<![A-Za-zก-๙])(?:Gen(?:eration)?|เจน)\s+\d+(?!\d)", re.I)
+_GENERATION_LABEL = re.compile(
+    r"(?:(?<![A-Za-zก-๙])(?:Gen(?:eration)?|เจน|Unit)\s*\d+|(?:หน่วยที่|ระดับที่|ตารางที่)\s*\d+)(?!\d)", re.I
+)
 _UNIT_AFTER = re.compile(
-    r"^\s*(พันล้านดอลลาร์สหรัฐ|ล้านดอลลาร์สหรัฐ|ดอลลาร์สหรัฐ|"
+    r"^\s*(พันล้านดอลลาร์\s*สรอ\.?|ล้านดอลลาร์\s*สรอ\.?|ดอลลาร์\s*สรอ\.?|"
+    r"พันล้านดอลลาร์สหรัฐ|ล้านดอลลาร์สหรัฐ|ดอลลาร์สหรัฐ|"
     r"พันล้านบาท|ล้านบาท|พันบาท|บาทต่อเดือน|บาท|เปอร์เซ็นต์|ร้อยละ|%|"
     r"ล้านหมายเลข|หมายเลข|ล้านรายการ|รายการ|ล้านบัญชี|บัญชี|ล้านคน|คน|"
-    r"ล้านตัน|ตัน|แห่ง|จังหวัด|รีม|เท่า|วัน|คะแนน|ปี|"
+    r"ล้านตัน|ตัน|แห่ง|จังหวัด|รีม|เท่า|วัน|คะแนน|คัน|สาขา|ประเภท|เมกะวัตต์|MW(?![A-Za-z])|"
+    r"กิโลวัตต์[- ]?ชั่วโมงต่อปี|กิโลวัตต์[- ]?ชั่วโมง|kWh/year(?![A-Za-z])|kWh(?![A-Za-z])|ปี|"
     r"USD\s+billion|USD\s+million|USD|US\$\s+billion|US\$\s+million|US\$|"
     r"billion\s+(?:US\s+)?dollars?|million\s+(?:US\s+)?dollars?|dollars?|"
     r"billion\s+people|million\s+people|people|billion|million)",
@@ -41,6 +47,13 @@ _NEGATIVE_WORD_BEFORE = re.compile(
     r"(?:ลดลง|หดตัว|ติดลบ|ขาดทุน|ใช้ไป)\s*(?:(?:ร้อยละ|เปอร์เซ็นต์|ประมาณ)\s*)?$"
 )
 _UNIT_ALIASES = {
+    "พันล้านดอลลาร์สรอ.": "usd_billion", "พันล้านดอลลาร์สรอ": "usd_billion",
+    "ล้านดอลลาร์สรอ.": "usd_million", "ล้านดอลลาร์สรอ": "usd_million",
+    "ดอลลาร์สรอ.": "usd", "ดอลลาร์สรอ": "usd",
+    "mw": "เมกะวัตต์", "kwh": "กิโลวัตต์ชั่วโมง",
+    "kwh/year": "กิโลวัตต์ชั่วโมงต่อปี",
+    "กิโลวัตต์-ชั่วโมง": "กิโลวัตต์ชั่วโมง",
+    "กิโลวัตต์-ชั่วโมงต่อปี": "กิโลวัตต์ชั่วโมงต่อปี",
     "เปอร์เซ็นต์": "%", "ร้อยละ": "%", "ปีที่": "ปี",
     "พันล้านดอลลาร์สหรัฐ": "usd_billion", "ล้านดอลลาร์สหรัฐ": "usd_million",
     "ดอลลาร์สหรัฐ": "usd", "คน": "people", "ล้านคน": "million_people",
@@ -134,6 +147,12 @@ def mentions_in(text: str) -> list[Mention]:
         after = _UNIT_AFTER.match(text[match.end():match.end() + 24])
         before = _UNIT_BEFORE.search(text[max(0, match.start() - 16):match.start()])
         unit = normalize_unit(after.group(1) if after else (before.group(1) if before else None))
+        if unit is None:
+            # Evidence cards may print value and unit on separate labeled lines.
+            card = re.match(r"\s*\r?\n\s*(?:\*\*)?หน่วย(?:\*\*)?\s*:\s*(.*)", text[match.end():])
+            card_unit = _UNIT_AFTER.match(card.group(1)) if card else None
+            if card_unit:
+                unit = normalize_unit(card_unit.group(1))
         if unit is None and re.match(r"\s*(?:/|จาก(?:เต็ม)?)\s*\d+(?:\.\d+)?\s*คะแนน",
                                          text[match.end():match.end() + 40]):
             unit = "คะแนน"
@@ -198,15 +217,54 @@ def _same_quantity(expected: Decimal, expected_unit: str | None, actual: Mention
                                                         rounding_decimals)
 
 
+def _verified_equation_operands(answer: str, expected: Decimal, unit: str | None,
+                                allowed: tuple[Any, ...]) -> str:
+    """Ignore operand tokens only for a correct equation using independently labeled operands."""
+    if not allowed:
+        return answer
+    number = r"[-−]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?"
+    pattern = re.compile(rf"(?<![\dA-Za-z])(?P<a>{number})\s*(?P<op>[+−-])\s*(?P<b>{number})\s*=\s*(?P<c>{number})(?![\dA-Za-z])")
+    permitted = {decimal_value(value) for value in allowed}
+    characters = list(answer)
+    for expression in pattern.finditer(answer):
+        a, b, c = [decimal_value(expression.group(key).replace("−", "-")) for key in ("a", "b", "c")]
+        actual_unit = _UNIT_AFTER.match(answer[expression.end():expression.end() + 40])
+        if a not in permitted or b not in permitted or c != expected or actual_unit is None:
+            continue
+        if normalize_unit(actual_unit.group(1)) != unit:
+            continue
+        computed = a + b if expression.group("op") == "+" else a - b
+        if computed != c:
+            continue
+        for key in ("a", "b"):
+            start, end = expression.span(key)
+            characters[start:end] = " " * (end - start)
+    return "".join(characters)
+
+
 def numeric_match(target: Any, answer: str, *, expected_unit: str | None = None,
                   expected_year: int | None = None, tolerance: Any = 0,
                   allowed_other_values: tuple[Any, ...] = (),
+                  allowed_other_quantities: tuple[tuple[Any, str], ...] = (),
                   rounding_decimals: int | None = None) -> bool:
     """Match a signed value, its unit, and its year context.
 
     An answer with multiple values under the same year is ambiguous and fails.
     A bare value fails when the reference specifies a unit.
     """
+    # Calendar-year answers (e.g. a net-zero target) are values, not report-year context.
+    if expected_unit == "ปี" and re.fullmatch(r"(?:25|20)\d{2}", str(target)):
+        stated = re.findall(
+            r"(?:ปี\s*(?:พ\.?\s*ศ\.?|ค\.?\s*ศ\.?)?|พ\.?\s*ศ\.?|ค\.?\s*ศ\.?)"
+            r"\s*((?:25|20)\d{2})(?!\d)", str(answer)
+        )
+        values = [year for _, _, year in years_in(str(answer))] if stated else []
+        target_calendar = _year_be(int(target))
+        if expected_year is not None:
+            context_year = _year_be(int(expected_year))
+            values = [year for year in values if year != context_year or year == target_calendar]
+        return bool(values) and all(year == target_calendar for year in values)
+
     expected = decimal_value(target)
     unit = normalize_unit(expected_unit)
     tol = decimal_value(tolerance)
@@ -219,6 +277,7 @@ def numeric_match(target: Any, answer: str, *, expected_unit: str | None = None,
         if tol:
             raise ValueError("Specify either tolerance or rounding_decimals")
     answer = str(answer or "")
+    answer = _verified_equation_operands(answer, expected, unit, allowed_other_values)
     years = years_in(answer)
     target_year = _year_be(int(expected_year)) if expected_year is not None else None
     if target_year is not None and years and target_year not in {y for _, _, y in years}:
@@ -249,6 +308,11 @@ def numeric_match(target: Any, answer: str, *, expected_unit: str | None = None,
             continue
         if any(_same_quantity(decimal_value(other), unit, mention, tol)
                for other in allowed_other_values):
+            continue
+        # Additional currencies are accepted only when independently labeled;
+        # this never infers an exchange rate or certifies arbitrary extra facts.
+        if any(_same_quantity(decimal_value(value), normalize_unit(other_unit), mention, Decimal(0))
+               for value, other_unit in allowed_other_quantities):
             continue
         if unit is None or mention.unit is None or mention.unit == unit or (
             unit in _MONEY_SCALE and mention.unit in _MONEY_SCALE

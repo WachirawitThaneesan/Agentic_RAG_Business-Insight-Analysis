@@ -78,6 +78,8 @@ def assess_table(table: dict[str, Any]) -> dict[str, Any]:
     rows = [[str(cell if cell is not None else "") for cell in row] for row in table.get("rows", [])]
     years, change_col, percent_col = _roles(headers)
     chart_like = _chart_like(headers, rows)
+    malformed_year_columns = [index for index, header in enumerate(headers)
+                              if re.search(r"(?<!\d)(?:25|20)\d{3,}(?!\d)", header)]
     retry_disagreements = table.get("retry_disagreements") or []
     row_reports: list[dict[str, Any]] = []
     accepted_rows: list[list[str]] = []
@@ -97,6 +99,9 @@ def assess_table(table: dict[str, Any]) -> dict[str, Any]:
             reasons.append("ocr_passes_disagree")
             problem_columns.update(disputed_columns)
 
+        if malformed_year_columns:
+            reasons.append("malformed_year_header")
+            problem_columns.update(numeric_columns)
         if chart_like:
             reasons.append("figure_legend_misread_as_table")
             problem_columns.update(numeric_columns)

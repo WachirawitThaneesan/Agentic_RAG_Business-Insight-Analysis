@@ -1,0 +1,304 @@
+[
+  {
+    "id": "L02",
+    "question": "จากไฟล์ 1testfile.pdf กำไรสุทธิส่วนที่เป็นของธนาคารปี 2568 เท่ากับกี่ล้านบาท?",
+    "reference_answer": "49565 ล้านบาท",
+    "answer": "จากหลักฐานที่ให้มา กำไรสุทธิส่วนที่เป็นของธนาคารสำหรับปี 2568 เท่ากับ **49,585 ล้านบาท**\n\n*   **แถว:** กำไรสุทธิส่วนที่เป็นของธนาคาร\n*   **ปี:** 2568\n*   **หน่วย:** ล้านบาท\n*   **หน้า PDF:** 1testfile.pdf, PDF page 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      }
+    ],
+    "tool_errors": [
+      "Error: Binder Error: No function matches the given name and argument types '~~(INTEGER, STRING_LITERAL)'. You might need to add explicit type casts.\n\tCandidate functions:\n\t~~(VARCHAR, VARCHAR) -> BOOLEAN\n\n\nLINE 10:   document_id LIKE '%1testfile.pdf%' AND row_label LIKE '%กำไรสุทธิ%' AND...\n                       ^"
+    ]
+  },
+  {
+    "id": "L04",
+    "question": "จากไฟล์ 1testfile.pdf กำไรต่อหุ้นขั้นพื้นฐานปี 2568 เท่ากับกี่บาท?",
+    "reference_answer": "20.63 บาท",
+    "answer": "ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในคำตอบ",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      }
+    ],
+    "tool_errors": []
+  },
+  {
+    "id": "L07",
+    "question": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยจากเงินให้สินเชื่อปี 2568 เท่ากับกี่ล้านบาท?",
+    "reference_answer": "120777 ล้านบาท",
+    "answer": "หลักฐานไม่พอ",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      }
+    ],
+    "tool_errors": [
+      "Error: Binder Error: No function matches the given name and argument types '~~(INTEGER, STRING_LITERAL)'. You might need to add explicit type casts.\n\tCandidate functions:\n\t~~(VARCHAR, VARCHAR) -> BOOLEAN\n\n\nLINE 10:   document_id LIKE '%1testfile.pdf%' AND row_label LIKE '%รายได้ดอกเบี้ย...\n                       ^"
+    ]
+  },
+  {
+    "id": "L11",
+    "question": "จากไฟล์ 1testfile.pdf สินทรัพย์รวม ณ สิ้นปี 2568 เท่ากับกี่ล้านบาท?",
+    "reference_answer": "4558618 ล้านบาท",
+    "answer": "ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในคำตอบ",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      }
+    ],
+    "tool_errors": [
+      "Error: Binder Error: No function matches the given name and argument types '~~(INTEGER, STRING_LITERAL)'. You might need to add explicit type casts.\n\tCandidate functions:\n\t~~(VARCHAR, VARCHAR) -> BOOLEAN\n\n\nLINE 10:   document_id LIKE '%1testfile.pdf%' AND row_label LIKE '%สินทรัพย์รวม%'...\n                       ^"
+    ]
+  },
+  {
+    "id": "L12",
+    "question": "จากไฟล์ 1testfile.pdf เงินรับฝากรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+    "reference_answer": "2850387 ล้านบาท",
+    "answer": "หลักฐานไม่พอ",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      }
+    ],
+    "tool_errors": []
+  },
+  {
+    "id": "L13",
+    "question": "จากไฟล์ 1testfile.pdf เงินให้สินเชื่อและดอกเบี้ยค้างรับระยะเวลาเกิน 5 ปี ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+    "reference_answer": "866956 ล้านบาท",
+    "answer": "หลักฐานไม่พอ",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      }
+    ],
+    "tool_errors": [
+      "Error: Binder Error: No function matches the given name and argument types '~~(INTEGER, STRING_LITERAL)'. You might need to add explicit type casts.\n\tCandidate functions:\n\t~~(VARCHAR, VARCHAR) -> BOOLEAN\n\n\nLINE 9:   document_id LIKE '1testfile.pdf%' AND row_label LIKE '%เงินให้สินเชื่อและดอก...\n                      ^"
+    ]
+  }
+]

@@ -40,7 +40,7 @@ def _load_predictions(path: Path) -> dict[str, dict]:
 
 def _reference(path: Path) -> tuple[list[dict], dict[str, dict]]:
     payload = json.loads(path.read_text(encoding="utf-8"))
-    if payload.get("schema_version") != 1:
+    if payload.get("schema_version") not in (1, 2):
         raise ValueError("Unsupported reference schema")
     documents = {d["code"]: d for d in payload["documents"]}
     items = payload["items"]
@@ -184,9 +184,19 @@ def _answer_fact(item: dict, answer: str) -> tuple[str, str]:
         year = components.get("year_be")
         if year is None and components.get("date"):
             year = int(str(components["date"])[:4])
+        supporting_values = tuple(components.get("supporting_values") or ())
+        if "total" in components:
+            supporting_values += (components["total"],)
+        comparison_years = components.get("comparison_years")
+        if comparison_years:
+            stated_years = {y for _, _, y in years_in(answer)}
+            if stated_years - set(comparison_years):
+                return "incorrect", "wrong_comparison_year"
+            year = None
         correct = numeric_match(components["value"], answer,
                                 expected_unit=components.get("unit"), expected_year=year,
-                                allowed_other_values=(components["total"],) if "total" in components else (),
+                                allowed_other_values=supporting_values,
+                                allowed_other_quantities=tuple((q['value'], q['unit']) for q in components.get('supporting_quantities', [])),
                                 rounding_decimals=components.get("rounding_decimals"))
         if correct:
             return "correct", "numeric_fact"

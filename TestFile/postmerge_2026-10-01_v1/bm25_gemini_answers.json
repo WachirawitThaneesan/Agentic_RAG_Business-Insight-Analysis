@@ -1,0 +1,422 @@
+[
+  {
+    "id": "U01",
+    "answer": "512,041,888.00 พันบาท",
+    "citations": [
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 12
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 39
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 13
+      }
+    ]
+  },
+  {
+    "id": "U02",
+    "answer": "ไม่เพียงพอ",
+    "citations": [
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 40
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 41
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 201
+      }
+    ]
+  },
+  {
+    "id": "U03",
+    "answer": "Insufficient evidence.",
+    "citations": [
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 40
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 201
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 49
+      }
+    ]
+  },
+  {
+    "id": "U04",
+    "answer": "ข้อมูลไม่เพียงพอ",
+    "citations": [
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 40
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 201
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 41
+      }
+    ]
+  },
+  {
+    "id": "U05",
+    "answer": "285,050,053.21 กิโลวัตต์-ชั่วโมงต่อปี",
+    "citations": [
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 31
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 80
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 36
+      }
+    ]
+  },
+  {
+    "id": "U06",
+    "answer": "ไม่พบข้อมูล",
+    "citations": [
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 40
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 41
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 201
+      }
+    ]
+  },
+  {
+    "id": "U07",
+    "answer": "ไม่พบข้อมูล",
+    "citations": [
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 201
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 39
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 40
+      }
+    ]
+  },
+  {
+    "id": "U08",
+    "answer": "ร้อยละ 55.2",
+    "citations": [
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 120
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 119
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 39
+      }
+    ]
+  },
+  {
+    "id": "U09",
+    "answer": "31,168 ล้านบาท",
+    "citations": [
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 119
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 120
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 120
+      }
+    ]
+  },
+  {
+    "id": "U10",
+    "answer": "17,123 ล้านบาท",
+    "citations": [
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 127
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 126
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 41
+      }
+    ]
+  },
+  {
+    "id": "U11",
+    "answer": "4 ประเภท",
+    "citations": [
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 30
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 31
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 28
+      }
+    ]
+  },
+  {
+    "id": "U12",
+    "answer": "970 เมกะวัตต์",
+    "citations": [
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 40
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 45
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 40
+      }
+    ]
+  },
+  {
+    "id": "U13",
+    "answer": "ร้อยละ 12.50",
+    "citations": [
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 147
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 152
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 45
+      }
+    ]
+  },
+  {
+    "id": "U14",
+    "answer": "25.33%",
+    "citations": [
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 50
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 32
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 44
+      }
+    ]
+  },
+  {
+    "id": "U15",
+    "answer": "ร้อยละ 90",
+    "citations": [
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 86
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 40
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 41
+      }
+    ]
+  },
+  {
+    "id": "U16",
+    "answer": "ปี 2593",
+    "citations": [
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 65
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 75
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 95
+      }
+    ]
+  },
+  {
+    "id": "U17",
+    "answer": "241,062,655 พันบาท",
+    "citations": [
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 243
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 242
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 249
+      }
+    ]
+  },
+  {
+    "id": "U18",
+    "answer": "ไม่พบข้อมูลหนี้สินรวมในงบการเงินรวมของเอ็กโก ณ สิ้นปี 2567 ในเอกสารที่ให้มา",
+    "citations": [
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 249
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 248
+      },
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 122
+      }
+    ]
+  },
+  {
+    "id": "U19",
+    "answer": "2,868,162 พันบาท",
+    "citations": [
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 13
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 248
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 247
+      }
+    ]
+  },
+  {
+    "id": "U20",
+    "answer": "3,121,062 พันบาท",
+    "citations": [
+      {
+        "document": "CPAXT",
+        "filename": "cpaxtra_2567_th.pdf",
+        "source_pdf_page": 140
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 250
+      },
+      {
+        "document": "EGCO",
+        "filename": "egco_2567_th.pdf",
+        "source_pdf_page": 251
+      }
+    ]
+  }
+]

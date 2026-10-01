@@ -1,0 +1,886 @@
+{
+  "n_labeled_table_facts": 14,
+  "n_passed": 14,
+  "rule": "matching measure + original PDF page + column/year + explicit warehouse cell unit; no numeric-only pass",
+  "reference_review": "AI visual review, not second human certification",
+  "details": [
+    {
+      "id": "L01",
+      "expected": {
+        "id": "L01",
+        "document": "LEGACY",
+        "source_pdf_page": 1,
+        "question_th": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยสุทธิปี 2568 เท่ากับกี่ล้านบาท?",
+        "reference_answer": "137152 ล้านบาท",
+        "answer_components": {
+          "value": "137152",
+          "unit": "ล้านบาท",
+          "year_be": 2568
+        },
+        "expected_row": "รายได้ดอกเบี้ยสุทธิ",
+        "expected_column_context": "ปี 2568",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "รายได้ดอกเบี้ยสุทธิ",
+          "column": "ปี 2568",
+          "raw_value": "137,152",
+          "source_pdf_page": 1,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 4,
+          "row_label": "รายได้ดอกเบี้ยสุทธิ",
+          "column": "ปี 2568",
+          "raw_value": "137,152",
+          "source_pdf_page": 2,
+          "source_provider": "gemini",
+          "quality_status": "passed_checks",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": false,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": false
+        },
+        {
+          "document_id": 1,
+          "row_label": "รายได้ดอกเบี้ยสุทธิ",
+          "column": "ปี 2568",
+          "raw_value": "137,152",
+          "source_pdf_page": 1,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "รายได้ดอกเบี้ยสุทธิ",
+          "column": "ปี 2568",
+          "raw_value": "137,152",
+          "source_pdf_page": 2,
+          "source_provider": "gemini",
+          "quality_status": "passed_checks",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": false,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "L02",
+      "expected": {
+        "id": "L02",
+        "document": "LEGACY",
+        "source_pdf_page": 1,
+        "question_th": "จากไฟล์ 1testfile.pdf กำไรสุทธิส่วนที่เป็นของธนาคารปี 2568 เท่ากับกี่ล้านบาท?",
+        "reference_answer": "49565 ล้านบาท",
+        "answer_components": {
+          "value": "49565",
+          "unit": "ล้านบาท",
+          "year_be": 2568
+        },
+        "expected_row": "กำไรสุทธิ",
+        "expected_column_context": "ปี 2568",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "กำไรสุทธิ (ส่วนที่เป็นของธนาคาร)",
+          "column": "ปี 2568",
+          "raw_value": "49,565",
+          "source_pdf_page": 1,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "กำไรสุทธิ (ส่วนที่เป็นของธนาคาร)",
+          "column": "ปี 2568",
+          "raw_value": "49,565",
+          "source_pdf_page": 1,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "L03",
+      "expected": {
+        "id": "L03",
+        "document": "LEGACY",
+        "source_pdf_page": 1,
+        "question_th": "จากไฟล์ 1testfile.pdf การเปลี่ยนแปลงรายได้ดอกเบี้ยสุทธิปี 2568 เทียบปี 2567 เป็นกี่ล้านบาท ให้แสดงเครื่องหมายลบเมื่อเป็นการลดลง?",
+        "reference_answer": "-10852 ล้านบาท",
+        "answer_components": {
+          "value": "-10852",
+          "unit": "ล้านบาท",
+          "year_be": 2568
+        },
+        "expected_row": "รายได้ดอกเบี้ยสุทธิ",
+        "expected_column_context": "เพิ่ม (ลด)",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "รายได้ดอกเบี้ยสุทธิ",
+          "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+          "raw_value": "(10,852)",
+          "source_pdf_page": 1,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 4,
+          "row_label": "รายได้ดอกเบี้ยสุทธิ",
+          "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+          "raw_value": "(10,852)",
+          "source_pdf_page": 2,
+          "source_provider": "gemini",
+          "quality_status": "passed_checks",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": false,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": false
+        },
+        {
+          "document_id": 1,
+          "row_label": "รายได้ดอกเบี้ยสุทธิ",
+          "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+          "raw_value": "(10,852)",
+          "source_pdf_page": 1,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "รายได้ดอกเบี้ยสุทธิ",
+          "column": "การเปลี่ยนแปลง เพิ่ม (ลด)",
+          "raw_value": "(10,852)",
+          "source_pdf_page": 2,
+          "source_provider": "gemini",
+          "quality_status": "passed_checks",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": false,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "L04",
+      "expected": {
+        "id": "L04",
+        "document": "LEGACY",
+        "source_pdf_page": 1,
+        "question_th": "จากไฟล์ 1testfile.pdf กำไรต่อหุ้นขั้นพื้นฐานปี 2568 เท่ากับกี่บาท?",
+        "reference_answer": "20.63 บาท",
+        "answer_components": {
+          "value": "20.63",
+          "unit": "บาท",
+          "year_be": 2568
+        },
+        "expected_row": "กำไรต่อหุ้นขั้นพื้นฐาน",
+        "expected_column_context": "ปี 2568",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+          "column": "ปี 2568",
+          "raw_value": "20.63",
+          "source_pdf_page": 1,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "บาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 4,
+          "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+          "column": "ปี 2567 (ปรับปรุงใหม่)",
+          "raw_value": "20.63",
+          "source_pdf_page": 1,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "บาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": false,
+          "unit_ok": true,
+          "passed": false
+        },
+        {
+          "document_id": 1,
+          "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+          "column": "ปี 2568",
+          "raw_value": "20.63",
+          "source_pdf_page": 1,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "บาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "กำไรต่อหุ้นขั้นพื้นฐาน (บาท) (1)",
+          "column": "ปี 2567 (ปรับปรุงใหม่)",
+          "raw_value": "20.63",
+          "source_pdf_page": 1,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "บาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": false,
+          "unit_ok": true,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "L05",
+      "expected": {
+        "id": "L05",
+        "document": "LEGACY",
+        "source_pdf_page": 2,
+        "question_th": "จากไฟล์ 1testfile.pdf ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ NIM ปี 2568 เท่ากับกี่เปอร์เซ็นต์?",
+        "reference_answer": "3.23 %",
+        "answer_components": {
+          "value": "3.23",
+          "unit": "%",
+          "year_be": 2568
+        },
+        "expected_row": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ",
+        "expected_column_context": "ปี 2568",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+          "column": "ปี 2568",
+          "raw_value": "3.23",
+          "source_pdf_page": 2,
+          "source_provider": "gemini",
+          "quality_status": "passed_checks",
+          "warehouse_units": [
+            "%"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "ผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ)",
+          "column": "ปี 2568",
+          "raw_value": "3.23",
+          "source_pdf_page": 2,
+          "source_provider": "gemini",
+          "quality_status": "passed_checks",
+          "warehouse_units": [
+            "%"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "L06",
+      "expected": {
+        "id": "L06",
+        "document": "LEGACY",
+        "source_pdf_page": 2,
+        "question_th": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยรวมปี 2567 ที่ปรับปรุงใหม่แล้ว เท่ากับกี่ล้านบาท?",
+        "reference_answer": "188068 ล้านบาท",
+        "answer_components": {
+          "value": "188068",
+          "unit": "ล้านบาท",
+          "year_be": 2567
+        },
+        "expected_row": "รายได้ดอกเบี้ย",
+        "expected_column_context": "ปี 2567",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "รายได้ดอกเบี้ย",
+          "column": "ปี 2567 (ปรับปรุงใหม่)",
+          "raw_value": "188,068",
+          "source_pdf_page": 2,
+          "source_provider": "gemini",
+          "quality_status": "passed_checks",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "รายได้ดอกเบี้ย",
+          "column": "ปี 2567 (ปรับปรุงใหม่)",
+          "raw_value": "188,068",
+          "source_pdf_page": 2,
+          "source_provider": "gemini",
+          "quality_status": "passed_checks",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "L07",
+      "expected": {
+        "id": "L07",
+        "document": "LEGACY",
+        "source_pdf_page": 2,
+        "question_th": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยจากเงินให้สินเชื่อปี 2568 เท่ากับกี่ล้านบาท?",
+        "reference_answer": "120777 ล้านบาท",
+        "answer_components": {
+          "value": "120777",
+          "unit": "ล้านบาท",
+          "year_be": 2568
+        },
+        "expected_row": "เงินให้สินเชื่อ",
+        "expected_column_context": "ปี 2568",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "เงินให้สินเชื่อ",
+          "column": "ปี 2568",
+          "raw_value": "120,777",
+          "source_pdf_page": 2,
+          "source_provider": "gemini",
+          "quality_status": "passed_checks",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "เงินให้สินเชื่อ",
+          "column": "ปี 2568",
+          "raw_value": "120,777",
+          "source_pdf_page": 2,
+          "source_provider": "gemini",
+          "quality_status": "passed_checks",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "L08",
+      "expected": {
+        "id": "L08",
+        "document": "LEGACY",
+        "source_pdf_page": 3,
+        "question_th": "จากไฟล์ 1testfile.pdf เงินให้สินเชื่อและดอกเบี้ยค้างรับรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+        "reference_answer": "2495767 ล้านบาท",
+        "answer_components": {
+          "value": "2495767",
+          "unit": "ล้านบาท",
+          "year_be": 2568
+        },
+        "expected_row": "รวม",
+        "expected_column_context": "2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "รวม",
+          "column": "31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1)",
+          "raw_value": "2,495,767",
+          "source_pdf_page": 3,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 4,
+          "row_label": "รวม",
+          "column": "เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568",
+          "raw_value": "2,495,767",
+          "source_pdf_page": 5,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": false,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": false
+        },
+        {
+          "document_id": 1,
+          "row_label": "รวม",
+          "column": "31 ธ.ค. 2568 เงินให้สินเชื่อและดอกเบี้ยค้างรับ(1)",
+          "raw_value": "2,495,767",
+          "source_pdf_page": 3,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "รวม",
+          "column": "เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568",
+          "raw_value": "2,495,767",
+          "source_pdf_page": 5,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": false,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "L09",
+      "expected": {
+        "id": "L09",
+        "document": "LEGACY",
+        "source_pdf_page": 3,
+        "question_th": "จากไฟล์ 1testfile.pdf ค่าเผื่อผลขาดทุนด้านเครดิตรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+        "reference_answer": "142997 ล้านบาท",
+        "answer_components": {
+          "value": "142997",
+          "unit": "ล้านบาท",
+          "year_be": 2568
+        },
+        "expected_row": "รวม",
+        "expected_column_context": "2568 ค่าเผื่อผลขาดทุนด้านเครดิต",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "รวม",
+          "column": "31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น",
+          "raw_value": "142,997",
+          "source_pdf_page": 3,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "รวม",
+          "column": "31 ธ.ค. 2568 ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น",
+          "raw_value": "142,997",
+          "source_pdf_page": 3,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "L10",
+      "expected": {
+        "id": "L10",
+        "document": "LEGACY",
+        "source_pdf_page": 3,
+        "question_th": "จากไฟล์ 1testfile.pdf ค่าเผื่อผลขาดทุนด้านเครดิตของเงินให้สินเชื่อระดับที่ 3 ณ 31 ธันวาคม 2567 เท่ากับกี่ล้านบาท?",
+        "reference_answer": "44132 ล้านบาท",
+        "answer_components": {
+          "value": "44132",
+          "unit": "ล้านบาท",
+          "year_be": 2567
+        },
+        "expected_row": "ระดับที่ 3",
+        "expected_column_context": "2567 ค่าเผื่อผลขาดทุนด้านเครดิต",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "ระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต",
+          "column": "31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น",
+          "raw_value": "44,132",
+          "source_pdf_page": 3,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "ระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต",
+          "column": "31 ธ.ค. 2567 (ปรับปรุงใหม่) ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น",
+          "raw_value": "44,132",
+          "source_pdf_page": 3,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "L12",
+      "expected": {
+        "id": "L12",
+        "document": "LEGACY",
+        "source_pdf_page": 5,
+        "question_th": "จากไฟล์ 1testfile.pdf เงินรับฝากรวม ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+        "reference_answer": "2850387 ล้านบาท",
+        "answer_components": {
+          "value": "2850387",
+          "unit": "ล้านบาท",
+          "year_be": 2568
+        },
+        "expected_row": "รวม",
+        "expected_column_context": "เงินรับฝาก 2568",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "รวม",
+          "column": "เงินรับฝาก 31 ธ.ค. 2568",
+          "raw_value": "2,850,387",
+          "source_pdf_page": 5,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "รวม",
+          "column": "เงินรับฝาก 31 ธ.ค. 2568",
+          "raw_value": "2,850,387",
+          "source_pdf_page": 5,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "L13",
+      "expected": {
+        "id": "L13",
+        "document": "LEGACY",
+        "source_pdf_page": 5,
+        "question_th": "จากไฟล์ 1testfile.pdf เงินให้สินเชื่อและดอกเบี้ยค้างรับระยะเวลาเกิน 5 ปี ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+        "reference_answer": "866956 ล้านบาท",
+        "answer_components": {
+          "value": "866956",
+          "unit": "ล้านบาท",
+          "year_be": 2568
+        },
+        "expected_row": "> 5 ปี",
+        "expected_column_context": "เงินให้สินเชื่อและดอกเบี้ยค้างรับ 2568",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "> 5 ปี",
+          "column": "เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568",
+          "raw_value": "866,956",
+          "source_pdf_page": 5,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "> 5 ปี",
+          "column": "เงินให้สินเชื่อและดอกเบี้ยค้างรับ 31 ธ.ค. 2568",
+          "raw_value": "866,956",
+          "source_pdf_page": 5,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "L14",
+      "expected": {
+        "id": "L14",
+        "document": "LEGACY",
+        "source_pdf_page": 5,
+        "question_th": "จากไฟล์ 1testfile.pdf หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันรวม ณ 31 ธันวาคม 2566 เท่ากับกี่ล้านบาท?",
+        "reference_answer": "823843 ล้านบาท",
+        "answer_components": {
+          "value": "823843",
+          "unit": "ล้านบาท",
+          "year_be": 2566
+        },
+        "expected_row": "รวม",
+        "expected_column_context": "2566",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "รวม",
+          "column": "31 ธ.ค. 2566",
+          "raw_value": "823,843",
+          "source_pdf_page": 5,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "รวม",
+          "column": "31 ธ.ค. 2566",
+          "raw_value": "823,843",
+          "source_pdf_page": 5,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "L15",
+      "expected": {
+        "id": "L15",
+        "document": "LEGACY",
+        "source_pdf_page": 5,
+        "question_th": "จากไฟล์ 1testfile.pdf การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน ณ 31 ธันวาคม 2568 เท่ากับกี่ล้านบาท?",
+        "reference_answer": "15437 ล้านบาท",
+        "answer_components": {
+          "value": "15437",
+          "unit": "ล้านบาท",
+          "year_be": 2568
+        },
+        "expected_row": "การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน",
+        "expected_column_context": "2568",
+        "source_kind": "table"
+      },
+      "passed": true,
+      "candidates": [
+        {
+          "document_id": 4,
+          "row_label": "การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน",
+          "column": "31 ธ.ค. 2568",
+          "raw_value": "15,437",
+          "source_pdf_page": 5,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        },
+        {
+          "document_id": 1,
+          "row_label": "การรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน",
+          "column": "31 ธ.ค. 2568",
+          "raw_value": "15,437",
+          "source_pdf_page": 5,
+          "source_provider": "gemini",
+          "quality_status": "unverified",
+          "warehouse_units": [
+            "ล้านบาท"
+          ],
+          "page_ok": true,
+          "column_context_ok": true,
+          "unit_ok": true,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "structured_rows": 88,
+  "missing_provenance": {
+    "source_page": 0,
+    "unit": 0,
+    "source_provider": 0,
+    "quality_status": 0
+  },
+  "chunks_missing_page": 0
+}

@@ -132,6 +132,7 @@ def _is_non_answer(answer: str) -> bool:
     return any(marker in text for marker in (
         "ไม่พบข้อมูล", "ไม่มีข้อมูล", "ไม่ปรากฏข้อมูล", "ไม่สามารถหาข้อมูล",
         "ไม่พบหลักฐาน", "หลักฐานไม่พอ", "หลักฐานไม่เพียงพอ",
+        "หลักฐานยังไม่เพียงพอ", "หน่วยในคำตอบไม่ตรง",
     ))
 
 
@@ -338,30 +339,50 @@ def _numbers(text: str) -> set[float]:
     return values
 
 
+def _measure_key(text: str) -> str:
+    """Normalize typography and unit footnotes, never merge distinct measures."""
+    text = re.sub(r"\(\s*(?:บาท|ล้านบาท|%|\d+)\s*\)", "", text or "")
+    return re.sub(r"[\s()]+", "", text).casefold()
+
+
 def _grounded_answer(answer: str, question: str, sources: List[Dict[str, Any]]) -> str:
     """Refuse an unsupported number, including an opposite sign or changed scale."""
+    if not (answer or "").strip():
+        return "โมเดลไม่ส่งคำตอบกลับมาในครั้งนี้ กรุณาลองใหม่ โดยหลักฐานที่ค้นพบยังแสดงด้านล่าง"
     if _focus_violation(question, answer):
         return "หลักฐานยังไม่เพียงพอสำหรับเลือกค่าที่ตรงกับคำถามเพียงค่าเดียว"
     located = [source for source in sources
                if source.get("page") is not None or source.get("url")]
     if not located:
         return "ไม่พบหลักฐานพร้อมหน้าเอกสารที่เพียงพอสำหรับคำตอบนี้"
+    metric_question = re.sub(r"^\s*(?:จาก)?(?:ไฟล์|เอกสาร|รายงาน)\s+\S+\.pdf\s*", "", question, flags=re.IGNORECASE)
+    question_key = _measure_key(metric_question)
     exact_cells = [source for source in located
                    if source.get("type") == "sql" and source.get("row_label")
-                   and str(source["row_label"]) in question]
+                   and len(_measure_key(str(source["row_label"]))) >= 5
+                   and question_key.startswith(_measure_key(str(source["row_label"])))
+                   and re.match(r"^(?:ปี|ณ|มีค่า|เท่ากับ|เท่าไร|กี่|คือ|จำนวน|เป็น)",
+                                question_key[len(_measure_key(str(source["row_label"]))):])]
     if exact_cells:
         # A value from a different, similarly named SQL row cannot override a
         # cell whose complete measure label appears in the user's question.
-        located = exact_cells
+        longest = max(len(_measure_key(str(s["row_label"]))) for s in exact_cells)
+        located = [s for s in exact_cells if len(_measure_key(str(s["row_label"]))) == longest]
+        asked_years = set(re.findall(r"(?<!\d)(?:25|20)\d{2}(?!\d)", question))
+        if len(asked_years) == 1:
+            located = [s for s in located if asked_years.intersection(
+                re.findall(r"(?<!\d)(?:25|20)\d{2}(?!\d)", str(s.get("column") or "")))]
+            if not located:
+                return "ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในปีที่ถาม"
     allowed = {number for number in _numbers(question)
                if number.is_integer() and (2000 <= number <= 2099 or 2500 <= number <= 2599)}
     for source in located:
         allowed.update(_numbers(str(source.get("value") or "")))
         allowed.update(_numbers(str(source.get("excerpt") or "")))
         allowed.update(_numbers(str(source.get("column") or "")))
-    cited_pages = {float(page) for page in re.findall(
-        r"(?:PDF\s*)?(?:page|หน้า(?:เอกสาร)?(?:ที่)?)\s*(\d+)", answer,
-        flags=re.IGNORECASE)}
+    cited_pages = {float(page) for group in re.findall(
+        r"(?:PDF\s*)?(?:pages?|หน้า(?:เอกสาร)?(?:ที่)?)\s*(\d+(?:\s*[,、]\s+\d+)*)", answer,
+        flags=re.IGNORECASE) for page in re.findall(r"\d+", group)}
     allowed.update(cited_pages & {float(source["page"]) for source in located
                                   if source.get("page") is not None})
     if re.search(r"เปลี่ยน|ต่าง|เพิ่ม|ลด|เทียบ", question):
@@ -382,7 +403,10 @@ def _grounded_answer(answer: str, question: str, sources: List[Dict[str, Any]]) 
         return "ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในคำตอบ"
     stated_units = set(_ANSWER_UNIT.findall(answer))
     if stated_units:
-        cell_units = {str(source["unit"]).strip() for source in located if source.get("unit")}
+        answer_values = _numbers(answer) - allowed.intersection(_numbers(question)) - cited_pages
+        matching_cells = [source for source in located if source.get("value") is not None
+                          and _numbers(str(source["value"])) & answer_values]
+        cell_units = {str(source["unit"]).strip() for source in (matching_cells or located) if source.get("unit")}
         if cell_units:
             normalized_units = {"%" if unit == "เปอร์เซ็นต์" else unit for unit in stated_units}
             if not normalized_units <= cell_units:
@@ -414,6 +438,45 @@ def _prompt_with_available_tools(available: set[str]) -> str:
             + "\nห้ามเรียกเครื่องมืออื่นนอกเหนือจากรายการนี้\n\nขั้นตอนการตอบ (ReAct):" + after)
 
 
+def _answer_context(sources: List[Dict[str, Any]], observations: List[str]) -> str:
+    """Keep source diversity: duplicate uploads must not crowd out later tables."""
+    blocks = []
+    seen = set()
+    for source in sources:
+        if source.get('page') is None and not source.get('url'):
+            continue
+        if source.get('value') is not None:
+            payload = {k:source.get(k) for k in ('filename','page','table_name','row_label','column','value','unit','quality_status')}
+            block = json.dumps(payload, ensure_ascii=False)
+        else:
+            excerpt = str(source.get('excerpt') or '')
+            if not excerpt:
+                continue
+            block = f"[{source.get('filename')} PDF page {source.get('page')}]\n{excerpt[:2500]}"
+        if block in seen:
+            continue
+        seen.add(block); blocks.append(block)
+    if not blocks:
+        return '\n\n'.join(observations)[:16000]
+    # Allocate a fair share to every distinct source, not an arbitrary prefix
+    # of combined SQL and vector observations.
+    per_source = min(2500, max(800, 16000 // len(blocks)))
+    return '\n\n'.join(b[:per_source] for b in blocks)[:16000]
+
+
+def _exact_cell_answer(data: Dict[str, Any], question: str) -> Optional[str]:
+    """An unambiguous exact lookup needs no generative model to restate a cell."""
+    if data.get('lookup_kind') != 'exact_measure' or not data.get('evidence'):
+        return None
+    cell = sorted(data['evidence'], key=lambda s:(s.get('page') or 10**9, s.get('document_id') or 0))[0]
+    value, unit = str(cell['value']), str(cell.get('unit') or '')
+    shown = value if unit and value.endswith(unit) else f'{value} {unit}'.strip()
+    years = re.findall(r'(?<!\d)(?:25|20)\d{2}(?!\d)', str(cell['column']))
+    year = f'ปี {years[0]} ' if len(years)==1 else ''
+    sources = _extract_sources('sql_query', data)
+    return _grounded_answer(f'{year}{shown} (PDF หน้า {cell["page"]})', question, sources)
+
+
 async def _answer_from_observations(question: str, observations: List[str],
                                     sources: List[Dict[str, Any]]) -> str:
     if not observations or not any(source.get("page") is not None or source.get("url")
@@ -422,8 +485,11 @@ async def _answer_from_observations(question: str, observations: List[str],
     prompt = (
         "ตอบคำถามจากหลักฐานต่อไปนี้เท่านั้น เลือกแถว ปี และหน่วยให้ตรงกับคำถาม "
         "คำนวณผลต่างได้เฉพาะค่าจากแถวและหน่วยเดียวกันสองปี ห้ามแปลงหน่วยเอง แสดงหน้า PDF ที่ใช้ "
+        "ตอบสั้นเฉพาะรายการที่ถาม ระบุค่า หน่วย ปี และหน้า ไม่ต้องพิมพ์ตารางหลักฐานซ้ำ "
+        "หน่วยของเซลล์มีลำดับเหนือหน่วยในชื่อตาราง เมื่อมีเซลล์ SQL ตรงรายการและปี ให้ใช้เซลล์นั้น "
+        "หากข้อความ OCR ขัดกับเซลล์ตรงรายการ ห้ามนำค่าจากข้อความมาแทน และระบุว่าข้อความ OCR ขัดกับตาราง "
         "หากไม่แน่ใจ ให้ตอบว่าหลักฐานไม่พอ ค่าจาก OCR ยังไม่ผ่านการตรวจเทียบ PDF ด้วยตา\n\n"
-        f"คำถาม: {question}\n\nหลักฐาน:\n{' '.join(observations)[:10000]}\n\nคำตอบ:"
+        f"คำถาม: {question}\n\nหลักฐาน:\n{_answer_context(sources, observations)}\n\nคำตอบ:"
     )
     answer = (await llm_generate(prompt, temperature=0.0, max_tokens=350)).strip()
     critique = _focus_violation(question, answer)
@@ -474,6 +540,10 @@ async def _offline_query(question: str, session: AsyncSession) -> Dict[str, Any]
     sources = _extract_sources(tool_name, result.data)
     if tool_name == "sql_query":
         sql_info = result.data
+        direct = _exact_cell_answer(result.data, question)
+        if direct:
+            return {"answer":direct,"method":"offline_exact_cell","sources":sources,
+                    "sql_info":sql_info,"reasoning_trace":trace}
     if not any(source.get("page") is not None for source in sources):
         return {"answer": "ไม่พบหลักฐานพร้อมหน้าเอกสารที่เพียงพอสำหรับคำตอบนี้",
                 "method": "offline", "sources": sources, "sql_info": sql_info,
@@ -482,7 +552,7 @@ async def _offline_query(question: str, session: AsyncSession) -> Dict[str, Any]
         "ตอบคำถามจากหลักฐานด้านล่างเท่านั้น ตอบเป็นภาษาเดียวกับคำถาม "
         "ห้ามเติมตัวเลขหรือข้อเท็จจริงที่ไม่มีในหลักฐาน ถ้าหลักฐานไม่พอให้บอกว่าไม่พอ "
         "ค่าจาก OCR ยังไม่ได้ตรวจด้วยตากับ PDF.\n\n"
-        f"คำถาม: {question}\n\nหลักฐาน:\n{result.summary[:10000]}\n\nคำตอบสั้นๆ:"
+        f"คำถาม: {question}\n\nหลักฐาน:\n{_answer_context(sources, [result.summary])}\n\nคำตอบสั้นๆ:"
     )
     answer = (await llm_generate(prompt, temperature=0.0, max_tokens=350)).strip()
     if not answer:
@@ -595,12 +665,9 @@ async def agent_query(
     # (a soft prompt hint is not reliable with a local model). The ReAct loop
     # then reasons over the result and can still branch to other tools.
     # ------------------------------------------------------------------
-    if (
-        route.suggested_tool
-        and route.confidence == "high"
-        and route.suggested_tool in available_tools
-    ):
-        forced = route.suggested_tool
+    forced = (next(iter(available_tools)) if len(available_tools) == 1 else
+              route.suggested_tool if route.confidence == "high" and route.suggested_tool in available_tools else None)
+    if forced:
         logger.info("Forcing first tool (high-confidence route): %s", forced)
         result = await _execute_tool(forced, question, session)
         # The conversation shows this call as a literal Action example — the one
@@ -621,6 +688,10 @@ async def agent_query(
             sources.extend(_extract_sources(forced, result["data"]))
             if forced == "sql_query" and sql_info is None:
                 sql_info = result["data"]
+                direct = _exact_cell_answer(sql_info, question)
+                if direct:
+                    return {"answer":direct,"method":"exact_cell","sources":sources,
+                            "sql_info":sql_info,"reasoning_trace":reasoning_trace}
         conversation += (
             f"Thought: เริ่มด้วยเครื่องมือที่เหมาะสมที่สุดสำหรับคำถามนี้ ({forced})\n"
             f'Action: {{"tool": "{forced}", "query": "{question}"}}\n'

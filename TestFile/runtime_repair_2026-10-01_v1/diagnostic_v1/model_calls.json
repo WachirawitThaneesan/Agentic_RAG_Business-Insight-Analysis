@@ -1,0 +1,192 @@
+[
+  {
+    "id": "L01",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826322.505251,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2252,
+      "candidates_token_count": 165,
+      "thoughts_token_count": null
+    },
+    "seconds": 2.4808278999989852
+  },
+  {
+    "id": "L01",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826325.7349503,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 1282,
+      "candidates_token_count": 18,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.6745794999987993
+  },
+  {
+    "id": "L02",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826326.7537189,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2237,
+      "candidates_token_count": 125,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.2442054999992251
+  },
+  {
+    "id": "L03",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826330.6736035,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2269,
+      "candidates_token_count": 158,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.2453741999997874
+  },
+  {
+    "id": "L03",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826331.9367106,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 1285,
+      "candidates_token_count": 31,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.8582037999985914
+  },
+  {
+    "id": "L04",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826336.3638659,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 1.0218351000003167
+  },
+  {
+    "id": "L04",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826339.349161,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2271,
+      "candidates_token_count": 157,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.3973712000006344
+  },
+  {
+    "id": "L04",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826340.9731822,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 795,
+      "candidates_token_count": 17,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.9288964000006672
+  },
+  {
+    "id": "L05",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826342.441786,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2254,
+      "candidates_token_count": 154,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.3820842999994056
+  },
+  {
+    "id": "L05",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826343.8268957,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 737,
+      "candidates_token_count": 17,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7289836000018113
+  },
+  {
+    "id": "L06",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826345.021135,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2229,
+      "candidates_token_count": 155,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.570811000001413
+  },
+  {
+    "id": "L06",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826346.6020634,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.10761679999995977
+  },
+  {
+    "id": "L06",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826348.5220096,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.09066970000276342
+  },
+  {
+    "id": "L06",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826352.0532937,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.07193899999765563
+  },
+  {
+    "id": "L06",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826362.4743118,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.10547520000181976
+  },
+  {
+    "id": "L06",
+    "arm": "repaired_agent",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790826382.3488414,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.17666250000183936
+  }
+]

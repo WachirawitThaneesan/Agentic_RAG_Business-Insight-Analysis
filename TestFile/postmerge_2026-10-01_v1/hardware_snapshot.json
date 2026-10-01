@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-10-01T07:01:12.9319502+07:00",
+  "gpu": [
+    "NVIDIA GeForce GTX 1650, 4096 MiB, 729 MiB, 21 %"
+  ],
+  "containers": [
+    "{\"BlockIO\":\"104MB / 96.8MB\",\"CPUPerc\":\"0.21%\",\"Container\":\"e8137846632aaf1878c301b2c2a2b999abcdae97b5feed88d324690a3208b029\",\"ID\":\"e8137846632a\",\"MemPerc\":\"1.23%\",\"MemUsage\":\"93.53MiB / 7.426GiB\",\"Name\":\"ai_agent\",\"NetIO\":\"38.2MB / 326MB\",\"PIDs\":\"7\"}",
+    "{\"BlockIO\":\"61.1MB / 0B\",\"CPUPerc\":\"0.33%\",\"Container\":\"a35511f1007d79c7ab1c0f66a844a0f38d06ee96de26a7fd5b4a8bf89e62814e\",\"ID\":\"a35511f1007d\",\"MemPerc\":\"0.10%\",\"MemUsage\":\"7.668MiB / 7.426GiB\",\"Name\":\"ai_agent_redis\",\"NetIO\":\"1.69kB / 126B\",\"PIDs\":\"6\"}"
+  ]
+}

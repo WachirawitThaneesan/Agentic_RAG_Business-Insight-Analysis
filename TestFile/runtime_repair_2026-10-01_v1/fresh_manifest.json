@@ -1,0 +1,272 @@
+{
+  "schema_version": 2,
+  "purpose": "New-report exploratory pilot, not final human-certified thesis benchmark",
+  "limitations": [
+    "16 single-fact questions concentrated on 3 physical PDF pages; not representative of full reports",
+    "AI visual review only; independent human review pending",
+    "Native selectable text: does not measure OCR or table extraction",
+    "Same fixed labels used for all arms; no tuning on pilot results"
+  ],
+  "label_review": "Original PDF images inspected before running answers; physical PDF pages, not printed page numbers",
+  "documents": [
+    {
+      "code": "PTT",
+      "source_file": "ptt_2567_th.pdf",
+      "source_sha256": "c6e0cf11311039b58e4f6168ceec9a203620d67bb8fcc890ddf6558e2a29d942",
+      "source_page_count": 233,
+      "download_url": "https://ptt.listedcompany.com/misc/one-report/20260316-ptt-one-report-2024-th.pdf",
+      "excerpt_file": "ptt_2567_th.pdf"
+    },
+    {
+      "code": "PTTEP",
+      "source_file": "pttep_2567_th.pdf",
+      "download_url": "https://www.pttep.com/th/document/viewer/stream/120834/56-1-one-report-2024",
+      "source_sha256": "d87d84540dfe9660968c475604dedad772a4f926b60e65980858def996e957b2",
+      "source_page_count": 535,
+      "status": "downloaded",
+      "excerpt_file": "pttep_2567_th.pdf"
+    }
+  ],
+  "items": [
+    {
+      "id": "F01",
+      "document": "PTT",
+      "source_pdf_page": 5,
+      "question_th": "ในรายงานปี 2567 ของ ปตท. (PTT) ส่วนจุดเด่นทางการเงิน รายได้จากการขายและการให้บริการปี 2567 เท่ากับเท่าไร (ล้านบาท)?",
+      "reference_answer": "3090453 ล้านบาท",
+      "answer_components": {
+        "value": "3090453",
+        "unit": "ล้านบาท",
+        "year_be": 2567
+      },
+      "expected_row": "รายได้จากการขายและการให้บริการ",
+      "expected_column_context": "2567",
+      "source_kind": "table"
+    },
+    {
+      "id": "F02",
+      "document": "PTT",
+      "source_pdf_page": 5,
+      "question_th": "ในรายงานปี 2567 ของ ปตท. (PTT) ส่วนจุดเด่นทางการเงิน กำไรสุทธิส่วนที่เป็นของผู้ถือหุ้นของบริษัทปี 2567 เท่ากับเท่าไร (ล้านบาท)?",
+      "reference_answer": "90072 ล้านบาท",
+      "answer_components": {
+        "value": "90072",
+        "unit": "ล้านบาท",
+        "year_be": 2567
+      },
+      "expected_row": "กำไรสุทธิส่วนที่เป็นของผู้ถือหุ้นของบริษัท",
+      "expected_column_context": "2567",
+      "source_kind": "table"
+    },
+    {
+      "id": "F03",
+      "document": "PTT",
+      "source_pdf_page": 5,
+      "question_th": "ในรายงานปี 2567 ของ ปตท. (PTT) ส่วนจุดเด่นทางการเงิน สินทรัพย์รวมปี 2567 เท่ากับเท่าไร (ล้านบาท)?",
+      "reference_answer": "3438784 ล้านบาท",
+      "answer_components": {
+        "value": "3438784",
+        "unit": "ล้านบาท",
+        "year_be": 2567
+      },
+      "expected_row": "สินทรัพย์รวม",
+      "expected_column_context": "2567",
+      "source_kind": "table"
+    },
+    {
+      "id": "F04",
+      "document": "PTT",
+      "source_pdf_page": 5,
+      "question_th": "ในรายงานปี 2567 ของ ปตท. (PTT) ส่วนจุดเด่นทางการเงิน กำไรสุทธิต่อหุ้นปี 2567 เท่ากับเท่าไร (บาท)?",
+      "reference_answer": "3.15 บาท",
+      "answer_components": {
+        "value": "3.15",
+        "unit": "บาท",
+        "year_be": 2567
+      },
+      "expected_row": "กำไรสุทธิต่อหุ้น",
+      "expected_column_context": "2567",
+      "source_kind": "table"
+    },
+    {
+      "id": "F05",
+      "document": "PTT",
+      "source_pdf_page": 5,
+      "question_th": "ในรายงานปี 2567 ของ ปตท. (PTT) ส่วนจุดเด่นทางการเงิน อัตราผลตอบแทนผู้ถือหุ้นปี 2567 เท่ากับเท่าไร (%)?",
+      "reference_answer": "7.93 %",
+      "answer_components": {
+        "value": "7.93",
+        "unit": "%",
+        "year_be": 2567
+      },
+      "expected_row": "อัตราผลตอบแทนผู้ถือหุ้น",
+      "expected_column_context": "2567",
+      "source_kind": "table"
+    },
+    {
+      "id": "F06",
+      "document": "PTT",
+      "source_pdf_page": 5,
+      "question_th": "ในรายงานปี 2567 ของ ปตท. (PTT) ส่วนจุดเด่นทางการเงิน เงินสดสุทธิใช้ไปในกิจกรรมการลงทุน (ตอบเป็นค่าลบ)ปี 2567 เท่ากับเท่าไร (ล้านบาท)?",
+      "reference_answer": "-188763 ล้านบาท",
+      "answer_components": {
+        "value": "-188763",
+        "unit": "ล้านบาท",
+        "year_be": 2567
+      },
+      "expected_row": "เงินสดสุทธิใช้ไปในกิจกรรมการลงทุน (ตอบเป็นค่าลบ)",
+      "expected_column_context": "2567",
+      "source_kind": "chart"
+    },
+    {
+      "id": "F07",
+      "document": "PTT",
+      "source_pdf_page": 5,
+      "question_th": "ในรายงานปี 2567 ของ ปตท. (PTT) ส่วนจุดเด่นทางการเงิน เงินสดและรายการเทียบเท่าเงินสด ณ วันสิ้นปีปี 2567 เท่ากับเท่าไร (ล้านบาท)?",
+      "reference_answer": "405139 ล้านบาท",
+      "answer_components": {
+        "value": "405139",
+        "unit": "ล้านบาท",
+        "year_be": 2567
+      },
+      "expected_row": "เงินสดและรายการเทียบเท่าเงินสด ณ วันสิ้นปี",
+      "expected_column_context": "2567",
+      "source_kind": "chart"
+    },
+    {
+      "id": "F08",
+      "document": "PTT",
+      "source_pdf_page": 5,
+      "question_th": "ในรายงานปี 2567 ของ ปตท. (PTT) ส่วนจุดเด่นทางการเงิน เงินปันผลจ่ายต่อหุ้นปี 2567 เท่ากับเท่าไร (บาท)?",
+      "reference_answer": "2.10 บาท",
+      "answer_components": {
+        "value": "2.10",
+        "unit": "บาท",
+        "year_be": 2567
+      },
+      "expected_row": "เงินปันผลจ่ายต่อหุ้น",
+      "expected_column_context": "2567",
+      "source_kind": "table"
+    },
+    {
+      "id": "F09",
+      "document": "PTTEP",
+      "source_pdf_page": 5,
+      "question_th": "ในรายงานปี 2567 ของ ปตท.สผ. (PTTEP) ส่วนสารจากประธานกรรมการและประธานเจ้าหน้าที่บริหาร รายได้รวมปี 2567 เท่ากับเท่าไร (ล้านบาท)?",
+      "reference_answer": "327415 ล้านบาท",
+      "answer_components": {
+        "value": "327415",
+        "unit": "ล้านบาท",
+        "year_be": 2567
+      },
+      "expected_row": "รายได้รวม",
+      "expected_column_context": "2567",
+      "source_kind": "prose"
+    },
+    {
+      "id": "F10",
+      "document": "PTTEP",
+      "source_pdf_page": 5,
+      "question_th": "ในรายงานปี 2567 ของ ปตท.สผ. (PTTEP) ส่วนสารจากประธานกรรมการและประธานเจ้าหน้าที่บริหาร กำไรสุทธิปี 2567 เท่ากับเท่าไร (ล้านบาท)?",
+      "reference_answer": "78824 ล้านบาท",
+      "answer_components": {
+        "value": "78824",
+        "unit": "ล้านบาท",
+        "year_be": 2567
+      },
+      "expected_row": "กำไรสุทธิ",
+      "expected_column_context": "2567",
+      "source_kind": "prose"
+    },
+    {
+      "id": "F11",
+      "document": "PTTEP",
+      "source_pdf_page": 5,
+      "question_th": "ในรายงานปี 2567 ของ ปตท.สผ. (PTTEP) ส่วนสารจากประธานกรรมการและประธานเจ้าหน้าที่บริหาร รายได้ที่นำส่งภาครัฐในรูปภาษี ค่าภาคหลวง และผลประโยชน์ตอบแทนปี 2567 เท่ากับเท่าไร (ล้านบาท)?",
+      "reference_answer": "50450 ล้านบาท",
+      "answer_components": {
+        "value": "50450",
+        "unit": "ล้านบาท",
+        "year_be": 2567
+      },
+      "expected_row": "รายได้ที่นำส่งภาครัฐในรูปภาษี ค่าภาคหลวง และผลประโยชน์ตอบแทน",
+      "expected_column_context": "2567",
+      "source_kind": "prose"
+    },
+    {
+      "id": "F12",
+      "document": "PTTEP",
+      "source_pdf_page": 6,
+      "question_th": "ในรายงานปี 2567 ของ ปตท.สผ. (PTTEP) ส่วนจุดเด่นด้านการดำเนินงาน เงินปันผลจ่ายต่อหุ้นที่ระบุในตาราง (รวมส่วนที่เสนอให้ที่ประชุมอนุมัติ)ปี 2567 เท่ากับเท่าไร (บาท)?",
+      "reference_answer": "9.625 บาท",
+      "answer_components": {
+        "value": "9.625",
+        "unit": "บาท",
+        "year_be": 2567
+      },
+      "expected_row": "เงินปันผลจ่ายต่อหุ้นที่ระบุในตาราง (รวมส่วนที่เสนอให้ที่ประชุมอนุมัติ)",
+      "expected_column_context": "2567",
+      "source_kind": "table"
+    },
+    {
+      "id": "F13",
+      "document": "PTTEP",
+      "source_pdf_page": 6,
+      "question_th": "ในรายงานปี 2567 ของ ปตท.สผ. (PTTEP) ส่วนจุดเด่นด้านการดำเนินงาน Dividend Yieldปี 2567 เท่ากับเท่าไร (%)?",
+      "reference_answer": "8.09 %",
+      "answer_components": {
+        "value": "8.09",
+        "unit": "%",
+        "year_be": 2567
+      },
+      "expected_row": "Dividend Yield",
+      "expected_column_context": "2567",
+      "source_kind": "table"
+    },
+    {
+      "id": "F14",
+      "document": "PTTEP",
+      "source_pdf_page": 6,
+      "question_th": "ในรายงานปี 2567 ของ ปตท.สผ. (PTTEP) ส่วนจุดเด่นด้านการดำเนินงาน อัตราผลตอบแทนผู้ถือหุ้นปี 2567 เท่ากับเท่าไร (%)?",
+      "reference_answer": "14.68 %",
+      "answer_components": {
+        "value": "14.68",
+        "unit": "%",
+        "year_be": 2567
+      },
+      "expected_row": "อัตราผลตอบแทนผู้ถือหุ้น",
+      "expected_column_context": "2567",
+      "source_kind": "table"
+    },
+    {
+      "id": "F15",
+      "document": "PTTEP",
+      "source_pdf_page": 6,
+      "question_th": "ในรายงานปี 2567 ของ ปตท.สผ. (PTTEP) ส่วนจุดเด่นด้านการดำเนินงาน อัตรา EBITDA ต่อรายได้จากการขายปี 2567 เท่ากับเท่าไร (%)?",
+      "reference_answer": "73 %",
+      "answer_components": {
+        "value": "73",
+        "unit": "%",
+        "year_be": 2567
+      },
+      "expected_row": "อัตรา EBITDA ต่อรายได้จากการขาย",
+      "expected_column_context": "2567",
+      "source_kind": "table"
+    },
+    {
+      "id": "F16",
+      "document": "PTTEP",
+      "source_pdf_page": 6,
+      "question_th": "ในรายงานปี 2567 ของ ปตท.สผ. (PTTEP) ส่วนจุดเด่นด้านการดำเนินงาน สัดส่วนปริมาณการขายก๊าซธรรมชาติปี 2567 เท่ากับเท่าไร (%)?",
+      "reference_answer": "73 %",
+      "answer_components": {
+        "value": "73",
+        "unit": "%",
+        "year_be": 2567
+      },
+      "expected_row": "สัดส่วนปริมาณการขายก๊าซธรรมชาติ",
+      "expected_column_context": "2567",
+      "source_kind": "chart"
+    }
+  ]
+}

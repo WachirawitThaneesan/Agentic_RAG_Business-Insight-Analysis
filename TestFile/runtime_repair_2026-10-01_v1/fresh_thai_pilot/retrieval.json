@@ -1,0 +1,1442 @@
+[
+  {
+    "id": "F01",
+    "target": [
+      "ptt_2567_th.pdf",
+      5
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 14
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 7
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 532
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 443
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 442
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 357
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 8
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 219
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 443
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": true,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F02",
+    "target": [
+      "ptt_2567_th.pdf",
+      5
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 14
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 513
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 347
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 520
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 113
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 74
+        },
+        {
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 14
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": true,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F03",
+    "target": [
+      "ptt_2567_th.pdf",
+      5
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 459
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 387
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 474
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 418
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 480
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 428
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 459
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 387
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 418
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": true,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F04",
+    "target": [
+      "ptt_2567_th.pdf",
+      5
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 513
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 454
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 4
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 520
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 347
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 532
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 354
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 113
+        },
+        {
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 74
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 513
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": true,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F05",
+    "target": [
+      "ptt_2567_th.pdf",
+      5
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 113
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 7
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 30
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 54
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 26
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 113
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 8
+        },
+        {
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 204
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": true,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F06",
+    "target": [
+      "ptt_2567_th.pdf",
+      5
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 485
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 501
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 357
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 359
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 448
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 483
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 501
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 485
+        },
+        {
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 484
+        },
+        {
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 17
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": true,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F07",
+    "target": [
+      "ptt_2567_th.pdf",
+      5
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 386
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 357
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 436
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 480
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 482
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 459
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 436
+        },
+        {
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 7
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": true,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F08",
+    "target": [
+      "ptt_2567_th.pdf",
+      5
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 513
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 383
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 113
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 520
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 513
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 26
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 77
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 513
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 113
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": true,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F09",
+    "target": [
+      "pttep_2567_th.pdf",
+      5
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 7
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 30
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 146
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 14
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 57
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 196
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 146
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 532
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 159
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 29
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 284
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 154
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 161
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": false,
+      "dense": false,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F10",
+    "target": [
+      "pttep_2567_th.pdf",
+      5
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 7
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 57
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 146
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 17
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 196
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 146
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 532
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 159
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 347
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 284
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 154
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 161
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": false,
+      "dense": false,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F11",
+    "target": [
+      "pttep_2567_th.pdf",
+      5
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 459
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 7
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 519
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 17
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 518
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 146
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 168
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 532
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 196
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 349
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 459
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 4
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 50
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 284
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": false,
+      "dense": false,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F12",
+    "target": [
+      "pttep_2567_th.pdf",
+      6
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 383
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 513
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 113
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 513
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 500
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 520
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 29
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 77
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 513
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 383
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 113
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": true,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F13",
+    "target": [
+      "pttep_2567_th.pdf",
+      6
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 462
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 7
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 230
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 383
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 29
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 31
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 15
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 188
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 3
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 204
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 7
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": true,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F14",
+    "target": [
+      "pttep_2567_th.pdf",
+      6
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 383
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 113
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 7
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 29
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 30
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 54
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 113
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 8
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 204
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 383
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": false,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F15",
+    "target": [
+      "pttep_2567_th.pdf",
+      6
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 422
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 7
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 528
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 29
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 105
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 30
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 108
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 96
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 8
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 107
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 422
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": false,
+      "app_hybrid": true
+    }
+  },
+  {
+    "id": "F16",
+    "target": [
+      "pttep_2567_th.pdf",
+      6
+    ],
+    "arms": {
+      "bm25": [
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 422
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 18
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 382
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 527
+        }
+      ],
+      "dense": [
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 5
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 125
+        },
+        {
+          "document": "PTTEP",
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 52
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 31
+        },
+        {
+          "document": "PTT",
+          "filename": "ptt_2567_th.pdf",
+          "source_pdf_page": 18
+        }
+      ],
+      "app_hybrid": [
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 6
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 8
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 83
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 35
+        },
+        {
+          "filename": "pttep_2567_th.pdf",
+          "source_pdf_page": 40
+        }
+      ]
+    },
+    "page_hit_at_5": {
+      "bm25": true,
+      "dense": false,
+      "app_hybrid": true
+    }
+  }
+]

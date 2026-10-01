@@ -1,0 +1,332 @@
+{
+  "scores": {
+    "layer": "answers",
+    "n_questions": 15,
+    "n_correct": 5,
+    "n_incorrect": 10,
+    "n_needs_review": 0,
+    "n_missing_predictions": 0,
+    "fact_accuracy_determined": 0.3333333333333333,
+    "fact_accuracy_strict_lower_bound": 0.3333333333333333,
+    "citation_page_hit_rate": 1.0,
+    "citation_page_recall": 1.0,
+    "citation_all_required_rate": 1.0,
+    "unsupported_abstention_rate": null,
+    "details": [
+      {
+        "id": "L01",
+        "fact_status": "incorrect",
+        "reason": "wrong_number_sign_year_unit_or_scale",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L02",
+        "fact_status": "incorrect",
+        "reason": "wrong_number_sign_year_unit_or_scale",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L03",
+        "fact_status": "incorrect",
+        "reason": "wrong_number_sign_year_unit_or_scale",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L04",
+        "fact_status": "incorrect",
+        "reason": "wrong_number_sign_year_unit_or_scale",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L05",
+        "fact_status": "incorrect",
+        "reason": "wrong_number_sign_year_unit_or_scale",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L06",
+        "fact_status": "correct",
+        "reason": "numeric_fact",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L07",
+        "fact_status": "incorrect",
+        "reason": "wrong_number_sign_year_unit_or_scale",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L08",
+        "fact_status": "correct",
+        "reason": "numeric_fact",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L09",
+        "fact_status": "correct",
+        "reason": "numeric_fact",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L10",
+        "fact_status": "incorrect",
+        "reason": "wrong_number_sign_year_unit_or_scale",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L11",
+        "fact_status": "incorrect",
+        "reason": "wrong_number_sign_year_unit_or_scale",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L12",
+        "fact_status": "incorrect",
+        "reason": "wrong_number_sign_year_unit_or_scale",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L13",
+        "fact_status": "incorrect",
+        "reason": "wrong_number_sign_year_unit_or_scale",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L14",
+        "fact_status": "correct",
+        "reason": "numeric_fact",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      },
+      {
+        "id": "L15",
+        "fact_status": "correct",
+        "reason": "numeric_fact",
+        "citation_hit": true,
+        "citation_recall": 1.0,
+        "all_required_pages_cited": true,
+        "citation_status": "correct_page",
+        "missing_prediction": false
+      }
+    ],
+    "n_strict_supported_correct": 5,
+    "strict_supported_accuracy": 0.3333333333333333
+  },
+  "usage": {
+    "calls": 45,
+    "input_tokens": 192807,
+    "output_tokens": 5233,
+    "thinking_tokens": 0
+  },
+  "sdk_attempts": 53,
+  "sdk_failures": 8,
+  "timings": [
+    {
+      "id": "L01",
+      "seconds": 9.415439299999889,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 12210,
+        "output_tokens": 318,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L02",
+      "seconds": 4.330221100000017,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 11666,
+        "output_tokens": 330,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L03",
+      "seconds": 4.8770118000002185,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 12846,
+        "output_tokens": 476,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L04",
+      "seconds": 5.112210799999957,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 12648,
+        "output_tokens": 555,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L05",
+      "seconds": 4.450936100000035,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 12930,
+        "output_tokens": 355,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L06",
+      "seconds": 4.070547000000261,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 13794,
+        "output_tokens": 292,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L07",
+      "seconds": 4.006882599999699,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 13482,
+        "output_tokens": 228,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L08",
+      "seconds": 80.40641959999994,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 13537,
+        "output_tokens": 386,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L09",
+      "seconds": 41.15106519999972,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 12963,
+        "output_tokens": 307,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L10",
+      "seconds": 30.86955400000079,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 12913,
+        "output_tokens": 488,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L11",
+      "seconds": 21.7571384999992,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 12902,
+        "output_tokens": 297,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L12",
+      "seconds": 15.618333700000221,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 12474,
+        "output_tokens": 228,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L13",
+      "seconds": 11.679886500000066,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 12373,
+        "output_tokens": 237,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L14",
+      "seconds": 9.155347999998412,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 12686,
+        "output_tokens": 401,
+        "thinking_tokens": 0
+      }
+    },
+    {
+      "id": "L15",
+      "seconds": 49.98052180000013,
+      "successful_usage_delta": {
+        "calls": 3,
+        "input_tokens": 13383,
+        "output_tokens": 335,
+        "thinking_tokens": 0
+      }
+    }
+  ],
+  "purpose": "real database diagnostic before/after re-ingestion; table/prose original-PDF labels",
+  "resource_scope": "runner + separate Ollama sampled; excludes Docker VM and remote GPU"
+}

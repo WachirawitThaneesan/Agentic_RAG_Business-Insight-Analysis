@@ -1,0 +1,19 @@
+[
+  {
+    "code": "PTT",
+    "source_file": "ptt_2567_th.pdf",
+    "source_sha256": "c6e0cf11311039b58e4f6168ceec9a203620d67bb8fcc890ddf6558e2a29d942",
+    "source_page_count": 233,
+    "download_url": "https://ptt.listedcompany.com/misc/one-report/20260316-ptt-one-report-2024-th.pdf",
+    "excerpt_file": "ptt_2567_th.pdf"
+  },
+  {
+    "code": "PTTEP",
+    "source_file": "pttep_2567_th.pdf",
+    "download_url": "https://www.pttep.com/th/document/viewer/stream/120834/56-1-one-report-2024",
+    "source_sha256": "d87d84540dfe9660968c475604dedad772a4f926b60e65980858def996e957b2",
+    "source_page_count": 535,
+    "status": "downloaded",
+    "excerpt_file": "pttep_2567_th.pdf"
+  }
+]

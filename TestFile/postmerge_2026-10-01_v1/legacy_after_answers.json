@@ -1,0 +1,692 @@
+[
+  {
+    "id": "L01",
+    "answer": "จากไฟล์ 1testfile.pdf รายได้ดอกเบี้ยสุทธิปี 2568 เท่ากับ 137,152 ล้านบาท\n\nหน้า PDF ที่ใช้: 1testfile.pdf, PDF page 1\nตาราง: สรุปผลการดำเนินงาน ปี 2568 (หน่วย: ล้านบาท)\nแถว: รายได้ดอกเบี้ยสุทธิ\nคอลัมน์: ปี 2568\nค่า: 137,152\nหน่วย: ล้านบาท (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      }
+    ]
+  },
+  {
+    "id": "L02",
+    "answer": "จากหลักฐานที่ให้มา กำไรสุทธิส่วนที่เป็นของธนาคารสำหรับปี 2568 เท่ากับ **49,585 ล้านบาท**\n\n*   **แถว:** กำไรสุทธิส่วนที่เป็นของธนาคาร\n*   **ปี:** 2568\n*   **หน่วย:** ล้านบาท\n*   **หน้า PDF:** 1testfile.pdf, PDF page 1 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      }
+    ]
+  },
+  {
+    "id": "L03",
+    "answer": "จากไฟล์ 1testfile.pdf หน้า 1 และหน้า 2 ตาราง \"สรุปผลการดำเนินงาน ปี 2568 (หน่วย: ล้านบาท)\" และ \"table0 (หน่วย: ล้านบาท)\"\n\n*   รายได้ดอกเบี้ยสุทธิ ปี 2568: 137,152 ล้านบาท\n*   รายได้ดอกเบี้ยสุทธิ ปี 2567: 148,004 ล้านบาท\n\nการเปลี่ยนแปลงรายได้ดอกเบี้ยสุทธิปี 2568 เทียบปี 2567 = 137,152 - 148,004 = -10,852 ล้านบาท\n\nดังนั้น การเปลี่ยนแปลงรายได้ดอกเบี้ยสุทธิปี 2568 เทียบปี 2567 เป็น **-10,852 ล้านบาท**\n\nหน้า PDF ที่ใช้: 1testfile.pdf, หน้า 1 และ 2 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      }
+    ]
+  },
+  {
+    "id": "L04",
+    "answer": "ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในคำตอบ",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      }
+    ]
+  },
+  {
+    "id": "L05",
+    "answer": "จากไฟล์ 1testfile.pdf หน้า 2, ตารางที่ 0:\n\nผลตอบแทนสินทรัพย์ที่ก่อให้เกิดรายได้สุทธิ (ร้อยละ) ปี 2568 เท่ากับ **3.23%**\n\nหน้า PDF ที่ใช้: 1testfile.pdf, PDF page 2 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      }
+    ]
+  },
+  {
+    "id": "L06",
+    "answer": "จากไฟล์ 1testfile.pdf หน้า 2 ตาราง table0 (หน่วย: ล้านบาท)\n\nรายได้ดอกเบี้ยปี 2567 (ปรับปรุงใหม่) เท่ากับ 188,068 ล้านบาท (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      }
+    ]
+  },
+  {
+    "id": "L07",
+    "answer": "หลักฐานไม่พอ",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      }
+    ]
+  },
+  {
+    "id": "L08",
+    "answer": "จากตาราง \"แหล่งที่มาและใช้ไปของเงินทุนที่สำคัญของธนาคารและบริษัทย่อย (หน่วย: ล้านบาท)\" ในหน้า 5 ของไฟล์ 1testfile.pdf:\n\nเงินให้สินเชื่อและดอกเบี้ยค้างรับรวม ณ 31 ธันวาคม 2568 เท่ากับ **2,495,767 ล้านบาท**\n\nหน้า PDF ที่ใช้: 1testfile.pdf, PDF page 5 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      }
+    ]
+  },
+  {
+    "id": "L09",
+    "answer": "จากตาราง \"table0 (หน่วย: ล้านบาท)\" ในหน้า 3 ของไฟล์ 1testfile.pdf:\n\nค่าเผื่อผลขาดทุนด้านเครดิตรวม ณ 31 ธันวาคม 2568 คือ 142,997 ล้านบาท\n\nหน้า PDF ที่ใช้: 1testfile.pdf, PDF page 3 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      }
+    ]
+  },
+  {
+    "id": "L10",
+    "answer": "จากตารางในหน้า 3 ของไฟล์ 1testfile.pdf:\n*   **รายการ:** ระดับที่ 3 เงินให้สินเชื่อที่มีการด้อยค่าด้านเครดิต\n*   **ปี:** 31 ธ.ค. 2567 (ปรับปรุงใหม่)\n*   **หน่วย:** ล้านบาท\n*   **ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น:** 44,132 ล้านบาท\n\nดังนั้น ค่าเผื่อผลขาดทุนด้านเครดิตของเงินให้สินเชื่อระดับที่ 3 ณ 31 ธันวาคม 2567 เท่ากับ **44,132 ล้านบาท**\n\nหน้า PDF ที่ใช้: 1testfile.pdf, PDF page 3 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      }
+    ]
+  },
+  {
+    "id": "L11",
+    "answer": "ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในคำตอบ",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      }
+    ]
+  },
+  {
+    "id": "L12",
+    "answer": "หลักฐานไม่พอ",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      }
+    ]
+  },
+  {
+    "id": "L13",
+    "answer": "หลักฐานไม่พอ",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      }
+    ]
+  },
+  {
+    "id": "L14",
+    "answer": "จากตาราง \"หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย (หน่วย: ล้านบาท)\" ในหน้า 5 ของไฟล์ 1testfile.pdf:\n\nหนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันรวม ณ 31 ธันวาคม 2566 เท่ากับ **823,843 ล้านบาท**\n\nหน้า PDF ที่ใช้: 1testfile.pdf, PDF page 5 (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      }
+    ]
+  },
+  {
+    "id": "L15",
+    "answer": "จากไฟล์ 1testfile.pdf หน้า 5, ตาราง \"หนี้สินที่อาจเกิดขึ้นในภายหน้าและภาระผูกพันของธนาคารและบริษัทย่อยประกอบด้วย (หน่วย: ล้านบาท)\"\n\nการรับอาวัลตั๋วเงินและการค้ำประกันการกู้ยืมเงิน ณ 31 ธันวาคม 2568 เท่ากับ **15,437 ล้านบาท** (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)",
+    "citations": [
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 5
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 4
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 3
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 2
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      },
+      {
+        "filename": "1testfile.pdf",
+        "source_pdf_page": 1
+      }
+    ]
+  }
+]

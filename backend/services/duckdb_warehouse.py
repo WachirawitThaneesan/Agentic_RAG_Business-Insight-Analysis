@@ -501,6 +501,20 @@ def load_table_into_warehouse(
     )
 
 
+def _cell_unit(label: str, column: str, value: str, table_unit: str = "", table_name: str = "") -> str:
+    """Explicit cell/column/row dimensions take precedence over a table-wide unit."""
+    column_text = str(column or "").casefold()
+    row_text = str(label or "").casefold()
+    value_text = str(value or "").strip()
+    if value_text.endswith("%") or any(token in column_text for token in ("%", "ร้อยละ", "percent")):
+        return "%"
+    if any(token in row_text for token in ("(ร้อยละ)", "(%)", "เปอร์เซ็นต์")):
+        return "%"
+    if "ต่อหุ้น" in row_text:
+        return "บาท"
+    return str(table_unit or "").strip() or _guess_unit(label, table_name)
+
+
 def _load_year_based_table(
     conn: duckdb.DuckDBPyConnection,
     document_id: int,
@@ -573,7 +587,8 @@ def _load_year_based_table(
                     [document_id, _sanitize_text(table_name),
                      _sanitize_text(label), _sanitize_text(year_label),
                      _sanitize_text(raw_value), numeric,
-                     _sanitize_text(unit), original_row_idx, source_page, quality_status, source_provider],
+                     _sanitize_text(_cell_unit(label, year_label, raw_value, unit, table_name)),
+                     original_row_idx, source_page, quality_status, source_provider],
                 )
                 inserted_years.add(year_label)
                 fact_count += 1
@@ -596,7 +611,8 @@ def _load_year_based_table(
                         [document_id, _sanitize_text(table_name),
                          _sanitize_text(label), _sanitize_text(last_year_label),
                          _sanitize_text(last_raw), numeric,
-                         _sanitize_text(unit), original_row_idx, source_page, quality_status, source_provider],
+                         _sanitize_text(_cell_unit(label, year_label, raw_value, unit, table_name)),
+                     original_row_idx, source_page, quality_status, source_provider],
                     )
                     fact_count += 1
         else:
@@ -621,7 +637,8 @@ def _load_year_based_table(
                     [document_id, _sanitize_text(table_name),
                      _sanitize_text(label), _sanitize_text(year_label),
                      _sanitize_text(raw_value), numeric,
-                     _sanitize_text(unit), original_row_idx, source_page, quality_status, source_provider],
+                     _sanitize_text(_cell_unit(label, year_label, raw_value, unit, table_name)),
+                     original_row_idx, source_page, quality_status, source_provider],
                 )
                 fact_count += 1
 
@@ -687,10 +704,7 @@ def _load_lookup_table(
                 continue
 
             col_value_clean = _sanitize_text(col_value)
-            column_unit = table_unit or (
-                "%" if ("%" in str(col_name) or "ร้อยละ" in str(col_name))
-                else _guess_unit(f"{label} {col_name}", table_name)
-            )
+            column_unit = _cell_unit(label, str(col_name), col_value_clean, table_unit or "", table_name)
             conn.execute(
                 """
                 INSERT INTO dim_table_rows
@@ -793,6 +807,107 @@ def execute_sql(sql: str) -> Dict[str, Any]:
     except Exception as exc:
         logger.warning("DuckDB query error: %s | SQL: %s", exc, sql[:200])
         return {"error": str(exc), "columns": [], "rows": [], "row_count": 0}
+
+
+def candidate_year_cells(question: str, limit: int = 60) -> List[Dict[str, Any]]:
+    """Bounded stored EAV candidates with intact row/column/unit identity."""
+    from backend.services.retrieval_rank import search_tokens
+    years = set(re.findall(r'(?<!\d)(?:25|20)\d{2}(?!\d)', question))
+    if not years:
+        return []
+    conn = _get_conn()
+    docs = conn.execute('SELECT document_id, filename FROM dim_documents').fetchall()
+    ids = [i for i,name in docs if name and name.casefold() in question.casefold()]
+    if re.search(r'\S+\.pdf\b', question, re.IGNORECASE) and not ids:
+        return []
+    sql = 'SELECT document_id,table_name,row_label,col_name,col_value,unit,row_index FROM dim_table_rows'
+    if ids:
+        sql += ' WHERE document_id IN (' + ','.join('?' for _ in ids) + ')'
+    cur=conn.execute(sql,ids);columns=[d[0] for d in cur.description]
+    all_rows=[dict(zip(columns,r)) for r in cur.fetchall()]
+    labels={}
+    for row in all_rows:
+        labels.setdefault((row['document_id'],row['table_name']),{})[row['row_index']]=row['row_label']
+    terms={t for t in search_tokens(question) if len(t)>2 and not t.isdigit()}
+    requested=re.search(r'ล้านบาท|พันบาท|บาท|เปอร์เซ็นต์|%',question)
+    unit=requested.group().replace('เปอร์เซ็นต์','%') if requested else None
+    candidates=[]; seen=set()
+    filenames=dict(docs)
+    for row in all_rows:
+        if not years.intersection(re.findall(r'(?<!\d)(?:25|20)\d{2}(?!\d)',row['col_name'])):
+            continue
+        if unit and row['unit']!=unit:
+            continue
+        if _parse_numeric(row['col_value']) is None:
+            continue
+        identity=(filenames.get(row['document_id']),row['table_name'],row['row_label'],row['col_name'],row['col_value'])
+        if identity in seen:continue
+        seen.add(identity)
+        row['filename']=filenames.get(row['document_id'])
+        row['table_rows_in_order']=[v for _,v in sorted(labels[(row['document_id'],row['table_name'])].items())]
+        row['_score']=3*len(terms & set(search_tokens(row['row_label'])))+2*len(terms & set(search_tokens(row['col_name'])))+len(terms & set(search_tokens(row['table_name'])))
+        candidates.append(row)
+    candidates.sort(key=lambda r:r.pop('_score'),reverse=True)
+    return candidates[:limit]
+
+
+def exact_measure_cells(question: str) -> Optional[Dict[str, Any]]:
+    """Resolve an unambiguous explicitly named metric without generated SQL.
+
+    This does not fuzzy-match totals, dates, maturity groups or credit stages.
+    If equally specific stored cells disagree, defer to normal retrieval.
+    """
+    years = set(re.findall(r"(?<!\d)(?:25|20)\d{2}(?!\d)", question))
+    if len(years) != 1 or re.search(r"เปลี่ยน|ผลต่าง|เพิ่ม|ลด|เปรียบเทียบ|สูงสุด|ต่ำสุด", question):
+        return None
+    conn = _get_conn()
+    documents = conn.execute("SELECT document_id, filename FROM dim_documents").fetchall()
+    doc_ids = [doc_id for doc_id, name in documents if name and name.casefold() in question.casefold()]
+    if re.search(r"\S+\.pdf\b", question, re.IGNORECASE) and not doc_ids:
+        return None
+    if not doc_ids and len({name for _, name in documents}) != 1:
+        return None  # A company name alone needs the normal scoped retriever.
+    def key(text):
+        text = re.sub(r"\(\s*(?:บาท|ล้านบาท|%|\d+)\s*\)", "", text or "")
+        return re.sub(r"[\s()]+", "", text).casefold()
+    metric_question = re.sub(r"^\s*(?:จาก)?(?:ไฟล์|เอกสาร|รายงาน)\s+\S+\.pdf\s*", "", question, flags=re.IGNORECASE)
+    q = key(metric_question)
+    candidates = []
+    for table, col, value in (("dim_table_rows", "col_name", "col_value"),
+                               ("fact_financial_metrics", "metric_year", "raw_value")):
+        sql = f"SELECT document_id, table_name, row_label, {col}, {value}, unit FROM {table}"
+        params = []
+        if doc_ids:
+            sql += " WHERE document_id IN (" + ",".join("?" for _ in doc_ids) + ")"
+            params = doc_ids
+        cur = conn.execute(sql, params)
+        columns = [d[0] for d in cur.description]
+        for raw in cur.fetchall():
+            row = dict(zip(columns, raw)); label = key(row['row_label'])
+            if (len(label) < 12 or not q.startswith(label)
+                    or not re.match(r"^(?:ปี|ณ|มีค่า|เท่ากับ|เท่าไร|กี่|คือ|จำนวน|เป็น)", q[len(label):])):
+                continue
+            if not years.intersection(re.findall(r"(?<!\d)(?:25|20)\d{2}(?!\d)", str(row[col]))):
+                continue
+            requested = re.search(r"ล้านบาท|พันบาท|บาท|เปอร์เซ็นต์|%", question)
+            unit = requested.group() if requested else None
+            if unit == 'เปอร์เซ็นต์': unit = '%'
+            if unit and row.get('unit') != unit:
+                continue
+            candidates.append((len(label), row, value))
+    if not candidates:
+        return None
+    longest = max(c[0] for c in candidates)
+    candidates = [c for c in candidates if c[0] == longest]
+    identities = {(key(c[1]['row_label']), str(c[1][c[2]]), c[1]['unit']) for c in candidates}
+    if len(identities) != 1:
+        return None
+    rows = [c[1] for c in candidates]
+    evidence = resolve_result_evidence(rows)
+    if not evidence or any(e['page'] is None for e in evidence):
+        return None
+    return {'sql':'-- Parameterized exact measure lookup', 'lookup_kind':'exact_measure', 'rows':rows,
+            'columns':list(rows[0]),'row_count':len(rows),'evidence':evidence}
 
 
 def resolve_result_evidence(rows: List[Dict[str, Any]], limit: int = 20) -> List[Dict[str, Any]]:
@@ -962,7 +1077,7 @@ def warehouse_capabilities() -> Dict[str, bool]:
     return result
 
 
-def get_schema_description() -> str:
+def get_schema_description(question: str = "") -> str:
     """Return a human-readable schema summary for LLM SQL generation."""
     conn = _get_conn()
 
@@ -1038,14 +1153,17 @@ def get_schema_description() -> str:
 
     desc = (
         "DuckDB warehouse schema:\n\n"
+        "TABLE: dim_documents (document_id INTEGER, filename VARCHAR, source_url VARCHAR).\n"
+        "document_id is an integer, NEVER a filename. To select a named PDF use "
+        "document_id IN (SELECT document_id FROM dim_documents WHERE filename = 'actual.pdf').\n\n"
         "TABLE 1: fact_financial_metrics (year-based financial data)\n"
         "  Columns: document_id, table_name, row_label, metric_year,\n"
         "           raw_value, numeric_value (DOUBLE), unit, row_index\n"
         "  Use for: financial figures, assets, revenue, ratios\n\n"
         "TABLE 2: dim_table_rows (lookup data e.g. investment holdings, EAV/long format)\n"
         "  Columns: document_id, table_name, row_label, col_name, col_value,\n"
-        "           col_value_num (DOUBLE, pre-parsed number of col_value), row_index\n"
-        "  Use for: non-year data like company names, business types, shareholding\n\n"
+        "           col_value_num (DOUBLE, pre-parsed number of col_value), row_index, unit, source_page, quality_status, source_provider\n"
+        "  Use for: ALL cells with compound column headers, including financial YEARS and percentages.\n\n"
         "IMPORTANT RULES:\n"
         "  - ALWAYS sort/compare numbers with the numeric columns, NEVER the text ones: use numeric_value (not raw_value) for fact_financial_metrics, and col_value_num (not col_value) for dim_table_rows. Sorting the text column gives wrong order and can crash the engine.\n"
         "  - metric_year is VARCHAR (e.g. '2567', '2566')\n"
@@ -1098,6 +1216,33 @@ def get_schema_description() -> str:
         labels = [row[0] for row in sample_lookup_labels]
         desc += f"  {', '.join(labels)}\n\n"
 
+    documents = conn.execute("SELECT document_id, filename FROM dim_documents ORDER BY document_id LIMIT 50").fetchall()
+    desc += "\nDocument IDs and filenames: " + repr(documents)
+    desc += "\nPopulated cells: " + repr(warehouse_capabilities())
+    if question:
+        # Expose whole logical table relationships near the question. A global
+        # first-20-row sample hides later totals, groups and maturity bands.
+        from backend.services.retrieval_rank import search_tokens
+        terms = {t for t in search_tokens(question) if len(t) > 2 and not t.isdigit()}
+        rows = conn.execute("SELECT DISTINCT document_id, table_name, row_label, col_name, unit FROM dim_table_rows").fetchall()
+        doc_ids = {i for i, name in documents if name and name.casefold() in question.casefold()}
+        if doc_ids:
+            rows = [r for r in rows if r[0] in doc_ids]
+        def relevance(row):
+            label = set(search_tokens(str(row[2])))
+            column = set(search_tokens(str(row[3])))
+            title = set(search_tokens(str(row[1])))
+            return 3 * len(terms & label) + 2 * len(terms & column) + len(terms & title)
+        rows.sort(key=relevance, reverse=True)
+        chosen_tables = {r[1] for r in rows[:12]}
+        groups = {}
+        for doc, table, label, column, unit in rows:
+            if table not in chosen_tables:
+                continue
+            bucket = groups.setdefault(table, {'labels':[], 'columns':[], 'units':[]})
+            for k, v in [('labels',label),('columns',column),('units',unit)]:
+                if v not in bucket[k]: bucket[k].append(v)
+        desc += "\nRelevant stored table groups (labels and columns are separate; do not concatenate them into row_label):\n" + repr(groups)[:12000]
     return desc
 
 

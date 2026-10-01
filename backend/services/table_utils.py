@@ -877,6 +877,25 @@ def split_normalized_table_into_sections(table: Dict[str, Any]) -> List[Dict[str
     return _combine_sections_into_single_table(table, sections) or [table]
 
 
+def complete_column_context(headers: List[str]) -> List[str]:
+    """Carry a year only from an immediately adjacent column with the same explicit group."""
+    result = [str(header or "") for header in headers]
+    year_pattern = re.compile(r"(?<!\d)(?:25|20)\d{2}(?!\d)")
+    for index in range(1, len(result)):
+        header = result[index]
+        if year_pattern.search(header):
+            continue
+        marker = re.search(r"ร้อยละ|%|percent", header, re.I)
+        if marker is None:
+            continue
+        group = re.sub(r"\s+", "", header[:marker.start()]).strip("_- ")
+        previous = result[index - 1]
+        years = year_pattern.findall(previous)
+        if group and len(years) == 1 and re.sub(r"\s+", "", previous).startswith(group):
+            result[index] = f"{header} {years[0]}"
+    return result
+
+
 def normalize_ocr_tables(table_prefix: str, tables: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     normalized: List[Dict[str, Any]] = []
     for index, table in enumerate(tables):
@@ -884,6 +903,7 @@ def normalize_ocr_tables(table_prefix: str, tables: List[Dict[str, Any]]) -> Lis
         # Put physical-page identity first so a long title cannot truncate it.
         default_name = f"page_{page}_table_{index}_{table_prefix}" if page is not None else f"{table_prefix}_table_{index}"
         table_with_name = dict(table)
+        table_with_name["headers"] = complete_column_context(table_with_name.get("headers", []))
         if not table_with_name.get("table_name"):
             title = str(table_with_name.get("title") or table_prefix)
             table_with_name["table_name"] = f"{default_name}_{title}"

@@ -1,0 +1,62 @@
+[
+  {
+    "run": 2,
+    "strict_correct": 11,
+    "n": 15,
+    "successful_model_calls": 40,
+    "sdk_attempts": 47,
+    "seconds": 279.0721494999998,
+    "runner_peak_rss_mib": 278.30859375,
+    "classification": "development diagnostic"
+  },
+  {
+    "run": 3,
+    "strict_correct": 6,
+    "n": 15,
+    "successful_model_calls": 20,
+    "sdk_attempts": 29,
+    "seconds": 116.09685199999876,
+    "runner_peak_rss_mib": 271.953125,
+    "classification": "network-affected diagnostic"
+  },
+  {
+    "run": 4,
+    "strict_correct": 12,
+    "n": 15,
+    "successful_model_calls": 31,
+    "sdk_attempts": 36,
+    "seconds": 252.70467310000004,
+    "runner_peak_rss_mib": 269.1015625,
+    "classification": "development diagnostic"
+  },
+  {
+    "run": 5,
+    "strict_correct": 11,
+    "n": 15,
+    "successful_model_calls": 31,
+    "sdk_attempts": 39,
+    "seconds": 270.83483649999994,
+    "runner_peak_rss_mib": 275.76171875,
+    "classification": "development diagnostic"
+  },
+  {
+    "run": 6,
+    "strict_correct": 13,
+    "n": 15,
+    "successful_model_calls": 22,
+    "sdk_attempts": 27,
+    "seconds": 198.44379939999635,
+    "runner_peak_rss_mib": 267.69140625,
+    "classification": "development diagnostic"
+  },
+  {
+    "run": 7,
+    "strict_correct": 14,
+    "n": 15,
+    "successful_model_calls": 22,
+    "sdk_attempts": 25,
+    "seconds": 58.40384269999777,
+    "runner_peak_rss_mib": 263.11328125,
+    "classification": "development diagnostic"
+  }
+]
