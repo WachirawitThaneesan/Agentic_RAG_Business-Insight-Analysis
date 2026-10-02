@@ -260,7 +260,8 @@ def _extract_sources(tool_name: str, data: Dict[str, Any]) -> List[Dict[str, Any
                 "page": chunk.get("page"),
                 "table_name": chunk.get("table_name"),
                 "quality_status": chunk.get("quality_status"),
-                "excerpt": (chunk.get("text") or "")[:2500],
+                "excerpt": (chunk.get("text") or "")[:12000 if chunk.get("context_kind") == "page" else 2500],
+                "context_kind": chunk.get("context_kind"),
                 "evidence_status": chunk.get("evidence_status") or "source_not_verified",
                 "chunk_index": chunk.get("chunk_index"),
                 "similarity": chunk.get("similarity"),
@@ -452,15 +453,19 @@ def _answer_context(sources: List[Dict[str, Any]], observations: List[str]) -> s
             excerpt = str(source.get('excerpt') or '')
             if not excerpt:
                 continue
-            block = f"[{source.get('filename')} PDF page {source.get('page')}]\n{excerpt[:2500]}"
+            block = f"[{source.get('filename')} PDF page {source.get('page')}]\n{excerpt[:12000]}"
         if block in seen:
             continue
         seen.add(block); blocks.append(block)
     if not blocks:
         return '\n\n'.join(observations)[:16000]
+    if any(source.get('context_kind') == 'page' for source in sources):
+        # Pages are already ranked and quality-gated. Preserve their row/year
+        # context instead of truncating every page to a short equal prefix.
+        return '\n\n'.join(blocks)[:16000]
     # Allocate a fair share to every distinct source, not an arbitrary prefix
     # of combined SQL and vector observations.
-    per_source = min(2500, max(800, 16000 // len(blocks)))
+    per_source = min(12000, max(800, 16000 // len(blocks)))
     return '\n\n'.join(b[:per_source] for b in blocks)[:16000]
 
 
@@ -484,6 +489,9 @@ async def _answer_from_observations(question: str, observations: List[str],
         return "ไม่พบหลักฐานเพียงพอในเอกสารที่ประมวลผลแล้ว"
     prompt = (
         "ตอบคำถามจากหลักฐานต่อไปนี้เท่านั้น เลือกแถว ปี และหน่วยให้ตรงกับคำถาม "
+        "เลือกบริษัทและหัวข้อที่ผู้ใช้ระบุ ห้ามแทนด้วยตัวเลขจากคนละส่วนของรายงาน "
+        "ถ้าถามเงินบาทและมีเงินบาทในหลักฐานให้ตอบเงินบาท ไม่ตอบดอลลาร์แทน "
+        "สำหรับกราฟ ต้องผูกชื่อชุดข้อมูลกับปีและค่าด้วย ถ้าข้อความไม่รักษาความสัมพันธ์นั้นให้บอกว่าหลักฐานไม่พอ "
         "คำนวณผลต่างได้เฉพาะค่าจากแถวและหน่วยเดียวกันสองปี ห้ามแปลงหน่วยเอง แสดงหน้า PDF ที่ใช้ "
         "ตอบสั้นเฉพาะรายการที่ถาม ระบุค่า หน่วย ปี และหน้า ไม่ต้องพิมพ์ตารางหลักฐานซ้ำ "
         "หน่วยของเซลล์มีลำดับเหนือหน่วยในชื่อตาราง เมื่อมีเซลล์ SQL ตรงรายการและปี ให้ใช้เซลล์นั้น "

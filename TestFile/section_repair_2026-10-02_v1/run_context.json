@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-02",
+  "purpose": "post-tuning diagnostic, NOT final held-out evaluation",
+  "overrides_inherited_pilot_wording": true,
+  "labels": "Same locked fresh_rescore_v2/reference_v2.json; AI visual review only; independent human certification pending",
+  "corpus": "PTT/PTTEP 768 pages, 1969 native text chunks; 16 questions on 3 physical pages; no OCR or DuckDB extraction in this corpus",
+  "score_contract": "fact correctness and required page present in returned sources; NOT per-claim citation entailment",
+  "remaining_issues": [
+    "F10 primary THB value correct but added USD is not allowed by this locked label",
+    "F05 answer prose says page 6 while required physical page 5 is in source list",
+    "Legacy L11 OCR digit error remains",
+    "Local real 5-page run answers 0/1; no claim of offline accuracy"
+  ],
+  "runtime_scope": "runner/Ollama process samples only, excludes cloud inference and incompletely samples worker/VRAM; success and attempts reported separately",
+  "reused_cache": "existing full corpus embeddings; setup runtime excludes first ingestion/model downloads",
+  "raw_files": "Copied verbatim; historical pilot and v7 scores unchanged"
+}

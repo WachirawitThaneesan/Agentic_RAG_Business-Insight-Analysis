@@ -614,8 +614,51 @@ async def vector_search(
     # The diagnostic Thai numeric set strongly favours exact lexical evidence.
     # Use the semantic arm after distinct keyword pages for numeric questions.
     if re.search(r"เท่าไร|เท่าไหร่|กี่|ร้อยละ|เปอร์เซ็นต์|%|จำนวน|มูลค่า|อัตรา|รายได้|กำไร|หนี้สิน|สินทรัพย์|เงินปันผล|คะแนน", query):
-        return unique_pages([*keyword_hits, *semantic_hits])[:top_k]
-    return _reciprocal_rank_fusion(semantic_hits, keyword_hits, top_k)
+        ranked = unique_pages([*keyword_hits, *semantic_hits])[:top_k]
+    else:
+        ranked = _reciprocal_rank_fusion(semantic_hits, keyword_hits, top_k)
+    return await _expand_page_evidence(query, ranked, session)
+
+
+def _explicit_section(query: str) -> str | None:
+    """An explicit contiguous Thai section heading; never infer from labels."""
+    match = re.search(r'(?:^|\s)(?:ส่วน|หัวข้อ|หมวด)\s*["“]?([ก-๙]{6,60})(?:["”]|\s|$)', query)
+    return match.group(1) if match else None
+
+
+async def _expand_page_evidence(query, hits, session):
+    """Keep neighboring chunks of selected pages together, with source gates.
+
+    Page hits alone can omit the value at the bottom of a chart. Expansion
+    never adds another document/page or raw/quarantined OCR audit chunks.
+    """
+    keys = {(h['document_id'], h['page']) for h in hits if h.get('page') is not None}
+    if not keys:
+        return hits
+    stmt = (select(Chunk).outerjoin(DocumentPage, _indexed_page_join())
+            .where(_searchable_chunk_filter(), _indexed_page_filter(), or_(*[
+                and_(Chunk.document_id == doc, Chunk.metadata_['page'].as_integer() == page)
+                for doc,page in keys])).order_by(Chunk.document_id, Chunk.chunk_index))
+    grouped = {}
+    for chunk in (await session.execute(stmt)).scalars():
+        if not _is_answer_source(chunk):
+            continue
+        key = (chunk.document_id, (chunk.metadata_ or {}).get('page'))
+        grouped.setdefault(key, []).append(chunk.chunk_text)
+    expanded = []
+    for hit in hits:
+        parts = list(dict.fromkeys(grouped.get((hit['document_id'], hit.get('page')), [])))
+        if parts:
+            hit = {**hit, 'text': '\n\n'.join(parts)[:12000], 'context_kind': 'page'}
+        expanded.append(hit)
+    heading = _explicit_section(query)
+    if heading:
+        compact = lambda s: re.sub(r'\s+', '', normalize_search_text(s))
+        matched = [h for h in expanded if compact(heading) in compact(h['text'])]
+        if matched:
+            # The user named a section: do not substitute figures from others.
+            return matched
+    return expanded
 
 
 # Rank at which a result's fusion contribution is roughly halved. The standard

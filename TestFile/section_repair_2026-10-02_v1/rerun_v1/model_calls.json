@@ -1,0 +1,508 @@
+[
+  {
+    "arm": "bm25_gemini",
+    "id": "F01",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882512.0014265,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2834,
+      "candidates_token_count": 11,
+      "thoughts_token_count": null
+    },
+    "seconds": 2.229081600000427
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F01",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882515.8157954,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 7326,
+      "candidates_token_count": 70,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.2628813999999693
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F02",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882518.577397,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2371,
+      "candidates_token_count": 8,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7400633000006565
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F02",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882520.7483466,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 6720,
+      "candidates_token_count": 8,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.884035699999913
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F03",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882523.2716818,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 1947,
+      "candidates_token_count": 11,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7205532999996649
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F03",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882525.5498724,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 7133,
+      "candidates_token_count": 28,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.2378545999999915
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F04",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882528.3242002,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2505,
+      "candidates_token_count": 5,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7444238000007317
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F04",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882530.7287695,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 7385,
+      "candidates_token_count": 4,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.8884462999994867
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F05",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882533.1292732,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2939,
+      "candidates_token_count": 5,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7244200999994064
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F05",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882535.637213,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 6849,
+      "candidates_token_count": 4,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.8624010000003182
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F06",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882538.119966,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2649,
+      "candidates_token_count": 11,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7149736000001212
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F06",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882540.3943863,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.15982739999981277
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F06",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882543.35786,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.20431189999999333
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F06",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882546.607635,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.1634806000001845
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F06",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882552.4515285,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.1742739999999685
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F06",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882574.6073103,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 6769,
+      "candidates_token_count": 4,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.0269225000001825
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F07",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882584.0624363,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2635,
+      "candidates_token_count": 9,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.6980560000001788
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F07",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882592.5768023,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 6855,
+      "candidates_token_count": 4,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.9028632999998081
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F08",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882600.2324448,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2504,
+      "candidates_token_count": 5,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.4540556000001743
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F08",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882607.1236377,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 7268,
+      "candidates_token_count": 8,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.6111266999996587
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F09",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882613.622691,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2636,
+      "candidates_token_count": 3,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7819079999999303
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F09",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882619.2023158,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 8415,
+      "candidates_token_count": 104,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.2318694000005053
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F10",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882624.2176812,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2354,
+      "candidates_token_count": 3,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.6163184000006368
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F10",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882628.7343063,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 8420,
+      "candidates_token_count": 4,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.0648517999998148
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F11",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882632.7954092,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 1852,
+      "candidates_token_count": 3,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7407321999999112
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F11",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882636.468669,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 8191,
+      "candidates_token_count": 54,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.040328000000045
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F12",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882639.7655234,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2084,
+      "candidates_token_count": 6,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7322675999994317
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F12",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882642.7191675,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 1809,
+      "candidates_token_count": 17,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7213053000004948
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F13",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882645.388891,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2492,
+      "candidates_token_count": 5,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.6069515999997748
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F13",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882647.7807868,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2630,
+      "candidates_token_count": 33,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.9125866999993377
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F14",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882650.136263,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2767,
+      "candidates_token_count": 6,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7058259999994334
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F14",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882652.093647,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2637,
+      "candidates_token_count": 40,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.0331224999999904
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F15",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882654.620827,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2347,
+      "candidates_token_count": 3,
+      "thoughts_token_count": null
+    },
+    "seconds": 0.7796245000008639
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F15",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882656.887582,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2637,
+      "candidates_token_count": 46,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.047423600000002
+  },
+  {
+    "arm": "bm25_gemini",
+    "id": "F16",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882659.5619483,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 2568,
+      "candidates_token_count": 41,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.0490731999998388
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F16",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882661.9588735,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.10021799999958603
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F16",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882664.8754377,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.10501509999994596
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F16",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882669.0160244,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.10633059999963734
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F16",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882676.4685695,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.0974830999994083
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F16",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882689.884417,
+    "status": "error",
+    "error_type": "ClientError",
+    "status_code": 429,
+    "seconds": 0.09752800000023853
+  },
+  {
+    "arm": "app_gemini",
+    "id": "F16",
+    "model": "gemini-2.5-flash",
+    "started_at": 1790882715.5001075,
+    "status": "success",
+    "usage": {
+      "prompt_token_count": 1795,
+      "candidates_token_count": 42,
+      "thoughts_token_count": null
+    },
+    "seconds": 1.0859252999998716
+  }
+]

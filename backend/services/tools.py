@@ -482,7 +482,8 @@ class VectorSearchTool:
         summary_parts = []
         chunks_data = []
         for r in results:
-            text = _focus_excerpt(r.get("text") or "", focus_terms, budget, question=query)
+            text = ((r.get('text') or '')[:12000] if r.get('context_kind') == 'page'
+                    else _focus_excerpt(r.get("text") or "", focus_terms, budget, question=query))
             source = r.get("source_kind", "semantic")
             sim = r.get("similarity", 0)
             summary_parts.append(
@@ -501,6 +502,7 @@ class VectorSearchTool:
                 "chunk_index": r.get("chunk_index"),
                 "similarity": sim,
                 "source_kind": source,
+                "context_kind": r.get('context_kind'),
                 "text": text,
                 "summary": r.get("summary", ""),
             })

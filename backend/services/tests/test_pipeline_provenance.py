@@ -93,6 +93,9 @@ def test_search_does_not_return_legacy_embedded_raw_ocr(monkeypatch):
         def all(self):
             return self.rows
 
+        def scalars(self):
+            return [row[0] for row in self.rows]
+
     class Session:
         calls = 0
         statements = []
@@ -113,6 +116,7 @@ def test_search_does_not_return_legacy_embedded_raw_ocr(monkeypatch):
     results = asyncio.run(rag.vector_search("Revenue", session, top_k=5))
     assert [item["chunk_id"] for item in results] == [2]
     assert results[0]["page"] == 46
+    assert '999' not in results[0]['text']
     for stmt in session.statements[1:]:
         compiled = stmt.compile(dialect=postgresql.dialect())
         sql = str(compiled)

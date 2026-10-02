@@ -1,0 +1,2591 @@
+{
+  "total_seconds": 305.97703550000006,
+  "runner_peak_rss_mib": 456.44921875,
+  "ollama_peak_rss_mib": 117.14453125,
+  "samples": [
+    {
+      "timestamp": 1790908014.5430796,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 91.52734375,
+      "runner_cpu_seconds": 1.15625,
+      "ollama_rss_mib": 114.109375,
+      "ollama_cpu_seconds": 4.21875
+    },
+    {
+      "timestamp": 1790908015.5856779,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 147.7109375,
+      "runner_cpu_seconds": 2.15625,
+      "ollama_rss_mib": 114.109375,
+      "ollama_cpu_seconds": 4.21875
+    },
+    {
+      "timestamp": 1790908016.6223884,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 196.13671875,
+      "runner_cpu_seconds": 3.1875,
+      "ollama_rss_mib": 114.109375,
+      "ollama_cpu_seconds": 4.21875
+    },
+    {
+      "timestamp": 1790908017.680363,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 251.07421875,
+      "runner_cpu_seconds": 4.234375,
+      "ollama_rss_mib": 114.3359375,
+      "ollama_cpu_seconds": 4.21875
+    },
+    {
+      "timestamp": 1790908018.7097833,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 143.83984375,
+      "runner_cpu_seconds": 5.25,
+      "ollama_rss_mib": 114.3359375,
+      "ollama_cpu_seconds": 4.21875
+    },
+    {
+      "timestamp": 1790908019.7415454,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 172.16796875,
+      "runner_cpu_seconds": 6.28125,
+      "ollama_rss_mib": 114.3359375,
+      "ollama_cpu_seconds": 4.21875
+    },
+    {
+      "timestamp": 1790908020.7559261,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 127.04296875,
+      "runner_cpu_seconds": 7.21875,
+      "ollama_rss_mib": 114.40234375,
+      "ollama_cpu_seconds": 4.21875
+    },
+    {
+      "timestamp": 1790908021.7830477,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 127.05859375,
+      "runner_cpu_seconds": 7.234375,
+      "ollama_rss_mib": 115.984375,
+      "ollama_cpu_seconds": 4.328125
+    },
+    {
+      "timestamp": 1790908022.8029451,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 127.05859375,
+      "runner_cpu_seconds": 7.25,
+      "ollama_rss_mib": 115.98828125,
+      "ollama_cpu_seconds": 4.328125
+    },
+    {
+      "timestamp": 1790908023.8285334,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 127.05859375,
+      "runner_cpu_seconds": 7.265625,
+      "ollama_rss_mib": 115.9921875,
+      "ollama_cpu_seconds": 4.328125
+    },
+    {
+      "timestamp": 1790908024.8516572,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 127.0625,
+      "runner_cpu_seconds": 7.265625,
+      "ollama_rss_mib": 116.2890625,
+      "ollama_cpu_seconds": 4.40625
+    },
+    {
+      "timestamp": 1790908025.8626175,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 128.0234375,
+      "runner_cpu_seconds": 7.28125,
+      "ollama_rss_mib": 116.89453125,
+      "ollama_cpu_seconds": 4.46875
+    },
+    {
+      "timestamp": 1790908026.9020038,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 187.671875,
+      "runner_cpu_seconds": 7.796875,
+      "ollama_rss_mib": 116.90234375,
+      "ollama_cpu_seconds": 4.46875
+    },
+    {
+      "timestamp": 1790908027.934046,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 203.9375,
+      "runner_cpu_seconds": 8.8125,
+      "ollama_rss_mib": 116.90234375,
+      "ollama_cpu_seconds": 4.46875
+    },
+    {
+      "timestamp": 1790908028.9603705,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 208.5703125,
+      "runner_cpu_seconds": 9.828125,
+      "ollama_rss_mib": 116.90234375,
+      "ollama_cpu_seconds": 4.46875
+    },
+    {
+      "timestamp": 1790908029.9881797,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 212.35546875,
+      "runner_cpu_seconds": 10.859375,
+      "ollama_rss_mib": 116.90234375,
+      "ollama_cpu_seconds": 4.46875
+    },
+    {
+      "timestamp": 1790908031.021997,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 217.19140625,
+      "runner_cpu_seconds": 11.890625,
+      "ollama_rss_mib": 116.90234375,
+      "ollama_cpu_seconds": 4.46875
+    },
+    {
+      "timestamp": 1790908032.0493643,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 222.00390625,
+      "runner_cpu_seconds": 12.921875,
+      "ollama_rss_mib": 116.90234375,
+      "ollama_cpu_seconds": 4.46875
+    },
+    {
+      "timestamp": 1790908033.0801096,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 225.95703125,
+      "runner_cpu_seconds": 13.953125,
+      "ollama_rss_mib": 116.90234375,
+      "ollama_cpu_seconds": 4.46875
+    },
+    {
+      "timestamp": 1790908034.144005,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 228.69140625,
+      "runner_cpu_seconds": 15.0,
+      "ollama_rss_mib": 116.90234375,
+      "ollama_cpu_seconds": 4.46875
+    },
+    {
+      "timestamp": 1790908035.171766,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 231.26953125,
+      "runner_cpu_seconds": 15.3125,
+      "ollama_rss_mib": 116.9921875,
+      "ollama_cpu_seconds": 4.484375
+    },
+    {
+      "timestamp": 1790908036.1835425,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 231.2734375,
+      "runner_cpu_seconds": 15.3125,
+      "ollama_rss_mib": 116.99609375,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908037.1968575,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 249.30859375,
+      "runner_cpu_seconds": 15.6875,
+      "ollama_rss_mib": 116.9296875,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908038.2099864,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 249.31640625,
+      "runner_cpu_seconds": 15.703125,
+      "ollama_rss_mib": 116.9296875,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908039.233242,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 249.5078125,
+      "runner_cpu_seconds": 15.765625,
+      "ollama_rss_mib": 116.9296875,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908040.2637112,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 350.96484375,
+      "runner_cpu_seconds": 16.6875,
+      "ollama_rss_mib": 116.9296875,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908049.2856965,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 408.65234375,
+      "runner_cpu_seconds": 25.6875,
+      "ollama_rss_mib": 116.73828125,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908055.6937551,
+      "arm": "setup",
+      "id": null,
+      "runner_rss_mib": 456.44921875,
+      "runner_cpu_seconds": 31.078125,
+      "ollama_rss_mib": 116.73828125,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908056.7275555,
+      "arm": "retrieval",
+      "id": "F01",
+      "runner_rss_mib": 274.58984375,
+      "runner_cpu_seconds": 31.515625,
+      "ollama_rss_mib": 116.73828125,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908057.7711618,
+      "arm": "retrieval",
+      "id": "F01",
+      "runner_rss_mib": 313.1328125,
+      "runner_cpu_seconds": 31.84375,
+      "ollama_rss_mib": 116.75,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908058.8065836,
+      "arm": "retrieval",
+      "id": "F01",
+      "runner_rss_mib": 321.48828125,
+      "runner_cpu_seconds": 32.875,
+      "ollama_rss_mib": 116.75,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908059.8349605,
+      "arm": "retrieval",
+      "id": "F01",
+      "runner_rss_mib": 327.640625,
+      "runner_cpu_seconds": 33.90625,
+      "ollama_rss_mib": 116.75,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908060.8693295,
+      "arm": "retrieval",
+      "id": "F01",
+      "runner_rss_mib": 333.6953125,
+      "runner_cpu_seconds": 34.90625,
+      "ollama_rss_mib": 116.75,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908061.9018157,
+      "arm": "retrieval",
+      "id": "F01",
+      "runner_rss_mib": 337.953125,
+      "runner_cpu_seconds": 35.9375,
+      "ollama_rss_mib": 116.75,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908062.9301696,
+      "arm": "retrieval",
+      "id": "F01",
+      "runner_rss_mib": 344.18359375,
+      "runner_cpu_seconds": 36.96875,
+      "ollama_rss_mib": 116.75,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908063.9445105,
+      "arm": "bm25_gemini",
+      "id": "F01",
+      "runner_rss_mib": 321.11328125,
+      "runner_cpu_seconds": 37.875,
+      "ollama_rss_mib": 116.75,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908064.969717,
+      "arm": "bm25_gemini",
+      "id": "F01",
+      "runner_rss_mib": 327.84765625,
+      "runner_cpu_seconds": 38.796875,
+      "ollama_rss_mib": 116.75,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908065.9821393,
+      "arm": "bm25_gemini",
+      "id": "F01",
+      "runner_rss_mib": 333.69921875,
+      "runner_cpu_seconds": 39.15625,
+      "ollama_rss_mib": 116.75,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908066.9965725,
+      "arm": "app_gemini",
+      "id": "F01",
+      "runner_rss_mib": 342.22265625,
+      "runner_cpu_seconds": 39.484375,
+      "ollama_rss_mib": 116.75,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908068.025546,
+      "arm": "app_gemini",
+      "id": "F01",
+      "runner_rss_mib": 398.59765625,
+      "runner_cpu_seconds": 39.9375,
+      "ollama_rss_mib": 116.75390625,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908069.0646272,
+      "arm": "app_gemini",
+      "id": "F01",
+      "runner_rss_mib": 361.14453125,
+      "runner_cpu_seconds": 40.078125,
+      "ollama_rss_mib": 116.75390625,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908070.0886474,
+      "arm": "retrieval",
+      "id": "F02",
+      "runner_rss_mib": 361.37109375,
+      "runner_cpu_seconds": 40.390625,
+      "ollama_rss_mib": 116.7578125,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908071.1008472,
+      "arm": "bm25_gemini",
+      "id": "F02",
+      "runner_rss_mib": 363.671875,
+      "runner_cpu_seconds": 40.84375,
+      "ollama_rss_mib": 116.7578125,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908072.1195238,
+      "arm": "app_gemini",
+      "id": "F02",
+      "runner_rss_mib": 363.77734375,
+      "runner_cpu_seconds": 41.125,
+      "ollama_rss_mib": 116.765625,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908073.1319413,
+      "arm": "app_gemini",
+      "id": "F02",
+      "runner_rss_mib": 367.078125,
+      "runner_cpu_seconds": 41.625,
+      "ollama_rss_mib": 116.765625,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908074.1471698,
+      "arm": "retrieval",
+      "id": "F03",
+      "runner_rss_mib": 367.85546875,
+      "runner_cpu_seconds": 41.890625,
+      "ollama_rss_mib": 116.765625,
+      "ollama_cpu_seconds": 4.5
+    },
+    {
+      "timestamp": 1790908075.1860886,
+      "arm": "retrieval",
+      "id": "F03",
+      "runner_rss_mib": 391.35546875,
+      "runner_cpu_seconds": 42.234375,
+      "ollama_rss_mib": 116.78125,
+      "ollama_cpu_seconds": 4.515625
+    },
+    {
+      "timestamp": 1790908076.2110748,
+      "arm": "app_gemini",
+      "id": "F03",
+      "runner_rss_mib": 368.87890625,
+      "runner_cpu_seconds": 42.609375,
+      "ollama_rss_mib": 116.78125,
+      "ollama_cpu_seconds": 4.515625
+    },
+    {
+      "timestamp": 1790908077.2228458,
+      "arm": "app_gemini",
+      "id": "F03",
+      "runner_rss_mib": 371.69921875,
+      "runner_cpu_seconds": 43.0625,
+      "ollama_rss_mib": 116.8203125,
+      "ollama_cpu_seconds": 4.515625
+    },
+    {
+      "timestamp": 1790908078.2408147,
+      "arm": "retrieval",
+      "id": "F04",
+      "runner_rss_mib": 372.8671875,
+      "runner_cpu_seconds": 43.359375,
+      "ollama_rss_mib": 116.8203125,
+      "ollama_cpu_seconds": 4.515625
+    },
+    {
+      "timestamp": 1790908079.2740624,
+      "arm": "retrieval",
+      "id": "F04",
+      "runner_rss_mib": 382.70703125,
+      "runner_cpu_seconds": 43.734375,
+      "ollama_rss_mib": 117.06640625,
+      "ollama_cpu_seconds": 4.546875
+    },
+    {
+      "timestamp": 1790908080.2917194,
+      "arm": "app_gemini",
+      "id": "F04",
+      "runner_rss_mib": 370.0,
+      "runner_cpu_seconds": 44.03125,
+      "ollama_rss_mib": 117.06640625,
+      "ollama_cpu_seconds": 4.546875
+    },
+    {
+      "timestamp": 1790908081.3213155,
+      "arm": "app_gemini",
+      "id": "F04",
+      "runner_rss_mib": 398.20703125,
+      "runner_cpu_seconds": 44.375,
+      "ollama_rss_mib": 117.14453125,
+      "ollama_cpu_seconds": 4.546875
+    },
+    {
+      "timestamp": 1790908082.3436408,
+      "arm": "retrieval",
+      "id": "F05",
+      "runner_rss_mib": 372.88671875,
+      "runner_cpu_seconds": 44.578125,
+      "ollama_rss_mib": 117.14453125,
+      "ollama_cpu_seconds": 4.546875
+    },
+    {
+      "timestamp": 1790908083.374481,
+      "arm": "retrieval",
+      "id": "F05",
+      "runner_rss_mib": 386.5234375,
+      "runner_cpu_seconds": 44.953125,
+      "ollama_rss_mib": 117.14453125,
+      "ollama_cpu_seconds": 4.546875
+    },
+    {
+      "timestamp": 1790908084.3956344,
+      "arm": "bm25_gemini",
+      "id": "F05",
+      "runner_rss_mib": 376.1640625,
+      "runner_cpu_seconds": 45.28125,
+      "ollama_rss_mib": 117.14453125,
+      "ollama_cpu_seconds": 4.546875
+    },
+    {
+      "timestamp": 1790908085.421443,
+      "arm": "app_gemini",
+      "id": "F05",
+      "runner_rss_mib": 383.98046875,
+      "runner_cpu_seconds": 45.640625,
+      "ollama_rss_mib": 116.56640625,
+      "ollama_cpu_seconds": 4.578125
+    },
+    {
+      "timestamp": 1790908086.4335938,
+      "arm": "app_gemini",
+      "id": "F05",
+      "runner_rss_mib": 376.46875,
+      "runner_cpu_seconds": 46.1875,
+      "ollama_rss_mib": 116.56640625,
+      "ollama_cpu_seconds": 4.578125
+    },
+    {
+      "timestamp": 1790908087.451997,
+      "arm": "retrieval",
+      "id": "F06",
+      "runner_rss_mib": 378.63671875,
+      "runner_cpu_seconds": 46.484375,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.578125
+    },
+    {
+      "timestamp": 1790908088.4652905,
+      "arm": "bm25_gemini",
+      "id": "F06",
+      "runner_rss_mib": 375.8046875,
+      "runner_cpu_seconds": 46.9375,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.59375
+    },
+    {
+      "timestamp": 1790908089.488121,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 375.83203125,
+      "runner_cpu_seconds": 47.1875,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.59375
+    },
+    {
+      "timestamp": 1790908090.501967,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15234375,
+      "runner_cpu_seconds": 47.703125,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908091.522318,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15234375,
+      "runner_cpu_seconds": 47.71875,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908092.5370164,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15234375,
+      "runner_cpu_seconds": 47.734375,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908093.5526388,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15234375,
+      "runner_cpu_seconds": 47.75,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908094.5779676,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15234375,
+      "runner_cpu_seconds": 47.765625,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908095.5936344,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15625,
+      "runner_cpu_seconds": 47.78125,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908096.6075423,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15625,
+      "runner_cpu_seconds": 47.796875,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908097.620416,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15625,
+      "runner_cpu_seconds": 47.796875,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908098.6450102,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15625,
+      "runner_cpu_seconds": 47.8125,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908099.6574872,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15625,
+      "runner_cpu_seconds": 47.828125,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908100.682105,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15625,
+      "runner_cpu_seconds": 47.828125,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908101.6961365,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15625,
+      "runner_cpu_seconds": 47.828125,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908102.7105122,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.15625,
+      "runner_cpu_seconds": 47.84375,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908103.7346575,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.13671875,
+      "runner_cpu_seconds": 47.859375,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908104.7512476,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.140625,
+      "runner_cpu_seconds": 47.875,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908105.7640014,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.140625,
+      "runner_cpu_seconds": 47.890625,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908106.7815855,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.140625,
+      "runner_cpu_seconds": 47.90625,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908107.7980025,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.140625,
+      "runner_cpu_seconds": 47.921875,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908108.8123357,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.140625,
+      "runner_cpu_seconds": 47.9375,
+      "ollama_rss_mib": 116.5703125,
+      "ollama_cpu_seconds": 4.609375
+    },
+    {
+      "timestamp": 1790908109.8410442,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.140625,
+      "runner_cpu_seconds": 47.953125,
+      "ollama_rss_mib": 116.58984375,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908110.8590076,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.140625,
+      "runner_cpu_seconds": 47.96875,
+      "ollama_rss_mib": 116.58984375,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908111.8767812,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.140625,
+      "runner_cpu_seconds": 47.984375,
+      "ollama_rss_mib": 116.58984375,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908112.8894722,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.140625,
+      "runner_cpu_seconds": 48.0,
+      "ollama_rss_mib": 116.58984375,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908113.9060137,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.140625,
+      "runner_cpu_seconds": 48.015625,
+      "ollama_rss_mib": 116.58984375,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908114.9204342,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.140625,
+      "runner_cpu_seconds": 48.03125,
+      "ollama_rss_mib": 116.55859375,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908115.9425776,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.046875,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908116.9626877,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.046875,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908117.989442,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.0625,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908119.0031278,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.078125,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908120.0301006,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.09375,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908121.0496895,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.109375,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908122.068188,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.125,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908123.0828605,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.140625,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908124.1022246,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.140625,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908125.1247628,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.15625,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908126.1401331,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.171875,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908127.1623037,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.1875,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908128.1824343,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.1875,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908129.1949692,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.203125,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908130.2133687,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.203125,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908131.2309916,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.203125,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908132.2423952,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.203125,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908133.255393,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.21875,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908134.2729723,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.234375,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908135.2874157,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.25,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908136.303274,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1484375,
+      "runner_cpu_seconds": 48.265625,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908137.317251,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 378.1640625,
+      "runner_cpu_seconds": 48.28125,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908138.3351417,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.6640625,
+      "runner_cpu_seconds": 48.296875,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908139.3600843,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.6640625,
+      "runner_cpu_seconds": 48.3125,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908140.3886359,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.6640625,
+      "runner_cpu_seconds": 48.3125,
+      "ollama_rss_mib": 116.54296875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908141.4126296,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.6640625,
+      "runner_cpu_seconds": 48.34375,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908142.4264083,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.6640625,
+      "runner_cpu_seconds": 48.359375,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908143.4365394,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.6640625,
+      "runner_cpu_seconds": 48.375,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908144.4531608,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.69140625,
+      "runner_cpu_seconds": 48.390625,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908145.4755604,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.69140625,
+      "runner_cpu_seconds": 48.40625,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908146.4888818,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.69140625,
+      "runner_cpu_seconds": 48.421875,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908147.5076928,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.4375,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908148.5243232,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.4375,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908149.5365975,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.453125,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908150.5531104,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.46875,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908151.5671864,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.484375,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908152.579823,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.5,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908153.591873,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.5,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908154.6056192,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.515625,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908155.619595,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.515625,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908156.6342564,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.515625,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908157.6487107,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.515625,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908158.6653185,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.65234375,
+      "runner_cpu_seconds": 48.515625,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908159.6883585,
+      "arm": "app_gemini",
+      "id": "F06",
+      "runner_rss_mib": 377.66015625,
+      "runner_cpu_seconds": 48.546875,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908160.701403,
+      "arm": "retrieval",
+      "id": "F07",
+      "runner_rss_mib": 378.77734375,
+      "runner_cpu_seconds": 48.921875,
+      "ollama_rss_mib": 116.59765625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908161.7296607,
+      "arm": "retrieval",
+      "id": "F07",
+      "runner_rss_mib": 395.37109375,
+      "runner_cpu_seconds": 49.1875,
+      "ollama_rss_mib": 116.60546875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908162.7401378,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.16015625,
+      "runner_cpu_seconds": 49.34375,
+      "ollama_rss_mib": 116.60546875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908163.7559855,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.359375,
+      "ollama_rss_mib": 116.60546875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908164.7712355,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.375,
+      "ollama_rss_mib": 116.60546875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908165.78478,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.390625,
+      "ollama_rss_mib": 116.60546875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908166.8076174,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.390625,
+      "ollama_rss_mib": 116.60546875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908167.8336086,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.40625,
+      "ollama_rss_mib": 116.60546875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908168.8455768,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.421875,
+      "ollama_rss_mib": 116.60546875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908169.858618,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.4375,
+      "ollama_rss_mib": 116.60546875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908170.8727643,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.453125,
+      "ollama_rss_mib": 116.60546875,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908171.8838959,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.453125,
+      "ollama_rss_mib": 115.9140625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908172.8993127,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.453125,
+      "ollama_rss_mib": 115.9140625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908173.9143028,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.453125,
+      "ollama_rss_mib": 115.9140625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908174.9268398,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.46875,
+      "ollama_rss_mib": 115.9140625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908175.9414124,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.1640625,
+      "runner_cpu_seconds": 49.484375,
+      "ollama_rss_mib": 115.9140625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908176.9604,
+      "arm": "bm25_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.23828125,
+      "runner_cpu_seconds": 49.53125,
+      "ollama_rss_mib": 115.9140625,
+      "ollama_cpu_seconds": 4.625
+    },
+    {
+      "timestamp": 1790908177.9854236,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 377.31640625,
+      "runner_cpu_seconds": 49.796875,
+      "ollama_rss_mib": 115.9140625,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908178.9974387,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.296875,
+      "ollama_rss_mib": 115.9140625,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908180.014834,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.3125,
+      "ollama_rss_mib": 115.9140625,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908181.0284543,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.3125,
+      "ollama_rss_mib": 115.9140625,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908182.0431561,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.328125,
+      "ollama_rss_mib": 115.9140625,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908183.0553434,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.328125,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908184.07319,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.328125,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908185.084963,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.34375,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908186.096727,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.359375,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908187.1093595,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.375,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908188.1249037,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.390625,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908189.136855,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.390625,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908190.1567156,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.40625,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908191.18081,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.01953125,
+      "runner_cpu_seconds": 50.40625,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908192.1991751,
+      "arm": "app_gemini",
+      "id": "F07",
+      "runner_rss_mib": 378.0859375,
+      "runner_cpu_seconds": 50.40625,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.640625
+    },
+    {
+      "timestamp": 1790908193.2188895,
+      "arm": "retrieval",
+      "id": "F08",
+      "runner_rss_mib": 379.93359375,
+      "runner_cpu_seconds": 50.71875,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.65625
+    },
+    {
+      "timestamp": 1790908194.2437124,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.1875,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.65625
+    },
+    {
+      "timestamp": 1790908195.2567754,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.203125,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.65625
+    },
+    {
+      "timestamp": 1790908196.268425,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.21875,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.65625
+    },
+    {
+      "timestamp": 1790908197.282139,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.234375,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.65625
+    },
+    {
+      "timestamp": 1790908198.2946107,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.234375,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.65625
+    },
+    {
+      "timestamp": 1790908199.3069181,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.25,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.65625
+    },
+    {
+      "timestamp": 1790908200.3294876,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.265625,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.65625
+    },
+    {
+      "timestamp": 1790908201.343737,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.28125,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.65625
+    },
+    {
+      "timestamp": 1790908202.360654,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.296875,
+      "ollama_rss_mib": 115.8984375,
+      "ollama_cpu_seconds": 4.65625
+    },
+    {
+      "timestamp": 1790908203.3729038,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.296875,
+      "ollama_rss_mib": 115.9296875,
+      "ollama_cpu_seconds": 4.671875
+    },
+    {
+      "timestamp": 1790908204.39784,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.328125,
+      "ollama_rss_mib": 115.9296875,
+      "ollama_cpu_seconds": 4.671875
+    },
+    {
+      "timestamp": 1790908205.4230533,
+      "arm": "bm25_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.359375,
+      "runner_cpu_seconds": 51.34375,
+      "ollama_rss_mib": 115.9296875,
+      "ollama_cpu_seconds": 4.671875
+    },
+    {
+      "timestamp": 1790908206.4476233,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 384.421875,
+      "runner_cpu_seconds": 51.640625,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.671875
+    },
+    {
+      "timestamp": 1790908207.4879858,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 400.95703125,
+      "runner_cpu_seconds": 52.25,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908208.5273283,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 385.16796875,
+      "runner_cpu_seconds": 52.328125,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908209.5565162,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 385.16796875,
+      "runner_cpu_seconds": 52.328125,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908210.5807326,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 385.16796875,
+      "runner_cpu_seconds": 52.34375,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908211.5951886,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 385.16796875,
+      "runner_cpu_seconds": 52.359375,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908212.6067777,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 385.16796875,
+      "runner_cpu_seconds": 52.359375,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908213.6198692,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 385.16796875,
+      "runner_cpu_seconds": 52.375,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908214.6395266,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 385.16796875,
+      "runner_cpu_seconds": 52.390625,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908215.6611977,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 385.16796875,
+      "runner_cpu_seconds": 52.40625,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908216.6871722,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 385.16796875,
+      "runner_cpu_seconds": 52.421875,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908217.6981854,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 385.16796875,
+      "runner_cpu_seconds": 52.421875,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908218.7104628,
+      "arm": "app_gemini",
+      "id": "F08",
+      "runner_rss_mib": 385.1796875,
+      "runner_cpu_seconds": 52.4375,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908219.7235959,
+      "arm": "retrieval",
+      "id": "F09",
+      "runner_rss_mib": 385.328125,
+      "runner_cpu_seconds": 52.78125,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908220.756458,
+      "arm": "retrieval",
+      "id": "F09",
+      "runner_rss_mib": 396.8515625,
+      "runner_cpu_seconds": 53.71875,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908221.7959204,
+      "arm": "retrieval",
+      "id": "F09",
+      "runner_rss_mib": 400.83984375,
+      "runner_cpu_seconds": 54.765625,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908222.8247926,
+      "arm": "retrieval",
+      "id": "F09",
+      "runner_rss_mib": 405.9609375,
+      "runner_cpu_seconds": 55.75,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908223.852358,
+      "arm": "retrieval",
+      "id": "F09",
+      "runner_rss_mib": 410.265625,
+      "runner_cpu_seconds": 56.765625,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908224.8630755,
+      "arm": "bm25_gemini",
+      "id": "F09",
+      "runner_rss_mib": 403.57421875,
+      "runner_cpu_seconds": 57.078125,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908225.8867962,
+      "arm": "bm25_gemini",
+      "id": "F09",
+      "runner_rss_mib": 403.57421875,
+      "runner_cpu_seconds": 57.078125,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908226.9117699,
+      "arm": "bm25_gemini",
+      "id": "F09",
+      "runner_rss_mib": 403.57421875,
+      "runner_cpu_seconds": 57.09375,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908227.9265392,
+      "arm": "bm25_gemini",
+      "id": "F09",
+      "runner_rss_mib": 403.57421875,
+      "runner_cpu_seconds": 57.109375,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908228.9414585,
+      "arm": "bm25_gemini",
+      "id": "F09",
+      "runner_rss_mib": 403.59765625,
+      "runner_cpu_seconds": 57.125,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908229.967027,
+      "arm": "app_gemini",
+      "id": "F09",
+      "runner_rss_mib": 404.08203125,
+      "runner_cpu_seconds": 57.40625,
+      "ollama_rss_mib": 115.9375,
+      "ollama_cpu_seconds": 4.6875
+    },
+    {
+      "timestamp": 1790908231.0072823,
+      "arm": "app_gemini",
+      "id": "F09",
+      "runner_rss_mib": 412.9921875,
+      "runner_cpu_seconds": 57.640625,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908232.0320492,
+      "arm": "app_gemini",
+      "id": "F09",
+      "runner_rss_mib": 401.96484375,
+      "runner_cpu_seconds": 57.875,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908233.0435438,
+      "arm": "app_gemini",
+      "id": "F09",
+      "runner_rss_mib": 401.9765625,
+      "runner_cpu_seconds": 57.875,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908234.057132,
+      "arm": "app_gemini",
+      "id": "F09",
+      "runner_rss_mib": 401.9765625,
+      "runner_cpu_seconds": 57.875,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908235.0701447,
+      "arm": "app_gemini",
+      "id": "F09",
+      "runner_rss_mib": 401.9765625,
+      "runner_cpu_seconds": 57.890625,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908236.0955887,
+      "arm": "app_gemini",
+      "id": "F09",
+      "runner_rss_mib": 401.9765625,
+      "runner_cpu_seconds": 57.90625,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908237.1111274,
+      "arm": "app_gemini",
+      "id": "F09",
+      "runner_rss_mib": 401.9765625,
+      "runner_cpu_seconds": 57.921875,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908238.1261044,
+      "arm": "app_gemini",
+      "id": "F09",
+      "runner_rss_mib": 401.9765625,
+      "runner_cpu_seconds": 57.9375,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908239.145889,
+      "arm": "app_gemini",
+      "id": "F09",
+      "runner_rss_mib": 402.21484375,
+      "runner_cpu_seconds": 57.953125,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908240.1680305,
+      "arm": "retrieval",
+      "id": "F10",
+      "runner_rss_mib": 402.48046875,
+      "runner_cpu_seconds": 58.265625,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908241.1875591,
+      "arm": "retrieval",
+      "id": "F10",
+      "runner_rss_mib": 416.9609375,
+      "runner_cpu_seconds": 58.609375,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908242.2121122,
+      "arm": "bm25_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.51171875,
+      "runner_cpu_seconds": 58.640625,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908243.2245817,
+      "arm": "bm25_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.51171875,
+      "runner_cpu_seconds": 58.65625,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908244.239348,
+      "arm": "bm25_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.51171875,
+      "runner_cpu_seconds": 58.671875,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908245.251192,
+      "arm": "bm25_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.51171875,
+      "runner_cpu_seconds": 58.6875,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908246.2647302,
+      "arm": "bm25_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.51171875,
+      "runner_cpu_seconds": 58.703125,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908247.2765834,
+      "arm": "bm25_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.51171875,
+      "runner_cpu_seconds": 58.703125,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908248.2929578,
+      "arm": "bm25_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.5546875,
+      "runner_cpu_seconds": 58.703125,
+      "ollama_rss_mib": 115.94140625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908249.3057761,
+      "arm": "app_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.72265625,
+      "runner_cpu_seconds": 58.96875,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908250.3192687,
+      "arm": "app_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.76953125,
+      "runner_cpu_seconds": 59.40625,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908251.3315706,
+      "arm": "app_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.78515625,
+      "runner_cpu_seconds": 59.421875,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908252.3544111,
+      "arm": "app_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.78515625,
+      "runner_cpu_seconds": 59.421875,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908253.3689477,
+      "arm": "app_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.78515625,
+      "runner_cpu_seconds": 59.421875,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908254.3825123,
+      "arm": "app_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.78515625,
+      "runner_cpu_seconds": 59.4375,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908255.3919437,
+      "arm": "app_gemini",
+      "id": "F10",
+      "runner_rss_mib": 401.78515625,
+      "runner_cpu_seconds": 59.453125,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908256.4069827,
+      "arm": "app_gemini",
+      "id": "F10",
+      "runner_rss_mib": 402.046875,
+      "runner_cpu_seconds": 59.46875,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908257.4191694,
+      "arm": "retrieval",
+      "id": "F11",
+      "runner_rss_mib": 402.73828125,
+      "runner_cpu_seconds": 59.671875,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908258.4482596,
+      "arm": "retrieval",
+      "id": "F11",
+      "runner_rss_mib": 409.90625,
+      "runner_cpu_seconds": 59.953125,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908259.4727619,
+      "arm": "bm25_gemini",
+      "id": "F11",
+      "runner_rss_mib": 401.77734375,
+      "runner_cpu_seconds": 60.1875,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908260.4903257,
+      "arm": "bm25_gemini",
+      "id": "F11",
+      "runner_rss_mib": 401.79296875,
+      "runner_cpu_seconds": 60.203125,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908261.5080256,
+      "arm": "bm25_gemini",
+      "id": "F11",
+      "runner_rss_mib": 401.79296875,
+      "runner_cpu_seconds": 60.203125,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908262.5246496,
+      "arm": "bm25_gemini",
+      "id": "F11",
+      "runner_rss_mib": 401.79296875,
+      "runner_cpu_seconds": 60.203125,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908263.539717,
+      "arm": "bm25_gemini",
+      "id": "F11",
+      "runner_rss_mib": 401.83203125,
+      "runner_cpu_seconds": 60.21875,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908264.5588257,
+      "arm": "app_gemini",
+      "id": "F11",
+      "runner_rss_mib": 402.0,
+      "runner_cpu_seconds": 60.484375,
+      "ollama_rss_mib": 115.98046875,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908265.5825207,
+      "arm": "app_gemini",
+      "id": "F11",
+      "runner_rss_mib": 402.8046875,
+      "runner_cpu_seconds": 61.125,
+      "ollama_rss_mib": 115.984375,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908266.5949118,
+      "arm": "app_gemini",
+      "id": "F11",
+      "runner_rss_mib": 402.84765625,
+      "runner_cpu_seconds": 61.140625,
+      "ollama_rss_mib": 115.984375,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908267.615904,
+      "arm": "app_gemini",
+      "id": "F11",
+      "runner_rss_mib": 402.87109375,
+      "runner_cpu_seconds": 61.15625,
+      "ollama_rss_mib": 115.984375,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908268.6283543,
+      "arm": "app_gemini",
+      "id": "F11",
+      "runner_rss_mib": 402.87109375,
+      "runner_cpu_seconds": 61.171875,
+      "ollama_rss_mib": 115.984375,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908269.6448545,
+      "arm": "app_gemini",
+      "id": "F11",
+      "runner_rss_mib": 402.87109375,
+      "runner_cpu_seconds": 61.1875,
+      "ollama_rss_mib": 115.984375,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908270.6662047,
+      "arm": "app_gemini",
+      "id": "F11",
+      "runner_rss_mib": 403.13671875,
+      "runner_cpu_seconds": 61.203125,
+      "ollama_rss_mib": 115.984375,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908271.6799674,
+      "arm": "retrieval",
+      "id": "F12",
+      "runner_rss_mib": 403.5859375,
+      "runner_cpu_seconds": 61.625,
+      "ollama_rss_mib": 115.984375,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908272.7150831,
+      "arm": "retrieval",
+      "id": "F12",
+      "runner_rss_mib": 417.1015625,
+      "runner_cpu_seconds": 62.015625,
+      "ollama_rss_mib": 116.015625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908273.740032,
+      "arm": "bm25_gemini",
+      "id": "F12",
+      "runner_rss_mib": 401.91015625,
+      "runner_cpu_seconds": 62.09375,
+      "ollama_rss_mib": 116.015625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908274.7522142,
+      "arm": "bm25_gemini",
+      "id": "F12",
+      "runner_rss_mib": 401.92578125,
+      "runner_cpu_seconds": 62.109375,
+      "ollama_rss_mib": 116.015625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908275.766069,
+      "arm": "bm25_gemini",
+      "id": "F12",
+      "runner_rss_mib": 401.92578125,
+      "runner_cpu_seconds": 62.125,
+      "ollama_rss_mib": 116.015625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908276.7835414,
+      "arm": "app_gemini",
+      "id": "F12",
+      "runner_rss_mib": 401.9453125,
+      "runner_cpu_seconds": 62.140625,
+      "ollama_rss_mib": 116.015625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908277.8098912,
+      "arm": "app_gemini",
+      "id": "F12",
+      "runner_rss_mib": 402.26953125,
+      "runner_cpu_seconds": 62.46875,
+      "ollama_rss_mib": 116.015625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908278.834027,
+      "arm": "app_gemini",
+      "id": "F12",
+      "runner_rss_mib": 402.52734375,
+      "runner_cpu_seconds": 62.90625,
+      "ollama_rss_mib": 116.015625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908279.84647,
+      "arm": "app_gemini",
+      "id": "F12",
+      "runner_rss_mib": 402.52734375,
+      "runner_cpu_seconds": 62.921875,
+      "ollama_rss_mib": 116.015625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908280.8717544,
+      "arm": "app_gemini",
+      "id": "F12",
+      "runner_rss_mib": 402.52734375,
+      "runner_cpu_seconds": 62.921875,
+      "ollama_rss_mib": 116.015625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908281.8846245,
+      "arm": "retrieval",
+      "id": "F13",
+      "runner_rss_mib": 402.8125,
+      "runner_cpu_seconds": 63.015625,
+      "ollama_rss_mib": 116.015625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908282.9005165,
+      "arm": "retrieval",
+      "id": "F13",
+      "runner_rss_mib": 402.9453125,
+      "runner_cpu_seconds": 63.296875,
+      "ollama_rss_mib": 116.03515625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908283.9250827,
+      "arm": "bm25_gemini",
+      "id": "F13",
+      "runner_rss_mib": 402.015625,
+      "runner_cpu_seconds": 63.671875,
+      "ollama_rss_mib": 116.03515625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908284.9430919,
+      "arm": "bm25_gemini",
+      "id": "F13",
+      "runner_rss_mib": 402.03125,
+      "runner_cpu_seconds": 63.6875,
+      "ollama_rss_mib": 116.03515625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908285.9579113,
+      "arm": "bm25_gemini",
+      "id": "F13",
+      "runner_rss_mib": 402.03125,
+      "runner_cpu_seconds": 63.703125,
+      "ollama_rss_mib": 116.03515625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908286.968781,
+      "arm": "app_gemini",
+      "id": "F13",
+      "runner_rss_mib": 402.10546875,
+      "runner_cpu_seconds": 64.0,
+      "ollama_rss_mib": 116.05078125,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908287.9940958,
+      "arm": "app_gemini",
+      "id": "F13",
+      "runner_rss_mib": 412.7421875,
+      "runner_cpu_seconds": 64.296875,
+      "ollama_rss_mib": 116.0625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908289.0065231,
+      "arm": "app_gemini",
+      "id": "F13",
+      "runner_rss_mib": 402.51171875,
+      "runner_cpu_seconds": 64.484375,
+      "ollama_rss_mib": 116.0625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908290.02115,
+      "arm": "app_gemini",
+      "id": "F13",
+      "runner_rss_mib": 402.52734375,
+      "runner_cpu_seconds": 64.5,
+      "ollama_rss_mib": 116.0625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908291.040222,
+      "arm": "app_gemini",
+      "id": "F13",
+      "runner_rss_mib": 402.5625,
+      "runner_cpu_seconds": 64.515625,
+      "ollama_rss_mib": 116.0625,
+      "ollama_cpu_seconds": 4.703125
+    },
+    {
+      "timestamp": 1790908292.0573492,
+      "arm": "retrieval",
+      "id": "F14",
+      "runner_rss_mib": 403.24609375,
+      "runner_cpu_seconds": 64.8125,
+      "ollama_rss_mib": 116.06640625,
+      "ollama_cpu_seconds": 4.71875
+    },
+    {
+      "timestamp": 1790908293.077509,
+      "arm": "bm25_gemini",
+      "id": "F14",
+      "runner_rss_mib": 402.109375,
+      "runner_cpu_seconds": 65.25,
+      "ollama_rss_mib": 116.0703125,
+      "ollama_cpu_seconds": 4.71875
+    },
+    {
+      "timestamp": 1790908294.0910544,
+      "arm": "bm25_gemini",
+      "id": "F14",
+      "runner_rss_mib": 402.12109375,
+      "runner_cpu_seconds": 65.25,
+      "ollama_rss_mib": 116.0703125,
+      "ollama_cpu_seconds": 4.71875
+    },
+    {
+      "timestamp": 1790908295.1081734,
+      "arm": "bm25_gemini",
+      "id": "F14",
+      "runner_rss_mib": 402.13671875,
+      "runner_cpu_seconds": 65.25,
+      "ollama_rss_mib": 116.0703125,
+      "ollama_cpu_seconds": 4.71875
+    },
+    {
+      "timestamp": 1790908296.1219013,
+      "arm": "app_gemini",
+      "id": "F14",
+      "runner_rss_mib": 402.578125,
+      "runner_cpu_seconds": 65.53125,
+      "ollama_rss_mib": 116.12890625,
+      "ollama_cpu_seconds": 4.734375
+    },
+    {
+      "timestamp": 1790908297.1379373,
+      "arm": "app_gemini",
+      "id": "F14",
+      "runner_rss_mib": 402.48828125,
+      "runner_cpu_seconds": 65.890625,
+      "ollama_rss_mib": 116.12890625,
+      "ollama_cpu_seconds": 4.734375
+    },
+    {
+      "timestamp": 1790908298.1503413,
+      "arm": "app_gemini",
+      "id": "F14",
+      "runner_rss_mib": 402.52734375,
+      "runner_cpu_seconds": 65.890625,
+      "ollama_rss_mib": 116.12890625,
+      "ollama_cpu_seconds": 4.734375
+    },
+    {
+      "timestamp": 1790908299.1643114,
+      "arm": "retrieval",
+      "id": "F15",
+      "runner_rss_mib": 403.3125,
+      "runner_cpu_seconds": 66.203125,
+      "ollama_rss_mib": 116.13671875,
+      "ollama_cpu_seconds": 4.734375
+    },
+    {
+      "timestamp": 1790908300.177705,
+      "arm": "bm25_gemini",
+      "id": "F15",
+      "runner_rss_mib": 401.62890625,
+      "runner_cpu_seconds": 66.671875,
+      "ollama_rss_mib": 116.13671875,
+      "ollama_cpu_seconds": 4.734375
+    },
+    {
+      "timestamp": 1790908301.19365,
+      "arm": "bm25_gemini",
+      "id": "F15",
+      "runner_rss_mib": 401.64453125,
+      "runner_cpu_seconds": 66.703125,
+      "ollama_rss_mib": 116.13671875,
+      "ollama_cpu_seconds": 4.734375
+    },
+    {
+      "timestamp": 1790908302.2045412,
+      "arm": "app_gemini",
+      "id": "F15",
+      "runner_rss_mib": 401.79296875,
+      "runner_cpu_seconds": 66.984375,
+      "ollama_rss_mib": 116.13671875,
+      "ollama_cpu_seconds": 4.734375
+    },
+    {
+      "timestamp": 1790908303.2258172,
+      "arm": "app_gemini",
+      "id": "F15",
+      "runner_rss_mib": 402.58984375,
+      "runner_cpu_seconds": 67.5,
+      "ollama_rss_mib": 116.359375,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908304.2399924,
+      "arm": "app_gemini",
+      "id": "F15",
+      "runner_rss_mib": 402.640625,
+      "runner_cpu_seconds": 67.546875,
+      "ollama_rss_mib": 116.359375,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908305.2557597,
+      "arm": "app_gemini",
+      "id": "F15",
+      "runner_rss_mib": 402.640625,
+      "runner_cpu_seconds": 67.5625,
+      "ollama_rss_mib": 116.359375,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908306.2718046,
+      "arm": "app_gemini",
+      "id": "F15",
+      "runner_rss_mib": 402.640625,
+      "runner_cpu_seconds": 67.578125,
+      "ollama_rss_mib": 116.359375,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908307.2906463,
+      "arm": "app_gemini",
+      "id": "F15",
+      "runner_rss_mib": 402.640625,
+      "runner_cpu_seconds": 67.578125,
+      "ollama_rss_mib": 116.359375,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908308.30939,
+      "arm": "app_gemini",
+      "id": "F15",
+      "runner_rss_mib": 402.640625,
+      "runner_cpu_seconds": 67.578125,
+      "ollama_rss_mib": 116.359375,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908309.3231163,
+      "arm": "app_gemini",
+      "id": "F15",
+      "runner_rss_mib": 402.67578125,
+      "runner_cpu_seconds": 67.578125,
+      "ollama_rss_mib": 116.359375,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908310.3376439,
+      "arm": "retrieval",
+      "id": "F16",
+      "runner_rss_mib": 403.5234375,
+      "runner_cpu_seconds": 67.875,
+      "ollama_rss_mib": 116.359375,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908311.353578,
+      "arm": "bm25_gemini",
+      "id": "F16",
+      "runner_rss_mib": 401.65625,
+      "runner_cpu_seconds": 68.296875,
+      "ollama_rss_mib": 116.36328125,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908312.3672378,
+      "arm": "bm25_gemini",
+      "id": "F16",
+      "runner_rss_mib": 401.66796875,
+      "runner_cpu_seconds": 68.296875,
+      "ollama_rss_mib": 116.36328125,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908313.3798323,
+      "arm": "bm25_gemini",
+      "id": "F16",
+      "runner_rss_mib": 401.80859375,
+      "runner_cpu_seconds": 68.3125,
+      "ollama_rss_mib": 116.36328125,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908314.3938608,
+      "arm": "app_gemini",
+      "id": "F16",
+      "runner_rss_mib": 401.94140625,
+      "runner_cpu_seconds": 68.453125,
+      "ollama_rss_mib": 116.36328125,
+      "ollama_cpu_seconds": 4.75
+    },
+    {
+      "timestamp": 1790908315.433586,
+      "arm": "app_gemini",
+      "id": "F16",
+      "runner_rss_mib": 410.71484375,
+      "runner_cpu_seconds": 68.765625,
+      "ollama_rss_mib": 116.37109375,
+      "ollama_cpu_seconds": 4.765625
+    },
+    {
+      "timestamp": 1790908316.459626,
+      "arm": "app_gemini",
+      "id": "F16",
+      "runner_rss_mib": 402.5859375,
+      "runner_cpu_seconds": 69.015625,
+      "ollama_rss_mib": 116.37109375,
+      "ollama_cpu_seconds": 4.765625
+    },
+    {
+      "timestamp": 1790908317.472883,
+      "arm": "app_gemini",
+      "id": "F16",
+      "runner_rss_mib": 402.6015625,
+      "runner_cpu_seconds": 69.03125,
+      "ollama_rss_mib": 116.37109375,
+      "ollama_cpu_seconds": 4.765625
+    },
+    {
+      "timestamp": 1790908318.4846065,
+      "arm": "app_gemini",
+      "id": "F16",
+      "runner_rss_mib": 403.30859375,
+      "runner_cpu_seconds": 69.09375,
+      "ollama_rss_mib": 116.37109375,
+      "ollama_cpu_seconds": 4.765625
+    },
+    {
+      "timestamp": 1790908319.498652,
+      "arm": "app_gemini",
+      "id": "F16",
+      "runner_rss_mib": 403.30859375,
+      "runner_cpu_seconds": 69.109375,
+      "ollama_rss_mib": 116.37109375,
+      "ollama_cpu_seconds": 4.765625
+    }
+  ],
+  "scope": "host processes only; no cloud inference resources or SDK-internal retries"
+}

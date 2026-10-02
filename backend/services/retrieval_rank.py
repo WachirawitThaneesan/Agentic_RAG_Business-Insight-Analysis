@@ -61,7 +61,7 @@ def _document_aliases(filename: str) -> list[str]:
                if key in stem_key for alias in values]
     latin_words = re.findall(r"[a-z0-9]+", stem_key)
     aliases.extend(token for token in latin_words
-                   if len(token) >= 4 and token not in _GENERIC_FILENAME_WORDS
+                   if len(token) >= 3 and token not in _GENERIC_FILENAME_WORDS
                    and not re.fullmatch(r"(?:25|20)\d{2}", token))
     return aliases
 
@@ -80,7 +80,11 @@ def matched_document_aliases(
     matched: set[str] = set()
     for document_id, filename in documents:
         for alias in _document_aliases(filename):
-            if normalize_search_text(alias).casefold() in query:
+            needle = normalize_search_text(alias).casefold()
+            pattern = re.escape(needle)
+            if re.fullmatch(r'[a-z0-9 ]+', needle):
+                pattern = r'(?<![a-z0-9])' + pattern + r'(?![a-z0-9])'
+            if re.search(pattern, query):
                 chosen.add(int(document_id))
                 matched.add(alias)
     return chosen or None, tuple(sorted(matched, key=len, reverse=True))
@@ -98,7 +102,10 @@ def without_document_aliases(question: str, aliases: Iterable[str]) -> str:
     """
     result = normalize_search_text(question)
     for alias in aliases:
-        result = re.sub(re.escape(normalize_search_text(alias)), " ", result,
+        pattern = re.escape(normalize_search_text(alias))
+        if re.fullmatch(r'[a-z0-9 ]+', alias, re.I):
+            pattern = r'(?<![a-z0-9])' + pattern + r'(?![a-z0-9])'
+        result = re.sub(pattern, " ", result,
                         flags=re.IGNORECASE)
     return result.strip() or question
 
