@@ -53,9 +53,34 @@ PROMPT = """\
 2. ถ้าตารางมีหัวสองชั้น (เช่น "งบการเงินรวม" ครอบ "2566 | 2567") ให้รวมเป็นชื่อเดียว
    เช่น "งบการเงินรวม 2566"
 3. เก็บตัวเลขตามที่เห็น รวมวงเล็บด้วย — `(1,234)` ให้เขียน `(1,234)` ห้ามแปลงเป็น -1234
-4. ชื่อแถว (row_label) ต้องเป็นข้อความเต็ม ห้ามตัดกลางคำ
+4. ชื่อแถว (row_label) ต้องเป็นข้อความเต็ม ห้ามตัดกลางคำ ห้ามย่อ/สรุป/เปลี่ยนชื่อ
+   เก็บวรรณยุกต์และคำขยายท้ายแถว เช่น กิจการอื่น กับ กิจการที่เกี่ยวข้องกัน ให้ตรงต้นฉบับ
 5. ถ้าตารางมีหน่วยกำกับ (เช่น "หน่วย: ล้านบาท") ให้ใส่ในช่อง unit ของตารางนั้น
 6. ถ้าหน้านี้ไม่มีตารางเลย ให้ตอบ {"tables": []}
+7. แยกตารางตามกรอบและหัวคอลัมน์จริง โดยเฉพาะหน้าที่มีหลายกรอบหรือสองหน้าวางคู่กัน
+   ตารางเล็กระยะสั้น/กลาง/ยาว กับตารางรายละเอียดด้านการเงินที่อยู่ด้านล่างเป็นคนละตาราง
+   ห้ามนำหัวจากกรอบหนึ่งมาครอบค่าจากอีกกรอบ ห้ามรวมตารางข้างซ้ายและขวาที่หัวต่างกัน
+8. columns ให้มีเฉพาะหัวของค่าที่อยู่ใน values ตามลำดับซ้ายไปขวา
+   หัวคอลัมน์ชื่อแถวให้ใช้เป็น row_label และไม่ใส่ซ้ำใน columns หรือ values
+   จำนวนหัว columns ต้องเท่ากับจำนวน values ของทุกแถว ห้ามย้ายค่าเพื่อให้จำนวนตรง
+   ถ้าไม่สามารถผูกหัวและค่าได้จากภาพ ให้เว้นตารางนั้นแทนการแต่งหัวหรือเดาความหมาย
+9. หัวที่วางซ้อนในแนวตั้งเหนือค่าคอลัมน์เดียวเป็นหัวเดียว เช่น วันที่/งบรวม/ตรวจสอบ
+   ห้ามสร้างคอลัมน์ค่าคนละช่องสำหรับคำว่า งบรวม และ ตรวจสอบ เมื่อค่าจริงอยู่แนวเดียวกัน
+10. เก็บหน่วยที่พิมพ์เฉพาะแถวไว้ท้าย row_label เช่น (ล้านบาท) แม้หัวใหญ่ระบุ บาท (THB)
+    ตารางที่มีคอลัมน์ หน่วย ต้องรักษาคอลัมน์นั้น และห้ามใช้หน่วยเงินครอบแถวร้อยละ
+    คอลัมน์ หน่วย ที่พิมพ์แยกเป็นคอลัมน์ค่าใน columns และ values เสมอ แม้ไม่ใช่ตัวเลข
+    เช่น columns=["หน่วย", "ปีแรก", "ปีถัดมา"] โดยใช้ปีที่พิมพ์จริง ห้ามย้ายหน่วยลง row_label
+11. ห้ามแปลง comma เป็นจุดทศนิยม ตรวจเครื่องหมายตัวเลขตามภาพ โดยไม่คำนวณแก้ค่าเอง
+12. ชื่อโรงไฟฟ้า/บริษัท/ส่วนตารางที่กำกับค่าต้องอยู่ใน title หรือชื่อแถว ไม่ตัดทิ้ง
+    เก็บคอลัมน์ตัวตนอื่นที่พิมพ์จริงด้วย เช่น บริษัทที่อาจมีความขัดแย้งและลักษณะรายการ
+    row_label คือข้อความของคอลัมน์ซ้ายสุดจริงเท่านั้น ห้ามย้ายคอลัมน์รายละเอียดมาแทนตัวตน
+    เก็บข้อความเซลล์รวมและ line breaks โดยไม่แจกตัวเลขให้ subitem ที่ตำแหน่งไม่ตรงกัน
+    ตัวเลข subtotal ต้องผูกกับ subtotal ไม่ใช่รายการอธิบายก่อนหน้า
+13. สารบัญหรือ navigation sidebar ไม่ใช่ตารางข้อมูล ห้ามแปลงเป็น financial cells
+    รายการ bullet หรือ numbered list ที่ไม่มีหัวคอลัมน์/แถวแบบตาราง ไม่ให้สร้างเป็นตารางเอง
+    key/value disclosure ที่ไม่มีหัวพิมพ์ให้ใช้หัวกลางว่า ค่า ห้ามใช้ชื่อ field JSON เป็นหัว
+14. ถ้าไม่มีหลักฐานหัวคอลัมน์ในภาพ ให้เว้นตารางนั้น ห้ามเดาปีจากปีรายงาน
+    หรือรูปแบบที่คุ้นเคย
 
 ตอบเป็น JSON เท่านั้น รูปแบบ:
 {
@@ -70,6 +95,17 @@ PROMPT = """\
     }
   ]
 }"""
+
+TABLE_RESPONSE_SCHEMA = {
+    'type': 'OBJECT', 'required': ['tables'], 'properties': {
+        'tables': {'type': 'ARRAY', 'items': {'type': 'OBJECT',
+            'required': ['title', 'unit', 'columns', 'rows'],
+            'properties': {'title': {'type': 'STRING'}, 'unit': {'type': 'STRING'},
+                'columns': {'type': 'ARRAY', 'items': {'type': 'STRING'}},
+                'rows': {'type': 'ARRAY', 'items': {'type': 'OBJECT',
+                    'required': ['row_label', 'values'], 'properties': {
+                        'row_label': {'type': 'STRING'},
+                        'values': {'type': 'ARRAY', 'items': {'type': 'STRING'}}}}}}}}}}
 
 
 def _render_page(pdf_path: Path, page_no: int) -> bytes:
@@ -111,16 +147,15 @@ def _read_page_once(client, model: str, png: bytes) -> Dict[str, Any]:
     """One request: ask the model for this page's tables and parse the reply."""
     from google.genai import types
 
+    contents = [types.Part.from_bytes(data=png, mime_type="image/png"), PROMPT]
     resp = client.models.generate_content(
         model=model,
-        contents=[
-            types.Part.from_bytes(data=png, mime_type="image/png"),
-            PROMPT,
-        ],
+        contents=contents,
         config=types.GenerateContentConfig(
             temperature=0.0,
             max_output_tokens=32768,
             response_mime_type="application/json",
+            response_schema=TABLE_RESPONSE_SCHEMA,
             thinking_config=types.ThinkingConfig(
                 thinking_budget=settings.GEMINI_THINKING_BUDGET
             ),
@@ -133,18 +168,21 @@ def _read_page_once(client, model: str, png: bytes) -> Dict[str, Any]:
         getattr(usage, "candidates_token_count", 0) or 0,
     )
     if not text:
-        return {"tables": [], "_tokens": tokens, "_error": "empty response"}
+        return {"tables": [], "_tokens": tokens, "_error": "empty response", "_raw_response_text": text}
     try:
         data = json.loads(text)
     except json.JSONDecodeError:
         m = re.search(r"\{.*\}", text, re.DOTALL)
         if not m:
-            return {"tables": [], "_tokens": tokens, "_error": "unparsable"}
+            return {"tables": [], "_tokens": tokens, "_error": "unparsable", "_raw_response_text": text}
         try:
             data = json.loads(m.group())
         except json.JSONDecodeError:
-            return {"tables": [], "_tokens": tokens, "_error": "unparsable"}
+            return {"tables": [], "_tokens": tokens, "_error": "unparsable", "_raw_response_text": text}
+    if not isinstance(data, dict):
+        return {"tables": [], "_tokens": tokens, "_error": "response is not an object", "_raw_response_text": text}
     data["_tokens"] = tokens
+    data["_raw_response_text"] = text
     return data
 
 

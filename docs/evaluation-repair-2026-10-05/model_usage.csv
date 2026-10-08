@@ -1,0 +1,15 @@
+﻿candidates_token_count,estimated_usd_standard_2_5_flash,experiment,prompt_token_count,sdk_attempts,successful_calls,thoughts_token_count
+,0.0,alias_only500,,0,0,
+,0.0,production_weighted500,,0,0,
+,0.0,repaired_baseline498,,0,0,
+5701,0.1103098,repaired_production498,320191,50,50,0
+,0.0,cross_entity498,,0,0,
+43527,0.2417307,label_review,443044,57,51,0
+11466,0.0421965,labels_v2_verification,45105,12,12,0
+1234,0.0098989,labels_v3_verification,22713,2,2,0
+183544,0.9581263000000001,answer_claim_audit,1664221,53,53,0
+8607,0.0489555,answer_claim_audit_v2,91460,2,2,0
+5960,0.0193898,focused_answer_coverage_v2,14966,7,5,0
+9061,0.1191892,focused_context_coverage_v2,321789,13,10,0
+2922,0.015449099999999999,focused_relevance,27147,57,50,0
+,0.0,focused_relevance_v2,,0,0,

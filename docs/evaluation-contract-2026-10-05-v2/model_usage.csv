@@ -1,0 +1,5 @@
+﻿candidates_token_count,cost_reason,cost_usd,prompt_token_count,run,sdk_attempts,sdk_errors,sdk_successes,thoughts_token_count
+4024,Actual billed charges unavailable; no cost invented,,28877,numeric_pdf_review,6,0,6,0
+13991,Actual billed charges unavailable; no cost invented,,156559,numeric_pdf_review_v2,69,39,30,0
+0,Actual billed charges unavailable; no cost invented,,0,numeric_pdf_review_v3,0,0,0,0
+10257,Actual billed charges unavailable; no cost invented,,89831,numeric_pdf_review_v4,20,1,19,0

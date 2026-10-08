@@ -131,6 +131,7 @@ CREATE TABLE IF NOT EXISTS dim_documents (
     filename     VARCHAR,
     doc_type     VARCHAR,
     source_url   VARCHAR,
+    source_sha256 VARCHAR,
     created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -221,6 +222,7 @@ def _migrate_schema(conn: duckdb.DuckDBPyConnection) -> None:
     except Exception as exc:
         logger.debug("col_value_num add skipped: %s", exc)
 
+    conn.execute("ALTER TABLE dim_documents ADD COLUMN IF NOT EXISTS source_sha256 VARCHAR")
     conn.execute("ALTER TABLE dim_tables ADD COLUMN IF NOT EXISTS source_page INTEGER")
     conn.execute("ALTER TABLE dim_tables ADD COLUMN IF NOT EXISTS quality_status VARCHAR")
     conn.execute("ALTER TABLE dim_tables ADD COLUMN IF NOT EXISTS unit VARCHAR")
@@ -414,15 +416,16 @@ def load_document_dim(
     filename: str,
     doc_type: str = "pdf",
     source_url: str = "",
+    source_sha256: Optional[str] = None,
 ) -> None:
     """Upsert a document row into dim_documents."""
     conn = _get_conn()
     conn.execute(
         """
-        INSERT OR REPLACE INTO dim_documents (document_id, filename, doc_type, source_url)
-        VALUES (?, ?, ?, ?)
+        INSERT OR REPLACE INTO dim_documents (document_id, filename, doc_type, source_url, source_sha256)
+        VALUES (?, ?, ?, ?, COALESCE(?, (SELECT source_sha256 FROM dim_documents WHERE document_id=?)))
         """,
-        [document_id, filename, doc_type, source_url],
+        [document_id, filename, doc_type, source_url, source_sha256, document_id],
     )
 
 
@@ -512,6 +515,16 @@ def _cell_unit(label: str, column: str, value: str, table_unit: str = "", table_
         return "%"
     if "ต่อหุ้น" in row_text:
         return "บาท"
+    # OCR may preserve a broad THB table heading and a more specific scale in
+    # every row. Keep the extracted numbers unchanged and use that local scale.
+    # Inspect cell, column, then row; a title elsewhere is not a cell override.
+    for local_text in (value_text, column_text, row_text):
+        compact = re.sub(r"\s+", "", local_text)
+        for money_unit in ("ล้านบาท", "พันบาท"):
+            if money_unit in compact:
+                return money_unit
+        if re.search(r"\(บาท(?:\(THB\))?\)|หน่วย[:：]?บาท", compact, re.IGNORECASE):
+            return "บาท"
     return str(table_unit or "").strip() or _guess_unit(label, table_name)
 
 
@@ -929,7 +942,7 @@ def resolve_result_evidence(rows: List[Dict[str, Any]], limit: int = 20) -> List
             continue
         found = conn.execute(f"""
             SELECT d.filename, d.source_url, c.source_page, c.quality_status,
-                   c.source_provider, c.unit, c.row_index
+                   c.source_provider, c.unit, c.row_index, d.source_sha256
             FROM {cell_table} AS c JOIN dim_documents AS d USING (document_id)
             WHERE c.document_id = ? AND c.table_name = ? AND c.row_label = ?
               AND c.{column_name} = ? AND c.{value_name} = ?
@@ -937,9 +950,10 @@ def resolve_result_evidence(rows: List[Dict[str, Any]], limit: int = 20) -> List
         """, [document_id, table_name, label, column, str(value)]).fetchall()
         if len(found) != 1:
             continue
-        filename, source_url, source_page, quality_status, provider, unit, row_index = found[0]
+        filename, source_url, source_page, quality_status, provider, unit, row_index, source_sha256 = found[0]
         evidence.append({
             "document_id": document_id, "filename": filename, "source_url": source_url,
+            "source_sha256": source_sha256,
             "page": source_page, "table_name": table_name,
             "row_label": label, "column": column, "value": value,
             "unit": unit, "row_index": row_index, "source_provider": provider,

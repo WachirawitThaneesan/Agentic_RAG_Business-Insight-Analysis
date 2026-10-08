@@ -19,6 +19,7 @@ class Document(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     filename = Column(String(500), nullable=False)
     source_url = Column(String(2000), nullable=True)
+    source_sha256 = Column(String(64), nullable=True)
     raw_text = Column(Text, nullable=True)
     doc_type = Column(String(50), default="pdf")  # pdf, image, html
     status = Column(String(50), default="pending")  # pending, processing, completed, partial, failed
@@ -86,6 +87,7 @@ class StructuredData(Base):
     source_page = Column(Integer, nullable=True)
     unit = Column(String(100), nullable=True)
     source_provider = Column(String(40), nullable=True)
+    source_sha256 = Column(String(64), nullable=True)
     quality_status = Column(String(40), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 

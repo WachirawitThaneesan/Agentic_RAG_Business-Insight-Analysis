@@ -68,3 +68,14 @@ backups/
 
 #Trash
 Old_Project_Report/
+
+# Full local evaluation workspaces are retained on disk. Selected, lossless
+# evidence archives and readable results are published in published_2026-10-08.
+/TestFile/comprehensive_2026-10-04_v1_5/
+/TestFile/evaluation-contract-2026-10-05-v2/
+/TestFile/evaluation-repair-2026-10-05/
+/TestFile/evaluation_A_2026-10-08/
+/TestFile/evaluation_B_2026-10-08/
+/TestFile/evaluation_completion_2026-10-07/
+/TestFile/evaluation_goal_supervision_2026-10-08/
+/TestFile/rag-continuation-2026-10-05-v5/

@@ -9,6 +9,14 @@ from backend.services import agent, duckdb_warehouse, tools
 from backend.services.query_router import RouteDecision
 
 
+def test_be_calendar_conversion_does_not_authorize_converted_quantity():
+    sources = [{'page': 90, 'excerpt': 'เป้าหมายปี 2030 เพิ่มสัดส่วนพลังงานหมุนเวียน 30%'}]
+    correct = 'เป้าหมายปี 2573 เพิ่มสัดส่วนพลังงานหมุนเวียน 30% (PDF หน้า 90)'
+    assert agent._grounded_answer(correct, 'เป้าหมายเท่าใด', sources) == correct
+    wrong = 'เป้าหมายเพิ่มสัดส่วนพลังงานหมุนเวียน 2573% (PDF หน้า 90)'
+    assert agent._grounded_answer(wrong, 'เป้าหมายเท่าใด', sources) == 'ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในคำตอบ'
+
+
 def test_numeric_answer_requires_same_signed_value_and_page():
     sources = [{"page": 244, "value": "(100)", "column": "2567",
                 "row_label": "หนี้สินรวม", "unit": "พันบาท"}]
@@ -117,7 +125,11 @@ def test_forced_tool_answers_with_one_generation_and_no_repeated_search(monkeypa
                              "text": "รถขนส่ง 2,800 คัน"}]},
     })
     monkeypatch.setattr(agent, "_execute_tool", search)
-    generate = AsyncMock(return_value="มีรถขนส่ง 2,800 คัน (PDF หน้า 18)")
+    import json
+    answer = 'มีรถขนส่ง 2,800 คัน (PDF หน้า 18)'
+    generate = AsyncMock(return_value=json.dumps({'answer': answer, 'abstained': False,
+        'answer_claims': [answer], 'claim_citations': [{'claim_index': 0, 'source_index': 0}],
+        'numeric_facts': []}, ensure_ascii=False))
     monkeypatch.setattr(agent, "llm_generate", generate)
     result = asyncio.run(agent.agent_query("มีรถขนส่งกี่คัน", object()))
     assert "2,800" in result["answer"]
@@ -141,7 +153,11 @@ def test_sql_answer_uses_exact_cell_with_two_mocked_model_calls(monkeypatch):
     sql_model = AsyncMock(return_value=(
         "SELECT document_id, table_name, row_label, metric_year, raw_value, unit "
         "FROM fact_financial_metrics WHERE row_label = 'หนี้สินรวม' AND metric_year = '2567'"))
-    answer_model = AsyncMock(return_value="หนี้สินรวมปี 2567 คือ 136,422,456 พันบาท (PDF หน้า 244)")
+    import json
+    answer = 'หนี้สินรวมปี 2567 คือ 136,422,456 พันบาท (PDF หน้า 244)'
+    answer_model = AsyncMock(return_value=json.dumps({'answer': answer, 'abstained': False,
+        'answer_claims': [answer], 'claim_citations': [{'claim_index': 0, 'source_index': 0}],
+        'numeric_facts': []}, ensure_ascii=False))
     monkeypatch.setattr(tools, "llm_generate", sql_model)
     monkeypatch.setattr(agent, "llm_generate", answer_model)
     result = asyncio.run(agent.agent_query("หนี้สินรวมปี 2567 เท่าไร", object()))

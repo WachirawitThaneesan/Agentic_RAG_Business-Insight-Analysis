@@ -1,0 +1,267 @@
+{
+  "alias_only500": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 437.5664412999977,
+    "runner_peak_rss_mib": 565.6328125,
+    "ollama_peak_rss_mib": 40.08203125,
+    "gpu_peak_total_used_mib": 0.0,
+    "arms": {}
+  },
+  "production_weighted500": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 438.5653646999999,
+    "runner_peak_rss_mib": 583.6875,
+    "ollama_peak_rss_mib": 40.078125,
+    "gpu_peak_total_used_mib": 0.0,
+    "arms": {}
+  },
+  "repaired_baseline498": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 914.332872299994,
+    "runner_peak_rss_mib": 591.6171875,
+    "ollama_peak_rss_mib": 45.47265625,
+    "gpu_peak_total_used_mib": 713.0,
+    "arms": {}
+  },
+  "repaired_production498": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 644.0151715999964,
+    "runner_peak_rss_mib": 632.19921875,
+    "ollama_peak_rss_mib": 45.47265625,
+    "gpu_peak_total_used_mib": 713.0,
+    "arms": {
+      "app_gemini": {
+        "sdk_attempts": 50,
+        "sdk_successes": 50,
+        "sdk_errors": 0,
+        "sdk_error_rate": 0.0,
+        "input_tokens": 320191,
+        "output_tokens": 5701,
+        "thinking_tokens": 0,
+        "latency_n": 50,
+        "latency_median_seconds": 1.7883286500000395,
+        "latency_p95_seconds": 4.014229619999605,
+        "latency_total_seconds": 115.50691919999372,
+        "n_questions_with_successful_model_calls": 50,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  },
+  "cross_entity498": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 448.5510762999984,
+    "runner_peak_rss_mib": 572.265625,
+    "ollama_peak_rss_mib": 43.1328125,
+    "gpu_peak_total_used_mib": 713.0,
+    "arms": {}
+  },
+  "label_review": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 983.4714076000018,
+    "runner_peak_rss_mib": 210.71875,
+    "ollama_peak_rss_mib": 40.08203125,
+    "gpu_peak_total_used_mib": 0.0,
+    "arms": {
+      "reference_image_review": {
+        "sdk_attempts": 57,
+        "sdk_successes": 51,
+        "sdk_errors": 6,
+        "sdk_error_rate": 0.10526315789473684,
+        "input_tokens": 443044,
+        "output_tokens": 43527,
+        "thinking_tokens": 0,
+        "latency_n": 0,
+        "latency_median_seconds": null,
+        "latency_p95_seconds": null,
+        "latency_total_seconds": null,
+        "n_questions_with_successful_model_calls": 49,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  },
+  "labels_v2_verification": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 45.040660300001036,
+    "runner_peak_rss_mib": 104.83984375,
+    "ollama_peak_rss_mib": 40.0625,
+    "gpu_peak_total_used_mib": 0.0,
+    "arms": {
+      "reference_quality_judge": {
+        "sdk_attempts": 12,
+        "sdk_successes": 12,
+        "sdk_errors": 0,
+        "sdk_error_rate": 0.0,
+        "input_tokens": 45105,
+        "output_tokens": 11466,
+        "thinking_tokens": 0,
+        "latency_n": 0,
+        "latency_median_seconds": null,
+        "latency_p95_seconds": null,
+        "latency_total_seconds": null,
+        "n_questions_with_successful_model_calls": 12,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  },
+  "labels_v3_verification": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 9.653424700001779,
+    "runner_peak_rss_mib": 104.9140625,
+    "ollama_peak_rss_mib": 43.44921875,
+    "gpu_peak_total_used_mib": 713.0,
+    "arms": {
+      "reference_quality_judge": {
+        "sdk_attempts": 2,
+        "sdk_successes": 2,
+        "sdk_errors": 0,
+        "sdk_error_rate": 0.0,
+        "input_tokens": 22713,
+        "output_tokens": 1234,
+        "thinking_tokens": 0,
+        "latency_n": 0,
+        "latency_median_seconds": null,
+        "latency_p95_seconds": null,
+        "latency_total_seconds": null,
+        "n_questions_with_successful_model_calls": 2,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  },
+  "answer_claim_audit": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 702.4286393000002,
+    "runner_peak_rss_mib": 157.7109375,
+    "ollama_peak_rss_mib": 43.07421875,
+    "gpu_peak_total_used_mib": 713.0,
+    "arms": {
+      "judge": {
+        "sdk_attempts": 53,
+        "sdk_successes": 53,
+        "sdk_errors": 0,
+        "sdk_error_rate": 0.0,
+        "input_tokens": 1664221,
+        "output_tokens": 183544,
+        "thinking_tokens": 0,
+        "latency_n": 0,
+        "latency_median_seconds": null,
+        "latency_p95_seconds": null,
+        "latency_total_seconds": null,
+        "n_questions_with_successful_model_calls": 50,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  },
+  "answer_claim_audit_v2": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 43.030880199999956,
+    "runner_peak_rss_mib": 153.3828125,
+    "ollama_peak_rss_mib": 42.75,
+    "gpu_peak_total_used_mib": 713.0,
+    "arms": {
+      "judge": {
+        "sdk_attempts": 2,
+        "sdk_successes": 2,
+        "sdk_errors": 0,
+        "sdk_error_rate": 0.0,
+        "input_tokens": 91460,
+        "output_tokens": 8607,
+        "thinking_tokens": 0,
+        "latency_n": 0,
+        "latency_median_seconds": null,
+        "latency_p95_seconds": null,
+        "latency_total_seconds": null,
+        "n_questions_with_successful_model_calls": 1,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  },
+  "focused_answer_coverage_v2": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 40.864055500001996,
+    "runner_peak_rss_mib": 105.03515625,
+    "ollama_peak_rss_mib": 43.1328125,
+    "gpu_peak_total_used_mib": 0.0,
+    "arms": {
+      "answer_coverage_judge": {
+        "sdk_attempts": 7,
+        "sdk_successes": 5,
+        "sdk_errors": 2,
+        "sdk_error_rate": 0.2857142857142857,
+        "input_tokens": 14966,
+        "output_tokens": 5960,
+        "thinking_tokens": 0,
+        "latency_n": 0,
+        "latency_median_seconds": null,
+        "latency_p95_seconds": null,
+        "latency_total_seconds": null,
+        "n_questions_with_successful_model_calls": 5,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  },
+  "focused_context_coverage_v2": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 117.91696260000026,
+    "runner_peak_rss_mib": 115.125,
+    "ollama_peak_rss_mib": 43.1328125,
+    "gpu_peak_total_used_mib": 0.0,
+    "arms": {
+      "context_coverage_judge": {
+        "sdk_attempts": 13,
+        "sdk_successes": 10,
+        "sdk_errors": 3,
+        "sdk_error_rate": 0.23076923076923078,
+        "input_tokens": 321789,
+        "output_tokens": 9061,
+        "thinking_tokens": 0,
+        "latency_n": 0,
+        "latency_median_seconds": null,
+        "latency_p95_seconds": null,
+        "latency_total_seconds": null,
+        "n_questions_with_successful_model_calls": 10,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  },
+  "focused_relevance": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 389.03997009999875,
+    "runner_peak_rss_mib": 138.6015625,
+    "ollama_peak_rss_mib": 357.8046875,
+    "gpu_peak_total_used_mib": 713.0,
+    "arms": {
+      "response_relevance_judge": {
+        "sdk_attempts": 57,
+        "sdk_successes": 50,
+        "sdk_errors": 7,
+        "sdk_error_rate": 0.12280701754385964,
+        "input_tokens": 27147,
+        "output_tokens": 2922,
+        "thinking_tokens": 0,
+        "latency_n": 0,
+        "latency_median_seconds": null,
+        "latency_p95_seconds": null,
+        "latency_total_seconds": null,
+        "n_questions_with_successful_model_calls": 50,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  },
+  "focused_relevance_v2": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 3.7511720999973477,
+    "runner_peak_rss_mib": 95.00390625,
+    "ollama_peak_rss_mib": 41.11328125,
+    "gpu_peak_total_used_mib": 0.0,
+    "arms": {}
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "n_unique_questions": 498,
+  "n_required_numeric_relations": 102,
+  "n_numeric_questions": 94,
+  "scope": "All498 used development questions; not unseen or full-report fresh OCR",
+  "main_system": "lexical_first full agent; Typhoon prose + Gemini tables and Gemini answer generation",
+  "human_confirmed": false,
+  "metrics": {
+    "faithfulness": {
+      "macro": 0.9939716312056738,
+      "n_measured": 470,
+      "n_total": 498,
+      "n_not_measured": 28,
+      "full_cohort_conservative_lower": 0.9380856760374833,
+      "full_cohort_upper": 0.994310575635877
+    },
+    "factual_precision": {
+      "macro": 0.950429734185992,
+      "n_measured": 470,
+      "n_total": 498,
+      "n_not_measured": 28,
+      "full_cohort_conservative_lower": 0.8969919178060567,
+      "full_cohort_upper": 0.9532168174044503
+    },
+    "factual_recall": {
+      "macro": 0.8962710084033614,
+      "n_measured": 498,
+      "n_total": 498,
+      "n_not_measured": 0,
+      "full_cohort_conservative_lower": 0.8962710084033614,
+      "full_cohort_upper": 0.8962710084033614
+    },
+    "context_recall": {
+      "macro": 0.9651522757697456,
+      "n_measured": 498,
+      "n_total": 498,
+      "n_not_measured": 0,
+      "full_cohort_conservative_lower": 0.9651522757697456,
+      "full_cohort_upper": 0.9651522757697455
+    },
+    "context_precision_ap": {
+      "macro": 0.8613547726266898,
+      "n_measured": 497,
+      "n_total": 498,
+      "n_not_measured": 1,
+      "full_cohort_conservative_lower": 0.8596251445692066,
+      "full_cohort_upper": 0.8616331766977207
+    },
+    "answer_relevancy_rubric": {
+      "macro": 0.9668674698795181,
+      "n_measured": 498,
+      "n_total": 498,
+      "n_not_measured": 0,
+      "full_cohort_conservative_lower": 0.9668674698795181,
+      "full_cohort_upper": 0.9668674698795181
+    },
+    "actual_citation_link_precision": {
+      "macro": 0.9908381715417963,
+      "n_measured": 469,
+      "n_total": 498,
+      "n_not_measured": 29,
+      "full_cohort_conservative_lower": 0.9331387599459889,
+      "full_cohort_upper": 0.9913716916728965
+    },
+    "actual_citation_claim_recall": {
+      "macro": 0.9950248756218906,
+      "n_measured": 469,
+      "n_total": 498,
+      "n_not_measured": 29,
+      "full_cohort_conservative_lower": 0.9370816599732262,
+      "full_cohort_upper": 0.995314591700134
+    },
+    "strict_numeric_accuracy": {
+      "n_correct": 18,
+      "n_required": 102,
+      "n_unknown": 15,
+      "strict_lower_bound": 0.17647058823529413,
+      "measured_subset_accuracy": 0.20689655172413793,
+      "coverage": 0.8529411764705882,
+      "failed_checks_nonexclusive": {
+        "measure": 40,
+        "comparison_operator": 3,
+        "year": 10,
+        "company": 10,
+        "page": 5,
+        "signed_value_and_explicit_unit": 1
+      }
+    },
+    "complete_answer_success": {
+      "n_pass": 302,
+      "n_total": 498,
+      "strict_lower_bound": 0.606425702811245,
+      "n_unresolved": 59
+    }
+  },
+  "generation": {
+    "n_outputs": 498,
+    "n_missing_outputs": 0,
+    "n_captured_complete_prose": 437,
+    "capture_coverage": 0.8775100401606426,
+    "n_actual_citation_links": 1281,
+    "n_claims_without_citation": 0,
+    "capture_statuses": {
+      "captured": 437,
+      "captured_with_errors": 54,
+      "generation_annotations_missing": 5,
+      "discarded_after_answer_guard": 1,
+      "missing": 1
+    },
+    "n_errors": 2,
+    "n_refusals": 12,
+    "answer_coverage": 0.9738955823293173,
+    "numeric": {
+      "n_required": 102,
+      "n_measurable": 87,
+      "n_required_tuples_in_started_subset": 102,
+      "coverage": 0.8529411764705882,
+      "n_correct": 18,
+      "accuracy_measured_subset": 0.20689655172413793,
+      "states": {
+        "correct": 18,
+        "wrong_bound_numeric_fact": 49,
+        "answer_numeric_annotation_missing": 15,
+        "explicit_abstention_on_required_quantity": 7,
+        "required_relation_not_emitted": 13
+      }
+    },
+    "actual_citation_precision": null,
+    "complete_answer_success": null,
+    "limit": "Capture is structural binding; citation entailment/factual audit not yet performed.",
+    "answerable_control_breakdown": {
+      "n_answerable_planned": 498,
+      "n_unanswerable_planned": 0,
+      "n_answerable_nonrefusal": 485,
+      "n_false_refusals_on_answerable": 12,
+      "n_control_refusals": 0,
+      "answer_coverage_answerable": 0.9738955823293173
+    }
+  },
+  "n_valid_judgments": 498,
+  "n_judge_failures": 0,
+  "working_target_checks": {
+    "faithfulness": true,
+    "factual_precision": true,
+    "factual_recall": true,
+    "context_recall": true,
+    "context_precision_ap": true,
+    "answer_relevancy_rubric": true,
+    "actual_citation_link_precision": true,
+    "actual_citation_claim_recall": true,
+    "strict_numeric_accuracy": false,
+    "complete_answer_success": false,
+    "capture_coverage": true,
+    "answer_coverage": true
+  },
+  "all_targets_gt80_proven": false,
+  "numeric_association_note": "Unchanged frozen entity/measure literal checks and qrels; source-semantic limitations cannot silently become passes",
+  "full_cohort_lower_note": "Additional conservative bound: every missing/N/A metric contributes zero across all498. Does not replace applicable-answer macro or infer new judgments.",
+  "evidence_sha256": {
+    "TestFile\\evaluation_B_2026-10-08\\recovery_root_2026-10-08\\focus498_capture_v3\\manifest.json": "273cc15225af8e9e0df0c407db41fb7c6f46337f2cc26c0c40b7cb8d4dc88e91",
+    "TestFile\\evaluation_B_2026-10-08\\recovery_root_2026-10-08\\focus498_capture_v3\\paired_answers.json": "6aca074eaaf40e01d2c5cde2a6915b1e4ba70456c367c84c2a6dd92bcae9e8e3",
+    "TestFile\\evaluation_B_2026-10-08\\recovery_root_2026-10-08\\focus498_judge_merged_v5\\method_lock.json": "9671c631757cd6d659eba59bdd1109c3e8dc6fc312d0a4b896177d15f963da7f",
+    "TestFile\\evaluation_B_2026-10-08\\recovery_root_2026-10-08\\focus498_judge_merged_v5\\contract_details.json": "9f253896852da3af30b0eff51819fbb7853ff60c4a5371d10afeea5743436197"
+  }
+}

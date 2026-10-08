@@ -1,0 +1,18 @@
+{
+  "original_n": 500,
+  "flagged_reviewed": 119,
+  "active_n": 498,
+  "quarantined_n": 2,
+  "change_decisions": {
+    "revised": 93,
+    "kept": 30
+  },
+  "changed_question_n": 87,
+  "changed_answer_n": 62,
+  "human_certified_labels": 0,
+  "reference_sha256": "da7ea94bd87e72df0f645b7e519f1f97be4e8910ccd63246f7c61b53c4aea2f9",
+  "scope": "AI-only provisional label repair. Question edits require new inference; not a rescore of old answers.",
+  "n_eligible_latest_ai_text_verification": 119,
+  "verification_denominator": 119,
+  "verification_note": "119 flagged labels only; mixed preserved and supplemental runs; not human certification"
+}

@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "offline_integrity_checks": {
+    "original_final_answers_unchanged": true,
+    "original_numeric_labels_unchanged": true,
+    "original_scorer_code_unchanged": true,
+    "offline_reproduction_matches_final": true,
+    "no_numeric_or_capture_regressions": true,
+    "lineage_matches_active_ledger": true
+  },
+  "archive": "C:\\Users\\nonga\\OneDrive\\Desktop\\Project_2\\Agentic_RAG_Business-Insight-Analysis\\TestFile\\evaluation_A_2026-10-08\\evidence_A_2026-10-08.zip",
+  "archive_sha256": "b383e072f7d6e080979d8a8bbdb1b25023b4a5a5ff5dcff1a9168f0ca4f7d35d",
+  "zip_crc_passed": true,
+  "n_files_verified": 216,
+  "bytes": 16150004,
+  "quality_goal_completed": false,
+  "human_confirmed": false
+}

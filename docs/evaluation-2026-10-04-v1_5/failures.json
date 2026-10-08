@@ -1,0 +1,2338 @@
+[
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0001",
+    "company": "PTT",
+    "page": 3,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีวิสัยทัศน์อย่างไรในการดำเนินธุรกิจด้านพลังงาน?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0002",
+    "company": "PTT",
+    "page": 3,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีเป้าหมายด้านความยั่งยืนที่เกี่ยวข้องกับการปล่อยก๊าซเรือนกระจกอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0003",
+    "company": "PTT",
+    "page": 3,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีแนวทางในการสร้างความมั่นคงด้านพลังงานในระยะยาวสำหรับหน่วยงานภาครัฐอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0004",
+    "company": "PTTEP",
+    "page": 4,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) สามารถผลิตก๊าซธรรมชาติในประเทศได้ในปริมาณเท่าใดของทั้งหมด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0005",
+    "company": "PTTEP",
+    "page": 4,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) ได้ขยายฐานการลงทุนในต่างประเทศโดยเข้าซื้อสัดส่วนการลงทุนในโครงการใดในสหรัฐอาหรับเอมิเรตส์?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0012",
+    "company": "EGCO",
+    "page": 14,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 โครงการโรงไฟฟ้าพลังงานลมนอกชายฝั่ง Yunlin ในไต้หวัน มีความก้าวหน้าอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0022",
+    "company": "PTT",
+    "page": 19,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีจำนวนหุ้นสามัญกี่หุ้นหลังจากเปลี่ยนมูลค่าหุ้นที่ตราไว้?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0023",
+    "company": "PTT",
+    "page": 19,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) อยู่ภายใต้การกำกับดูแลของกระทรวงใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0024",
+    "company": "PTT",
+    "page": 19,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีผู้ถือหุ้นใหญ่คือหน่วยงานใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0032",
+    "company": "PTT",
+    "page": 25,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 คณะกรรมการ ปตท. มีมติอนุมัติให้เลิกกิจการบริษัทใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0033",
+    "company": "PTT",
+    "page": 25,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 คณะกรรมการ ปตท. อนุมัติงบลงทุน 5 ปี (2567-2571) รวมเป็นเงินเท่าใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0034",
+    "company": "PTT",
+    "page": 25,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 บริษัท ปตท. ได้เปลี่ยนชื่อ Alpha Com เป็นบริษัทใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0039",
+    "company": "PTT",
+    "page": 41,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) ดำเนินธุรกิจปิโตรเคมีและการกลั่นผ่านบริษัทใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0054",
+    "company": "CPAXT",
+    "page": 38,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 อสังหาริมทรัพย์เพื่อการลงทุนของ CPAXT มีจำนวนเท่าใด"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0055",
+    "company": "CPAXT",
+    "page": 38,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ที่ดิน อาคาร และอุปกรณ์ของ CPAXT มีจำนวนเท่าใด"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0056",
+    "company": "CPAXT",
+    "page": 38,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 สินทรัพย์สิทธิการใช้ของ CPAXT มีจำนวนเท่าใด"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0058",
+    "company": "EGCO",
+    "page": 76,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปริมาณการใช้ไฟฟ้าของประเทศไทย ณ เดือนตุลาคม มีจำนวนเท่าใด"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0061",
+    "company": "PTT",
+    "page": 60,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT ส่งเสริมให้พนักงานตระหนักถึงความสำคัญของเทคโนโลยีและแนวโน้มดิจิทัลอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0062",
+    "company": "PTT",
+    "page": 60,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการบริหารสายอาชีพของพนักงานอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0063",
+    "company": "CPAXT",
+    "page": 61,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT เผชิญความท้าทายจากความผันผวนทางเศรษฐกิจและการเงินที่ส่งผลกระทบต่อสิ่งใดบ้าง"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0064",
+    "company": "CPAXT",
+    "page": 61,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT มีมาตรการจัดการความเสี่ยงด้านเศรษฐกิจและการเงินอย่างไรเพื่อลดผลกระทบและสร้างความยืดหยุ่น"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0065",
+    "company": "CPAXT",
+    "page": 61,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 การขาดสภาพคล่องอาจส่งผลกระทบต่อ CPAXT อย่างไร"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0067",
+    "company": "CPAXT",
+    "page": 61,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT มีการดำเนินการอย่างไรเพื่อลดโอกาสที่จะเกิดความคิดเห็นเชิงลบและแสดงความมุ่งมั่นในการพัฒนา"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0071",
+    "company": "PTT",
+    "page": 65,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ใครเป็นผู้ลงนามในคำแถลงด้านสิทธิมนุษยชนของบริษัท ปตท. จำกัด (มหาชน)?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0072",
+    "company": "PTT",
+    "page": 65,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) ตั้งเป้าหมายให้มีผลการประเมินด้าน ESG อยู่ในระดับใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0073",
+    "company": "CPAXT",
+    "page": 64,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT ให้ความสำคัญสูงสุดในการนำเสนอผลิตภัณฑ์ประเภทใดเพื่อสร้างความยั่งยืนในการดำเนินธุรกิจและรักษาความเชื่อมั่นในระยะยาว?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0078",
+    "company": "EGCO",
+    "page": 90,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 EGCO มีเป้าหมายที่จะลดการปล่อยก๊าซคาร์บอนไดออกไซด์ต่อหน่วยการผลิตไฟฟ้าลงกี่เปอร์เซ็นต์?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0079",
+    "company": "EGCO",
+    "page": 90,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 EGCO มีเป้าหมายที่จะเพิ่มสัดส่วนการผลิตไฟฟ้าจากพลังงานหมุนเวียนเป็นกี่เปอร์เซ็นต์?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0081",
+    "company": "PTT",
+    "page": 70,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 คะแนนความผูกพันผู้มีส่วนได้ส่วนเสียของบริษัท ปตท. เท่ากับเท่าใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0082",
+    "company": "PTT",
+    "page": 70,
+    "label_ai_review_eligible": true,
+    "question": "บริษัท ปตท. มีเป้าหมายความผูกพันผู้มีส่วนได้ส่วนเสียในระดับใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0083",
+    "company": "PTT",
+    "page": 70,
+    "label_ai_review_eligible": true,
+    "question": "บริษัท ปตท. มีเป้าหมายการบรรลุความเป็นกลางทางคาร์บอนภายในปีใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0084",
+    "company": "PTT",
+    "page": 70,
+    "label_ai_review_eligible": true,
+    "question": "บริษัท ปตท. มีเป้าหมายการปล่อยก๊าซเรือนกระจกสุทธิเป็นศูนย์ภายในปีใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0088",
+    "company": "CPAXT",
+    "page": 68,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT มีการพัฒนาช่องทางใดเพื่อผสมผสานการขายทั้งออนไลน์และออฟไลน์เข้าด้วยกัน?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0089",
+    "company": "CPAXT",
+    "page": 68,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT มีการดำเนินการอย่างไรเพื่อพิทักษ์สิทธิและผลประโยชน์ให้แก่ผู้ถือหุ้นรายย่อย?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0090",
+    "company": "CPAXT",
+    "page": 68,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT มีการเพิ่มช่องทางใดในการรับความคิดเห็นจากลูกค้าเพื่อปรับปรุงการดำเนินงาน?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0092",
+    "company": "PTT",
+    "page": 75,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการบริหารจัดการความเสี่ยงด้านความหลากหลายทางชีวภาพอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0094",
+    "company": "PTT",
+    "page": 75,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีคณะกรรมการระดับใดบ้างที่กำกับดูแลความเสี่ยงของบริษัท?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0095",
+    "company": "PTT",
+    "page": 75,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีแผนแม่บทใดที่แสดงความรับผิดชอบต่อสังคมและสิ่งแวดล้อม?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0096",
+    "company": "PTT",
+    "page": 75,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีผลกระทบด้านลบใดบ้างที่เกิดจากการปนเปื้อนสิ่งแวดล้อม?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0100",
+    "company": "CPAXT",
+    "page": 77,
+    "label_ai_review_eligible": true,
+    "question": "นโยบายด้านสิ่งแวดล้อมของบริษัท CPAXT ในปี 2567 ระบุว่าต้องดำเนินการกิจกรรมต่างๆ ให้สอดคล้องกับสิ่งใด"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0101",
+    "company": "CPAXT",
+    "page": 77,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท CPAXT มีแนวทางในการบริหารจัดการความเสี่ยงด้านสิ่งแวดล้อมอย่างไร"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0102",
+    "company": "EGCO",
+    "page": 111,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 กรรมการอิสระของ EGCO ได้จัดให้มีการประชุมคณะกรรมการอิสระกี่ครั้ง"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0103",
+    "company": "PTT",
+    "page": 79,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีความเสี่ยงใดที่อาจเกิดขึ้นจากการจ่ายภาษีและการรับความช่วยเหลือทางการเงินจากภาครัฐที่ไม่โปร่งใส?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0114",
+    "company": "PTT",
+    "page": 84,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. มีแผนจะเพิ่มกำลังผลิตไฟฟ้าจากพลังงานหมุนเวียนจากเท่าใดเป็นเท่าใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0115",
+    "company": "PTT",
+    "page": 84,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 บริษัท ปตท.สผ. เน้นการสำรวจและผลิตเชื้อเพลิงประเภทใด และขยายการลงทุนผลิต Clean Hydrogen ในประเทศใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0119",
+    "company": "CPAXT",
+    "page": 95,
+    "label_ai_review_eligible": false,
+    "question": "CPAXT ใช้พลังงานสะอาดประเภทใดบ้างที่ศูนย์จำหน่ายสินค้าและศูนย์กระจายสินค้าในปี 2567?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0121",
+    "company": "EGCO",
+    "page": 128,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ฝ่ายตรวจสอบภายในของ EGCO รายงานตรงต่อใคร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0126",
+    "company": "EGCO",
+    "page": 142,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 นายอัญญา ขันธวิทย์ ได้ผ่านหลักสูตร Director Certification Program รุ่นที่เท่าใดจากสมาคมส่งเสริมสถาบันกรรมการบริษัทไทย?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0127",
+    "company": "EGCO",
+    "page": 142,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 นายอัญญา ขันธวิทย์ ได้รับการอบรมเรื่อง Cryptocurrency Technology โดยใคร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0129",
+    "company": "PTT",
+    "page": 94,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) จัดสรรงบประมาณสำหรับการลงทุนทางสังคมรวมเป็นจำนวนเท่าใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0130",
+    "company": "PTT",
+    "page": 94,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีสัดส่วนงบประมาณการบริจาคคิดเป็นร้อยละเท่าใดของงบประมาณการลงทุนทางสังคมทั้งหมด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0131",
+    "company": "PTT",
+    "page": 94,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีสัดส่วนงบประมาณการดำเนินงานในรูปแบบวิสาหกิจเพื่อสังคมคิดเป็นร้อยละเท่าใดของงบประมาณการลงทุนทางสังคมทั้งหมด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0132",
+    "company": "PTT",
+    "page": 94,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีผลตอบแทนทางสังคมจากการลงทุน (SROI) เฉลี่ยทุกโครงการเท่ากับเท่าใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0133",
+    "company": "PTT",
+    "page": 94,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีสัดส่วนงบประมาณการรับผิดชอบต่อสังคมในรูปแบบโครงการคิดเป็นร้อยละเท่าใดของงบประมาณการลงทุนทางสังคมทั้งหมด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0146",
+    "company": "CPAXT",
+    "page": 110,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT ได้รับรางวัล Retail Asia Award 2024 สาขาใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0147",
+    "company": "EGCO",
+    "page": 154,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 นายภูมิใจ อัตตะนันทน์ สำเร็จการศึกษาระดับปริญญาตรีสาขาใดจากมหาวิทยาลัยเกษตรศาสตร์?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0155",
+    "company": "EGCO",
+    "page": 174,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 นายประเสริฐ สินสุขประเสริฐ ดำรงตำแหน่งใดใน EGCO?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0156",
+    "company": "EGCO",
+    "page": 174,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 นายประสิทธิ์ เลาหวิรภาพ ดำรงตำแหน่งใดใน EGCO?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0157",
+    "company": "PTT",
+    "page": 122,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 คณะกรรมการ ปตท. มีหน้าที่รับผิดชอบในการกำหนดสิ่งใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0158",
+    "company": "PTT",
+    "page": 122,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 คณะกรรมการ ปตท. ต้องดำเนินการอย่างไรเพื่อให้มั่นใจว่าระบบบัญชีมีความน่าเชื่อถือ?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0159",
+    "company": "PTT",
+    "page": 122,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 คณะกรรมการ ปตท. อาจแต่งตั้งคณะกรรมการเฉพาะเรื่องขึ้นเพื่อวัตถุประสงค์ใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0160",
+    "company": "PTT",
+    "page": 122,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 คณะกรรมการ ปตท. ต้องจัดให้มีการประเมินผลตนเองบ่อยเพียงใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0161",
+    "company": "PTT",
+    "page": 122,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 คณะกรรมการ ปตท. มีหน้าที่ในการกำหนดคู่มือใดบ้างเพื่อเป็นแนวทางปฏิบัติสำหรับบุคลากร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0164",
+    "company": "CPAXT",
+    "page": 130,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 CPAXT คาดการณ์ว่าเศรษฐกิจโลกจะขยายตัวอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0167",
+    "company": "CPAXT",
+    "page": 130,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT ตั้งเป้าหมายเพิ่มสัดส่วนยอดขายจากช่องทางใดอย่างต่อเนื่อง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0168",
+    "company": "CPAXT",
+    "page": 130,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT มีกลยุทธ์ในการเพิ่มความแข็งแกร่งในตลาดและเพิ่มศักยภาพในการแข่งขันอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0171",
+    "company": "PTT",
+    "page": 126,
+    "label_ai_review_eligible": true,
+    "question": "บริษัท ปตท. ตั้งเป้าหมายกำลังการผลิตไฟฟ้าจากพลังงานหมุนเวียนเป็นเท่าใดภายในปี 2573?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0181",
+    "company": "CPAXT",
+    "page": 161,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 คณะกรรมการและผู้บริหารของ CPAXT มีการกระทำผิดกฎหมายจนได้รับการดำเนินการทางอาญาหรือไม่"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0185",
+    "company": "CPAXT",
+    "page": 161,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 CPAXT กำหนดให้บุคลากรประเภทใดบ้างที่ต้องแจ้งข้อมูลความขัดแย้งทางผลประโยชน์"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0189",
+    "company": "PTT",
+    "page": 135,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ผู้บริหารสูงสุดของบริษัท ปตท. จำกัด (มหาชน) คือตำแหน่งใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0190",
+    "company": "PTT",
+    "page": 135,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 คณะกรรมการชุดใดของบริษัท ปตท. จำกัด (มหาชน) ที่มีหน้าที่กำกับดูแลกิจการที่ดีและความยั่งยืน?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0194",
+    "company": "PTT",
+    "page": 8,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีนโยบายเกี่ยวกับประธานกรรมการบริษัทอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0195",
+    "company": "PTT",
+    "page": 8,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT กำหนดคุณสมบัติของประธานกรรมการบริษัทอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0198",
+    "company": "PTT",
+    "page": 8,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีนโยบายเกี่ยวกับการดำรงตำแหน่งผู้บริหารในบริษัทจดทะเบียนอื่นสำหรับกรรมการที่เป็นผู้บริหารอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0210",
+    "company": "EGCO",
+    "page": 22,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 กฟผ. ถือหุ้นใน EGCO ในสัดส่วนเท่าใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0221",
+    "company": "PTTEP",
+    "page": 18,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 PTTEP มีเป้าหมายในการจัดสรรงบประมาณรายจ่ายลงทุนในธุรกิจใหม่เพื่อรองรับการเปลี่ยนผ่านด้านพลังงานเท่าใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0224",
+    "company": "CPAXT",
+    "page": 15,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT มีธุรกิจหลักกี่กลุ่ม?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0236",
+    "company": "PTTEP",
+    "page": 23,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 กลุ่ม ปตท.สผ. ได้จัดตั้งบริษัท เอ็กซ์พลอร์ เวนเจอร์ส จำกัด เพื่อวัตถุประสงค์ใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0237",
+    "company": "PTTEP",
+    "page": 23,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 กลุ่ม ปตท.สผ. ปิดบริษัทย่อยที่ไม่ได้ดำเนินการแล้ว ได้แก่ บริษัท Participations and Explorations Corporation (PEC) เพื่อวัตถุประสงค์ใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0238",
+    "company": "PTTEP",
+    "page": 23,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 กลุ่ม ปตท.สผ. จัดตั้งบริษัท เบดร็อค อนาไลติกส์ จำกัด เพื่อให้บริการด้านใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0244",
+    "company": "PTT",
+    "page": 23,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการทบทวนกลยุทธ์การลงทุนในธุรกิจใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0245",
+    "company": "PTT",
+    "page": 23,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการทบทวนกลยุทธ์การลงทุนในธุรกิจใดอีกบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0246",
+    "company": "PTT",
+    "page": 23,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการลงทุนในธุรกิจหลักคิดเป็นสัดส่วนเท่าใดของงบการลงทุน 5 ปี?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0247",
+    "company": "PTT",
+    "page": 23,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการจัดเตรียมงบลงทุนในอนาคตจำนวนเท่าใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0248",
+    "company": "PTT",
+    "page": 23,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการลงทุนในธุรกิจพลังงานสะอาดเพื่อมุ่งเน้นสิ่งใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0253",
+    "company": "PTTEP",
+    "page": 28,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 PTTEP มีการกำหนดทิศทางกลยุทธ์เพื่อมุ่งเน้นสิ่งใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0272",
+    "company": "PTTEP",
+    "page": 40,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 โครงการดุงกาของ PTTEP มีสัดส่วนการร่วมทุนเท่าใด"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0274",
+    "company": "CPAXT",
+    "page": 23,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 CPAXT มีนโยบายใดในการปรับปรุงประสบการณ์การจับจ่ายของลูกค้า?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0284",
+    "company": "PTT",
+    "page": 36,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีจำนวนลูกค้าทางระบบท่อจำหน่ายก๊าซธรรมชาติรวมกี่สัญญา?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0285",
+    "company": "PTT",
+    "page": 36,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT ให้ความช่วยเหลือโครงการบัตรสิทธิประโยชน์กลุ่มรถโดยสารสาธารณะเป็นจำนวนเงินเท่าใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0291",
+    "company": "PTTEP",
+    "page": 45,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTTEP Services มีภารกิจหลักในการจัดหาบุคลากรเพื่อสนับสนุนการปฏิบัติงานให้แก่บริษัทใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0295",
+    "company": "CPAXT",
+    "page": 26,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT มีการปรับปรุงบริการดิจิทัลอย่างไรเพื่อสร้างความพึงพอใจให้กับลูกค้า?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0309",
+    "company": "PTTEP",
+    "page": 51,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 PTTEP มีภาระค่าใช้จ่ายในการประกอบกิจการปิโตรเลียมภายใต้ระบบสัญญาแบ่งปันผลผลิตอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0310",
+    "company": "PTTEP",
+    "page": 51,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 PTTEP มีการนำส่งค่าภาคหลวงแก่รัฐภายใต้ระบบสัญญาแบ่งปันผลผลิตอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0311",
+    "company": "PTTEP",
+    "page": 51,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 PTTEP มีรูปแบบของสัญญาจ้างบริการที่สามารถกระทำได้ในธุรกิจปิโตรเลียมอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0312",
+    "company": "PTTEP",
+    "page": 51,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 PTTEP มีการจ่ายค่าจ้างและค่าใช้จ่ายให้แก่ผู้รับสัญญาภายใต้ระบบสัญญาจ้างบริการอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0323",
+    "company": "EGCO",
+    "page": 59,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 กลุ่มเอ็กโกตระหนักถึงความสำคัญของสิ่งใดเพื่อลดความเสี่ยงและป้องกันผลกระทบต่อความปลอดภัย?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0325",
+    "company": "PTT",
+    "page": 43,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีนโยบายอย่างไรในการสร้างความมั่นคงและสมดุลทางพลังงานในภาวะปกติและภาวะฉุกเฉิน?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0326",
+    "company": "PTT",
+    "page": 43,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการดำเนินการอย่างไรเพื่อตอบสนองความต้องการใช้น้ำมันเบนซินพื้นฐานสำหรับการผลิตน้ำมันแก๊สโซฮอล์ในประเทศ?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0327",
+    "company": "PTT",
+    "page": 43,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการขยายสัดส่วนการค้าไปสู่เชื้อเพลิงชีวภาพอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0328",
+    "company": "PTT",
+    "page": 43,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการดำเนินการอย่างไรเพื่อสร้างความมั่นคงทางพลังงานให้กับประเทศในด้านก๊าซฯ?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0329",
+    "company": "PTTEP",
+    "page": 59,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTTEP มีนโยบายการบริหารบริษัทย่อยอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0330",
+    "company": "PTTEP",
+    "page": 59,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTTEP มีอำนาจตัดสินใจด้านการบริหารธุรกิจของบริษัทย่อยในธุรกิจอื่น ๆ อย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0331",
+    "company": "PTTEP",
+    "page": 59,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 PTTEP ยึดถือหลักการใดในการบริหารจัดการบริษัทย่อยและบริษัทร่วม?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0332",
+    "company": "PTTEP",
+    "page": 59,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 PTTEP มีการพิจารณาแต่งตั้งกรรมการบริษัทย่อยและบริษัทร่วมอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0333",
+    "company": "PTTEP",
+    "page": 59,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 PTTEP มีการติดตามและกำกับดูแลการดำเนินงานของบริษัทย่อยและบริษัทร่วมอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0334",
+    "company": "CPAXT",
+    "page": 32,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท CPAXT มีผู้เช่าประเภทใดที่ทำสัญญาเช่าที่มีระยะเวลาน้อยกว่าหนึ่งปี?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0339",
+    "company": "EGCO",
+    "page": 63,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท EGCO มีการดำเนินการใดเพื่อสร้างความมั่นใจว่าพนักงานมีความรู้ความสามารถที่เพียงพอ?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0344",
+    "company": "PTT",
+    "page": 46,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีการปรับโครงสร้างองค์กรเมื่อใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0345",
+    "company": "PTT",
+    "page": 46,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 กลุ่มธุรกิจใหม่และความยั่งยืนของ ปตท. มุ่งเน้นการดำเนินงานในธุรกิจใดเพื่อเป้าหมาย Net Zero Emissions?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0347",
+    "company": "PTT",
+    "page": 46,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ความต้องการพลังไฟฟ้าสูงสุดของระบบการไฟฟ้าในประเทศไทยอยู่ที่เท่าใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0349",
+    "company": "PTTEP",
+    "page": 81,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปตท.สผ. พิจารณาโครงการลงทุนที่สอดคล้องกับเป้าหมายใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0350",
+    "company": "PTTEP",
+    "page": 81,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปตท.สผ. มีแผนบริหารจัดการปัจจัยเสี่ยงที่อาจส่งผลกระทบต่อการดำเนินงานและขยายการลงทุนอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0351",
+    "company": "PTTEP",
+    "page": 81,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปตท.สผ. มีกระบวนการกลั่นกรองการลงทุนในโครงการใหม่อย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0352",
+    "company": "PTTEP",
+    "page": 81,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปตท.สผ. เร่งพัฒนาองค์ความรู้และปรับปรุงกระบวนการทำงานเพื่อวัตถุประสงค์ใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0353",
+    "company": "PTTEP",
+    "page": 81,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปตท.สผ. กำหนดนโยบายด้านการจัดการความรู้อะไรบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0360",
+    "company": "PTT",
+    "page": 50,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT เริ่มพัฒนาโครงข่ายระบบท่อส่งก๊าซธรรมชาติมาตั้งแต่ปีใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0369",
+    "company": "EGCO",
+    "page": 71,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 EGCO มีนโยบายด้านสิ่งแวดล้อมอย่างไรเกี่ยวกับโรงไฟฟ้าทั้งหมด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0370",
+    "company": "EGCO",
+    "page": 71,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 EGCO มีรายได้หลักมาจากอะไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0371",
+    "company": "EGCO",
+    "page": 71,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 EGCO มีการผลิตไฟฟ้าทั้งหมดกี่กิกะวัตต์-ชั่วโมง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0374",
+    "company": "PTT",
+    "page": 59,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการจัดทำคู่มือการบริหารความเสี่ยงองค์กรในรูปแบบใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0376",
+    "company": "PTT",
+    "page": 59,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT วิเคราะห์ความเสี่ยงที่ส่งผลต่อการดำเนินงานโดยครอบคลุมปัจจัยภายในใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0377",
+    "company": "PTT",
+    "page": 59,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT กำหนดให้ไฮโดรเจนเป็นหนึ่งในยุทธศาสตร์สำคัญโดยมีปัจจัยสนับสนุนใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0381",
+    "company": "PTTEP",
+    "page": 92,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTTEP ติดตามสถานการณ์และประเมินความเสี่ยงเกิดใหม่ที่อาจส่งผลกระทบต่อการดำเนินธุรกิจของบริษัทฯ ในอนาคตอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0384",
+    "company": "CPAXT",
+    "page": 59,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท CPAXT มีความเสี่ยงด้านใดที่เกิดจากความล้มเหลวหรือความไม่มีประสิทธิภาพในการดำเนินกลยุทธ์ที่วางไว้?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0385",
+    "company": "CPAXT",
+    "page": 59,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท CPAXT มีมาตรการจัดการความเสี่ยงด้านการปฏิบัติตามกลยุทธ์อย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0387",
+    "company": "CPAXT",
+    "page": 59,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปัจจัยภายนอกใดบ้างที่สามารถส่งผลกระทบต่อการดำเนินงานของบริษัท CPAXT ในเชิงโอกาสและความเสี่ยง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0388",
+    "company": "CPAXT",
+    "page": 59,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท CPAXT มีการพัฒนาธุรกิจรูปแบบใหม่เพื่อตอบสนองต่อสิ่งใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0389",
+    "company": "EGCO",
+    "page": 80,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 กลุ่ม EGCO มุ่งเน้นการลงทุนในธุรกิจไฟฟ้าหลักประเภทใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0392",
+    "company": "EGCO",
+    "page": 80,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 กลุ่ม EGCO ให้ความสำคัญกับการดูแลผู้ถือหุ้นด้วยนโยบายใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0394",
+    "company": "PTT",
+    "page": 62,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการบูรณาการระบบงานด้านการกำกับดูแลองค์กรตามแนวทางใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0395",
+    "company": "PTT",
+    "page": 62,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการผลักดันการบริหารจัดการตามแนวทางใดไปยังบริษัทในกลุ่ม PTT?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0396",
+    "company": "PTT",
+    "page": 62,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 นโยบายส่งเสริมการแข่งขันในกิจการก๊าซธรรมชาติของกระทรวงพลังงานแบ่งการดำเนินงานออกเป็นกี่ระยะ?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0397",
+    "company": "PTT",
+    "page": 62,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT จัดสรรก๊าซธรรมชาติจากอ่าวไทยหลังโรงแยกก๊าซธรรมชาติให้ผู้ใช้ไฟฟ้าประเภทบ้านอยู่อาศัยเป็นลำดับแรกเพื่อวัตถุประสงค์ใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0398",
+    "company": "PTT",
+    "page": 62,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีแนวทางบริหารความเสี่ยงด้านการหยุดชะงักของการผลิตและการดำเนินธุรกิจอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0405",
+    "company": "CPAXT",
+    "page": 62,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 CPAXT ใช้กลยุทธ์ใดในการลดการปล่อยก๊าซเรือนกระจกเพื่อบรรลุเป้าหมายด้านความยั่งยืน?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0406",
+    "company": "CPAXT",
+    "page": 62,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 CPAXT มีโครงการสำคัญใดบ้างที่ส่งเสริมการอนุรักษ์พลังงานและลดการปล่อยก๊าซเรือนกระจก?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0407",
+    "company": "CPAXT",
+    "page": 62,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 CPAXT จัดตั้งคณะกรรมการใดเพื่อสนับสนุนงบประมาณและติดตามความคืบหน้าโครงการด้านพลังงาน?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0408",
+    "company": "CPAXT",
+    "page": 62,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 CPAXT ได้รับการยอมรับด้านความยั่งยืนจากรางวัลใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0413",
+    "company": "EGCO",
+    "page": 85,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 EGCO เผชิญกับความท้าทายใดในการลงทุนในเทคโนโลยีหรือนวัตกรรมที่ทันสมัยและเป็นมิตรต่อสิ่งแวดล้อม?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0414",
+    "company": "PTTEP",
+    "page": 116,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) มีการดำเนินการที่สำคัญเกี่ยวกับการจัดประชุมสามัญผู้ถือหุ้นประจำปีอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0415",
+    "company": "PTTEP",
+    "page": 116,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) ให้ความสำคัญกับสิทธิของผู้ถือหุ้นอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0416",
+    "company": "PTTEP",
+    "page": 116,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) มีนโยบายและแนวปฏิบัติที่เกี่ยวกับคณะกรรมการอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0417",
+    "company": "PTTEP",
+    "page": 116,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) มีการกำหนดกรอบความประพฤติด้านจริยธรรมในการดำเนินธุรกิจอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0418",
+    "company": "PTTEP",
+    "page": 116,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) ส่งเสริมสิทธิของผู้ถือหุ้นอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0419",
+    "company": "PTT",
+    "page": 69,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีวัตถุประสงค์ของการมีส่วนร่วมของผู้มีส่วนได้ส่วนเสียอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0420",
+    "company": "PTT",
+    "page": 69,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) อ้างอิงมาตรฐานสากลใดในการบริหารผู้มีส่วนได้ส่วนเสีย?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0421",
+    "company": "PTT",
+    "page": 69,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีการวิเคราะห์ห่วงโซ่คุณค่าของธุรกิจอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0422",
+    "company": "PTT",
+    "page": 69,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีประเด็นระดับองค์กรที่ประกอบด้วยอะไรบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0423",
+    "company": "PTT",
+    "page": 69,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท. จำกัด (มหาชน) มีกลุ่มของผู้มีส่วนได้ส่วนเสียกี่กลุ่ม?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0425",
+    "company": "PTTEP",
+    "page": 121,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTTEP กำหนดให้ใครต้องรายงานการเปลี่ยนแปลงการถือหลักทรัพย์ต่อฝ่ายกำกับดูแลองค์กรและบริหารงานบริษัทย่อยเพิ่มเติมจากสำนักงาน ก.ล.ต.?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0426",
+    "company": "PTTEP",
+    "page": 121,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTTEP มีแนวทางในการคัดเลือกสถาบันการเงินเพื่อใช้ผลิตภัณฑ์หรือบริการในมิติใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0427",
+    "company": "PTTEP",
+    "page": 121,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTTEP มีการปฏิบัติและให้ความเป็นธรรมแก่เจ้าหนี้สถาบันการเงินและผู้ถือหุ้นกู้ตามสิ่งใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0428",
+    "company": "PTTEP",
+    "page": 121,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTTEP จะดำเนินการออกหุ้นกู้ตามข้อกำหนดใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0433",
+    "company": "CPAXT",
+    "page": 67,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT ได้ลงทุนในโครงการใดเพื่อเพิ่มขีดความสามารถในการแข่งขันและพัฒนาผลิตภัณฑ์และบริการ?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0435",
+    "company": "EGCO",
+    "page": 95,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 EGCO มีการดำเนินการอย่างไรเพื่อลดความเสี่ยงจากอันตรายต่างๆ?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0439",
+    "company": "PTT",
+    "page": 72,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปตท. ใช้มาตรฐานใดในการประเมินประเด็นสำคัญด้านความยั่งยืน?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0440",
+    "company": "PTT",
+    "page": 72,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปตท. มีช่องทางการสื่อสารใดบ้างกับคู่ค้า?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0441",
+    "company": "PTT",
+    "page": 72,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 ปตท. มีระบบการจัดซื้อจัดจ้างแบบออนไลน์ใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0442",
+    "company": "PTT",
+    "page": 72,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 ปตท. มีการดำเนินการอย่างไรเพื่อสร้างความเข้าใจและความเชื่อมั่นในการดำเนินงาน?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0443",
+    "company": "PTT",
+    "page": 72,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 ปตท. มีการดำเนินการอย่างไรเพื่อพัฒนาพนักงาน?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0445",
+    "company": "PTTEP",
+    "page": 126,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) จะต้องขออนุมัติจากกรมเชื้อเพลิงธรรมชาติก่อนการเข้าทำสัญญากับผู้ค้าในกรณีใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0447",
+    "company": "PTTEP",
+    "page": 126,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 ผู้บริหารสัญญาของ บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) ต้องทำรายงานใดเมื่อสิ้นสุดระยะเวลาสัญญา?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0448",
+    "company": "PTTEP",
+    "page": 126,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) ส่งเสริมความร่วมมือและพัฒนาประสิทธิภาพการบริหารห่วงโซ่อุปทานกับคู่ค้าด้วยการสร้างแผนกิจกรรมใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0449",
+    "company": "CPAXT",
+    "page": 74,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน) มีช่องทางการมีส่วนร่วมและสื่อสารกับนักลงทุนหรือสถาบันการลงทุนอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0451",
+    "company": "CPAXT",
+    "page": 74,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน) มีช่องทางการมีส่วนร่วมและสื่อสารกับลูกค้าอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0452",
+    "company": "CPAXT",
+    "page": 74,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน) มีการตอบสนองความคาดหวังของคู่ค้าในด้านใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0453",
+    "company": "CPAXT",
+    "page": 74,
+    "label_ai_review_eligible": false,
+    "question": "ในปี 2567 บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน) มีช่องทางการมีส่วนร่วมและสื่อสารกับผู้รับเหมาอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0454",
+    "company": "EGCO",
+    "page": 99,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 EGCO มีความรับผิดชอบต่อสังคมอย่างไรในฐานะผู้ผลิตไฟฟ้ารายใหญ่ของประเทศ?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0457",
+    "company": "EGCO",
+    "page": 99,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 EGCO ส่งเสริมคุณภาพชีวิตที่ดีขึ้นของชุมชนท้องถิ่นผ่านโครงการใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0467",
+    "company": "CPAXT",
+    "page": 78,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 CPAXT มีเป้าหมายในการปลดปล่อยคาร์บอนสุทธิเป็นศูนย์เมื่อใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0469",
+    "company": "PTT",
+    "page": 78,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการบริหารจัดการความเสี่ยงอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0470",
+    "company": "PTT",
+    "page": 78,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการขับเคลื่อนธุรกิจเพื่อความยั่งยืนอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0471",
+    "company": "PTT",
+    "page": 78,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีการพิจารณาผลกระทบต่อสังคมและสิ่งแวดล้อมอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0472",
+    "company": "PTT",
+    "page": 78,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีความเสี่ยงที่เกิดจากการบริหารจัดการทรัพยากรบุคคลที่ไม่เป็นธรรมและไม่มีประสิทธิภาพอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0473",
+    "company": "PTT",
+    "page": 78,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTT มีแผนกลยุทธ์ด้านการบริหารและพัฒนาทุนมนุษย์อย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0475",
+    "company": "PTTEP",
+    "page": 137,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTTEP กำหนดรูปแบบการควบคุมภายในและการบริหารความเสี่ยงตามหลักการใด?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0476",
+    "company": "PTTEP",
+    "page": 137,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 หน่วยงานที่มีบทบาทในด่านที่หนึ่งของ PTTEP มีหน้าที่หลักอย่างไร?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0478",
+    "company": "PTTEP",
+    "page": 137,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 PTTEP มอบหมายให้หน่วยงานใดจัดการประเมินการควบคุมภายใน?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0486",
+    "company": "EGCO",
+    "page": 115,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 คณะกรรมการ EGCO มีอำนาจในการอนุมัติการดำเนินการใดที่เกี่ยวข้องกับการจ่ายเงินปันผล?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0488",
+    "company": "EGCO",
+    "page": 115,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 คณะกรรมการ EGCO มีอำนาจในการอนุมัติเรื่องใดที่เกี่ยวข้องกับโครงสร้างเงินเดือนของบริษัท?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0489",
+    "company": "PTT",
+    "page": 82,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปตท. นำเสนอภาพรวมของอะไรบ้างในแบบ 56-1 One Report?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0490",
+    "company": "PTT",
+    "page": 82,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปตท. มีประเด็นสำคัญด้านความยั่งยืนใดบ้างที่นำเสนอในแบบ 56-1 One Report?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0491",
+    "company": "PTT",
+    "page": 82,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปตท. มีความเสี่ยงต่อบริษัทจากการเปลี่ยนแปลงสภาพภูมิอากาศในด้านใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0492",
+    "company": "PTT",
+    "page": 82,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 ปตท. มีโอกาสต่อบริษัทจากการเปลี่ยนแปลงสภาพภูมิอากาศในด้านใดบ้าง?"
+  },
+  {
+    "type": "retrieval_target_page_miss",
+    "id": "B0496",
+    "company": "PTTEP",
+    "page": 143,
+    "label_ai_review_eligible": true,
+    "question": "ในปี 2567 บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) ลงโทษผู้กระทำผิดในเรื่องการทุจริต คอร์รัปชัน ให้สินบนอย่างไร?"
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__app_gemini__U04",
+    "reasons": [
+      "answerable_abstention",
+      "deterministic_fact_check_failed",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__app_gemini__U08",
+    "reasons": [
+      "explicit_pdf_page_mismatch",
+      "deterministic_fact_check_failed"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__app_gemini__U09",
+    "reasons": [
+      "answerable_abstention",
+      "deterministic_fact_check_failed",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__app_gemini__U10",
+    "reasons": [
+      "answerable_abstention",
+      "deterministic_fact_check_failed",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__app_gemini__U12",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__app_gemini__U13",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__app_gemini__U14",
+    "reasons": [
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__app_gemini__U18",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__app_gemini__U19",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__app_gemini__U20",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__bm25_gemini__U02",
+    "reasons": [
+      "required_source_page_missing",
+      "deterministic_fact_check_failed"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__bm25_gemini__U03",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__bm25_gemini__U04",
+    "reasons": [
+      "required_source_page_missing",
+      "deterministic_fact_check_failed"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__bm25_gemini__U06",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__bm25_gemini__U07",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__bm25_gemini__U18",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "CP_EGCO20_saved__bm25_gemini__U19",
+    "reasons": [
+      "required_source_page_missing",
+      "deterministic_fact_check_failed"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Legacy15_saved__app_diagnostic__L11",
+    "reasons": [
+      "deterministic_fact_check_failed",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Legacy15_saved__app_diagnostic__L14",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__F05",
+    "reasons": [
+      "explicit_pdf_page_mismatch"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__F09",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__F10",
+    "reasons": [
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__F11",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__F12",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__N01",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__N02",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__N03",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__N04",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__N05",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__N06",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__app_gemini__N07",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__F06",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__F09",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__F10",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__F11",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__F12",
+    "reasons": [
+      "required_source_page_missing"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__F16",
+    "reasons": [
+      "answerable_abstention",
+      "deterministic_fact_check_failed",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__N01",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__N02",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__N04",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__N06",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__N07",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "PTT_PTTEP24_live__bm25_gemini__N08",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0001",
+    "reasons": [
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0011",
+    "reasons": [
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0021",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0032",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0052",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0062",
+    "reasons": [
+      "required_source_page_missing",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0072",
+    "reasons": [
+      "answerable_abstention",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0082",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0093",
+    "reasons": [
+      "explicit_pdf_page_mismatch",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0103",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0133",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0144",
+    "reasons": [
+      "explicit_pdf_page_mismatch"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0154",
+    "reasons": [
+      "explicit_pdf_page_mismatch"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0164",
+    "reasons": [
+      "answerable_abstention",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0184",
+    "reasons": [
+      "answerable_abstention",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0194",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0215",
+    "reasons": [
+      "answerable_abstention",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0225",
+    "reasons": [
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0235",
+    "reasons": [
+      "answerable_abstention",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0245",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0266",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0286",
+    "reasons": [
+      "answerable_abstention",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0296",
+    "reasons": [
+      "explicit_pdf_page_mismatch"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0307",
+    "reasons": [
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0317",
+    "reasons": [
+      "explicit_pdf_page_mismatch"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0327",
+    "reasons": [
+      "explicit_pdf_page_mismatch",
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0347",
+    "reasons": [
+      "explicit_pdf_page_mismatch"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0368",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0378",
+    "reasons": [
+      "answerable_abstention",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0388",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0398",
+    "reasons": [
+      "required_source_page_missing",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0408",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0419",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0429",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0439",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0449",
+    "reasons": [
+      "explicit_pdf_page_mismatch",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0459",
+    "reasons": [
+      "answerable_abstention",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0469",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0480",
+    "reasons": [
+      "deterministic_fact_check_failed"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0490",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Thai500_sample50_live__app_gemini__B0500",
+    "reasons": [
+      "deterministic_fact_check_failed",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__app_gemini__M01",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__app_gemini__M02",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__app_gemini__M03",
+    "reasons": [
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__app_gemini__M05",
+    "reasons": [
+      "required_source_page_missing",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__app_gemini__M06",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__app_gemini__M07",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__app_gemini__M08",
+    "reasons": [
+      "claim_support_or_quote_unverified"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__bm25_gemini__M01",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__bm25_gemini__M02",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__bm25_gemini__M03",
+    "reasons": [
+      "required_source_page_missing",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__bm25_gemini__M04",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__bm25_gemini__M05",
+    "reasons": [
+      "required_source_page_missing",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__bm25_gemini__M06",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__bm25_gemini__M07",
+    "reasons": [
+      "answerable_abstention",
+      "required_source_page_missing",
+      "deterministic_fact_check_failed",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  },
+  {
+    "type": "answer_audit",
+    "key": "Multipage8_live__bm25_gemini__M08",
+    "reasons": [
+      "required_source_page_missing",
+      "explicit_pdf_page_mismatch",
+      "deterministic_fact_check_failed",
+      "claim_support_or_quote_unverified",
+      "required_facts_incomplete",
+      "response_relevance_incomplete"
+    ]
+  }
+]

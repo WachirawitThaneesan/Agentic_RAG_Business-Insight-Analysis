@@ -1,0 +1,102 @@
+﻿company,comparison_operator,document,evidence_quote,human_completed,human_verdict,id,measure,quantity_index,range_max,range_min,reason,reference_issue,review_date,reviewer_name,source_pdf_page,unit,value,year_be,year_kind
+CPAXT,eq,CPAXT,,False,,B0026,ศูนย์จำหน่ายสินค้าแบบค้าส่งรวม,0,,,,,,,17,สาขา,175.0,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0027,ศูนย์จำหน่ายสินค้าแบบค้าส่งในประเทศไทย,0,,,,,,,17,สาขา,165.0,2567,event_or_performance
+Lotus's Thailand,eq,CPAXT,,False,,B0254,ร้านค้าทั้งหมด,0,,,,,,,21,แห่ง,2483,2567,event_or_performance
+Lotus's Thailand,eq,CPAXT,,False,,B0254,จังหวัดที่ Lotus's Thailand มีร้านค้า,1,,,,,,,21,จังหวัด,76,2567,event_or_performance
+Lotus's ในประเทศไทย,eq,CPAXT,,False,,B0257,สัดส่วนรายได้จากการขาย ช่องทางออนไลน์ที่รวมยอดขายผ่าน My Lotus’s App และบุคคลที่สาม,0,,,,,,,21,%,8.5,2567,event_or_performance
+Lotus's Thailand,eq,CPAXT,,False,,B0278,ร้านไฮเปอร์มาร์เก็ต,0,,,,,,,23,สาขา,4,,report_context_only
+Lotus's Thailand,eq,CPAXT,,False,,B0278,ซูเปอร์มาร์เก็ต,1,,,,,,,23,สาขา,4,,report_context_only
+Lotus's Thailand,approx,CPAXT,,False,,B0278,โลตัส โก เฟรช,2,,,,,,,23,สาขา,200,,report_context_only
+CPAXT,eq,CPAXT,,False,,B0296,สัดส่วนการถือหน่วยลงทุนในกองทรัสต์เพื่อการลงทุนในอสังหาริมทรัพย์และสิทธิการเช่า,0,,,,,,,26,%,25,,report_context_only
+CPAXT,eq,CPAXT,,False,,B0297,ประเภทค่าธรรมเนียมที่ได้รับจากกองทรัสต์ในฐานะผู้จัดการทรัพย์สิน,0,,,,,,,26,ประเภท,4,,report_context_only
+CPAXT,gte,CPAXT,,False,,B0298,อัตราการจ่ายเงินปันผลของกองทรัสต์,0,,,,,,,26,%,90,,report_context_only
+Lotus’s,eq,CPAXT,,False,,B0314,จำนวนสาขา,0,,,,,,,29,แห่ง,70,2567,event_or_performance
+Lotus’s Malaysia,approx,CPAXT,,False,,B0315,สัดส่วนยอดขายสินค้าภายใต้เครื่องหมายการค้าของตัวเอง,0,,,,,,,29,%,16.0,2567,event_or_performance
+Lotus’s Malaysia,eq,CPAXT,,False,,B0316,สาขาที่ได้รับการปรับปรุงและตกแต่ง,0,,,,,,,29,สาขา,8,,report_context_only
+Lotus’s,eq,CPAXT,,False,,B0043,สัดส่วนรายได้จากการขายสินค้าอุปโภคบริโภค,0,,,,,,,30,ร้อยละ,64.9,2567,event_or_performance
+Lotus’s,eq,CPAXT,,False,,B0044,สัดส่วนรายได้จากการขายสินค้าอาหารสด,0,,,,,,,30,ร้อยละ,28.6,2567,event_or_performance
+Lotus’s,eq,CPAXT,,False,,B0045,สัดส่วนรายได้จากการขายสินค้าทั่วไป,0,,,,,,,30,ร้อยละ,6.5,2567,event_or_performance
+สภาพัฒน์,range,CPAXT,,False,,B0047,ประมาณการการเติบโตทางเศรษฐกิจไทย,0,3.3,2.3,,,,,35,%,2.3,2567,event_or_performance
+สภาพัฒน์,eq,CPAXT,,False,,B0048,จำนวนนักท่องเที่ยวต่างชาติที่คาดว่าจะเดินทางเข้ามา,0,,,,,,,35,ล้านคน,38.0,2567,event_or_performance
+ศูนย์วิจัยกรุงศรี,range,CPAXT,,False,,B0049,แนวโน้มเติบโตเฉลี่ยของธุรกิจค้าปลีกสมัยใหม่,0,6.0,5.0,,,,,35,%,5.0,,report_context_only
+CPAXT,eq,CPAXT,,False,,B0053,สินทรัพย์ไม่มีตัวตน,0,,,,,,,38,ล้านบาท,10831,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0054,อสังหาริมทรัพย์เพื่อการลงทุน,0,,,,,,,38,ล้านบาท,56463,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0055,ที่ดิน อาคาร และอุปกรณ์,0,,,,,,,38,ล้านบาท,117695,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0056,สินทรัพย์สิทธิการใช้,0,,,,,,,38,ล้านบาท,41079,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0086,สัดส่วนการถือหุ้นรวมกันของผู้ถือหุ้นรายใหญ่,0,,,,,,,68,%,84.73,,report_context_only
+CPAXT,eq,CPAXT,,False,,B0097,สัดส่วนการใช้พลังงานสะอาด,0,,,,,,,77,%,16,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0098,เป้าหมายความเข้มข้นการใช้น้ำสุทธิ ต่อยอดขายเมื่อเทียบกับปีฐาน ให้ลดลง,0,,,,,,,77,%,20,2573,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0480,ลดการใช้น้ำสุทธิ,0,,,,,,,84,%,20,2573,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0482,สาขาที่มีระบบนำน้ำทิ้งที่ผ่านกระบวนการบำบัด กลับมาใช้ประโยชน์ใหม่,0,,,,,,,84,สาขา,72,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0117,ลดการปล่อยก๊าซเรือนกระจกขอบเขตที่ 1-2,0,,,,,,,95,%,42.0,2573,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0122,พนักงานที่สำเร็จหลักสูตรพัฒนาศักยภาพตามสายงาน,0,,,,,,,101,คน,227,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0122,เพิ่มยอดการเติบโตธุรกิจ,1,,,,,,,101,ล้านบาท,2964.51,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0123,ผลสำรวจระดับความผูกพันของพนักงานต่อองค์กร,0,,,,,,,101,%,87,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0135,ความเสี่ยงได้รับการบ่งชี้และประเมิน,0,,,,,,,105,รายการ,78.0,2567,event_or_performance
+CPAXT,gte,CPAXT,,False,,B0144,ระดับความพึงพอใจของลูกค้าจากการสำรวจประจำปี,0,,,,,,,110,%,80,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0166,อัตราดอกเบี้ยลอยตัว,0,,,,,,,130,%,25,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0182,กรรมการได้รับการสื่อสารด้านการกำกับดูแลกิจการและจรรยาบรรณธุรกิจ,0,,,,,,,161,%,100,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0183,ผู้บริหารและพนักงานได้รับการสื่อสารด้านการกำกับดูแลกิจการและจรรยาบรรณธุรกิจ,0,,,,,,,161,%,100,2567,event_or_performance
+CPAXT,eq,CPAXT,,False,,B0184,รายงานการมีส่วนได้เสียครั้งแรก,0,,,,,,,161,วัน,30,,report_context_only
+กฟผ.,eq,EGCO,,False,,B0210,สัดส่วนการถือหุ้นใน EGCO,0,,,,,,,22,%,25.41,2567,event_or_performance
+บริษัท เทพพนา วินด์ฟาร์ม,eq,EGCO,,False,,B0262,เงินส่วนเพิ่ม,0,,,,,,,43,บาทต่อหน่วย,3.5,,not_applicable
+โรงไฟฟ้าทีดับบลิวเอฟ,eq,EGCO,,False,,B0263,ค่าเฉลี่ยความพร้อมในการเดินเครื่องตลอดทั้งปี,0,,,,,,,43,ร้อยละ,99.31,2567,event_or_performance
+EGCO,eq,EGCO,,False,,B0280,มูลค่าคงเหลือสุทธิ,0,,,,,,,48,ล้านบาท,4865.0,2567,event_or_performance
+บริษัท ผลิตไฟฟ้าขนอม จำกัด,eq,EGCO,,False,,B0281,วงเงินกู้ยืมรวม,0,,,,,,,48,ล้านบาท,12816.0,2567,report_context_only
+บริษัท เอสพีพี ทรี จำกัด,eq,EGCO,,False,,B0282,วงเงินกู้ยืมรวม,0,,,,,,,48,ล้านบาท,904.0,2567,report_context_only
+บริษัท บ้านโป่ง ยูทิลิตี้ จำกัด,eq,EGCO,,False,,B0283,วงเงินกู้ยืมรวม,0,,,,,,,48,ล้านบาท,6646.0,2567,report_context_only
+โรงไฟฟ้าเอสบีพีแอล,eq,EGCO,,False,,B0320,การสำรองเชื้อเพลิง,0,,,,,,,59,วัน,30,2567,event_or_performance
+โรงไฟฟ้าบีแอลซีพี,eq,EGCO,,False,,B0320,การสำรองเชื้อเพลิง,1,,,,,,,59,วัน,45,2567,event_or_performance
+โรงไฟฟ้าพาจู,eq,EGCO,,False,,B0321,การสำรองเชื้อเพลิงก๊าซธรรมชาติเหลวนำเข้า,0,,,,,,,59,วัน,30,2567,event_or_performance
+โรงไฟฟ้าอาร์จี,eq,EGCO,,False,,B0322,การสำรองเชื้อเพลิงชีวมวล,0,,,,,,,59,วัน,20,2567,event_or_performance
+เอ็กโก,eq,EGCO,,False,,B0051,เป้าหมายระยะกลางในการลดการปล่อยก๊าซคาร์บอนไดออกไซด์ต่อหน่วยไฟฟ้าที่ผลิตได้,0,,,,,,,65,ร้อยละ,10,2573,event_or_performance
+EGCO,eq,EGCO,,False,,B0372,มูลค่าการออกหุ้นกู้เพื่ออนุรักษ์สิ่งแวดล้อม (Green Bond),0,,,,,,,71,ล้านบาท,7000,,report_context_only
+EGCO,eq,EGCO,,False,,B0373,โครงการ EGCO Ecosystem ช่วยลดปริมาณการปล่อยก๊าซเรือนกระจก,0,,,,,,,71,ตันคาร์บอนไดออกไซด์เทียบเท่า,47,,report_context_only
+กระทรวงการคลัง,eq,EGCO,,False,,B0060,การขยายตัวของเศรษฐกิจไทย,0,,,,,,,76,%,3.0,2568,event_or_performance
+EGCO,eq,EGCO,,False,,B0078,ลดการปล่อยก๊าซคาร์บอนไดออกไซด์ต่อหน่วยการผลิตไฟฟ้า,0,,,,,,,90,%,10.0,2573,event_or_performance
+EGCO,eq,EGCO,,False,,B0079,เพิ่มสัดส่วนการผลิตไฟฟ้าจากพลังงานหมุนเวียน,0,,,,,,,90,%,30.0,2573,event_or_performance
+EGCO,eq,EGCO,,False,,B0111,กรรมการอิสระ,0,,,,,,,116,คน,3,2567,report_context_only
+EGCO,eq,EGCO,,False,,B0186,ผลการประเมินตนเองของคณะกรรมการลงทุน,0,,,,,,,192,%,96.59,,report_context_only
+EGCO,eq,EGCO,,False,,B0187,ผลการประเมินตนเองของคณะกรรมการสรรหาและพิจารณาค่าตอบแทน,0,,,,,,,192,%,98.9,,report_context_only
+EGCO,eq,EGCO,,False,,B0188,ผลการประเมินตนเองของกรรมการรายบุคคล,0,,,,,,,192,%,99.75,,report_context_only
+บริษัท ปตท. จํากัด (มหาชน),lte,PTT,,False,,B0196,กรรมการในรัฐวิสาหกิจ และ/หรือนิติบุคคล ที่รัฐวิสาหกิจเป็นผู้ถือหุ้น,0,,,,,,,8,แห่ง,3.0,2567,report_context_only
+บริษัท ปตท. จํากัด (มหาชน),lte,PTT,,False,,B0197,กรรมการในบริษัทจดทะเบียน ในตลาดหลักทรัพย์แห่งประเทศไทย,0,,,,,,,8,แห่ง,3.0,2567,report_context_only
+ปตท.,approx,PTT,,False,,B0246,สัดส่วนการลงทุนในธุรกิจหลักของงบการลงทุน 5 ปี,0,,,,,,,23,ร้อยละ,55,2567,report_context_only
+ปตท.,eq,PTT,,False,,B0247,งบลงทุนในอนาคต (Provisional Capital Expenditure) ในระยะ 5 ปีข้างหน้า,0,,,,,,,23,ล้านบาท,302168,2567,report_context_only
+ปตท.,eq,PTT,,False,,B0033,งบลงทุน 5 ปี (ปี 2567 - 2571),0,,,,,,,25,ล้านบาท,89203.0,2567,event_or_performance
+บริษัท พีทีที แอนด์ ทีจีอีเอส ออปเทค จำกัด (OPTEC),eq,PTT,,False,,B0267,สัดส่วนการถือหุ้น,0,,,,,,,28,%,51.0,2567,event_or_performance
+PTT,eq,PTT,,False,,B0285,ช่วยเหลือโครงการบัตรสิทธิประโยชน์กลุ่มรถโดยสารสาธารณะ,0,,,,,,,36,ล้านบาท,506.0,2567,event_or_performance
+รถยนต์ใช้ NGV ทั่วประเทศไทย,eq,PTT,,False,,B0286,จำนวนรถยนต์ที่ใช้ NGV เป็นเชื้อเพลิงทั่วประเทศ,0,,,,"Question says PTT has vehicles; PDF reports national fleet, not PTT ownership",,,36,คัน,237815.0,2567,event_or_performance
+PTT,eq,PTT,,False,,B0288,ช่วยเหลือราคา NGV สำหรับกลุ่มรถทั่วไป,0,,,,,,,36,ล้านบาท,216.0,2567,event_or_performance
+กฟผ.,lte,PTT,,False,,B0306,เพดานปริมาณทดลองนำเข้า LNG แบบตลาดจรของ กฟผ.,0,,,,"Frozen reference names กบง.; image says กพช. Subject is กฟผ., and 200000 is an upper bound, not actual PTT imports",,,40,ตัน,200000.0,2562,event_or_performance
+ระบบการไฟฟ้าไทย,eq,PTT,,False,,B0347,ความต้องการพลังไฟฟ้าสูงสุด,0,,,,,,,46,เมกะวัตต์,36792,2567,event_or_performance
+PTT,eq,PTT,,False,,B0377,สัดส่วนการผสมไฮโดรเจน,0,,,,,,,59,%,5.0,2573,event_or_performance
+บริษัท ปตท. จำกัด (มหาชน),eq,PTT,,False,,B0072,ผลการประเมินด้าน ESG,0,,,,,,,65,เปอร์เซ็นต์แรก,5,2567,event_or_performance
+บริษัท ปตท. จำกัด (มหาชน),eq,PTT,,False,,B0081,คะแนนความผูกพันผู้มีส่วนได้ส่วนเสีย,0,,,,,,,70,คะแนน,83,2567,event_or_performance
+บริษัท ปตท. จำกัด (มหาชน),eq,PTT,,False,,B0082,เป้าหมายของคะแนนความผูกพันผู้มีส่วนได้ส่วนเสีย,0,,,,,,,70,คะแนน,80,,not_applicable
+ปตท.,lte,PTT,,False,,B0493,ปริมาณการปล่อยก๊าซเรือนกระจกทางตรงและทางอ้อม,0,,,,,,,82,ล้านตันคาร์บอนไดออกไซด์เทียบเท่า,51.0,2567,event_or_performance
+ปตท.,approx,PTT,,False,,B0113,ลดก๊าซเรือนกระจก,0,,,,,,,84,ตันคาร์บอนไดออกไซด์เทียบเท่าต่อปี,190000,2567,event_or_performance
+บริษัท ปตท. จำกัด (มหาชน),eq,PTT,,False,,B0129,งบประมาณสำหรับการลงทุนทางสังคมรวม,0,,,,,,,94,ล้านบาท,1066.38,2567,event_or_performance
+บริษัท ปตท. จำกัด (มหาชน),eq,PTT,,False,,B0130,สัดส่วนงบประมาณการบริจาค,0,,,,,,,94,ร้อยละ,19.07,2567,event_or_performance
+บริษัท ปตท. จำกัด (มหาชน),eq,PTT,,False,,B0131,สัดส่วนงบประมาณการดำเนินงานในรูปแบบวิสาหกิจเพื่อสังคม,0,,,,,,,94,ร้อยละ,0.86,2567,event_or_performance
+บริษัท ปตท. จำกัด (มหาชน),eq,PTT,,False,,B0132,SROI เฉลี่ยทุกโครงการ,0,,,,,,,94,เท่า,1.55,,report_context_only
+บริษัท ปตท. จำกัด (มหาชน),eq,PTT,,False,,B0133,สัดส่วนงบประมาณการรับผิดชอบต่อสังคมในรูปแบบโครงการ,0,,,,,,,94,ร้อยละ,80.07,2567,event_or_performance
+PTT,eq,PTT,,False,,B0141,เครือข่ายคนรักษ์แฝก,0,,,,,,,98,คน,2798,2567,event_or_performance
+ปตท.,eq,PTT,,False,,B0170,แผนการลงทุนในอนาคต (Provisional Capital Expenditure) ระยะ 5 ปีข้างหน้า,0,,,,,,,126,ล้านบาท,106932.0,2567,report_context_only
+ปตท.,eq,PTT,,False,,B0171,กำลังการผลิตไฟฟ้าจากพลังงานหมุนเวียน,0,,,,,,,126,เมกะวัตต์,15000.0,2573,event_or_performance
+ปตท.,eq,PTT,,False,,B0173,วงเงินซื้อก๊าซ NGV สำหรับรถแท็กซี่ (เดิม),0,,,,,,,126,บาทต่อเดือน,10000.0,2567,event_or_performance
+ปตท.,eq,PTT,,False,,B0173,วงเงินซื้อก๊าซ NGV สำหรับรถแท็กซี่ (ปรับเพิ่ม),1,,,,,,,126,บาทต่อเดือน,12000.0,2567,event_or_performance
+PTTEP,eq,PTTEP,,False,,B0004,สัดส่วนการผลิตก๊าซธรรมชาติในประเทศของ ปตท.สผ. ต่อการผลิตก๊าซธรรมชาติทั้งหมดของประเทศ,0,,,,,,,4,%,82,2567,event_or_performance
+PTTEP,eq,PTTEP,,False,,B0219,อัตราการเติบโตของปริมาณผลิตเฉลี่ยต่อปี,0,,,,,,,18,%,5.0,,report_context_only
+PTTEP,eq,PTTEP,,False,,B0221,จัดสรรงบประมาณรายจ่ายลงทุนในธุรกิจใหม่เพื่อรองรับการเปลี่ยนผ่านด้านพลังงาน,0,,,,,,,18,%,10.0,2567,event_or_performance
+PTTEP,gte,PTTEP,,False,,B0223,ลดปริมาณความเข้มของการปล่อยก๊าซเรือนกระจก,0,,,,,,,18,%,30.0,2573,event_or_performance
+PTTEP AAA,approx,PTTEP,,False,,B0235,ชำระเงินเพื่อระงับการดำเนินคดีแบบกลุ่ม,0,,,,,,,23,ล้านดอลลาร์ สรอ.,129,2565,event_or_performance
+PTTEP,eq,PTTEP,,False,,B0270,สัดส่วนการร่วมทุน,0,,,,,,,40,ร้อยละ,7.0,,report_context_only
+PTTEP,eq,PTTEP,,False,,B0272,สัดส่วนการร่วมทุน,0,,,,,,,40,ร้อยละ,20.0,,report_context_only
+PTTEP,eq,PTTEP,,False,,B0310,ค่าภาคหลวงแก่รัฐ,0,,,,,,,51,%,10,,not_applicable
+PTTEP,eq,PTTEP,,False,,B0313,กำลังการผลิตไฟฟ้า,0,,,,,,,51,เมกะวัตต์,9.9,,not_applicable
+ปตท.สผ.,eq,PTTEP,,False,,B0382,ความเสี่ยงเกิดใหม่,0,,,,,,,92,รายการ,2.0,2567,event_or_performance
+บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน),gt,PTTEP,,False,,B0445,มูลค่าเพิ่มขึ้นหรือลดลงของผลการจัดหาสินค้าและบริการของสัญญาเมื่อเทียบกับมูลค่าในกลยุทธ์การจัดหาสินค้าและบริการ (Procurement Strategy),0,,,,,,,126,ร้อยละ,10,2567,event_or_performance
+ปตท.สผ. และบริษัทย่อย,eq,PTTEP,,False,,B0134,พนักงานท้องถิ่นของบริษัทย่อยในต่างประเทศ,0,,,,,,,169,คน,1329.0,2567,event_or_performance
+PTTEP,eq,PTTEP,,False,,B0143,กรรมการเพศหญิง,0,,,,,,,179,คน,2,2567,event_or_performance
+PTTEP,eq,PTTEP,,False,,B0143,กรรมการทั้งหมด,1,,,,,,,179,คน,15,2567,event_or_performance

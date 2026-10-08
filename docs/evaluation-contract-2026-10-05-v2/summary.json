@@ -1,0 +1,26 @@
+{
+  "method_version": "rag-evaluation-contract-v2.0",
+  "n_saved_answers": 50,
+  "claim_counts_by_dimension": {
+    "faithfulness": {
+      "supported_quote_verified": 70,
+      "quote_unverifiable": 34,
+      "insufficient_evidence": 1
+    },
+    "factual": {
+      "contradicted_ai_needs_review": 14,
+      "supported_quote_verified": 63,
+      "insufficient_evidence": 7,
+      "quote_unverifiable": 21
+    }
+  },
+  "n_actual_claim_citation_mappings": 0,
+  "n_numeric_draft_quantities": 101,
+  "n_numeric_draft_questions": 94,
+  "n_human_review_cases_prepared": 22,
+  "n_human_completed": 0,
+  "n_provisional_ai_contradictions_human_confirmed": 0,
+  "new_model_calls": 0,
+  "old_scores_unchanged": true,
+  "retrieval_and_generation_unchanged": true
+}

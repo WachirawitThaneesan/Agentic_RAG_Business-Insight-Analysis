@@ -1,0 +1,802 @@
+[
+  {
+    "id": "B0001",
+    "n_claims": 8,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 8,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 8,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0011",
+    "n_claims": 2,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 2,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 6,
+    "legacy_returned_source_support_utilization": 0.2,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0021",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 3,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0031",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0042",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0052",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0062",
+    "n_claims": 7,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 7,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 7,
+    "legacy_returned_source_support_utilization": 0.2,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0072",
+    "n_claims": 2,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 2,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 4,
+    "legacy_returned_source_support_utilization": 0.3,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0082",
+    "n_claims": 0,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 0,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 0,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0092",
+    "n_claims": 0,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 0,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 0,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0102",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 3,
+    "legacy_returned_source_support_utilization": 0.2,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0113",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 2,
+    "legacy_returned_source_support_utilization": 0.2,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0123",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 3,
+    "legacy_returned_source_support_utilization": 0.3,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0133",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0143",
+    "n_claims": 2,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 2,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 6,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0153",
+    "n_claims": 0,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 0,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 0,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0163",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0173",
+    "n_claims": 2,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 2,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 2,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0184",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 0,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0194",
+    "n_claims": 0,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 0,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 0,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0204",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 2,
+    "legacy_returned_source_support_utilization": 0.2,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0214",
+    "n_claims": 2,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 2,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 2,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0224",
+    "n_claims": 3,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 3,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 3,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0234",
+    "n_claims": 2,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 2,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 2,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0244",
+    "n_claims": 3,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 3,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 3,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0255",
+    "n_claims": 6,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 6,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 6,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0265",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0275",
+    "n_claims": 3,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 3,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 3,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0285",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0295",
+    "n_claims": 6,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 6,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 6,
+    "legacy_returned_source_support_utilization": 0.4,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0305",
+    "n_claims": 4,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 4,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 4,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0315",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0326",
+    "n_claims": 0,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 0,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 0,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0336",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0346",
+    "n_claims": 0,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 0,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 0,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0356",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0366",
+    "n_claims": 5,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 5,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 5,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0376",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0386",
+    "n_claims": 2,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 2,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 2,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0397",
+    "n_claims": 0,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 0,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 0,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0407",
+    "n_claims": 2,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 2,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 2,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0417",
+    "n_claims": 5,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 5,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 5,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0427",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 0,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0437",
+    "n_claims": 7,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 7,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 7,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0447",
+    "n_claims": 1,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 1,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 1,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0457",
+    "n_claims": 4,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 4,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 11,
+    "legacy_returned_source_support_utilization": 0.3,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0468",
+    "n_claims": 0,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 0,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 0,
+    "legacy_returned_source_support_utilization": 0.0,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0480",
+    "n_claims": 2,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 2,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 7,
+    "legacy_returned_source_support_utilization": 0.4,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0490",
+    "n_claims": 5,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 5,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 5,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  },
+  {
+    "id": "B0500",
+    "n_claims": 2,
+    "actual_citation": {
+      "status": "not_measured_actual_claim_citation_mapping_missing",
+      "citation_link_precision": null,
+      "citation_claim_recall": null,
+      "n_actual_links": null,
+      "n_answer_claims": 2,
+      "links": [],
+      "captured_application_mapping_aligned_with_audit": false
+    },
+    "n_judge_proposed_support_links": 2,
+    "legacy_returned_source_support_utilization": 0.1,
+    "declared_citation_scope": "Structured claim mapping only; legacy prose pages are a separate location check"
+  }
+]

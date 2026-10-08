@@ -1,0 +1,16 @@
+{
+  "actual_citation_audit.json": "1aca2071224e36db574c441c85bde5acb943d55cc0d51c577be100d74ddd93c0",
+  "claim_statuses.csv": "3d8c70f95b8e64493670bde0af1021bb8a97ce2182fd39b9ae6efea1b7e0d5b2",
+  "human_judge_calibration.md": "37a592dbe8cc4c4f70bee376dcb92936cfb53c3627990be3e2e999d08ad48d34",
+  "human_numeric_review.csv": "04da0e963fb6313e0905dc6cae7fc183c7ac3160d995938170a230d38e194070",
+  "human_reference_review.md": "bfc4d9f7063d9fa8112b8c9b1bf6d3b7443cdd7837b9782bb452630d77823ed6",
+  "human_review_sheet.csv": "862a0d347104b5847cbb02e3cdfcdcdf7b1e2ecaa32b95b82fe614424486e287",
+  "model_usage.csv": "d65f7376a74f663943a8bbccde39c0103556df35ed9e5177b1f5638dde6530da",
+  "numeric_labels.csv": "ebd00a3d5ae9ddda972cce38f2a1e8e0be374d8f1734dcd872cae29bcba6e66d",
+  "numeric_labels_locked.json": "705463d7f03b82f95cfe914857002db8934c0a0de43e957e35b9422caae0f28b",
+  "numeric_review_summary.json": "4b01910e55c8a7630ed443434a28cb16bf2618f15a424e5e890c524e046647f4",
+  "README_th.md": "443438da106ed4715b7c60d978ec36c560561e069c132b49af068800b403ff39",
+  "step1_status.json": "26f77ca3b38d7ddba119cd6316bc8bdb3ef1395a4352bc2eab9b0ac699e035ca",
+  "summary.json": "01d204d1311e7f3f2268c4c7efdc730b4ae7db2d245efdb11742b80358ddcf88",
+  "targets_locked.json": "32d990dea1a669ce61b0c8c7983f36addd81a3c7dee27d429cf866882b540b05"
+}

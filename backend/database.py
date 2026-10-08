@@ -37,6 +37,8 @@ async def init_db():
     async with engine.begin() as conn:
         await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
         await conn.run_sync(Base.metadata.create_all)
+        await conn.execute(text("ALTER TABLE documents ADD COLUMN IF NOT EXISTS source_sha256 VARCHAR(64)"))
+        await conn.execute(text("ALTER TABLE structured_data ADD COLUMN IF NOT EXISTS source_sha256 VARCHAR(64)"))
         # create_all does not add columns to existing installations.
         await conn.execute(text("ALTER TABLE structured_data ADD COLUMN IF NOT EXISTS source_page INTEGER"))
         await conn.execute(text("ALTER TABLE structured_data ADD COLUMN IF NOT EXISTS unit VARCHAR(100)"))

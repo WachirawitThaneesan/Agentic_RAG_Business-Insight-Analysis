@@ -1,0 +1,21 @@
+{
+  "n_quantities": 101,
+  "n_questions": 94,
+  "decisions": {
+    "supported": 99,
+    "reference_conflict_needs_review": 2
+  },
+  "comparison_operators": {
+    "eq": 86,
+    "approx": 5,
+    "gte": 3,
+    "range": 2,
+    "lte": 4,
+    "gt": 1
+  },
+  "n_codex_visual_checked_quantities": 7,
+  "n_provisional_score_eligible": 99,
+  "n_human_confirmed": 0,
+  "n_official_score_eligible": 0,
+  "old_scores_unchanged": true
+}

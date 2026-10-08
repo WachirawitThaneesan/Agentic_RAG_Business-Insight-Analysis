@@ -486,14 +486,16 @@ class VectorSearchTool:
                     else _focus_excerpt(r.get("text") or "", focus_terms, budget, question=query))
             source = r.get("source_kind", "semantic")
             sim = r.get("similarity", 0)
+            similarity_text = f'{sim:.2f}' if isinstance(sim, (int, float)) else 'N/A'
             summary_parts.append(
                 f"[{r.get('filename', '?')}, PDF page {r.get('page') or 'unknown'}, "
-                f"chunk {r.get('chunk_index', '?')}, source={source}, sim={sim:.2f}; "
+                f"chunk {r.get('chunk_index', '?')}, source={source}, sim={similarity_text}; "
                 "OCR evidence is not visually verified]\n"
                 f"{text}"
             )
             chunks_data.append({
                 "document_id": r.get("document_id"),
+                "source_sha256": r.get("source_sha256"),
                 "filename": r.get("filename"),
                 "page": r.get("page"),
                 "table_name": r.get("table_name"),

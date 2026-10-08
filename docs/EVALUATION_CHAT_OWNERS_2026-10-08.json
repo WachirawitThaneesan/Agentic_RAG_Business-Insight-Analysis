@@ -1,0 +1,24 @@
+{
+  "roadmap": "docs/EVALUATION_CHAT_ROADMAP_2026-10-08.md",
+  "active_group": "B",
+  "host_id": "local",
+  "scope": "Full498 Gemini development checkpoint delivered; all8 RAG conservative bounds>80, strict numeric/complete targets unmet. Candidate98 not selected; no active worker; Docling not started",
+  "B": "new_continuation_chat_after_codex_quota_clarification",
+  "C": "not_started",
+  "same_goal": "2026-10-05-01",
+  "budget_reset": false,
+  "A": {
+    "thread_id": "01a11775-34bd-7bf1-b34f-468846d58730",
+    "status": "checkpoint_delivered_supervising_goal",
+    "evidence": "docs/evaluation-A-2026-10-08/REPORT_th.md"
+  },
+  "supervising_goal_thread_id": "01a11775-34bd-7bf1-b34f-468846d58730",
+  "latest_user_authorization": "Focus Gemini first, >80% on all498 questions for advisor; continue autonomously",
+  "prior_A_thread_id": "01a117cb-521a-7950-8a74-9d3ffa1cbaaa",
+  "thread_id": "01a119ca-4337-7343-a45a-98b4d083962d",
+  "B_previous_thread_id": "01a117cb-521a-7950-8a74-9d3ffa1cbaaa",
+  "working_policy": "docs/EVALUATION_WORKING_POLICY_2026-10-08.json",
+  "previous_active_thread_id": "01a11775-34bd-7bf1-b34f-468846d58730",
+  "continuation_handoff": "docs/GEMINI_EVALUATION_CONTINUATION_HANDOFF_2026-10-08.md",
+  "continuation_checkpoint": "TestFile\\evaluation_B_2026-10-08\\recovery_root_2026-10-08\\FULL498_AUDIT_CHECKPOINT_V5.json"
+}

@@ -1,0 +1,5687 @@
+{
+  "schema_version": 1,
+  "method_version": "comprehensive-rag-v1.5",
+  "answers": {
+    "CP_EGCO20_saved/app_gemini": {
+      "n": 20,
+      "n_answerable": 20,
+      "n_unanswerable": 0,
+      "strict_correct": 15,
+      "n_strict_scorable": 20,
+      "n_strict_needs_review": 0,
+      "strict_accuracy": 0.75,
+      "strict_accuracy_wilson95": [
+        0.531299122381256,
+        0.8881382985923343
+      ],
+      "deterministic_metrics": {
+        "abstained": {
+          "mean": 0.2,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "answerable": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "empty_response": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "explicit_page_citation_complete": {
+          "mean": 0.15,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "model_error_response": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "page_citation_complete": {
+          "mean": 0.95,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "page_citation_precision": {
+          "mean": 0.15704545454545454,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "page_citation_recall": {
+          "mean": 0.95,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "prose_page_consistent": {
+          "mean": 0.95,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "prose_page_present": {
+          "mean": 0.2,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "strict_correct": {
+          "mean": 0.75,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "answer_coverage": 0.8,
+      "selective_strict_accuracy": 0.9375,
+      "abstention_precision": 0.0,
+      "abstention_recall": null,
+      "abstention_f1": null,
+      "judge_metrics": {
+        "all_claims_cited": {
+          "mean": 0.8,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "all_claims_supported": {
+          "mean": 0.75,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "answer_relevancy_rubric": {
+          "mean": 0.85,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "citation_claim_recall": {
+          "mean": 0.825,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "citation_f1": {
+          "mean": 0.2083603896103896,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "citation_source_precision": {
+          "mean": 0.14250000000000002,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "claim_count": {
+          "mean": 1.1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "claim_relevance_precision": {
+          "mean": 0.95,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "claims_with_supporting_citation": {
+          "mean": 0.9,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "context_precision_ap": {
+          "mean": 0.5315587563696808,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "context_recall": {
+          "mean": 0.875,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "context_recall_focused_ai": {
+          "mean": 0.925,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "context_reference_claims_covered": {
+          "mean": 0.9,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "context_usefulness_precision": {
+          "mean": 0.14250000000000002,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "contradiction_rate": {
+          "mean": 0.0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "factual_f1": {
+          "mean": 0.5333333333333333,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "factual_f1_focused_ai": {
+          "mean": 0.8,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "factual_precision": {
+          "mean": 0.725,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "factual_precision_ai_judged": {
+          "mean": 0.95,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "factual_precision_determined": {
+          "mean": 1.0,
+          "n_measured": 15,
+          "n_total": 20
+        },
+        "factual_recall": {
+          "mean": 0.75,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "factual_recall_focused_ai": {
+          "mean": 0.8,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "factual_supported_claim_count": {
+          "mean": 0.8,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "faithfulness": {
+          "mean": 0.775,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "faithfulness_ai_judged": {
+          "mean": 1.0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "mapped_quote_repairs": {
+          "mean": 1.1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "quote_validation_warnings": {
+          "mean": 1.55,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "reference_claim_count": {
+          "mean": 1.05,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "reference_claims_covered": {
+          "mean": 0.8,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "supported_citation_link_count": {
+          "mean": 1.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "supported_claim_count": {
+          "mean": 0.85,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unsupported_claim_rate": {
+          "mean": 0.225,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unverifiable_claim_rate": {
+          "mean": 0.275,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unverified_or_unsupported_claim_rate": {
+          "mean": 0.225,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "negative_control_judge_metrics": {},
+      "n_judge_success": 20,
+      "n_judge_failed": 0,
+      "context_provenance": {
+        "saved_returned_sources_audit": 20
+      },
+      "numeric_accuracy": {
+        "n_correct": 15,
+        "n_total": 20,
+        "rate": 0.75
+      },
+      "micro_claim_metrics": {
+        "n_claims": 22,
+        "n_required_reference_claims": 21,
+        "faithfulness": 0.7727272727272727,
+        "factual_precision": 0.7272727272727273,
+        "factual_recall": 0.7619047619047619,
+        "context_recall": 0.8571428571428571,
+        "citation_claim_recall": 0.8181818181818182
+      },
+      "complete_answer_success": {
+        "n_pass": 10,
+        "n_judged_answerable": 20,
+        "n_total_answerable": 20,
+        "rate_judged": 0.5,
+        "strict_lower_bound_all": 0.5,
+        "gate": "all claims faithful, factual, relevant and cited; response fully relevant; required facts complete; numeric and page checks pass"
+      }
+    },
+    "CP_EGCO20_saved/bm25_gemini": {
+      "n": 20,
+      "n_answerable": 20,
+      "n_unanswerable": 0,
+      "strict_correct": 13,
+      "n_strict_scorable": 20,
+      "n_strict_needs_review": 0,
+      "strict_accuracy": 0.65,
+      "strict_accuracy_wilson95": [
+        0.43285427668523624,
+        0.818808175898918
+      ],
+      "deterministic_metrics": {
+        "abstained": {
+          "mean": 0.2,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "answerable": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "empty_response": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "explicit_page_citation_complete": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "model_error_response": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "page_citation_complete": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "page_citation_precision": {
+          "mean": 0.25,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "page_citation_recall": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "prose_page_consistent": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "prose_page_present": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "strict_correct": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "answer_coverage": 0.8,
+      "selective_strict_accuracy": 0.8125,
+      "abstention_precision": 0.0,
+      "abstention_recall": null,
+      "abstention_f1": null,
+      "judge_metrics": {},
+      "negative_control_judge_metrics": {},
+      "n_judge_success": 0,
+      "n_judge_failed": 0,
+      "context_provenance": {
+        "context_unavailable": 20
+      },
+      "numeric_accuracy": {
+        "n_correct": 13,
+        "n_total": 20,
+        "rate": 0.65
+      },
+      "micro_claim_metrics": {
+        "n_claims": 0,
+        "n_required_reference_claims": 0,
+        "faithfulness": null,
+        "factual_precision": null,
+        "factual_recall": null,
+        "context_recall": null,
+        "citation_claim_recall": null
+      },
+      "complete_answer_success": {
+        "n_pass": 0,
+        "n_judged_answerable": 0,
+        "n_total_answerable": 20,
+        "rate_judged": null,
+        "strict_lower_bound_all": 0.0,
+        "gate": "all claims faithful, factual, relevant and cited; response fully relevant; required facts complete; numeric and page checks pass"
+      }
+    },
+    "Legacy15_saved/app_diagnostic": {
+      "n": 15,
+      "n_answerable": 15,
+      "n_unanswerable": 0,
+      "strict_correct": 14,
+      "n_strict_scorable": 15,
+      "n_strict_needs_review": 0,
+      "strict_accuracy": 0.9333333333333333,
+      "strict_accuracy_wilson95": [
+        0.7018347012621998,
+        0.9881331045067315
+      ],
+      "deterministic_metrics": {
+        "abstained": {
+          "mean": 0,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "answerable": {
+          "mean": 1,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "empty_response": {
+          "mean": 0,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "explicit_page_citation_complete": {
+          "mean": 1,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "model_error_response": {
+          "mean": 0,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "page_citation_complete": {
+          "mean": 1,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "page_citation_precision": {
+          "mean": 0.9133333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "page_citation_recall": {
+          "mean": 1.0,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "prose_page_consistent": {
+          "mean": 1,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "prose_page_present": {
+          "mean": 1,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "strict_correct": {
+          "mean": 0.9333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        }
+      },
+      "answer_coverage": 1.0,
+      "selective_strict_accuracy": 0.9333333333333333,
+      "abstention_precision": null,
+      "abstention_recall": null,
+      "abstention_f1": null,
+      "judge_metrics": {
+        "all_claims_cited": {
+          "mean": 1,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "all_claims_supported": {
+          "mean": 0.9333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "answer_relevancy_rubric": {
+          "mean": 1.0,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "citation_claim_recall": {
+          "mean": 1.0,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "citation_f1": {
+          "mean": 0.9555555555555556,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "citation_source_precision": {
+          "mean": 0.9466666666666667,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "claim_count": {
+          "mean": 1.4,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "claim_relevance_precision": {
+          "mean": 1.0,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "claims_with_supporting_citation": {
+          "mean": 1.4,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "context_precision_ap": {
+          "mean": 1.0,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "context_recall": {
+          "mean": 0.8,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "context_recall_focused_ai": {
+          "mean": 0.8,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "context_reference_claims_covered": {
+          "mean": 1,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "context_usefulness_precision": {
+          "mean": 0.9466666666666667,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "contradiction_rate": {
+          "mean": 0.06666666666666667,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "factual_f1": {
+          "mean": 0.9333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "factual_f1_focused_ai": {
+          "mean": 0.9333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "factual_precision": {
+          "mean": 0.9333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "factual_precision_ai_judged": {
+          "mean": 0.9333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "factual_precision_determined": {
+          "mean": 0.9333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "factual_recall": {
+          "mean": 0.9333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "factual_recall_focused_ai": {
+          "mean": 0.9333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "factual_supported_claim_count": {
+          "mean": 1.3333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "faithfulness": {
+          "mean": 0.9333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "faithfulness_ai_judged": {
+          "mean": 1.0,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "mapped_quote_repairs": {
+          "mean": 0,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "quote_validation_warnings": {
+          "mean": 0.5333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "reference_claim_count": {
+          "mean": 1.2,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "reference_claims_covered": {
+          "mean": 1.1333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "supported_citation_link_count": {
+          "mean": 1.9333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "supported_claim_count": {
+          "mean": 1.1333333333333333,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "unsupported_claim_rate": {
+          "mean": 0.06666666666666667,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "unverifiable_claim_rate": {
+          "mean": 0.0,
+          "n_measured": 15,
+          "n_total": 15
+        },
+        "unverified_or_unsupported_claim_rate": {
+          "mean": 0.06666666666666667,
+          "n_measured": 15,
+          "n_total": 15
+        }
+      },
+      "negative_control_judge_metrics": {},
+      "n_judge_success": 15,
+      "n_judge_failed": 0,
+      "context_provenance": {
+        "saved_returned_sources_audit": 15
+      },
+      "numeric_accuracy": {
+        "n_correct": 14,
+        "n_total": 15,
+        "rate": 0.9333333333333333
+      },
+      "micro_claim_metrics": {
+        "n_claims": 21,
+        "n_required_reference_claims": 18,
+        "faithfulness": 0.8095238095238095,
+        "factual_precision": 0.9523809523809523,
+        "factual_recall": 0.9444444444444444,
+        "context_recall": 0.8333333333333334,
+        "citation_claim_recall": 1.0
+      },
+      "complete_answer_success": {
+        "n_pass": 13,
+        "n_judged_answerable": 15,
+        "n_total_answerable": 15,
+        "rate_judged": 0.8666666666666667,
+        "strict_lower_bound_all": 0.8666666666666667,
+        "gate": "all claims faithful, factual, relevant and cited; response fully relevant; required facts complete; numeric and page checks pass"
+      }
+    },
+    "Multipage8_live/app_gemini": {
+      "n": 8,
+      "n_answerable": 8,
+      "n_unanswerable": 0,
+      "strict_correct": 3,
+      "n_strict_scorable": 8,
+      "n_strict_needs_review": 0,
+      "strict_accuracy": 0.375,
+      "strict_accuracy_wilson95": [
+        0.13684428582359742,
+        0.6942576053973727
+      ],
+      "deterministic_metrics": {
+        "abstained": {
+          "mean": 0.375,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "answerable": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "empty_response": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "explicit_page_citation_complete": {
+          "mean": 0.375,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "model_error_response": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "page_citation_complete": {
+          "mean": 0.375,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "page_citation_precision": {
+          "mean": 0.1125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "page_citation_recall": {
+          "mean": 0.5625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "prose_page_consistent": {
+          "mean": 0.625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "prose_page_present": {
+          "mean": 0.875,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "strict_correct": {
+          "mean": 0.375,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "answer_coverage": 0.625,
+      "selective_strict_accuracy": 0.6,
+      "abstention_precision": 0.0,
+      "abstention_recall": null,
+      "abstention_f1": null,
+      "judge_metrics": {
+        "all_claims_cited": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "all_claims_supported": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "answer_relevancy_rubric": {
+          "mean": 0.9375,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "citation_claim_recall": {
+          "mean": 0.3125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "citation_f1": {
+          "mean": 0.10416666666666669,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "citation_source_precision": {
+          "mean": 0.0625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "claim_count": {
+          "mean": 2,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "claim_relevance_precision": {
+          "mean": 0.875,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "claims_with_supporting_citation": {
+          "mean": 0.625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_precision_ap": {
+          "mean": 0.1701388888888889,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_recall": {
+          "mean": 0.0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_recall_focused_ai": {
+          "mean": 0.75,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_reference_claims_covered": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_usefulness_precision": {
+          "mean": 0.0875,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "contradiction_rate": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "factual_f1": {
+          "mean": 0.3928571428571429,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "factual_f1_focused_ai": {
+          "mean": 0.5964285714285714,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "factual_precision": {
+          "mean": 0.5625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "factual_precision_ai_judged": {
+          "mean": 0.8125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "factual_precision_determined": {
+          "mean": 0.8333333333333334,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "factual_recall": {
+          "mean": 0.41666666666666663,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "factual_recall_focused_ai": {
+          "mean": 0.5833333333333334,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "factual_supported_claim_count": {
+          "mean": 1.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "faithfulness": {
+          "mean": 0.3125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "faithfulness_ai_judged": {
+          "mean": 0.9375,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "mapped_quote_repairs": {
+          "mean": 0.75,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "quote_validation_warnings": {
+          "mean": 5.875,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "reference_claim_count": {
+          "mean": 2.375,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "reference_claims_covered": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "supported_citation_link_count": {
+          "mean": 0.625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "supported_claim_count": {
+          "mean": 0.625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unsupported_claim_rate": {
+          "mean": 0.6875,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unverifiable_claim_rate": {
+          "mean": 0.3125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unverified_or_unsupported_claim_rate": {
+          "mean": 0.6875,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "negative_control_judge_metrics": {},
+      "n_judge_success": 8,
+      "n_judge_failed": 0,
+      "context_provenance": {
+        "captured_generation_prompt": 8
+      },
+      "numeric_accuracy": {
+        "n_correct": 3,
+        "n_total": 8,
+        "rate": 0.375
+      },
+      "micro_claim_metrics": {
+        "n_claims": 16,
+        "n_required_reference_claims": 19,
+        "faithfulness": 0.3125,
+        "factual_precision": 0.5625,
+        "factual_recall": 0.42105263157894735,
+        "context_recall": 0.0,
+        "citation_claim_recall": 0.3125
+      },
+      "complete_answer_success": {
+        "n_pass": 1,
+        "n_judged_answerable": 8,
+        "n_total_answerable": 8,
+        "rate_judged": 0.125,
+        "strict_lower_bound_all": 0.125,
+        "gate": "all claims faithful, factual, relevant and cited; response fully relevant; required facts complete; numeric and page checks pass"
+      }
+    },
+    "Multipage8_live/bm25_gemini": {
+      "n": 8,
+      "n_answerable": 8,
+      "n_unanswerable": 0,
+      "strict_correct": 0,
+      "n_strict_scorable": 8,
+      "n_strict_needs_review": 0,
+      "strict_accuracy": 0.0,
+      "strict_accuracy_wilson95": [
+        0.0,
+        0.32440756488388023
+      ],
+      "deterministic_metrics": {
+        "abstained": {
+          "mean": 0.375,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "answerable": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "empty_response": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "explicit_page_citation_complete": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "model_error_response": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "page_citation_complete": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "page_citation_precision": {
+          "mean": 0.16666666666666666,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "page_citation_recall": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "prose_page_consistent": {
+          "mean": 0.625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "prose_page_present": {
+          "mean": 0.625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "strict_correct": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "answer_coverage": 0.625,
+      "selective_strict_accuracy": 0.0,
+      "abstention_precision": 0.0,
+      "abstention_recall": null,
+      "abstention_f1": null,
+      "judge_metrics": {
+        "all_claims_cited": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "all_claims_supported": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "answer_relevancy_rubric": {
+          "mean": 0.4375,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "citation_claim_recall": {
+          "mean": 0.5,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "citation_f1": {
+          "mean": 0.4,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "citation_source_precision": {
+          "mean": 0.20833333333333331,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "claim_count": {
+          "mean": 1.5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "claim_relevance_precision": {
+          "mean": 1.0,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "claims_with_supporting_citation": {
+          "mean": 0.875,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_precision_ap": {
+          "mean": 0.23958333333333331,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_recall": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_recall_focused_ai": {
+          "mean": 0.5625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_reference_claims_covered": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_usefulness_precision": {
+          "mean": 0.16666666666666666,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "contradiction_rate": {
+          "mean": 0.4,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "factual_f1": {
+          "mean": 0.4,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "factual_f1_focused_ai": {
+          "mean": 0.5,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "factual_precision": {
+          "mean": 0.4,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "factual_precision_ai_judged": {
+          "mean": 0.5,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "factual_precision_determined": {
+          "mean": 0.5,
+          "n_measured": 4,
+          "n_total": 8
+        },
+        "factual_recall": {
+          "mean": 0.3125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "factual_recall_focused_ai": {
+          "mean": 0.3125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "factual_supported_claim_count": {
+          "mean": 0.75,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "faithfulness": {
+          "mean": 0.5,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "faithfulness_ai_judged": {
+          "mean": 0.9,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "mapped_quote_repairs": {
+          "mean": 0.5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "quote_validation_warnings": {
+          "mean": 1.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "reference_claim_count": {
+          "mean": 2,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "reference_claims_covered": {
+          "mean": 0.625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "supported_citation_link_count": {
+          "mean": 0.875,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "supported_claim_count": {
+          "mean": 0.875,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unsupported_claim_rate": {
+          "mean": 0.5,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "unverifiable_claim_rate": {
+          "mean": 0.2,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "unverified_or_unsupported_claim_rate": {
+          "mean": 0.5,
+          "n_measured": 5,
+          "n_total": 8
+        }
+      },
+      "negative_control_judge_metrics": {},
+      "n_judge_success": 8,
+      "n_judge_failed": 0,
+      "context_provenance": {
+        "captured_generation_prompt": 8
+      },
+      "numeric_accuracy": {
+        "n_correct": 1,
+        "n_total": 8,
+        "rate": 0.125
+      },
+      "micro_claim_metrics": {
+        "n_claims": 12,
+        "n_required_reference_claims": 16,
+        "faithfulness": 0.5833333333333334,
+        "factual_precision": 0.5,
+        "factual_recall": 0.3125,
+        "context_recall": 0.125,
+        "citation_claim_recall": 0.5833333333333334
+      },
+      "complete_answer_success": {
+        "n_pass": 0,
+        "n_judged_answerable": 8,
+        "n_total_answerable": 8,
+        "rate_judged": 0.0,
+        "strict_lower_bound_all": 0.0,
+        "gate": "all claims faithful, factual, relevant and cited; response fully relevant; required facts complete; numeric and page checks pass"
+      }
+    },
+    "PTT_PTTEP24_live/app_gemini": {
+      "n": 24,
+      "n_answerable": 16,
+      "n_unanswerable": 8,
+      "strict_correct": 14,
+      "n_strict_scorable": 16,
+      "n_strict_needs_review": 0,
+      "strict_accuracy": 0.875,
+      "strict_accuracy_wilson95": [
+        0.639771727342413,
+        0.9650225122567595
+      ],
+      "deterministic_metrics": {
+        "abstained": {
+          "mean": 0.3333333333333333,
+          "n_measured": 24,
+          "n_total": 24
+        },
+        "answerable": {
+          "mean": 0.6666666666666666,
+          "n_measured": 24,
+          "n_total": 24
+        },
+        "empty_response": {
+          "mean": 0,
+          "n_measured": 24,
+          "n_total": 24
+        },
+        "expected_abstention_correct": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 24
+        },
+        "explicit_page_citation_complete": {
+          "mean": 0.9375,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "model_error_response": {
+          "mean": 0,
+          "n_measured": 24,
+          "n_total": 24
+        },
+        "negative_noncalendar_quantities": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 24
+        },
+        "page_citation_complete": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "page_citation_precision": {
+          "mean": 0.2875,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "page_citation_recall": {
+          "mean": 1.0,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "prose_page_consistent": {
+          "mean": 0.9375,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "prose_page_present": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "strict_correct": {
+          "mean": 0.9166666666666666,
+          "n_measured": 24,
+          "n_total": 24
+        }
+      },
+      "answer_coverage": 1.0,
+      "selective_strict_accuracy": 0.875,
+      "abstention_precision": 1.0,
+      "abstention_recall": 1.0,
+      "abstention_f1": 1.0,
+      "judge_metrics": {
+        "all_claims_cited": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "all_claims_supported": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "answer_relevancy_rubric": {
+          "mean": 1.0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "citation_claim_recall": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "citation_f1": {
+          "mean": 0.2784090909090909,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "citation_source_precision": {
+          "mean": 0.20625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "claim_count": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "claim_relevance_precision": {
+          "mean": 1.0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "claims_with_supporting_citation": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "context_precision_ap": {
+          "mean": 0.7215277777777778,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "context_recall": {
+          "mean": 0.5625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "context_recall_focused_ai": {
+          "mean": 1.0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "context_reference_claims_covered": {
+          "mean": 0.5625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "context_usefulness_precision": {
+          "mean": 0.21875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "contradiction_rate": {
+          "mean": 0.0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "factual_f1": {
+          "mean": 0.8125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "factual_f1_focused_ai": {
+          "mean": 1.0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "factual_precision": {
+          "mean": 0.8125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "factual_precision_ai_judged": {
+          "mean": 1.0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "factual_precision_determined": {
+          "mean": 1.0,
+          "n_measured": 13,
+          "n_total": 16
+        },
+        "factual_recall": {
+          "mean": 1.0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "factual_recall_focused_ai": {
+          "mean": 1.0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "factual_supported_claim_count": {
+          "mean": 0.8125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "faithfulness": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "faithfulness_ai_judged": {
+          "mean": 1.0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "mapped_quote_repairs": {
+          "mean": 1.0625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "quote_validation_warnings": {
+          "mean": 1.1875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "reference_claim_count": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "reference_claims_covered": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "supported_citation_link_count": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "supported_claim_count": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unsupported_claim_rate": {
+          "mean": 0.25,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unverifiable_claim_rate": {
+          "mean": 0.1875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unverified_or_unsupported_claim_rate": {
+          "mean": 0.25,
+          "n_measured": 16,
+          "n_total": 16
+        }
+      },
+      "negative_control_judge_metrics": {
+        "all_claims_cited": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "all_claims_supported": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "answer_relevancy_rubric": {
+          "mean": 1.0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "citation_claim_recall": {
+          "mean": 0.07142857142857142,
+          "n_measured": 7,
+          "n_total": 8
+        },
+        "citation_f1": {
+          "mean": 0.09523809523809523,
+          "n_measured": 7,
+          "n_total": 8
+        },
+        "citation_source_precision": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "claim_count": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "claim_relevance_precision": {
+          "mean": 1.0,
+          "n_measured": 7,
+          "n_total": 8
+        },
+        "claims_with_supporting_citation": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_precision_ap": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_recall": {
+          "mean": null,
+          "n_measured": 0,
+          "n_total": 8
+        },
+        "context_reference_claims_covered": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_usefulness_precision": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "contradiction_rate": {
+          "mean": 0.0,
+          "n_measured": 7,
+          "n_total": 8
+        },
+        "factual_f1": {
+          "mean": null,
+          "n_measured": 0,
+          "n_total": 8
+        },
+        "factual_precision": {
+          "mean": 1.0,
+          "n_measured": 7,
+          "n_total": 8
+        },
+        "factual_precision_ai_judged": {
+          "mean": 1.0,
+          "n_measured": 7,
+          "n_total": 8
+        },
+        "factual_precision_determined": {
+          "mean": 1.0,
+          "n_measured": 7,
+          "n_total": 8
+        },
+        "factual_recall": {
+          "mean": null,
+          "n_measured": 0,
+          "n_total": 8
+        },
+        "factual_supported_claim_count": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "faithfulness": {
+          "mean": 0.0,
+          "n_measured": 7,
+          "n_total": 8
+        },
+        "faithfulness_ai_judged": {
+          "mean": 1.0,
+          "n_measured": 7,
+          "n_total": 8
+        },
+        "mapped_quote_repairs": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "quote_validation_warnings": {
+          "mean": 2,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "reference_claim_count": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "reference_claims_covered": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "supported_citation_link_count": {
+          "mean": 1.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "supported_claim_count": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unsupported_claim_rate": {
+          "mean": 1.0,
+          "n_measured": 7,
+          "n_total": 8
+        },
+        "unverifiable_claim_rate": {
+          "mean": 0.0,
+          "n_measured": 7,
+          "n_total": 8
+        },
+        "unverified_or_unsupported_claim_rate": {
+          "mean": 1.0,
+          "n_measured": 7,
+          "n_total": 8
+        }
+      },
+      "n_judge_success": 24,
+      "n_judge_failed": 0,
+      "context_provenance": {
+        "captured_generation_prompt": 24
+      },
+      "numeric_accuracy": {
+        "n_correct": 15,
+        "n_total": 16,
+        "rate": 0.9375
+      },
+      "micro_claim_metrics": {
+        "n_claims": 16,
+        "n_required_reference_claims": 16,
+        "faithfulness": 0.75,
+        "factual_precision": 0.8125,
+        "factual_recall": 1.0,
+        "context_recall": 0.5625,
+        "citation_claim_recall": 0.75
+      },
+      "complete_answer_success": {
+        "n_pass": 11,
+        "n_judged_answerable": 16,
+        "n_total_answerable": 16,
+        "rate_judged": 0.6875,
+        "strict_lower_bound_all": 0.6875,
+        "gate": "all claims faithful, factual, relevant and cited; response fully relevant; required facts complete; numeric and page checks pass"
+      }
+    },
+    "PTT_PTTEP24_live/bm25_gemini": {
+      "n": 24,
+      "n_answerable": 16,
+      "n_unanswerable": 8,
+      "strict_correct": 11,
+      "n_strict_scorable": 16,
+      "n_strict_needs_review": 0,
+      "strict_accuracy": 0.6875,
+      "strict_accuracy_wilson95": [
+        0.44404355834740666,
+        0.8583535614521796
+      ],
+      "deterministic_metrics": {
+        "abstained": {
+          "mean": 0.5,
+          "n_measured": 24,
+          "n_total": 24
+        },
+        "answerable": {
+          "mean": 0.6666666666666666,
+          "n_measured": 24,
+          "n_total": 24
+        },
+        "empty_response": {
+          "mean": 0,
+          "n_measured": 24,
+          "n_total": 24
+        },
+        "expected_abstention_correct": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 24
+        },
+        "explicit_page_citation_complete": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "model_error_response": {
+          "mean": 0,
+          "n_measured": 24,
+          "n_total": 24
+        },
+        "negative_noncalendar_quantities": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 24
+        },
+        "page_citation_complete": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "page_citation_precision": {
+          "mean": 0.3125,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "page_citation_recall": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "prose_page_consistent": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "prose_page_present": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 24
+        },
+        "strict_correct": {
+          "mean": 0.7916666666666666,
+          "n_measured": 24,
+          "n_total": 24
+        }
+      },
+      "answer_coverage": 0.75,
+      "selective_strict_accuracy": 0.9166666666666666,
+      "abstention_precision": 0.6666666666666666,
+      "abstention_recall": 1.0,
+      "abstention_f1": 0.8,
+      "judge_metrics": {
+        "all_claims_cited": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "all_claims_supported": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "answer_relevancy_rubric": {
+          "mean": 0.8125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "citation_claim_recall": {
+          "mean": 0.8,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "citation_f1": {
+          "mean": 0.4,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "citation_source_precision": {
+          "mean": 0.25,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "claim_count": {
+          "mean": 0.9375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "claim_relevance_precision": {
+          "mean": 1.0,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "claims_with_supporting_citation": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "context_precision_ap": {
+          "mean": 0.5729166666666666,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "context_recall": {
+          "mean": 0.5625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "context_recall_focused_ai": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "context_reference_claims_covered": {
+          "mean": 0.5625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "context_usefulness_precision": {
+          "mean": 0.25,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "contradiction_rate": {
+          "mean": 0.13333333333333333,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "factual_f1": {
+          "mean": 0.7333333333333333,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "factual_f1_focused_ai": {
+          "mean": 0.8,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "factual_precision": {
+          "mean": 0.8,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "factual_precision_ai_judged": {
+          "mean": 0.8666666666666667,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "factual_precision_determined": {
+          "mean": 0.8571428571428571,
+          "n_measured": 14,
+          "n_total": 16
+        },
+        "factual_recall": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "factual_recall_focused_ai": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "factual_supported_claim_count": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "faithfulness": {
+          "mean": 0.8,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "faithfulness_ai_judged": {
+          "mean": 0.9333333333333333,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "mapped_quote_repairs": {
+          "mean": 0.5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "quote_validation_warnings": {
+          "mean": 0.375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "reference_claim_count": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "reference_claims_covered": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "supported_citation_link_count": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "supported_claim_count": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unsupported_claim_rate": {
+          "mean": 0.2,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "unverifiable_claim_rate": {
+          "mean": 0.06666666666666667,
+          "n_measured": 15,
+          "n_total": 16
+        },
+        "unverified_or_unsupported_claim_rate": {
+          "mean": 0.2,
+          "n_measured": 15,
+          "n_total": 16
+        }
+      },
+      "negative_control_judge_metrics": {
+        "all_claims_cited": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "all_claims_supported": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "answer_relevancy_rubric": {
+          "mean": 1.0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "citation_claim_recall": {
+          "mean": 0.0,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "citation_f1": {
+          "mean": 0.0,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "citation_source_precision": {
+          "mean": 0.0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "claim_count": {
+          "mean": 0.75,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "claim_relevance_precision": {
+          "mean": 1.0,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "claims_with_supporting_citation": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_precision_ap": {
+          "mean": 0.0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_recall": {
+          "mean": null,
+          "n_measured": 0,
+          "n_total": 8
+        },
+        "context_reference_claims_covered": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "context_usefulness_precision": {
+          "mean": 0.0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "contradiction_rate": {
+          "mean": 0.0,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "factual_f1": {
+          "mean": null,
+          "n_measured": 0,
+          "n_total": 8
+        },
+        "factual_precision": {
+          "mean": 1.0,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "factual_precision_ai_judged": {
+          "mean": 1.0,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "factual_precision_determined": {
+          "mean": 1.0,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "factual_recall": {
+          "mean": null,
+          "n_measured": 0,
+          "n_total": 8
+        },
+        "factual_supported_claim_count": {
+          "mean": 0.75,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "faithfulness": {
+          "mean": 0.0,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "faithfulness_ai_judged": {
+          "mean": 1.0,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "mapped_quote_repairs": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "quote_validation_warnings": {
+          "mean": 1.375,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "reference_claim_count": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "reference_claims_covered": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "supported_citation_link_count": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "supported_claim_count": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unsupported_claim_rate": {
+          "mean": 1.0,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "unverifiable_claim_rate": {
+          "mean": 0.0,
+          "n_measured": 6,
+          "n_total": 8
+        },
+        "unverified_or_unsupported_claim_rate": {
+          "mean": 1.0,
+          "n_measured": 6,
+          "n_total": 8
+        }
+      },
+      "n_judge_success": 24,
+      "n_judge_failed": 0,
+      "context_provenance": {
+        "captured_generation_prompt": 24
+      },
+      "numeric_accuracy": {
+        "n_correct": 12,
+        "n_total": 16,
+        "rate": 0.75
+      },
+      "micro_claim_metrics": {
+        "n_claims": 15,
+        "n_required_reference_claims": 16,
+        "faithfulness": 0.8,
+        "factual_precision": 0.8,
+        "factual_recall": 0.75,
+        "context_recall": 0.5625,
+        "citation_claim_recall": 0.8
+      },
+      "complete_answer_success": {
+        "n_pass": 9,
+        "n_judged_answerable": 16,
+        "n_total_answerable": 16,
+        "rate_judged": 0.5625,
+        "strict_lower_bound_all": 0.5625,
+        "gate": "all claims faithful, factual, relevant and cited; response fully relevant; required facts complete; numeric and page checks pass"
+      }
+    },
+    "Thai500_sample50_live/app_gemini": {
+      "n": 50,
+      "n_answerable": 50,
+      "n_unanswerable": 0,
+      "strict_correct": 0,
+      "n_strict_scorable": 2,
+      "n_strict_needs_review": 48,
+      "strict_accuracy": 0.0,
+      "strict_accuracy_wilson95": [
+        0.0,
+        0.6576197724933469
+      ],
+      "deterministic_metrics": {
+        "abstained": {
+          "mean": 0.22,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "answerable": {
+          "mean": 1,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "empty_response": {
+          "mean": 0,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "explicit_page_citation_complete": {
+          "mean": 0.38,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "model_error_response": {
+          "mean": 0,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "page_citation_complete": {
+          "mean": 0.72,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "page_citation_precision": {
+          "mean": 0.07200000000000001,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "page_citation_recall": {
+          "mean": 0.72,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "prose_page_consistent": {
+          "mean": 0.66,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "prose_page_present": {
+          "mean": 0.72,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "strict_correct": {
+          "mean": 0,
+          "n_measured": 2,
+          "n_total": 50
+        }
+      },
+      "answer_coverage": 0.78,
+      "selective_strict_accuracy": 0.0,
+      "abstention_precision": 0.0,
+      "abstention_recall": null,
+      "abstention_f1": null,
+      "judge_metrics": {
+        "all_claims_cited": {
+          "mean": 0.72,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "all_claims_supported": {
+          "mean": 0.64,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "answer_relevancy_rubric": {
+          "mean": 0.77,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "citation_claim_recall": {
+          "mean": 0.8226950354609929,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "citation_f1": {
+          "mean": 0.20368402283295903,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "citation_source_precision": {
+          "mean": 0.116,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "claim_count": {
+          "mean": 2.78,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "claim_relevance_precision": {
+          "mean": 0.8916413373860183,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "claims_with_supporting_citation": {
+          "mean": 2.46,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "context_precision_ap": {
+          "mean": 0.5637222222222222,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "context_recall": {
+          "mean": 0.492,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "context_recall_focused_ai": {
+          "mean": 0.7193333333333334,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "context_reference_claims_covered": {
+          "mean": 0.92,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "context_usefulness_precision": {
+          "mean": 0.108,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "contradiction_rate": {
+          "mean": 0.08156028368794326,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "factual_f1": {
+          "mean": 0.4673758865248227,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "factual_f1_focused_ai": {
+          "mean": 0.5531914893617021,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "factual_precision": {
+          "mean": 0.6295086119554205,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "factual_precision_ai_judged": {
+          "mean": 0.7553191489361702,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "factual_precision_determined": {
+          "mean": 0.8617886178861789,
+          "n_measured": 41,
+          "n_total": 50
+        },
+        "factual_recall": {
+          "mean": 0.47733333333333333,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "factual_recall_focused_ai": {
+          "mean": 0.5266666666666666,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "factual_supported_claim_count": {
+          "mean": 1.46,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "faithfulness": {
+          "mean": 0.7652482269503547,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "faithfulness_ai_judged": {
+          "mean": 0.9574468085106383,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "mapped_quote_repairs": {
+          "mean": 0.2,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "quote_validation_warnings": {
+          "mean": 2.52,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "reference_claim_count": {
+          "mean": 1.56,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "reference_claims_covered": {
+          "mean": 0.76,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "supported_citation_link_count": {
+          "mean": 2.96,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "supported_claim_count": {
+          "mean": 2.36,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "unsupported_claim_rate": {
+          "mean": 0.2347517730496454,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "unverifiable_claim_rate": {
+          "mean": 0.28893110435663627,
+          "n_measured": 47,
+          "n_total": 50
+        },
+        "unverified_or_unsupported_claim_rate": {
+          "mean": 0.2347517730496454,
+          "n_measured": 47,
+          "n_total": 50
+        }
+      },
+      "negative_control_judge_metrics": {},
+      "n_judge_success": 50,
+      "n_judge_failed": 0,
+      "context_provenance": {
+        "captured_generation_prompt": 50
+      },
+      "numeric_accuracy": {
+        "n_correct": 0,
+        "n_total": 0,
+        "rate": null
+      },
+      "micro_claim_metrics": {
+        "n_claims": 139,
+        "n_required_reference_claims": 78,
+        "faithfulness": 0.8489208633093526,
+        "factual_precision": 0.5251798561151079,
+        "factual_recall": 0.48717948717948717,
+        "context_recall": 0.5897435897435898,
+        "citation_claim_recall": 0.8848920863309353
+      },
+      "complete_answer_success": {
+        "n_pass": 7,
+        "n_judged_answerable": 50,
+        "n_total_answerable": 50,
+        "rate_judged": 0.14,
+        "strict_lower_bound_all": 0.14,
+        "gate": "all claims faithful, factual, relevant and cited; response fully relevant; required facts complete; numeric and page checks pass"
+      }
+    }
+  },
+  "retrieval": {
+    "CP_EGCO20_saved/app_hybrid@1": {
+      "n": 20,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "f1": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 13,
+          "n_total": 20
+        },
+        "hit": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "map": {
+          "mean": 0.5805555555555556,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "mrr": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "ndcg": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "precision": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "recall": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "relevant_unique_pages": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "n_measured": 20
+    },
+    "CP_EGCO20_saved/app_hybrid@3": {
+      "n": 20,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.9,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "f1": {
+          "mean": 0.49,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "first_relevant_rank": {
+          "mean": 1.3888888888888888,
+          "n_measured": 18,
+          "n_total": 20
+        },
+        "hit": {
+          "mean": 0.9,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "map": {
+          "mean": 0.7125,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "mrr": {
+          "mean": 0.7583333333333333,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "ndcg": {
+          "mean": 0.7824356157188729,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "precision": {
+          "mean": 0.35,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "recall": {
+          "mean": 0.9,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "relevant_unique_pages": {
+          "mean": 1.05,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "returned": {
+          "mean": 3,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unique_pages": {
+          "mean": 3,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "n_measured": 20
+    },
+    "CP_EGCO20_saved/app_hybrid@5": {
+      "n": 20,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "f1": {
+          "mean": 0.39047619047619053,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "first_relevant_rank": {
+          "mean": 1.7,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "hit": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "map": {
+          "mean": 0.7417361111111112,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "mrr": {
+          "mean": 0.7808333333333334,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "ndcg": {
+          "mean": 0.817735613805546,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "precision": {
+          "mean": 0.26,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "recall": {
+          "mean": 1.0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "relevant_unique_pages": {
+          "mean": 1.3,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "returned": {
+          "mean": 5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unique_pages": {
+          "mean": 5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "n_measured": 20
+    },
+    "CP_EGCO20_saved/app_hybrid@10": {
+      "n": 20,
+      "metrics": {},
+      "n_measured": 0
+    },
+    "CP_EGCO20_saved/bm25@1": {
+      "n": 20,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.4,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "f1": {
+          "mean": 0.4,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 20
+        },
+        "hit": {
+          "mean": 0.4,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "map": {
+          "mean": 0.35555555555555557,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "mrr": {
+          "mean": 0.4,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "ndcg": {
+          "mean": 0.4,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "precision": {
+          "mean": 0.4,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "recall": {
+          "mean": 0.4,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "relevant_unique_pages": {
+          "mean": 0.4,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "n_measured": 20
+    },
+    "CP_EGCO20_saved/bm25@3": {
+      "n": 20,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "duplicate_slots": {
+          "mean": 0.1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "f1": {
+          "mean": 0.34,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "first_relevant_rank": {
+          "mean": 1.4615384615384615,
+          "n_measured": 13,
+          "n_total": 20
+        },
+        "hit": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "map": {
+          "mean": 0.4652777777777778,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "mrr": {
+          "mean": 0.5166666666666667,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "ndcg": {
+          "mean": 0.5261859507142915,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "precision": {
+          "mean": 0.2333333333333333,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "recall": {
+          "mean": 0.65,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "relevant_unique_pages": {
+          "mean": 0.7,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "returned": {
+          "mean": 3,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unique_pages": {
+          "mean": 2.9,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "n_measured": 20
+    },
+    "CP_EGCO20_saved/bm25@5": {
+      "n": 20,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.7,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "duplicate_slots": {
+          "mean": 0.45,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "f1": {
+          "mean": 0.24523809523809526,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "first_relevant_rank": {
+          "mean": 1.7142857142857142,
+          "n_measured": 14,
+          "n_total": 20
+        },
+        "hit": {
+          "mean": 0.7,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "map": {
+          "mean": 0.4752777777777778,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "mrr": {
+          "mean": 0.5266666666666666,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "ndcg": {
+          "mean": 0.5329454158262283,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "precision": {
+          "mean": 0.15000000000000002,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "recall": {
+          "mean": 0.7,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "relevant_unique_pages": {
+          "mean": 0.75,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "returned": {
+          "mean": 5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unique_pages": {
+          "mean": 4.55,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "n_measured": 20
+    },
+    "CP_EGCO20_saved/bm25@10": {
+      "n": 20,
+      "metrics": {},
+      "n_measured": 0
+    },
+    "CP_EGCO20_saved/dense@1": {
+      "n": 20,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.45,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "f1": {
+          "mean": 0.45,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 9,
+          "n_total": 20
+        },
+        "hit": {
+          "mean": 0.45,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "map": {
+          "mean": 0.3680555555555556,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "mrr": {
+          "mean": 0.45,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "ndcg": {
+          "mean": 0.45,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "precision": {
+          "mean": 0.45,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "recall": {
+          "mean": 0.45,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "relevant_unique_pages": {
+          "mean": 0.45,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "n_measured": 20
+    },
+    "CP_EGCO20_saved/dense@3": {
+      "n": 20,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "duplicate_slots": {
+          "mean": 0.05,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "f1": {
+          "mean": 0.275,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "first_relevant_rank": {
+          "mean": 1.1,
+          "n_measured": 10,
+          "n_total": 20
+        },
+        "hit": {
+          "mean": 0.5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "map": {
+          "mean": 0.4041666666666667,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "mrr": {
+          "mean": 0.475,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "ndcg": {
+          "mean": 0.4550104239797107,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "precision": {
+          "mean": 0.19999999999999998,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "recall": {
+          "mean": 0.5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "relevant_unique_pages": {
+          "mean": 0.6,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "returned": {
+          "mean": 3,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unique_pages": {
+          "mean": 2.95,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "n_measured": 20
+    },
+    "CP_EGCO20_saved/dense@5": {
+      "n": 20,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "duplicate_slots": {
+          "mean": 0.25,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "f1": {
+          "mean": 0.2,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "first_relevant_rank": {
+          "mean": 1.1,
+          "n_measured": 10,
+          "n_total": 20
+        },
+        "hit": {
+          "mean": 0.5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "map": {
+          "mean": 0.4152777777777778,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "mrr": {
+          "mean": 0.475,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "ndcg": {
+          "mean": 0.451065490178178,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "precision": {
+          "mean": 0.14,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "recall": {
+          "mean": 0.5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "relevant_unique_pages": {
+          "mean": 0.7,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "returned": {
+          "mean": 5,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unique_pages": {
+          "mean": 4.75,
+          "n_measured": 20,
+          "n_total": 20
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 20,
+          "n_total": 20
+        }
+      },
+      "n_measured": 20
+    },
+    "CP_EGCO20_saved/dense@10": {
+      "n": 20,
+      "metrics": {},
+      "n_measured": 0
+    },
+    "Multipage8_live/app_hybrid@1": {
+      "n": 8,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "f1": {
+          "mean": 0.16666666666666666,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 2,
+          "n_total": 8
+        },
+        "hit": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "map": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "mrr": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "ndcg": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "precision": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "recall": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "relevant_unique_pages": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "n_measured": 8
+    },
+    "Multipage8_live/app_hybrid@3": {
+      "n": 8,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "f1": {
+          "mean": 0.2,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "first_relevant_rank": {
+          "mean": 1.75,
+          "n_measured": 4,
+          "n_total": 8
+        },
+        "hit": {
+          "mean": 0.5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "map": {
+          "mean": 0.17708333333333334,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "mrr": {
+          "mean": 0.3541666666666667,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "ndcg": {
+          "mean": 0.23996509864352344,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "precision": {
+          "mean": 0.16666666666666666,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "recall": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "relevant_unique_pages": {
+          "mean": 0.5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "returned": {
+          "mean": 3,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unique_pages": {
+          "mean": 3,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "n_measured": 8
+    },
+    "Multipage8_live/app_hybrid@5": {
+      "n": 8,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.375,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "f1": {
+          "mean": 0.28571428571428575,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "first_relevant_rank": {
+          "mean": 2.2,
+          "n_measured": 5,
+          "n_total": 8
+        },
+        "hit": {
+          "mean": 0.625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "map": {
+          "mean": 0.2739583333333333,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "mrr": {
+          "mean": 0.3854166666666667,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "ndcg": {
+          "mean": 0.3652815574789952,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "precision": {
+          "mean": 0.2,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "recall": {
+          "mean": 0.5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "relevant_unique_pages": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "returned": {
+          "mean": 5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unique_pages": {
+          "mean": 5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "n_measured": 8
+    },
+    "Multipage8_live/app_hybrid@10": {
+      "n": 8,
+      "metrics": {},
+      "n_measured": 0
+    },
+    "Multipage8_live/bm25@1": {
+      "n": 8,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "f1": {
+          "mean": 0.08333333333333333,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 1,
+          "n_total": 8
+        },
+        "hit": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "map": {
+          "mean": 0.0625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "mrr": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "ndcg": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "precision": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "recall": {
+          "mean": 0.0625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "relevant_unique_pages": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "n_measured": 8
+    },
+    "Multipage8_live/bm25@3": {
+      "n": 8,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "f1": {
+          "mean": 0.2,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "first_relevant_rank": {
+          "mean": 2.25,
+          "n_measured": 4,
+          "n_total": 8
+        },
+        "hit": {
+          "mean": 0.5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "map": {
+          "mean": 0.13541666666666666,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "mrr": {
+          "mean": 0.2708333333333333,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "ndcg": {
+          "mean": 0.2016433990956823,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "precision": {
+          "mean": 0.16666666666666666,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "recall": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "relevant_unique_pages": {
+          "mean": 0.5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "returned": {
+          "mean": 3,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unique_pages": {
+          "mean": 3,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "n_measured": 8
+    },
+    "Multipage8_live/bm25@5": {
+      "n": 8,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "f1": {
+          "mean": 0.14285714285714288,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "first_relevant_rank": {
+          "mean": 2.25,
+          "n_measured": 4,
+          "n_total": 8
+        },
+        "hit": {
+          "mean": 0.5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "map": {
+          "mean": 0.13541666666666666,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "mrr": {
+          "mean": 0.2708333333333333,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "ndcg": {
+          "mean": 0.2016433990956823,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "precision": {
+          "mean": 0.1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "recall": {
+          "mean": 0.25,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "relevant_unique_pages": {
+          "mean": 0.5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "returned": {
+          "mean": 5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unique_pages": {
+          "mean": 5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "n_measured": 8
+    },
+    "Multipage8_live/bm25@10": {
+      "n": 8,
+      "metrics": {},
+      "n_measured": 0
+    },
+    "Multipage8_live/dense@1": {
+      "n": 8,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "f1": {
+          "mean": 0.08333333333333333,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 1,
+          "n_total": 8
+        },
+        "hit": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "map": {
+          "mean": 0.0625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "mrr": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "ndcg": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "precision": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "recall": {
+          "mean": 0.0625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "relevant_unique_pages": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "n_measured": 8
+    },
+    "Multipage8_live/dense@3": {
+      "n": 8,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "f1": {
+          "mean": 0.05,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 1,
+          "n_total": 8
+        },
+        "hit": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "map": {
+          "mean": 0.0625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "mrr": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "ndcg": {
+          "mean": 0.0766433990956823,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "precision": {
+          "mean": 0.041666666666666664,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "recall": {
+          "mean": 0.0625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "relevant_unique_pages": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "returned": {
+          "mean": 3,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unique_pages": {
+          "mean": 3,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "n_measured": 8
+    },
+    "Multipage8_live/dense@5": {
+      "n": 8,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "f1": {
+          "mean": 0.03571428571428572,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 1,
+          "n_total": 8
+        },
+        "hit": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "map": {
+          "mean": 0.0625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "mrr": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "ndcg": {
+          "mean": 0.0766433990956823,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "precision": {
+          "mean": 0.025,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "recall": {
+          "mean": 0.0625,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "relevant_unique_pages": {
+          "mean": 0.125,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "returned": {
+          "mean": 5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unique_pages": {
+          "mean": 5,
+          "n_measured": 8,
+          "n_total": 8
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 8,
+          "n_total": 8
+        }
+      },
+      "n_measured": 8
+    },
+    "Multipage8_live/dense@10": {
+      "n": 8,
+      "metrics": {},
+      "n_measured": 0
+    },
+    "PTT_PTTEP24_live/app_hybrid@1": {
+      "n": 16,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "f1": {
+          "mean": 0.875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 14,
+          "n_total": 16
+        },
+        "hit": {
+          "mean": 0.875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "map": {
+          "mean": 0.875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "mrr": {
+          "mean": 0.875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "ndcg": {
+          "mean": 0.875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "precision": {
+          "mean": 0.875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "recall": {
+          "mean": 0.875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "relevant_unique_pages": {
+          "mean": 0.875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        }
+      },
+      "n_measured": 16
+    },
+    "PTT_PTTEP24_live/app_hybrid@3": {
+      "n": 16,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "f1": {
+          "mean": 0.5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "first_relevant_rank": {
+          "mean": 1.125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "hit": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "map": {
+          "mean": 0.9375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "mrr": {
+          "mean": 0.9375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "ndcg": {
+          "mean": 0.9538662191964322,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "precision": {
+          "mean": 0.3333333333333333,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "recall": {
+          "mean": 1.0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "relevant_unique_pages": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "returned": {
+          "mean": 2.4375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unique_pages": {
+          "mean": 2.4375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        }
+      },
+      "n_measured": 16
+    },
+    "PTT_PTTEP24_live/app_hybrid@5": {
+      "n": 16,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "f1": {
+          "mean": 0.33333333333333337,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "first_relevant_rank": {
+          "mean": 1.125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "hit": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "map": {
+          "mean": 0.9375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "mrr": {
+          "mean": 0.9375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "ndcg": {
+          "mean": 0.9538662191964322,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "precision": {
+          "mean": 0.2,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "recall": {
+          "mean": 1.0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "relevant_unique_pages": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "returned": {
+          "mean": 3.8125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unique_pages": {
+          "mean": 3.8125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        }
+      },
+      "n_measured": 16
+    },
+    "PTT_PTTEP24_live/app_hybrid@10": {
+      "n": 16,
+      "metrics": {},
+      "n_measured": 0
+    },
+    "PTT_PTTEP24_live/bm25@1": {
+      "n": 16,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "f1": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 10,
+          "n_total": 16
+        },
+        "hit": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "map": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "mrr": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "ndcg": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "precision": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "recall": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "relevant_unique_pages": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        }
+      },
+      "n_measured": 16
+    },
+    "PTT_PTTEP24_live/bm25@3": {
+      "n": 16,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "duplicate_slots": {
+          "mean": 0.25,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "f1": {
+          "mean": 0.375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "first_relevant_rank": {
+          "mean": 1.25,
+          "n_measured": 12,
+          "n_total": 16
+        },
+        "hit": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "map": {
+          "mean": 0.6770833333333334,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "mrr": {
+          "mean": 0.6770833333333334,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "ndcg": {
+          "mean": 0.6956831095982161,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "precision": {
+          "mean": 0.25,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "recall": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "relevant_unique_pages": {
+          "mean": 0.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "returned": {
+          "mean": 3,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unique_pages": {
+          "mean": 2.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        }
+      },
+      "n_measured": 16
+    },
+    "PTT_PTTEP24_live/bm25@5": {
+      "n": 16,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.8125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "duplicate_slots": {
+          "mean": 0.5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "f1": {
+          "mean": 0.27083333333333337,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "first_relevant_rank": {
+          "mean": 1.4615384615384615,
+          "n_measured": 13,
+          "n_total": 16
+        },
+        "hit": {
+          "mean": 0.8125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "map": {
+          "mean": 0.6927083333333334,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "mrr": {
+          "mean": 0.6927083333333334,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "ndcg": {
+          "mean": 0.7226003944778031,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "precision": {
+          "mean": 0.1625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "recall": {
+          "mean": 0.8125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "relevant_unique_pages": {
+          "mean": 0.8125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "returned": {
+          "mean": 5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unique_pages": {
+          "mean": 4.5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        }
+      },
+      "n_measured": 16
+    },
+    "PTT_PTTEP24_live/bm25@10": {
+      "n": 16,
+      "metrics": {},
+      "n_measured": 0
+    },
+    "PTT_PTTEP24_live/dense@1": {
+      "n": 16,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.4375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "f1": {
+          "mean": 0.4375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 7,
+          "n_total": 16
+        },
+        "hit": {
+          "mean": 0.4375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "map": {
+          "mean": 0.4375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "mrr": {
+          "mean": 0.4375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "ndcg": {
+          "mean": 0.4375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "precision": {
+          "mean": 0.4375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "recall": {
+          "mean": 0.4375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "relevant_unique_pages": {
+          "mean": 0.4375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        }
+      },
+      "n_measured": 16
+    },
+    "PTT_PTTEP24_live/dense@3": {
+      "n": 16,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "duplicate_slots": {
+          "mean": 0.25,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "f1": {
+          "mean": 0.25,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "first_relevant_rank": {
+          "mean": 1.125,
+          "n_measured": 8,
+          "n_total": 16
+        },
+        "hit": {
+          "mean": 0.5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "map": {
+          "mean": 0.46875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "mrr": {
+          "mean": 0.46875,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "ndcg": {
+          "mean": 0.4769331095982161,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "precision": {
+          "mean": 0.16666666666666666,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "recall": {
+          "mean": 0.5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "relevant_unique_pages": {
+          "mean": 0.5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "returned": {
+          "mean": 3,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unique_pages": {
+          "mean": 2.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        }
+      },
+      "n_measured": 16
+    },
+    "PTT_PTTEP24_live/dense@5": {
+      "n": 16,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "duplicate_slots": {
+          "mean": 0.25,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "f1": {
+          "mean": 0.20833333333333337,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "first_relevant_rank": {
+          "mean": 1.9,
+          "n_measured": 10,
+          "n_total": 16
+        },
+        "hit": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "map": {
+          "mean": 0.49375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "mrr": {
+          "mean": 0.49375,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "ndcg": {
+          "mean": 0.5252897105025338,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "precision": {
+          "mean": 0.125,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "recall": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "relevant_unique_pages": {
+          "mean": 0.625,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "returned": {
+          "mean": 5,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unique_pages": {
+          "mean": 4.75,
+          "n_measured": 16,
+          "n_total": 16
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 16,
+          "n_total": 16
+        }
+      },
+      "n_measured": 16
+    },
+    "PTT_PTTEP24_live/dense@10": {
+      "n": 16,
+      "metrics": {},
+      "n_measured": 0
+    },
+    "Thai500_retrieval/app_hybrid@1": {
+      "n": 500,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.414,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "f1": {
+          "mean": 0.414,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 207,
+          "n_total": 500
+        },
+        "hit": {
+          "mean": 0.414,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "map": {
+          "mean": 0.414,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "mrr": {
+          "mean": 0.414,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "ndcg": {
+          "mean": 0.414,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "precision": {
+          "mean": 0.414,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "recall": {
+          "mean": 0.414,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "relevant_unique_pages": {
+          "mean": 0.414,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        }
+      },
+      "n_measured": 500
+    },
+    "Thai500_retrieval/app_hybrid@3": {
+      "n": 500,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.562,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "f1": {
+          "mean": 0.281,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "first_relevant_rank": {
+          "mean": 1.3380782918149465,
+          "n_measured": 281,
+          "n_total": 500
+        },
+        "hit": {
+          "mean": 0.562,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "map": {
+          "mean": 0.481,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "mrr": {
+          "mean": 0.481,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "ndcg": {
+          "mean": 0.5018785538785745,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "precision": {
+          "mean": 0.18733333333333332,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "recall": {
+          "mean": 0.562,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "relevant_unique_pages": {
+          "mean": 0.562,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "returned": {
+          "mean": 3,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unique_pages": {
+          "mean": 3,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        }
+      },
+      "n_measured": 500
+    },
+    "Thai500_retrieval/app_hybrid@5": {
+      "n": 500,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.628,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "f1": {
+          "mean": 0.20933333333333334,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "first_relevant_rank": {
+          "mean": 1.6560509554140128,
+          "n_measured": 314,
+          "n_total": 500
+        },
+        "hit": {
+          "mean": 0.628,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "map": {
+          "mean": 0.4963,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "mrr": {
+          "mean": 0.4963,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "ndcg": {
+          "mean": 0.529251436691286,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "precision": {
+          "mean": 0.12560000000000002,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "recall": {
+          "mean": 0.628,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "relevant_unique_pages": {
+          "mean": 0.628,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "returned": {
+          "mean": 5,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unique_pages": {
+          "mean": 5,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        }
+      },
+      "n_measured": 500
+    },
+    "Thai500_retrieval/app_hybrid@10": {
+      "n": 500,
+      "metrics": {},
+      "n_measured": 0
+    },
+    "Thai500_retrieval/bm25@1": {
+      "n": 500,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.378,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "f1": {
+          "mean": 0.378,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 189,
+          "n_total": 500
+        },
+        "hit": {
+          "mean": 0.378,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "map": {
+          "mean": 0.378,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "mrr": {
+          "mean": 0.378,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "ndcg": {
+          "mean": 0.378,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "precision": {
+          "mean": 0.378,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "recall": {
+          "mean": 0.378,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "relevant_unique_pages": {
+          "mean": 0.378,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        }
+      },
+      "n_measured": 500
+    },
+    "Thai500_retrieval/bm25@3": {
+      "n": 500,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.496,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "duplicate_slots": {
+          "mean": 0.254,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "f1": {
+          "mean": 0.248,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "first_relevant_rank": {
+          "mean": 1.2903225806451613,
+          "n_measured": 248,
+          "n_total": 500
+        },
+        "hit": {
+          "mean": 0.496,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "map": {
+          "mean": 0.43266666666666664,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "mrr": {
+          "mean": 0.43266666666666664,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "ndcg": {
+          "mean": 0.4490455373285741,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "precision": {
+          "mean": 0.16533333333333333,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "recall": {
+          "mean": 0.496,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "relevant_unique_pages": {
+          "mean": 0.496,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "returned": {
+          "mean": 3,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unique_pages": {
+          "mean": 2.746,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        }
+      },
+      "n_measured": 500
+    },
+    "Thai500_retrieval/bm25@5": {
+      "n": 500,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.542,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "duplicate_slots": {
+          "mean": 0.528,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "f1": {
+          "mean": 0.1806666666666667,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "first_relevant_rank": {
+          "mean": 1.5645756457564575,
+          "n_measured": 271,
+          "n_total": 500
+        },
+        "hit": {
+          "mean": 0.542,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "map": {
+          "mean": 0.4429666666666667,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "mrr": {
+          "mean": 0.4429666666666667,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "ndcg": {
+          "mean": 0.46780488897981776,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "precision": {
+          "mean": 0.10840000000000001,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "recall": {
+          "mean": 0.542,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "relevant_unique_pages": {
+          "mean": 0.542,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "returned": {
+          "mean": 5,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unique_pages": {
+          "mean": 4.472,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        }
+      },
+      "n_measured": 500
+    },
+    "Thai500_retrieval/bm25@10": {
+      "n": 500,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.592,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "duplicate_slots": {
+          "mean": 1.37,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "f1": {
+          "mean": 0.10763636363636364,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "first_relevant_rank": {
+          "mean": 2.043918918918919,
+          "n_measured": 296,
+          "n_total": 500
+        },
+        "hit": {
+          "mean": 0.592,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "k": {
+          "mean": 10,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "map": {
+          "mean": 0.4501142857142857,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "mrr": {
+          "mean": 0.4501142857142857,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "ndcg": {
+          "mean": 0.48444387553522833,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "precision": {
+          "mean": 0.0592,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "recall": {
+          "mean": 0.592,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "relevant_unique_pages": {
+          "mean": 0.592,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "returned": {
+          "mean": 10,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unique_pages": {
+          "mean": 8.63,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        }
+      },
+      "n_measured": 500
+    },
+    "Thai500_retrieval/dense@1": {
+      "n": 500,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.202,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "duplicate_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "f1": {
+          "mean": 0.202,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "first_relevant_rank": {
+          "mean": 1,
+          "n_measured": 101,
+          "n_total": 500
+        },
+        "hit": {
+          "mean": 0.202,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "k": {
+          "mean": 1,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "map": {
+          "mean": 0.202,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "mrr": {
+          "mean": 0.202,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "ndcg": {
+          "mean": 0.202,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "precision": {
+          "mean": 0.202,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "recall": {
+          "mean": 0.202,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "relevant_unique_pages": {
+          "mean": 0.202,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "returned": {
+          "mean": 1,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unique_pages": {
+          "mean": 1,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        }
+      },
+      "n_measured": 500
+    },
+    "Thai500_retrieval/dense@3": {
+      "n": 500,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.326,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "duplicate_slots": {
+          "mean": 0.19,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "f1": {
+          "mean": 0.163,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "first_relevant_rank": {
+          "mean": 1.5521472392638036,
+          "n_measured": 163,
+          "n_total": 500
+        },
+        "hit": {
+          "mean": 0.326,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "k": {
+          "mean": 3,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "map": {
+          "mean": 0.25466666666666665,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "mrr": {
+          "mean": 0.25466666666666665,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "ndcg": {
+          "mean": 0.2729032232428591,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "precision": {
+          "mean": 0.10866666666666666,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "recall": {
+          "mean": 0.326,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "relevant_unique_pages": {
+          "mean": 0.326,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "returned": {
+          "mean": 3,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unique_pages": {
+          "mean": 2.81,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        }
+      },
+      "n_measured": 500
+    },
+    "Thai500_retrieval/dense@5": {
+      "n": 500,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.39,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "duplicate_slots": {
+          "mean": 0.428,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "f1": {
+          "mean": 0.13,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "first_relevant_rank": {
+          "mean": 2.0205128205128204,
+          "n_measured": 195,
+          "n_total": 500
+        },
+        "hit": {
+          "mean": 0.39,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "k": {
+          "mean": 5,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "map": {
+          "mean": 0.26936666666666664,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "mrr": {
+          "mean": 0.26936666666666664,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "ndcg": {
+          "mean": 0.29932710543774615,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "precision": {
+          "mean": 0.078,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "recall": {
+          "mean": 0.39,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "relevant_unique_pages": {
+          "mean": 0.39,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "returned": {
+          "mean": 5,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unique_pages": {
+          "mean": 4.572,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        }
+      },
+      "n_measured": 500
+    },
+    "Thai500_retrieval/dense@10": {
+      "n": 500,
+      "metrics": {
+        "complete_evidence": {
+          "mean": 0.494,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "duplicate_slots": {
+          "mean": 1.046,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "f1": {
+          "mean": 0.08981818181818182,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "first_relevant_rank": {
+          "mean": 3.2186234817813766,
+          "n_measured": 247,
+          "n_total": 500
+        },
+        "hit": {
+          "mean": 0.494,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "k": {
+          "mean": 10,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "map": {
+          "mean": 0.28331190476190476,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "missing_prediction": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "mrr": {
+          "mean": 0.28331190476190476,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "ndcg": {
+          "mean": 0.3330228516019517,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "precision": {
+          "mean": 0.0494,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "recall": {
+          "mean": 0.494,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "relevant_unique_pages": {
+          "mean": 0.494,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "returned": {
+          "mean": 10,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unique_pages": {
+          "mean": 8.954,
+          "n_measured": 500,
+          "n_total": 500
+        },
+        "unlocatable_slots": {
+          "mean": 0,
+          "n_measured": 500,
+          "n_total": 500
+        }
+      },
+      "n_measured": 500
+    }
+  }
+}

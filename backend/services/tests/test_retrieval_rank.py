@@ -3,6 +3,7 @@
 from backend.services.retrieval_rank import (
     bm25_rank, matched_document_aliases, mentioned_document_ids,
     normalize_search_text, unique_pages, without_document_aliases,
+    remove_repeated_navigation,
 )
 from backend.services.tools import _focus_excerpt
 
@@ -21,6 +22,44 @@ def test_company_scope_requires_an_explicit_distinctive_name():
     # Prior-year comparison values live in the current report.
     assert mentioned_document_ids("SCBX ปี 2566 ไม่ใช่ 2567", documents) == {1}
     assert mentioned_document_ids("สินทรัพย์รวมปี 2567", documents) is None
+
+
+def test_thai_parent_and_subsidiary_mentions_keep_distinct_document_scopes():
+    documents = [(1, 'ptt_2567_th.pdf'), (2, 'pttep_2567_th.pdf'),
+                 (3, 'cpaxtra_2567_th.pdf')]
+    assert mentioned_document_ids('บริษัท ปตท. จำกัด (มหาชน) มีวิสัยทัศน์อย่างไร', documents) == {1}
+    assert mentioned_document_ids('ปตท.สผ. มีนโยบายอะไร', documents) == {2}
+    assert mentioned_document_ids('ปตท.สำรวจและผลิตปิโตรเลียม มีนโยบายอะไร', documents) == {2}
+    assert mentioned_document_ids('ปตท. และ ปตท.สผ. มีนโยบายต่างกันอย่างไร', documents) == {1, 2}
+    assert mentioned_document_ids('CPAXT มีธุรกิจอะไร', documents) == {3}
+    assert mentioned_document_ids('PTTEP มีธุรกิจอะไร', documents) == {2}
+    assert mentioned_document_ids('PTT มีธุรกิจอะไร', documents) == {1}
+    # Naming a parent must not match a longer filename with the same prefix.
+    assert mentioned_document_ids('ปตท. มีวิสัยทัศน์อย่างไร', documents[1:]) is None
+
+
+def test_repeated_navigation_is_suppressed_without_rewriting_source_values():
+    navigation = 'สารบัญ วิสัยทัศน์ พันธกิจ ค่านิยม ข้อมูลทั่วไปของบริษัท ' * 5
+    rows = [{'document_id': 1, 'page': i, 'chunk_id': i,
+             'text': ('ชื่อหัวข้อ ' * (i % 3)) + navigation + f' เนื้อหาจริงของหน้า {i}'}
+            for i in range(1, 31)]
+    rows[19]['text'] += ' วิสัยทัศน์ ดำเนินธุรกิจพลังงานอย่างยั่งยืน รายได้ -100 ล้านบาท ปี 2566'
+    original = [row['text'] for row in rows]
+    cleaned = remove_repeated_navigation(rows)
+    assert [row['text'] for row in cleaned] == original
+    assert cleaned[0]['search_text'].count('สารบัญ') < original[0].count('สารบัญ')
+    assert '-100 ล้านบาท ปี 2566' in cleaned[19]['search_text']
+    assert bm25_rank('วิสัยทัศน์ ดำเนินธุรกิจพลังงานอย่างยั่งยืน', cleaned)[0]['page'] == 20
+    assert remove_repeated_navigation(rows[:3]) == rows[:3]
+
+
+def test_weighted_fusion_retains_dense_only_paraphrase_evidence():
+    from backend.services.rag import _reciprocal_rank_fusion
+    dense = [{'document_id': 1, 'page': 8, 'chunk_id': 1, 'text': 'ความหมายเดียวกัน'}]
+    assert _reciprocal_rank_fusion(dense, [], 5, keyword_weight=2)[0]['page'] == 8
+    lexical = [{'document_id': 1, 'page': 9, 'chunk_id': 2, 'text': 'คำตรง'}]
+    result = _reciprocal_rank_fusion(dense, lexical, 5, keyword_weight=2)
+    assert [hit['page'] for hit in result] == [9, 8]
 
 
 def test_issuer_scope_does_not_make_the_company_name_dominate_evidence_ranking():

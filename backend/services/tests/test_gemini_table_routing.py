@@ -48,6 +48,40 @@ def test_gemini_json_quarantines_unequal_row_widths():
     assert tables[0]["ambiguous_row_count"] == 1
 
 
+def test_empty_audit_status_tier_keeps_values_dates_and_statement_scope():
+    raw = {'tables':[{'columns':['2566 งบรวม','2566 ตรวจสอบ','2567 งบรวม','2567 ตรวจสอบ'],
+        'rows':[{'row_label':'เงินสด (ล้านบาท)','values':['10','','20','']},
+                {'row_label':'สินทรัพย์ (ล้านบาท)','values':['30','','40','']}]}]}
+    table = _normalize_gemini_tables(raw, 7, {'region':'full'})[0]
+    assert table['headers'] == ['รายการ','2566 งบรวม ตรวจสอบ','2567 งบรวม ตรวจสอบ']
+    assert table['rows'] == [['เงินสด (ล้านบาท)','10','20'],['สินทรัพย์ (ล้านบาท)','30','40']]
+    assert len(table['header_repairs']) == 2
+    assert raw['tables'][0]['rows'][0]['values'] == ['10','','20','']
+
+
+def test_nonempty_status_different_date_and_real_statement_columns_are_not_collapsed():
+    for columns, values in [(['2566 งบรวม','2566 ตรวจสอบ'],['10','5']),
+                            (['2566 งบรวม','2567 ตรวจสอบ'],['10','']),
+                            (['2566 งบรวม','2566 งบเฉพาะกิจการ'],['10',''])]:
+        raw={'tables':[{'columns':columns,'rows':[{'row_label':'เงินสด','values':values}]}]}
+        table=_normalize_gemini_tables(raw,7,{'region':'full'})[0]
+        assert table['rows']==[['เงินสด',*values]] and 'header_repairs' not in table
+
+
+def test_actual_gemini_sdk_request_uses_complete_structured_table_schema():
+    from types import SimpleNamespace
+    from unittest.mock import Mock
+    from backend.scripts.reocr_tables import _read_page_once, TABLE_RESPONSE_SCHEMA
+    model = Mock(return_value=SimpleNamespace(text='{"tables":[]}', usage_metadata=None))
+    client = SimpleNamespace(models=SimpleNamespace(generate_content=model))
+    result = _read_page_once(client, 'configured-model', _png())
+    assert result['tables'] == []
+    config = model.call_args.kwargs['config']
+    assert config.response_schema == TABLE_RESPONSE_SCHEMA
+    assert config.response_mime_type == 'application/json'
+    assert config.temperature == 0
+
+
 def test_pdf_ocr_uses_typhoon_prose_and_gemini_table():
     service = TyphoonOCRService()
     service.api_key = "test"

@@ -4,7 +4,7 @@ from io import BytesIO
 
 from PIL import Image, ImageDraw
 
-from backend.services.pdf_layout import _left_crop_start, _rotation_from_pdf_lines, _two_up_seam, crop_and_rotate_png
+from backend.services.pdf_layout import _left_crop_start, _rotation_from_pdf_lines, _two_up_seam, crop_and_rotate_png, _numbered_spread_regions
 
 
 def _png(image: Image.Image) -> bytes:
@@ -48,3 +48,33 @@ def test_crop_and_rotate_has_expected_dimensions():
     )
     with Image.open(BytesIO(output)) as rotated:
         assert rotated.size == (60, 60)
+
+
+def test_colored_numbered_spread_detected_without_using_evidence_values():
+    from types import SimpleNamespace
+    class Page:
+        rect=SimpleNamespace(width=1440,height=846)
+        def get_text(self,_kind):
+            return {'blocks':[{'lines':[
+                {'bbox':(304,27,350,50),'spans':[{'text':'002 /'}]},
+                {'bbox':(913,27,959,50),'spans':[{'text':'003 /'}]}]}]}
+    regions=_numbered_spread_regions(Page())
+    assert regions and len(regions)==2
+    assert .58<regions[0]['crop_box'][2]<.63
+    assert regions[0]['crop_box'][2]>regions[1]['crop_box'][0]
+
+
+def test_table_amounts_or_nonconsecutive_headings_do_not_trigger_spread():
+    from types import SimpleNamespace
+    class Page:
+        rect=SimpleNamespace(width=1440,height=846)
+        def get_text(self,_kind):
+            return {'blocks':[{'lines':[
+                {'bbox':(304,27,350,50),'spans':[{'text':'100'}]},
+                {'bbox':(913,27,959,50),'spans':[{'text':'101'}]}]}]}
+    assert _numbered_spread_regions(Page()) is None
+    original=Page.get_text
+    Page.get_text=lambda self,kind:{'blocks':[{'lines':[
+        {'bbox':(304,27,350,50),'spans':[{'text':'002 /'}]},
+        {'bbox':(913,27,959,50),'spans':[{'text':'005 /'}]}]}]}
+    assert _numbered_spread_regions(Page()) is None

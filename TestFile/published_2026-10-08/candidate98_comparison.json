@@ -1,0 +1,65 @@
+{
+  "scope": "All94 numeric questions /102 relations plus qualitative controls; development repair experiment, NOT full498 acceptance",
+  "systems": {
+    "baseline": {
+      "n_correct": 18,
+      "n_required": 102,
+      "strict_lower": 0.17647058823529413,
+      "n_unknown": 15,
+      "states": {
+        "answer_numeric_annotation_missing": 15,
+        "correct": 18,
+        "wrong_bound_numeric_fact": 49,
+        "explicit_abstention_on_required_quantity": 7,
+        "required_relation_not_emitted": 13
+      },
+      "failed_checks_nonexclusive": {
+        "company": 10,
+        "page": 5,
+        "measure": 40,
+        "comparison_operator": 3,
+        "year": 10,
+        "signed_value_and_explicit_unit": 1
+      },
+      "n_complete_capture": 83,
+      "n_outputs": 98
+    },
+    "candidate": {
+      "n_correct": 17,
+      "n_required": 102,
+      "strict_lower": 0.16666666666666666,
+      "n_unknown": 6,
+      "states": {
+        "answer_numeric_annotation_missing": 6,
+        "correct": 17,
+        "explicit_abstention_on_required_quantity": 10,
+        "wrong_bound_numeric_fact": 59,
+        "required_relation_not_emitted": 9,
+        "ambiguous_emitted_required_relation": 1
+      },
+      "failed_checks_nonexclusive": {
+        "company": 18,
+        "measure": 51,
+        "page": 9,
+        "comparison_operator": 3,
+        "signed_value_and_explicit_unit": 6,
+        "year": 13,
+        "document": 1
+      },
+      "n_complete_capture": 92,
+      "n_outputs": 98
+    }
+  },
+  "n_numeric_regressions": 4,
+  "n_numeric_recoveries": 3,
+  "source_sha256": {
+    "TestFile\\evaluation_B_2026-10-08\\recovery_root_2026-10-08\\focus498_capture_v3\\paired_answers.json": "6aca074eaaf40e01d2c5cde2a6915b1e4ba70456c367c84c2a6dd92bcae9e8e3",
+    "TestFile\\evaluation_B_2026-10-08\\recovery_root_2026-10-08\\candidate_numeric98_v21\\paired_answers.json": "4d62b1e2a921ee60aa5462d7fff299fb5ddea1c2bc85f8a89cc30855f6d09b4d",
+    "TestFile\\evaluation_B_2026-10-08\\recovery_root_2026-10-08\\candidate_numeric98_v21\\manifest.json": "47d8802adf7026154c9d847dfb86918dbfd4d483c19a5b8fec03d331423c6560"
+  },
+  "all_outcomes_retained": true,
+  "gold_scorer_unchanged": true,
+  "n_unseen_questions": 0,
+  "factual_citation_audit_performed": false,
+  "all498_target_proven": false
+}

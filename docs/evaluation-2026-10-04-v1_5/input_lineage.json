@@ -1,0 +1,8 @@
+{
+  "audit": "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\outputs\\comprehensive_eval_2026-10-04_v1\\consistent_audit_v1_5",
+  "audit_details_sha256": "d6c5cb508211923dfcfe50f8a491276d457d09f71962e312ac22fc4cee157eef",
+  "audit_retrieval_sha256": "ebf60a5cc376be5217e2f6af090ae2658e7ac68701017e6133df5199ea16e0e6",
+  "reference_review_sha256": "e5704eba3e3a1d5d424bcf64f1f0644caadfd8cc9260e715468afd713fd07763",
+  "publisher_code_sha256": "75e6ac9f76da23adb5225a262b20038054b497e7184d29e830d960855bd86a51",
+  "method_version": "comprehensive-rag-v1.5"
+}

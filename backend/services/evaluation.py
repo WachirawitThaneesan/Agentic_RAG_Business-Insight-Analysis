@@ -106,16 +106,11 @@ async def run_evaluation(data: list[dict], output_csv: str = "ragas_evaluation_r
 
 def _contexts_from_agent_result(result: dict) -> list[str]:
     """Extract the text the agent actually reasoned over, for Ragas grounding."""
-    contexts: list[str] = []
-    for step in result.get("reasoning_trace", []):
-        obs = str(step.get("observation") or "").strip()
-        if obs and obs not in contexts:
-            contexts.append(obs)
-    for src in result.get("sources", []):
-        text = src.get("text") or src.get("summary") or src.get("sql")
-        if text and text not in contexts:
-            contexts.append(str(text))
-    return contexts or ["No context used."]
+    from backend.services.answer_capture import validate_evidence_blocks
+    context = result.get('evidence_context')
+    if context is None:
+        return []  # Missing capture must not become returned-source context.
+    return [block['text'] for block in validate_evidence_blocks(context, result.get('evidence_blocks') or [])]
 
 
 def _append_history(scores: dict, n_samples: int, label: str,
@@ -205,7 +200,7 @@ async def run_live_evaluation(
     return scores
 
 
-async def save_qa_log(question: str, answer: str, contexts: list[str]):
+async def save_qa_log(question: str, answer: str, contexts: list[str], full_result=None):
     """Save real-time query to a history file for later batch evaluation."""
     log_entry = {
         "question": question,
@@ -213,6 +208,8 @@ async def save_qa_log(question: str, answer: str, contexts: list[str]):
         "contexts": contexts,
         "ground_truth": ""  # Leave blank for users to fill in manually later
     }
+    if full_result is not None:
+        log_entry['full_result'] = full_result
     
     log_file = (
         os.path.join(settings.PRIVATE_DATA_DIR, "qa_history.json")

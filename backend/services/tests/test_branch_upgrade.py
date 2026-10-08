@@ -48,7 +48,13 @@ def test_near_miss_sql_refusal_sweeps_once_and_preserves_citation(monkeypatch):
             "chunks": [{"page": 9, "text": "เป้าหมายลดคาร์บอน 60%", "document_id": 1}]}},
     ])
     monkeypatch.setattr(agent, "_execute_tool", search)
-    generate = AsyncMock(side_effect=["ไม่พบข้อมูลในตาราง", "เป้าหมายลดคาร์บอน 60% (PDF หน้า 9)"])
+    import json
+    refusal = {'answer': 'ไม่พบข้อมูลในตาราง', 'abstained': True,
+        'answer_claims': [], 'claim_citations': [], 'numeric_facts': []}
+    answer = 'เป้าหมายลดคาร์บอน 60% (PDF หน้า 9)'
+    emitted = {'answer': answer, 'abstained': False, 'answer_claims': [answer],
+        'claim_citations': [{'claim_index': 0, 'source_index': 1}], 'numeric_facts': []}
+    generate = AsyncMock(side_effect=[json.dumps(refusal, ensure_ascii=False), json.dumps(emitted, ensure_ascii=False)])
     monkeypatch.setattr(agent, "llm_generate", generate)
     result = asyncio.run(agent.agent_query("เป้าหมายลดคาร์บอนคิดเป็นร้อยละเท่าไร", object()))
     assert "60%" in result["answer"]

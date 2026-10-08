@@ -1,0 +1,9 @@
+{
+  "model": "gemini-2.5-flash",
+  "checked_date": "2026-10-04",
+  "source": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
+  "input_usd_per_million": 0.3,
+  "output_including_thinking_usd_per_million": 2.5,
+  "estimate_only": true,
+  "total_recorded_experiment_estimate_usd": 4.2127571999999995
+}

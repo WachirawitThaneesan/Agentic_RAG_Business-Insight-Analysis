@@ -1,0 +1,32 @@
+{
+  "bm25": {
+    "n_groups": 124,
+    "replicates": 2000,
+    "seed": 20261004,
+    "hit95_percentile": [
+      0.4578059071729958,
+      0.622568093385214
+    ],
+    "scope": "Descriptive resampling of labeled pages within four known reports. Not uncertainty for unseen reports."
+  },
+  "dense": {
+    "n_groups": 124,
+    "replicates": 2000,
+    "seed": 20261004,
+    "hit95_percentile": [
+      0.326171875,
+      0.4598393574297189
+    ],
+    "scope": "Descriptive resampling of labeled pages within four known reports. Not uncertainty for unseen reports."
+  },
+  "app_hybrid": {
+    "n_groups": 124,
+    "replicates": 2000,
+    "seed": 20261004,
+    "hit95_percentile": [
+      0.55859375,
+      0.6983471074380165
+    ],
+    "scope": "Descriptive resampling of labeled pages within four known reports. Not uncertainty for unseen reports."
+  }
+}

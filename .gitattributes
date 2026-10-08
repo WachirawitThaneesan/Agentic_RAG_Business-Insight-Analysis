@@ -2,3 +2,14 @@
 /TestFile/postmerge_2026-10-01_v1/** -text
 /TestFile/runtime_repair_2026-10-01_v1/** -text
 /TestFile/section_repair_2026-10-02_v1/** -text
+/TestFile/comprehensive_2026-10-04_v1_5/** -text
+/docs/evaluation-2026-10-04-v1_5/** -text
+/TestFile/evaluation-repair-2026-10-05/** -text
+/docs/evaluation-repair-2026-10-05/** -text
+/TestFile/evaluation-contract-2026-10-05-v2/** -text
+/docs/evaluation-contract-2026-10-05-v2/** -text
+/TestFile/published_2026-10-08/** -text
+/docs/evaluation-A-2026-10-08/** -text
+/docs/evaluation-B-2026-10-08/** -text
+/docs/evaluation-completion-2026-10-07/** -text
+/docs/rag-continuation-2026-10-05-v5/** -text

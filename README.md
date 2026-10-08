@@ -10,6 +10,21 @@ answer self-correction step.
 
 ---
 
+## Evaluation Update — 8 October 2026
+
+The Gemini-assisted development evaluation now covers **all 498 questions**.
+Eight answer/evidence metrics exceed 80% under conservative aggregation across
+the full set (**85.96–96.69%**). The
+[English research report](docs/GEMINI_RAG_FULL498_REPORT_2026-10-08.md) presents
+the results and explains complete-answer and numerical relationship challenges
+as future work. These are AI-reviewed development results; the full quality
+objective and unseen-report evaluation remain open.
+
+See the [updated plan and next steps](docs/EVALUATION_NEXT_STEPS_2026-10-08.md)
+and [published evidence package](TestFile/published_2026-10-08/README.md) for
+metric coverage, frozen runs, candidate decisions, and checksums. Docling has
+not started.
+
 ## Key Features
 
 ### 1. Agentic RAG — ReAct loop with deterministic routing

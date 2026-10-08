@@ -42,6 +42,9 @@ def enqueue_pdf_job(document_id: int) -> bool:
 async def prepare_pdf_job(db, doc: Document, path: Path) -> int:
     """Validate a saved PDF and create the same durable page checkpoints for every origin."""
     from backend.services.ocr import ocr_service
+    from backend.services.source_provenance import bind_saved_source
+
+    bind_saved_source(doc,path)
 
     page_count = ocr_service.get_pdf_page_count(str(path))
     if page_count < 1:

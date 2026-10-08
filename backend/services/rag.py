@@ -8,12 +8,13 @@ import httpx
 from typing import List, Dict, Any, Optional
 from sqlalchemy import text as sql_text, select, or_, and_, case
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import defer
 from backend.config import get_settings
 from backend.services.embedding import get_embedding
 from backend.services.table_utils import rebuild_structured_tables
 from backend.services.retrieval_rank import (
     bm25_rank, matched_document_aliases, normalize_search_text,
-    unique_pages, without_document_aliases,
+    unique_pages, without_document_aliases, remove_repeated_navigation,
 )
 from backend.models import Chunk, Document, DocumentPage, StructuredData
 
@@ -521,16 +522,21 @@ async def vector_search(
     query: str,
     session: AsyncSession,
     top_k: int = 5,
+    *,
+    ranking_policy: str = "lexical_first",
+    ranking_debug: Optional[Dict[str, Any]] = None,
 ) -> List[Dict[str, Any]]:
     """Find page evidence with scoped Thai keywords and semantic fallback.
 
     A named issuer may restrict the corpus. A mentioned year never excludes a
     report: a current annual report can contain prior-year comparison columns.
-    Numeric questions prioritize lexical evidence; qualitative questions use
-    page-level reciprocal-rank fusion.
+    The default lexical-first ranker was measured against the frozen 498-question
+    diagnostic bank; ``hybrid_current`` preserves the earlier RRF baseline.
     """
     if top_k < 1:
         return []
+    if ranking_policy not in ("hybrid_current", "lexical_first"):
+        raise ValueError("Unknown retrieval ranking policy")
     documents = (await session.execute(select(Document.id, Document.filename))).all()
     document_scope, issuer_aliases = matched_document_aliases(query, documents)
     ranking_query = without_document_aliases(query, issuer_aliases)
@@ -540,6 +546,7 @@ async def vector_search(
 
     semantic_stmt = (
         select(Chunk, Document.filename, Chunk.embedding.cosine_distance(query_embedding).label("distance"))
+        .options(defer(Chunk.embedding))
         .join(Document, Document.id == Chunk.document_id)
         .outerjoin(DocumentPage, _indexed_page_join())
         .where(Chunk.embedding.is_not(None), _searchable_chunk_filter(), _indexed_page_filter())
@@ -560,6 +567,7 @@ async def vector_search(
             "chunk_id": chunk.id, "text": chunk.chunk_text,
             "summary": chunk.summary, "chunk_index": chunk.chunk_index,
             "document_id": chunk.document_id, "filename": filename,
+            "source_sha256": meta.get("source_sha256"),
             "page": meta.get("page"), "similarity": 1.0 - float(distance),
             "retrieval_method": "semantic", "source_kind": meta.get("source_kind") or "semantic",
             "table_name": meta.get("table_name"), "quality_status": meta.get("quality_status"),
@@ -570,13 +578,23 @@ async def vector_search(
     if keyword_terms:
         keyword_stmt = (
             select(Chunk, Document.filename)
+            .options(defer(Chunk.embedding))
             .join(Document, Document.id == Chunk.document_id)
             .outerjoin(DocumentPage, _indexed_page_join())
             .where(_searchable_chunk_filter(), _indexed_page_filter())
         )
         if document_scope:
+            # Issuer names identify the usual report, but a parent report may
+            # describe the named subsidiary. Admit lexical evidence explicitly
+            # naming a distinctive requested entity, with the same source/page
+            # quality gates. Short parent abbreviations are excluded here:
+            # e.g. ปตท. must not admit every ปตท.สผ. chunk by substring.
+            cross_entity = [alias for alias in issuer_aliases if len(alias) >= 6]
+            named_entity_clauses = [match for alias in cross_entity for match in (
+                Chunk.chunk_text.ilike(f"%{alias}%"),
+                Chunk.metadata_["search_text"].as_string().ilike(f"%{alias}%"))]
             keyword_stmt = keyword_stmt.where(
-                Chunk.document_id.in_(document_scope)).order_by(Chunk.id)
+                or_(Chunk.document_id.in_(document_scope), *named_entity_clauses)).order_by(Chunk.id)
         else:
             # New chunks carry normalized text for candidate generation. Raw
             # matching remains available for chunks indexed before this change.
@@ -601,22 +619,42 @@ async def vector_search(
                 "search_text": meta.get("search_text") or chunk.chunk_text,
                 "summary": chunk.summary, "chunk_index": chunk.chunk_index,
                 "document_id": chunk.document_id, "filename": filename,
+                "source_sha256": meta.get("source_sha256"),
                 "page": meta.get("page"), "source_kind": meta.get("source_kind") or "semantic",
                 "table_name": meta.get("table_name"), "quality_status": meta.get("quality_status"),
                 "evidence_status": "ocr_extracted_unverified" if meta.get("page") else "source_not_verified",
             })
-        for hit in bm25_rank(lexical_query, candidates):
+        for hit in bm25_rank(lexical_query, remove_repeated_navigation(candidates)):
             hit.pop("search_text", None)
             hit["retrieval_method"] = "keyword"
             hit["similarity"] = min(0.999, hit.pop("keyword_score") / 50.0)
             keyword_hits.append(hit)
 
+    if ranking_debug is not None:
+        def location(hit):
+            return {"filename":hit["filename"], "source_pdf_page":hit.get("page"),
+                    "document_id":hit.get("document_id"),
+                    "source_kind":hit.get("source_kind"),
+                    "quality_status":hit.get("quality_status")}
+        ranking_debug.update({
+            "ranking_policy":ranking_policy,
+            "n_semantic_candidate_chunks":len(semantic_hits),
+            "n_keyword_candidate_chunks":len(keyword_hits),
+            "keyword_pages":[location(h) for h in unique_pages(keyword_hits)[:50]],
+            "semantic_pages":[location(h) for h in unique_pages(semantic_hits)[:50]],
+            "keyword_terms":keyword_terms,
+            "document_scope_ids":sorted(document_scope) if document_scope else None,
+        })
     # The diagnostic Thai numeric set strongly favours exact lexical evidence.
     # Use the semantic arm after distinct keyword pages for numeric questions.
-    if re.search(r"เท่าไร|เท่าไหร่|กี่|ร้อยละ|เปอร์เซ็นต์|%|จำนวน|มูลค่า|อัตรา|รายได้|กำไร|หนี้สิน|สินทรัพย์|เงินปันผล|คะแนน", query):
+    numeric_route=bool(re.search(r"เท่าไร|เท่าไหร่|กี่|ร้อยละ|เปอร์เซ็นต์|%|จำนวน|มูลค่า|อัตรา|รายได้|กำไร|หนี้สิน|สินทรัพย์|เงินปันผล|คะแนน", query))
+    if numeric_route or ranking_policy=="lexical_first":
         ranked = unique_pages([*keyword_hits, *semantic_hits])[:top_k]
     else:
-        ranked = _reciprocal_rank_fusion(semantic_hits, keyword_hits, top_k)
+        ranked = _reciprocal_rank_fusion(semantic_hits, keyword_hits, top_k, keyword_weight=2.0)
+    if ranking_debug is not None:
+        ranking_debug["numeric_route"]=numeric_route
+        ranking_debug["ranked_pages"]=[location(h) for h in ranked]
     return await _expand_page_evidence(query, ranked, session)
 
 
@@ -671,6 +709,8 @@ def _reciprocal_rank_fusion(
     semantic: List[Dict[str, Any]],
     keyword: List[Dict[str, Any]],
     top_k: int,
+    *,
+    keyword_weight: float = 1.0,
 ) -> List[Dict[str, Any]]:
     """Blend distinct PDF pages by reciprocal rank for qualitative questions."""
     fused: Dict[Any, Dict[str, Any]] = {}
@@ -683,7 +723,7 @@ def _reciprocal_rank_fusion(
             if entry is None:
                 entry = {"item": dict(item), "score": 0.0, "methods": set()}
                 fused[key] = entry
-            entry["score"] += 1.0 / (_RRF_K + rank + 1)
+            entry["score"] += (keyword_weight if method == "keyword" else 1.0) / (_RRF_K + rank + 1)
             entry["methods"].add(method)
             if method == "keyword":
                 entry["item"] = dict(item)

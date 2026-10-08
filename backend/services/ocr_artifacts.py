@@ -41,6 +41,7 @@ def build_raw_ocr_chunk_payloads(
                     "source_kind": "raw_ocr_page",
                     "page": page_num,
                     "markdown": markdown,
+                    **{key: page[key] for key in ("region", "crop_box", "rotation", "source_provider") if key in page},
                 },
             }
         )
@@ -51,7 +52,7 @@ def build_raw_ocr_chunk_payloads(
 
     for index, table in enumerate(raw_tables):
         headers = [str(header or "").strip() for header in (table.get("headers") or [])]
-        rows = [[str(cell or "").strip() for cell in row] for row in (table.get("rows") or [])]
+        rows = [[str(cell if cell is not None else "").strip() for cell in row] for row in (table.get("rows") or [])]
         csv_text = _table_to_csv(headers, rows)
         if not csv_text:
             continue
@@ -74,6 +75,8 @@ def build_raw_ocr_chunk_payloads(
                     "headers": headers,
                     "rows": rows,
                     "csv_text": csv_text,
+                    **{key: table[key] for key in ("region", "crop_box", "rotation", "source_provider", "unit",
+                        "partial_extraction", "ambiguous_row_count", "header_source_page", "header_repairs") if key in table},
                 },
             }
         )

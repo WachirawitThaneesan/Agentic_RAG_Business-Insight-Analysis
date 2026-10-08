@@ -31,6 +31,35 @@ settings = get_settings()
 logger = logging.getLogger(__name__)
 
 
+def _unconfirmed_na_text(tables: List[Dict[str, Any]]) -> str:
+    """Retain explicit missing-value relations without rescuing numeric cells.
+
+    Gemini may correctly return no matrix for a key/value layout. Preserve only
+    literal N/A cells from Typhoon's parsed source, with their row/header/title.
+    Never interpret N/A as zero or restore other cells from an unconfirmed table.
+    """
+    lines = []
+    for table in tables:
+        headers = table.get('headers') or []
+        for row in [headers, *(table.get('rows') or [])]:
+            if not row:
+                continue
+            for index, value in enumerate(row[1:], start=1):
+                if str(value).strip().upper() != 'N/A':
+                    continue
+                # Key/value HTML often starts with an empty indentation cell.
+                # A numeric cell cannot become a recovered textual row label.
+                row_label = next((str(c).strip().rstrip(':： ') for c in row[:index]
+                                  if str(c).strip() and not re.search(r'\d',str(c))), '')
+                if not row_label:
+                    continue
+                header = str(headers[index]) if row is not headers and index < len(headers) else ''
+                if header.upper() == 'N/A': header = ''
+                label = ' / '.join(x for x in [str(table.get('title') or ''), row_label, header] if x)
+                lines.append(f'{label}: N/A')
+    return '\n'.join(dict.fromkeys(lines))
+
+
 PROMPT_V15 = """Extract all text from the image.
 
 Instructions:
@@ -211,6 +240,7 @@ class TyphoonOCRService:
                             typhoon_error = f"{type(exc).__name__}: {exc}"
                             markdown = ""
                             logger.warning("Typhoon text failed on table page %d %s: %s", page_num, region['region'], typhoon_error)
+                        provider_markdown = markdown
                         if use_gemini_tables:
                             typhoon_tables, text_only = self._extract_structured_tables(markdown)
                             if typhoon_tables or visual_hint:
@@ -226,7 +256,8 @@ class TyphoonOCRService:
                                     markdown = text_only
                                     gemini_tables.extend(tables)
                                 elif typhoon_tables:
-                                    markdown = text_only
+                                    na_text = _unconfirmed_na_text(typhoon_tables)
+                                    markdown = text_only + ('\n\n' + na_text if na_text else '')
                                     table_warnings.append({
                                         "page": page_num, "region": region["region"],
                                         "warning": "Typhoon detected a table but Gemini returned no confirmed cells",
@@ -234,7 +265,8 @@ class TyphoonOCRService:
                                 gemini_usage.append({"page": page_num, "region": region["region"], **usage})
                         if typhoon_error:
                             typhoon_errors.append({"page": page_num, "region": region["region"], "error": typhoon_error})
-                        outputs.append({"page": page_num, "markdown": markdown, **region})
+                        outputs.append({"page": page_num, "markdown": markdown,
+                                        "provider_markdown": provider_markdown, **region})
             except TimeoutError as exc:
                 raise TimeoutError(f"PDF page {page_num} OCR exceeded its deadline") from exc
             if index < len(page_numbers) - 1 and self.sleep_seconds > 0:
@@ -501,7 +533,7 @@ class TyphoonOCRService:
                     "markdown": markdown,
                     "text_blocks": len(page_blocks),
                     "tables": len(page_tables),
-                    **{key: output[key] for key in ("region", "crop_box", "rotation") if key in output},
+                    **{key: output[key] for key in ("region", "crop_box", "rotation", "provider_markdown") if key in output},
                 }
             )
 
@@ -512,7 +544,7 @@ class TyphoonOCRService:
             "pages": pages,
             "raw_pages": [
                 {"page": page["page"], "markdown": page.get("markdown", ""),
-                 **{key: page[key] for key in ("region", "crop_box", "rotation") if key in page}}
+                 **{key: page[key] for key in ("region", "crop_box", "rotation", "provider_markdown") if key in page}}
                 for page in pages
             ],
             "errors": [],

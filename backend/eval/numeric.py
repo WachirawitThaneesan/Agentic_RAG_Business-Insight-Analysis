@@ -33,7 +33,7 @@ _GENERATION_LABEL = re.compile(
 _UNIT_AFTER = re.compile(
     r"^\s*(พันล้านดอลลาร์\s*สรอ\.?|ล้านดอลลาร์\s*สรอ\.?|ดอลลาร์\s*สรอ\.?|"
     r"พันล้านดอลลาร์สหรัฐ|ล้านดอลลาร์สหรัฐ|ดอลลาร์สหรัฐ|"
-    r"พันล้านบาท|ล้านบาท|พันบาท|บาทต่อเดือน|บาท|เปอร์เซ็นต์|ร้อยละ|%|"
+    r"พันล้านบาท|ล้านบาท|พันบาท|บาท\s*ต่อเดือน\s*ต่อคัน|บาทต่อเดือน|บาท|เปอร์เซ็นต์แรก|เปอร์เซ็นต์|ร้อยละ|%|"
     r"ล้านหมายเลข|หมายเลข|ล้านรายการ|รายการ|ล้านบัญชี|บัญชี|ล้านคน|คน|"
     r"ล้านตัน|ตัน|แห่ง|จังหวัด|รีม|เท่า|วัน|คะแนน|คัน|สาขา|ประเภท|เมกะวัตต์|MW(?![A-Za-z])|"
     r"กิโลวัตต์[- ]?ชั่วโมงต่อปี|กิโลวัตต์[- ]?ชั่วโมง|kWh/year(?![A-Za-z])|kWh(?![A-Za-z])|ปี|"
@@ -144,7 +144,7 @@ def mentions_in(text: str) -> list[Mention]:
         preceding = text[max(0, match.start() - 40):match.start()]
         if match.group("sign") or match.group("open") or _NEGATIVE_WORD_BEFORE.search(preceding):
             value = -value
-        after = _UNIT_AFTER.match(text[match.end():match.end() + 24])
+        after = _UNIT_AFTER.match(text[match.end():match.end() + 48])
         before = _UNIT_BEFORE.search(text[max(0, match.start() - 16):match.start()])
         unit = normalize_unit(after.group(1) if after else (before.group(1) if before else None))
         if unit is None:
@@ -215,6 +215,21 @@ def _same_quantity(expected: Decimal, expected_unit: str | None, actual: Mention
         return _same_value(expected, converted, tolerance, rounding_decimals)
     return expected_unit == actual.unit and _same_value(expected, actual.value, tolerance,
                                                         rounding_decimals)
+
+
+def quantity_match(target: Any, value: Any, *, expected_unit: str | None,
+                   actual_unit: str | None, tolerance: Any = 0,
+                   rounding_decimals: int | None = None) -> bool:
+    """Compare explicit bound fields without reparsing a compound unit as prose."""
+    expected, actual, tol = decimal_value(target), decimal_value(value), decimal_value(tolerance)
+    if not all(n.is_finite() for n in (expected, actual, tol)): return False
+    if tol < 0: raise ValueError('tolerance cannot be negative')
+    if rounding_decimals is not None:
+        if type(rounding_decimals) is not int or not 0 <= rounding_decimals <= 12:
+            raise ValueError('rounding_decimals must be an integer from 0 to 12')
+        if tol: raise ValueError('Specify either tolerance or rounding_decimals')
+    return _same_quantity(expected, normalize_unit(expected_unit),
+        Mention(actual, normalize_unit(actual_unit), 0, 0), tol, rounding_decimals)
 
 
 def _verified_equation_operands(answer: str, expected: Decimal, unit: str | None,

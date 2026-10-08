@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from io import BytesIO
+import re
 
 import numpy as np
 from PIL import Image
@@ -66,6 +67,33 @@ def _left_crop_start(preview_png: bytes) -> float:
     return 0.18 if _colored_left_sidebar(preview_png) else 0.0
 
 
+def _numbered_spread_regions(page) -> list[dict] | None:
+    """Geometric fallback for colored spreads lacking a white gutter.
+
+    Only consecutive top page-number headings supply geometry. No document
+    text or values are used as OCR output or as answer evidence.
+    """
+    width,height=page.rect.width,page.rect.height
+    if width/max(height,1)<1.45:return None
+    headings=[]
+    for block in page.get_text('dict').get('blocks',[]):
+        for line in block.get('lines',[]):
+            box=line.get('bbox')
+            text=''.join(s.get('text','') for s in line.get('spans',[])).strip()
+            match=re.match(r'^(\d{1,3})\s*/(?:\s|$)',text)
+            if match and box and box[1]<height*.12:
+                headings.append((int(match[1]),box[0],box[1]))
+    if len(headings)!=2:return None
+    left,right=sorted(headings,key=lambda h:h[1]);delta=right[1]-left[1]
+    if right[0]-left[0]!=1 or not .35*width<=delta<=.55*width or abs(right[2]-left[2])>height*.03:return None
+    seam=(right[1]-.08*delta)/width
+    if not .4<=seam<=.7:return None
+    # Slight overlap prevents a title touching the inferred fold being cut.
+    edge=max(0,(left[1]-.10*delta)/width)
+    return [{'region':'left','crop_box':[edge,0.0,min(1,seam+.012),1.0],'rotation':0},
+            {'region':'right','crop_box':[max(0,seam-.012),0.0,1.0,1.0],'rotation':0}]
+
+
 def plan_pdf_regions(pdf_path: str, page_number: int, preview_png: bytes) -> list[dict]:
     """Return normalized crop boxes and rotations; fail open to one full page."""
     full = [{"region": "full", "crop_box": [0.0, 0.0, 1.0, 1.0], "rotation": 0}]
@@ -75,8 +103,11 @@ def plan_pdf_regions(pdf_path: str, page_number: int, preview_png: bytes) -> lis
         with pymupdf.open(pdf_path) as document:
             page = document[page_number - 1]
             rotation = _rotation_from_pdf_lines(page) if page.rect.width / max(page.rect.height, 1) >= 1.4 else 0
+            numbered_spread = _numbered_spread_regions(page) if not rotation else None
         seam = _two_up_seam(preview_png)
         if seam is None:
+            if numbered_spread is not None:
+                return numbered_spread
             full[0]["rotation"] = rotation
             return full
         left_edge = _left_crop_start(preview_png)

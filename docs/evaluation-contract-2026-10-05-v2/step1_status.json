@@ -1,0 +1,16 @@
+{
+  "version": "rag-evaluation-contract-v2.0",
+  "code_and_audit_preparation": "completed",
+  "human_review": "pending",
+  "human_completed": 0,
+  "human_cases_prepared": 22,
+  "reference_conflicts_pending": [
+    "B0286",
+    "B0306"
+  ],
+  "n_official_numeric_labels_human_confirmed": 0,
+  "old_scores_unchanged": true,
+  "new_answer_generation_runs": 0,
+  "application_retrieval_changed_in_this_step": false,
+  "measured_target_improvement_claimed": false
+}

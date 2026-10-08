@@ -178,10 +178,12 @@ async def _clear_page_artifacts(db: AsyncSession, doc_id: int, page_num: int) ->
     delete_page_tables(doc_id, page_num)
 
 
-def _add_raw_page_chunk(db: AsyncSession, document_id: int, filename: str, page_num: int, raw_page: dict, index: int) -> None:
+def _add_raw_page_chunk(db: AsyncSession, document_id: int, filename: str, page_num: int, raw_page: dict, index: int, source_sha256: str | None = None) -> None:
     markdown = str(raw_page.get("markdown") or "")
     metadata = {"source_kind": "raw_ocr_page", "page": page_num, "markdown": markdown}
-    metadata.update({key: raw_page[key] for key in ("region", "crop_box", "rotation") if key in raw_page})
+    metadata.update({key: raw_page[key] for key in ("region", "crop_box", "rotation", "provider_markdown") if key in raw_page})
+    if source_sha256:
+        metadata['source_sha256'] = source_sha256
     db.add(Chunk(
         document_id=document_id,
         chunk_index=index,
@@ -230,12 +232,12 @@ async def _retry_inconsistent_pdf_tables(filepath: str, filename: str, page_num:
         return primary_tables, None, [], f"retry_failed:{type(exc).__name__}"
 
 
-def _sync_tables_to_warehouse(document_id: int, filename: str, tables: list[dict], source_url: str = "") -> None:
+def _sync_tables_to_warehouse(document_id: int, filename: str, tables: list[dict], source_url: str = "", source_sha256: str | None = None) -> None:
     if not tables:
         return
     from backend.services.duckdb_warehouse import load_document_dim, load_table_into_warehouse
 
-    load_document_dim(document_id, filename, source_url=source_url or "")
+    load_document_dim(document_id, filename, source_url=source_url or "", source_sha256=source_sha256)
     for table in tables:
         load_table_into_warehouse(
             document_id, table["table_name"], table["headers"], table["rows"],
@@ -279,6 +281,7 @@ async def _store_table_chunks(
                     "unit": payload.get("unit"),
                     "partial_extraction": payload.get("partial_extraction", False),
                     "ambiguous_row_count": payload.get("ambiguous_row_count", 0),
+                    **{key: payload[key] for key in ("region", "crop_box", "rotation", "header_source_page", "header_repairs") if key in payload},
                     "row_start": payload.get("row_start"),
                     "row_end": payload.get("row_end"),
                     "page": page_number,
@@ -396,6 +399,7 @@ async def _store_semantic_chunks(
                 embedding=cr.embedding,
                 metadata_={
                     "start_char": cr.start_char,
+                    "source_kind": "semantic",
                     "end_char": cr.end_char,
                     "page": page_number,
                     "search_text": normalize_search_text(cr.text),
@@ -428,6 +432,7 @@ async def _ingest_ocr_batch(
     retry_result: Optional[dict] = None,
     retry_changes: Optional[list[dict]] = None,
 ):
+    page_chunk_start=next_chunk_index
     text_blocks = ocr_result.get("text_blocks", [])
     page_number = (ocr_result.get("raw_pages") or [{}])[0].get("page")
     all_tables = normalized_tables_override if normalized_tables_override is not None else normalize_ocr_tables(filename, ocr_result.get("tables", []))
@@ -467,6 +472,7 @@ async def _ingest_ocr_batch(
                     source_page=page_number,
                     unit=table.get("unit"),
                     source_provider=table.get("source_provider"),
+                    source_sha256=getattr(doc,'source_sha256',None),
                     quality_status=table.get("quality_status", "unknown"),
                 )
             )
@@ -541,6 +547,12 @@ async def _ingest_ocr_batch(
             ))
             next_chunk_index += 1
 
+    if getattr(doc,'source_sha256',None):
+        await db.flush()
+        page_chunks=(await db.execute(select(Chunk).where(Chunk.document_id==document_id,
+            Chunk.chunk_index>=page_chunk_start))).scalars().all()
+        for stored_chunk in page_chunks:
+            stored_chunk.metadata_={**(stored_chunk.metadata_ or {}), 'source_sha256':doc.source_sha256}
     return {
         "next_chunk_index": next_chunk_index,
         "text_blocks": len(text_blocks),
@@ -570,6 +582,8 @@ async def _process_saved_document(
     doc_id = doc.id
 
     try:
+        from backend.services.source_provenance import bind_saved_source
+        bind_saved_source(doc,filepath)
         total_text_blocks = 0
         total_tables_extracted = 0
         total_unresolved_rows = 0
@@ -641,7 +655,7 @@ async def _process_saved_document(
                 try:
                     if raw_page_budget != 0:
                         for region in raw_regions:
-                            _add_raw_page_chunk(db, doc_id, doc.filename, page_num, region, next_chunk_index)
+                            _add_raw_page_chunk(db, doc_id, doc.filename, page_num, region, next_chunk_index, getattr(doc,'source_sha256',None))
                             next_chunk_index += 1
                         stored_raw_pages += 1
                     page.status = "ocr_complete" if has_markdown else "empty"
@@ -695,7 +709,7 @@ async def _process_saved_document(
                     continue
 
                 try:
-                    _sync_tables_to_warehouse(doc_id, doc.filename, batch_result["tables"], doc.source_url or "")
+                    _sync_tables_to_warehouse(doc_id, doc.filename, batch_result["tables"], doc.source_url or "", getattr(doc,'source_sha256',None))
                     page.status = "indexed"
                     await db.commit()
                 except Exception as page_error:
@@ -768,7 +782,7 @@ async def _process_saved_document(
             total_tables_extracted = batch_result["tables_extracted"]
             total_unresolved_rows = batch_result["unresolved_rows"]
             total_unverified_rows = batch_result["unverified_rows"]
-            _sync_tables_to_warehouse(doc_id, doc.filename, batch_result["tables"], doc.source_url or "")
+            _sync_tables_to_warehouse(doc_id, doc.filename, batch_result["tables"], doc.source_url or "", getattr(doc,'source_sha256',None))
 
         empty_page_numbers = [page.page_number for page in all_pages if page.status == "empty"] if ext == "pdf" else []
         doc.status = (
@@ -974,24 +988,8 @@ async def get_document(doc_id: int, db: AsyncSession = Depends(get_db)):
     )
     structured = sd_result.scalars().all()
 
-    grouped_tables = {}
-    for row in structured:
-        table_name = _table_group_key(row.table_name or "untitled_table")
-        bucket = grouped_tables.setdefault(
-            table_name,
-            {"headers": row.headers or [], "rows": []},
-        )
-        bucket["rows"].append(row.row_data or {})
-
-    rebuilt_tables = []
-    for table_name, payload in grouped_tables.items():
-        rebuilt_tables.extend(
-            rebuild_structured_tables(
-                table_name,
-                payload["headers"],
-                payload["rows"],
-            )
-        )
+    from backend.services.stored_table_evidence import rebuild_page_tables
+    rebuilt_tables = rebuild_page_tables(structured, chunks)
 
     raw_ocr_pages = []
     raw_ocr_retry_pages = []
@@ -1123,18 +1121,24 @@ async def get_document_page(doc_id: int, page_number: int, db: AsyncSession = De
     ).order_by(Chunk.chunk_index))).scalars().all()
     raw_pages = []
     retry_pages = []
+    raw_tables = []
     quality_reports = []
     for chunk in chunks:
         metadata = chunk.metadata_ or {}
         kind = metadata.get("source_kind")
         if kind in {"raw_ocr_page", "raw_ocr_retry_page"}:
-            item = {key: metadata[key] for key in ("page", "region", "crop_box", "rotation", "markdown") if key in metadata}
+            item = {key: metadata[key] for key in ("page", "region", "crop_box", "rotation", "markdown", "provider_markdown") if key in metadata}
             (raw_pages if kind == "raw_ocr_page" else retry_pages).append(item)
         elif kind == "table_quality":
             quality_reports.append(metadata.get("report") or {})
+        elif kind == "raw_ocr_table":
+            raw_tables.append({key: value for key, value in metadata.items() if key != "source_kind"})
 
     try:
-        parsed = ocr_service._parse_markdown_pages(raw_pages) if raw_pages else {"raw_tables": []}
+        # Gemini tables were intentionally removed from the Typhoon prose.
+        # Re-parsing prose alone cannot recover the recorded Gemini output.
+        parsed = ({"raw_tables": raw_tables} if raw_tables else
+                  ocr_service._parse_markdown_pages(raw_pages) if raw_pages else {"raw_tables": []})
     except Exception as exc:
         logger.warning("Could not parse stored raw OCR for document %d page %d: %s", doc_id, page_number, exc)
         parsed = {"raw_tables": []}
@@ -1145,15 +1149,8 @@ async def get_document_page(doc_id: int, page_number: int, db: AsyncSession = De
             StructuredData.table_name.contains(f"page_{page_number}_table_", autoescape=True),
         ),
     ).order_by(StructuredData.id))).scalars().all()
-    grouped = {}
-    for row in rows:
-        key = _table_group_key(row.table_name or "untitled_table")
-        bucket = grouped.setdefault(key, {"headers": row.headers or [], "rows": []})
-        bucket["rows"].append(row.row_data or {})
-    structured_tables = [
-        table for name, payload in grouped.items()
-        for table in rebuild_structured_tables(name, payload["headers"], payload["rows"])
-    ]
+    from backend.services.stored_table_evidence import rebuild_page_tables
+    structured_tables = rebuild_page_tables(rows, chunks)
     return {
         "document_id": doc_id, "filename": doc.filename, "page": page_number,
         "status": page.status, "error_stage": page.error_stage, "error_message": page.error_message,

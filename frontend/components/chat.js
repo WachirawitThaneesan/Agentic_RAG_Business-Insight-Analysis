@@ -146,7 +146,7 @@ async function sendMessage() {
                 <div class="message-avatar">AI</div>
                 <div>
                     <div class="message-bubble">
-                        <div>${formatAnswer(result.answer)}</div>
+                        <div>${formatCapturedAnswer(result)}</div>
                         ${sourcesHtml}
                         ${sqlHtml}
                     </div>
@@ -186,7 +186,34 @@ function escapeHtml(text) {
 
 function formatAnswer(text) {
     // Basic formatting: newlines to <br>, detect simple markdown bold
-    return text
+    return escapeHtml(String(text || ''))
         .replace(/\n/g, '<br>')
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+}
+
+function formatCapturedAnswer(result) {
+    const answer = String(result.answer || '');
+    const points = Array.from(answer);
+    const slice = (start, end) => points.slice(start, end).join('');
+    const spans = result.claim_spans;
+    const claims = result.answer_claims;
+    const links = result.claim_citations;
+    if (!Array.isArray(spans) || !Array.isArray(claims) || !Array.isArray(links)
+        || spans.length !== claims.length) return formatAnswer(answer);
+    let output = '', cursor = 0;
+    for (let i = 0; i < spans.length; i++) {
+        const { start, end } = spans[i];
+        if (!Number.isInteger(start) || !Number.isInteger(end) || start < cursor
+            || end <= start || end > points.length || slice(start, end) !== claims[i])
+            return formatAnswer(answer);
+        output += formatAnswer(slice(cursor, end));
+        for (const link of links.filter(link => link.claim_index === i)) {
+            const source = (result.sources || [])[link.source_index];
+            if (source && source.source_id === link.source_id) {
+                output += ` <span data-claim-index="${i}" data-source-index="${link.source_index}">${renderChatSource(source)}</span>`;
+            }
+        }
+        cursor = end;
+    }
+    return output + formatAnswer(slice(cursor));
 }

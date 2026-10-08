@@ -1,0 +1,519 @@
+{
+  "date_local": "2026-10-08",
+  "scope": "A Stage2/4 checkpoint; Gemini TABLE component, current Typhoon prose/Gemini table pipeline retained. Pure Gemini prose not implemented or measured. Docling/B/C not started.",
+  "status": "scoped_checkpoint_delivered_quality_partial",
+  "quality_goal_completed": false,
+  "human_confirmed": false,
+  "ocr": {
+    "n_selected_physical_pages": 8,
+    "n_regions": 10,
+    "n_numeric_table_pages": 5,
+    "n_required_cells": 169,
+    "references_version": 3,
+    "source_reviewer": "Codex visual PDF review; not human certification",
+    "baseline_correct": 123,
+    "candidate_correct": 166,
+    "baseline_accuracy": 0.727810650887574,
+    "candidate_accuracy": 0.9822485207100592,
+    "recovered": [
+      "CPAXT_132_r0_c0",
+      "CPAXT_132_r0_c1",
+      "CPAXT_132_r0_c2",
+      "CPAXT_132_r1_c0",
+      "CPAXT_132_r1_c1",
+      "CPAXT_132_r1_c2",
+      "CPAXT_132_r2_c0",
+      "CPAXT_132_r2_c1",
+      "CPAXT_132_r2_c2",
+      "CPAXT_132_r3_c0",
+      "CPAXT_132_r3_c1",
+      "CPAXT_132_r3_c2",
+      "CPAXT_132_r4_c0",
+      "CPAXT_132_r4_c1",
+      "CPAXT_132_r4_c2",
+      "CPAXT_132_r5_c0",
+      "CPAXT_132_r5_c1",
+      "CPAXT_132_r5_c2",
+      "CPAXT_132_r6_c0",
+      "CPAXT_132_r6_c1",
+      "CPAXT_132_r6_c2",
+      "CPAXT_132_r7_c0",
+      "CPAXT_132_r7_c1",
+      "CPAXT_132_r7_c2",
+      "CPAXT_132_r8_c0",
+      "CPAXT_132_r8_c1",
+      "CPAXT_132_r8_c2",
+      "CPAXT_132_r10_c0",
+      "CPAXT_132_r10_c1",
+      "CPAXT_132_r10_c2",
+      "CPAXT_132_r11_c0",
+      "CPAXT_132_r11_c1",
+      "CPAXT_132_r11_c2",
+      "CPAXT_132_r12_c0",
+      "CPAXT_132_r12_c1",
+      "CPAXT_132_r12_c2",
+      "CPAXT_132_r13_c0",
+      "CPAXT_132_r13_c1",
+      "CPAXT_132_r13_c2",
+      "CPAXT_132_r14_c0",
+      "CPAXT_132_r14_c1",
+      "CPAXT_132_r14_c2",
+      "PTT_39_r0_c3"
+    ],
+    "regressed": [],
+    "remaining": [
+      {
+        "id": "CPAXT_132_r9_c0",
+        "page_id": "CPAXT_132",
+        "state": "omitted",
+        "correct": false,
+        "n_matching_locations": 0
+      },
+      {
+        "id": "CPAXT_132_r9_c1",
+        "page_id": "CPAXT_132",
+        "state": "omitted",
+        "correct": false,
+        "n_matching_locations": 0
+      },
+      {
+        "id": "CPAXT_132_r9_c2",
+        "page_id": "CPAXT_132",
+        "state": "omitted",
+        "correct": false,
+        "n_matching_locations": 0
+      }
+    ],
+    "per_page": {
+      "CPAXT_132": {
+        "n": 45,
+        "baseline_correct": 0,
+        "candidate_correct": 42
+      },
+      "CPAXT_133": {
+        "n": 21,
+        "baseline_correct": 21,
+        "candidate_correct": 21
+      },
+      "CPAXT_134": {
+        "n": 51,
+        "baseline_correct": 51,
+        "candidate_correct": 51
+      },
+      "EGCO_37": {
+        "n": 12,
+        "baseline_correct": 12,
+        "candidate_correct": 12
+      },
+      "PTT_39": {
+        "n": 40,
+        "baseline_correct": 39,
+        "candidate_correct": 40
+      }
+    },
+    "paired_page_cluster_bootstrap_delta_ci95": [
+      0.0,
+      0.679144385026738
+    ],
+    "bootstrap_scope": "5 selected development source pages, descriptive only; not unseen-report/generalization evidence",
+    "candidates": {
+      "live_baseline_v1": {
+        "method": "strict-source-cell-v1",
+        "scope": "169 visually transcribed numeric cells on five financial/energy table pages, with current-page headers. Three additional pages are layout/negative controls. Development only; no independent human certification.",
+        "n_required": 169,
+        "n_measured": 169,
+        "n_correct": 123,
+        "n_unknown": 0,
+        "accuracy_measured": 0.727810650887574,
+        "strict_lower_bound_all": 0.727810650887574,
+        "states": {
+          "omitted": 45,
+          "correct": 123,
+          "wrong_relation": 1
+        },
+        "failed_checks_nonexclusive": {
+          "signed_value": 1
+        },
+        "human_confirmed": false,
+        "reviewer": "Codex visual source review; development only",
+        "coverage": 1.0,
+        "n_completed_regions": 10,
+        "n_error_regions": 1
+      },
+      "live_candidate_v1": {
+        "method": "strict-source-cell-v1",
+        "scope": "169 visually transcribed numeric cells on five financial/energy table pages, with current-page headers. Three additional pages are layout/negative controls. Development only; no independent human certification.",
+        "n_required": 169,
+        "n_measured": 169,
+        "n_correct": 151,
+        "n_unknown": 0,
+        "accuracy_measured": 0.893491124260355,
+        "strict_lower_bound_all": 0.893491124260355,
+        "states": {
+          "correct": 151,
+          "omitted": 6,
+          "wrong_relation": 12
+        },
+        "failed_checks_nonexclusive": {
+          "unit": 12
+        },
+        "human_confirmed": false,
+        "reviewer": "Codex visual source review; development only",
+        "coverage": 1.0,
+        "n_completed_regions": 10,
+        "n_error_regions": 0
+      },
+      "live_candidate_v2": {
+        "method": "strict-source-cell-v1",
+        "scope": "169 visually transcribed numeric cells on five financial/energy table pages, with current-page headers. Three additional pages are layout/negative controls. Development only; no independent human certification.",
+        "n_required": 169,
+        "n_measured": 169,
+        "n_correct": 124,
+        "n_unknown": 0,
+        "accuracy_measured": 0.7337278106508875,
+        "strict_lower_bound_all": 0.7337278106508875,
+        "states": {
+          "omitted": 45,
+          "correct": 124
+        },
+        "failed_checks_nonexclusive": {},
+        "human_confirmed": false,
+        "reviewer": "Codex visual source review; development only",
+        "coverage": 1.0,
+        "n_completed_regions": 10,
+        "n_error_regions": 0
+      },
+      "live_candidate_v2_header_replay": {
+        "method": "strict-source-cell-v1",
+        "scope": "169 visually transcribed numeric cells on five financial/energy table pages, with current-page headers. Three additional pages are layout/negative controls. Development only; no independent human certification.",
+        "n_required": 169,
+        "n_measured": 169,
+        "n_correct": 166,
+        "n_unknown": 0,
+        "accuracy_measured": 0.9822485207100592,
+        "strict_lower_bound_all": 0.9822485207100592,
+        "states": {
+          "correct": 166,
+          "omitted": 3
+        },
+        "failed_checks_nonexclusive": {},
+        "human_confirmed": false,
+        "reviewer": "Codex visual source review; development only",
+        "coverage": 1.0,
+        "n_completed_regions": 10,
+        "n_error_regions": 0
+      }
+    },
+    "scorer_functions_unchanged": true,
+    "reference_corrections_disclosed": [
+      "v1→v2 wrong adjacent-header requirement removed for p134",
+      "v2→v3 three lease selectors strengthened using printed maturity qualifier"
+    ],
+    "reference_corrections_not_system_gains": true,
+    "text_CER_WER": null,
+    "chart_relation_accuracy": null,
+    "full_ingestion_acceptance": false,
+    "source_controls_notes": [
+      "PTT85 navigation produced zero tables in both regions",
+      "Candidate represents PTT39 numbered company list as a table; transformed list content is present in source but table-structure precision is not certified",
+      "CPAXT38 key/value N/A disclosure not extracted as table in candidate2; prose/full-pipeline retention not validated",
+      "PTTEP223 first continuation row entity remains out of page scope; not scored as a fully bound numeric relation"
+    ]
+  },
+  "capture": {
+    "bm25_thai": {
+      "n_answers": 133,
+      "n_raw_generation_available": 114,
+      "baseline": {
+        "capture_states": {
+          "captured_with_errors": 11,
+          "captured": 122
+        },
+        "errors_nonexclusive": {
+          "unannotated_numeric_quantity": 11,
+          "numeric_value_unit_not_bound": 3,
+          "numeric_quote_contains_other_quantities": 6,
+          "numeric_page_not_bound": 1
+        },
+        "n_numeric_required": 114,
+        "n_numeric_measured": 103,
+        "n_numeric_correct": 18,
+        "numeric_states": {
+          "wrong_bound_numeric_fact": 55,
+          "correct": 18,
+          "answer_numeric_annotation_missing": 11,
+          "explicit_abstention_on_required_quantity": 12,
+          "ambiguous_emitted_required_relation": 2,
+          "required_relation_not_emitted": 16
+        }
+      },
+      "candidate": {
+        "capture_states": {
+          "captured_with_errors": 8,
+          "captured": 125
+        },
+        "errors_nonexclusive": {
+          "unannotated_numeric_quantity": 8,
+          "numeric_value_unit_not_bound": 2,
+          "numeric_quote_contains_other_quantities": 4,
+          "numeric_page_not_bound": 1
+        },
+        "n_numeric_required": 114,
+        "n_numeric_measured": 107,
+        "n_numeric_correct": 19,
+        "numeric_states": {
+          "wrong_bound_numeric_fact": 57,
+          "correct": 19,
+          "answer_numeric_annotation_missing": 7,
+          "explicit_abstention_on_required_quantity": 12,
+          "required_relation_not_emitted": 17,
+          "ambiguous_emitted_required_relation": 2
+        }
+      },
+      "capture_recovered": [
+        "H009_2",
+        "H026_2",
+        "H037_2"
+      ],
+      "capture_regressions": [],
+      "strict_numeric_regressions": []
+    },
+    "dense": {
+      "n_answers": 133,
+      "n_raw_generation_available": 123,
+      "baseline": {
+        "capture_states": {
+          "captured": 126,
+          "captured_with_errors": 7
+        },
+        "errors_nonexclusive": {
+          "numeric_quote_contains_other_quantities": 4,
+          "unannotated_numeric_quantity": 6,
+          "numeric_value_unit_not_bound": 1,
+          "numeric_company_ambiguous": 1
+        },
+        "n_numeric_required": 114,
+        "n_numeric_measured": 106,
+        "n_numeric_correct": 12,
+        "numeric_states": {
+          "required_relation_not_emitted": 27,
+          "wrong_bound_numeric_fact": 48,
+          "explicit_abstention_on_required_quantity": 18,
+          "correct": 12,
+          "answer_numeric_annotation_missing": 8,
+          "ambiguous_emitted_required_relation": 1
+        }
+      },
+      "candidate": {
+        "capture_states": {
+          "captured": 128,
+          "captured_with_errors": 5
+        },
+        "errors_nonexclusive": {
+          "numeric_quote_contains_other_quantities": 3,
+          "unannotated_numeric_quantity": 4,
+          "numeric_company_ambiguous": 1
+        },
+        "n_numeric_required": 114,
+        "n_numeric_measured": 109,
+        "n_numeric_correct": 13,
+        "numeric_states": {
+          "required_relation_not_emitted": 28,
+          "wrong_bound_numeric_fact": 49,
+          "explicit_abstention_on_required_quantity": 18,
+          "correct": 13,
+          "answer_numeric_annotation_missing": 5,
+          "ambiguous_emitted_required_relation": 1
+        }
+      },
+      "capture_recovered": [
+        "H009_2",
+        "H026_2"
+      ],
+      "capture_regressions": [],
+      "strict_numeric_regressions": []
+    },
+    "lexical_first": {
+      "n_answers": 133,
+      "n_raw_generation_available": 119,
+      "baseline": {
+        "capture_states": {
+          "captured_with_errors": 9,
+          "captured": 124
+        },
+        "errors_nonexclusive": {
+          "unannotated_numeric_quantity": 10,
+          "numeric_quote_contains_other_quantities": 7,
+          "numeric_document_not_bound": 1,
+          "numeric_value_unit_not_bound": 1
+        },
+        "n_numeric_required": 114,
+        "n_numeric_measured": 106,
+        "n_numeric_correct": 22,
+        "numeric_states": {
+          "correct": 22,
+          "explicit_abstention_on_required_quantity": 7,
+          "required_relation_not_emitted": 20,
+          "wrong_bound_numeric_fact": 56,
+          "answer_numeric_annotation_missing": 8,
+          "ambiguous_emitted_required_relation": 1
+        }
+      },
+      "candidate": {
+        "capture_states": {
+          "captured_with_errors": 6,
+          "captured": 127
+        },
+        "errors_nonexclusive": {
+          "unannotated_numeric_quantity": 7,
+          "numeric_document_not_bound": 1,
+          "numeric_quote_contains_other_quantities": 3
+        },
+        "n_numeric_required": 114,
+        "n_numeric_measured": 109,
+        "n_numeric_correct": 22,
+        "numeric_states": {
+          "correct": 22,
+          "explicit_abstention_on_required_quantity": 7,
+          "required_relation_not_emitted": 20,
+          "wrong_bound_numeric_fact": 59,
+          "answer_numeric_annotation_missing": 5,
+          "ambiguous_emitted_required_relation": 1
+        }
+      },
+      "capture_recovered": [
+        "H009_1",
+        "H026_2",
+        "H037_2"
+      ],
+      "capture_regressions": [],
+      "strict_numeric_regressions": []
+    },
+    "simple_rag": {
+      "n_answers": 133,
+      "n_raw_generation_available": 123,
+      "baseline": {
+        "capture_states": {
+          "captured": 126,
+          "captured_with_errors": 7
+        },
+        "errors_nonexclusive": {
+          "numeric_quote_contains_other_quantities": 5,
+          "unannotated_numeric_quantity": 6,
+          "numeric_value_unit_not_bound": 1
+        },
+        "n_numeric_required": 114,
+        "n_numeric_measured": 106,
+        "n_numeric_correct": 14,
+        "numeric_states": {
+          "required_relation_not_emitted": 25,
+          "wrong_bound_numeric_fact": 51,
+          "explicit_abstention_on_required_quantity": 16,
+          "correct": 14,
+          "answer_numeric_annotation_missing": 8
+        }
+      },
+      "candidate": {
+        "capture_states": {
+          "captured": 128,
+          "captured_with_errors": 5
+        },
+        "errors_nonexclusive": {
+          "numeric_quote_contains_other_quantities": 4,
+          "unannotated_numeric_quantity": 4
+        },
+        "n_numeric_required": 114,
+        "n_numeric_measured": 109,
+        "n_numeric_correct": 15,
+        "numeric_states": {
+          "required_relation_not_emitted": 26,
+          "wrong_bound_numeric_fact": 52,
+          "explicit_abstention_on_required_quantity": 16,
+          "correct": 15,
+          "answer_numeric_annotation_missing": 5
+        }
+      },
+      "capture_recovered": [
+        "H009_2",
+        "H026_2"
+      ],
+      "capture_regressions": [],
+      "strict_numeric_regressions": []
+    }
+  },
+  "storage_replay": {
+    "scope": "Local replay of real recorded Gemini tables through normalization, persisted-row reconstruction and raw/table chunk metadata. No DB writes or actual ingestion acceptance claimed.",
+    "n_tables": 7,
+    "n_all_checks_passed": 7,
+    "failed_checks": [],
+    "new_sdk_attempts": 0,
+    "human_confirmed": false
+  },
+  "judge_failures": {
+    "invalid_or_missing_evidence_fragment": 21,
+    "invalid_claim_identity_schema": 2,
+    "non_json_or_empty_response_unresolved": 13
+  },
+  "resources": {
+    "inherited": {
+      "sdk_attempts": 3311,
+      "known_input_tokens": 54347114,
+      "known_output_tokens": 1802576,
+      "failed_calls_without_complete_usage": 324,
+      "paid_ocr_pages_new": 66
+    },
+    "new_delta": {
+      "sdk_attempts": 36,
+      "known_input_tokens": 126680,
+      "known_output_tokens": 14419,
+      "failed_calls_without_complete_usage": 6,
+      "paid_ocr_pages_new": 8
+    },
+    "cumulative": {
+      "sdk_attempts": 3347,
+      "known_input_tokens": 54473794,
+      "known_output_tokens": 1816995,
+      "failed_calls_without_complete_usage": 330,
+      "paid_ocr_pages_new": 74
+    },
+    "sdk_and_token_totals_lower_bounds": true,
+    "historical_interrupted_usage_unknown_preserved": true,
+    "cloud_cost_usd": null,
+    "journals": [
+      {
+        "run": "live_baseline_v1",
+        "n_actual_sdk_attempts": 15,
+        "statuses": {
+          "success": 10,
+          "error": 5
+        },
+        "elapsed_seconds": 93.09150419999969
+      },
+      {
+        "run": "live_candidate_v1",
+        "n_actual_sdk_attempts": 11,
+        "statuses": {
+          "success": 10,
+          "error": 1
+        },
+        "elapsed_seconds": 67.46097670000017
+      },
+      {
+        "run": "live_candidate_v2",
+        "n_actual_sdk_attempts": 10,
+        "statuses": {
+          "success": 10
+        },
+        "elapsed_seconds": 61.263022099999944
+      }
+    ],
+    "new_paid_page_key_note": "8 original-PDF/page keys added; source pages reread across experiments. Historical derivative-PDF keys are retained; this is not 8 unseen source pages."
+  },
+  "tests": {
+    "broad_regression": 323,
+    "focused_storage_chunk_checks": 7,
+    "focused_checks_overlap_broad": true,
+    "warnings": "preexisting Pydantic config deprecation"
+  },
+  "owned_running_experiment_processes": []
+}

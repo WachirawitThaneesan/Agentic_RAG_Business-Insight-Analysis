@@ -16,6 +16,9 @@ from __future__ import annotations
 import asyncio
 import logging
 import random
+import time
+from contextlib import contextmanager
+from contextvars import ContextVar
 from typing import Optional
 
 import httpx
@@ -35,6 +38,22 @@ _genai_client = None
 # Running token tally for the process. Hosted models bill per token, so an eval
 # run needs to report what it actually spent, not an estimate.
 usage = {"calls": 0, "input_tokens": 0, "output_tokens": 0, "thinking_tokens": 0}
+
+# Evaluation-only trace. The context variable keeps concurrent requests apart;
+# ordinary application calls never retain prompts or private document text.
+_model_trace: ContextVar[list[dict] | None] = ContextVar("model_trace", default=None)
+_current_model_call: ContextVar[dict | None] = ContextVar("current_model_call", default=None)
+
+
+@contextmanager
+def trace_model_calls():
+    """Capture exact prompts/responses/attempts for one evaluation question."""
+    calls: list[dict] = []
+    token = _model_trace.set(calls)
+    try:
+        yield calls
+    finally:
+        _model_trace.reset(token)
 
 
 def reset_usage() -> None:
@@ -77,6 +96,9 @@ def _get_genai_client():
 
 
 async def _generate_ollama(prompt: str, temperature: float, max_tokens: int) -> str:
+    trace = _current_model_call.get()
+    if trace is not None:
+        trace["attempts"].append({"provider": "ollama", "attempt": 1})
     async with httpx.AsyncClient(timeout=600.0, limits=HTTP_LIMITS, trust_env=not settings.OFFLINE_MODE) as client:
         resp = await client.post(
             f"{settings.OLLAMA_HOST}/api/generate",
@@ -89,7 +111,11 @@ async def _generate_ollama(prompt: str, temperature: float, max_tokens: int) -> 
             },
         )
         resp.raise_for_status()
-        return resp.json().get("response", "").strip()
+        payload = resp.json()
+        if trace is not None:
+            trace["input_tokens"] = payload.get("prompt_eval_count")
+            trace["output_tokens"] = payload.get("eval_count")
+        return payload.get("response", "").strip()
 
 
 # Vertex serves Gemini from a *dynamic shared quota* pool rather than a fixed
@@ -157,21 +183,28 @@ def _get_throttle() -> _Throttle:
     return _throttle
 
 
-async def _generate_gemini(prompt: str, temperature: float, max_tokens: int) -> str:
+async def _generate_gemini(prompt: str, temperature: float, max_tokens: int,
+                           *, response_mime_type: str | None = None,
+                           response_schema=None, thinking_budget: int | None = None) -> str:
     from google.genai import types
 
     # Gemini 3.x "thinks" by default and those thought tokens are billed as
     # output *and* drawn from max_output_tokens — a 100-token budget spent 92 on
     # thinking and truncated the answer to 4. Reasoning traces also corrupt the
     # ReAct ``Action:`` JSON parsing. So thinking is off unless asked for.
-    budget = getattr(settings, "GEMINI_THINKING_BUDGET", 0)
-    thinking = types.ThinkingConfig(thinking_budget=budget) if budget >= 0 else None
+    budget = (getattr(settings, "GEMINI_THINKING_BUDGET", 0)
+              if thinking_budget is None else thinking_budget)
+    thinking = types.ThinkingConfig(thinking_budget=budget, include_thoughts=False) if budget >= 0 else None
+    trace = _current_model_call.get()
+    if trace is not None: trace['requested_thinking_budget'] = budget
 
     client = _get_genai_client()
     config = types.GenerateContentConfig(
         temperature=temperature,
         max_output_tokens=max_tokens,
         thinking_config=thinking,
+        response_mime_type=response_mime_type,
+        response_schema=response_schema,
     )
 
     attempts = max(1, getattr(settings, "GEMINI_MAX_RETRIES", 8))
@@ -179,13 +212,28 @@ async def _generate_gemini(prompt: str, temperature: float, max_tokens: int) -> 
     throttle = _get_throttle()
     for attempt in range(attempts):
         await throttle.wait()
+        trace = _current_model_call.get()
+        attempt_record = {"provider": "gemini", "attempt": attempt + 1,
+                          "status": "pending", "input_tokens": None,
+                          "output_tokens": None, "thinking_tokens": None,
+                          "latency_scope": "sdk_generate_content"}
+        if trace is not None:
+            trace["attempts"].append(attempt_record)
+        attempt_started = time.perf_counter()
         try:
             resp = await client.aio.models.generate_content(
                 model=settings.GEMINI_MODEL, contents=prompt, config=config
             )
             throttle.relax()
             break
+        except asyncio.CancelledError:
+            attempt_record.update(status="cancelled", error_type="CancelledError")
+            raise
         except Exception as exc:
+            attempt_record["elapsed_seconds"] = time.perf_counter() - attempt_started
+            if trace is not None:
+                attempt_record.update(status="error", error_type=type(exc).__name__,
+                                      error_code=getattr(exc, "code", None))
             if not _is_retryable(exc):
                 raise
             throttle.penalise()
@@ -199,8 +247,18 @@ async def _generate_gemini(prompt: str, temperature: float, max_tokens: int) -> 
                 type(exc).__name__, attempt + 1, attempts - 1, delay, throttle._interval,
             )
             await asyncio.sleep(delay)
+        finally:
+            # Exclude throttle and retry sleep from SDK latency.
+            attempt_record.setdefault("elapsed_seconds", time.perf_counter() - attempt_started)
 
     u = getattr(resp, "usage_metadata", None)
+    if trace is not None:
+        trace["input_tokens"] = getattr(u, "prompt_token_count", None) if u is not None else None
+        trace["output_tokens"] = getattr(u, "candidates_token_count", None) if u is not None else None
+        trace["thinking_tokens"] = getattr(u, "thoughts_token_count", None) if u is not None else None
+        attempt_record["status"] = "success"
+        attempt_record.update({key: trace[key] for key in
+                               ("input_tokens", "output_tokens", "thinking_tokens")})
     if u is not None:
         usage["calls"] += 1
         usage["input_tokens"] += getattr(u, "prompt_token_count", 0) or 0
@@ -215,6 +273,9 @@ async def generate(
     *,
     temperature: Optional[float] = None,
     max_tokens: int = _DEFAULT_MAX_TOKENS,
+    response_mime_type: str | None = None,
+    response_schema=None,
+    thinking_budget: int | None = None,
 ) -> str:
     """Generate text with the configured provider.
 
@@ -226,14 +287,47 @@ async def generate(
         temperature = getattr(settings, "AGENT_TEMPERATURE", 0.1)
 
     provider = (settings.LLM_PROVIDER or "ollama").lower()
+    calls = _model_trace.get()
+    record = None
+    record_token = None
+    if calls is not None:
+        record = {"provider": provider, "model": active_model(), "prompt": prompt,
+                  "temperature": temperature, "max_tokens": max_tokens,
+                  "response_mime_type": response_mime_type,
+                  "response_schema": response_schema,
+                  "attempts": [], "input_tokens": None, "output_tokens": None,
+                  "thinking_tokens": None,
+                  "latency_scope": "generate_including_throttle_and_retry_backoff"}
+        calls.append(record)
+        record_token = _current_model_call.set(record)
+    started = time.perf_counter()
     try:
         if provider == "gemini":
-            result = await _generate_gemini(prompt, temperature, max_tokens)
+            options = {}
+            if response_mime_type is not None: options['response_mime_type'] = response_mime_type
+            if response_schema is not None: options['response_schema'] = response_schema
+            if thinking_budget is not None: options['thinking_budget'] = thinking_budget
+            result = await _generate_gemini(prompt, temperature, max_tokens, **options)
         else:
             result = await _generate_ollama(prompt, temperature, max_tokens)
+    except asyncio.CancelledError:
+        if record is not None:
+            record.update(status="cancelled", error_type="CancelledError", response="")
+        raise
     except Exception as exc:
         logger.error("LLM call failed (provider=%s): %s", provider, exc)
+        if record is not None:
+            record.update(status="error", error_type=type(exc).__name__, response="",
+                          elapsed_seconds=time.perf_counter() - started)
         return ""
+    finally:
+        if record is not None:
+            record["elapsed_seconds"] = time.perf_counter() - started
+            _current_model_call.reset(record_token)
+
+    if record is not None:
+        record.update(status="success", response=result,
+                      elapsed_seconds=time.perf_counter() - started)
 
     logger.info("LLM response (%s, %d chars): %s", provider, len(result), result[:300])
     return result

@@ -1,0 +1,1757 @@
+[
+  {
+    "id": "B0027",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0053",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0079",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": false,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0132",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": false,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0184",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0210",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0263",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image_and_codex_visual_check",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0315",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0113",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0004",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image_and_codex_visual_check",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0314",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": false,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0078",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "explicit_abstention_on_required_quantity",
+    "correct": false
+  },
+  {
+    "id": "B0072",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0082",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": false,
+      "measure": false,
+      "comparison_operator": true,
+      "year": false,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0123",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0133",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0143",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0143",
+    "quantity_index": 1,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "pttep_2567_th.pdf",
+      "registry_code": "PTTEP"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0173",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0173",
+    "quantity_index": 1,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0026",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0033",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0043",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": false,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0044",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0045",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0047",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true,
+      "range_bounds": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0048",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": false,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0049",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0051",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0054",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": false,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0055",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0056",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0060",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0081",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": false,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0086",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": false,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0097",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0098",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0111",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0117",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "explicit_abstention_on_required_quantity",
+    "correct": false
+  },
+  {
+    "id": "B0122",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0122",
+    "quantity_index": 1,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0129",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0130",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0131",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0134",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": false,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "pttep_2567_th.pdf",
+      "registry_code": "PTTEP"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0135",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0141",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0144",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0166",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image_and_codex_visual_check",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0166",
+    "quantity_index": 1,
+    "reference_review_status": "provisional_ai_pdf_image_and_codex_visual_check",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0170",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0171",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": false,
+      "measure": false,
+      "comparison_operator": false,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0182",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0183",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0186",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": false,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0187",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image_and_codex_visual_check",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": false,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0188",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image_and_codex_visual_check",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": false,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0196",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": false,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": false,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0197",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0219",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "pttep_2567_th.pdf",
+      "registry_code": "PTTEP"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0221",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": false,
+      "year": true,
+      "document": true,
+      "page": false,
+      "signed_value_and_explicit_unit": false
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "pttep_2567_th.pdf",
+      "registry_code": "PTTEP"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0223",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0235",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "pttep_2567_th.pdf",
+      "registry_code": "PTTEP"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0246",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0247",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0254",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0254",
+    "quantity_index": 1,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0257",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0262",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0267",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0270",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0272",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": false,
+      "measure": false,
+      "comparison_operator": true,
+      "year": false,
+      "document": true,
+      "page": false,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "pttep_2567_th.pdf",
+      "registry_code": "PTTEP"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0278",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0278",
+    "quantity_index": 1,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0278",
+    "quantity_index": 2,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0280",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0281",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0282",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0283",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0285",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image_and_codex_visual_check",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0286",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image_and_codex_visual_check",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": false,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0288",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image_and_codex_visual_check",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0296",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": false,
+      "document": true,
+      "page": false,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0297",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0298",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "explicit_abstention_on_required_quantity",
+    "correct": false
+  },
+  {
+    "id": "B0306",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_visual_adjudication",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0310",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "pttep_2567_th.pdf",
+      "registry_code": "PTTEP"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0313",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0316",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": false,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "cpaxtra_2567_th.pdf",
+      "registry_code": "CPAXT"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0320",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "explicit_abstention_on_required_quantity",
+    "correct": false
+  },
+  {
+    "id": "B0320",
+    "quantity_index": 1,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "explicit_abstention_on_required_quantity",
+    "correct": false
+  },
+  {
+    "id": "B0321",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0322",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0347",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image_and_codex_visual_check",
+    "human_confirmed": false,
+    "state": "answer_numeric_annotation_missing",
+    "correct": null
+  },
+  {
+    "id": "B0372",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "wrong_bound_numeric_fact",
+    "correct": false,
+    "checks": {
+      "company": true,
+      "measure": false,
+      "comparison_operator": true,
+      "year": false,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "egco_2567_th.pdf",
+      "registry_code": "EGCO"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0373",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "explicit_abstention_on_required_quantity",
+    "correct": false
+  },
+  {
+    "id": "B0377",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0382",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "pttep_2567_th.pdf",
+      "registry_code": "PTTEP"
+    },
+    "annotation_origin": "application_structured_output"
+  },
+  {
+    "id": "B0445",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0480",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "explicit_abstention_on_required_quantity",
+    "correct": false
+  },
+  {
+    "id": "B0482",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "required_relation_not_emitted",
+    "correct": false
+  },
+  {
+    "id": "B0493",
+    "quantity_index": 0,
+    "reference_review_status": "provisional_ai_pdf_image",
+    "human_confirmed": false,
+    "state": "correct",
+    "correct": true,
+    "checks": {
+      "company": true,
+      "measure": true,
+      "comparison_operator": true,
+      "year": true,
+      "document": true,
+      "page": true,
+      "signed_value_and_explicit_unit": true
+    },
+    "document_identity_resolution": {
+      "emitted_filename": "ptt_2567_th.pdf",
+      "registry_code": "PTT"
+    },
+    "annotation_origin": "application_structured_output"
+  }
+]

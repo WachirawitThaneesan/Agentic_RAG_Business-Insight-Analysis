@@ -1,0 +1,6 @@
+{
+  "planned_outputs": 532,
+  "all_outcomes_accounted_for": true,
+  "quality_goal_completed": false,
+  "scope": "Immutable delivery snapshot; live controller logs/state are excluded"
+}

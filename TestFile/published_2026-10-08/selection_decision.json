@@ -1,0 +1,23 @@
+{
+  "decision": "Do not select v21 native generation changes; restore exactly v16 native schema/instruction block. Keep deterministic verified binding fixes separately.",
+  "strict_numeric_baseline": 18,
+  "strict_numeric_candidate": 17,
+  "required_relations": 102,
+  "regressions": 4,
+  "recoveries": 3,
+  "selected_full498_evidence": "TestFile\\evaluation_B_2026-10-08\\recovery_root_2026-10-08\\focus498_capture_v3",
+  "current_capture_version": "application-answer-capture-v1.22",
+  "native_generator_block_equal_frozen_v16": true,
+  "current_full498_live_score_not_claimed": true,
+  "source_facts_labels_scorer_unchanged": true,
+  "retained_fixes": [
+    "Budget noun comparator false positive",
+    "Primary numeric quote vs full claim coverage",
+    "Range endpoints rather than artificial midpoint",
+    "Calendar dates/base years vs quantities",
+    "Full foreign-currency unit binding"
+  ],
+  "no_docling": true,
+  "current_binder_sha256": "4c33c014e1fac4e4d8c09be29920b7ba44c8cb3819c67830c7ef12a322ed265d",
+  "original_v16_file_sha256": "39ff79051d5a2209c35b7859efc286356d159b68a1a57361f777c7475d57f0d5"
+}

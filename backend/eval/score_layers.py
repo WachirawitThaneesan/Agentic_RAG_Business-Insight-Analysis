@@ -56,7 +56,7 @@ def _same_document(hit: dict, code: str, documents: dict[str, dict]) -> bool:
     doc = documents[code]
     if filename:
         basename = str(filename).replace("\\", "/").split("/")[-1].casefold()
-        if basename not in {doc["source_file"].casefold(), doc["excerpt_file"].casefold()}:
+        if basename not in {str(doc[k]).casefold() for k in ("source_file", "excerpt_file") if doc.get(k)}:
             return False
     return bool(hit.get("document") == code or filename)
 

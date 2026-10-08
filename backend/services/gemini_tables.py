@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import io
+import re
 from typing import Any
 
 import cv2
@@ -50,6 +51,39 @@ def _main_content_bottom(png_bytes: bytes) -> float | None:
     return ratio if ratio < 0.85 else None
 
 
+def _collapse_empty_audit_headers(headers, rows):
+    """Reattach an empty audit-status tier to its same-date statement column.
+
+    Gemini sometimes turns vertically stacked งบรวม/ตรวจสอบ into two columns,
+    with the audit-status column empty in every emitted row. Only this exact
+    qualifier/date pattern is repaired. Nonempty columns and different dates
+    remain untouched. No values or years are generated.
+    """
+    headers, rows = list(headers), [list(row) for row in rows]
+    repairs = []
+    original_indices = list(range(len(headers)))
+    i = 2
+    while i < len(headers):
+        primary, secondary = headers[i-1], headers[i]
+        scope = re.search(r'งบรวม|งบเฉพาะกิจการ|งบการเงินรวม', primary)
+        status = re.search(r'ตรวจสอบ|สอบทาน', secondary)
+        base = lambda text: re.sub(r'\s+', '', text)
+        same_date = (scope and status and base(primary.replace(scope.group(), '', 1)) ==
+                     base(secondary.replace(status.group(), '', 1)))
+        has_year = bool(re.search(r'(?<!\d)(?:25|20)\d{2}(?!\d)', primary))
+        all_empty = all(i < len(row) and not str(row[i]).strip() for row in rows)
+        if same_date and has_year and all_empty and any(str(row[i-1]).strip() for row in rows):
+            repairs.append({'kind':'empty_audit_status_header_tier',
+                'emitted_column_indices':[original_indices[i-1],original_indices[i]],
+                'original_headers':[primary,secondary]})
+            headers[i-1] = primary+' '+status.group()
+            headers.pop(i); original_indices.pop(i)
+            for row in rows: row.pop(i)
+        else:
+            i += 1
+    return headers, rows, repairs
+
+
 def _normalize_gemini_tables(data: dict[str, Any], page: int, region: dict) -> list[dict]:
     raw_tables = data.get("tables")
     if not isinstance(raw_tables, list):
@@ -88,6 +122,7 @@ def _normalize_gemini_tables(data: dict[str, Any], page: int, region: dict) -> l
                 rows.append([label, *(str(value if value is not None else "").strip()
                                       for value in row["values"])])
         title = str(raw.get("title") or f"table_{index}").strip()
+        headers, rows, header_repairs = _collapse_empty_audit_headers(headers, rows)
         unit = str(raw.get("unit") or "").strip()
         if unit.startswith("หน่วย:"):
             unit = unit.removeprefix("หน่วย:").strip()
@@ -101,6 +136,7 @@ def _normalize_gemini_tables(data: dict[str, Any], page: int, region: dict) -> l
             "page": page,
             "source_provider": "gemini",
             "ambiguous_row_count": ambiguous_rows,
+            **({'header_repairs': header_repairs} if header_repairs else {}),
             **{key: region[key] for key in ("region", "crop_box", "rotation") if key in region},
         })
     return tables

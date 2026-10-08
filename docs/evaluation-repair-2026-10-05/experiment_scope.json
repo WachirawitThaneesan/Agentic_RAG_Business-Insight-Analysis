@@ -1,0 +1,72 @@
+{
+  "publication_version": "retrieval-repair-2026-10-05-v3",
+  "parent_version": "comprehensive-rag-v1.5",
+  "original_reference_sha256": "b6f452f0c576e5182fd0ed91997cff5ce8dba1070888165468c15dbf4c12804e",
+  "repaired_reference_sha256": "da7ea94bd87e72df0f645b7e519f1f97be4e8910ccd63246f7c61b53c4aea2f9",
+  "human_certified_labels": 0,
+  "reports": "Four previously used Thai reports; diagnostic, not held-out",
+  "input_pdfs": "1600 physical PDF pages; original hash-locked selectable text; no new cloud OCR",
+  "new_answers": 50,
+  "original500_answers_not_rerun": true,
+  "answer_inference_version": "repaired_production498; before final cross-entity keyword patch",
+  "inference_code_locks": {
+    "alias_only500": {
+      "recorded_before_inference": true,
+      "code_sha256": {
+        "scripts/benchmark_large_retrieval.py": "046b1f45ed35dbded4580d13388ee76ce2f3bd4020ccaffccec6a70940473edc",
+        "backend/services/rag.py": "3341b78afc5de4647b2c4a668e65b3dc45fd6435e11105946bfd6f6856a3a9fe",
+        "backend/services/retrieval_rank.py": "0b9d2d29d0e44da99b6db7f396981ff0fef1338222cca854b5b1b44adc7f8984"
+      },
+      "label_scope": "Diagnostic reports, not unseen validation"
+    },
+    "production_weighted500": {
+      "recorded_before_inference": true,
+      "code_sha256": {
+        "scripts/benchmark_large_retrieval.py": "046b1f45ed35dbded4580d13388ee76ce2f3bd4020ccaffccec6a70940473edc",
+        "backend/services/rag.py": "77c95f7c375bd1b58d35f6f8d2e60059f604542aeab2ee189a219d4ae6ea7a13",
+        "backend/services/retrieval_rank.py": "e6b10312a720ffc85f8d041db92d9f2959f2364e2cca4f4aeb269088f0029269"
+      },
+      "label_scope": "Diagnostic reports, not unseen validation"
+    },
+    "repaired_baseline498": {
+      "recorded_before_inference": true,
+      "code_sha256": {
+        "scripts/benchmark_large_retrieval.py": "cd63d7e6d1df9d045f47c7072cea363725f6c834319f82bfb799abee4c9cce60",
+        "backend/services/rag.py": "77c95f7c375bd1b58d35f6f8d2e60059f604542aeab2ee189a219d4ae6ea7a13",
+        "backend/services/retrieval_rank.py": "e6b10312a720ffc85f8d041db92d9f2959f2364e2cca4f4aeb269088f0029269"
+      },
+      "retrieval_snapshot_sha256": {
+        "rag": "62c4f0648f8b5039f8ce9f50e917b03a3cbca5c6d053480f74cbfe1620dea0de",
+        "retrieval_rank": "4faad9a074ee7eaf9a9ec4517a75f694ec06b3e122cd026e0fc33962f6240052"
+      },
+      "label_scope": "Diagnostic reports, not unseen validation"
+    },
+    "repaired_production498": {
+      "recorded_before_inference": true,
+      "code_sha256": {
+        "scripts/benchmark_large_retrieval.py": "cd63d7e6d1df9d045f47c7072cea363725f6c834319f82bfb799abee4c9cce60",
+        "backend/services/rag.py": "77c95f7c375bd1b58d35f6f8d2e60059f604542aeab2ee189a219d4ae6ea7a13",
+        "backend/services/retrieval_rank.py": "e6b10312a720ffc85f8d041db92d9f2959f2364e2cca4f4aeb269088f0029269"
+      },
+      "retrieval_snapshot_sha256": null,
+      "label_scope": "Diagnostic reports, not unseen validation"
+    },
+    "cross_entity498": {
+      "recorded_before_inference": true,
+      "code_sha256": {
+        "scripts/benchmark_large_retrieval.py": "cd63d7e6d1df9d045f47c7072cea363725f6c834319f82bfb799abee4c9cce60",
+        "backend/services/rag.py": "3bed6161cf6902817e4b0acec8a4c05b701ada20a95fe0f431003fb966e4cde7",
+        "backend/services/retrieval_rank.py": "e6b10312a720ffc85f8d041db92d9f2959f2364e2cca4f4aeb269088f0029269"
+      },
+      "retrieval_snapshot_sha256": null,
+      "label_scope": "Diagnostic reports, not unseen validation"
+    }
+  },
+  "retrieval_code": {
+    "backend/services/rag.py": "3bed6161cf6902817e4b0acec8a4c05b701ada20a95fe0f431003fb966e4cde7",
+    "backend/services/retrieval_rank.py": "e6b10312a720ffc85f8d041db92d9f2959f2364e2cca4f4aeb269088f0029269"
+  },
+  "publisher_sha256": "077af0e20947b44534f5b211e4cf23d3b5b101d3df2ee7781d6660e3694cc4a4",
+  "original_scores_immutable": true,
+  "timing_scope": "Cached query embeddings. Paired corrected-bank runs overlapped; not controlled latency comparison."
+}

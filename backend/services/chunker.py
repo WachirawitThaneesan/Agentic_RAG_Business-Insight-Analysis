@@ -158,16 +158,20 @@ async def chunk_document(
 
     results = []
     char_offset = 0
+    summaries = []
+    for chunk_text in chunk_texts:
+        summaries.append(await generate_chunk_summary(chunk_text) if generate_summaries else '')
+    embed_inputs = [f"{summary}\n{text}" if summary else text
+                    for text, summary in zip(chunk_texts, summaries)]
+    # Keep identical text/summary ordering while using the local batch endpoint.
+    chunk_embeddings = await get_embeddings_batch(embed_inputs)
 
     for i, chunk_text in enumerate(chunk_texts):
         # Step 2: LLM enrichment (generate summary)
-        summary = ""
-        if generate_summaries:
-            summary = await generate_chunk_summary(chunk_text)
+        summary = summaries[i]
 
         # Step 3: Create embedding (combine text + summary for richer embedding)
-        embed_input = f"{summary}\n{chunk_text}" if summary else chunk_text
-        embedding = await get_embedding(embed_input)
+        embedding = chunk_embeddings[i]
 
         result = ChunkResult(
             text=chunk_text,

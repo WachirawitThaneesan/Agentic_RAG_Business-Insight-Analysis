@@ -1,0 +1,20 @@
+{
+  "method_version": "rag-evaluation-contract-v2.0",
+  "targets": {
+    "page_hit_at_5": 0.9,
+    "factual_precision": 0.95,
+    "factual_recall": 0.85,
+    "context_recall": 0.9,
+    "answer_relevancy": 0.9,
+    "faithfulness": 0.95,
+    "citation_link_precision": 0.95,
+    "citation_claim_recall": 0.9,
+    "strict_numeric_accuracy": 0.95,
+    "complete_answer_success": 0.75
+  },
+  "scope": "Proposed engineering targets, not universal thesis pass thresholds",
+  "measurement": "Locked definitions, per-metric denominator, report-level unseen split",
+  "evaluation_coverage_target": 0.95,
+  "human_validation": "pending; no fabricated certification",
+  "uncertainty": "Report judge failures, unavailable metrics and intervals separately; no removing hard failures"
+}

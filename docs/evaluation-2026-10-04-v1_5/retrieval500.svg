@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="700" height="225" preserveAspectRatio="xMinYMin meet" viewBox="0 0 700 225" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="700" height="225"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-225)" style="clip-path: url(#clip)">
+		<g transform="">
+			<g transform="">
+				<g transform="">
+					<rect x="120.0" y="59.375" width="292.68" height="31.25" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(52%,58%,64%); fill-rule: evenodd;"/>
+					<rect x="120.0" y="109.375" width="210.60000000000002" height="31.25" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(74%,78%,82%); fill-rule: evenodd;"/>
+					<rect x="120.0" y="159.375" width="339.12" height="31.25" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(3%,49%,52%); fill-rule: evenodd;"/>
+					<g transform=""/>
+				</g>
+				<g transform="">
+					<g transform="">
+						<path d="M 120,50 L 120,200 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+					</g>
+					<g transform="">
+						<path d="M 120,50 L 115,50 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 120,100 L 115,100 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 120,150 L 115,150 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 120,200 L 115,200 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+					</g>
+					<g transform="">
+						<g transform=" matrix(1,0,0,1,114,75)">
+							<text x="-31.344" y="-4.800000000000001" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-9) scale(1,-1)">BM25</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,114,125)">
+							<text x="-78.696" y="-4.800000000000001" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-9) scale(1,-1)">Dense bge-m3</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,114,175)">
+							<text x="-57.36" y="-4.800000000000001" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-9) scale(1,-1)">App hybrid</text>
+						</g>
+					</g>
+				</g>
+				<g transform="">
+					<g transform="">
+						<path d="M 120,50 L 660,50 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+					</g>
+					<g transform="">
+						<path d="M 120,50 L 120,45 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 228,50 L 228,45 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 336,50 L 336,45 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 444,50 L 444,45 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 552,50 L 552,45 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 660,50 L 660,45 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+					</g>
+					<g transform="">
+						<g transform=" matrix(1,0,0,1,120,45)">
+							<text x="-3.0580000000000003" y="-11.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-22) scale(1,-1)">0</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,228,45)">
+							<text x="-6.1160000000000005" y="-11.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-22) scale(1,-1)">20</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,336,45)">
+							<text x="-6.1160000000000005" y="-11.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-22) scale(1,-1)">40</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,444,45)">
+							<text x="-6.1160000000000005" y="-11.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-22) scale(1,-1)">60</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,552,45)">
+							<text x="-6.1160000000000005" y="-11.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-22) scale(1,-1)">80</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,660,45)">
+							<text x="-9.174" y="-11.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-22) scale(1,-1)">100</text>
+						</g>
+					</g>
+				</g>
+			</g>
+			<text x="420.68" y="71.0" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,142) scale(1,-1)">54.2%</text>
+			<text x="338.6" y="121.0" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,242) scale(1,-1)">39.0%</text>
+			<text x="467.12" y="171.0" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,342) scale(1,-1)">62.8%</text>
+			<text x="130" y="12" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,24) scale(1,-1)">Questions with a labeled evidence page in Top 5 (%)</text>
+		</g>
+	</g>
+</svg>

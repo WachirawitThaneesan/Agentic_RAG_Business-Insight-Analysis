@@ -1,0 +1,1954 @@
+{
+  "as_of_utc": "2026-10-07T16:47:13.487459+00:00",
+  "development50": {
+    "hybrid_current": {
+      "planned_questions": 50,
+      "generated_outputs": 50,
+      "capture_coverage": 0.98,
+      "answer_coverage": 0.96,
+      "generation_errors": 0,
+      "refusals": 2,
+      "required_numeric_tuples": {
+        "n_required": 20,
+        "n_measurable": 19,
+        "n_required_tuples_in_started_subset": 20,
+        "coverage": 0.95,
+        "n_correct": 8,
+        "accuracy_measured_subset": 0.42105263157894735,
+        "states": {
+          "wrong_bound_numeric_fact": 7,
+          "correct": 8,
+          "explicit_abstention_on_required_quantity": 3,
+          "answer_numeric_annotation_missing": 1,
+          "required_relation_not_emitted": 1
+        }
+      },
+      "judge_coverage": 0.98,
+      "factual_verified_support_macro": 0.9652173913043478,
+      "faithfulness_verified_support_macro": 0.9956521739130435,
+      "factual_states": {
+        "supported_quote_verified": 66,
+        "contradicted_ai_needs_review": 2,
+        "insufficient_evidence": 3,
+        "quote_unverifiable": 0
+      },
+      "faithfulness_states": {
+        "supported_quote_verified": 70,
+        "contradicted_ai_needs_review": 0,
+        "insufficient_evidence": 1,
+        "quote_unverifiable": 0
+      },
+      "claim_aggregation_scope": "Answerable questions only; all/control claims retained separately",
+      "answerable_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 70,
+            "contradicted_ai_needs_review": 0,
+            "insufficient_evidence": 1,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 71,
+          "quote_verified_support_fraction_micro": 0.9859154929577465,
+          "quote_verified_support_fraction_macro": 0.9956521739130435,
+          "n_macro_measured": 46,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 66,
+            "contradicted_ai_needs_review": 2,
+            "insufficient_evidence": 3,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 71,
+          "quote_verified_support_fraction_micro": 0.9295774647887324,
+          "quote_verified_support_fraction_macro": 0.9652173913043478,
+          "n_macro_measured": 46,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "all_questions_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 70,
+            "contradicted_ai_needs_review": 0,
+            "insufficient_evidence": 1,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 71,
+          "quote_verified_support_fraction_micro": 0.9859154929577465,
+          "quote_verified_support_fraction_macro": 0.9956521739130435,
+          "n_macro_measured": 46,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 66,
+            "contradicted_ai_needs_review": 2,
+            "insufficient_evidence": 3,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 71,
+          "quote_verified_support_fraction_micro": 0.9295774647887324,
+          "quote_verified_support_fraction_macro": 0.9652173913043478,
+          "n_macro_measured": 46,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "failed_judge_reason_counts": {
+        "Supported decision requires an original text fragment": 1
+      },
+      "generation_seconds_observed": {
+        "n": 50,
+        "median": 4.909587000000556,
+        "p95_empirical": 11.260766699999294,
+        "sum_overlapping_question_wall_times": 300.00769370000035,
+        "scope": "Per-output recorded time incl retries; concurrent/instrumented, not a controlled speed comparison"
+      },
+      "actual_citation_links": 86,
+      "actual_links_audited": 83,
+      "actual_link_evaluation_coverage": 0.9651162790697675,
+      "actual_link_precision_all": null,
+      "actual_link_precision_lower_bound": 0.9534883720930233,
+      "actual_citation_claim_recall_macro_measured": 0.9956521739130434,
+      "n_answerable_actual_claim_recall_measured": 46,
+      "n_answerable_actual_claim_recall_eligible": 50,
+      "reference_and_context_metrics_ai_provisional": {
+        "answer_relevancy_rubric": {
+          "mean": 0.9897959183673469,
+          "n_measured": 49,
+          "n_total": 49
+        },
+        "context_precision_ap": {
+          "mean": 0.821346169420149,
+          "n_measured": 49,
+          "n_total": 49
+        },
+        "context_recall": {
+          "mean": 0.9693877551020408,
+          "n_measured": 49,
+          "n_total": 49
+        },
+        "context_usefulness_precision": {
+          "mean": 0.26050372529964366,
+          "n_measured": 49,
+          "n_total": 49
+        },
+        "factual_recall": {
+          "mean": 0.9081632653061225,
+          "n_measured": 49,
+          "n_total": 49
+        }
+      },
+      "micro_claim_metrics_ai_provisional_excluding_proposed_citation_recall": {
+        "n_claims": 71,
+        "n_required_reference_claims": 72,
+        "faithfulness": 0.9859154929577465,
+        "factual_precision": 0.9295774647887324,
+        "factual_recall": 0.9166666666666666,
+        "context_recall": 0.9722222222222222
+      },
+      "answerable_control_breakdown": {
+        "n_answerable_planned": 50,
+        "n_unanswerable_planned": 0,
+        "n_answerable_nonrefusal": 48,
+        "n_false_refusals_on_answerable": 2,
+        "n_control_refusals": 0,
+        "answer_coverage_answerable": 0.96
+      },
+      "complete_answer_success": {
+        "n_pass": 31,
+        "n_total": 50,
+        "n_unresolved": 4,
+        "rate_all": null,
+        "strict_lower_bound_all": 0.62
+      },
+      "unanswerable_controls": {
+        "n_pass": 0,
+        "n_total": 0,
+        "n_unresolved": 0,
+        "rate_all": null,
+        "strict_lower_bound_all": null
+      },
+      "human_confirmed": false,
+      "official_thesis_score_eligible": false,
+      "by_report": {
+        "CPAXT": {
+          "n_answerable_planned": 13,
+          "n_answerable_judged": 13,
+          "n_complete_pass": 8,
+          "n_unresolved": 0,
+          "complete_lower_bound": 0.6153846153846154,
+          "complete_measured_rate": 0.6153846153846154,
+          "complete_rate_wilson95": [
+            0.355228915126657,
+            0.8229029220223743
+          ],
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "EGCO": {
+          "n_answerable_planned": 11,
+          "n_answerable_judged": 11,
+          "n_complete_pass": 8,
+          "n_unresolved": 1,
+          "complete_lower_bound": 0.7272727272727273,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "PTT": {
+          "n_answerable_planned": 15,
+          "n_answerable_judged": 15,
+          "n_complete_pass": 7,
+          "n_unresolved": 2,
+          "complete_lower_bound": 0.4666666666666667,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "PTTEP": {
+          "n_answerable_planned": 11,
+          "n_answerable_judged": 10,
+          "n_complete_pass": 8,
+          "n_unresolved": 1,
+          "complete_lower_bound": 0.7272727272727273,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      },
+      "by_category": {
+        "prose": {
+          "n_answerable_planned": 50,
+          "n_answerable_judged": 49,
+          "n_complete_pass": 31,
+          "n_unresolved": 4,
+          "complete_lower_bound": 0.62,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      }
+    },
+    "lexical_first": {
+      "planned_questions": 50,
+      "generated_outputs": 50,
+      "capture_coverage": 0.98,
+      "answer_coverage": 0.9,
+      "generation_errors": 0,
+      "refusals": 5,
+      "required_numeric_tuples": {
+        "n_required": 20,
+        "n_measurable": 19,
+        "n_required_tuples_in_started_subset": 20,
+        "coverage": 0.95,
+        "n_correct": 6,
+        "accuracy_measured_subset": 0.3157894736842105,
+        "states": {
+          "correct": 6,
+          "wrong_bound_numeric_fact": 8,
+          "explicit_abstention_on_required_quantity": 3,
+          "answer_numeric_annotation_missing": 1,
+          "required_relation_not_emitted": 2
+        }
+      },
+      "judge_coverage": 0.98,
+      "factual_verified_support_macro": 1.0,
+      "faithfulness_verified_support_macro": 1.0,
+      "factual_states": {
+        "supported_quote_verified": 61,
+        "contradicted_ai_needs_review": 0,
+        "insufficient_evidence": 0,
+        "quote_unverifiable": 0
+      },
+      "faithfulness_states": {
+        "supported_quote_verified": 61,
+        "contradicted_ai_needs_review": 0,
+        "insufficient_evidence": 0,
+        "quote_unverifiable": 0
+      },
+      "claim_aggregation_scope": "Answerable questions only; all/control claims retained separately",
+      "answerable_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 61,
+            "contradicted_ai_needs_review": 0,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 61,
+          "quote_verified_support_fraction_micro": 1.0,
+          "quote_verified_support_fraction_macro": 1.0,
+          "n_macro_measured": 44,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 61,
+            "contradicted_ai_needs_review": 0,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 61,
+          "quote_verified_support_fraction_micro": 1.0,
+          "quote_verified_support_fraction_macro": 1.0,
+          "n_macro_measured": 44,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "all_questions_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 61,
+            "contradicted_ai_needs_review": 0,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 61,
+          "quote_verified_support_fraction_micro": 1.0,
+          "quote_verified_support_fraction_macro": 1.0,
+          "n_macro_measured": 44,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 61,
+            "contradicted_ai_needs_review": 0,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 61,
+          "quote_verified_support_fraction_micro": 1.0,
+          "quote_verified_support_fraction_macro": 1.0,
+          "n_macro_measured": 44,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "failed_judge_reason_counts": {
+        "Fragment identifier outside bound evidence": 1
+      },
+      "generation_seconds_observed": {
+        "n": 50,
+        "median": 5.200692249999975,
+        "p95_empirical": 27.008738399999856,
+        "sum_overlapping_question_wall_times": 435.8218222000014,
+        "scope": "Per-output recorded time incl retries; concurrent/instrumented, not a controlled speed comparison"
+      },
+      "actual_citation_links": 66,
+      "actual_links_audited": 65,
+      "actual_link_evaluation_coverage": 0.9848484848484849,
+      "actual_link_precision_all": null,
+      "actual_link_precision_lower_bound": 0.9848484848484849,
+      "actual_citation_claim_recall_macro_measured": 1.0,
+      "n_answerable_actual_claim_recall_measured": 44,
+      "n_answerable_actual_claim_recall_eligible": 50,
+      "reference_and_context_metrics_ai_provisional": {
+        "answer_relevancy_rubric": {
+          "mean": 0.9795918367346939,
+          "n_measured": 49,
+          "n_total": 49
+        },
+        "context_precision_ap": {
+          "mean": 0.8858402170391966,
+          "n_measured": 49,
+          "n_total": 49
+        },
+        "context_recall": {
+          "mean": 0.9540816326530612,
+          "n_measured": 49,
+          "n_total": 49
+        },
+        "context_usefulness_precision": {
+          "mean": 0.25204081632653064,
+          "n_measured": 49,
+          "n_total": 49
+        },
+        "factual_recall": {
+          "mean": 0.8979591836734694,
+          "n_measured": 49,
+          "n_total": 49
+        }
+      },
+      "micro_claim_metrics_ai_provisional_excluding_proposed_citation_recall": {
+        "n_claims": 61,
+        "n_required_reference_claims": 69,
+        "faithfulness": 1.0,
+        "factual_precision": 1.0,
+        "factual_recall": 0.8840579710144928,
+        "context_recall": 0.9565217391304348
+      },
+      "answerable_control_breakdown": {
+        "n_answerable_planned": 50,
+        "n_unanswerable_planned": 0,
+        "n_answerable_nonrefusal": 45,
+        "n_false_refusals_on_answerable": 5,
+        "n_control_refusals": 0,
+        "answer_coverage_answerable": 0.9
+      },
+      "complete_answer_success": {
+        "n_pass": 32,
+        "n_total": 50,
+        "n_unresolved": 2,
+        "rate_all": null,
+        "strict_lower_bound_all": 0.64
+      },
+      "unanswerable_controls": {
+        "n_pass": 0,
+        "n_total": 0,
+        "n_unresolved": 0,
+        "rate_all": null,
+        "strict_lower_bound_all": null
+      },
+      "human_confirmed": false,
+      "official_thesis_score_eligible": false,
+      "by_report": {
+        "CPAXT": {
+          "n_answerable_planned": 13,
+          "n_answerable_judged": 13,
+          "n_complete_pass": 10,
+          "n_unresolved": 0,
+          "complete_lower_bound": 0.7692307692307693,
+          "complete_measured_rate": 0.7692307692307693,
+          "complete_rate_wilson95": [
+            0.49743624053272495,
+            0.9182047128150143
+          ],
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "EGCO": {
+          "n_answerable_planned": 11,
+          "n_answerable_judged": 10,
+          "n_complete_pass": 7,
+          "n_unresolved": 1,
+          "complete_lower_bound": 0.6363636363636364,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "PTT": {
+          "n_answerable_planned": 15,
+          "n_answerable_judged": 15,
+          "n_complete_pass": 7,
+          "n_unresolved": 1,
+          "complete_lower_bound": 0.4666666666666667,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "PTTEP": {
+          "n_answerable_planned": 11,
+          "n_answerable_judged": 11,
+          "n_complete_pass": 8,
+          "n_unresolved": 0,
+          "complete_lower_bound": 0.7272727272727273,
+          "complete_measured_rate": 0.7272727272727273,
+          "complete_rate_wilson95": [
+            0.43435469882387084,
+            0.902539407099751
+          ],
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      },
+      "by_category": {
+        "prose": {
+          "n_answerable_planned": 50,
+          "n_answerable_judged": 49,
+          "n_complete_pass": 32,
+          "n_unresolved": 2,
+          "complete_lower_bound": 0.64,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      }
+    }
+  },
+  "new_issuer_final133": {
+    "bm25_thai": {
+      "planned_questions": 133,
+      "generated_outputs": 133,
+      "capture_coverage": 0.9172932330827067,
+      "answer_coverage": 0.8421052631578947,
+      "generation_errors": 0,
+      "refusals": 21,
+      "required_numeric_tuples": {
+        "n_required": 114,
+        "n_measurable": 103,
+        "n_required_tuples_in_started_subset": 114,
+        "coverage": 0.9035087719298246,
+        "n_correct": 18,
+        "accuracy_measured_subset": 0.17475728155339806,
+        "states": {
+          "wrong_bound_numeric_fact": 55,
+          "correct": 18,
+          "answer_numeric_annotation_missing": 11,
+          "explicit_abstention_on_required_quantity": 12,
+          "ambiguous_emitted_required_relation": 2,
+          "required_relation_not_emitted": 16
+        }
+      },
+      "judge_coverage": 0.9849624060150376,
+      "factual_verified_support_macro": 0.8738317757009346,
+      "faithfulness_verified_support_macro": 0.985981308411215,
+      "factual_states": {
+        "supported_quote_verified": 113,
+        "contradicted_ai_needs_review": 16,
+        "insufficient_evidence": 0,
+        "quote_unverifiable": 0
+      },
+      "faithfulness_states": {
+        "supported_quote_verified": 127,
+        "contradicted_ai_needs_review": 2,
+        "insufficient_evidence": 0,
+        "quote_unverifiable": 0
+      },
+      "claim_aggregation_scope": "Answerable questions only; all/control claims retained separately",
+      "answerable_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 127,
+            "contradicted_ai_needs_review": 2,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 129,
+          "quote_verified_support_fraction_micro": 0.9844961240310077,
+          "quote_verified_support_fraction_macro": 0.985981308411215,
+          "n_macro_measured": 107,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 113,
+            "contradicted_ai_needs_review": 16,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 129,
+          "quote_verified_support_fraction_micro": 0.875968992248062,
+          "quote_verified_support_fraction_macro": 0.8738317757009346,
+          "n_macro_measured": 107,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "all_questions_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 127,
+            "contradicted_ai_needs_review": 3,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 130,
+          "quote_verified_support_fraction_micro": 0.9769230769230769,
+          "quote_verified_support_fraction_macro": 0.9768518518518519,
+          "n_macro_measured": 108,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 113,
+            "contradicted_ai_needs_review": 17,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 130,
+          "quote_verified_support_fraction_micro": 0.8692307692307693,
+          "quote_verified_support_fraction_macro": 0.8657407407407407,
+          "n_macro_measured": 108,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "failed_judge_reason_counts": {
+        "Supported decision requires an original text fragment": 1,
+        "Fragment identifier outside bound evidence": 1
+      },
+      "generation_seconds_observed": {
+        "n": 133,
+        "median": 4.563887199998135,
+        "p95_empirical": 14.466273199999705,
+        "sum_overlapping_question_wall_times": 824.6840101999896,
+        "scope": "Per-output recorded time incl retries; concurrent/instrumented, not a controlled speed comparison"
+      },
+      "actual_citation_links": 153,
+      "actual_links_audited": 144,
+      "actual_link_evaluation_coverage": 0.9411764705882353,
+      "actual_link_precision_all": null,
+      "actual_link_precision_lower_bound": 0.9150326797385621,
+      "actual_citation_claim_recall_macro_measured": 0.985981308411215,
+      "n_answerable_actual_claim_recall_measured": 107,
+      "n_answerable_actual_claim_recall_eligible": 118,
+      "reference_and_context_metrics_ai_provisional": {
+        "answer_relevancy_rubric": {
+          "mean": 0.9353448275862069,
+          "n_measured": 116,
+          "n_total": 116
+        },
+        "context_precision_ap": {
+          "mean": 0.709486322067141,
+          "n_measured": 116,
+          "n_total": 116
+        },
+        "context_recall": {
+          "mean": 0.9267241379310345,
+          "n_measured": 116,
+          "n_total": 116
+        },
+        "context_usefulness_precision": {
+          "mean": 0.1739942528735632,
+          "n_measured": 116,
+          "n_total": 116
+        },
+        "factual_recall": {
+          "mean": 0.8002873563218391,
+          "n_measured": 116,
+          "n_total": 116
+        }
+      },
+      "micro_claim_metrics_ai_provisional_excluding_proposed_citation_recall": {
+        "n_claims": 129,
+        "n_required_reference_claims": 151,
+        "faithfulness": 0.9844961240310077,
+        "factual_precision": 0.875968992248062,
+        "factual_recall": 0.8013245033112583,
+        "context_recall": 0.9271523178807947
+      },
+      "answerable_control_breakdown": {
+        "n_answerable_planned": 118,
+        "n_unanswerable_planned": 15,
+        "n_answerable_nonrefusal": 111,
+        "n_false_refusals_on_answerable": 7,
+        "n_control_refusals": 14,
+        "answer_coverage_answerable": 0.940677966101695
+      },
+      "complete_answer_success": {
+        "n_pass": 34,
+        "n_total": 118,
+        "n_unresolved": 12,
+        "rate_all": null,
+        "strict_lower_bound_all": 0.288135593220339
+      },
+      "unanswerable_controls": {
+        "n_pass": 14,
+        "n_total": 15,
+        "n_unresolved": 0,
+        "rate_all": 0.9333333333333333,
+        "strict_lower_bound_all": 0.9333333333333333
+      },
+      "human_confirmed": false,
+      "official_thesis_score_eligible": false,
+      "by_report": {
+        "BCP": {
+          "n_answerable_planned": 33,
+          "n_answerable_judged": 32,
+          "n_complete_pass": 12,
+          "n_unresolved": 4,
+          "complete_lower_bound": 0.36363636363636365,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "CPN": {
+          "n_answerable_planned": 44,
+          "n_answerable_judged": 43,
+          "n_complete_pass": 13,
+          "n_unresolved": 5,
+          "complete_lower_bound": 0.29545454545454547,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "WHAUP": {
+          "n_answerable_planned": 41,
+          "n_answerable_judged": 41,
+          "n_complete_pass": 9,
+          "n_unresolved": 3,
+          "complete_lower_bound": 0.21951219512195122,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      },
+      "by_category": {
+        "chart": {
+          "n_answerable_planned": 1,
+          "n_answerable_judged": 1,
+          "n_complete_pass": 0,
+          "n_unresolved": 0,
+          "complete_lower_bound": 0.0,
+          "complete_measured_rate": 0.0,
+          "complete_rate_wilson95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "numeric_table": {
+          "n_answerable_planned": 49,
+          "n_answerable_judged": 49,
+          "n_complete_pass": 13,
+          "n_unresolved": 4,
+          "complete_lower_bound": 0.2653061224489796,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "prose": {
+          "n_answerable_planned": 68,
+          "n_answerable_judged": 66,
+          "n_complete_pass": 21,
+          "n_unresolved": 8,
+          "complete_lower_bound": 0.3088235294117647,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "unanswerable_future_actual": {
+          "n_answerable_planned": 0,
+          "n_answerable_judged": 0,
+          "n_complete_pass": 0,
+          "n_unresolved": 0,
+          "complete_lower_bound": null,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      }
+    },
+    "dense": {
+      "planned_questions": 133,
+      "generated_outputs": 133,
+      "capture_coverage": 0.9473684210526315,
+      "answer_coverage": 0.8195488721804511,
+      "generation_errors": 0,
+      "refusals": 24,
+      "required_numeric_tuples": {
+        "n_required": 114,
+        "n_measurable": 106,
+        "n_required_tuples_in_started_subset": 114,
+        "coverage": 0.9298245614035088,
+        "n_correct": 12,
+        "accuracy_measured_subset": 0.11320754716981132,
+        "states": {
+          "required_relation_not_emitted": 27,
+          "wrong_bound_numeric_fact": 48,
+          "explicit_abstention_on_required_quantity": 18,
+          "correct": 12,
+          "answer_numeric_annotation_missing": 8,
+          "ambiguous_emitted_required_relation": 1
+        }
+      },
+      "judge_coverage": 0.8872180451127819,
+      "factual_verified_support_macro": 0.8532608695652174,
+      "faithfulness_verified_support_macro": 0.9456521739130435,
+      "factual_states": {
+        "supported_quote_verified": 87,
+        "contradicted_ai_needs_review": 16,
+        "insufficient_evidence": 1,
+        "quote_unverifiable": 0
+      },
+      "faithfulness_states": {
+        "supported_quote_verified": 99,
+        "contradicted_ai_needs_review": 5,
+        "insufficient_evidence": 0,
+        "quote_unverifiable": 0
+      },
+      "claim_aggregation_scope": "Answerable questions only; all/control claims retained separately",
+      "answerable_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 99,
+            "contradicted_ai_needs_review": 5,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 104,
+          "quote_verified_support_fraction_micro": 0.9519230769230769,
+          "quote_verified_support_fraction_macro": 0.9456521739130435,
+          "n_macro_measured": 92,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 87,
+            "contradicted_ai_needs_review": 16,
+            "insufficient_evidence": 1,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 104,
+          "quote_verified_support_fraction_micro": 0.8365384615384616,
+          "quote_verified_support_fraction_macro": 0.8532608695652174,
+          "n_macro_measured": 92,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "all_questions_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 102,
+            "contradicted_ai_needs_review": 6,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 108,
+          "quote_verified_support_fraction_micro": 0.9444444444444444,
+          "quote_verified_support_fraction_macro": 0.9375,
+          "n_macro_measured": 96,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 87,
+            "contradicted_ai_needs_review": 18,
+            "insufficient_evidence": 3,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 108,
+          "quote_verified_support_fraction_micro": 0.8055555555555556,
+          "quote_verified_support_fraction_macro": 0.8177083333333334,
+          "n_macro_measured": 96,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "failed_judge_reason_counts": {
+        "Supported decision requires an original text fragment": 1,
+        "Fragment identifier outside bound evidence": 6,
+        "Reviewer must index every captured claim once in original order": 2,
+        "Expecting value: line 1 column 1 (char 0)": 6
+      },
+      "generation_seconds_observed": {
+        "n": 133,
+        "median": 4.720144800001435,
+        "p95_empirical": 24.79132870000103,
+        "sum_overlapping_question_wall_times": 995.7581036000247,
+        "scope": "Per-output recorded time incl retries; concurrent/instrumented, not a controlled speed comparison"
+      },
+      "actual_citation_links": 129,
+      "actual_links_audited": 118,
+      "actual_link_evaluation_coverage": 0.9147286821705426,
+      "actual_link_precision_all": null,
+      "actual_link_precision_lower_bound": 0.8527131782945736,
+      "actual_citation_claim_recall_macro_measured": 0.9239130434782609,
+      "n_answerable_actual_claim_recall_measured": 92,
+      "n_answerable_actual_claim_recall_eligible": 118,
+      "reference_and_context_metrics_ai_provisional": {
+        "answer_relevancy_rubric": {
+          "mean": 0.9128440366972477,
+          "n_measured": 109,
+          "n_total": 109
+        },
+        "context_precision_ap": {
+          "mean": 0.48606378331148975,
+          "n_measured": 109,
+          "n_total": 109
+        },
+        "context_recall": {
+          "mean": 0.7675840978593272,
+          "n_measured": 109,
+          "n_total": 109
+        },
+        "context_usefulness_precision": {
+          "mean": 0.11878185524974516,
+          "n_measured": 109,
+          "n_total": 109
+        },
+        "factual_recall": {
+          "mean": 0.6804281345565749,
+          "n_measured": 109,
+          "n_total": 109
+        }
+      },
+      "micro_claim_metrics_ai_provisional_excluding_proposed_citation_recall": {
+        "n_claims": 104,
+        "n_required_reference_claims": 156,
+        "faithfulness": 0.9519230769230769,
+        "factual_precision": 0.8365384615384616,
+        "factual_recall": 0.5833333333333334,
+        "context_recall": 0.6794871794871795
+      },
+      "answerable_control_breakdown": {
+        "n_answerable_planned": 118,
+        "n_unanswerable_planned": 15,
+        "n_answerable_nonrefusal": 102,
+        "n_false_refusals_on_answerable": 16,
+        "n_control_refusals": 8,
+        "answer_coverage_answerable": 0.864406779661017
+      },
+      "complete_answer_success": {
+        "n_pass": 19,
+        "n_total": 118,
+        "n_unresolved": 19,
+        "rate_all": null,
+        "strict_lower_bound_all": 0.16101694915254236
+      },
+      "unanswerable_controls": {
+        "n_pass": 5,
+        "n_total": 15,
+        "n_unresolved": 6,
+        "rate_all": null,
+        "strict_lower_bound_all": 0.3333333333333333
+      },
+      "human_confirmed": false,
+      "official_thesis_score_eligible": false,
+      "by_report": {
+        "BCP": {
+          "n_answerable_planned": 33,
+          "n_answerable_judged": 29,
+          "n_complete_pass": 7,
+          "n_unresolved": 7,
+          "complete_lower_bound": 0.21212121212121213,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "CPN": {
+          "n_answerable_planned": 44,
+          "n_answerable_judged": 44,
+          "n_complete_pass": 5,
+          "n_unresolved": 6,
+          "complete_lower_bound": 0.11363636363636363,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "WHAUP": {
+          "n_answerable_planned": 41,
+          "n_answerable_judged": 36,
+          "n_complete_pass": 7,
+          "n_unresolved": 6,
+          "complete_lower_bound": 0.17073170731707318,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      },
+      "by_category": {
+        "chart": {
+          "n_answerable_planned": 1,
+          "n_answerable_judged": 1,
+          "n_complete_pass": 0,
+          "n_unresolved": 0,
+          "complete_lower_bound": 0.0,
+          "complete_measured_rate": 0.0,
+          "complete_rate_wilson95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "numeric_table": {
+          "n_answerable_planned": 49,
+          "n_answerable_judged": 45,
+          "n_complete_pass": 7,
+          "n_unresolved": 6,
+          "complete_lower_bound": 0.14285714285714285,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "prose": {
+          "n_answerable_planned": 68,
+          "n_answerable_judged": 63,
+          "n_complete_pass": 12,
+          "n_unresolved": 13,
+          "complete_lower_bound": 0.17647058823529413,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "unanswerable_future_actual": {
+          "n_answerable_planned": 0,
+          "n_answerable_judged": 0,
+          "n_complete_pass": 0,
+          "n_unresolved": 0,
+          "complete_lower_bound": null,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      }
+    },
+    "simple_rag": {
+      "planned_questions": 133,
+      "generated_outputs": 133,
+      "capture_coverage": 0.9473684210526315,
+      "answer_coverage": 0.8270676691729323,
+      "generation_errors": 0,
+      "refusals": 23,
+      "required_numeric_tuples": {
+        "n_required": 114,
+        "n_measurable": 106,
+        "n_required_tuples_in_started_subset": 114,
+        "coverage": 0.9298245614035088,
+        "n_correct": 14,
+        "accuracy_measured_subset": 0.1320754716981132,
+        "states": {
+          "required_relation_not_emitted": 25,
+          "wrong_bound_numeric_fact": 51,
+          "explicit_abstention_on_required_quantity": 16,
+          "correct": 14,
+          "answer_numeric_annotation_missing": 8
+        }
+      },
+      "judge_coverage": 0.9022556390977443,
+      "factual_verified_support_macro": 0.8118279569892473,
+      "faithfulness_verified_support_macro": 0.9247311827956989,
+      "factual_states": {
+        "supported_quote_verified": 82,
+        "contradicted_ai_needs_review": 20,
+        "insufficient_evidence": 1,
+        "quote_unverifiable": 0
+      },
+      "faithfulness_states": {
+        "supported_quote_verified": 96,
+        "contradicted_ai_needs_review": 7,
+        "insufficient_evidence": 0,
+        "quote_unverifiable": 0
+      },
+      "claim_aggregation_scope": "Answerable questions only; all/control claims retained separately",
+      "answerable_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 96,
+            "contradicted_ai_needs_review": 7,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 103,
+          "quote_verified_support_fraction_micro": 0.9320388349514563,
+          "quote_verified_support_fraction_macro": 0.9247311827956989,
+          "n_macro_measured": 93,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 82,
+            "contradicted_ai_needs_review": 20,
+            "insufficient_evidence": 1,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 103,
+          "quote_verified_support_fraction_micro": 0.7961165048543689,
+          "quote_verified_support_fraction_macro": 0.8118279569892473,
+          "n_macro_measured": 93,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "all_questions_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 100,
+            "contradicted_ai_needs_review": 8,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 108,
+          "quote_verified_support_fraction_micro": 0.9259259259259259,
+          "quote_verified_support_fraction_macro": 0.9183673469387755,
+          "n_macro_measured": 98,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 82,
+            "contradicted_ai_needs_review": 21,
+            "insufficient_evidence": 5,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 108,
+          "quote_verified_support_fraction_micro": 0.7592592592592593,
+          "quote_verified_support_fraction_macro": 0.7704081632653061,
+          "n_macro_measured": 98,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "failed_judge_reason_counts": {
+        "Supported decision requires an original text fragment": 5,
+        "Expecting value: line 1 column 1 (char 0)": 5,
+        "Fragment identifier outside bound evidence": 3
+      },
+      "generation_seconds_observed": {
+        "n": 133,
+        "median": 4.667374200000268,
+        "p95_empirical": 24.740413700001227,
+        "sum_overlapping_question_wall_times": 979.6271961000275,
+        "scope": "Per-output recorded time incl retries; concurrent/instrumented, not a controlled speed comparison"
+      },
+      "actual_citation_links": 126,
+      "actual_links_audited": 114,
+      "actual_link_evaluation_coverage": 0.9047619047619048,
+      "actual_link_precision_all": null,
+      "actual_link_precision_lower_bound": 0.8412698412698413,
+      "actual_citation_claim_recall_macro_measured": 0.9247311827956989,
+      "n_answerable_actual_claim_recall_measured": 93,
+      "n_answerable_actual_claim_recall_eligible": 118,
+      "reference_and_context_metrics_ai_provisional": {
+        "answer_relevancy_rubric": {
+          "mean": 0.9090909090909091,
+          "n_measured": 110,
+          "n_total": 110
+        },
+        "context_precision_ap": {
+          "mean": 0.48699454866121533,
+          "n_measured": 110,
+          "n_total": 110
+        },
+        "context_recall": {
+          "mean": 0.7833333333333333,
+          "n_measured": 110,
+          "n_total": 110
+        },
+        "context_usefulness_precision": {
+          "mean": 0.1228030303030303,
+          "n_measured": 110,
+          "n_total": 110
+        },
+        "factual_recall": {
+          "mean": 0.6515151515151515,
+          "n_measured": 110,
+          "n_total": 110
+        }
+      },
+      "micro_claim_metrics_ai_provisional_excluding_proposed_citation_recall": {
+        "n_claims": 103,
+        "n_required_reference_claims": 142,
+        "faithfulness": 0.9320388349514563,
+        "factual_precision": 0.7961165048543689,
+        "factual_recall": 0.6126760563380281,
+        "context_recall": 0.7605633802816901
+      },
+      "answerable_control_breakdown": {
+        "n_answerable_planned": 118,
+        "n_unanswerable_planned": 15,
+        "n_answerable_nonrefusal": 103,
+        "n_false_refusals_on_answerable": 15,
+        "n_control_refusals": 8,
+        "answer_coverage_answerable": 0.8728813559322034
+      },
+      "complete_answer_success": {
+        "n_pass": 22,
+        "n_total": 118,
+        "n_unresolved": 18,
+        "rate_all": null,
+        "strict_lower_bound_all": 0.1864406779661017
+      },
+      "unanswerable_controls": {
+        "n_pass": 5,
+        "n_total": 15,
+        "n_unresolved": 5,
+        "rate_all": null,
+        "strict_lower_bound_all": 0.3333333333333333
+      },
+      "human_confirmed": false,
+      "official_thesis_score_eligible": false,
+      "by_report": {
+        "BCP": {
+          "n_answerable_planned": 33,
+          "n_answerable_judged": 31,
+          "n_complete_pass": 9,
+          "n_unresolved": 5,
+          "complete_lower_bound": 0.2727272727272727,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "CPN": {
+          "n_answerable_planned": 44,
+          "n_answerable_judged": 44,
+          "n_complete_pass": 5,
+          "n_unresolved": 5,
+          "complete_lower_bound": 0.11363636363636363,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "WHAUP": {
+          "n_answerable_planned": 41,
+          "n_answerable_judged": 35,
+          "n_complete_pass": 8,
+          "n_unresolved": 8,
+          "complete_lower_bound": 0.1951219512195122,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      },
+      "by_category": {
+        "chart": {
+          "n_answerable_planned": 1,
+          "n_answerable_judged": 1,
+          "n_complete_pass": 0,
+          "n_unresolved": 0,
+          "complete_lower_bound": 0.0,
+          "complete_measured_rate": 0.0,
+          "complete_rate_wilson95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "numeric_table": {
+          "n_answerable_planned": 49,
+          "n_answerable_judged": 45,
+          "n_complete_pass": 8,
+          "n_unresolved": 7,
+          "complete_lower_bound": 0.16326530612244897,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "prose": {
+          "n_answerable_planned": 68,
+          "n_answerable_judged": 64,
+          "n_complete_pass": 14,
+          "n_unresolved": 11,
+          "complete_lower_bound": 0.20588235294117646,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "unanswerable_future_actual": {
+          "n_answerable_planned": 0,
+          "n_answerable_judged": 0,
+          "n_complete_pass": 0,
+          "n_unresolved": 0,
+          "complete_lower_bound": null,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      }
+    },
+    "lexical_first": {
+      "planned_questions": 133,
+      "generated_outputs": 133,
+      "capture_coverage": 0.9323308270676691,
+      "answer_coverage": 0.8947368421052632,
+      "generation_errors": 0,
+      "refusals": 14,
+      "required_numeric_tuples": {
+        "n_required": 114,
+        "n_measurable": 106,
+        "n_required_tuples_in_started_subset": 114,
+        "coverage": 0.9298245614035088,
+        "n_correct": 22,
+        "accuracy_measured_subset": 0.20754716981132076,
+        "states": {
+          "correct": 22,
+          "explicit_abstention_on_required_quantity": 7,
+          "required_relation_not_emitted": 20,
+          "wrong_bound_numeric_fact": 56,
+          "answer_numeric_annotation_missing": 8,
+          "ambiguous_emitted_required_relation": 1
+        }
+      },
+      "judge_coverage": 0.9548872180451128,
+      "factual_verified_support_macro": 0.8839285714285714,
+      "faithfulness_verified_support_macro": 0.9866071428571429,
+      "factual_states": {
+        "supported_quote_verified": 113,
+        "contradicted_ai_needs_review": 16,
+        "insufficient_evidence": 0,
+        "quote_unverifiable": 0
+      },
+      "faithfulness_states": {
+        "supported_quote_verified": 127,
+        "contradicted_ai_needs_review": 2,
+        "insufficient_evidence": 0,
+        "quote_unverifiable": 0
+      },
+      "claim_aggregation_scope": "Answerable questions only; all/control claims retained separately",
+      "answerable_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 127,
+            "contradicted_ai_needs_review": 2,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 129,
+          "quote_verified_support_fraction_micro": 0.9844961240310077,
+          "quote_verified_support_fraction_macro": 0.9866071428571429,
+          "n_macro_measured": 112,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 113,
+            "contradicted_ai_needs_review": 16,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 129,
+          "quote_verified_support_fraction_micro": 0.875968992248062,
+          "quote_verified_support_fraction_macro": 0.8839285714285714,
+          "n_macro_measured": 112,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "all_questions_claim_aggregation": {
+        "faithfulness": {
+          "counts": {
+            "supported_quote_verified": 130,
+            "contradicted_ai_needs_review": 2,
+            "insufficient_evidence": 0,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 132,
+          "quote_verified_support_fraction_micro": 0.9848484848484849,
+          "quote_verified_support_fraction_macro": 0.9869565217391304,
+          "n_macro_measured": 115,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        },
+        "factual": {
+          "counts": {
+            "supported_quote_verified": 114,
+            "contradicted_ai_needs_review": 16,
+            "insufficient_evidence": 2,
+            "quote_unverifiable": 0
+          },
+          "n_claims": 132,
+          "quote_verified_support_fraction_micro": 0.8636363636363636,
+          "quote_verified_support_fraction_macro": 0.8695652173913043,
+          "n_macro_measured": 115,
+          "confirmed_wrong_claims": null,
+          "limit": "Quote-unverifiable does not mean hallucinated; contradictions remain provisional AI review."
+        }
+      },
+      "failed_judge_reason_counts": {
+        "Expecting value: line 1 column 1 (char 0)": 2,
+        "Supported decision requires an original text fragment": 2,
+        "Fragment identifier outside bound evidence": 2
+      },
+      "generation_seconds_observed": {
+        "n": 133,
+        "median": 5.010115499999301,
+        "p95_empirical": 24.62633790000109,
+        "sum_overlapping_question_wall_times": 1034.0363971000588,
+        "scope": "Per-output recorded time incl retries; concurrent/instrumented, not a controlled speed comparison"
+      },
+      "actual_citation_links": 168,
+      "actual_links_audited": 152,
+      "actual_link_evaluation_coverage": 0.9047619047619048,
+      "actual_link_precision_all": null,
+      "actual_link_precision_lower_bound": 0.8809523809523809,
+      "actual_citation_claim_recall_macro_measured": 0.9776785714285714,
+      "n_answerable_actual_claim_recall_measured": 112,
+      "n_answerable_actual_claim_recall_eligible": 118,
+      "reference_and_context_metrics_ai_provisional": {
+        "answer_relevancy_rubric": {
+          "mean": 0.9396551724137931,
+          "n_measured": 116,
+          "n_total": 116
+        },
+        "context_precision_ap": {
+          "mean": 0.7166631235827664,
+          "n_measured": 116,
+          "n_total": 116
+        },
+        "context_recall": {
+          "mean": 0.9482758620689655,
+          "n_measured": 116,
+          "n_total": 116
+        },
+        "context_usefulness_precision": {
+          "mean": 0.1875478927203065,
+          "n_measured": 116,
+          "n_total": 116
+        },
+        "factual_recall": {
+          "mean": 0.7902298850574713,
+          "n_measured": 116,
+          "n_total": 116
+        }
+      },
+      "micro_claim_metrics_ai_provisional_excluding_proposed_citation_recall": {
+        "n_claims": 129,
+        "n_required_reference_claims": 150,
+        "faithfulness": 0.9844961240310077,
+        "factual_precision": 0.875968992248062,
+        "factual_recall": 0.7533333333333333,
+        "context_recall": 0.9266666666666666
+      },
+      "answerable_control_breakdown": {
+        "n_answerable_planned": 118,
+        "n_unanswerable_planned": 15,
+        "n_answerable_nonrefusal": 115,
+        "n_false_refusals_on_answerable": 3,
+        "n_control_refusals": 11,
+        "answer_coverage_answerable": 0.9745762711864406
+      },
+      "complete_answer_success": {
+        "n_pass": 36,
+        "n_total": 118,
+        "n_unresolved": 10,
+        "rate_all": null,
+        "strict_lower_bound_all": 0.3050847457627119
+      },
+      "unanswerable_controls": {
+        "n_pass": 8,
+        "n_total": 15,
+        "n_unresolved": 4,
+        "rate_all": null,
+        "strict_lower_bound_all": 0.5333333333333333
+      },
+      "human_confirmed": false,
+      "official_thesis_score_eligible": false,
+      "by_report": {
+        "BCP": {
+          "n_answerable_planned": 33,
+          "n_answerable_judged": 32,
+          "n_complete_pass": 12,
+          "n_unresolved": 4,
+          "complete_lower_bound": 0.36363636363636365,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "CPN": {
+          "n_answerable_planned": 44,
+          "n_answerable_judged": 44,
+          "n_complete_pass": 15,
+          "n_unresolved": 3,
+          "complete_lower_bound": 0.3409090909090909,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "WHAUP": {
+          "n_answerable_planned": 41,
+          "n_answerable_judged": 40,
+          "n_complete_pass": 9,
+          "n_unresolved": 3,
+          "complete_lower_bound": 0.21951219512195122,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      },
+      "by_category": {
+        "chart": {
+          "n_answerable_planned": 1,
+          "n_answerable_judged": 1,
+          "n_complete_pass": 0,
+          "n_unresolved": 0,
+          "complete_lower_bound": 0.0,
+          "complete_measured_rate": 0.0,
+          "complete_rate_wilson95": [
+            0.0,
+            0.7934506856227626
+          ],
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "numeric_table": {
+          "n_answerable_planned": 49,
+          "n_answerable_judged": 48,
+          "n_complete_pass": 15,
+          "n_unresolved": 3,
+          "complete_lower_bound": 0.30612244897959184,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "prose": {
+          "n_answerable_planned": 68,
+          "n_answerable_judged": 67,
+          "n_complete_pass": 21,
+          "n_unresolved": 7,
+          "complete_lower_bound": 0.3088235294117647,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        },
+        "unanswerable_future_actual": {
+          "n_answerable_planned": 0,
+          "n_answerable_judged": 0,
+          "n_complete_pass": 0,
+          "n_unresolved": 0,
+          "complete_lower_bound": null,
+          "complete_measured_rate": null,
+          "complete_rate_wilson95": null,
+          "interval_limit": "Question-level independence approximation only; shared fact/page variants and three issuers do not support population generalization"
+        }
+      }
+    }
+  },
+  "ledger_totals": {
+    "updated_at": "2026-10-07T16:40:34.037432+00:00",
+    "status": "user_authorized_plan_completion_limits_removed",
+    "original_goal_status": "usageLimited",
+    "deadline_local": null,
+    "sdk_attempts": 3311,
+    "known_input_tokens": 54347114,
+    "known_output_tokens": 1802576,
+    "failed_calls_without_complete_usage": 324,
+    "cloud_cost_usd": null,
+    "paid_ocr_pages_new": 66,
+    "ranking_unique_configurations": 10,
+    "limits": {
+      "sdk_attempts": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "paid_ocr_pages": null,
+      "ranking_configs": null
+    },
+    "reset_on_chat_transfer": false,
+    "unknown_input_reserve": 32700000,
+    "unknown_output_reserve": 10715136,
+    "paid_ocr_page_keys": [
+      "d6692462ee910f7524f3c3698d7667fecf116aa63ff02a1f003c50e4a11da387:1",
+      "d6692462ee910f7524f3c3698d7667fecf116aa63ff02a1f003c50e4a11da387:2",
+      "dbb61daa8a5276646958241d453fb3eb87656cec38462e27839d3bcaee873334:1",
+      "dbb61daa8a5276646958241d453fb3eb87656cec38462e27839d3bcaee873334:2",
+      "f80f504f510244d95ece2702db77134edbc9e0e172b09bb590cfc330e5492659:1",
+      "4f89d78484348cf6234a6b188a750e66dea4de794106fec9762cd0d95ed97de2:1",
+      "4f89d78484348cf6234a6b188a750e66dea4de794106fec9762cd0d95ed97de2:2",
+      "4f89d78484348cf6234a6b188a750e66dea4de794106fec9762cd0d95ed97de2:3",
+      "4f89d78484348cf6234a6b188a750e66dea4de794106fec9762cd0d95ed97de2:4",
+      "4f89d78484348cf6234a6b188a750e66dea4de794106fec9762cd0d95ed97de2:5",
+      "4f89d78484348cf6234a6b188a750e66dea4de794106fec9762cd0d95ed97de2:6",
+      "4f89d78484348cf6234a6b188a750e66dea4de794106fec9762cd0d95ed97de2:7",
+      "4f89d78484348cf6234a6b188a750e66dea4de794106fec9762cd0d95ed97de2:8",
+      "398ec15b51e949a80ed64e3b37b57537d3f1b60edee95c2644a426ca80bee86f:1",
+      "398ec15b51e949a80ed64e3b37b57537d3f1b60edee95c2644a426ca80bee86f:2",
+      "398ec15b51e949a80ed64e3b37b57537d3f1b60edee95c2644a426ca80bee86f:3",
+      "398ec15b51e949a80ed64e3b37b57537d3f1b60edee95c2644a426ca80bee86f:4",
+      "398ec15b51e949a80ed64e3b37b57537d3f1b60edee95c2644a426ca80bee86f:5",
+      "398ec15b51e949a80ed64e3b37b57537d3f1b60edee95c2644a426ca80bee86f:6",
+      "398ec15b51e949a80ed64e3b37b57537d3f1b60edee95c2644a426ca80bee86f:7",
+      "398ec15b51e949a80ed64e3b37b57537d3f1b60edee95c2644a426ca80bee86f:8",
+      "815436418670dd298e5e5e44a5631f34b7d9bda3363994fe357042094e51ca4c:1",
+      "815436418670dd298e5e5e44a5631f34b7d9bda3363994fe357042094e51ca4c:2",
+      "815436418670dd298e5e5e44a5631f34b7d9bda3363994fe357042094e51ca4c:3",
+      "815436418670dd298e5e5e44a5631f34b7d9bda3363994fe357042094e51ca4c:4",
+      "815436418670dd298e5e5e44a5631f34b7d9bda3363994fe357042094e51ca4c:5",
+      "815436418670dd298e5e5e44a5631f34b7d9bda3363994fe357042094e51ca4c:6",
+      "815436418670dd298e5e5e44a5631f34b7d9bda3363994fe357042094e51ca4c:7",
+      "815436418670dd298e5e5e44a5631f34b7d9bda3363994fe357042094e51ca4c:8",
+      "5787e52ab86226c6e278a7b98f9df61b355ddcdde924ec44baf736303931f86f:1",
+      "5787e52ab86226c6e278a7b98f9df61b355ddcdde924ec44baf736303931f86f:2",
+      "5787e52ab86226c6e278a7b98f9df61b355ddcdde924ec44baf736303931f86f:3",
+      "5787e52ab86226c6e278a7b98f9df61b355ddcdde924ec44baf736303931f86f:4",
+      "5787e52ab86226c6e278a7b98f9df61b355ddcdde924ec44baf736303931f86f:5",
+      "5787e52ab86226c6e278a7b98f9df61b355ddcdde924ec44baf736303931f86f:6",
+      "5787e52ab86226c6e278a7b98f9df61b355ddcdde924ec44baf736303931f86f:7",
+      "5787e52ab86226c6e278a7b98f9df61b355ddcdde924ec44baf736303931f86f:8",
+      "88c1b65bdf6e4c75aafe778392bd5b9d9093ff7080354b019e6e33c42fe92cca:1",
+      "88c1b65bdf6e4c75aafe778392bd5b9d9093ff7080354b019e6e33c42fe92cca:2",
+      "a62a7430aa7029097b6f712444038309ce63ee2e1e3c78bbc9799e0532fe0bd8:1",
+      "a62a7430aa7029097b6f712444038309ce63ee2e1e3c78bbc9799e0532fe0bd8:2",
+      "a62a7430aa7029097b6f712444038309ce63ee2e1e3c78bbc9799e0532fe0bd8:3",
+      "8c9633264ada6b14c605f0f032936b21d618b281b59eed212197580ab00c8552:1",
+      "8c9633264ada6b14c605f0f032936b21d618b281b59eed212197580ab00c8552:2",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:1",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:2",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:3",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:4",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:5",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:6",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:7",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:8",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:9",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:10",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:11",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:12",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:13",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:14",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:15",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:16",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:17",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:18",
+      "25fad0f1d8019f8ebdd9ca9e6d406800e3cc492f30fc1283c1a39ec75250efcd:19",
+      "d7346f4e90230444db177d5a8ab9fb726bf5cc7411fab7ea6dadcf2f35943a9f:1",
+      "d7346f4e90230444db177d5a8ab9fb726bf5cc7411fab7ea6dadcf2f35943a9f:2",
+      "d7346f4e90230444db177d5a8ab9fb726bf5cc7411fab7ea6dadcf2f35943a9f:3"
+    ],
+    "authorization_history": [
+      {
+        "recorded_at": "2026-10-05T07:36:22.347458+00:00",
+        "user_instruction": "ใช้ไปเลย เอาขีดจำกัดออก ฉันต้องการให้ evluation plan ที่วางแผนไว้เสร็จจบ",
+        "scope": "Remove original experimental spending/count/deadline caps; finish evaluation plan; retain quality gates and cumulative usage",
+        "previous_budget_sha256": "9f7525d714eacdc4ee19b9abb150ecc0eaf788892f1f92fbd38df0290b9d8551",
+        "deadline_local_before": "2026-10-05T11:32:17.4105088+07:00",
+        "limits_before": {
+          "sdk_attempts": 600,
+          "input_tokens": 2000000,
+          "output_tokens": 300000,
+          "paid_ocr_pages": 60,
+          "ranking_configs": 12
+        }
+      }
+    ],
+    "accounting_recovery": {
+      "source_checkpoint": "TestFile\\evaluation_completion_2026-10-07\\final_judge_shards\\lexical_first\\audit\\budget_checkpoint.json",
+      "source_sdk_attempts": 2909,
+      "sdk_and_token_totals_are_lower_bounds": true,
+      "possible_uncheckpointed_attempts_or_usage": null,
+      "interrupted_processes": true,
+      "corrupted_dense_call_journal_preserved": true,
+      "usage_reset": false
+    }
+  },
+  "continuation_usage_since_parent_snapshot": {
+    "sdk_attempts": 1883,
+    "known_input_tokens": 35493382,
+    "known_output_tokens": 838440,
+    "failed_calls_without_complete_usage": 192,
+    "paid_ocr_pages_new": 0
+  },
+  "quality_goal_completed": false,
+  "human_confirmed": false,
+  "scope": "Development capture repairs and report-level native transfer test; not full-report production OCR or independently human-certified thesis scores",
+  "new_issuer_initial_retrieval": {
+    "bm25_thai@1": {
+      "n": 118,
+      "hits": 58,
+      "hit_rate": 0.4915254237288136,
+      "hit_wilson95": [
+        0.4030238582381013,
+        0.5805613678470258
+      ],
+      "mean_recall": 0.4915254237288136,
+      "mean_precision": 0.4915254237288136,
+      "mean_mrr": 0.4915254237288136,
+      "mean_ndcg": 0.4915254237288136,
+      "mean_complete_evidence": 0.4915254237288136
+    },
+    "bm25_thai@3": {
+      "n": 118,
+      "hits": 86,
+      "hit_rate": 0.7288135593220338,
+      "hit_wilson95": [
+        0.6423312850307673,
+        0.8008676106708029
+      ],
+      "mean_recall": 0.7288135593220338,
+      "mean_precision": 0.24293785310734461,
+      "mean_mrr": 0.6031073446327684,
+      "mean_ndcg": 0.6356896977300298,
+      "mean_complete_evidence": 0.7288135593220338
+    },
+    "bm25_thai@5": {
+      "n": 118,
+      "hits": 95,
+      "hit_rate": 0.8050847457627118,
+      "hit_wilson95": [
+        0.7244726030031564,
+        0.8664592579322706
+      ],
+      "mean_recall": 0.8050847457627118,
+      "mean_precision": 0.16101694915254236,
+      "mean_mrr": 0.6204802259887006,
+      "mean_ndcg": 0.6670523589105818,
+      "mean_complete_evidence": 0.8050847457627118
+    },
+    "bm25_thai@10": {
+      "n": 118,
+      "hits": 103,
+      "hit_rate": 0.8728813559322034,
+      "hit_wilson95": [
+        0.8008209645091546,
+        0.9214290877452564
+      ],
+      "mean_recall": 0.8728813559322034,
+      "mean_precision": 0.08728813559322035,
+      "mean_mrr": 0.6300813828356201,
+      "mean_ndcg": 0.6895338258267211,
+      "mean_complete_evidence": 0.8728813559322034
+    },
+    "dense@1": {
+      "n": 118,
+      "hits": 25,
+      "hit_rate": 0.211864406779661,
+      "hit_wilson95": [
+        0.1478252344215709,
+        0.29407245247274794
+      ],
+      "mean_recall": 0.211864406779661,
+      "mean_precision": 0.211864406779661,
+      "mean_mrr": 0.211864406779661,
+      "mean_ndcg": 0.211864406779661,
+      "mean_complete_evidence": 0.211864406779661
+    },
+    "dense@3": {
+      "n": 118,
+      "hits": 45,
+      "hit_rate": 0.3813559322033898,
+      "hit_wilson95": [
+        0.29877004413747893,
+        0.47142312105429934
+      ],
+      "mean_recall": 0.3813559322033898,
+      "mean_precision": 0.1271186440677966,
+      "mean_mrr": 0.29096045197740117,
+      "mean_ndcg": 0.31436335641646884,
+      "mean_complete_evidence": 0.3813559322033898
+    },
+    "dense@5": {
+      "n": 118,
+      "hits": 52,
+      "hit_rate": 0.4406779661016949,
+      "hit_wilson95": [
+        0.3543744211477094,
+        0.5307221614481797
+      ],
+      "mean_recall": 0.4406779661016949,
+      "mean_precision": 0.08813559322033898,
+      "mean_mrr": 0.3045197740112994,
+      "mean_ndcg": 0.33879780263678405,
+      "mean_complete_evidence": 0.4406779661016949
+    },
+    "dense@10": {
+      "n": 118,
+      "hits": 66,
+      "hit_rate": 0.559322033898305,
+      "hit_wilson95": [
+        0.46927783855182026,
+        0.6456255788522905
+      ],
+      "mean_recall": 0.559322033898305,
+      "mean_precision": 0.055932203389830515,
+      "mean_mrr": 0.3201338444982513,
+      "mean_ndcg": 0.37692164095726993,
+      "mean_complete_evidence": 0.559322033898305
+    },
+    "simple_rag@1": {
+      "n": 118,
+      "hits": 25,
+      "hit_rate": 0.211864406779661,
+      "hit_wilson95": [
+        0.1478252344215709,
+        0.29407245247274794
+      ],
+      "mean_recall": 0.211864406779661,
+      "mean_precision": 0.211864406779661,
+      "mean_mrr": 0.211864406779661,
+      "mean_ndcg": 0.211864406779661,
+      "mean_complete_evidence": 0.211864406779661
+    },
+    "simple_rag@3": {
+      "n": 118,
+      "hits": 45,
+      "hit_rate": 0.3813559322033898,
+      "hit_wilson95": [
+        0.29877004413747893,
+        0.47142312105429934
+      ],
+      "mean_recall": 0.3813559322033898,
+      "mean_precision": 0.1271186440677966,
+      "mean_mrr": 0.29096045197740117,
+      "mean_ndcg": 0.31436335641646884,
+      "mean_complete_evidence": 0.3813559322033898
+    },
+    "simple_rag@5": {
+      "n": 118,
+      "hits": 52,
+      "hit_rate": 0.4406779661016949,
+      "hit_wilson95": [
+        0.3543744211477094,
+        0.5307221614481797
+      ],
+      "mean_recall": 0.4406779661016949,
+      "mean_precision": 0.08813559322033898,
+      "mean_mrr": 0.3045197740112994,
+      "mean_ndcg": 0.33879780263678405,
+      "mean_complete_evidence": 0.4406779661016949
+    },
+    "simple_rag@10": {
+      "n": 118,
+      "hits": 66,
+      "hit_rate": 0.559322033898305,
+      "hit_wilson95": [
+        0.46927783855182026,
+        0.6456255788522905
+      ],
+      "mean_recall": 0.559322033898305,
+      "mean_precision": 0.055932203389830515,
+      "mean_mrr": 0.3201338444982513,
+      "mean_ndcg": 0.37692164095726993,
+      "mean_complete_evidence": 0.559322033898305
+    },
+    "lexical_first@1": {
+      "n": 118,
+      "hits": 65,
+      "hit_rate": 0.5508474576271186,
+      "hit_wilson95": [
+        0.46090894142379035,
+        0.6375797020654475
+      ],
+      "mean_recall": 0.5508474576271186,
+      "mean_precision": 0.5508474576271186,
+      "mean_mrr": 0.5508474576271186,
+      "mean_ndcg": 0.5508474576271186,
+      "mean_complete_evidence": 0.5508474576271186
+    },
+    "lexical_first@3": {
+      "n": 118,
+      "hits": 92,
+      "hit_rate": 0.7796610169491526,
+      "hit_wilson95": [
+        0.6967223270508931,
+        0.8449652121399152
+      ],
+      "mean_recall": 0.7796610169491526,
+      "mean_precision": 0.2598870056497175,
+      "mean_mrr": 0.655367231638418,
+      "mean_ndcg": 0.6874457209443149,
+      "mean_complete_evidence": 0.7796610169491526
+    },
+    "lexical_first@5": {
+      "n": 118,
+      "hits": 97,
+      "hit_rate": 0.8220338983050848,
+      "hit_wilson95": [
+        0.743211209821014,
+        0.8805501989441593
+      ],
+      "mean_recall": 0.8220338983050848,
+      "mean_precision": 0.16440677966101697,
+      "mean_mrr": 0.6659604519774011,
+      "mean_ndcg": 0.70569472764234,
+      "mean_complete_evidence": 0.8220338983050848
+    },
+    "lexical_first@10": {
+      "n": 118,
+      "hits": 108,
+      "hit_rate": 0.9152542372881356,
+      "hit_wilson95": [
+        0.8510066169479545,
+        0.9533173048808213
+      ],
+      "mean_recall": 0.9152542372881356,
+      "mean_precision": 0.09152542372881356,
+      "mean_mrr": 0.6789480764057035,
+      "mean_ndcg": 0.7363979434915834,
+      "mean_complete_evidence": 0.9152542372881356
+    }
+  },
+  "final_numeric_component_diagnostics": {
+    "scope": "Post-test descriptive failure decomposition with unchanged locked labels/scorer; literal identity failures are not adjudicated synonyms; component passes do not substitute for strict tuple accuracy",
+    "new_cloud_calls": 0,
+    "human_confirmed": false,
+    "arms": {
+      "bm25_thai": {
+        "n_required": 114,
+        "n_bound_checks_available": 73,
+        "n_strict_correct": 18,
+        "n_strict_unknown": 11,
+        "failed_check_counts_nonexclusive": {
+          "company": 13,
+          "measure": 44,
+          "page": 32,
+          "signed_value_and_explicit_unit": 19,
+          "year": 3,
+          "comparison_operator": 3,
+          "document": 1
+        },
+        "n_failure_only_in_literal_company_or_measure": 16,
+        "n_signed_value_unit_checks_correct": 54,
+        "states": {
+          "wrong_bound_numeric_fact": 55,
+          "correct": 18,
+          "answer_numeric_annotation_missing": 11,
+          "explicit_abstention_on_required_quantity": 12,
+          "ambiguous_emitted_required_relation": 2,
+          "required_relation_not_emitted": 16
+        }
+      },
+      "dense": {
+        "n_required": 114,
+        "n_bound_checks_available": 60,
+        "n_strict_correct": 12,
+        "n_strict_unknown": 8,
+        "failed_check_counts_nonexclusive": {
+          "year": 5,
+          "company": 13,
+          "measure": 31,
+          "page": 25,
+          "signed_value_and_explicit_unit": 18,
+          "comparison_operator": 2
+        },
+        "n_failure_only_in_literal_company_or_measure": 15,
+        "n_signed_value_unit_checks_correct": 42,
+        "states": {
+          "required_relation_not_emitted": 27,
+          "wrong_bound_numeric_fact": 48,
+          "explicit_abstention_on_required_quantity": 18,
+          "correct": 12,
+          "answer_numeric_annotation_missing": 8,
+          "ambiguous_emitted_required_relation": 1
+        }
+      },
+      "simple_rag": {
+        "n_required": 114,
+        "n_bound_checks_available": 65,
+        "n_strict_correct": 14,
+        "n_strict_unknown": 8,
+        "failed_check_counts_nonexclusive": {
+          "year": 5,
+          "company": 11,
+          "measure": 35,
+          "page": 28,
+          "signed_value_and_explicit_unit": 23,
+          "comparison_operator": 2
+        },
+        "n_failure_only_in_literal_company_or_measure": 14,
+        "n_signed_value_unit_checks_correct": 42,
+        "states": {
+          "required_relation_not_emitted": 25,
+          "wrong_bound_numeric_fact": 51,
+          "explicit_abstention_on_required_quantity": 16,
+          "correct": 14,
+          "answer_numeric_annotation_missing": 8
+        }
+      },
+      "lexical_first": {
+        "n_required": 114,
+        "n_bound_checks_available": 78,
+        "n_strict_correct": 22,
+        "n_strict_unknown": 8,
+        "failed_check_counts_nonexclusive": {
+          "company": 11,
+          "measure": 42,
+          "page": 28,
+          "signed_value_and_explicit_unit": 21,
+          "year": 6,
+          "comparison_operator": 2
+        },
+        "n_failure_only_in_literal_company_or_measure": 20,
+        "n_signed_value_unit_checks_correct": 57,
+        "states": {
+          "correct": 22,
+          "explicit_abstention_on_required_quantity": 7,
+          "required_relation_not_emitted": 20,
+          "wrong_bound_numeric_fact": 56,
+          "answer_numeric_annotation_missing": 8,
+          "ambiguous_emitted_required_relation": 1
+        }
+      }
+    }
+  }
+}

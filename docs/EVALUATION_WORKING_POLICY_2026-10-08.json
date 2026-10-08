@@ -1,0 +1,31 @@
+{
+  "policy_version": "working-targets-and-codex-quota-v2",
+  "user_instruction_th": "ขอเปลี่ยนนิดหน่อยทุกเกณฑ์ทำให้ดีที่สุดก็พอขอมากกว่า 80% ก็โอเค ถ้าตามเกณฑ์เดิมได้จะดีมาก ทำให้ดีที่สุดก่อน ค่อยปรับให้ตรงตามเกณฑ์เป๊ะๆ จริงๆ เพราะต้องประหยัดโควต้า",
+  "working_target": 0.8,
+  "working_target_operator": ">",
+  "applies_to": "Gemini and later local Docling evaluation; all quality criteria",
+  "optimization_priority": "Best achievable result with economical experiments first; exact original targets later",
+  "original_targets_role": "Aspirational follow-up targets; retain original plan and historical score interpretation",
+  "numeric_budget_invented": false,
+  "quota_policy": {
+    "prefer_existing_evidence_and_offline_replay": true,
+    "avoid_broad_new_generation_or_judge_cycles": false,
+    "reuse_only_exact_matching_inputs_and_valid_saved_decisions": true,
+    "new_calls_only_for_a_small_unresolved_issue_with_material_expected_benefit": false,
+    "never_retry_known_wrong_outcomes_only_to_improve_scores": true,
+    "cumulative_ledger_reset": false,
+    "gemini_calls_allowed_when_necessary_for_evaluation": true,
+    "codex_efficiency": "Batch work and compact outputs; avoid repeated reads, unnecessary chat narration, and duplicate agent work. Use scripted runs and existing valid evidence. Complete necessary Gemini judgments and useful controlled experiments without imposing a Gemini quota restriction inferred from the Codex savings request."
+  },
+  "evidence_validity": {
+    "source_labels_and_actual_outputs_not_changed_to_raise_scores": true,
+    "unknowns_errors_regressions_and_partial_denominators_retained": true,
+    "no_weakening_of_quote_binding_or_source_identity_checks": true,
+    "old_scores_not_relabelled_as_new_system_improvements": true
+  },
+  "current_order": "Finish economical Gemini evaluation checkpoint before local Docling",
+  "completion_claim": "Do not claim every criterion exceeds 80% unless measured evidence establishes it",
+  "quota_resource_to_conserve": "Codex account quota; user explicitly clarified this is not Gemini quota",
+  "quota_clarification_date_local": "2026-10-08",
+  "prior_quota_interpretation": "The previous broad Gemini judge was intentionally stopped at 67/100 records under a mistaken interpretation of the resource to conserve. Keep all evidence and cumulative accounting; resume only after checking frozen audit inputs and valid cache."
+}

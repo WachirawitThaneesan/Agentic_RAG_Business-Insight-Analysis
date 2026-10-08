@@ -1,0 +1,26 @@
+{
+  "original500": {
+    "n": 500,
+    "before_hits": 314,
+    "after_hits": 374,
+    "recovered": 60,
+    "regressed": 0,
+    "both_missed": 126
+  },
+  "repaired498": {
+    "n": 498,
+    "before_hits": 321,
+    "after_hits": 373,
+    "recovered": 53,
+    "regressed": 1,
+    "both_missed": 124
+  },
+  "final_scope_patch": {
+    "n": 498,
+    "before_hits": 373,
+    "after_hits": 373,
+    "recovered": 0,
+    "regressed": 0,
+    "both_missed": 125
+  }
+}

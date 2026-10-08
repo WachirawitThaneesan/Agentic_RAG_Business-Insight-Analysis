@@ -21,8 +21,11 @@ _GENERIC_FILENAME_WORDS = {
 _KNOWN_FILENAME_ALIASES = {
     "scbx": ("scbx", "เอสซีบี เอกซ์"),
     "thai_union": ("thai union", "ไทยยูเนี่ยน", "ไทยยูเนียน"),
-    "cpaxtra": ("cpaxtra", "cp axtra", "ซีพี แอ็กซ์ตร้า", "ซีพีแอ็กซ์ตร้า"),
+    "cpaxtra": ("cpaxtra", "cp axtra", "cpaxt", "ซีพี แอ็กซ์ตร้า", "ซีพีแอ็กซ์ตร้า"),
     "egco": ("egco", "เอ็กโก"),
+    "ptt": ("ptt", "ปตท.", "ปตท"),
+    "pttep": ("pttep", "ปตท.สผ.", "ปตท.สผ", "ปตท. สผ.",
+              "ปตท.สำรวจและผลิตปิโตรเลียม", "ปตท. สำรวจและผลิตปิโตรเลียม"),
 }
 
 
@@ -58,7 +61,8 @@ def _document_aliases(filename: str) -> list[str]:
     stem = re.sub(r"\.pdf$", "", str(filename or ""), flags=re.IGNORECASE)
     stem_key = re.sub(r"[^a-z0-9]+", "_", stem.casefold()).strip("_")
     aliases = [alias for key, values in _KNOWN_FILENAME_ALIASES.items()
-               if key in stem_key for alias in values]
+               if re.search(r"(?:^|_)" + re.escape(key) + r"(?:_|$)", stem_key)
+               for alias in values]
     latin_words = re.findall(r"[a-z0-9]+", stem_key)
     aliases.extend(token for token in latin_words
                    if len(token) >= 3 and token not in _GENERIC_FILENAME_WORDS
@@ -76,17 +80,24 @@ def matched_document_aliases(
     matched by a distinctive Latin filename token.
     """
     query = normalize_search_text(question).casefold()
-    chosen: set[int] = set()
-    matched: set[str] = set()
+    occurrences: list[tuple[int, int, int, str]] = []
     for document_id, filename in documents:
         for alias in _document_aliases(filename):
             needle = normalize_search_text(alias).casefold()
             pattern = re.escape(needle)
             if re.fullmatch(r'[a-z0-9 ]+', needle):
                 pattern = r'(?<![a-z0-9])' + pattern + r'(?![a-z0-9])'
-            if re.search(pattern, query):
-                chosen.add(int(document_id))
-                matched.add(alias)
+            for match in re.finditer(pattern, query):
+                occurrences.append((match.start(), match.end(), int(document_id), alias))
+    # A subsidiary name can contain the parent's abbreviation. Prefer the
+    # longer mention at the same location; retain separately named companies.
+    # Never decide document scope using evaluation metadata or target pages.
+    retained = [row for row in occurrences if not any(
+        other[0] <= row[0] and other[1] >= row[1]
+        and other[1] - other[0] > row[1] - row[0]
+        for other in occurrences)]
+    chosen = {row[2] for row in retained}
+    matched = {row[3] for row in retained}
     return chosen or None, tuple(sorted(matched, key=len, reverse=True))
 
 
@@ -136,6 +147,70 @@ def bm25_rank(question: str, rows: list[dict[str, Any]]) -> list[dict[str, Any]]
             scored.append((score, index))
     scored.sort(key=lambda pair: (-pair[0], pair[1]))
     return [{**rows[index], "keyword_score": score} for score, index in scored]
+
+
+@lru_cache(maxsize=8)
+def _repeated_prefix_spans(first_pages: tuple[tuple[int, str], ...]) -> tuple[str, ...]:
+    """Find long navigation blocks repeated on most pages of a document.
+
+    Restrict discovery to the first 1200 characters, require at least 20
+    physical pages and 60% prevalence. This cannot erase ordinary repeated
+    financial labels. Numbers and original evidence are never rewritten.
+    """
+    if len(first_pages) < 20:
+        return ()
+    # Match anchor spans at any offset on other pages. Fixed window offsets
+    # would miss the same sidebar after a variable-length section heading.
+    seeds = {round(i * (len(first_pages) - 1) / 4) for i in range(5)}
+    anchors = {text[i:i + 160] for index in seeds
+               for text in (first_pages[index][1][:1200],)
+               for i in range(0, max(0, len(text) - 159), 10)}
+    prefixes = [text[:1200] for _, text in first_pages]
+    threshold = max(20, math.ceil(len(first_pages) * 0.6))
+    return tuple(sorted(span for span in anchors if sum(span in prefix for prefix in prefixes) >= threshold))
+
+
+def remove_repeated_navigation(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Suppress long repeated PDF navigation only in lexical search text.
+
+    Corpus evidence, embeddings, filenames, page numbers and quotations remain
+    untouched. Insufficient document coverage causes no suppression.
+    """
+    by_document: dict[Any, dict[Any, dict[str, Any]]] = {}
+    for row in rows:
+        if row.get('page') is None or row.get('document_id') is None:
+            continue
+        pages = by_document.setdefault(row['document_id'], {})
+        prior = pages.get(row['page'])
+        if prior is None or row.get('chunk_index', row.get('chunk_id', 0)) < prior.get('chunk_index', prior.get('chunk_id', 0)):
+            pages[row['page']] = row
+    patterns = {}
+    for doc, pages in by_document.items():
+        first = tuple(sorted((int(page), str(row.get('search_text') or row.get('text') or ''))
+                             for page, row in pages.items()))
+        spans = _repeated_prefix_spans(first)
+        if spans:
+            patterns[doc] = spans
+    result = []
+    for row in rows:
+        spans = patterns.get(row.get('document_id'))
+        if not spans:
+            result.append(row); continue
+        value = str(row.get('search_text') or row.get('text') or '')
+        # Merge overlapping spans before replacement so a removed fragment
+        # cannot hide the overlap of the next detected navigation fragment.
+        intervals = []
+        for span in spans:
+            start = value.find(span)
+            if 0 <= start < 1200:
+                intervals.append((start, start + len(span)))
+        merged: list[list[int]] = []
+        for start, end in sorted(intervals):
+            if merged and start <= merged[-1][1]:merged[-1][1] = max(merged[-1][1], end)
+            else:merged.append([start, end])
+        for start, end in reversed(merged):value = value[:start] + ' ' + value[end:]
+        result.append({**row, 'search_text': value or ' ', 'navigation_spans_removed': len(merged)})
+    return result
 
 
 def unique_pages(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:

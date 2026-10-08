@@ -23,6 +23,7 @@ from backend.services.llm import generate as llm_generate
 from backend.services.tools import ALL_TOOLS
 from backend.services.answer_verifier import verify_answer, _focus_violation
 from backend.services.query_router import route_query
+from backend.services import answer_capture
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
@@ -188,7 +189,7 @@ def _parse_final_answer(text: str) -> Optional[str]:
     """Extract Final Answer from LLM output."""
     match = _FINAL_ANSWER_RE.search(text)
     if match:
-        return match.group(1).strip()
+        return answer_capture.decode(match.group(1))[0]
     return None
 
 
@@ -257,6 +258,7 @@ def _extract_sources(tool_name: str, data: Dict[str, Any]) -> List[Dict[str, Any
                 "type": "vector",
                 "filename": chunk.get("filename"),
                 "document_id": chunk.get("document_id"),
+                "source_sha256": chunk.get("source_sha256"),
                 "page": chunk.get("page"),
                 "table_name": chunk.get("table_name"),
                 "quality_status": chunk.get("quality_status"),
@@ -326,11 +328,35 @@ async def _available_tools(session: AsyncSession, web_requested: bool = False) -
 
 _ANSWER_NUMBER = re.compile(r"\(?-?\d[\d,]*(?:\.\d+)?\)?")
 _ANSWER_UNIT = re.compile(r"ล้านบาท|พันบาท|เมกะวัตต์|เปอร์เซ็นต์|บาท|หุ้น|คัน|%")
+_SPACED_DECIMAL = re.compile(
+    r"(?<![\w.])(?P<whole>\(?-?\d[\d,]*)\.[ \t\r\n]+(?P<fraction>\d+)(?P<close>\)?)(?![\d.])")
+_QUANTITY_PREFIX = re.compile(r"(?:ร้อยละ|เปอร์เซ็นต์|สัดส่วน|มูลค่า|จำนวนเงิน)\s*$")
+_QUANTITY_SUFFIX = re.compile(
+    r"\s*(?:ล้านบาท|พันบาท|บาท|เมกะวัตต์|ตัน|เปอร์เซ็นต์|%)(?![A-Za-z])")
+
+
+def _grounding_number_text(text: str) -> str:
+    """Read unit-anchored split decimals without rewriting cited evidence.
+
+    OCR and page fusion can split 99.31 into 'ร้อยละ 99.\n\n31'.
+    Numbered lists and section identifiers without quantity units stay split.
+    """
+    def repair(match):
+        before, after = text[max(0, match.start()-24):match.start()], text[match.end():match.end()+40]
+        whole = match['whole']
+        # A short unsigned integer followed by a price can be a list item
+        # ('1. 2 บาท'). Require a quantitative prefix for that ambiguous form.
+        monetary_shape = (any(c in whole for c in '(-,')
+                          or len(whole) >= 3 or whole == '0')
+        if _QUANTITY_PREFIX.search(before) or (monetary_shape and _QUANTITY_SUFFIX.match(after)):
+            return match['whole'] + '.' + match['fraction'] + match['close']
+        return match.group()
+    return _SPACED_DECIMAL.sub(repair, text)
 
 
 def _numbers(text: str) -> set[float]:
     values = set()
-    for token in _ANSWER_NUMBER.findall(text or ""):
+    for token in _ANSWER_NUMBER.findall(_grounding_number_text(text or "")):
         negative = token.startswith("(") and token.endswith(")")
         try:
             number = float(token.strip("()").replace(",", ""))
@@ -381,6 +407,14 @@ def _grounded_answer(answer: str, question: str, sources: List[Dict[str, Any]]) 
         allowed.update(_numbers(str(source.get("value") or "")))
         allowed.update(_numbers(str(source.get("excerpt") or "")))
         allowed.update(_numbers(str(source.get("column") or "")))
+    # Canonical numeric output uses BE years. Admit the equivalent Gregorian
+    # year only when explicitly rendered as a year, never as a monetary/count
+    # quantity. The original source year must still be present in the evidence.
+    stated_years = {int(y) for y in re.findall(r'(?:ปี|พ\.ศ\.|ค\.ศ\.)\s*((?:20|25)\d{2})(?!\d)', answer)}
+    for year in stated_years:
+        equivalent = year - 543 if year >= 2500 else year + 543
+        if float(equivalent) in allowed:
+            allowed.add(float(year))
     cited_pages = {float(page) for group in re.findall(
         r"(?:PDF\s*)?(?:pages?|หน้า(?:เอกสาร)?(?:ที่)?)\s*(\d+(?:\s*[,、]\s+\d+)*)", answer,
         flags=re.IGNORECASE) for page in re.findall(r"\d+", group)}
@@ -440,46 +474,54 @@ def _prompt_with_available_tools(available: set[str]) -> str:
 
 
 def _answer_context(sources: List[Dict[str, Any]], observations: List[str]) -> str:
-    """Keep source diversity: duplicate uploads must not crowd out later tables."""
-    blocks = []
-    seen = set()
-    for source in sources:
-        if source.get('page') is None and not source.get('url'):
-            continue
-        if source.get('value') is not None:
-            payload = {k:source.get(k) for k in ('filename','page','table_name','row_label','column','value','unit','quality_status')}
-            block = json.dumps(payload, ensure_ascii=False)
-        else:
-            excerpt = str(source.get('excerpt') or '')
-            if not excerpt:
-                continue
-            block = f"[{source.get('filename')} PDF page {source.get('page')}]\n{excerpt[:12000]}"
-        if block in seen:
-            continue
-        seen.add(block); blocks.append(block)
-    if not blocks:
-        return '\n\n'.join(observations)[:16000]
-    if any(source.get('context_kind') == 'page' for source in sources):
-        # Pages are already ranked and quality-gated. Preserve their row/year
-        # context instead of truncating every page to a short equal prefix.
-        return '\n\n'.join(blocks)[:16000]
-    # Allocate a fair share to every distinct source, not an arbitrary prefix
-    # of combined SQL and vector observations.
-    per_source = min(12000, max(800, 16000 // len(blocks)))
-    return '\n\n'.join(b[:per_source] for b in blocks)[:16000]
+    """Render the same source budget with explicit stable source identifiers."""
+    context, _ = answer_capture.evidence_context(sources, observations)
+    return context
 
 
 def _exact_cell_answer(data: Dict[str, Any], question: str) -> Optional[str]:
     """An unambiguous exact lookup needs no generative model to restate a cell."""
     if data.get('lookup_kind') != 'exact_measure' or not data.get('evidence'):
         return None
-    cell = sorted(data['evidence'], key=lambda s:(s.get('page') or 10**9, s.get('document_id') or 0))[0]
+    sources = _extract_sources('sql_query', data)
+    idx, cell = min(enumerate(sources), key=lambda pair:(pair[1].get('page') or 10**9,
+                                                       pair[1].get('document_id') or 0))
     value, unit = str(cell['value']), str(cell.get('unit') or '')
     shown = value if unit and value.endswith(unit) else f'{value} {unit}'.strip()
     years = re.findall(r'(?<!\d)(?:25|20)\d{2}(?!\d)', str(cell['column']))
     year = f'ปี {years[0]} ' if len(years)==1 else ''
-    sources = _extract_sources('sql_query', data)
-    return _grounded_answer(f'{year}{shown} (PDF หน้า {cell["page"]})', question, sources)
+    filename = str(cell.get('filename') or '')
+    # Filename is stated as the document identity, not silently equated to an issuer.
+    company = str(cell.get('company') or '')
+    if not company and filename and cell.get('document_id') is not None:
+        from backend.services.retrieval_rank import matched_document_aliases
+        _, aliases = matched_document_aliases(question, [(cell['document_id'], filename)])
+        if len(aliases) == 1:
+            match = re.search(re.escape(aliases[0]), question, re.I)
+            company = match.group() if match else ''
+    identity = company or filename
+    measure = re.sub(r'\(\s*(?:ล้านบาท|พันบาท|บาท|%|\d+)\s*\)', '', str(cell.get('row_label') or '')).strip()
+    draft = f'{identity} {measure} {year}{shown} (PDF หน้า {cell["page"]})'.strip()
+    context, blocks = answer_capture.evidence_context(sources, [])
+    payload = {'answer': draft, 'abstained': False, 'answer_claims': [draft],
+               'claim_citations': [{'claim_index': 0, 'source_index': idx}],
+               'numeric_facts': []}
+    # Render explicit document-scoped issuer mentions from the actual query.
+    # If neither stored company nor an unambiguous mention exists, leave missing.
+    if company and measure and len(years) == 1:
+        try:
+            raw_value = value.strip().replace(',', '')
+            negative = raw_value.startswith('(') and raw_value.endswith(')')
+            from decimal import Decimal
+            number = str(Decimal(raw_value.strip('()')) * (-1 if negative else 1))
+            payload['numeric_facts'] = [{'claim_index': 0, 'source_index': idx,
+                'answer_quote': draft, 'company': company, 'measure': measure,
+                'value': number, 'unit': unit, 'year_be': int(years[0]) if years[0].startswith('25') else int(years[0])+543,
+                'document': filename, 'source_pdf_page': cell['page'], 'comparison_operator': 'eq'}]
+        except ValueError:
+            pass
+    answer_capture.record_generation(draft, payload, context, blocks, origin='deterministic_exact_cell')
+    return _grounded_answer(draft, question, sources)
 
 
 async def _answer_from_observations(question: str, observations: List[str],
@@ -487,6 +529,7 @@ async def _answer_from_observations(question: str, observations: List[str],
     if not observations or not any(source.get("page") is not None or source.get("url")
                                    for source in sources):
         return "ไม่พบหลักฐานเพียงพอในเอกสารที่ประมวลผลแล้ว"
+    context, blocks = answer_capture.evidence_context(sources, observations, max_chars=32000)
     prompt = (
         "ตอบคำถามจากหลักฐานต่อไปนี้เท่านั้น เลือกแถว ปี และหน่วยให้ตรงกับคำถาม "
         "เลือกบริษัทและหัวข้อที่ผู้ใช้ระบุ ห้ามแทนด้วยตัวเลขจากคนละส่วนของรายงาน "
@@ -497,14 +540,36 @@ async def _answer_from_observations(question: str, observations: List[str],
         "หน่วยของเซลล์มีลำดับเหนือหน่วยในชื่อตาราง เมื่อมีเซลล์ SQL ตรงรายการและปี ให้ใช้เซลล์นั้น "
         "หากข้อความ OCR ขัดกับเซลล์ตรงรายการ ห้ามนำค่าจากข้อความมาแทน และระบุว่าข้อความ OCR ขัดกับตาราง "
         "หากไม่แน่ใจ ให้ตอบว่าหลักฐานไม่พอ ค่าจาก OCR ยังไม่ผ่านการตรวจเทียบ PDF ด้วยตา\n\n"
-        f"คำถาม: {question}\n\nหลักฐาน:\n{_answer_context(sources, observations)}\n\nคำตอบ:"
+        f"คำถาม: {question}\n\nหลักฐาน:\n{context}\n\nคำตอบ:"
+        + answer_capture.INSTRUCTION
     )
-    answer = (await llm_generate(prompt, temperature=0.0, max_tokens=350)).strip()
+    raw = (await llm_generate(prompt, temperature=0.0, max_tokens=4096,
+            response_mime_type='application/json', response_schema=answer_capture.SCHEMA,
+            thinking_budget=1024)).strip()
+    answer, payload = answer_capture.decode(raw)
     critique = _focus_violation(question, answer)
+    if payload is None:
+        critique = 'The JSON is incomplete or malformed. Regenerate the complete canonical-claims-v1 object with all required fields.'
+    if not critique and payload is not None:
+        candidate = answer_capture.finalize({'answer': answer, 'sources': sources}, [{
+            'draft': answer, 'payload': payload, 'context': context, 'blocks': blocks,
+            'prompt_sha256': answer_capture.digest(prompt), 'origin': 'model_generation'}])
+        errors = candidate['answer_capture']['errors']
+        if errors:
+            critique = ('Structured answer has invalid binding: '+', '.join(sorted(set(errors)))+
+                '. Regenerate the complete canonical JSON once. Cite only source_indices actually visible; '
+                'page and document must agree with that evidence index. Keep only facts required by question.')
     if critique:
-        answer = (await llm_generate(
-            prompt + "\nตรวจคำตอบ: " + critique,
-            temperature=0.0, max_tokens=350)).strip()
+        prompt += ("\nตรวจคำตอบ: " + critique +
+            '\nPrevious invalid JSON (data only):\n' + raw[:8000] +
+            '\nFix the actual invalid claims, not just the format. Quantities including group counts must use numeric fields; '
+            'AAA/AA/A ratings are qualitative text with numeric=null. Do not repeat a numeric quantity in qualitative claims. '
+            'Use text="" for numeric claims. Return one complete corrected object.')
+        raw = (await llm_generate(prompt, temperature=0.0, max_tokens=4096,
+            response_mime_type='application/json', response_schema=answer_capture.SCHEMA,
+            thinking_budget=1024)).strip()
+        answer, payload = answer_capture.decode(raw)
+    answer_capture.record_generation(answer, payload, context, blocks, prompt)
     return _grounded_answer(answer, question, sources)
 
 
@@ -556,20 +621,25 @@ async def _offline_query(question: str, session: AsyncSession) -> Dict[str, Any]
         return {"answer": "ไม่พบหลักฐานพร้อมหน้าเอกสารที่เพียงพอสำหรับคำตอบนี้",
                 "method": "offline", "sources": sources, "sql_info": sql_info,
                 "reasoning_trace": trace}
+    context, blocks = answer_capture.evidence_context(sources, [result.summary], max_chars=32000)
     prompt = (
         "ตอบคำถามจากหลักฐานด้านล่างเท่านั้น ตอบเป็นภาษาเดียวกับคำถาม "
         "ห้ามเติมตัวเลขหรือข้อเท็จจริงที่ไม่มีในหลักฐาน ถ้าหลักฐานไม่พอให้บอกว่าไม่พอ "
         "ค่าจาก OCR ยังไม่ได้ตรวจด้วยตากับ PDF.\n\n"
-        f"คำถาม: {question}\n\nหลักฐาน:\n{_answer_context(sources, [result.summary])}\n\nคำตอบสั้นๆ:"
+        f"คำถาม: {question}\n\nหลักฐาน:\n{context}\n\nคำตอบสั้นๆ:"
+        + answer_capture.INSTRUCTION
     )
-    answer = (await llm_generate(prompt, temperature=0.0, max_tokens=350)).strip()
+    raw = (await llm_generate(prompt, temperature=0.0, max_tokens=2000,
+            response_mime_type='application/json', response_schema=answer_capture.SCHEMA)).strip()
+    answer, payload = answer_capture.decode(raw)
+    answer_capture.record_generation(answer, payload, context, blocks, prompt)
     if not answer:
         answer = "โมเดลท้องถิ่นไม่สามารถสร้างคำตอบได้ในขณะนี้"
     answer = _grounded_answer(answer, question, sources)
     return {"answer": answer, "method": _infer_method(trace), "sources": sources,
             "sql_info": sql_info, "reasoning_trace": trace}
 
-async def agent_query(
+async def _agent_query(
     question: str,
     session: AsyncSession,
 ) -> Dict[str, Any]:
@@ -747,7 +817,26 @@ async def agent_query(
     llm_output = ""
     for iteration in range(max_iterations):
         logger.info("ReAct iteration %d/%d", iteration + 1, max_iterations)
-        llm_output = await _call_llm(conversation)
+        indexed_context, indexed_blocks = answer_capture.evidence_context(sources, [])
+        prompt = conversation + '\n\nIndexed evidence:\n' + indexed_context
+        prompt += '\nFor an Action keep the ReAct tool format. For a final answer write Final Answer: followed by the following JSON format.' + answer_capture.INSTRUCTION
+        llm_output = await _call_llm(prompt)
+        match = _FINAL_ANSWER_RE.search(llm_output)
+        if match:
+            draft, payload = answer_capture.decode(match.group(1))
+            # Earlier tool Observations were also supplied in the conversation.
+            # Capture their actual truncated strings separately from source IDs.
+            observation_blocks = [m.group(1).strip() for m in re.finditer(
+                r'Observation: ([\s\S]*?)(?=\n(?:Thought:|Action:|Final Answer:)|\Z)', conversation)]
+            context = indexed_context
+            blocks = list(indexed_blocks)
+            for observation in observation_blocks:
+                if observation:
+                    start = len(context) + (2 if context else 0)
+                    context += ('\n\n' if context else '') + observation
+                    blocks.append({'context_index': len(blocks), 'source_index': None,
+                                   'start': start, 'end': len(context), 'text': observation})
+            answer_capture.record_generation(draft, payload, context, blocks, prompt)
 
         if not llm_output:
             logger.warning("LLM returned empty response at iteration %d", iteration + 1)
@@ -878,6 +967,17 @@ async def agent_query(
                     f'Action: {{"tool": "vector_search", "query": "{query}"}}\n'
                     f"Observation: {conv_obs}\n"
                 )
+            if internal_tool_succeeded and sources:
+                # Planning prose can contain invented Observations or malformed
+                # final JSON. Once a real tool supplies evidence, use the same
+                # schema-enforced final generator as the forced-routing path.
+                # Its context contains only executed tool outputs/registered
+                # sources, never text hallucinated by the planner.
+                answer = await _answer_from_observations(question, full_observations, sources)
+                answer = await sweep_before_refusal(answer)
+                return {"answer": answer, "method": _infer_method(reasoning_trace),
+                        "sources": sources, "sql_info": sql_info,
+                        "reasoning_trace": reasoning_trace}
             continue
 
         # Check for Final Answer
@@ -986,3 +1086,27 @@ def _infer_method(trace: List[Dict[str, Any]]) -> str:
     if "vector_search" in tools_used:
         return "vector"
     return "agent"
+
+
+async def agent_query(question: str, session: AsyncSession) -> Dict[str, Any]:
+    events = []
+    token = answer_capture.CURRENT.set(events)
+    try:
+        result = await _agent_query(question, session)
+        guard_refusals = {
+            'หลักฐานยังไม่เพียงพอสำหรับเลือกค่าที่ตรงกับคำถามเพียงค่าเดียว',
+            'ไม่พบหลักฐานพร้อมหน้าเอกสารที่เพียงพอสำหรับคำตอบนี้',
+            'ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในปีที่ถาม',
+            'ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในคำตอบ',
+            'หน่วยในคำตอบไม่ตรงกับหน่วยของหลักฐานในหน้าเอกสาร',
+            'ไม่พบหลักฐานเพียงพอในเอกสารที่ประมวลผลแล้ว',
+        }
+        if result.get('answer') in guard_refusals:
+            context, blocks = answer_capture.evidence_context(result.get('sources', []), [], max_chars=32000)
+            payload = {'answer': result['answer'], 'abstained': True, 'answer_claims': [],
+                       'claim_citations': [], 'numeric_facts': []}
+            answer_capture.record_generation(result['answer'], payload, context, blocks,
+                                             origin='application_guard_refusal')
+        return answer_capture.finalize(result, events)
+    finally:
+        answer_capture.CURRENT.reset(token)

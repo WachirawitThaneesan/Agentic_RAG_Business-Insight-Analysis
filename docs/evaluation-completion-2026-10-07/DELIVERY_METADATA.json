@@ -1,0 +1,16 @@
+{
+  "recorded_at_utc": "2026-10-07T16:47:16.641020+00:00",
+  "workflow_completion_estimate_range_percent": [
+    90,
+    95
+  ],
+  "planned_evaluation_execution_complete": true,
+  "quality_goal_completed": false,
+  "human_confirmed": false,
+  "canonical_reconciliation": {
+    "status": "exported_after_all_workers_finished",
+    "exported_sha256": "c421574cea0e90d9799f03281ca78f22a35d8b43eabc03fbce699b78470dd967",
+    "sdk_attempts_recorded_lower_bound": 3311,
+    "usage_reset": false
+  }
+}

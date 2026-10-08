@@ -1,0 +1,4 @@
+# Optional tooling for local tests and standalone evaluation figures.
+-r requirements.txt
+pytest>=8.0
+matplotlib==3.11.2

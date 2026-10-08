@@ -1,0 +1,17 @@
+{
+  "retrieval_questions": 500,
+  "retrieval_reports": 4,
+  "physical_pdf_pages": 1600,
+  "labeled_pages": 124,
+  "native_text_chunks": 3194,
+  "fresh_sample_qa": 50,
+  "fresh_numeric_qa": 16,
+  "fresh_negative_controls": 8,
+  "fresh_multipage_qa": 8,
+  "fresh_unique_questions_answered": 82,
+  "fresh_answer_outputs_across_arms": 114,
+  "saved_historical_answer_outputs": 55,
+  "combined_audited_outputs": 169,
+  "human_certified_reference_questions": 0,
+  "final_unseen_report_evaluation": false
+}

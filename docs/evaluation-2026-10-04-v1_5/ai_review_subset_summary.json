@@ -1,0 +1,1239 @@
+{
+  "n_eligible_references": 381,
+  "n_sample_answers_eligible": 37,
+  "scores": {
+    "schema_version": 1,
+    "method_version": "comprehensive-rag-v1.5",
+    "answers": {
+      "Thai500_sample50_live/app_gemini": {
+        "n": 37,
+        "n_answerable": 37,
+        "n_unanswerable": 0,
+        "strict_correct": 0,
+        "n_strict_scorable": 2,
+        "n_strict_needs_review": 35,
+        "strict_accuracy": 0.0,
+        "strict_accuracy_wilson95": [
+          0.0,
+          0.6576197724933469
+        ],
+        "deterministic_metrics": {
+          "abstained": {
+            "mean": 0.1891891891891892,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "answerable": {
+            "mean": 1,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "empty_response": {
+            "mean": 0,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "explicit_page_citation_complete": {
+            "mean": 0.32432432432432434,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "model_error_response": {
+            "mean": 0,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "page_citation_complete": {
+            "mean": 0.6756756756756757,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "page_citation_precision": {
+            "mean": 0.06756756756756757,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "page_citation_recall": {
+            "mean": 0.6756756756756757,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "prose_page_consistent": {
+            "mean": 0.5945945945945946,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "prose_page_present": {
+            "mean": 0.7297297297297297,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "strict_correct": {
+            "mean": 0,
+            "n_measured": 2,
+            "n_total": 37
+          }
+        },
+        "answer_coverage": 0.8108108108108109,
+        "selective_strict_accuracy": 0.0,
+        "abstention_precision": 0.0,
+        "abstention_recall": null,
+        "abstention_f1": null,
+        "judge_metrics": {
+          "all_claims_cited": {
+            "mean": 0.7567567567567568,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "all_claims_supported": {
+            "mean": 0.6486486486486487,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "answer_relevancy_rubric": {
+            "mean": 0.7837837837837838,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "citation_claim_recall": {
+            "mean": 0.8240740740740741,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "citation_f1": {
+            "mean": 0.20054482554482556,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "citation_source_precision": {
+            "mean": 0.11351351351351352,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "claim_count": {
+            "mean": 2.7837837837837838,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "claim_relevance_precision": {
+            "mean": 0.9011243386243386,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "claims_with_supporting_citation": {
+            "mean": 2.5675675675675675,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "context_precision_ap": {
+            "mean": 0.5680930930930931,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "context_recall": {
+            "mean": 0.5702702702702702,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "context_recall_focused_ai": {
+            "mean": 0.7288288288288288,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "context_reference_claims_covered": {
+            "mean": 1,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "context_usefulness_precision": {
+            "mean": 0.11081081081081082,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "contradiction_rate": {
+            "mean": 0.0787037037037037,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "factual_f1": {
+            "mean": 0.42268518518518516,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "factual_f1_focused_ai": {
+            "mean": 0.5,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "factual_precision": {
+            "mean": 0.6246362433862434,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "factual_precision_ai_judged": {
+            "mean": 0.7546296296296297,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "factual_precision_determined": {
+            "mean": 0.8817204301075269,
+            "n_measured": 31,
+            "n_total": 37
+          },
+          "factual_recall": {
+            "mean": 0.45045045045045046,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "factual_recall_focused_ai": {
+            "mean": 0.4954954954954955,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "factual_supported_claim_count": {
+            "mean": 1.2702702702702702,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "faithfulness": {
+            "mean": 0.7490740740740741,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "faithfulness_ai_judged": {
+            "mean": 0.9722222222222222,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "mapped_quote_repairs": {
+            "mean": 0.1891891891891892,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "quote_validation_warnings": {
+            "mean": 2.2162162162162162,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "reference_claim_count": {
+            "mean": 1.5405405405405406,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "reference_claims_covered": {
+            "mean": 0.7567567567567568,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "supported_citation_link_count": {
+            "mean": 2.972972972972973,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "supported_claim_count": {
+            "mean": 2.4324324324324325,
+            "n_measured": 37,
+            "n_total": 37
+          },
+          "unsupported_claim_rate": {
+            "mean": 0.25092592592592594,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "unverifiable_claim_rate": {
+            "mean": 0.29666005291005293,
+            "n_measured": 36,
+            "n_total": 37
+          },
+          "unverified_or_unsupported_claim_rate": {
+            "mean": 0.25092592592592594,
+            "n_measured": 36,
+            "n_total": 37
+          }
+        },
+        "negative_control_judge_metrics": {},
+        "n_judge_success": 37,
+        "n_judge_failed": 0,
+        "context_provenance": {
+          "captured_generation_prompt": 37
+        },
+        "numeric_accuracy": {
+          "n_correct": 0,
+          "n_total": 0,
+          "rate": null
+        },
+        "micro_claim_metrics": {
+          "n_claims": 103,
+          "n_required_reference_claims": 57,
+          "faithfulness": 0.8737864077669902,
+          "factual_precision": 0.4563106796116505,
+          "factual_recall": 0.49122807017543857,
+          "context_recall": 0.6491228070175439,
+          "citation_claim_recall": 0.9223300970873787
+        },
+        "complete_answer_success": {
+          "n_pass": 5,
+          "n_judged_answerable": 37,
+          "n_total_answerable": 37,
+          "rate_judged": 0.13513513513513514,
+          "strict_lower_bound_all": 0.13513513513513514,
+          "gate": "all claims faithful, factual, relevant and cited; response fully relevant; required facts complete; numeric and page checks pass"
+        }
+      }
+    },
+    "retrieval": {
+      "Thai500_retrieval/app_hybrid@1": {
+        "n": 381,
+        "metrics": {
+          "complete_evidence": {
+            "mean": 0.4068241469816273,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "duplicate_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "f1": {
+            "mean": 0.4068241469816273,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "first_relevant_rank": {
+            "mean": 1,
+            "n_measured": 155,
+            "n_total": 381
+          },
+          "hit": {
+            "mean": 0.4068241469816273,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "k": {
+            "mean": 1,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "map": {
+            "mean": 0.4068241469816273,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "missing_prediction": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "mrr": {
+            "mean": 0.4068241469816273,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "ndcg": {
+            "mean": 0.4068241469816273,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "precision": {
+            "mean": 0.4068241469816273,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "recall": {
+            "mean": 0.4068241469816273,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "relevant_unique_pages": {
+            "mean": 0.4068241469816273,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "returned": {
+            "mean": 1,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unique_pages": {
+            "mean": 1,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unlocatable_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          }
+        },
+        "n_measured": 381
+      },
+      "Thai500_retrieval/app_hybrid@3": {
+        "n": 381,
+        "metrics": {
+          "complete_evidence": {
+            "mean": 0.5590551181102362,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "duplicate_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "f1": {
+            "mean": 0.2795275590551181,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "first_relevant_rank": {
+            "mean": 1.3380281690140845,
+            "n_measured": 213,
+            "n_total": 381
+          },
+          "hit": {
+            "mean": 0.5590551181102362,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "k": {
+            "mean": 3,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "map": {
+            "mean": 0.4768153980752406,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "missing_prediction": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "mrr": {
+            "mean": 0.4768153980752406,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "ndcg": {
+            "mean": 0.4980601290213757,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "precision": {
+            "mean": 0.1863517060367454,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "recall": {
+            "mean": 0.5590551181102362,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "relevant_unique_pages": {
+            "mean": 0.5590551181102362,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "returned": {
+            "mean": 3,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unique_pages": {
+            "mean": 3,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unlocatable_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          }
+        },
+        "n_measured": 381
+      },
+      "Thai500_retrieval/app_hybrid@5": {
+        "n": 381,
+        "metrics": {
+          "complete_evidence": {
+            "mean": 0.6272965879265092,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "duplicate_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "f1": {
+            "mean": 0.20909886264216976,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "first_relevant_rank": {
+            "mean": 1.6694560669456067,
+            "n_measured": 239,
+            "n_total": 381
+          },
+          "hit": {
+            "mean": 0.6272965879265092,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "k": {
+            "mean": 5,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "map": {
+            "mean": 0.4925634295713036,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "missing_prediction": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "mrr": {
+            "mean": 0.4925634295713036,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "ndcg": {
+            "mean": 0.5262999006789078,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "precision": {
+            "mean": 0.12545931758530185,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "recall": {
+            "mean": 0.6272965879265092,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "relevant_unique_pages": {
+            "mean": 0.6272965879265092,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "returned": {
+            "mean": 5,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unique_pages": {
+            "mean": 5,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unlocatable_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          }
+        },
+        "n_measured": 381
+      },
+      "Thai500_retrieval/app_hybrid@10": {
+        "n": 381,
+        "metrics": {},
+        "n_measured": 0
+      },
+      "Thai500_retrieval/bm25@1": {
+        "n": 381,
+        "metrics": {
+          "complete_evidence": {
+            "mean": 0.3805774278215223,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "duplicate_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "f1": {
+            "mean": 0.3805774278215223,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "first_relevant_rank": {
+            "mean": 1,
+            "n_measured": 145,
+            "n_total": 381
+          },
+          "hit": {
+            "mean": 0.3805774278215223,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "k": {
+            "mean": 1,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "map": {
+            "mean": 0.3805774278215223,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "missing_prediction": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "mrr": {
+            "mean": 0.3805774278215223,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "ndcg": {
+            "mean": 0.3805774278215223,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "precision": {
+            "mean": 0.3805774278215223,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "recall": {
+            "mean": 0.3805774278215223,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "relevant_unique_pages": {
+            "mean": 0.3805774278215223,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "returned": {
+            "mean": 1,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unique_pages": {
+            "mean": 1,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unlocatable_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          }
+        },
+        "n_measured": 381
+      },
+      "Thai500_retrieval/bm25@3": {
+        "n": 381,
+        "metrics": {
+          "complete_evidence": {
+            "mean": 0.5039370078740157,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "duplicate_slots": {
+            "mean": 0.24934383202099739,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "f1": {
+            "mean": 0.25196850393700787,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "first_relevant_rank": {
+            "mean": 1.2864583333333333,
+            "n_measured": 192,
+            "n_total": 381
+          },
+          "hit": {
+            "mean": 0.5039370078740157,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "k": {
+            "mean": 3,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "map": {
+            "mean": 0.43875765529308836,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "missing_prediction": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "mrr": {
+            "mean": 0.43875765529308836,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "ndcg": {
+            "mean": 0.45565947608736707,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "precision": {
+            "mean": 0.1679790026246719,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "recall": {
+            "mean": 0.5039370078740157,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "relevant_unique_pages": {
+            "mean": 0.5039370078740157,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "returned": {
+            "mean": 3,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unique_pages": {
+            "mean": 2.7506561679790025,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unlocatable_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          }
+        },
+        "n_measured": 381
+      },
+      "Thai500_retrieval/bm25@5": {
+        "n": 381,
+        "metrics": {
+          "complete_evidence": {
+            "mean": 0.5433070866141733,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "duplicate_slots": {
+            "mean": 0.5170603674540682,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "f1": {
+            "mean": 0.18110236220472442,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "first_relevant_rank": {
+            "mean": 1.5169082125603865,
+            "n_measured": 207,
+            "n_total": 381
+          },
+          "hit": {
+            "mean": 0.5433070866141733,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "k": {
+            "mean": 5,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "map": {
+            "mean": 0.44768153980752406,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "missing_prediction": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "mrr": {
+            "mean": 0.44768153980752406,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "ndcg": {
+            "mean": 0.47181008531368973,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "precision": {
+            "mean": 0.10866141732283466,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "recall": {
+            "mean": 0.5433070866141733,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "relevant_unique_pages": {
+            "mean": 0.5433070866141733,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "returned": {
+            "mean": 5,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unique_pages": {
+            "mean": 4.482939632545932,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unlocatable_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          }
+        },
+        "n_measured": 381
+      },
+      "Thai500_retrieval/bm25@10": {
+        "n": 381,
+        "metrics": {
+          "complete_evidence": {
+            "mean": 0.5931758530183727,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "duplicate_slots": {
+            "mean": 1.3412073490813647,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "f1": {
+            "mean": 0.10785015509424958,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "first_relevant_rank": {
+            "mean": 1.9601769911504425,
+            "n_measured": 226,
+            "n_total": 381
+          },
+          "hit": {
+            "mean": 0.5931758530183727,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "k": {
+            "mean": 10,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "map": {
+            "mean": 0.4551878931800192,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "missing_prediction": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "mrr": {
+            "mean": 0.4551878931800192,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "ndcg": {
+            "mean": 0.4887854962581722,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "precision": {
+            "mean": 0.059317585301837276,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "recall": {
+            "mean": 0.5931758530183727,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "relevant_unique_pages": {
+            "mean": 0.5931758530183727,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "returned": {
+            "mean": 10,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unique_pages": {
+            "mean": 8.658792650918635,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unlocatable_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          }
+        },
+        "n_measured": 381
+      },
+      "Thai500_retrieval/dense@1": {
+        "n": 381,
+        "metrics": {
+          "complete_evidence": {
+            "mean": 0.1968503937007874,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "duplicate_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "f1": {
+            "mean": 0.1968503937007874,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "first_relevant_rank": {
+            "mean": 1,
+            "n_measured": 75,
+            "n_total": 381
+          },
+          "hit": {
+            "mean": 0.1968503937007874,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "k": {
+            "mean": 1,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "map": {
+            "mean": 0.1968503937007874,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "missing_prediction": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "mrr": {
+            "mean": 0.1968503937007874,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "ndcg": {
+            "mean": 0.1968503937007874,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "precision": {
+            "mean": 0.1968503937007874,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "recall": {
+            "mean": 0.1968503937007874,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "relevant_unique_pages": {
+            "mean": 0.1968503937007874,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "returned": {
+            "mean": 1,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unique_pages": {
+            "mean": 1,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unlocatable_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          }
+        },
+        "n_measured": 381
+      },
+      "Thai500_retrieval/dense@3": {
+        "n": 381,
+        "metrics": {
+          "complete_evidence": {
+            "mean": 0.32020997375328086,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "duplicate_slots": {
+            "mean": 0.18635170603674542,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "f1": {
+            "mean": 0.16010498687664043,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "first_relevant_rank": {
+            "mean": 1.5573770491803278,
+            "n_measured": 122,
+            "n_total": 381
+          },
+          "hit": {
+            "mean": 0.32020997375328086,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "k": {
+            "mean": 3,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "map": {
+            "mean": 0.24934383202099739,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "missing_prediction": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "mrr": {
+            "mean": 0.24934383202099739,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "ndcg": {
+            "mean": 0.2674650225534328,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "precision": {
+            "mean": 0.10673665791776027,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "recall": {
+            "mean": 0.32020997375328086,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "relevant_unique_pages": {
+            "mean": 0.32020997375328086,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "returned": {
+            "mean": 3,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unique_pages": {
+            "mean": 2.8136482939632548,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unlocatable_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          }
+        },
+        "n_measured": 381
+      },
+      "Thai500_retrieval/dense@5": {
+        "n": 381,
+        "metrics": {
+          "complete_evidence": {
+            "mean": 0.38320209973753283,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "duplicate_slots": {
+            "mean": 0.4146981627296588,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "f1": {
+            "mean": 0.1277340332458443,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "first_relevant_rank": {
+            "mean": 2.041095890410959,
+            "n_measured": 146,
+            "n_total": 381
+          },
+          "hit": {
+            "mean": 0.38320209973753283,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "k": {
+            "mean": 5,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "map": {
+            "mean": 0.2635170603674541,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "missing_prediction": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "mrr": {
+            "mean": 0.2635170603674541,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "ndcg": {
+            "mean": 0.2932139789410843,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "precision": {
+            "mean": 0.07664041994750656,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "recall": {
+            "mean": 0.38320209973753283,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "relevant_unique_pages": {
+            "mean": 0.38320209973753283,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "returned": {
+            "mean": 5,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unique_pages": {
+            "mean": 4.585301837270341,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unlocatable_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          }
+        },
+        "n_measured": 381
+      },
+      "Thai500_retrieval/dense@10": {
+        "n": 381,
+        "metrics": {
+          "complete_evidence": {
+            "mean": 0.49343832020997375,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "duplicate_slots": {
+            "mean": 0.9763779527559056,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "f1": {
+            "mean": 0.08971605821999523,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "first_relevant_rank": {
+            "mean": 3.2925531914893615,
+            "n_measured": 188,
+            "n_total": 381
+          },
+          "hit": {
+            "mean": 0.49343832020997375,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "k": {
+            "mean": 10,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "map": {
+            "mean": 0.27841311502728827,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "missing_prediction": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "mrr": {
+            "mean": 0.27841311502728827,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "ndcg": {
+            "mean": 0.3290477512414985,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "precision": {
+            "mean": 0.049343832020997375,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "recall": {
+            "mean": 0.49343832020997375,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "relevant_unique_pages": {
+            "mean": 0.49343832020997375,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "returned": {
+            "mean": 10,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unique_pages": {
+            "mean": 9.023622047244094,
+            "n_measured": 381,
+            "n_total": 381
+          },
+          "unlocatable_slots": {
+            "mean": 0,
+            "n_measured": 381,
+            "n_total": 381
+          }
+        },
+        "n_measured": 381
+      }
+    }
+  },
+  "note": "Separate sensitivity analysis selected without seeing answers or rankings. Same-family AI review, not human certification."
+}

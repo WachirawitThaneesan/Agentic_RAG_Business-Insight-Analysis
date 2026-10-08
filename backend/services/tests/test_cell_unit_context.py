@@ -1,7 +1,35 @@
 """Regressions from the real five-page Typhoon/Gemini staging run."""
 import duckdb
+import pytest
 from backend.services import duckdb_warehouse as w
 from backend.services.financial_quality import assess_table
+
+
+@pytest.mark.parametrize("column", ["2567", "31 ธ.ค. 2567 งบรวม ตรวจสอบ"])
+def test_explicit_row_scale_overrides_broad_thb_heading(monkeypatch, column):
+    db = duckdb.connect(":memory:")
+    w._init_schema(db)
+    monkeypatch.setattr(w, "_conn", db)
+    w.load_table_into_warehouse(1, "assets", ["รายการ", column],
+        [["สินทรัพย์ไม่มีตัวตนอื่นนอกจากค่าความนิยม (ล้านบาท)", "10,831.00"],
+         ["เงินสด (พันบาท)", "58.00"], ["กำไรต่อหุ้น (บาท)", "1.25"]],
+        unit="บาท (THB)", source_page=133, source_provider="gemini")
+    relation = "fact_financial_metrics" if column == "2567" else "dim_table_rows"
+    value_column = "raw_value" if column == "2567" else "col_value"
+    rows = db.execute(f"select row_label, {value_column}, unit, source_page from {relation}").fetchall()
+    assert rows == [
+        ("สินทรัพย์ไม่มีตัวตนอื่นนอกจากค่าความนิยม (ล้านบาท)", "10,831.00", "ล้านบาท", 133),
+        ("เงินสด (พันบาท)", "58.00", "พันบาท", 133),
+        ("กำไรต่อหุ้น (บาท)", "1.25", "บาท", 133)]
+    db.close()
+
+
+def test_local_money_unit_precedence_does_not_promote_table_title():
+    assert w._cell_unit("สินทรัพย์ (ล้านบาท)", "2567 (พันบาท)", "58", "บาท") == "พันบาท"
+    assert w._cell_unit("สินทรัพย์ (ล้านบาท)", "2567", "58 พันบาท", "บาท") == "พันบาท"
+    assert w._cell_unit("สินทรัพย์", "2567", "58", "บาท", "ล้านบาท") == "บาท"
+    assert w._cell_unit("สินทรัพย์ (ล้านบาท)", "สัดส่วน (%)", "58", "บาท") == "%"
+    assert w._cell_unit("สินทรัพย์ (ล้านบาท)", "2567", "58%", "บาท") == "%"
 
 def test_mixed_money_percent_and_eps_cells_keep_their_dimensions(monkeypatch):
     db=duckdb.connect(":memory:");w._init_schema(db);monkeypatch.setattr(w,"_conn",db)

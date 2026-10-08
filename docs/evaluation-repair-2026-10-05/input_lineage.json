@@ -1,0 +1,9 @@
+{
+  "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\outputs\\comprehensive_eval_2026-10-04_v1\\bank500_run\\retrieval.json": "e2e0ff7d1d4b4010836706049156e787d14f5d19ad9878a332cb65fdc97ed847",
+  "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\outputs\\evaluation_repair_2026-10-05\\alias_only500\\retrieval.json": "ef8b51acd81660b0e61d2f21ab455b6510aa6c4f395eaff172b6a8d66554fd3e",
+  "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\outputs\\evaluation_repair_2026-10-05\\production_weighted500\\retrieval.json": "59a5a4bf92afb8c0542bdb4c73bb559b94b9a3ee1a0ade112ad723eed26c894d",
+  "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\outputs\\evaluation_repair_2026-10-05\\repaired_baseline498\\retrieval.json": "2a7c206ffba60042d89f7240a3572b95df6eec891c1e490a70fcfc08b18548e4",
+  "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\outputs\\evaluation_repair_2026-10-05\\repaired_production498\\retrieval.json": "087e0661546f0a09b0f2d7e30aa4978824a2161f7661e876f9405c26e2afcfa2",
+  "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\outputs\\evaluation_repair_2026-10-05\\cross_entity498\\retrieval.json": "2b278e1d4e53a63573e56bf1fc14ed043b4a502e838908ea9599c8b5b888e596",
+  "C:\\Users\\nonga\\Documents\\Codex\\2026-09-25\\i-would-currently-rate-the-project\\outputs\\evaluation_repair_2026-10-05\\ranking_navigation_v2_ablations\\retrieval.json": "1875d45f55888806ce8b4110933f64870a143ec515ce2ef18a557ebc56685bec"
+}

@@ -1,0 +1,109 @@
+{
+  "live_ptt24": {
+    "scope": "host processes only; no cloud inference resources or SDK-internal retries",
+    "wall_seconds": 384.3381363999997,
+    "runner_peak_rss_mib": 455.60546875,
+    "ollama_peak_rss_mib": 79.53125,
+    "gpu_peak_total_used_mib": null,
+    "arms": {
+      "app_gemini": {
+        "sdk_attempts": 31,
+        "sdk_successes": 24,
+        "sdk_errors": 7,
+        "sdk_error_rate": 0.22580645161290322,
+        "input_tokens": 147581,
+        "output_tokens": 808,
+        "thinking_tokens": 0,
+        "latency_n": 24,
+        "latency_median_seconds": 4.640000000000001,
+        "latency_p95_seconds": 15.198499999999996,
+        "latency_total_seconds": 191.35999999999999,
+        "n_questions_with_successful_model_calls": 24,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      },
+      "bm25_gemini": {
+        "sdk_attempts": 26,
+        "sdk_successes": 24,
+        "sdk_errors": 2,
+        "sdk_error_rate": 0.07692307692307693,
+        "input_tokens": 53969,
+        "output_tokens": 167,
+        "thinking_tokens": 0,
+        "latency_n": 24,
+        "latency_median_seconds": 3.395,
+        "latency_p95_seconds": 12.308499999999999,
+        "latency_total_seconds": 102.82,
+        "n_questions_with_successful_model_calls": 24,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  },
+  "multi8_run": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 197.2813333999984,
+    "runner_peak_rss_mib": 468.17578125,
+    "ollama_peak_rss_mib": 47.19921875,
+    "gpu_peak_total_used_mib": 713.0,
+    "arms": {
+      "app_gemini": {
+        "sdk_attempts": 10,
+        "sdk_successes": 8,
+        "sdk_errors": 2,
+        "sdk_error_rate": 0.2,
+        "input_tokens": 66102,
+        "output_tokens": 540,
+        "thinking_tokens": 0,
+        "latency_n": 8,
+        "latency_median_seconds": 8.825,
+        "latency_p95_seconds": 17.156000000000002,
+        "latency_total_seconds": 82.64,
+        "n_questions_with_successful_model_calls": 8,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      },
+      "bm25_gemini": {
+        "sdk_attempts": 9,
+        "sdk_successes": 8,
+        "sdk_errors": 1,
+        "sdk_error_rate": 0.1111111111111111,
+        "input_tokens": 17456,
+        "output_tokens": 268,
+        "thinking_tokens": 0,
+        "latency_n": 8,
+        "latency_median_seconds": 6.574999999999999,
+        "latency_p95_seconds": 11.892999999999997,
+        "latency_total_seconds": 55.96,
+        "n_questions_with_successful_model_calls": 8,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  },
+  "bank500_run": {
+    "scope": "RSS sampled host processes only, possible shared-page double count; GPU total device usage includes other apps. No cloud inference resources or SDK-internal retries.",
+    "wall_seconds": 1042.8125795000014,
+    "runner_peak_rss_mib": 638.92578125,
+    "ollama_peak_rss_mib": 319.09765625,
+    "gpu_peak_total_used_mib": 713.0,
+    "arms": {
+      "app_gemini": {
+        "sdk_attempts": 51,
+        "sdk_successes": 50,
+        "sdk_errors": 1,
+        "sdk_error_rate": 0.0196078431372549,
+        "input_tokens": 321799,
+        "output_tokens": 5940,
+        "thinking_tokens": 0,
+        "latency_n": 50,
+        "latency_median_seconds": 2.8964126499995473,
+        "latency_p95_seconds": 5.512551165000149,
+        "latency_total_seconds": 160.39634359999764,
+        "n_questions_with_successful_model_calls": 50,
+        "cloud_cost_usd": null,
+        "cloud_cost_reason": "No price/version supplied; actual token usage recorded separately"
+      }
+    }
+  }
+}

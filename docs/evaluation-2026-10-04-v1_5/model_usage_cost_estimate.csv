@@ -1,0 +1,25 @@
+﻿estimated_usd_undiscounted,experiment,input_tokens,note,output_including_thinking_tokens,sdk_attempts,successful_sdk_calls
+0.23961269999999998,bank500,160609,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",76572,53,41
+0.1113897,bank500_run,321799,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",5940,51,50
+0.1441645,bank500_v2,120090,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",43255,35,31
+0.0014984,calibration\answer_coverage,1253,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",449,3,1
+0.001547,calibration\answer_coverage_v2,1415,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",449,1,1
+0.0018161,calibration\context_coverage,1437,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",554,2,1
+0.0023368,calibration\relevance_v2,3631,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",499,11,10
+0.013722700000000001,calibration\run,9759,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",4318,12,11
+0.6510666,claim_audit_v2,1176372,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",119262,76,60
+0.3209158,claim_audit_v3,558311,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",61369,46,40
+0.0323068,claim_audit_v4,44581,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",7573,2,2
+0.2960679,final_claim_audit_v1_3,406443,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",69654,11,11
+0.0201723,final_response_audit,36491,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",3690,78,66
+0.048015300000000004,focused_answer_coverage,35476,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",14949,19,15
+0.045063399999999997,focused_answer_coverage_v2,35203,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",13801,16,14
+0.25426689999999996,focused_context_coverage,713323,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",16108,32,27
+0.0948851,historical_audit,112117,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",24500,7,7
+0.5925802,large_claim_final,993409,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",117823,30,28
+0.8364472999999999,large_claim_partial,1376441,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",169406,47,44
+0.0629025,live_ptt24,201550,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",975,57,48
+0.027087399999999998,multi8_run,83558,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",808,19,16
+0.2148279,multi_claim_final,345918,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",44421,19,18
+0.1784955,reference_quality500,187860,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",48855,56,50
+0.0215684,response_relevance_v2,35803,"Token-based estimate, not billing statement. Cache discounts not recorded; interrupted pending requests may add unknown usage.",4331,95,83

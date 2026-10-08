@@ -146,7 +146,8 @@ async def _run(manifest: dict, chunks: list[dict], vectors, bm25: BM25,
             print(f"Answered {index}/{answer_limit}: {question['id']}", flush=True)
 
         documents = {item["code"]: item for item in manifest["documents"]}
-        scores = {arm: score_answers(manifest["items"][:answer_limit], documents, rows,
+        scored_items = [item for item in manifest["items"][:answer_limit] if item.get('answerable', True)]
+        scores = {arm: score_answers(scored_items, documents, rows,
                                      page_space="source")
                   for arm, rows in predictions.items()}
         for arm, rows in predictions.items():
@@ -179,7 +180,10 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--answer-limit", type=int, default=20)
     parser.add_argument("--measure", action='store_true', help='Record calls/resources and BM25/dense/app page Hit@5')
+    parser.add_argument("--capture-context", action='store_true', help='Save exact public-document generation prompts for claim evaluation; requires --measure')
     args = parser.parse_args()
+    if args.capture_context and not args.measure:
+        parser.error('--capture-context requires --measure')
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
     if not 0 < args.answer_limit <= len(manifest["items"]):
         parser.error("answer-limit must be between one and question count")
@@ -192,7 +196,7 @@ def main() -> None:
     from backend.config import get_settings
     get_settings.cache_clear()
     from scripts.experiment_meter import ExperimentMeter
-    meter = ExperimentMeter(output) if args.measure else None
+    meter = ExperimentMeter(output, capture_context=args.capture_context) if args.measure else None
     if meter: meter.start()
     try:
         _save(output/'reference_locked.json',manifest)

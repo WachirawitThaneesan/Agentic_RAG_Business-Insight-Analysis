@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "method_version": "comprehensive-rag-v1.5",
+  "answers": {
+    "Repaired498_sample50_live/app_gemini": {
+      "n": 50,
+      "n_answerable": 50,
+      "n_unanswerable": 0,
+      "strict_correct": 0,
+      "n_strict_scorable": 2,
+      "n_strict_needs_review": 48,
+      "strict_accuracy": 0.0,
+      "strict_accuracy_wilson95": [
+        0.0,
+        0.6576197724933469
+      ],
+      "deterministic_metrics": {
+        "abstained": {
+          "mean": 0.26,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "answerable": {
+          "mean": 1,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "empty_response": {
+          "mean": 0,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "explicit_page_citation_complete": {
+          "mean": 0.44,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "model_error_response": {
+          "mean": 0,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "page_citation_complete": {
+          "mean": 0.82,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "page_citation_precision": {
+          "mean": 0.082,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "page_citation_recall": {
+          "mean": 0.82,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "prose_page_consistent": {
+          "mean": 0.78,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "prose_page_present": {
+          "mean": 0.66,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "strict_correct": {
+          "mean": 0,
+          "n_measured": 2,
+          "n_total": 50
+        }
+      },
+      "answer_coverage": 0.74,
+      "selective_strict_accuracy": 0.0,
+      "abstention_precision": 0.0,
+      "abstention_recall": null,
+      "abstention_f1": null,
+      "judge_metrics": {
+        "all_claims_cited": {
+          "mean": 0.56,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "all_claims_supported": {
+          "mean": 0.52,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "answer_relevancy_rubric": {
+          "mean": 0.65,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "citation_claim_recall": {
+          "mean": 0.7153061224489796,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "citation_f1": {
+          "mean": 0.19213893482801048,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "citation_source_precision": {
+          "mean": 0.098,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "claim_count": {
+          "mean": 2.1,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "claim_relevance_precision": {
+          "mean": 0.8287698412698413,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "claims_with_supporting_citation": {
+          "mean": 1.5,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "context_precision_ap": {
+          "mean": 0.5246706349206349,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "context_recall": {
+          "mean": 0.636,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "context_recall_focused_ai": {
+          "mean": 0.8143333333333334,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "context_reference_claims_covered": {
+          "mean": 1,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "context_usefulness_precision": {
+          "mean": 0.134,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "contradiction_rate": {
+          "mean": 0.08571428571428572,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "factual_f1": {
+          "mean": 0.5045918367346939,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "factual_f1_focused_ai": {
+          "mean": 0.6071428571428571,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "factual_precision": {
+          "mean": 0.6954648526077097,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "factual_precision_ai_judged": {
+          "mean": 0.8666666666666667,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "factual_precision_determined": {
+          "mean": 0.8971428571428571,
+          "n_measured": 35,
+          "n_total": 50
+        },
+        "factual_recall": {
+          "mean": 0.5066666666666667,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "factual_recall_focused_ai": {
+          "mean": 0.5066666666666667,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "factual_supported_claim_count": {
+          "mean": 1.26,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "faithfulness": {
+          "mean": 0.6498299319727892,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "faithfulness_ai_judged": {
+          "mean": 0.9761904761904762,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "mapped_quote_repairs": {
+          "mean": 0.18,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "quote_validation_warnings": {
+          "mean": 3.18,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "reference_claim_count": {
+          "mean": 1.6,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "reference_claims_covered": {
+          "mean": 0.84,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "supported_citation_link_count": {
+          "mean": 1.8,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "supported_claim_count": {
+          "mean": 1.4,
+          "n_measured": 50,
+          "n_total": 50
+        },
+        "unsupported_claim_rate": {
+          "mean": 0.3501700680272109,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "unverifiable_claim_rate": {
+          "mean": 0.21882086167800455,
+          "n_measured": 42,
+          "n_total": 50
+        },
+        "unverified_or_unsupported_claim_rate": {
+          "mean": 0.3501700680272109,
+          "n_measured": 42,
+          "n_total": 50
+        }
+      },
+      "negative_control_judge_metrics": {},
+      "n_judge_success": 50,
+      "n_judge_failed": 0,
+      "context_provenance": {
+        "captured_generation_prompt": 50
+      },
+      "numeric_accuracy": {
+        "n_correct": 0,
+        "n_total": 0,
+        "rate": null
+      },
+      "micro_claim_metrics": {
+        "n_claims": 105,
+        "n_required_reference_claims": 80,
+        "faithfulness": 0.6666666666666666,
+        "factual_precision": 0.6,
+        "factual_recall": 0.525,
+        "context_recall": 0.625,
+        "citation_claim_recall": 0.7142857142857143
+      },
+      "complete_answer_success": {
+        "n_pass": 10,
+        "n_judged_answerable": 50,
+        "n_total_answerable": 50,
+        "rate_judged": 0.2,
+        "strict_lower_bound_all": 0.2,
+        "gate": "all claims faithful, factual, relevant and cited; response fully relevant; required facts complete; numeric and page checks pass"
+      }
+    }
+  },
+  "retrieval": {}
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "B0002",
+    "accepted_alternative_pages": [
+      20,
+      100
+    ],
+    "review_level": "Primary-agent AI PDF-context review; human pending",
+    "reason": "Same entity, requested fact and temporal context in original page and alternate; not mere duplicate quote"
+  },
+  {
+    "id": "B0058",
+    "accepted_alternative_pages": [
+      352
+    ],
+    "review_level": "Primary-agent AI PDF-context review; human pending",
+    "reason": "Same entity, requested fact and temporal context in original page and alternate; not mere duplicate quote"
+  },
+  {
+    "id": "B0095",
+    "accepted_alternative_pages": [
+      74
+    ],
+    "review_level": "Primary-agent AI PDF-context review; human pending",
+    "reason": "Same entity, requested fact and temporal context in original page and alternate; not mere duplicate quote"
+  },
+  {
+    "id": "B0164",
+    "accepted_alternative_pages": [
+      34
+    ],
+    "review_level": "Primary-agent AI PDF-context review; human pending",
+    "reason": "Same entity, requested fact and temporal context in original page and alternate; not mere duplicate quote"
+  },
+  {
+    "id": "B0193",
+    "accepted_alternative_pages": [
+      219
+    ],
+    "review_level": "Primary-agent AI PDF-context review; human pending",
+    "reason": "Same entity, requested fact and temporal context in original page and alternate; not mere duplicate quote"
+  },
+  {
+    "id": "B0148",
+    "rejected_alternative_pages": [
+      153,
+      155,
+      156
+    ],
+    "reason": "Same course text on different directors biographies; not evidence for Phumchai on p154"
+  },
+  {
+    "id": "B0469",
+    "rejected_alternative_pages": [
+      80
+    ],
+    "reason": "Original label unsupported navigation text; quarantined"
+  },
+  {
+    "id": "B0470",
+    "rejected_alternative_pages": [
+      80
+    ],
+    "reason": "Original label unsupported navigation text; quarantined"
+  }
+]

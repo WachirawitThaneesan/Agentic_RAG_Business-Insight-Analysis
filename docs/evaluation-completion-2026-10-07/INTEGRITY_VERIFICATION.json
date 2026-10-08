@@ -1,0 +1,14 @@
+{
+  "all_532_outputs_saved": true,
+  "all_532_judge_outcomes_accounted_for": true,
+  "judge_statuses": {
+    "judge_failed": 36,
+    "measured": 496
+  },
+  "all_judge_payloads_match_frozen_expected_hashes": true,
+  "frozen_backend_and_inputs_unchanged": true,
+  "metrics_reproduced_offline": true,
+  "new_cloud_calls": 0,
+  "quality_goal_completed": false,
+  "generation_sha256": "2d02fa1126ce7955b6f5f3bccbda4427e84b2cee4201fe95936b05324a5820c8"
+}

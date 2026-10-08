@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.database import get_db
 from backend.services.agent import agent_query
-from backend.services.evaluation import save_qa_log
+from backend.services.evaluation import save_qa_log, _contexts_from_agent_result
 
 router = APIRouter()
 
@@ -30,26 +30,15 @@ async def query_agent(
     """
     result = await agent_query(request.question, db)
     
-    # Extract contexts to feed into Ragas
-    contexts = []
-    if "sources" in result:
-        for s in result["sources"]:
-            if "text" in s:
-                contexts.append(s["text"])
-            elif "summary" in s:
-                contexts.append(s["summary"])
-            elif "sql" in s:
-                contexts.append(s["sql"])
-            
-    if not contexts:
-        contexts = ["No context used."]
+    contexts = _contexts_from_agent_result(result)
         
     # Assign background task to log QA for later batch evaluation
     background_tasks.add_task(
         save_qa_log,
         question=request.question,
         answer=result.get("answer", ""),
-        contexts=contexts
+        contexts=contexts,
+        full_result=result,
     )
     
     return result
