@@ -3,326 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DuckDB Warehouse Explorer</title>
+    <title>Warehouse Explorer</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Crect%20width='24'%20height='24'%20rx='6'%20fill='%2316171B'/%3E%3Cg%20transform='translate%283.6%203.6%29%20scale%280.7%29'%3E%3Cpath%20fill='%23F2F1EE'%20d='M7%202H14.6L19.5%206.9V10.4H4.5V4.5A2.5%202.5%200%200%201%207%202Z'/%3E%3Cpath%20fill='%239C9B96'%20d='M14.6%202V5.2A1.7%201.7%200%200%200%2016.3%206.9H19.5Z'/%3E%3Crect%20fill='%23F2B544'%20x='2'%20y='12'%20width='20'%20height='3.6'%20rx='1.8'/%3E%3Cpath%20fill='%23F2F1EE'%20d='M4.5%2017.2H19.5V19.5A2.5%202.5%200%200%201%2017%2022H7A2.5%202.5%200%200%201%204.5%2019.5Z'/%3E%3C/g%3E%3C/svg%3E">
+    <meta name="color-scheme" content="light dark">
+    <script>
+        try {
+            const saved = localStorage.getItem('ba-theme');
+            if (saved === 'light') document.documentElement.dataset.theme = 'light';
+        } catch (_) { /* storage blocked: follow the system setting */ }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300..700&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="style.css?v=20261011-8">
     <style>
-        :root {
-            --bg-primary: #0a0e1a;
-            --bg-secondary: #111827;
-            --bg-card: #1a2236;
-            --bg-input: #0d1321;
-            --accent: #6366f1;
-            --accent-glow: rgba(99, 102, 241, 0.3);
-            --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --text: #e2e8f0;
-            --text-dim: #94a3b8;
-            --border: rgba(99, 102, 241, 0.15);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text);
-            min-height: 100vh;
-        }
-
+        /* Warehouse explorer: a standalone page in the working-paper style. */
         .header {
-            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--line);
+            padding: 16px max(40px, calc((100vw - 1000px) / 2));
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: space-between;
-        }
-
-        .header h1 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #818cf8, #6366f1, #4f46e5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .header h1::before { content: "🦆"; -webkit-text-fill-color: initial; }
-
-        .status-bar {
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.85rem;
-        }
-
-        .stat {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: var(--text-dim);
-        }
-
-        .stat .value {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .card-header {
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .card-header h2 {
-            font-size: 1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .card-body { padding: 1.5rem; }
-
-        /* SQL Editor */
-        .sql-editor {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .sql-input {
-            width: 100%;
-            min-height: 100px;
-            background: var(--bg-input);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            font-size: 0.9rem;
-            padding: 1rem;
-            resize: vertical;
-            transition: border-color 0.2s;
-        }
-
-        .sql-input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-glow);
-        }
-
-        .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-
-        .btn {
-            padding: 0.6rem 1.2rem;
-            border: none;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #6366f1, #4f46e5);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px var(--accent-glow);
-        }
-
-        .btn-secondary {
-            background: var(--bg-secondary);
-            color: var(--text-dim);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover { color: var(--text); border-color: var(--accent); }
-
-        .btn-success {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-        }
-
-        .btn-success:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn-danger {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
-        }
-
-        .btn-danger:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-        }
-
-        /* Quick queries */
-        .quick-queries {
-            display: flex;
+            gap: 16px;
             flex-wrap: wrap;
-            gap: 0.5rem;
         }
-
-        .quick-btn {
-            padding: 0.4rem 0.8rem;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 20px;
-            color: #818cf8;
-            font-size: 0.78rem;
-            cursor: pointer;
-            transition: all 0.2s;
+        .header h1 { font-size: var(--text-xl); font-weight: 600; line-height: 1.3; }
+        .header-back { font-size: var(--text-sm); color: var(--ink-3); text-decoration: none; }
+        .header-back:hover { color: var(--gold); }
+        .status-bar { display: flex; gap: 28px; flex-wrap: wrap; font-size: var(--text-sm); color: var(--ink-3); }
+        .stat .value { color: var(--ink); font-weight: 600; margin-left: 6px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 36px 40px 72px; }
+        .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-panel); padding: 22px 24px; }
+        .card + .card { margin-top: 18px; }
+        .header { position: relative; z-index: 2; }
+        .container { position: relative; z-index: 2; }
+        .card-header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+        .card-header h2 { font-size: var(--text-lg); font-weight: 600; }
+        .btn-row { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+        .sql-editor { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+        .quick-queries { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+        .quick-btn { border: 0; background: none; padding: 2px 0; font-size: var(--text-sm); color: var(--gold); cursor: pointer; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; }
+        .quick-btn:hover { text-decoration-color: currentColor; }
+        .sql-input {
+            width: 100%; min-height: 140px; resize: vertical;
+            padding: 12px 14px;
+            font-family: var(--font-mono); font-size: var(--text-sm); line-height: 1.6;
+            background: var(--surface); color: var(--ink);
+            border: 1px solid var(--line-strong); border-radius: var(--r-control); outline: none;
         }
-
-        .quick-btn:hover {
-            background: rgba(99, 102, 241, 0.2);
-            border-color: var(--accent);
-        }
-
-        /* Results table */
-        .results-wrapper {
-            overflow-x: auto;
-            margin-top: 1rem;
-        }
-
-        .results-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-        }
-
-        .results-table th {
-            background: var(--bg-secondary);
-            padding: 0.7rem 1rem;
-            text-align: left;
-            font-weight: 600;
-            color: #818cf8;
-            border-bottom: 2px solid var(--accent);
-            white-space: nowrap;
-        }
-
-        .results-table td {
-            padding: 0.6rem 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-            max-width: 300px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .results-table tr:hover td {
-            background: rgba(99, 102, 241, 0.05);
-        }
-
-        .results-table .numeric {
-            text-align: right;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .result-info {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 0;
-            color: var(--text-dim);
-            font-size: 0.82rem;
-        }
-
-        .badge {
-            display: inline-flex;
-            padding: 0.15rem 0.5rem;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .badge-success { background: rgba(16,185,129,0.15); color: #34d399; }
-        .badge-error { background: rgba(239,68,68,0.15); color: #f87171; }
-
-        .error-msg {
-            padding: 1rem;
-            background: rgba(239,68,68,0.1);
-            border: 1px solid rgba(239,68,68,0.2);
-            border-radius: 8px;
-            color: #f87171;
-            font-size: 0.85rem;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-dim);
-        }
-
-        .empty-state .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-
-        .loader {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255,255,255,0.2);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-        }
-
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .schema-block {
-            background: var(--bg-input);
-            border-radius: 8px;
-            padding: 1rem;
-            font-family: monospace;
-            font-size: 0.82rem;
-            white-space: pre-wrap;
-            color: var(--text-dim);
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        @media (max-width: 768px) {
-            .header { flex-direction: column; gap: 1rem; }
-            .status-bar { flex-wrap: wrap; }
-            .container { padding: 1rem; }
-        }
+        .sql-input:focus { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+        .results-wrapper { max-height: 520px; overflow: auto; margin-top: 6px; }
+        .results-table .numeric { text-align: right; }
+        .results-table td, .results-table th { white-space: nowrap; }
+        .results-table td { max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
+        .result-info { font-size: var(--text-sm); color: var(--ink-3); margin-top: 6px; }
+        .error-msg { color: var(--bad); font-size: var(--text-sm); padding: 8px 0; }
+        .schema-block { font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.65; color: var(--ink-2); background: var(--surface-2); padding: 14px; white-space: pre-wrap; overflow: auto; max-height: 420px; }
+        @media (max-width: 768px) { .header, .container { padding-left: 16px; padding-right: 16px; } }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>DuckDB Warehouse Explorer</h1>
+        <div>
+            <a class="header-back" href="/#dashboard">Business Agent</a>
+            <h1>DuckDB Warehouse Explorer</h1>
+        </div>
         <div class="status-bar" id="statusBar">
-            <div class="stat">📊 Records: <span class="value" id="totalRecords">-</span></div>
-            <div class="stat">📁 Documents: <span class="value" id="totalDocs">-</span></div>
-            <div class="stat">📅 Years: <span class="value" id="availableYears">-</span></div>
+            <div class="stat">Records <span class="value" id="totalRecords">-</span></div>
+            <div class="stat">Documents <span class="value" id="totalDocs">-</span></div>
+            <div class="stat">Years <span class="value" id="availableYears">-</span></div>
         </div>
     </div>
 
@@ -330,28 +80,29 @@
         <!-- SQL Editor -->
         <div class="card">
             <div class="card-header">
-                <h2>🔍 SQL Query</h2>
+                <h2>SQL query</h2>
                 <div class="btn-row">
-                    <button class="btn btn-success" onclick="syncWarehouse()">🔄 Sync from PG</button>
-                    <button class="btn btn-danger" onclick="resetWarehouse()">🗑️ Reset DuckDB</button>
+                    <button class="link-btn" onclick="syncWarehouse()">Sync from PG</button>
+                    <button class="link-btn is-danger" onclick="resetWarehouse()">Reset DuckDB</button>
                 </div>
             </div>
             <div class="card-body sql-editor">
                 <div class="quick-queries">
-                    <button class="quick-btn" onclick="setQuery(`SELECT * FROM fact_financial_metrics LIMIT 50`)">📋 All Facts</button>
-                    <button class="quick-btn" onclick="setQuery(`SELECT DISTINCT row_label FROM fact_financial_metrics ORDER BY row_label`)">🏷️ All Labels</button>
-                    <button class="quick-btn" onclick="setQuery(`SELECT DISTINCT metric_year FROM fact_financial_metrics ORDER BY metric_year`)">📅 Years</button>
-                    <button class="quick-btn" onclick="setQuery(`SELECT DISTINCT table_name, COUNT(*) as cnt FROM fact_financial_metrics GROUP BY table_name ORDER BY cnt DESC`)">📊 Tables</button>
-                    <button class="quick-btn" onclick="setQuery(`SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' ORDER BY metric_year`)">🏦 สินทรัพย์รวม</button>
-                    <button class="quick-btn" onclick="setQuery(`SELECT row_label, metric_year, raw_value, numeric_value, unit FROM fact_financial_metrics WHERE unit = '%' ORDER BY row_label, metric_year`)">📈 อัตราส่วน (%)</button>
-                    <button class="quick-btn" onclick="setQuery(`SELECT * FROM dim_documents`)">📁 Documents</button>
-                    <button class="quick-btn" onclick="setQuery(`SELECT * FROM dim_tables`)">📑 Tables Dim</button>
-                    <button class="quick-btn" onclick="setQuery(`SELECT row_label, col_name, col_value FROM dim_table_rows ORDER BY row_index, col_name LIMIT 50`)">🔎 Lookup Data</button>
+                    <button class="quick-btn" onclick="setQuery(`SELECT * FROM fact_financial_metrics LIMIT 50`)">All facts</button>
+                    <button class="quick-btn" onclick="setQuery(`SELECT DISTINCT row_label FROM fact_financial_metrics ORDER BY row_label`)">All labels</button>
+                    <button class="quick-btn" onclick="setQuery(`SELECT DISTINCT metric_year FROM fact_financial_metrics ORDER BY metric_year`)">Years</button>
+                    <button class="quick-btn" onclick="setQuery(`SELECT DISTINCT table_name, COUNT(*) as cnt FROM fact_financial_metrics GROUP BY table_name ORDER BY cnt DESC`)">Tables</button>
+                    <button class="quick-btn" onclick="setQuery(`SELECT row_label, metric_year, raw_value, unit FROM fact_financial_metrics WHERE row_label LIKE '%สินทรัพย์รวม%' ORDER BY metric_year`)">สินทรัพย์รวม</button>
+                    <button class="quick-btn" onclick="setQuery(`SELECT row_label, metric_year, raw_value, numeric_value, unit FROM fact_financial_metrics WHERE unit = '%' ORDER BY row_label, metric_year`)">อัตราส่วน (%)</button>
+                    <button class="quick-btn" onclick="setQuery(`SELECT * FROM dim_documents`)">Documents</button>
+                    <button class="quick-btn" onclick="setQuery(`SELECT * FROM dim_tables`)">Tables dim</button>
+                    <button class="quick-btn" onclick="setQuery(`SELECT row_label, col_name, col_value FROM dim_table_rows ORDER BY row_index, col_name LIMIT 50`)">Lookup data</button>
                 </div>
+                <label for="sqlInput" class="visually-hidden">SQL query</label>
                 <textarea class="sql-input" id="sqlInput" placeholder="SELECT * FROM fact_financial_metrics LIMIT 20">SELECT * FROM fact_financial_metrics LIMIT 20</textarea>
                 <div class="btn-row">
-                    <button class="btn btn-primary" onclick="runQuery()">▶ Run Query</button>
-                    <button class="btn btn-secondary" onclick="document.getElementById('sqlInput').value=''">✕ Clear</button>
+                    <button class="btn btn-primary" onclick="runQuery()">Run query</button>
+                    <button class="link-btn" onclick="document.getElementById('sqlInput').value=''">Clear</button>
                 </div>
                 <div id="results"></div>
             </div>
@@ -360,8 +111,8 @@
         <!-- Schema -->
         <div class="card">
             <div class="card-header">
-                <h2>📐 Schema</h2>
-                <button class="btn btn-secondary" onclick="loadSchema()">Refresh</button>
+                <h2>Schema</h2>
+                <button class="link-btn" onclick="loadSchema()">Refresh</button>
             </div>
             <div class="card-body">
                 <pre class="schema-block" id="schemaBlock">Loading...</pre>
@@ -404,7 +155,7 @@
             if (!sql) return;
 
             const container = document.getElementById('results');
-            container.innerHTML = '<div style="padding:1rem;color:var(--text-dim)"><span class="loader"></span> Running...</div>';
+            container.innerHTML = '<div style="padding:1rem;color:var(--text-dim)"><div class="progress-line"></div><span class="loading-text">Running...</span></div>';
 
             try {
                 const res = await fetch(`${API}/api/warehouse/query`, {
@@ -415,12 +166,12 @@
                 const data = await res.json();
 
                 if (data.error) {
-                    container.innerHTML = `<div class="error-msg">❌ ${data.error}</div>`;
+                    container.innerHTML = `<div class="error-msg">${data.error}</div>`;
                     return;
                 }
 
                 if (!data.rows || data.rows.length === 0) {
-                    container.innerHTML = '<div class="empty-state"><div class="icon">📭</div>No results</div>';
+                    container.innerHTML = '<p class="empty">Query ran, no rows returned.</p>';
                     return;
                 }
 
@@ -433,10 +184,10 @@
 
                 let html = `
                     <div class="result-info">
-                        <span><span class="badge badge-success">✓</span> ${data.row_count} row${data.row_count > 1 ? 's' : ''} returned</span>
+                        <span><span class="mark mark-ok"></span> ${data.row_count} row${data.row_count > 1 ? 's' : ''} returned</span>
                     </div>
                     <div class="results-wrapper">
-                        <table class="results-table">
+                        <table class="register results-table">
                             <thead><tr>${columns.map(c => `<th>${c}</th>`).join('')}</tr></thead>
                             <tbody>
                 `;
@@ -455,43 +206,43 @@
                 html += '</tbody></table></div>';
                 container.innerHTML = html;
             } catch (e) {
-                container.innerHTML = `<div class="error-msg">❌ Connection error: ${e.message}</div>`;
+                container.innerHTML = `<div class="error-msg">Connection error: ${e.message}</div>`;
             }
         }
 
         async function syncWarehouse() {
             const btn = event.target;
             btn.disabled = true;
-            btn.textContent = '⏳ Syncing...';
+            btn.textContent = 'Syncing...';
 
             try {
                 const res = await fetch(`${API}/api/warehouse/sync`, { method: 'POST' });
                 const data = await res.json();
-                btn.textContent = `✅ ${data.fact_records} records`;
-                setTimeout(() => { btn.textContent = '🔄 Sync from PG'; btn.disabled = false; }, 3000);
+                btn.textContent = `Synced ${data.fact_records} records`;
+                setTimeout(() => { btn.textContent = 'Sync from PG'; btn.disabled = false; }, 3000);
                 loadStatus();
             } catch (e) {
-                btn.textContent = '❌ Failed';
-                setTimeout(() => { btn.textContent = '🔄 Sync from PG'; btn.disabled = false; }, 3000);
+                btn.textContent = 'Failed';
+                setTimeout(() => { btn.textContent = 'Sync from PG'; btn.disabled = false; }, 3000);
             }
         }
 
         async function resetWarehouse() {
-            if (!confirm('⚠️ ลบข้อมูลทั้งหมดใน DuckDB?\n\nข้อมูลใน PostgreSQL จะไม่ถูกลบ — คุณสามารถ Sync from PG ใหม่ได้')) return;
+            if (!confirm('ลบข้อมูลทั้งหมดใน DuckDB?\n\nข้อมูลใน PostgreSQL จะไม่ถูกลบ คุณสามารถ Sync from PG ใหม่ได้')) return;
 
             const btn = event.target;
             btn.disabled = true;
-            btn.textContent = '⏳ Resetting...';
+            btn.textContent = 'Resetting...';
 
             try {
                 const res = await fetch(`${API}/api/warehouse/reset`, { method: 'DELETE' });
                 const data = await res.json();
-                btn.textContent = `✅ Deleted ${data.total_deleted} rows`;
-                setTimeout(() => { btn.textContent = '🗑️ Reset DuckDB'; btn.disabled = false; }, 3000);
+                btn.textContent = `Deleted ${data.total_deleted} rows`;
+                setTimeout(() => { btn.textContent = 'Reset DuckDB'; btn.disabled = false; }, 3000);
                 loadStatus();
             } catch (e) {
-                btn.textContent = '❌ Failed';
-                setTimeout(() => { btn.textContent = '🗑️ Reset DuckDB'; btn.disabled = false; }, 3000);
+                btn.textContent = 'Failed';
+                setTimeout(() => { btn.textContent = 'Reset DuckDB'; btn.disabled = false; }, 3000);
             }
         }
 
