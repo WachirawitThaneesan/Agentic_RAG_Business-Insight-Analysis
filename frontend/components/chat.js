@@ -46,7 +46,7 @@ let chatContext = { label: null, year: null };
 const FOLLOW_UP_CUE = /(แล้ว|ล่ะ|ละ|ปีก่อน|ปีที่แล้ว|เทียบ|ย้อนหลัง|ต่อ)/;
 const PREV_YEAR_CUE = /(ปีก่อน|ปีที่แล้ว)/;
 const FOLLOW_UP_METRICS = ['สินทรัพย์รวม', 'หนี้สินรวม', 'เงินรับฝาก', 'รายได้ดอกเบี้ยสุทธิ', 'กำไรสุทธิ'];
-const BOT_MARK = '<svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path class="logo-page" d="M7 2H14.6L19.5 6.9V10.4H4.5V4.5A2.5 2.5 0 0 1 7 2Z"/><path class="logo-fold" d="M14.6 2V5.2A1.7 1.7 0 0 0 16.3 6.9H19.5Z"/><rect class="logo-hl" x="2" y="12" width="20" height="3.6" rx="1.8"/><path class="logo-page" d="M4.5 17.2H19.5V19.5A2.5 2.5 0 0 1 17 22H7A2.5 2.5 0 0 1 4.5 19.5Z"/></svg>';
+const BOT_MARK = '<svg class="brand-mark" viewBox="30 28 196 196" aria-hidden="true"><path class="logo-b" fill-rule="evenodd" d="M50 34h40v64h52a60 60 0 0 1 0 120H50ZM90 136v42h52a21 21 0 0 0 0-42Z"/><rect class="logo-sup" x="166" y="34" width="40" height="40" rx="8"/></svg>';
 
 function renderChat(container) {
     container.innerHTML = `
