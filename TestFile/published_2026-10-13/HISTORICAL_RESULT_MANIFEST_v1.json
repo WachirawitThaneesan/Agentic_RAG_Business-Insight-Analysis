@@ -1,0 +1,264 @@
+{
+  "status": "AI_assisted_measured_results_pending_stratified_visual_QA",
+  "human_confirmed": false,
+  "main_denominator_per_system": 498,
+  "control_denominator_per_system": 32,
+  "systems": {
+    "simple_dense_rag": {
+      "rag_metrics": {
+        "faithfulness": {
+          "assessed_mean": 0.7028209045184354,
+          "assessable_n": 243,
+          "missing_or_na_n": 255,
+          "conservative_all498_mean": 0.34294273051803176
+        },
+        "factual_precision": {
+          "assessed_mean": 0.9711934156378601,
+          "assessable_n": 243,
+          "missing_or_na_n": 255,
+          "conservative_all498_mean": 0.4738955823293173
+        },
+        "factual_recall": {
+          "assessed_mean": 0.6732229123533471,
+          "assessable_n": 322,
+          "missing_or_na_n": 176,
+          "conservative_all498_mean": 0.4352967425256582
+        },
+        "factual_f1": {
+          "assessed_mean": 0.8321902149062643,
+          "assessable_n": 243,
+          "missing_or_na_n": 255,
+          "conservative_all498_mean": 0.4060687193217314
+        },
+        "claim_relevance_precision": {
+          "assessed_mean": 0.9958847736625515,
+          "assessable_n": 243,
+          "missing_or_na_n": 255,
+          "conservative_all498_mean": 0.4859437751004016
+        },
+        "answer_relevancy_rubric": {
+          "assessed_mean": 0.8167701863354038,
+          "assessable_n": 322,
+          "missing_or_na_n": 176,
+          "conservative_all498_mean": 0.5281124497991968
+        },
+        "context_precision_ap": {
+          "assessed_mean": 0.4655807782050018,
+          "assessable_n": 322,
+          "missing_or_na_n": 176,
+          "conservative_all498_mean": 0.301038173859459
+        },
+        "context_recall": {
+          "assessed_mean": 0.3546534555851326,
+          "assessable_n": 322,
+          "missing_or_na_n": 176,
+          "conservative_all498_mean": 0.22931408172372028
+        }
+      },
+      "complete_answer_success": 75,
+      "complete_answer_rate_all498": 0.15060240963855423,
+      "numeric_correct_relations": 121,
+      "numeric_required_relations": 356,
+      "numeric_rate": 0.3398876404494382,
+      "false_refusals": 158,
+      "model_errors": 0,
+      "capture_error_questions": 34,
+      "unassessed_judgments": 176,
+      "controls": {
+        "appropriate_abstentions": 24,
+        "unsupported_requested_assertions": 0,
+        "truthful_irrelevant_substitutions": 8,
+        "unassessed": 0
+      },
+      "latency_seconds": {
+        "n": 530,
+        "p50": 7.185714850002114,
+        "p95": 19.897332814999306
+      },
+      "actual_tools": {
+        "vector_search": 530
+      }
+    },
+    "full_app": {
+      "rag_metrics": {
+        "faithfulness": {
+          "assessed_mean": 0.5972267179425662,
+          "assessable_n": 242,
+          "missing_or_na_n": 256,
+          "conservative_all498_mean": 0.2902186059078334
+        },
+        "factual_precision": {
+          "assessed_mean": 0.918904958677686,
+          "assessable_n": 242,
+          "missing_or_na_n": 256,
+          "conservative_all498_mean": 0.44653614457831325
+        },
+        "factual_recall": {
+          "assessed_mean": 0.6868609406952966,
+          "assessable_n": 326,
+          "missing_or_na_n": 172,
+          "conservative_all498_mean": 0.4496318607764391
+        },
+        "factual_f1": {
+          "assessed_mean": 0.830539157811885,
+          "assessable_n": 242,
+          "missing_or_na_n": 256,
+          "conservative_all498_mean": 0.40359533371581563
+        },
+        "claim_relevance_precision": {
+          "assessed_mean": 1.0,
+          "assessable_n": 242,
+          "missing_or_na_n": 256,
+          "conservative_all498_mean": 0.4859437751004016
+        },
+        "answer_relevancy_rubric": {
+          "assessed_mean": 0.8420245398773006,
+          "assessable_n": 326,
+          "missing_or_na_n": 172,
+          "conservative_all498_mean": 0.5512048192771084
+        },
+        "context_precision_ap": {
+          "assessed_mean": 0.5371139139220901,
+          "assessable_n": 318,
+          "missing_or_na_n": 180,
+          "conservative_all498_mean": 0.34297635467314186
+        },
+        "context_recall": {
+          "assessed_mean": 0.37745398773006134,
+          "assessable_n": 326,
+          "missing_or_na_n": 172,
+          "conservative_all498_mean": 0.24708835341365462
+        }
+      },
+      "complete_answer_success": 52,
+      "complete_answer_rate_all498": 0.10441767068273092,
+      "numeric_correct_relations": 101,
+      "numeric_required_relations": 356,
+      "numeric_rate": 0.28370786516853935,
+      "false_refusals": 176,
+      "model_errors": 0,
+      "capture_error_questions": 32,
+      "unassessed_judgments": 172,
+      "controls": {
+        "appropriate_abstentions": 28,
+        "unsupported_requested_assertions": 0,
+        "truthful_irrelevant_substitutions": 4,
+        "unassessed": 0
+      },
+      "latency_seconds": {
+        "n": 530,
+        "p50": 13.007792899998549,
+        "p95": 35.551602944999466
+      },
+      "actual_tools": {
+        "sql_query": 314,
+        "vector_search": 435,
+        "self_correction": 7,
+        "multi_hop": 22
+      }
+    }
+  },
+  "paired": {
+    "faithfulness": {
+      "S1_minus_S0_mean": -0.05272412461019831,
+      "report_cluster_bootstrap95": [
+        -0.10195607905166729,
+        -0.01763371037564586
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "factual_precision": {
+      "S1_minus_S0_mean": -0.027359437751004016,
+      "report_cluster_bootstrap95": [
+        -0.1092184368737475,
+        0.03413654618473896
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "factual_recall": {
+      "S1_minus_S0_mean": 0.014335118250780902,
+      "report_cluster_bootstrap95": [
+        -0.0690380761523046,
+        0.09112003569834895
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "factual_f1": {
+      "S1_minus_S0_mean": -0.0024733856059157267,
+      "report_cluster_bootstrap95": [
+        -0.10773928810000954,
+        0.06613119143239625
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "claim_relevance_precision": {
+      "S1_minus_S0_mean": 0.0,
+      "report_cluster_bootstrap95": [
+        -0.08216432865731463,
+        0.06212424849699399
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "answer_relevancy_rubric": {
+      "S1_minus_S0_mean": 0.023092369477911646,
+      "report_cluster_bootstrap95": [
+        -0.036072144288577156,
+        0.07429718875502007
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "context_precision_ap": {
+      "S1_minus_S0_mean": 0.04193818081368282,
+      "report_cluster_bootstrap95": [
+        -0.016926305101708325,
+        0.08583045022804059
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "context_recall": {
+      "S1_minus_S0_mean": 0.01777427168993434,
+      "report_cluster_bootstrap95": [
+        -0.07184292726461401,
+        0.1303040465012296
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "complete_answer": {
+      "S1_minus_S0_mean": -0.04618473895582329,
+      "report_cluster_bootstrap95": [
+        -0.07847082494969819,
+        -0.008048289738430584
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    }
+  },
+  "quality_goal_completed": false,
+  "source_labels_sha256": "5959f4e2e4ccddf00f966d7bbf55b18fdd5804b785b02ad854e413264ae12119"
+}

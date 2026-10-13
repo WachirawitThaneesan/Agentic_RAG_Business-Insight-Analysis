@@ -1,0 +1,184 @@
+{
+  "original_QA_sha256": "f3a1fa953c06a924843aa6baa3efa9fdc73d2f67589d23ebb73f5006d6a618da",
+  "samples": [
+    {
+      "filename": "F_HMPRO_08__q09__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        464
+      ]
+    },
+    {
+      "filename": "F_HMPRO_03__q10__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        169,
+        155
+      ]
+    },
+    {
+      "filename": "F_HMPRO_05__q06__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        206
+      ]
+    },
+    {
+      "filename": "F_KCE_02__q08__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        91
+      ]
+    },
+    {
+      "filename": "F_KCE_04__q13__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        164
+      ]
+    },
+    {
+      "filename": "F_KCE_01__q06__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        29
+      ]
+    },
+    {
+      "filename": "F_OSP_03__q07__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        126
+      ]
+    },
+    {
+      "filename": "F_OSP_07__q15__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        248,
+        12
+      ]
+    },
+    {
+      "filename": "F_OSP_08__q01__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        364
+      ]
+    },
+    {
+      "filename": "F_TISCO_BANK_06__q15__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        174,
+        96
+      ]
+    },
+    {
+      "filename": "F_TISCO_BANK_05__q15__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        205
+      ]
+    },
+    {
+      "filename": "F_TISCO_BANK_03__q03__full_app.json",
+      "system": "full_app",
+      "physical_original_pages_inspected": [
+        92,
+        239
+      ]
+    },
+    {
+      "filename": "F_HMPRO_02__q07__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        129
+      ]
+    },
+    {
+      "filename": "F_HMPRO_05__q15__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        416,
+        72
+      ]
+    },
+    {
+      "filename": "F_HMPRO_08__q02__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        459,
+        313
+      ]
+    },
+    {
+      "filename": "F_KCE_08__q09__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        323
+      ]
+    },
+    {
+      "filename": "F_KCE_03__q14__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        76
+      ]
+    },
+    {
+      "filename": "F_KCE_03__q05__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        92,
+        239
+      ]
+    },
+    {
+      "filename": "F_OSP_04__q08__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        102
+      ]
+    },
+    {
+      "filename": "F_OSP_04__q11__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        96
+      ]
+    },
+    {
+      "filename": "F_OSP_06__q06__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        153,
+        157
+      ]
+    },
+    {
+      "filename": "F_TISCO_BANK_05__q07__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        85,
+        107,
+        184
+      ]
+    },
+    {
+      "filename": "F_TISCO_BANK_05__q10__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        202
+      ]
+    },
+    {
+      "filename": "F_TISCO_BANK_06__q07__simple_dense_rag.json",
+      "system": "simple_dense_rag",
+      "physical_original_pages_inspected": [
+        174
+      ]
+    }
+  ],
+  "human_confirmed": false
+}

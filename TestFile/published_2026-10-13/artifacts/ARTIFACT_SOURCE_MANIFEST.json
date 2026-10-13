@@ -1,0 +1,9 @@
+{
+  "primary_manifest_sha256": "130bdf6292060a6771cedfef89450ad1f3be87d385d7164fcab53ed77ec1b391",
+  "source_labels_sha256": "5959f4e2e4ccddf00f966d7bbf55b18fdd5804b785b02ad854e413264ae12119",
+  "supplementary_qa_sha256": "f3a1fa953c06a924843aa6baa3efa9fdc73d2f67589d23ebb73f5006d6a618da",
+  "quality_goal_completed": false,
+  "human_confirmed": false,
+  "gemini_called_for_artifacts": false,
+  "identity_preserved": true
+}

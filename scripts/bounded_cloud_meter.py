@@ -8,7 +8,9 @@ import threading
 import time
 import json
 import os
+import uuid
 from contextlib import contextmanager
+from contextvars import ContextVar
 from pathlib import Path
 from types import SimpleNamespace
 from urllib.parse import urlparse
@@ -23,9 +25,10 @@ class BudgetExhausted(RuntimeError):
 
 
 class BoundedCloudMeter:
-    def __init__(self, budget_path, output, *, max_new_attempts=30):
+    def __init__(self, budget_path, output, *, max_new_attempts=30, journal_path=None):
         self.budget_path = Path(budget_path)
         self.output = Path(output)
+        self.journal_path = Path(journal_path) if journal_path else None
         self.lock = threading.Lock()
         with self.ledger_lock():
             self.budget = load(self.budget_path)
@@ -33,6 +36,7 @@ class BoundedCloudMeter:
         self.calls = []
         self.max_new_attempts = max_new_attempts
         self.phase = {'stage': 'setup'}
+        self._phase_context = ContextVar('cloud_meter_phase', default={})
         self.unknown_input_reserve = self.budget.get('unknown_input_reserve',
             self.budget['failed_calls_without_complete_usage'] * 100000)
         self.unknown_output_reserve = self.budget.get('unknown_output_reserve',
@@ -108,17 +112,40 @@ class BoundedCloudMeter:
                 self.budget['known_output_tokens'] + self.unknown_output_reserve + 32768 > lim['output_tokens']):
             raise BudgetExhausted('Token budget including unknown usage reserve reached')
 
-    def begin(self, provider, *, requested_thinking_budget=None):
+    def _journal(self, event, row):
+        if self.journal_path is None:
+            return
+        self.journal_path.parent.mkdir(parents=True, exist_ok=True)
+        with self.journal_path.open('a', encoding='utf-8') as stream:
+            stream.write(json.dumps({'event': event, **row}, ensure_ascii=False) + '\n')
+            stream.flush()
+            os.fsync(stream.fileno())
+
+    @contextmanager
+    def phase_context(self, **metadata):
+        """Keep page/question tags separate across async tasks and worker threads."""
+        token = self._phase_context.set({**self._phase_context.get(), **metadata})
+        try:
+            yield
+        finally:
+            self._phase_context.reset(token)
+
+    def begin(self, provider, *, requested_thinking_budget=None, model=None, service=None):
         with self.lock,self.ledger_lock():
             self.refresh()
             self.check_capacity()
             lim = self.budget['limits']
-            page_key = self.phase.get('ocr_page_key') if self.phase.get('stage') == 'ingestion' else None
+            phase = {**self.phase, **self._phase_context.get()}
+            page_key = phase.get('ocr_page_key') if phase.get('stage', '').startswith('ingestion') else None
             keys = self.budget.setdefault('paid_ocr_page_keys', [])
             new_page = page_key and page_key not in keys
             if new_page and lim.get('paid_ocr_pages') is not None and self.budget['paid_ocr_pages_new'] >= lim['paid_ocr_pages']:
                 raise BudgetExhausted('Paid physical OCR page budget reached')
-            row = {**self.phase, 'provider': provider, 'attempt_index': len(self.calls)+1,
+            row = {**phase, 'provider': provider, 'attempt_index': len(self.calls)+1,
+                   'call_id': str(uuid.uuid4()),
+                   'started_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                   'model': model, 'service': service,
+                   'purpose': phase.get('purpose', 'research'),
                    'status': 'pending', 'input_tokens': None, 'output_tokens': None,
                    'thinking_tokens': None, 'latency_scope': 'sdk_or_http_dispatch',
                    'requested_thinking_budget': requested_thinking_budget}
@@ -130,12 +157,14 @@ class BoundedCloudMeter:
             self.unknown_input_reserve += 100000
             self.unknown_output_reserve += 32768
             self._persist_locked()
+            self._journal('dispatch_started', row)
             return row
 
     def finish(self, row, start, *, usage=None, error=None):
         with self.lock,self.ledger_lock():
             self.refresh()
             row['seconds'] = time.perf_counter()-start
+            row['finished_at_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
             row['status'] = 'error' if error else 'success'
             if error:
                 row['error_type'] = type(error).__name__
@@ -143,6 +172,8 @@ class BoundedCloudMeter:
             for key in ('input_tokens', 'output_tokens', 'thinking_tokens'):
                 v = (usage or {}).get(key)
                 row[key] = v if type(v) is int and v >= 0 else None
+            cached = (usage or {}).get('cached_input_tokens')
+            row['cached_input_tokens'] = cached if type(cached) is int and cached >= 0 else None
             if row['input_tokens'] is not None:
                 self.unknown_input_reserve -= 100000
                 self.budget['known_input_tokens'] += row['input_tokens']
@@ -156,6 +187,7 @@ class BoundedCloudMeter:
                 key = 'failed_calls_without_complete_usage' if error else 'successful_calls_without_complete_usage'
                 self.budget[key] = self.budget.get(key, 0) + 1
             self._persist_locked()
+            self._journal('dispatch_finished', row)
 
     def mark_ocr_page(self):
         with self.lock,self.ledger_lock():
@@ -170,13 +202,15 @@ class BoundedCloudMeter:
         u = getattr(response, 'usage_metadata', None)
         return {'input_tokens': getattr(u, 'prompt_token_count', None),
                 'output_tokens': getattr(u, 'candidates_token_count', None),
-                'thinking_tokens': getattr(u, 'thoughts_token_count', None)}
+                'thinking_tokens': getattr(u, 'thoughts_token_count', None),
+                'cached_input_tokens': getattr(u, 'cached_content_token_count', None)}
 
     def __enter__(self):
         from backend.services import llm
         from backend.config import get_settings
         self.original_client = llm._get_genai_client
         self.original_post = httpx.AsyncClient.post
+        self.original_sync_post = httpx.Client.post
         host = urlparse(get_settings().TYPHOON_OCR_ENDPOINT).hostname
         cached = None
 
@@ -191,7 +225,8 @@ class BoundedCloudMeter:
                 return getattr(thinking, 'thinking_budget', None)
 
             async def async_generate(**kwargs):
-                row = self.begin('gemini', requested_thinking_budget=thinking_budget(kwargs)); start = time.perf_counter()
+                row = self.begin('gemini', requested_thinking_budget=thinking_budget(kwargs),
+                    model=kwargs.get('model'), service='vertex_ai'); start = time.perf_counter()
                 try:
                     response = await raw.aio.models.generate_content(**kwargs)
                 except BaseException as exc:
@@ -201,7 +236,8 @@ class BoundedCloudMeter:
                 return response
 
             def sync_generate(**kwargs):
-                row = self.begin('gemini', requested_thinking_budget=thinking_budget(kwargs)); start = time.perf_counter()
+                row = self.begin('gemini', requested_thinking_budget=thinking_budget(kwargs),
+                    model=kwargs.get('model'), service='vertex_ai'); start = time.perf_counter()
                 try:
                     response = raw.models.generate_content(**kwargs)
                 except BaseException as exc:
@@ -216,7 +252,8 @@ class BoundedCloudMeter:
         async def post(client_self, url, **kwargs):
             if client_self.base_url.host != host or str(url) != '/chat/completions':
                 return await self.original_post(client_self, url, **kwargs)
-            row = self.begin('typhoon'); start = time.perf_counter()
+            row = self.begin('typhoon', model=(kwargs.get('json') or {}).get('model'),
+                service='typhoon_hosted'); start = time.perf_counter()
             try:
                 response = await self.original_post(client_self, url, **kwargs)
                 response.raise_for_status()
@@ -227,8 +264,24 @@ class BoundedCloudMeter:
             self.finish(row, start, usage={'input_tokens': u.get('prompt_tokens'),
                 'output_tokens': u.get('completion_tokens'), 'thinking_tokens': 0})
             return response
+        def sync_post(client_self, url, **kwargs):
+            if client_self.base_url.host != host or str(url) != '/chat/completions':
+                return self.original_sync_post(client_self, url, **kwargs)
+            row = self.begin('typhoon', model=(kwargs.get('json') or {}).get('model'),
+                service='typhoon_hosted'); start = time.perf_counter()
+            try:
+                response = self.original_sync_post(client_self, url, **kwargs)
+                response.raise_for_status()
+                usage = response.json().get('usage') or {}
+            except BaseException as exc:
+                self.finish(row, start, error=exc)
+                raise
+            self.finish(row, start, usage={'input_tokens': usage.get('prompt_tokens'),
+                'output_tokens': usage.get('completion_tokens'), 'thinking_tokens': 0})
+            return response
         llm._get_genai_client = client
         httpx.AsyncClient.post = post
+        httpx.Client.post = sync_post
         self.persist()
         return self
 
@@ -236,4 +289,5 @@ class BoundedCloudMeter:
         from backend.services import llm
         llm._get_genai_client = self.original_client
         httpx.AsyncClient.post = self.original_post
+        httpx.Client.post = self.original_sync_post
         self.persist()

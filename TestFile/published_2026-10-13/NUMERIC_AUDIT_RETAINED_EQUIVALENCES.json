@@ -1,0 +1,14 @@
+{
+  "retained_signed_change_equivalence": [
+    "F_OSP_02__q08__simple_dense_rag.json",
+    "F_TISCO_BANK_01__q09__full_app.json"
+  ],
+  "year_be_null_with_explicit_actual_qualifier_dates": [
+    "F_HMPRO_04__q07__full_app.json",
+    "F_HMPRO_04__q07__simple_dense_rag.json",
+    "F_HMPRO_07__q09__full_app.json",
+    "F_TISCO_BANK_03__q08__full_app.json",
+    "F_TISCO_BANK_07__q08__simple_dense_rag.json"
+  ],
+  "reason": "Year/date dimensions explicitly carried by actual serialized qualifiers,not inferred or postfilled from reference/context. Necessary numeric check includes exact scale,source-bound permitted derivations and explicit direction. Correct existing qualifiers remain unchanged."
+}

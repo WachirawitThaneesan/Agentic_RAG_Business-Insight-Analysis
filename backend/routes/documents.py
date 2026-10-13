@@ -4,7 +4,7 @@ import os
 import re
 import asyncio
 from typing import Optional
-from fastapi import APIRouter, UploadFile, File, Depends, HTTPException
+from fastapi import APIRouter, UploadFile, File, Form, Depends, HTTPException
 from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import delete, or_, select, func
@@ -852,8 +852,34 @@ async def _process_saved_document(
         raise
 
 
+async def _verified_completed_upload(db, filename, filepath):
+    """Reuse only byte-identical, intact completed PDFs under the same filename."""
+    from backend.services.document_jobs import saved_upload_path
+    from backend.services.source_provenance import saved_source_hash
+    source_hash = await asyncio.to_thread(saved_source_hash, filepath)
+    candidates = (await db.execute(select(Document).where(
+        Document.filename == filename, Document.doc_type == "pdf",
+        Document.status == "completed", Document.source_sha256 == source_hash,
+    ).order_by(Document.id))).scalars().all()
+    for existing in candidates:
+        saved = saved_upload_path(existing.id, "pdf")
+        if not saved.is_file() or await asyncio.to_thread(saved_source_hash, saved) != source_hash:
+            continue
+        pages = (await db.execute(select(DocumentPage).where(
+            DocumentPage.document_id == existing.id,
+        ).order_by(DocumentPage.page_number))).scalars().all()
+        count = await asyncio.to_thread(ocr_service.get_pdf_page_count, str(saved))
+        if len(pages) == count and count > 0 and all(
+            page.page_number == number and page.status == "indexed"
+            for number, page in enumerate(pages, 1)
+        ):
+            return existing, count
+    return None
+
+
 @router.post("/upload")
-async def upload_document(file: UploadFile = File(...), db: AsyncSession = Depends(get_db)):
+async def upload_document(file: UploadFile = File(...), db: AsyncSession = Depends(get_db),
+                          reuse_completed: bool = Form(False)):
     """Stream an upload to a unique file and queue PDF OCR outside the request."""
     if not file.filename:
         raise HTTPException(status_code=400, detail="No file provided")
@@ -880,6 +906,17 @@ async def upload_document(file: UploadFile = File(...), db: AsyncSession = Depen
             raise HTTPException(status_code=400, detail="Empty upload")
 
         if ext == "pdf":
+            if reuse_completed:
+                reused = await _verified_completed_upload(db, filename, filepath)
+                if reused:
+                    existing, page_count = reused
+                    await db.delete(doc)
+                    await db.commit()
+                    filepath.unlink()
+                    return {"id": existing.id, "filename": existing.filename,
+                            "status": "completed", "page_count": page_count,
+                            "queued": False, "reused": True,
+                            "source_sha256": existing.source_sha256}
             try:
                 page_count = await prepare_pdf_job(db, doc, filepath)
             except Exception as exc:

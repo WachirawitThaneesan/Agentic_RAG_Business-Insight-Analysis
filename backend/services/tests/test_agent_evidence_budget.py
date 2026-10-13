@@ -54,6 +54,18 @@ def test_exact_sql_measure_blocks_nearby_wrong_row_value():
     assert agent._grounded_answer("100 พันบาท", question, sources) == "100 พันบาท"
 
 
+def test_cited_filename_digits_do_not_become_unsupported_quantities():
+    sources = [{'type': 'sql', 'page': 1, 'filename': 'report_5pages.pdf',
+                'row_label': 'กำไรสุทธิ', 'column': 'ปี 2568',
+                'value': '49,565', 'unit': 'ล้านบาท'}]
+    question = 'จากไฟล์ report_5pages.pdf กำไรสุทธิปี 2568 เท่าไร'
+    valid = 'report_5pages.pdf กำไรสุทธิปี 2568 49,565 ล้านบาท (PDF หน้า 1)'
+    assert agent._grounded_answer(valid, question, sources) == valid
+    assert 'ไม่พบหลักฐาน' in agent._grounded_answer(valid.replace('49,565', '49,566'), question, sources)
+    assert 'ไม่พบหลักฐาน' in agent._grounded_answer(valid + ' และมี 5 สาขา', question, sources)
+    assert 'ไม่พบหลักฐาน' in agent._grounded_answer(valid.replace('report_5pages.pdf','unknown_7pages.pdf'), question, sources)
+
+
 def test_sql_tool_skips_llm_when_warehouse_has_no_cells(monkeypatch):
     conn = duckdb.connect(":memory:")
     duckdb_warehouse._init_schema(conn)

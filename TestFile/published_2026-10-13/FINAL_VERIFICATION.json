@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "original_hashes_verified": 2124,
+  "assessments_validated": 1060,
+  "paired_rows_unique": 1060,
+  "metric_arithmetic_verified": true,
+  "canonical_projection_verified": true,
+  "source_evidence_counts": {
+    "AI_image_transcript_or_historical_source_evidence": 2081,
+    "exact_native_quote": 310
+  },
+  "source_PDF_hashes_verified": 4,
+  "human_confirmed": false,
+  "new_Gemini_calls": 0,
+  "quality_goal_completed": false
+}

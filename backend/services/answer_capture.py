@@ -10,7 +10,7 @@ import hashlib
 import json
 import re
 
-VERSION = 'application-answer-capture-v1.22'
+VERSION = 'application-answer-capture-v1.24'
 CURRENT = ContextVar('application_answer_capture', default=None)
 INSTRUCTION = '''\nReturn a JSON object with answer (short Thai prose), answer_claims
 (array of exact non-overlapping factual substrings of answer, in order),
@@ -104,6 +104,11 @@ source_index must also be in that list. All indices are zero-based from the
 actual supplied evidence. Do not cite every returned source. Use ONE strongest
 source for a quantity; include another only if required to support the claim.
 Keep company/measure/year/scale/sign/comparator exactly as the evidence states.
+Use an explicit source-supported entity name for each numerical relation.
+When the evidence names an issuer, do not use only บริษัท, ธนาคาร or their
+generic subsidiary-group variants. Preserve parent/subsidiary scope and never
+guess an entity from a filename or unsupported question wording. If the entity
+cannot be established from the supplied evidence, abstain rather than invent it.
 Use the named entity and core quantity wording requested in QUESTION when it
 denotes the same entity/relation in the supplied evidence. Keep measure concise:
 do not prepend explanatory phrases such as number of days needed to prepare,
@@ -191,6 +196,10 @@ def evidence_context(sources, observations, *, max_chars=16000):
                        ('filename', 'page', 'table_name', 'row_label', 'column',
                         'value', 'unit', 'quality_status')}
             text = json.dumps(payload, ensure_ascii=False)
+            if source.get('page_context'):
+                payload['page_context'] = source['page_context']
+                payload['page_context_source'] = source.get('page_context_source')
+                text = json.dumps(payload, ensure_ascii=False)
         else:
             excerpt = str(source.get('excerpt') or '')
             if not excerpt:
@@ -499,6 +508,15 @@ def numeric_binding_errors(fact, claim, source, links):
     return errors
 
 
+def is_generic_entity(value):
+    """Generic issuer labels cannot identify a numerical subject by themselves."""
+    if not isinstance(value, str):
+        return False
+    compact = re.sub(r'\s+', '', value)
+    return compact in {'บริษัท', 'บริษัทฯ', 'กลุ่มบริษัท', 'ธนาคาร', 'ธนาคารฯ',
+                      'ธนาคารและบริษัทย่อย', 'บริษัทและบริษัทย่อย', 'บริษัทฯและบริษัทย่อย'}
+
+
 def finalize(result, events):
     result = deepcopy(result)
     answer, sources = result.get('answer', ''), result.get('sources', [])
@@ -578,7 +596,7 @@ def finalize(result, events):
         if type(c) is not int or not 0 <= c < len(claims) or type(s) is not int or not 0 <= s < len(sources):
             capture['errors'].append('numeric_invalid_identifier'); continue
         errors = numeric_binding_errors(fact, claims[c], sources[s], pairs)
-        if payload.get('render_contract') == 'canonical-claims-v1' and fact.get('company') in ('บริษัทฯ', 'บริษัท', 'กลุ่มบริษัท'):
+        if payload.get('render_contract') == 'canonical-claims-v1' and is_generic_entity(fact.get('company')):
             errors.append('numeric_company_ambiguous')
         if errors:
             capture['errors'].extend(errors); continue

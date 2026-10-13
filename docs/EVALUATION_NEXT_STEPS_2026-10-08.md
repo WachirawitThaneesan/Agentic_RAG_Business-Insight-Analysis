@@ -1,3 +1,5 @@
+> **แผนหลักใหม่ 9 ตุลาคม 2026:** อ่าน [แผนปิดจบโปรเจกต์](PROJECT_CLOSURE_PLAN_2026-10-09_th.md) และ `PROJECT_CLOSURE_POLICY_2026-10-09.json` ก่อนรับช่วง ตัด Docling ออกจากขอบเขตปิดจบ เทียบตลาดด้วย desk research เท่านั้น ไม่ซื้อบริการ ช่วงสอบ 8–11 พฤศจิกายน เป้าหมายพร้อม 6 พฤศจิกายน ผล8ตุลาคมด้านล่างคงเป็นหลักฐานย้อนหลัง
+
 # Evaluation Progress and Next Steps — 8 October 2026
 
 This document is the current plan. It supersedes historical progress estimates and active-run statements in earlier handoffs. The adviser-facing [English report](GEMINI_RAG_FULL498_REPORT_2026-10-08.md) presents the positive results first and discusses the remaining integration challenges as future work.

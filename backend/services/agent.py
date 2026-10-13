@@ -224,6 +224,8 @@ async def _execute_tool(
         else:
             res = await tool_obj.execute(query)
 
+        if tool_name == 'sql_query' and res.success and hasattr(session, 'execute'):
+            await _attach_sql_page_context(res.data, session)
         obs = res.summary if res.success else f"Error: {res.error}"
         return {
             "observation": obs,
@@ -234,6 +236,43 @@ async def _execute_tool(
     except Exception as e:
         logger.error("Tool %s failed: %s", tool_name, e)
         return {"observation": f"Error executing tool {tool_name}: {e}", "success": False}
+
+
+async def _attach_sql_page_context(data, session):
+    """Expose stored OCR context from the exact cited, indexed physical page.
+
+    Keep cell values/units/columns intact. Page prose supplies identity context,
+    never an inferred company alias or a replacement for a selected table value.
+    """
+    from sqlalchemy import and_, or_
+    from backend.models import Chunk, DocumentPage
+    evidence = data.get('evidence') or []
+    keys = {(s.get('document_id'), s.get('page')) for s in evidence
+            if type(s.get('document_id')) is int and type(s.get('page')) is int}
+    if not keys:
+        return
+    conditions = [and_(Chunk.document_id == doc, Chunk.metadata_['page'].as_integer() == page)
+                  for doc, page in keys]
+    stmt = (select(Chunk).join(DocumentPage, and_(DocumentPage.document_id == Chunk.document_id,
+                DocumentPage.page_number == Chunk.metadata_['page'].as_integer()))
+            .where(or_(*conditions), or_(Chunk.metadata_['source_kind'].as_string().is_(None),
+                                        Chunk.metadata_['source_kind'].as_string() == 'semantic'),
+                   DocumentPage.status == 'indexed').order_by(Chunk.chunk_index))
+    chunks = (await session.execute(stmt)).scalars().all()
+    contexts = {}
+    for chunk in chunks:
+        meta = chunk.metadata_ or {}
+        key = (chunk.document_id, meta.get('page'))
+        if key not in keys or meta.get('source_kind') not in (None, 'semantic'):
+            continue
+        lines = [line for line in chunk.chunk_text.splitlines()
+                 if line.strip() and not line.startswith('RAW_OCR_PAGE:')]
+        contexts[key] = '\n'.join(filter(None, [contexts.get(key), '\n'.join(lines)]))[:2000]
+    for source in evidence:
+        context = contexts.get((source.get('document_id'), source.get('page')))
+        if context:
+            source['page_context'] = context
+            source['page_context_source'] = 'stored_semantic_ocr_on_indexed_page'
 
 
 # ---------------------------------------------------------------------------
@@ -382,6 +421,13 @@ def _grounded_answer(answer: str, question: str, sources: List[Dict[str, Any]]) 
                if source.get("page") is not None or source.get("url")]
     if not located:
         return "ไม่พบหลักฐานพร้อมหน้าเอกสารที่เพียงพอสำหรับคำตอบนี้"
+    # Digits in an actually cited document name identify a file, not a quantity.
+    # Only mask exact supplied filenames; unsupported numeric claims stay checked.
+    quantity_text = answer
+    for source in located:
+        filename = str(source.get('filename') or '')
+        if filename:
+            quantity_text = re.sub(re.escape(filename), '', quantity_text, flags=re.IGNORECASE)
     metric_question = re.sub(r"^\s*(?:จาก)?(?:ไฟล์|เอกสาร|รายงาน)\s+\S+\.pdf\s*", "", question, flags=re.IGNORECASE)
     question_key = _measure_key(metric_question)
     exact_cells = [source for source in located
@@ -434,11 +480,11 @@ def _grounded_answer(answer: str, question: str, sources: List[Dict[str, Any]]) 
                 if len(lhs) == len(rhs) == 1:
                     difference = next(iter(lhs)) - next(iter(rhs))
                     allowed.update((difference, -difference, abs(difference)))
-    if not _numbers(answer) <= allowed:
+    if not _numbers(quantity_text) <= allowed:
         return "ไม่พบหลักฐานในหน้าเอกสารที่รองรับตัวเลขในคำตอบ"
-    stated_units = set(_ANSWER_UNIT.findall(answer))
+    stated_units = set(_ANSWER_UNIT.findall(quantity_text))
     if stated_units:
-        answer_values = _numbers(answer) - allowed.intersection(_numbers(question)) - cited_pages
+        answer_values = _numbers(quantity_text) - allowed.intersection(_numbers(question)) - cited_pages
         matching_cells = [source for source in located if source.get("value") is not None
                           and _numbers(str(source["value"])) & answer_values]
         cell_units = {str(source["unit"]).strip() for source in (matching_cells or located) if source.get("unit")}
@@ -446,7 +492,7 @@ def _grounded_answer(answer: str, question: str, sources: List[Dict[str, Any]]) 
             normalized_units = {"%" if unit == "เปอร์เซ็นต์" else unit for unit in stated_units}
             if not normalized_units <= cell_units:
                 return "หน่วยในคำตอบไม่ตรงกับหน่วยของหลักฐานในหน้าเอกสาร"
-    if _numbers(answer) and any(source.get("evidence_status") == "ocr_extracted_unverified"
+    if _numbers(quantity_text) and any(source.get("evidence_status") == "ocr_extracted_unverified"
                                 for source in located) and "OCR" not in answer and "ยังไม่ตรวจ" not in answer:
         answer += " (ค่าถอดจาก OCR; ยังไม่ตรวจเทียบ PDF)"
     return answer
@@ -491,14 +537,12 @@ def _exact_cell_answer(data: Dict[str, Any], question: str) -> Optional[str]:
     years = re.findall(r'(?<!\d)(?:25|20)\d{2}(?!\d)', str(cell['column']))
     year = f'ปี {years[0]} ' if len(years)==1 else ''
     filename = str(cell.get('filename') or '')
-    # Filename is stated as the document identity, not silently equated to an issuer.
+    # A filename or a query mention is not proof of an issuer identity.
     company = str(cell.get('company') or '')
-    if not company and filename and cell.get('document_id') is not None:
-        from backend.services.retrieval_rank import matched_document_aliases
-        _, aliases = matched_document_aliases(question, [(cell['document_id'], filename)])
-        if len(aliases) == 1:
-            match = re.search(re.escape(aliases[0]), question, re.I)
-            company = match.group() if match else ''
+    if not company:
+        # The shared generator must use source evidence or abstain. Do not
+        # derive an issuer from a filename when stored entity context is missing.
+        return None
     identity = company or filename
     measure = re.sub(r'\(\s*(?:ล้านบาท|พันบาท|บาท|%|\d+)\s*\)', '', str(cell.get('row_label') or '')).strip()
     draft = f'{identity} {measure} {year}{shown} (PDF หน้า {cell["page"]})'.strip()

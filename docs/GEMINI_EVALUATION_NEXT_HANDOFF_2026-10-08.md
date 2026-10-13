@@ -1,3 +1,5 @@
+> **แผนหลักใหม่ 9 ตุลาคม 2026:** อ่าน [แผนปิดจบโปรเจกต์](PROJECT_CLOSURE_PLAN_2026-10-09_th.md) และ `PROJECT_CLOSURE_POLICY_2026-10-09.json` ก่อนรับช่วง ตัด Docling ออกจากขอบเขตปิดจบ เทียบตลาดด้วย desk research เท่านั้น ไม่ซื้อบริการ ช่วงสอบ 8–11 พฤศจิกายน เป้าหมายพร้อม 6 พฤศจิกายน ผล8ตุลาคมด้านล่างคงเป็นหลักฐานย้อนหลัง
+
 > Historical checkpoint below. Latest authority: `FULL498_AUDIT_CHECKPOINT_V5.json` and `focus498_report_final_v3/REPORT_th.md` in recovery root. All498 v1.16 outputs have valid judgments. Eight RAG conservative bounds85.96–96.69%; strict numeric18/102, complete302/498. Candidate98 v21 completed17/102 with4 regressions, not selected. Current binder v22 restores v16 native schema/instruction and keeps tested deterministic binding repairs; no new full498 score is claimed for v22.74tests pass,529saved complete captures remain valid. No active worker. Blind source review94questions/102contracts prepared but not reviewed. Next review source/question requirements independently before another system change; preserve gold/scorer and all attempts. No Docling.
 
 # Next Gemini handoff — 2026-10-08

@@ -1,0 +1,310 @@
+{
+  "status": "complete_AI_assisted_assessment",
+  "human_confirmed": false,
+  "main_denominator_per_system": 498,
+  "control_denominator_per_system": 32,
+  "systems": {
+    "simple_dense_rag": {
+      "rag_metrics": {
+        "faithfulness": {
+          "assessed_mean": 0.7462821701007929,
+          "assessable_n": 336,
+          "missing_or_na_n": 162,
+          "conservative_all498_mean": 0.5035156810318603
+        },
+        "factual_precision": {
+          "assessed_mean": 0.9638073979591837,
+          "assessable_n": 336,
+          "missing_or_na_n": 162,
+          "conservative_all498_mean": 0.6502796901893287
+        },
+        "factual_recall": {
+          "assessed_mean": 0.5509441807634579,
+          "assessable_n": 498,
+          "missing_or_na_n": 0,
+          "conservative_all498_mean": 0.550944180763458
+        },
+        "factual_f1": {
+          "assessed_mean": 0.7595686885865457,
+          "assessable_n": 336,
+          "missing_or_na_n": 162,
+          "conservative_all498_mean": 0.5124800790463441
+        },
+        "claim_relevance_precision": {
+          "assessed_mean": 0.993452380952381,
+          "assessable_n": 336,
+          "missing_or_na_n": 162,
+          "conservative_all498_mean": 0.670281124497992
+        },
+        "answer_relevancy_rubric": {
+          "assessed_mean": 0.7379518072289156,
+          "assessable_n": 498,
+          "missing_or_na_n": 0,
+          "conservative_all498_mean": 0.7379518072289156
+        },
+        "context_precision_ap": {
+          "assessed_mean": 0.4710447657978854,
+          "assessable_n": 498,
+          "missing_or_na_n": 0,
+          "conservative_all498_mean": 0.4710447657978854
+        },
+        "context_recall": {
+          "assessed_mean": 0.3805189010008287,
+          "assessable_n": 498,
+          "missing_or_na_n": 0,
+          "conservative_all498_mean": 0.3805189010008287
+        }
+      },
+      "complete_answer_success": 79,
+      "complete_answer_rate_all498": 0.15863453815261044,
+      "numeric_correct_relations": 119,
+      "numeric_required_relations": 356,
+      "numeric_rate": 0.3342696629213483,
+      "false_refusals": 158,
+      "model_errors": 0,
+      "capture_error_questions": 34,
+      "unassessed_judgments": 0,
+      "controls": {
+        "appropriate_abstentions": 24,
+        "unsupported_requested_assertions": 0,
+        "truthful_irrelevant_substitutions": 8,
+        "unassessed": 0
+      },
+      "latency_seconds": {
+        "n": 530,
+        "p50": 7.185714850002114,
+        "p95": 19.897332814999306
+      },
+      "actual_tools": {
+        "vector_search": 530
+      }
+    },
+    "full_app": {
+      "rag_metrics": {
+        "faithfulness": {
+          "assessed_mean": 0.6581450751123337,
+          "assessable_n": 318,
+          "missing_or_na_n": 180,
+          "conservative_all498_mean": 0.4202613130235384
+        },
+        "factual_precision": {
+          "assessed_mean": 0.9285377358490566,
+          "assessable_n": 318,
+          "missing_or_na_n": 180,
+          "conservative_all498_mean": 0.5929216867469879
+        },
+        "factual_recall": {
+          "assessed_mean": 0.5835264133456904,
+          "assessable_n": 498,
+          "missing_or_na_n": 0,
+          "conservative_all498_mean": 0.5835264133456906
+        },
+        "factual_f1": {
+          "assessed_mean": 0.7988600439858301,
+          "assessable_n": 318,
+          "missing_or_na_n": 180,
+          "conservative_all498_mean": 0.5101154497740843
+        },
+        "claim_relevance_precision": {
+          "assessed_mean": 0.9905660377358491,
+          "assessable_n": 318,
+          "missing_or_na_n": 180,
+          "conservative_all498_mean": 0.6325301204819277
+        },
+        "answer_relevancy_rubric": {
+          "assessed_mean": 0.7479919678714859,
+          "assessable_n": 498,
+          "missing_or_na_n": 0,
+          "conservative_all498_mean": 0.7479919678714859
+        },
+        "context_precision_ap": {
+          "assessed_mean": 0.5339354830214023,
+          "assessable_n": 488,
+          "missing_or_na_n": 10,
+          "conservative_all498_mean": 0.5232138869767958
+        },
+        "context_recall": {
+          "assessed_mean": 0.41124497991967873,
+          "assessable_n": 498,
+          "missing_or_na_n": 0,
+          "conservative_all498_mean": 0.41124497991967873
+        }
+      },
+      "complete_answer_success": 60,
+      "complete_answer_rate_all498": 0.12048192771084337,
+      "numeric_correct_relations": 106,
+      "numeric_required_relations": 356,
+      "numeric_rate": 0.29775280898876405,
+      "false_refusals": 176,
+      "model_errors": 0,
+      "capture_error_questions": 32,
+      "unassessed_judgments": 0,
+      "controls": {
+        "appropriate_abstentions": 28,
+        "unsupported_requested_assertions": 0,
+        "truthful_irrelevant_substitutions": 4,
+        "unassessed": 0
+      },
+      "latency_seconds": {
+        "n": 530,
+        "p50": 13.007792899998549,
+        "p95": 35.551602944999466
+      },
+      "actual_tools": {
+        "sql_query": 314,
+        "vector_search": 435,
+        "self_correction": 7,
+        "multi_hop": 22
+      }
+    }
+  },
+  "paired": {
+    "faithfulness": {
+      "S1_minus_S0_mean": -0.08325436800832191,
+      "report_cluster_bootstrap95": [
+        -0.15103218529836177,
+        -0.04095740742662245
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "factual_precision": {
+      "S1_minus_S0_mean": -0.057358003442340794,
+      "report_cluster_bootstrap95": [
+        -0.1681649012310335,
+        0.017981449607955634
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "factual_recall": {
+      "S1_minus_S0_mean": 0.032582232582232584,
+      "report_cluster_bootstrap95": [
+        -0.09153584033102105,
+        0.15670030549548622
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "factual_f1": {
+      "S1_minus_S0_mean": -0.0023646292722597946,
+      "report_cluster_bootstrap95": [
+        -0.12697140312370772,
+        0.0900172117039587
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "claim_relevance_precision": {
+      "S1_minus_S0_mean": -0.03775100401606426,
+      "report_cluster_bootstrap95": [
+        -0.15991983967935872,
+        0.04417670682730924
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "answer_relevancy_rubric": {
+      "S1_minus_S0_mean": 0.010040160642570281,
+      "report_cluster_bootstrap95": [
+        -0.08617234468937876,
+        0.08835341365461848
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "context_precision_ap": {
+      "S1_minus_S0_mean": 0.05216912117891034,
+      "report_cluster_bootstrap95": [
+        -0.005113971952323488,
+        0.10719106035288846
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "context_recall": {
+      "S1_minus_S0_mean": 0.030726078918850003,
+      "report_cluster_bootstrap95": [
+        -0.07516208361278784,
+        0.1829452907923733
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    },
+    "complete_answer": {
+      "S1_minus_S0_mean": -0.03815261044176707,
+      "report_cluster_bootstrap95": [
+        -0.06639839034205232,
+        -0.012048192771084338
+      ],
+      "cluster_n": 4,
+      "replicates": 2000,
+      "seed": 20261009,
+      "limitation": "Four reports; limited generalization. Missing/unassessed contributions counted0."
+    }
+  },
+  "quality_goal_completed": false,
+  "source_labels_sha256": "5959f4e2e4ccddf00f966d7bbf55b18fdd5804b785b02ad854e413264ae12119",
+  "assessment_completion": {
+    "usable": 1060,
+    "planned": 1060,
+    "remaining": 0,
+    "original_usable": 712,
+    "completion_overlays": 348,
+    "adjudicated_records": 34,
+    "new_Gemini_calls": 0,
+    "reviewer_assignment_randomized": false,
+    "human_confirmed": false
+  },
+  "original_v1_manifest_sha256": "054a53f0dbd9a8ff5782e05ff0ee8e3580aa40a4ab0f5fbaa6543810babfc285",
+  "frozen_scorer_sha256": "2be238b1c0bf382bbb8b783494a74deae35025cf92193d5f5a261e58a6e746e7",
+  "source_validity_sensitivity": {
+    "excluded_question_ids": [
+      "F_KCE_01__q09",
+      "F_OSP_08__q12",
+      "F_KCE_08__q02"
+    ],
+    "reason": "Unequal product scopes; same-year columns mislabeled as prior/current years; fixed-rate debt subgroup mislabeled as total debt. Symmetric exclusion only; frozen primary references retained.",
+    "systems": {
+      "simple_dense_rag": {
+        "main_n": 495,
+        "strict_complete": 79,
+        "strict_rate": 0.1595959595959596,
+        "numeric_required": 353,
+        "numeric_correct": 119,
+        "numeric_rate": 0.3371104815864023
+      },
+      "full_app": {
+        "main_n": 495,
+        "strict_complete": 59,
+        "strict_rate": 0.1191919191919192,
+        "numeric_required": 353,
+        "numeric_correct": 105,
+        "numeric_rate": 0.29745042492917845
+      }
+    }
+  },
+  "caveats": [
+    "AI-assisted judgments without independent human confirmation; historical Gemini components retained; no new Gemini calls.",
+    "Judgment completion does not remove NA claim metrics for abstentions and uncaptured claims.",
+    "Strict numerical matching retains frozen precision/sign/dimension requirements. Source-correct finer precision may fail this criterion.",
+    "Three confirmed frozen source-label defects are disclosed separately with paired sensitivity.",
+    "Only four reports; limited uncertainty/generalization; unknown costs remain unpriced."
+  ]
+}

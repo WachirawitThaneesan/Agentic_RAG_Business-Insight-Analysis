@@ -85,7 +85,7 @@ def test_citation_renderer_works_without_any_ocr_service(tmp_path):
 
 
 def test_exact_cell_answer_does_not_need_model():
-    c=cell();c['evidence_status']='ocr_extracted_unverified'
+    c=cell(company='ธนาคารตัวอย่าง');c['evidence_status']='ocr_extracted_unverified'
     answer=agent._exact_cell_answer({'lookup_kind':'exact_measure','evidence':[c]},
         'กำไรสุทธิส่วนที่เป็นของธนาคารปี 2569 กี่ล้านบาท')
     assert '321 ล้านบาท' in answer and 'PDF หน้า 7' in answer and 'OCR' in answer

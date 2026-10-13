@@ -75,12 +75,18 @@ async def warehouse_status():
     """Get DuckDB warehouse status: table counts, sample data."""
     try:
         tables_info = execute_sql(
-            "SELECT table_name, COUNT(*) as row_count "
-            "FROM fact_financial_metrics "
-            "GROUP BY table_name "
+            "SELECT t.document_id, t.table_name, t.row_count AS source_rows, "
+            "COALESCE(f.n,0) AS fact_records, COALESCE(l.n,0) AS lookup_records, "
+            "COALESCE(f.n,0)+COALESCE(l.n,0) AS row_count "
+            "FROM dim_tables t "
+            "LEFT JOIN (SELECT document_id,table_name,COUNT(*) AS n FROM fact_financial_metrics "
+            "GROUP BY document_id,table_name) f USING(document_id,table_name) "
+            "LEFT JOIN (SELECT document_id,table_name,COUNT(*) AS n FROM dim_table_rows "
+            "GROUP BY document_id,table_name) l USING(document_id,table_name) "
             "ORDER BY row_count DESC"
         )
         total = execute_sql("SELECT COUNT(*) as total FROM fact_financial_metrics")
+        lookups = execute_sql("SELECT COUNT(*) as total FROM dim_table_rows")
         years = execute_sql(
             "SELECT DISTINCT metric_year FROM fact_financial_metrics ORDER BY metric_year"
         )
@@ -89,6 +95,7 @@ async def warehouse_status():
         return {
             "status": "ok",
             "total_fact_records": total["rows"][0]["total"] if total["rows"] else 0,
+            "total_lookup_records": lookups["rows"][0]["total"] if lookups["rows"] else 0,
             "total_documents": docs["rows"][0]["total"] if docs["rows"] else 0,
             "tables": tables_info["rows"],
             "available_years": [r["metric_year"] for r in years.get("rows", [])],

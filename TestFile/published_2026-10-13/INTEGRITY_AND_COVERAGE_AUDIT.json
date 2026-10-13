@@ -1,0 +1,82 @@
+{
+  "original_files_verified": 2124,
+  "all_unchanged": true,
+  "first_outcomes": 1060,
+  "usable_judgments": 1060,
+  "counts": {
+    "retained_original": 712,
+    "captured_claims": 2274,
+    "citation_links": 2482,
+    "required_numeric": 712,
+    "overlay": 348
+  },
+  "null_collection_projection_needed": [
+    {
+      "name": "F_HMPRO_08__q05__full_app.json",
+      "field": "answer_claims"
+    },
+    {
+      "name": "F_HMPRO_08__q05__full_app.json",
+      "field": "numeric_facts"
+    },
+    {
+      "name": "F_HMPRO_08__q05__simple_dense_rag.json",
+      "field": "answer_claims"
+    },
+    {
+      "name": "F_HMPRO_08__q05__simple_dense_rag.json",
+      "field": "numeric_facts"
+    },
+    {
+      "name": "F_KCE_04__q09__full_app.json",
+      "field": "answer_claims"
+    },
+    {
+      "name": "F_KCE_04__q09__full_app.json",
+      "field": "numeric_facts"
+    },
+    {
+      "name": "F_KCE_05__q10__simple_dense_rag.json",
+      "field": "answer_claims"
+    },
+    {
+      "name": "F_KCE_05__q10__simple_dense_rag.json",
+      "field": "numeric_facts"
+    },
+    {
+      "name": "F_OSP_01__q04__simple_dense_rag.json",
+      "field": "answer_claims"
+    },
+    {
+      "name": "F_OSP_01__q04__simple_dense_rag.json",
+      "field": "numeric_facts"
+    },
+    {
+      "name": "F_OSP_04__q11__full_app.json",
+      "field": "answer_claims"
+    },
+    {
+      "name": "F_OSP_04__q11__full_app.json",
+      "field": "numeric_facts"
+    },
+    {
+      "name": "F_TISCO_BANK_01__q12__full_app.json",
+      "field": "answer_claims"
+    },
+    {
+      "name": "F_TISCO_BANK_01__q12__full_app.json",
+      "field": "numeric_facts"
+    },
+    {
+      "name": "F_TISCO_BANK_05__q11__simple_dense_rag.json",
+      "field": "answer_claims"
+    },
+    {
+      "name": "F_TISCO_BANK_05__q11__simple_dense_rag.json",
+      "field": "numeric_facts"
+    }
+  ],
+  "source_index_contract_mismatches": [],
+  "human_confirmed": false,
+  "quality_goal_completed": false
+}

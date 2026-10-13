@@ -1,0 +1,79 @@
+{
+  "source_filter": "Four locked original PDF SHA256 only for ingestion; exact final paired runID for answer generation. Historical calibration excluded.",
+  "ingestion_four_reports": {
+    "attempts": 2542,
+    "providers": {
+      "typhoon": 1477,
+      "gemini": 1065
+    },
+    "statuses": {
+      "success": 2462,
+      "error": 80
+    },
+    "known_input_tokens": 4464460,
+    "known_output_with_reported_thinking": 838812,
+    "standard_uncached_known_component_USD": 3.436368,
+    "missing_usage_calls": 64,
+    "missing_thinking_calls": 1065,
+    "actual_invoice_USD": null,
+    "Codex_review_account_cost_USD": null,
+    "local_energy_cost": null
+  },
+  "systems": {
+    "simple_dense_rag": {
+      "attempts": 666,
+      "providers": {
+        "gemini": 666
+      },
+      "statuses": {
+        "success": 612,
+        "error": 54
+      },
+      "known_input_tokens": 7635044,
+      "known_output_with_reported_thinking": 713403,
+      "standard_uncached_known_component_USD": 4.0740207,
+      "missing_usage_calls": 54,
+      "missing_thinking_calls": 54,
+      "actual_invoice_USD": null,
+      "Codex_review_account_cost_USD": null,
+      "local_energy_cost": null,
+      "first_outcomes": 530,
+      "known_component_per_first_outcome_USD": 0.007686831509433963
+    },
+    "full_app": {
+      "attempts": 1656,
+      "providers": {
+        "gemini": 1656
+      },
+      "statuses": {
+        "success": 1467,
+        "error": 189
+      },
+      "known_input_tokens": 10781009,
+      "known_output_with_reported_thinking": 950379,
+      "standard_uncached_known_component_USD": 5.610250199999999,
+      "missing_usage_calls": 189,
+      "missing_thinking_calls": 934,
+      "actual_invoice_USD": null,
+      "Codex_review_account_cost_USD": null,
+      "local_energy_cost": null,
+      "first_outcomes": 530,
+      "known_component_per_first_outcome_USD": 0.010585377735849055
+    }
+  },
+  "price_assumption": {
+    "input_per_M_USD": 0.3,
+    "output_including_reported_thinking_per_M_USD": 2.5,
+    "cache": "unknown; uncached assumed",
+    "verified_date": "2026-10-11",
+    "official_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
+  },
+  "not_a_bill": true,
+  "unknowns": [
+    "unreported usage/thinking/cache",
+    "actual account tier/credits/tax",
+    "Typhoon hosted-account billing",
+    "Codex account allocation",
+    "hardware and electricity"
+  ]
+}

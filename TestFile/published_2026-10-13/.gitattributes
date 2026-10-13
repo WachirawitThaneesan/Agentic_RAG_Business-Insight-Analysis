@@ -1,0 +1,2 @@
+# Release hash verification requires unchanged bytes across Windows/Linux checkouts.
+* -text whitespace=cr-at-eol

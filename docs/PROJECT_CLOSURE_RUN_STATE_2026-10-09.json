@@ -1,0 +1,297 @@
+{
+  "status": "completed_evaluation_and_deliverables_ready",
+  "phase": "complete_same_first_outcomes_and_verified_report_poster",
+  "current_plan": "docs/PROJECT_CLOSURE_PLAN_2026-10-09_th.md",
+  "working_policy": "docs/PROJECT_CLOSURE_POLICY_2026-10-09.json",
+  "owner_thread_id": "01a11f29-c5e6-70a3-a8a8-bb80453c0cdb",
+  "previous_thread_id": "01a119ca-4337-7343-a45a-98b4d083962d",
+  "owner_assignment_pending": false,
+  "exam_window": [
+    "2026-11-08",
+    "2026-11-11"
+  ],
+  "working_delivery_target": "2026-11-06",
+  "docling_in_scope": false,
+  "market_mode": "desk_research_only",
+  "buy_subscriptions": false,
+  "main_unseen_questions_planned": 498,
+  "separate_controls_proposed": 32,
+  "unseen_outputs_generated": 1060,
+  "unseen_valid_judgments": 1060,
+  "quality_goal_completed": false,
+  "cumulative_ledger": "TestFile/evaluation_completion_2026-10-07/resource_ledger.json",
+  "ledger_reset": false,
+  "market_seed": "docs/MARKET_SURVEY_SEED_2026-10-09.md",
+  "owned_running_processes": [
+    {
+      "kind": "isolated_api",
+      "pid": 7148,
+      "url": "http://127.0.0.1:8001"
+    },
+    {
+      "kind": "final_fresh_ingestion_api",
+      "pid": 21556,
+      "url": "http://127.0.0.1:8002",
+      "database": "closure_final_v24_20261009"
+    },
+    {
+      "kind": "owned_postgres_container",
+      "name": "codex_closure_20261009_pg",
+      "port": 5437
+    }
+  ],
+  "unrelated_tmp_preserved": true,
+  "handed_off_by": "01a119ca-4337-7343-a45a-98b4d083962d",
+  "additional_deliverables": {
+    "requested_date_local": "2026-10-09",
+    "exam_report": {
+      "status": "completed_24page_report_rendered_visually_checked",
+      "brief": "TestFile/project_closure_2026-10-09/REPORT_POSTER_BRIEF.md",
+      "preserve_original_identity": true,
+      "editable_source_and_pdf": true,
+      "docx": "TestFile/project_closure_2026-10-09/submission_completed_v2/examination_report.docx",
+      "pdf": "TestFile/project_closure_2026-10-09/submission_completed_v2/examination_report.pdf",
+      "page_count": 24
+    },
+    "poster": {
+      "status": "completed_A1_poster_rendered_visually_checked",
+      "style": "clean minimal, professional, credible, natural",
+      "proposed_size": "A1 portrait",
+      "outputs": [
+        "editable source",
+        "print PDF",
+        "PNG preview"
+      ],
+      "pdf": "TestFile/project_closure_2026-10-09/submission_completed_v2/project_poster_A1.pdf",
+      "editable_source": "TestFile/project_closure_2026-10-09/submission_completed_v2/project_poster_A1.svg",
+      "preview": "TestFile/project_closure_2026-10-09/submission_drafts/poster_layout_draft_v2.png",
+      "png": "TestFile/project_closure_2026-10-09/submission_completed_v2/project_poster_A1.png"
+    },
+    "bundle": "TestFile/project_closure_2026-10-09/submission_completed_v2/report_poster_evaluation_bundle.zip"
+  },
+  "artifacts": {
+    "story": "TestFile/project_closure_2026-10-09/STORY.md",
+    "claims": "TestFile/project_closure_2026-10-09/CLAIM_EVIDENCE_MATRIX.md",
+    "market_survey": "TestFile/project_closure_2026-10-09/MARKET_SURVEY.md",
+    "seen_registry": "TestFile/project_closure_2026-10-09/SEEN_DOCUMENTS_v2.json",
+    "cost_gaps": "TestFile/project_closure_2026-10-09/COST_MEASUREMENT_GAPS.md",
+    "protocol_draft": "TestFile/project_closure_2026-10-09/EXPERIMENT_PROTOCOL_DRAFT.md",
+    "preflight": "TestFile/project_closure_2026-10-09/PREFLIGHT.json",
+    "candidate_pdfs": "TestFile/project_closure_2026-10-09/CANDIDATE_PDFS.json",
+    "source_preinspection": "TestFile/project_closure_2026-10-09/CANDIDATE_SOURCE_INSPECTION_v1.json",
+    "report_poster_brief": "TestFile/project_closure_2026-10-09/REPORT_POSTER_BRIEF.md",
+    "source_selection": "TestFile/project_closure_2026-10-09/FINAL_SOURCE_SELECTION_PRERECORD_v1.json",
+    "source_review": "TestFile/project_closure_2026-10-09/numeric_source_blind_review_v1/SUMMARY.json",
+    "numeric_audit": "TestFile/project_closure_2026-10-09/NUMERIC_REFERENCE_AUDIT_INVENTORY_v2.json",
+    "p1_findings": "TestFile/project_closure_2026-10-09/P1_RUNTIME_FINDINGS.md",
+    "research_cost": "TestFile/project_closure_2026-10-09/RESEARCH_SOURCE_REVIEW_COST_v2.json",
+    "batch_checkpoint": "TestFile/project_closure_2026-10-09/BATCH_WORK_CHECKPOINT_v1.md",
+    "matched_development": "TestFile/project_closure_2026-10-09/development_paired_v23_v1/FREEZE.json",
+    "matched_status": "TestFile/project_closure_2026-10-09/DEVELOPMENT_PAIR_STATUS_v23.json",
+    "source_visual_audit": "TestFile/project_closure_2026-10-09/reference_visual_audit_v2_single_image/SUMMARY.json",
+    "reference_proposals": "TestFile/project_closure_2026-10-09/REFERENCE_PROPOSALS_NORMALIZED_v3.json",
+    "cost_checkpoint": "TestFile/project_closure_2026-10-09/COST_ACCOUNTING_CHECKPOINT_v6.json",
+    "matched_development_v24": "TestFile/project_closure_2026-10-09/development_paired_v24_v1/FREEZE.json",
+    "matched_status_v24": "TestFile/project_closure_2026-10-09/DEVELOPMENT_PAIR_STATUS_v24.json",
+    "runtime_completed_upload_reuse": "TestFile/project_closure_2026-10-09/COMPLETED_UPLOAD_REUSE_RUNTIME_v1.json",
+    "final_ingestion_freeze": "TestFile/project_closure_2026-10-09/final_ingestion_v24_v1/FREEZE.json",
+    "final_ingestion_progress": "TestFile/project_closure_2026-10-09/final_ingestion_v24_v1/PROGRESS.json",
+    "unseen_source_packet_manifest": "TestFile/project_closure_2026-10-09/unseen_source_packets_v1/MANIFEST.json",
+    "unseen_authoring": "TestFile/project_closure_2026-10-09/unseen_bank_authoring_v1/SUMMARY.json",
+    "unseen_source_audit": "TestFile/project_closure_2026-10-09/unseen_bank_source_audit_v1/SUMMARY.json",
+    "reference_contract": "TestFile/project_closure_2026-10-09/REFERENCE_AND_ANALYSIS_CONTRACT_v1.md",
+    "controls_draft": "TestFile/project_closure_2026-10-09/UNSUPPORTED_CONTROLS_DRAFT_v1.json",
+    "final_source_bank_lock": "TestFile/project_closure_2026-10-09/final_bank_source_lock_v1/SOURCE_LOCK.json",
+    "final_inference_readiness": "TestFile/project_closure_2026-10-09/FINAL_INFERENCE_READINESS_v1.json",
+    "pipeline_status": "TestFile/project_closure_2026-10-09/final_pipeline_orchestrator_v1/STATUS.json",
+    "source_reaudit_blind": "TestFile/project_closure_2026-10-09/unseen_source_reaudit_v4_blind/SUMMARY.json",
+    "source_reaudit_old_protocol_issue": "TestFile/project_closure_2026-10-09/REAUDIT_v3_PROTOCOL_FINDING_v1.json",
+    "concurrent_reuse_runtime": "TestFile/project_closure_2026-10-09/CONCURRENT_COMPLETED_UPLOAD_REUSE_RUNTIME_v1.json"
+  },
+  "p0_progress": {
+    "story_and_claim_matrix": "written",
+    "market_survey": "official_pages_inspected_v1_final_refresh_snapshots_pending",
+    "registry": "396 metadata files,45 identity records;source-linked issuer identity review v2 and family review recorded",
+    "protocol": "draft_v1_written_not_frozen",
+    "cost": "gap_list_written_instrumentation_validation_pending",
+    "discovery": "6 byte-verified candidate PDF links; DELTA robots failure retained"
+  },
+  "p1_progress": {
+    "source_inspection": "six full basePDFs downloaded;original images and native coverage reviewed;primary4selected1447pages",
+    "download_failure": "TISCO group2025 PDF HTTP403 retained",
+    "final_reports_selected": 4,
+    "historical_reference_calibration": "94/94AI source-only derivations;131proposals vs102locked;6visual adjudications;remaining source checks pending;no gold/scorer edits",
+    "runtime_services": "owned PostgreSQL5437 and API8001active;Ollama11434active;production5436untouched",
+    "isolation": "owned separate container/volume,DB,uploads,DuckDB;actual legacy5page ingestion completed",
+    "targeted_tests": "82related tests passed;not full repo or answer accuracy",
+    "actual_answer_checks": "2first live development outcomes retained;false filename-number refusal root repaired in unit regression;comparison entity ambiguity unresolved",
+    "warehouse": "6tables/162lookupcells/0normalized-yearfacts;status fixed to expose both stores",
+    "capture_version": "application-answer-capture-v1.23",
+    "matched_development": "16first outcomes:6answerable+2controls per system;source entity naming audit remains;no final accuracy claim",
+    "source_visual_audit": "v1all44multi-image results retained with folio/physical mapping concerns;v2single-image43supported+1malformedJSONunresolved;no gold/scorer changes",
+    "stability": "actual abrupt process crash/resume233pages with stubOCR/embeddings passed;only117retried;no cloud calls"
+  },
+  "dependencies_remaining": [
+    "finish source-backed numeric adjudication and any versioned equal remeasurement",
+    "repair source-bound entity context in structured answer path",
+    "actual fault/recovery/upload-reuse and complete operation/local cost measurement",
+    "verify matched dense/fullapp corpus/prompt/context/validator conditions",
+    "blind498+32bank source/coverage audit and full fresh ingestion",
+    "complete final code/config/reference/scorer freeze before answer generation"
+  ],
+  "last_update_date_local": "2026-10-09",
+  "latest_capture_version": "application-answer-capture-v1.24",
+  "tests_latest": {
+    "passed": 482,
+    "skipped": 5,
+    "scope": "backend/services/tests and backend/eval/tests",
+    "warning": "Pydantic class config deprecation"
+  },
+  "p2_current": {
+    "source_reports": 4,
+    "source_total_pages": 1447,
+    "fresh_ingestion": "terminal_with_16_failed_page_checkpoints_and_table_warnings_retained",
+    "source_question_packets": 32,
+    "original_source_anchor_pages": 192,
+    "main_answerable_target": 498,
+    "separate_control_drafts": 32,
+    "application_unseen_outputs": 1060,
+    "bank_freeze_complete": true,
+    "scorer_analysis_freeze_complete": true,
+    "application_code_changes_after_heldout_start": false,
+    "follow_on_gates": [
+      "source question/reference validity, scope, math, required versus proof-only operands and duplication review",
+      "complete actual full-PDF OCR/indexing with failures retained",
+      "freeze complete bank/code/config/scorer/analysis before S0/S1 generation",
+      "530 first outcomes/system, source-backed evaluation, cost/latency analysis",
+      "finalize and visually verify examination report and clean minimal poster with the same result manifest"
+    ],
+    "analysis_protocol_freeze_complete": true,
+    "runner_judge_source_hashes_pinned": true,
+    "final_corpus_freeze": "performed by runner after actual ingestion terminal state before generation",
+    "main_categories": {
+      "numerical_lookup": 199,
+      "comparison_multifact": 100,
+      "narrative_policy_esg_governance": 199
+    },
+    "numeric_answer_required_relations": 356,
+    "actual_progress_at_checkpoint": [
+      {
+        "id": 4,
+        "filename": "tisco_bank_2025_th.pdf",
+        "status": "partial",
+        "page_count": 273,
+        "indexed_pages": 269,
+        "empty_pages": 0,
+        "failed_pages": [
+          79,
+          206,
+          228,
+          229
+        ],
+        "chunk_count": 2106,
+        "table_row_count": 1475
+      },
+      {
+        "id": 3,
+        "filename": "hmpro_2025_th.pdf",
+        "status": "partial",
+        "page_count": 470,
+        "indexed_pages": 462,
+        "empty_pages": 0,
+        "failed_pages": [
+          1,
+          174,
+          191,
+          295,
+          297,
+          321,
+          461,
+          468
+        ],
+        "chunk_count": 3803,
+        "table_row_count": 2620
+      },
+      {
+        "id": 2,
+        "filename": "osp_2025_th.pdf",
+        "status": "partial",
+        "page_count": 375,
+        "indexed_pages": 371,
+        "empty_pages": 0,
+        "failed_pages": [
+          8,
+          21,
+          277,
+          320
+        ],
+        "chunk_count": 2572,
+        "table_row_count": 1850
+      },
+      {
+        "id": 1,
+        "filename": "kce_2025_th.pdf",
+        "status": "partial",
+        "page_count": 329,
+        "indexed_pages": 329,
+        "empty_pages": 0,
+        "failed_pages": [],
+        "chunk_count": 2501,
+        "table_row_count": 1645
+      }
+    ]
+  },
+  "updated_at_utc": "2026-10-13T14:48:49.014467+00:00",
+  "source_bank_locked": true,
+  "final_generation_started": true,
+  "latest_source_lock": "TestFile/project_closure_2026-10-09/final_bank_source_lock_v1/SOURCE_LOCK.json",
+  "deferred_follow_on": {
+    "kind": "thread_heartbeat",
+    "automation_id": "automation",
+    "status": "PAUSED",
+    "interval_hours": 2,
+    "quiet_if_unchanged": true,
+    "purpose": "Complete final examination report/poster after measured analysis is ready, with source and full visual QA; preserve all original identities"
+  },
+  "checkpoint_watch_policy": "one frozen-code failed-checkpoint resume/document; preserve semantic table-quality partials and all attempt histories; no known-wrong answer regeneration",
+  "unassessed_judgments": 0,
+  "human_confirmed": false,
+  "gemini_allowed": false,
+  "document_deliverables_complete": true,
+  "artifact_visual_QA_complete": true,
+  "source_qa_samples_completed": 24,
+  "active_model_workers": 0,
+  "owned_running_processes_are_historical": true,
+  "current_delivery_dependencies_remaining": [],
+  "latest_artifact_delivery_manifest": "TestFile/project_closure_2026-10-09/submission_completed_v2/DELIVERY_MANIFEST.json",
+  "completed_result_manifest": "TestFile/published_2026-10-13/RESULT_MANIFEST_v2.json",
+  "consistency_adjudications": 34,
+  "completion_overlays": 348,
+  "historical_delivery_v1": {
+    "requested_date_local": "2026-10-09",
+    "exam_report": {
+      "status": "final_23page_report_rendered_and_visually_checked_with_evidence_limits",
+      "brief": "TestFile/project_closure_2026-10-09/REPORT_POSTER_BRIEF.md",
+      "preserve_original_identity": true,
+      "editable_source_and_pdf": true,
+      "docx": "TestFile/project_closure_2026-10-09/submission_final/examination_report.docx",
+      "pdf": "TestFile/project_closure_2026-10-09/submission_final/examination_report.pdf",
+      "page_count": 23
+    },
+    "poster": {
+      "status": "final_A1_poster_rendered_and_visually_checked_with_evidence_limits",
+      "style": "clean minimal, professional, credible, natural",
+      "proposed_size": "A1 portrait",
+      "outputs": [
+        "editable source",
+        "print PDF",
+        "PNG preview"
+      ],
+      "pdf": "TestFile/project_closure_2026-10-09/submission_final/project_poster_A1.pdf",
+      "editable_source": "TestFile/project_closure_2026-10-09/submission_final/project_poster_A1.svg",
+      "preview": "TestFile/project_closure_2026-10-09/submission_drafts/poster_layout_draft_v2.png",
+      "png": "TestFile/project_closure_2026-10-09/submission_final/project_poster_A1.png"
+    },
+    "bundle": "TestFile/project_closure_2026-10-09/submission_final/report_poster_evaluation_bundle.zip"
+  }
+}

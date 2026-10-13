@@ -2,7 +2,7 @@
 
 import os
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -93,6 +93,8 @@ if os.path.isdir(FRONTEND_DIR):
     @app.get("/{full_path:path}")
     async def serve_frontend(full_path: str):
         """Serve the SPA index.html for any non-API route."""
+        if full_path == 'api' or full_path.startswith('api/'):
+            raise HTTPException(status_code=404, detail='API route not found')
         file_path = os.path.join(FRONTEND_DIR, full_path)
         if full_path and os.path.isfile(file_path):
             return FileResponse(file_path)

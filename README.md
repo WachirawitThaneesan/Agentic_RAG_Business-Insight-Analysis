@@ -10,6 +10,38 @@ answer self-correction step.
 
 ---
 
+## Completed Examination Report and Evaluation — 13 October 2026
+
+The [completed release](TestFile/published_2026-10-13/README.md) contains the
+24-page English examination report, editable sources, A1 poster, all page
+previews, a filtered evaluation viewer, and audit records. All **1,060 retained
+first outcomes** now have usable AI-assisted assessments; none remain pending.
+No new Gemini calls or application answers were generated for completion.
+
+| Frozen primary criterion | Dense RAG S0 | Full App S1 |
+|---|---:|---:|
+| Strict complete answers | 79/498 (15.86%) | 60/498 (12.05%) |
+| Required numerical relations | 119/356 (33.43%) | 106/356 (29.78%) |
+| Appropriate control abstentions | 24/32 (75.00%) | 28/32 (87.50%) |
+
+Assessment coverage is complete; the >80% answer-quality goal remains unmet.
+The release discloses 34 assessment adjudications, three frozen source-label
+defects with separate paired sensitivity, nonrandom AI reviewers, and unknown
+costs. Original answers and the historical incomplete result manifest remain
+preserved. These strict criteria are not independently certified accuracy.
+Run `python TestFile/published_2026-10-13/verify_release.py` to verify the
+published hashes and aggregate metrics. On Windows, open
+`Open_Project_Status.cmd` to view saved progress without making model requests.
+
+## Project Closure Plan — 9 October 2026
+
+The [current closure plan](docs/PROJECT_CLOSURE_PLAN_2026-10-09_th.md) focuses
+on a specific Thai business-report use case, reliable fresh-PDF evaluation,
+a matched technical baseline, and measured operating costs. Market comparison
+uses official-source desk research without purchasing competitor subscriptions.
+Docling is excluded from the closure scope. The examination window is
+8–11 November 2026, with a working delivery target of 6 November.
+
 ## Evaluation Update — 8 October 2026
 
 The Gemini-assisted development evaluation now covers **all 498 questions**.

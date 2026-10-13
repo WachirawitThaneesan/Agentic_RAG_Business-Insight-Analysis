@@ -298,10 +298,10 @@ def test_expanded_context_keeps_later_source_verbatim_with_stable_index():
     assert capture.validate_evidence_blocks(expanded,blocks)==blocks
 
 
-def test_exact_cell_capture_uses_selected_source_and_explicit_issuer_mention():
+def test_exact_cell_capture_uses_selected_source_and_stored_issuer():
     data = {'lookup_kind': 'exact_measure', 'evidence': [
         {'filename': 'cpaxtra_2567_th.pdf', 'document_id': 2, 'page': 133,
-         'row_label': 'สินทรัพย์รวม', 'column': '2567', 'value': '42,567', 'unit': 'ล้านบาท'},
+         'row_label': 'สินทรัพย์รวม', 'column': '2567', 'value': '42,567', 'unit': 'ล้านบาท', 'company':'CPAXT'},
         {'filename': 'other.pdf', 'document_id': 3, 'page': 140,
          'row_label': 'สินทรัพย์รวม', 'column': '2567', 'value': '99,999', 'unit': 'ล้านบาท'}]}
     events = []; token = capture.CURRENT.set(events)

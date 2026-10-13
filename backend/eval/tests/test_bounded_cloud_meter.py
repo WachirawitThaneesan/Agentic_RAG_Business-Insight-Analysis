@@ -154,3 +154,80 @@ def test_cross_process_ledger_transactions_do_not_lose_calls_or_unknown_usage(tm
     assert result['failed_calls_without_complete_usage']==14
     assert result['unknown_input_reserve']==1400000
     assert result['unknown_output_reserve']==458752
+
+
+def test_append_only_events_keep_operation_identity_and_unknown_failure(tmp_path):
+    import json
+    first = meter(tmp_path)
+    first.journal_path = tmp_path / 'events.jsonl'
+    first.phase = {'stage': 'query', 'purpose': 'operation', 'question_id': 'Q1'}
+    row = first.begin('gemini', model='gemini-2.5-flash', service='vertex_ai')
+    first.finish(row, 0, error=TimeoutError())
+    events = [json.loads(line) for line in first.journal_path.read_text().splitlines()]
+    assert [event['event'] for event in events] == ['dispatch_started', 'dispatch_finished']
+    assert events[0]['status'] == 'pending'
+    assert events[1]['status'] == 'error'
+    assert events[0]['call_id'] == events[1]['call_id']
+    assert events[1]['purpose'] == 'operation'
+    assert events[1]['service'] == 'vertex_ai'
+    assert events[1]['input_tokens'] is None
+    assert events[1]['finished_at_utc'] >= events[0]['started_at_utc']
+
+
+def test_cached_input_is_a_subset_and_thinking_is_counted_once(tmp_path):
+    first = meter(tmp_path)
+    row = first.begin('gemini')
+    first.finish(row, 0, usage={'input_tokens': 100, 'cached_input_tokens': 40,
+                               'output_tokens': 30, 'thinking_tokens': 2})
+    assert first.budget['known_input_tokens'] == 1158376
+    assert first.budget['known_output_tokens'] == 81837
+    assert row['cached_input_tokens'] == 40
+
+
+def test_http_wrappers_cover_sync_async_and_exclude_other_hosts(tmp_path):
+    import asyncio
+    asyncio.run(_exercise_http_wrappers(tmp_path))
+
+
+async def _exercise_http_wrappers(tmp_path):
+    import httpx
+    from backend.config import get_settings
+    from urllib.parse import urlparse
+    first = meter(tmp_path)
+    first.max_new_attempts = None
+    host = urlparse(get_settings().TYPHOON_OCR_ENDPOINT).hostname
+    def respond(request):
+        return httpx.Response(200, json={'usage': {'prompt_tokens': 10, 'completion_tokens': 3}})
+    with first:
+        with httpx.Client(base_url='https://'+host, transport=httpx.MockTransport(respond)) as client:
+            client.post('/chat/completions', json={'model': 'typhoon-ocr', 'secret_payload': 'must_not_log'})
+        async with httpx.AsyncClient(base_url='https://'+host, transport=httpx.MockTransport(respond)) as client:
+            await client.post('/chat/completions', json={'model': 'typhoon-ocr'})
+        async with httpx.AsyncClient(base_url='https://unrelated.invalid', transport=httpx.MockTransport(respond)) as client:
+            await client.post('/chat/completions', json={'model': 'other'})
+    assert len(first.calls) == 2
+    assert first.budget['known_input_tokens'] == 1158296
+    assert all(row['model'] == 'typhoon-ocr' for row in first.calls)
+    assert 'must_not_log' not in (first.output/'model_calls.json').read_text()
+
+
+def test_phase_context_is_task_local_and_restores_outer_stage(tmp_path):
+    import asyncio
+    first = meter(tmp_path)
+    first.max_new_attempts = None
+    async def worker(page):
+        with first.phase_context(stage='ingestion_ocr', source_pdf_page=page,
+                                 ocr_page_key=f'hash:{page}', purpose='operation'):
+            await asyncio.sleep(0)
+            row = first.begin('typhoon')
+            first.finish(row, 0, usage={'input_tokens': 1, 'output_tokens': 1, 'thinking_tokens': 0})
+    async def run():
+        await asyncio.gather(worker(1), worker(2))
+    asyncio.run(run())
+    assert [row['source_pdf_page'] for row in first.calls] == [1, 2]
+    assert first.budget['paid_ocr_pages_new'] == 2
+    with first.phase_context(stage='outer'):
+        with first.phase_context(stage='inner'):
+            assert first._phase_context.get()['stage'] == 'inner'
+        assert first._phase_context.get()['stage'] == 'outer'
+    assert first._phase_context.get() == {}
