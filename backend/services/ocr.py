@@ -440,23 +440,26 @@ class TyphoonOCRService:
         dpi = max(int(render_dpi or self.render_dpi), 72)
         try:
             import pypdfium2 as pdfium
+            from backend.services.pdf_render import PDFIUM_LOCK
 
-            document = pdfium.PdfDocument(pdf_path)
-            page = document[page_num - 1]
-            bitmap = None
-            try:
-                bitmap = page.render(
-                    scale=dpi / 72.0,
-                    rev_byteorder=True,
-                    optimize_mode="print",
-                )
-                image = bitmap.to_pil().convert("RGB")
-                return self._image_to_png_bytes(image)
-            finally:
-                if bitmap is not None:
-                    bitmap.close()
-                page.close()
-                document.close()
+            # PDFium is not thread-safe; share the lock with the page viewer.
+            with PDFIUM_LOCK:
+                document = pdfium.PdfDocument(pdf_path)
+                page = document[page_num - 1]
+                bitmap = None
+                try:
+                    bitmap = page.render(
+                        scale=dpi / 72.0,
+                        rev_byteorder=True,
+                        optimize_mode="print",
+                    )
+                    image = bitmap.to_pil().convert("RGB")
+                finally:
+                    if bitmap is not None:
+                        bitmap.close()
+                    page.close()
+                    document.close()
+            return self._image_to_png_bytes(image)
         except Exception as primary_exc:
             logger.debug("pypdfium2 render failed for page %s: %s", page_num, primary_exc)
 

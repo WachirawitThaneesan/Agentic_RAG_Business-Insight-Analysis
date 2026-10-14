@@ -1,0 +1,35 @@
+{
+  "brand": "Business Agent",
+  "tagline": "Every figure, traced to the page.",
+  "brief": "A question-answering app for Thai annual reports and financial statements. Every figure in an answer carries the PDF page it came from. The mark should feel precise, traceable and calm, and avoid the blue-circle-arrow look of finance and the sparkle look of AI.",
+  "adjectives": ["precise", "traceable", "trustworthy", "calm", "sharp"],
+  "criteria": "Success: recognisable at 16 px, works in one colour and reversed, owns the idea of a cited answer, fits the dark UI with its gold accent.",
+  "mockups": ["website", "favicon-tab", "app-icon", "readme", "social", "business-card"],
+  "nav": ["Overview", "Ask", "Documents"],
+  "brand_color": "#16171B",
+  "greyscale": false,
+  "designer": "Business Agent",
+  "round": 2,
+  "concepts": [
+    {
+      "name": "Footnote b",
+      "symbol": "../svg/symbol-color.svg",
+      "lockup": "../svg/lockup-horizontal-color.svg",
+      "symbol_on_tile": "../svg/symbol-reversed.svg",
+      "lockup_on_dark": "../svg/lockup-horizontal-reversed.svg",
+      "tile_color": "#16171B",
+      "idea": "A lowercase b with a superscript: every answer is footnoted.",
+      "rationale": [
+        "Ties the name (Business) to the product's promise (a cited answer) in one form",
+        "The gold superscript is the one ownable detail, and it seeds the UI: citation numbers, highlights",
+        "Stem, bowl and superscript share one 40-unit weight; reads at 16 px with a heavier small-size cut"
+      ]
+    }
+  ],
+  "recommendation": "Footnote b, in ink and gold. Keep the superscript gold wherever colour is available; it is the brand's memory hook.",
+  "next_steps": [
+    "Use the web icon set and lockups in the app (done in this round)",
+    "Trademark search before any public launch",
+    "Extend the superscript into the citation markers and loading states"
+  ]
+}
